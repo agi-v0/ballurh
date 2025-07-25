@@ -1,31 +1,35 @@
 import type { Block } from 'payload'
 
-import {
-  FixedToolbarFeature,
-  HeadingFeature,
-  InlineToolbarFeature,
-  lexicalEditor,
-} from '@payloadcms/richtext-lexical'
 
-export const Archive: Block = {
-  slug: 'archive',
+
+import { blockHeader } from '@/components/BlockHeader/config'
+
+export const ArchiveBlock: Block = {
+  slug: 'archiveBlock',
+  labels: {
+    singular: 'Archive',
+    plural: 'Archives',
+  },
   interfaceName: 'ArchiveBlock',
+  dbName: 'archiveBlock',
   fields: [
-    {
-      name: 'introContent',
-      type: 'richText',
-      editor: lexicalEditor({
-        features: ({ rootFeatures }) => {
-          return [
-            ...rootFeatures,
-            HeadingFeature({ enabledHeadingSizes: ['h1', 'h2', 'h3', 'h4'] }),
-            FixedToolbarFeature(),
-            InlineToolbarFeature(),
-          ]
-        },
-      }),
-      label: 'Intro Content',
-    },
+    // {
+    //   name: 'introContent',
+    //   type: 'richText',
+    //   localized: true,
+    //   editor: lexicalEditor({
+    //     features: ({ rootFeatures }) => {
+    //       return [
+    //         ...rootFeatures,
+    //         HeadingFeature({ enabledHeadingSizes: ['h1', 'h2', 'h3', 'h4'] }),
+    //         FixedToolbarFeature(),
+    //         InlineToolbarFeature(),
+    //       ]
+    //     },
+    //   }),
+    //   label: 'Intro Content',
+    // },
+    blockHeader,
     {
       name: 'populateBy',
       type: 'select',
@@ -47,12 +51,12 @@ export const Archive: Block = {
       admin: {
         condition: (_, siblingData) => siblingData.populateBy === 'collection',
       },
-      defaultValue: 'posts',
+      defaultValue: 'blog-posts',
       label: 'Collections To Show',
       options: [
         {
           label: 'Posts',
-          value: 'posts',
+          value: 'blog-posts',
         },
       ],
     },
@@ -84,11 +88,7 @@ export const Archive: Block = {
       },
       hasMany: true,
       label: 'Selection',
-      relationTo: ['posts'],
+      relationTo: ['blog-posts'],
     },
   ],
-  labels: {
-    plural: 'Archives',
-    singular: 'Archive',
-  },
 }

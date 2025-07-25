@@ -1,28 +1,63 @@
-import type { Field, GroupField } from 'payload'
+import type { Field } from 'payload'
 
+import materialIcons from './iconPickerField/material-symbols-icons.json'
 import deepMerge from '@/utilities/deepMerge'
 
-export type LinkAppearances = 'default' | 'outline'
+import { iconPickerField } from './iconPickerField'
 
-export const appearanceOptions: Record<LinkAppearances, { label: string; value: string }> = {
-  default: {
-    label: 'Default',
-    value: 'default',
+export type LinkVariants = 'primary' | 'secondary' | 'tertiary' | 'ghost' | 'link'
+export type LinkColors = 'brand' | 'neutral'
+
+export const variantOptions: Record<LinkVariants, { label: string; value: string }> = {
+  primary: {
+    label: 'Primary',
+    value: 'primary',
   },
-  outline: {
-    label: 'Outline',
-    value: 'outline',
+  secondary: {
+    label: 'Secondary',
+    value: 'secondary',
+  },
+  tertiary: {
+    label: 'Tertiary',
+    value: 'tertiary',
+  },
+  ghost: {
+    label: 'Ghost',
+    value: 'ghost',
+  },
+  link: {
+    label: 'Link',
+    value: 'link',
   },
 }
-
+export const colorOptions: Record<LinkColors, { label: string; value: string }> = {
+  brand: {
+    label: 'Brand',
+    value: 'brand',
+  },
+  neutral: {
+    label: 'Neutral',
+    value: 'neutral',
+  },
+}
 type LinkType = (options?: {
-  appearances?: LinkAppearances[] | false
+  variants?: LinkVariants[] | false
+  colors?: LinkColors[] | false
+  icon?: boolean
+  description?: boolean
   disableLabel?: boolean
-  overrides?: Partial<GroupField>
+  overrides?: Record<string, unknown>
 }) => Field
 
-export const link: LinkType = ({ appearances, disableLabel = false, overrides = {} } = {}) => {
-  const linkResult: GroupField = {
+export const link: LinkType = ({
+  variants,
+  colors,
+  icon = false,
+  description = false,
+  disableLabel = false,
+  overrides = {},
+} = {}) => {
+  const linkResult: Field = {
     name: 'link',
     type: 'group',
     admin: {
@@ -50,6 +85,7 @@ export const link: LinkType = ({ appearances, disableLabel = false, overrides = 
                 value: 'custom',
               },
             ],
+            dbName: 'link_type',
           },
           {
             name: 'newTab',
@@ -75,7 +111,7 @@ export const link: LinkType = ({ appearances, disableLabel = false, overrides = 
         condition: (_, siblingData) => siblingData?.type === 'reference',
       },
       label: 'Document to link to',
-      relationTo: ['pages', 'posts'],
+      relationTo: ['pages', 'blog-posts'],
       required: true,
     },
     {
@@ -83,6 +119,7 @@ export const link: LinkType = ({ appearances, disableLabel = false, overrides = 
       type: 'text',
       admin: {
         condition: (_, siblingData) => siblingData?.type === 'custom',
+        rtl: false,
       },
       label: 'Custom URL',
       required: true,
@@ -109,7 +146,8 @@ export const link: LinkType = ({ appearances, disableLabel = false, overrides = 
             width: '50%',
           },
           label: 'Label',
-          required: true,
+          required: !disableLabel,
+          localized: true,
         },
       ],
     })
@@ -117,21 +155,70 @@ export const link: LinkType = ({ appearances, disableLabel = false, overrides = 
     linkResult.fields = [...linkResult.fields, ...linkTypes]
   }
 
-  if (appearances !== false) {
-    let appearanceOptionsToUse = [appearanceOptions.default, appearanceOptions.outline]
+  if (description) {
+    linkResult.fields.push({
+      name: 'description',
+      label: 'Description',
+      type: 'text',
+      localized: true,
+    })
+  }
 
-    if (appearances) {
-      appearanceOptionsToUse = appearances.map((appearance) => appearanceOptions[appearance])
+  if (icon) {
+    linkResult.fields.push(
+      iconPickerField({
+        name: 'icon',
+        label: 'Icon',
+        icons: materialIcons,
+        admin: {
+          description:
+            'Select an icon from the Material Symbols icon set. You can preview all available icons at https://fonts.google.com/icons',
+        },
+      }),
+    )
+  }
+
+  if (colors !== false) {
+    let colorOptionsToUse = [colorOptions.brand, colorOptions.neutral]
+
+    if (colors) {
+      colorOptionsToUse = colors.map((color) => colorOptions[color])
     }
 
     linkResult.fields.push({
-      name: 'appearance',
+      name: 'color',
       type: 'select',
+      admin: {
+        description: 'Choose the button style.',
+      },
+      dbName: 'link_color',
+      defaultValue: 'neutral',
+      options: colorOptionsToUse,
+    })
+  }
+
+  if (variants !== false) {
+    let variantOptionsToUse = [
+      variantOptions.primary,
+      variantOptions.secondary,
+      variantOptions.tertiary,
+      variantOptions.ghost,
+      variantOptions.link,
+    ]
+
+    if (variants) {
+      variantOptionsToUse = variants.map((variant) => variantOptions[variant])
+    }
+
+    linkResult.fields.push({
+      name: 'variant',
+      type: 'select',
+      dbName: 'link_variant',
       admin: {
         description: 'Choose how the link should be rendered.',
       },
-      defaultValue: 'default',
-      options: appearanceOptionsToUse,
+      defaultValue: 'primary',
+      options: variantOptionsToUse,
     })
   }
 

@@ -2,7 +2,7 @@ export const stateOptions = [
   { label: 'Alabama', value: 'AL' },
   { label: 'Alaska', value: 'AK' },
   { label: 'Arizona', value: 'AZ' },
-  { label: 'Arkansas', value: 'AR' },
+  { label: 'Arkansas', value: 'ar' },
   { label: 'California', value: 'CA' },
   { label: 'Colorado', value: 'CO' },
   { label: 'Connecticut', value: 'CT' },

@@ -1,7 +1,6 @@
 import type { SelectField } from '@payloadcms/plugin-form-builder/types'
-import type { Control, FieldErrorsImpl } from 'react-hook-form'
+import type { Control, FieldErrorsImpl, FieldValues } from 'react-hook-form'
 
-import { Label } from '@/components/ui/label'
 import {
   Select as SelectComponent,
   SelectContent,
@@ -17,29 +16,31 @@ import { Width } from '../Width'
 
 export const Select: React.FC<
   SelectField & {
-    control: Control
-    errors: Partial<FieldErrorsImpl>
+    control: Control<FieldValues, any>
+    errors: Partial<
+      FieldErrorsImpl<{
+        [x: string]: any
+      }>
+    >
+    locale?: string
   }
-> = ({ name, control, errors, label, options, required, width, defaultValue }) => {
+> = ({ name, control, errors, label, options, required, width, locale }) => {
   return (
     <Width width={width}>
-      <Label htmlFor={name}>
-        {label}
-        {required && (
-          <span className="required">
-            * <span className="sr-only">(required)</span>
-          </span>
-        )}
-      </Label>
+      {/* <Label htmlFor={name}>{label}</Label> */}
       <Controller
         control={control}
-        defaultValue={defaultValue}
+        defaultValue=""
         name={name}
         render={({ field: { onChange, value } }) => {
           const controlledValue = options.find((t) => t.value === value)
 
           return (
-            <SelectComponent onValueChange={(val) => onChange(val)} value={controlledValue?.value}>
+            <SelectComponent
+              dir={locale === 'ar' ? 'rtl' : 'ltr'}
+              onValueChange={(val) => onChange(val)}
+              value={controlledValue?.value}
+            >
               <SelectTrigger className="w-full" id={name}>
                 <SelectValue placeholder={label} />
               </SelectTrigger>
@@ -57,7 +58,7 @@ export const Select: React.FC<
         }}
         rules={{ required }}
       />
-      {errors[name] && <Error name={name} />}
+      {required && errors[name] && <Error />}
     </Width>
   )
 }

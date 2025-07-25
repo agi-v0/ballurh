@@ -1,16 +1,12 @@
 import type { CollectionConfig } from 'payload'
 
-import { authenticated } from '../../access/authenticated'
-import { authenticatedOrPublished } from '../../access/authenticatedOrPublished'
-import { Archive } from '../../blocks/ArchiveBlock/config'
-import { CallToAction } from '../../blocks/CallToAction/config'
-import { Content } from '../../blocks/Content/config'
-import { FormBlock } from '../../blocks/Form/config'
-import { MediaBlock } from '../../blocks/MediaBlock/config'
+import { authenticated } from '@/access/authenticated'
+import { authenticatedOrPublished } from '@/access/authenticatedOrPublished'
+
 import { hero } from '@/heros/config'
 import { slugField } from '@/fields/slug'
-import { populatePublishedAt } from '../../hooks/populatePublishedAt'
-import { generatePreviewPath } from '../../utilities/generatePreviewPath'
+import { populatePublishedAt } from '@/hooks/populatePublishedAt'
+import { generatePreviewPath } from '@/utilities/generatePreviewPath'
 import { revalidateDelete, revalidatePage } from './hooks/revalidatePage'
 
 import {
@@ -23,6 +19,16 @@ import {
 
 export const Pages: CollectionConfig<'pages'> = {
   slug: 'pages',
+  labels: {
+    singular: {
+      en: 'Page',
+      ar: 'الصفحة',
+    },
+    plural: {
+      en: 'Pages',
+      ar: 'الصفحات',
+    },
+  },
   access: {
     create: authenticated,
     delete: authenticated,
@@ -39,19 +45,20 @@ export const Pages: CollectionConfig<'pages'> = {
   admin: {
     defaultColumns: ['title', 'slug', 'updatedAt'],
     livePreview: {
-      url: ({ data, req }) => {
+      url: ({ data, req, locale }) => {
         const path = generatePreviewPath({
           slug: typeof data?.slug === 'string' ? data.slug : '',
+          locale: locale as any,
           collection: 'pages',
           req,
         })
-
         return path
       },
     },
-    preview: (data, { req }) =>
+    preview: (data, { req, locale }) =>
       generatePreviewPath({
         slug: typeof data?.slug === 'string' ? data.slug : '',
+        locale,
         collection: 'pages',
         req,
       }),
@@ -62,6 +69,11 @@ export const Pages: CollectionConfig<'pages'> = {
       name: 'title',
       type: 'text',
       required: true,
+      admin: {
+        description:
+          'Internal page title used to identify this entry in the CMS and generate the URL slug. English only.',
+        rtl: false,
+      },
     },
     {
       type: 'tabs',
@@ -75,7 +87,25 @@ export const Pages: CollectionConfig<'pages'> = {
             {
               name: 'layout',
               type: 'blocks',
-              blocks: [CallToAction, Content, MediaBlock, Archive, FormBlock],
+              blocks: [],
+              blockReferences: [
+                // 'archiveBlock',
+                // 'blogBlock',
+                // 'callToActionBlock',
+                // 'customHtmlBlock',
+                // 'dividerBlock',
+                // 'faqBlock',
+                // 'featuredAppsBlock',
+                // 'featuresBlock',
+                // 'formBlock',
+                // 'galleryBlock',
+                // 'logosBlock',
+                // 'marketplaceBlock',
+                // 'metricsBlock',
+                // 'pricingBlock',
+                // 'richTextBlock',
+                // 'testimonialsBlock',
+              ],
               required: true,
               admin: {
                 initCollapsed: true,
@@ -87,6 +117,7 @@ export const Pages: CollectionConfig<'pages'> = {
         {
           name: 'meta',
           label: 'SEO',
+          localized: true,
           fields: [
             OverviewField({
               titlePath: 'meta.title',

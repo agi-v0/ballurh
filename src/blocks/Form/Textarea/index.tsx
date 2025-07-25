@@ -1,7 +1,6 @@
 import type { TextField } from '@payloadcms/plugin-form-builder/types'
 import type { FieldErrorsImpl, FieldValues, UseFormRegister } from 'react-hook-form'
 
-import { Label } from '@/components/ui/label'
 import { Textarea as TextAreaComponent } from '@/components/ui/textarea'
 import React from 'react'
 
@@ -10,31 +9,37 @@ import { Width } from '../Width'
 
 export const Textarea: React.FC<
   TextField & {
-    errors: Partial<FieldErrorsImpl>
+    errors: Partial<
+      FieldErrorsImpl<{
+        [x: string]: any
+      }>
+    >
     register: UseFormRegister<FieldValues>
     rows?: number
   }
-> = ({ name, defaultValue, errors, label, register, required, rows = 3, width }) => {
+> = ({
+  name,
+  defaultValue,
+  errors,
+  label,
+  register,
+  required: requiredFromProps,
+  rows = 3,
+  width,
+}) => {
   return (
     <Width width={width}>
-      <Label htmlFor={name}>
-        {label}
-
-        {required && (
-          <span className="required">
-            * <span className="sr-only">(required)</span>
-          </span>
-        )}
-      </Label>
+      {/* <Label htmlFor={name}>{label}</Label> */}
 
       <TextAreaComponent
+        placeholder={label}
         defaultValue={defaultValue}
         id={name}
         rows={rows}
-        {...register(name, { required: required })}
+        {...register(name, { required: requiredFromProps })}
       />
 
-      {errors[name] && <Error name={name} />}
+      {requiredFromProps && errors[name] && <Error />}
     </Width>
   )
 }

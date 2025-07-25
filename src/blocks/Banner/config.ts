@@ -8,10 +8,13 @@ import {
 
 export const Banner: Block = {
   slug: 'banner',
+  interfaceName: 'BannerBlock',
+  dbName: 'bannerBlock',
   fields: [
     {
       name: 'style',
       type: 'select',
+      localized: true,
       defaultValue: 'info',
       options: [
         { label: 'Info', value: 'info' },
@@ -24,6 +27,7 @@ export const Banner: Block = {
     {
       name: 'content',
       type: 'richText',
+      localized: true,
       editor: lexicalEditor({
         features: ({ rootFeatures }) => {
           return [...rootFeatures, FixedToolbarFeature(), InlineToolbarFeature()]
@@ -33,5 +37,4 @@ export const Banner: Block = {
       required: true,
     },
   ],
-  interfaceName: 'BannerBlock',
 }

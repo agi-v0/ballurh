@@ -41,7 +41,7 @@ export const countryOptions = [
   },
   {
     label: 'Argentina',
-    value: 'AR',
+    value: 'ar',
   },
   {
     label: 'Armenia',

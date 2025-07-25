@@ -1,0 +1,52 @@
+{
+  "General": {
+    "readMore": "المزيد"
+  },
+  "Blog": {
+    "author": "المؤلف",
+    "publishedAt": "نشر في",
+    "inThisArticle": "في هذه المقالة",
+    "readTime": "{minutes} دقائق للقراءة",
+    "readTimeMinute": "دقيقة واحدة للقراءة",
+    "allArticles": "جميع المقالات"
+  },
+  "TestimonialsBlock": {
+    "readMore": "إقرأ القصة"
+  },
+  "PricingBlock": {
+    "annually": "سنويا",
+    "monthly": "شهريا",
+    "includedSolutions": "الحلول المتاحة",
+    "integrations": "مع تطبيق مجمّع طلبات من اختيارك",
+    "features": "الميزات"
+  },
+  "IntegrationPane": {
+    "company": "الشركة",
+    "ecosystem": "المنظومة",
+    "categories": "الفئات",
+    "pricing": "الأسعار"
+  },
+  "Header": {
+    "home": "الرئيسية",
+    "pages": "الصفحات",
+    "contact": "اتصل بنا"
+  },
+  "Footer": {
+    "followUs": "تابعنا",
+    "compliance": "خاضع لتنظيم ورقابة",
+    "allRightsReserved": "© {year} مرن. جميع الحقوق محفوظة.",
+    "termsAndConditions": "الشروط والأحكام",
+    "privacyPolicy": "سياسة الخصوصية",
+    "newsletterTitle": "ابق على اطلاع دائم بنشرتنا الإخبارية",
+    "newsletterDescription": "احصل على آخر الأخبار والتحديثات والعروض الخاصة مباشرة في بريدك الوارد.",
+    "newsletterPlaceholder": "أدخل بريدك الإلكتروني",
+    "newsletterButton": "إشترك"
+  },
+  "Theme": {
+    "toggleTheme": "Toggle theme"
+  },
+  "Pagination": {
+    "previous": "السابق",
+    "next": "التالي"
+  }
+}
