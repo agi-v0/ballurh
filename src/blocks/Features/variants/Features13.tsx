@@ -24,7 +24,7 @@ export const Features13: React.FC<FeaturesBlock> = ({ columns }) => {
         const iconName = column.icon as string
         return (
           <motion.div key={index} variants={itemsFling}>
-            <Card className="rounded-space-sm p-md bg-card h-full w-full flex-grow border-0">
+            <Card className="rounded-space-sm p-md bg-card h-full w-full grow border-0">
               <CardContent className={cn('gap-md flex flex-col justify-start p-0')}>
                 {column.icon && (
                   <Icon

@@ -199,7 +199,7 @@ export const PricingCard: React.FC<PricingCardProps> = (props) => {
           style={{ borderRadius: 12 }}
           onClick={() => setIsExpanded(!isExpanded)}
           data-state={isExpanded ? 'expanded' : 'collapsed'}
-          className="hover:bg-neutral/5 data-[state=expanded]:hover:bg-neutral/10 data-[state=expanded]:bg-neutral/5 w-full space-y-4 rounded-xl px-4 py-3 pt-2 transition-colors duration-200 max-md:px-0 data-[state=expanded]:max-md:px-4"
+          className="hover:bg-neutral/5 data-[state=expanded]:hover:bg-neutral/10 data-[state=expanded]:bg-neutral/5 w-full space-y-4 rounded-xl px-4 py-3 pt-2 transition-colors duration-200 max-md:px-0 max-md:data-[state=expanded]:px-4"
         >
           <motion.div layout className="-me-2 flex w-full flex-row items-center justify-between">
             <p className="text-base-tertiary text-sm font-normal">
@@ -237,7 +237,7 @@ export const PricingCard: React.FC<PricingCardProps> = (props) => {
                     <motion.div
                       layout="position"
                       layoutId={`solution-icon-${type}-${name}`}
-                      className={cn('flex-shrink-0', isExpanded ? '' : 'h-fit')}
+                      className={cn('shrink-0', isExpanded ? '' : 'h-fit')}
                     >
                       {isExpanded ? (
                         mediaElement
@@ -325,9 +325,9 @@ export const PricingCard: React.FC<PricingCardProps> = (props) => {
             {features.map((feature, featureIndex) => (
               <li key={featureIndex} className="flex items-center justify-start gap-2">
                 {feature.enabled ? (
-                  <CircleCheck className="text-base-secondary size-5 flex-shrink-0" />
+                  <CircleCheck className="text-base-secondary size-5 shrink-0" />
                 ) : (
-                  <X className="text-base-tertiary size-5 flex-shrink-0" />
+                  <X className="text-base-tertiary size-5 shrink-0" />
                 )}
                 <span
                   className={cn(

@@ -85,13 +85,13 @@ export const HeaderClient: React.FC<HeaderType & AdminBarProps> = ({
       {/* Main container with flex layout */}
       <div
         className={cn(
-          'relative container flex h-[var(--header-height)] flex-row items-center justify-between transition-colors',
+          'relative container flex h-(--header-height) flex-row items-center justify-between transition-colors',
         )}
       >
         <div className="z-50 w-full max-w-54">
           <Link
             href="/"
-            className="hover:text-base-secondary text-base-primary flex-shrink-0 transition-colors"
+            className="hover:text-base-secondary text-base-primary shrink-0 transition-colors"
           >
             <Logo className="h-6 w-auto" />
           </Link>
@@ -103,7 +103,7 @@ export const HeaderClient: React.FC<HeaderType & AdminBarProps> = ({
           className="hidden lg:flex lg:w-full lg:items-center lg:justify-end"
         />
 
-        <div className="flex flex-shrink-0 justify-end lg:hidden">
+        <div className="flex shrink-0 justify-end lg:hidden">
           <AnimatedToggle
             isOpen={isMobileNavOpen}
             onClick={() => setIsMobileNavOpen((prev) => !prev)}
@@ -128,7 +128,7 @@ export const HeaderClient: React.FC<HeaderType & AdminBarProps> = ({
               mass: 1,
             }}
             className={cn(
-              'px-site pb-site fixed inset-x-0 top-[var(--header-height)] bottom-0 z-50 overflow-y-auto lg:hidden',
+              'px-site pb-site fixed inset-x-0 top-(--header-height) bottom-0 z-50 overflow-y-auto lg:hidden',
               // 'animate-in slide-in-from-top-4 duration-300 ease-out',
             )}
           >

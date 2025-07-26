@@ -61,7 +61,7 @@ export const CallToAction05: React.FC<CallToActionProps> = ({
         {media && (
           <Media
             media={media}
-            className="rounded-space-sm overflow-hidden md:max-w-[32rem] md:basis-1/2"
+            className="rounded-space-sm overflow-hidden md:max-w-lg md:basis-1/2"
           />
         )}
       </div>

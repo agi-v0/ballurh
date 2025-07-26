@@ -163,7 +163,7 @@ export const StructuredTable: React.FC<PricingTableProps> = ({ table, badges }) 
                       >
                         <Icon
                           data-expanded={isExpanded ? 'true' : 'false'}
-                          className="text-base-secondary size-4 transition-transform duration-200 data-[expanded=true]:-rotate-90 ltr:rotate-180 ltr:data-[expanded=true]:rotate-270"
+                          className="text-base-secondary size-4 transition-transform duration-200 data-[expanded=true]:-rotate-90 ltr:rotate-180 data-[expanded=true]:ltr:rotate-270"
                           height="none"
                           icon="material-symbols:chevron-left-rounded"
                         />

@@ -119,7 +119,7 @@ export const CallToAction07: React.FC<CTABlockType> = (props) => {
 
   return (
     <div className="py-xl container">
-      <div className="px-md bg-background-neutral rounded-space-sm py-lg flex flex-col items-start gap-4 lg:flex-row lg:items-start lg:justify-between *:lg:basis-1/2">
+      <div className="px-md bg-background-neutral rounded-space-sm py-lg flex flex-col items-start gap-4 lg:flex-row lg:items-start lg:justify-between lg:*:basis-1/2">
         <div className="gap-sm flex flex-col items-start">
           {richText && (
             <RichText className="mx-0 mb-0 text-start" data={richText} enableGutter={false} />
@@ -131,7 +131,7 @@ export const CallToAction07: React.FC<CTABlockType> = (props) => {
           </div>
         </div>
         {formID && (
-          <div className="lg:p-md max-lg:mt-md w-full lg:max-w-[48rem]">
+          <div className="lg:p-md max-lg:mt-md w-full lg:max-w-3xl">
             <FormProvider {...formMethods}>
               {/* {!isLoading && hasSubmitted && confirmationType === 'message' && (
                 <RichText data={confirmationMessage as SerializedEditorState} />

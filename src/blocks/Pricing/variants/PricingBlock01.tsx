@@ -27,7 +27,7 @@ export const PricingBlock01: React.FC<PricingBlock01Props> = ({
 }) => {
   return (
     <section className={cn('', className)}>
-      <div className="container max-w-screen-xl">
+      <div className="container max-w-(--breakpoint-xl)">
         {/* Pricing Cards Grid */}
         <TooltipProvider delayDuration={0}>
           <div className="grid items-stretch gap-4 md:grid-cols-2">

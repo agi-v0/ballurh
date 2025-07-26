@@ -10,7 +10,7 @@ import React from 'react'
 import type { Props as MediaProps } from '../types'
 
 import { cssVariables } from '@/cssVariables'
-import { getMediaUrl } from '@/utilities/getMediaURL'
+import { getMediaUrl } from '@/utilities/getMediaUrl'
 
 const { breakpoints } = cssVariables
 
@@ -41,10 +41,8 @@ export const ImageMedia: React.FC<MediaProps> = (props) => {
   let mobileDarkSrc: string = ''
   let blurhash: string = placeholderBlur
 
-  const { light: lightFromDesktop, dark: darkFromDesktop } =
-    media?.desktop || {}
-  const { light: lightFromMobile, dark: darkFromMobile } =
-    media?.mobile || {}
+  const { light: lightFromDesktop, dark: darkFromDesktop } = media?.desktop || {}
+  const { light: lightFromMobile, dark: darkFromMobile } = media?.mobile || {}
 
   //temporarily switch off compatibility with old resource type
   if (!src && resource && typeof resource === 'object') {
@@ -159,20 +157,17 @@ export const ImageMedia: React.FC<MediaProps> = (props) => {
   const isDark = theme === 'dark'
 
   const srcToUse = isDark && darkSrc ? darkSrc : src
-  const mobileSrcToUse =
-    isDark && mobileDarkSrc ? mobileDarkSrc : mobileSrc
+  const mobileSrcToUse = isDark && mobileDarkSrc ? mobileDarkSrc : mobileSrc
 
   return (
     <picture>
-      {mobileSrcToUse && (
-        <source srcSet={mobileSrcToUse} media="(max-width: 768px)" />
-      )}
+      {mobileSrcToUse && <source srcSet={mobileSrcToUse} media="(max-width: 768px)" />}
       <NextImage
         alt={alt || altFromProps || ''}
         className={cn(imgClassName)}
         fill={fill}
         height={!fill ? height : undefined}
-        placeholder={width && width >= 40 ? 'blur' : 'empty'}
+        placeholder={width && width >= 40 ? 'blur-sm' : 'empty'}
         blurDataURL={blurhash || placeholderBlur}
         priority={priority}
         quality={100}

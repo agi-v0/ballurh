@@ -104,7 +104,7 @@ const CountrySelect = React.forwardRef<HTMLSelectElement, CountrySelectProps>(
     return (
       <div
         className={cn(
-          'ring-ring relative z-0 inline-flex h-12 items-center self-stretch rounded-s-none rounded-e-xl border px-3 py-2.5 transition-[color,box-shadow] outline-none',
+          'ring-ring relative z-0 inline-flex h-12 items-center self-stretch rounded-s-none rounded-e-xl border px-3 py-2.5 transition-[color,box-shadow] outline-hidden',
           'border-input bg-background text-base-secondary',
           'focus-visible:border-ring focus-visible:ring-ring focus-visible:z-1 focus-visible:ring-1',
           'hover:bg-background-neutral',
@@ -113,7 +113,7 @@ const CountrySelect = React.forwardRef<HTMLSelectElement, CountrySelectProps>(
         )}
       >
         <div
-          className="inline-flex items-center gap-2 focus-visible:outline-none"
+          className="inline-flex items-center gap-2 focus-visible:outline-hidden"
           aria-hidden="true"
         >
           <FlagComponent country={value} countryName={value} aria-hidden="true" />

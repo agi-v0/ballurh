@@ -35,7 +35,7 @@ export const CallToAction04: React.FC<CallToActionProps> = ({
         className="bg-background-neutral gap-md p-xl rounded-space-sm flex flex-col md:flex-row md:items-center md:justify-between"
       >
         {richText && (
-          <RichText className="mx-0 mb-0 lg:max-w-[32rem]" data={richText} enableGutter={false} />
+          <RichText className="mx-0 mb-0 lg:max-w-lg" data={richText} enableGutter={false} />
         )}
 
         <div className="flex flex-col gap-8">

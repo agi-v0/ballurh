@@ -32,9 +32,9 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({ testimonial, linkLabe
   const { companyLogo } = company
 
   return (
-    <div className="bg-background-neutral rounded-space-sm grid w-full max-w-[90rem] grid-cols-1 lg:grid-cols-2 lg:items-stretch">
+    <div className="bg-background-neutral rounded-space-sm grid w-full max-w-360 grid-cols-1 lg:grid-cols-2 lg:items-stretch">
       <div className="gap-md p-md pb-xs md:pb-md flex w-full flex-col justify-start md:justify-between">
-        <div className="gap-sm flex flex-grow flex-col justify-start">
+        <div className="gap-sm flex grow flex-col justify-start">
           {companyLogo && (
             <Media
               resource={companyLogo}
@@ -97,7 +97,7 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({ testimonial, linkLabe
           <Media
             resource={featuredImage}
             fill
-            className="relative aspect-[4/3] h-auto w-full overflow-hidden rounded-lg"
+            className="relative aspect-4/3 h-auto w-full overflow-hidden rounded-lg"
             imgClassName="object-cover"
           />
         </div>

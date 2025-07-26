@@ -64,7 +64,7 @@ export const FeaturedApps06: React.FC<FeaturedApps06Props> = ({ cards }) => {
                           <Icon
                             icon="tabler:caret-left-filled"
                             height="none"
-                            className="size-4 translate-x-0 transition-all duration-150 group-hover:-translate-x-1 ltr:rotate-180 ltr:group-hover:translate-x-1"
+                            className="size-4 translate-x-0 transition-all duration-150 group-hover:-translate-x-1 ltr:rotate-180 group-hover:ltr:translate-x-1"
                           />
                         </CMSLink>
                       )

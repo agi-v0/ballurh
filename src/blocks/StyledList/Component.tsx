@@ -32,7 +32,7 @@ export const StyledListBlock: React.FC<Props> = ({ className, items, listStyle =
               {item.icon && (
                 <Icon
                   icon={`material-symbols:${item.icon}`}
-                  className="flex-shrink-0"
+                  className="shrink-0"
                   height={20}
                   width={20}
                 />

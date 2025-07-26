@@ -8,7 +8,7 @@ import { Media as MediaType } from '@/payload-types'
 import { Media } from '../Media'
 
 const badgeVariants = cva(
-  'focus:ring-ring inline-flex max-w-max items-center gap-1 rounded-full px-4 py-1.5 text-sm font-medium transition-colors select-none focus:ring-2 focus:ring-offset-2 focus:outline-none',
+  'focus:ring-ring inline-flex max-w-max items-center gap-1 rounded-full px-4 py-1.5 text-sm font-medium transition-colors select-none focus:ring-2 focus:ring-offset-2 focus:outline-hidden',
   {
     variants: {
       color: {

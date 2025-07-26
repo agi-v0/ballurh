@@ -39,7 +39,7 @@ interface MobileNavProps extends Omit<HeaderType, 'id' | 'updatedAt' | 'createdA
 }
 
 const navigationMenuTriggerStyle = cva(
-  'hover:text-base-primary inline-flex w-full items-center justify-start gap-2 bg-transparent py-4 text-(length:--text-h3) font-medium transition-colors hover:no-underline focus:bg-transparent focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[expanded]:bg-transparent data-[expanded]:focus:bg-transparent',
+  'hover:text-base-primary inline-flex w-full items-center justify-start gap-2 bg-transparent py-4 text-(length:--text-h3) font-medium transition-colors hover:no-underline focus:bg-transparent focus:outline-hidden disabled:pointer-events-none disabled:opacity-50 data-expanded:bg-transparent data-expanded:focus:bg-transparent',
 )
 
 export function MobileNav({ tabs, cta, onLinkClick }: MobileNavProps) {
@@ -67,7 +67,7 @@ export function MobileNav({ tabs, cta, onLinkClick }: MobileNavProps) {
       <NavigationImagePreloader tabs={tabs} />
 
       {/* NEW: Scrollable wrapper for menu content */}
-      <div className="p-site flex-grow overflow-y-auto pb-20">
+      <div className="p-site grow overflow-y-auto pb-20">
         {/* Added pb-20 for CTA spacing */}
         {/* Main Menu View using Accordion */}
         <Accordion
@@ -95,7 +95,7 @@ export function MobileNav({ tabs, cta, onLinkClick }: MobileNavProps) {
                     <Icon
                       icon="tabler:caret-left-filled"
                       height="none"
-                      className="size-4 -rotate-90 transition-transform duration-200 group-data-[expanded]:rotate-90"
+                      className="size-4 -rotate-90 transition-transform duration-200 group-data-expanded:rotate-90"
                     />
                   </AccordionTrigger>
                   <AccordionContent className="">
@@ -257,7 +257,7 @@ function MobileNavItem({ item, onClick }: MobileNavItemProps) {
                     </div>
                   )}
                   {/* Text Content (with type safety for tagline) */}
-                  <div className="flex-grow space-y-1 font-medium">
+                  <div className="grow space-y-1 font-medium">
                     {subLink.link.label}
                     {(subLink.link.description ||
                       (isReferenceObject &&

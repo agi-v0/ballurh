@@ -130,7 +130,7 @@ export const CallToAction06: React.FC<CTABlockType> = (props) => {
           </div>
         </div>
         {formID && (
-          <div className="w-full max-w-[48rem]">
+          <div className="w-full max-w-3xl">
             <FormProvider {...formMethods}>
               {/* {!isLoading && hasSubmitted && confirmationType === 'message' && (
                 <RichText data={confirmationMessage as SerializedEditorState} />

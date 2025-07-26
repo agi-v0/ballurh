@@ -70,7 +70,7 @@ export function DesktopNav({ tabs, cta, className }: DesktopNavProps) {
                     )}
                     <NavigationMenuContent>
                       <ul
-                        className="olg:grid-cols-[repeat(var(--lgColumns),minmax(332px,1fr))] grid w-[400px] gap-4 p-4 md:w-full md:grid-cols-2 lg:w-(--content-width) lg:grid-cols-[var(--lgColumns)]"
+                        className="olg:grid-cols-[repeat(var(--lgColumns),minmax(332px,1fr))] grid w-[400px] gap-4 p-4 md:w-full md:grid-cols-2 lg:w-(--content-width) lg:grid-cols-(--lgColumns)"
                         style={
                           {
                             '--lgColumns': `repeat(${tab.navItems?.length || 1}, minmax(0, 1fr))`,
@@ -85,7 +85,7 @@ export function DesktopNav({ tabs, cta, className }: DesktopNavProps) {
                           //   {/* Adjust span based on grid */}
                           //   <NavigationMenuLink asChild>
                           //     <a
-                          //       className="from-muted/50 to-muted flex h-full w-full flex-col justify-end rounded-md bg-gradient-to-b p-6 no-underline outline-none select-none focus:shadow-md"
+                          //       className="from-muted/50 to-muted flex h-full w-full flex-col justify-end rounded-md bg-linear-to-b p-6 no-underline outline-hidden select-none focus:shadow-md"
                           //       href={tab.descriptionLinks?.[0]?.link?.url || '#'}
                           //     >
                           //       <div className="mt-4 mb-2 text-lg font-medium">{tab.label}</div>
@@ -250,7 +250,7 @@ const ListItem = React.forwardRef<HTMLAnchorElement | HTMLDivElement, ListItemPr
             <CMSLink
               ref={ref as React.Ref<HTMLAnchorElement>}
               className={cn(
-                'hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground block space-y-1 rounded-md p-3 leading-none no-underline transition-colors outline-none select-none',
+                'hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground block space-y-1 rounded-md p-3 leading-none no-underline transition-colors outline-hidden select-none',
                 className,
               )}
               {...defaultLink.link}

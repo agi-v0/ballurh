@@ -43,7 +43,7 @@ export const TestimonialsBlock02: React.FC<Props> = ({ testimonials, linkLabel }
           className="bg-background-neutral rounded-space-sm grid grid-cols-1 md:grid-cols-2 lg:items-stretch"
         >
           <div className="gap-md p-md pb-xs md:pb-md flex flex-col justify-start">
-            <div className="gap-md flex flex-grow flex-col justify-start">
+            <div className="gap-md flex grow flex-col justify-start">
               {companyLogo && (
                 <Media resource={companyLogo} imgClassName="h-8 w-auto opacity-50 dark:invert" />
               )}
@@ -77,7 +77,7 @@ export const TestimonialsBlock02: React.FC<Props> = ({ testimonials, linkLabel }
               <Media
                 resource={featuredImage}
                 fill
-                className="relative aspect-[4/3] h-auto w-full overflow-hidden rounded-lg"
+                className="relative aspect-4/3 h-auto w-full overflow-hidden rounded-lg"
                 imgClassName="object-cover"
               />
             </motion.div>

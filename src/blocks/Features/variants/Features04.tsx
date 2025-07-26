@@ -40,7 +40,7 @@ export const Features04: React.FC<FeaturesBlock> = ({ columns, blockHeader }) =>
   return (
     <div
       ref={containerRef}
-      className="relative h-[var(--section-height)]"
+      className="relative h-(--section-height)"
       style={
         {
           '--section-height': `${columns.length * 100}vh`,

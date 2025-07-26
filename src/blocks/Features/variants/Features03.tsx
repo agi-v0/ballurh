@@ -37,7 +37,7 @@ export const Features03: React.FC<FeaturesBlock> = ({ columns }) => {
                     'lg:basis-1/2': size === 'full', // Adjust width for full-size columns
                     'w-full': size !== 'full', // Full width for non-full-size columns
                   })}
-                  imgClassName="w-full h-auto aspect-[16/9] object-cover"
+                  imgClassName="w-full h-auto aspect-video object-cover"
                 />
               )}
               <div

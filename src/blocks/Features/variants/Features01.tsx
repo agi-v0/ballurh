@@ -63,7 +63,7 @@ export const Features01: React.FC<FeaturesBlock> = ({ columns }) => {
                     <Media
                       resource={image}
                       className="group bg-background h-auto w-full overflow-hidden rounded-lg"
-                      imgClassName="w-full group-hover:scale-105 transition-all duration-300 h-auto aspect-[4/3] object-cover"
+                      imgClassName="w-full group-hover:scale-105 transition-all duration-300 h-auto aspect-4/3 object-cover"
                     />
                   )}
                 </div>

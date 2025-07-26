@@ -37,10 +37,10 @@ export const CallToAction01: React.FC<CallToActionProps> = ({
       <div className="rounded-space-sm relative overflow-hidden">
         <div
           data-theme="dark"
-          className="rounded-space-sm p-md gap-sm relative z-1 flex aspect-[9/16] h-auto w-full flex-col items-start justify-end overflow-hidden bg-transparent md:aspect-video md:flex-row md:items-end md:justify-between"
+          className="rounded-space-sm p-md gap-sm relative z-1 flex aspect-9/16 h-auto w-full flex-col items-start justify-end overflow-hidden bg-transparent md:aspect-video md:flex-row md:items-end md:justify-between"
         >
           {richText && (
-            <RichText className="mx-0 lg:max-w-[32rem]" data={richText} enableGutter={false} />
+            <RichText className="mx-0 lg:max-w-lg" data={richText} enableGutter={false} />
           )}
           <div className="flex flex-row gap-4">
             {(links || []).map(({ link }, i) => {

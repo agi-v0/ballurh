@@ -25,7 +25,7 @@ export const Features07: React.FC<FeaturesBlock> = ({ columns, blockImage, block
             <Media
               resource={blockImage}
               className="rounded-space-sm h-auto w-full overflow-hidden lg:basis-1/2"
-              imgClassName="w-full h-auto aspect-[16/9] object-cover"
+              imgClassName="w-full h-auto aspect-video object-cover"
             />
           )}
         </motion.div>

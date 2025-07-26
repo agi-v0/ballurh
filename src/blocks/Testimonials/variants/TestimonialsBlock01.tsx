@@ -92,7 +92,7 @@ export const TestimonialsBlock01: React.FC<TestimonialsBlock01> = ({ testimonial
 
               {/* {cellType === 'stat' && firstStat && ( */}
               {/*  <> */}
-              {/*    <div className="text-h3 text-base-primary flex flex-grow flex-col items-start text-start font-medium"> */}
+              {/*    <div className="text-h3 text-base-primary flex grow flex-col items-start text-start font-medium"> */}
               {/*      <p className=""> */}
               {/*        {firstStat.value} */}
               {/*        {firstStat.isPercentage ? '%' : ''} */}

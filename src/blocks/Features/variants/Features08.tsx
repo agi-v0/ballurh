@@ -118,7 +118,7 @@ export const Features08: React.FC<Features08Props> = ({ columns, readMoreLabel }
                       <Media
                         resource={column.image}
                         className="h-auto w-full"
-                        imgClassName="w-full h-auto aspect-[4/3] object-cover rounded-lg"
+                        imgClassName="w-full h-auto aspect-4/3 object-cover rounded-lg"
                       />
                     )}
                   </>,

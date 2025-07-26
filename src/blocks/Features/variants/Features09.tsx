@@ -44,7 +44,7 @@ export const Features09: React.FC<FeaturesBlock> = ({ columns }) => {
             >
               <AccordionTrigger className="text-base-tertiary gap-xs flex items-center justify-start bg-transparent p-0 hover:no-underline">
                 {column.icon && (
-                  <div className={`flex-shrink-0`}>
+                  <div className={`shrink-0`}>
                     <Icon
                       className={cn(
                         'size-md',
