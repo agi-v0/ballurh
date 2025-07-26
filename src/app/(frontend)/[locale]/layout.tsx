@@ -33,6 +33,11 @@ const aktivGrotesk = localFont({
       style: 'normal',
     },
     {
+      path: '/fonts/Aktiv-Grotesk-Medium.ttf',
+      weight: '500',
+      style: 'normal',
+    },
+    {
       path: '/fonts/Aktiv-Grotesk-SemiBold.ttf',
       weight: '600',
       style: 'normal',

@@ -92,7 +92,7 @@ export const hero: Field = {
                   hideGutter: true,
                 },
                 name: 'desktop',
-                // label: 'Default (Desktop)',
+                label: 'Default (Desktop)',
                 // dbName: 'd',
               },
             }),
