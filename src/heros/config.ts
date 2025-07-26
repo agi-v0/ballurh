@@ -85,30 +85,32 @@ export const hero: Field = {
                 localized: true,
                 relationTo: 'media',
                 required: false,
+                // name: 'm',
               },
-              // overrides: {
-              //   admin: {
-              //     hideGutter: true,
-              //   },
-              //   // name: 'desktop',
-              //   // label: 'Default (Desktop)',
-              // },
+              overrides: {
+                admin: {
+                  hideGutter: true,
+                },
+                name: 'desktop',
+                // label: 'Default (Desktop)',
+                // dbName: 'd',
+              },
             }),
-            // mediaGroup({
-            //   mediaOverrides: {
-            //     localized: true,
-            //     relationTo: 'media',
-            //     required: false,
-            //   },
-            //   overrides: {
-            //     admin: {
-            //       hideGutter: true,
-            //       description: 'Optional',
-            //     },
-            //     name: 'mobile',
-            //     label: 'Mobile (Optional)',
-            //   },
-            // }),
+            mediaGroup({
+              mediaOverrides: {
+                localized: true,
+                relationTo: 'media',
+                required: false,
+              },
+              overrides: {
+                admin: {
+                  hideGutter: true,
+                  description: 'Optional',
+                },
+                name: 'mobile',
+                label: 'Mobile (Optional)',
+              },
+            }),
           ],
         },
       ],

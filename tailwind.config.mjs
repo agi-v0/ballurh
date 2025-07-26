@@ -27,24 +27,24 @@ const config = {
   //   'bg-warning/30',
   // ],
   theme: {
-    container: {
-      center: true,
-      padding: {
-        '2xl': '2rem',
-        DEFAULT: '1rem',
-        lg: '2rem',
-        md: '2rem',
-        sm: '1rem',
-        xl: '2rem',
-      },
-      screens: {
-        '2xl': '86rem',
-        lg: '64rem',
-        md: '48rem',
-        sm: '40rem',
-        xl: '80rem',
-      },
-    },
+    // container: {
+    //   center: true,
+    //   padding: {
+    //     '2xl': '2rem',
+    //     DEFAULT: '1rem',
+    //     lg: '2rem',
+    //     md: '2rem',
+    //     sm: '1rem',
+    //     xl: '2rem',
+    //   },
+    //   screens: {
+    //     '2xl': '86rem',
+    //     lg: '64rem',
+    //     md: '48rem',
+    //     sm: '40rem',
+    //     xl: '80rem',
+    //   },
+    // },
     extend: {
       animation: {
         'accordion-down': 'accordion-down 0.2s ease-out',

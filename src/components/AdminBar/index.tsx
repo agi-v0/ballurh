@@ -1,11 +1,11 @@
 'use client'
 
-import type { PayloadAdminBarProps, PayloadMeUser } from '@payloadcms/admin-bar'
+import type { PayloadAdminBarProps } from 'payload-admin-bar'
 
 import { cn } from '@/utilities/ui'
 import { useSelectedLayoutSegments } from 'next/navigation'
-import { PayloadAdminBar } from '@payloadcms/admin-bar'
-import React, { useState } from 'react'
+import { PayloadAdminBar } from 'payload-admin-bar'
+import React, { useState, useEffect, useRef } from 'react'
 import { useRouter } from 'next/navigation'
 
 import './index.scss'
@@ -23,10 +23,6 @@ const collectionLabels = {
     plural: 'Posts',
     singular: 'Post',
   },
-  projects: {
-    plural: 'Projects',
-    singular: 'Project',
-  },
 }
 
 const Title: React.FC = () => <span>Dashboard</span>
@@ -37,33 +33,51 @@ export const AdminBar: React.FC<{
   const { adminBarProps } = props || {}
   const segments = useSelectedLayoutSegments()
   const [show, setShow] = useState(false)
-  const collection = (
-    collectionLabels[segments?.[1] as keyof typeof collectionLabels] ? segments[1] : 'pages'
-  ) as keyof typeof collectionLabels
+  const collection = collectionLabels?.[segments?.[1]] ? segments?.[1] : 'pages'
   const router = useRouter()
+  const ref = useRef<HTMLDivElement>(null)
 
-  const onAuthChange = React.useCallback((user: PayloadMeUser) => {
-    setShow(Boolean(user?.id))
+  const onAuthChange = React.useCallback((user) => {
+    setShow(!!user?.id)
   }, [])
+
+  useEffect(() => {
+    if (show) {
+      const height = ref.current?.clientHeight
+      document.documentElement.style.setProperty('--admin-bar-height', `${height}px`)
+    } else {
+      document.documentElement.style.setProperty('--admin-bar-height', '0rem')
+    }
+    return () => {
+      document.documentElement.style.setProperty('--admin-bar-height', '0rem')
+    }
+  }, [show])
 
   return (
     <div
-      className={cn(baseClass, 'py-2 bg-black text-white', {
-        block: show,
-        hidden: !show,
-      })}
+      ref={ref}
+      className={cn(
+        baseClass,
+        'z-[10] w-full bg-black text-white',
+        'h-0 md:h-10',
+        // '-fixed -top-0 -left-0',
+        {
+          block: show,
+          hidden: !show,
+        },
+      )}
     >
-      <div className="container">
+      <div className="container h-full">
         <PayloadAdminBar
           {...adminBarProps}
-          className="py-2 text-white"
+          className="h-full py-0 text-white"
           classNames={{
-            controls: 'font-medium text-white',
-            logo: 'text-white',
-            user: 'text-white',
+            controls: 'font-medium text-white me-2.5 mr-0',
+            logo: 'text-white me-2.5 mr-0',
+            user: 'text-white me-2.5 mr-0',
           }}
           cmsURL={getClientSideURL()}
-          collectionSlug={collection}
+          collection={collection}
           collectionLabels={{
             plural: collectionLabels[collection]?.plural || 'Pages',
             singular: collectionLabels[collection]?.singular || 'Page',

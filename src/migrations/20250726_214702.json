@@ -1,5 +1,5 @@
 {
-  "id": "12972fba-e050-4ed4-8e2b-c25cc7290e7d",
+  "id": "b4fd68ad-60a4-4c0e-b8a7-589e809fd6cb",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "7",
   "dialect": "postgresql",
@@ -6692,14 +6692,26 @@
           "primaryKey": false,
           "notNull": false
         },
-        "hero_media_media_light_id": {
-          "name": "hero_media_media_light_id",
+        "hero_media_desktop_light_id": {
+          "name": "hero_media_desktop_light_id",
           "type": "uuid",
           "primaryKey": false,
           "notNull": false
         },
-        "hero_media_media_dark_id": {
-          "name": "hero_media_media_dark_id",
+        "hero_media_desktop_dark_id": {
+          "name": "hero_media_desktop_dark_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "hero_media_mobile_light_id": {
+          "name": "hero_media_mobile_light_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "hero_media_mobile_dark_id": {
+          "name": "hero_media_mobile_dark_id",
           "type": "uuid",
           "primaryKey": false,
           "notNull": false
@@ -6749,11 +6761,11 @@
         }
       },
       "indexes": {
-        "pages_hero_media_media_hero_media_media_light_idx": {
-          "name": "pages_hero_media_media_hero_media_media_light_idx",
+        "pages_hero_media_desktop_hero_media_desktop_light_idx": {
+          "name": "pages_hero_media_desktop_hero_media_desktop_light_idx",
           "columns": [
             {
-              "expression": "hero_media_media_light_id",
+              "expression": "hero_media_desktop_light_id",
               "isExpression": false,
               "asc": true,
               "nulls": "last"
@@ -6770,11 +6782,53 @@
           "method": "btree",
           "with": {}
         },
-        "pages_hero_media_media_hero_media_media_dark_idx": {
-          "name": "pages_hero_media_media_hero_media_media_dark_idx",
+        "pages_hero_media_desktop_hero_media_desktop_dark_idx": {
+          "name": "pages_hero_media_desktop_hero_media_desktop_dark_idx",
           "columns": [
             {
-              "expression": "hero_media_media_dark_id",
+              "expression": "hero_media_desktop_dark_id",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            },
+            {
+              "expression": "_locale",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        },
+        "pages_hero_media_mobile_hero_media_mobile_light_idx": {
+          "name": "pages_hero_media_mobile_hero_media_mobile_light_idx",
+          "columns": [
+            {
+              "expression": "hero_media_mobile_light_id",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            },
+            {
+              "expression": "_locale",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        },
+        "pages_hero_media_mobile_hero_media_mobile_dark_idx": {
+          "name": "pages_hero_media_mobile_hero_media_mobile_dark_idx",
+          "columns": [
+            {
+              "expression": "hero_media_mobile_dark_id",
               "isExpression": false,
               "asc": true,
               "nulls": "last"
@@ -6829,12 +6883,12 @@
         }
       },
       "foreignKeys": {
-        "pages_locales_hero_media_media_light_id_media_id_fk": {
-          "name": "pages_locales_hero_media_media_light_id_media_id_fk",
+        "pages_locales_hero_media_desktop_light_id_media_id_fk": {
+          "name": "pages_locales_hero_media_desktop_light_id_media_id_fk",
           "tableFrom": "pages_locales",
           "tableTo": "media",
           "columnsFrom": [
-            "hero_media_media_light_id"
+            "hero_media_desktop_light_id"
           ],
           "columnsTo": [
             "id"
@@ -6842,12 +6896,38 @@
           "onDelete": "set null",
           "onUpdate": "no action"
         },
-        "pages_locales_hero_media_media_dark_id_media_id_fk": {
-          "name": "pages_locales_hero_media_media_dark_id_media_id_fk",
+        "pages_locales_hero_media_desktop_dark_id_media_id_fk": {
+          "name": "pages_locales_hero_media_desktop_dark_id_media_id_fk",
           "tableFrom": "pages_locales",
           "tableTo": "media",
           "columnsFrom": [
-            "hero_media_media_dark_id"
+            "hero_media_desktop_dark_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "set null",
+          "onUpdate": "no action"
+        },
+        "pages_locales_hero_media_mobile_light_id_media_id_fk": {
+          "name": "pages_locales_hero_media_mobile_light_id_media_id_fk",
+          "tableFrom": "pages_locales",
+          "tableTo": "media",
+          "columnsFrom": [
+            "hero_media_mobile_light_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "set null",
+          "onUpdate": "no action"
+        },
+        "pages_locales_hero_media_mobile_dark_id_media_id_fk": {
+          "name": "pages_locales_hero_media_mobile_dark_id_media_id_fk",
+          "tableFrom": "pages_locales",
+          "tableTo": "media",
+          "columnsFrom": [
+            "hero_media_mobile_dark_id"
           ],
           "columnsTo": [
             "id"
@@ -14328,14 +14408,26 @@
           "primaryKey": false,
           "notNull": false
         },
-        "version_hero_media_media_light_id": {
-          "name": "version_hero_media_media_light_id",
+        "version_hero_media_desktop_light_id": {
+          "name": "version_hero_media_desktop_light_id",
           "type": "uuid",
           "primaryKey": false,
           "notNull": false
         },
-        "version_hero_media_media_dark_id": {
-          "name": "version_hero_media_media_dark_id",
+        "version_hero_media_desktop_dark_id": {
+          "name": "version_hero_media_desktop_dark_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "version_hero_media_mobile_light_id": {
+          "name": "version_hero_media_mobile_light_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "version_hero_media_mobile_dark_id": {
+          "name": "version_hero_media_mobile_dark_id",
           "type": "uuid",
           "primaryKey": false,
           "notNull": false
@@ -14385,11 +14477,11 @@
         }
       },
       "indexes": {
-        "_pages_v_version_hero_media_media_version_hero_media_media_light_idx": {
-          "name": "_pages_v_version_hero_media_media_version_hero_media_media_light_idx",
+        "_pages_v_version_hero_media_desktop_version_hero_media_desktop_light_idx": {
+          "name": "_pages_v_version_hero_media_desktop_version_hero_media_desktop_light_idx",
           "columns": [
             {
-              "expression": "version_hero_media_media_light_id",
+              "expression": "version_hero_media_desktop_light_id",
               "isExpression": false,
               "asc": true,
               "nulls": "last"
@@ -14406,11 +14498,53 @@
           "method": "btree",
           "with": {}
         },
-        "_pages_v_version_hero_media_media_version_hero_media_media_dark_idx": {
-          "name": "_pages_v_version_hero_media_media_version_hero_media_media_dark_idx",
+        "_pages_v_version_hero_media_desktop_version_hero_media_desktop_dark_idx": {
+          "name": "_pages_v_version_hero_media_desktop_version_hero_media_desktop_dark_idx",
           "columns": [
             {
-              "expression": "version_hero_media_media_dark_id",
+              "expression": "version_hero_media_desktop_dark_id",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            },
+            {
+              "expression": "_locale",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        },
+        "_pages_v_version_hero_media_mobile_version_hero_media_mobile_light_idx": {
+          "name": "_pages_v_version_hero_media_mobile_version_hero_media_mobile_light_idx",
+          "columns": [
+            {
+              "expression": "version_hero_media_mobile_light_id",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            },
+            {
+              "expression": "_locale",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        },
+        "_pages_v_version_hero_media_mobile_version_hero_media_mobile_dark_idx": {
+          "name": "_pages_v_version_hero_media_mobile_version_hero_media_mobile_dark_idx",
+          "columns": [
+            {
+              "expression": "version_hero_media_mobile_dark_id",
               "isExpression": false,
               "asc": true,
               "nulls": "last"
@@ -14465,12 +14599,12 @@
         }
       },
       "foreignKeys": {
-        "_pages_v_locales_version_hero_media_media_light_id_media_id_fk": {
-          "name": "_pages_v_locales_version_hero_media_media_light_id_media_id_fk",
+        "_pages_v_locales_version_hero_media_desktop_light_id_media_id_fk": {
+          "name": "_pages_v_locales_version_hero_media_desktop_light_id_media_id_fk",
           "tableFrom": "_pages_v_locales",
           "tableTo": "media",
           "columnsFrom": [
-            "version_hero_media_media_light_id"
+            "version_hero_media_desktop_light_id"
           ],
           "columnsTo": [
             "id"
@@ -14478,12 +14612,38 @@
           "onDelete": "set null",
           "onUpdate": "no action"
         },
-        "_pages_v_locales_version_hero_media_media_dark_id_media_id_fk": {
-          "name": "_pages_v_locales_version_hero_media_media_dark_id_media_id_fk",
+        "_pages_v_locales_version_hero_media_desktop_dark_id_media_id_fk": {
+          "name": "_pages_v_locales_version_hero_media_desktop_dark_id_media_id_fk",
           "tableFrom": "_pages_v_locales",
           "tableTo": "media",
           "columnsFrom": [
-            "version_hero_media_media_dark_id"
+            "version_hero_media_desktop_dark_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "set null",
+          "onUpdate": "no action"
+        },
+        "_pages_v_locales_version_hero_media_mobile_light_id_media_id_fk": {
+          "name": "_pages_v_locales_version_hero_media_mobile_light_id_media_id_fk",
+          "tableFrom": "_pages_v_locales",
+          "tableTo": "media",
+          "columnsFrom": [
+            "version_hero_media_mobile_light_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "set null",
+          "onUpdate": "no action"
+        },
+        "_pages_v_locales_version_hero_media_mobile_dark_id_media_id_fk": {
+          "name": "_pages_v_locales_version_hero_media_mobile_dark_id_media_id_fk",
+          "tableFrom": "_pages_v_locales",
+          "tableTo": "media",
+          "columnsFrom": [
+            "version_hero_media_mobile_dark_id"
           ],
           "columnsTo": [
             "id"
@@ -19475,94 +19635,6 @@
       "checkConstraints": {},
       "isRLSEnabled": false
     },
-    "public.users_sessions": {
-      "name": "users_sessions",
-      "schema": "",
-      "columns": {
-        "_order": {
-          "name": "_order",
-          "type": "integer",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "_parent_id": {
-          "name": "_parent_id",
-          "type": "uuid",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "id": {
-          "name": "id",
-          "type": "varchar",
-          "primaryKey": true,
-          "notNull": true
-        },
-        "created_at": {
-          "name": "created_at",
-          "type": "timestamp(3) with time zone",
-          "primaryKey": false,
-          "notNull": false
-        },
-        "expires_at": {
-          "name": "expires_at",
-          "type": "timestamp(3) with time zone",
-          "primaryKey": false,
-          "notNull": true
-        }
-      },
-      "indexes": {
-        "users_sessions_order_idx": {
-          "name": "users_sessions_order_idx",
-          "columns": [
-            {
-              "expression": "_order",
-              "isExpression": false,
-              "asc": true,
-              "nulls": "last"
-            }
-          ],
-          "isUnique": false,
-          "concurrently": false,
-          "method": "btree",
-          "with": {}
-        },
-        "users_sessions_parent_id_idx": {
-          "name": "users_sessions_parent_id_idx",
-          "columns": [
-            {
-              "expression": "_parent_id",
-              "isExpression": false,
-              "asc": true,
-              "nulls": "last"
-            }
-          ],
-          "isUnique": false,
-          "concurrently": false,
-          "method": "btree",
-          "with": {}
-        }
-      },
-      "foreignKeys": {
-        "users_sessions_parent_id_fk": {
-          "name": "users_sessions_parent_id_fk",
-          "tableFrom": "users_sessions",
-          "tableTo": "users",
-          "columnsFrom": [
-            "_parent_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
-          "onDelete": "cascade",
-          "onUpdate": "no action"
-        }
-      },
-      "compositePrimaryKeys": {},
-      "uniqueConstraints": {},
-      "policies": {},
-      "checkConstraints": {},
-      "isRLSEnabled": false
-    },
     "public.users": {
       "name": "users",
       "schema": "",
@@ -19749,7 +19821,7 @@
               "nulls": "last"
             }
           ],
-          "isUnique": true,
+          "isUnique": false,
           "concurrently": false,
           "method": "btree",
           "with": {}
@@ -22864,6 +22936,127 @@
       "checkConstraints": {},
       "isRLSEnabled": false
     },
+    "public.payload_folders": {
+      "name": "payload_folders",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "name": {
+          "name": "name",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "folder_id": {
+          "name": "folder_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "timestamp(3) with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp(3) with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        }
+      },
+      "indexes": {
+        "payload_folders_name_idx": {
+          "name": "payload_folders_name_idx",
+          "columns": [
+            {
+              "expression": "name",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        },
+        "payload_folders_folder_idx": {
+          "name": "payload_folders_folder_idx",
+          "columns": [
+            {
+              "expression": "folder_id",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        },
+        "payload_folders_updated_at_idx": {
+          "name": "payload_folders_updated_at_idx",
+          "columns": [
+            {
+              "expression": "updated_at",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        },
+        "payload_folders_created_at_idx": {
+          "name": "payload_folders_created_at_idx",
+          "columns": [
+            {
+              "expression": "created_at",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        }
+      },
+      "foreignKeys": {
+        "payload_folders_folder_id_payload_folders_id_fk": {
+          "name": "payload_folders_folder_id_payload_folders_id_fk",
+          "tableFrom": "payload_folders",
+          "tableTo": "payload_folders",
+          "columnsFrom": [
+            "folder_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "set null",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
     "public.payload_jobs_log": {
       "name": "payload_jobs_log",
       "schema": "",
@@ -23219,211 +23412,6 @@
       "checkConstraints": {},
       "isRLSEnabled": false
     },
-    "public.payload_folders_folder_type": {
-      "name": "payload_folders_folder_type",
-      "schema": "",
-      "columns": {
-        "order": {
-          "name": "order",
-          "type": "integer",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "parent_id": {
-          "name": "parent_id",
-          "type": "uuid",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "value": {
-          "name": "value",
-          "type": "enum_payload_folders_folder_type",
-          "typeSchema": "public",
-          "primaryKey": false,
-          "notNull": false
-        },
-        "id": {
-          "name": "id",
-          "type": "uuid",
-          "primaryKey": true,
-          "notNull": true,
-          "default": "gen_random_uuid()"
-        }
-      },
-      "indexes": {
-        "payload_folders_folder_type_order_idx": {
-          "name": "payload_folders_folder_type_order_idx",
-          "columns": [
-            {
-              "expression": "order",
-              "isExpression": false,
-              "asc": true,
-              "nulls": "last"
-            }
-          ],
-          "isUnique": false,
-          "concurrently": false,
-          "method": "btree",
-          "with": {}
-        },
-        "payload_folders_folder_type_parent_idx": {
-          "name": "payload_folders_folder_type_parent_idx",
-          "columns": [
-            {
-              "expression": "parent_id",
-              "isExpression": false,
-              "asc": true,
-              "nulls": "last"
-            }
-          ],
-          "isUnique": false,
-          "concurrently": false,
-          "method": "btree",
-          "with": {}
-        }
-      },
-      "foreignKeys": {
-        "payload_folders_folder_type_parent_fk": {
-          "name": "payload_folders_folder_type_parent_fk",
-          "tableFrom": "payload_folders_folder_type",
-          "tableTo": "payload_folders",
-          "columnsFrom": [
-            "parent_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
-          "onDelete": "cascade",
-          "onUpdate": "no action"
-        }
-      },
-      "compositePrimaryKeys": {},
-      "uniqueConstraints": {},
-      "policies": {},
-      "checkConstraints": {},
-      "isRLSEnabled": false
-    },
-    "public.payload_folders": {
-      "name": "payload_folders",
-      "schema": "",
-      "columns": {
-        "id": {
-          "name": "id",
-          "type": "uuid",
-          "primaryKey": true,
-          "notNull": true,
-          "default": "gen_random_uuid()"
-        },
-        "name": {
-          "name": "name",
-          "type": "varchar",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "folder_id": {
-          "name": "folder_id",
-          "type": "uuid",
-          "primaryKey": false,
-          "notNull": false
-        },
-        "updated_at": {
-          "name": "updated_at",
-          "type": "timestamp(3) with time zone",
-          "primaryKey": false,
-          "notNull": true,
-          "default": "now()"
-        },
-        "created_at": {
-          "name": "created_at",
-          "type": "timestamp(3) with time zone",
-          "primaryKey": false,
-          "notNull": true,
-          "default": "now()"
-        }
-      },
-      "indexes": {
-        "payload_folders_name_idx": {
-          "name": "payload_folders_name_idx",
-          "columns": [
-            {
-              "expression": "name",
-              "isExpression": false,
-              "asc": true,
-              "nulls": "last"
-            }
-          ],
-          "isUnique": false,
-          "concurrently": false,
-          "method": "btree",
-          "with": {}
-        },
-        "payload_folders_folder_idx": {
-          "name": "payload_folders_folder_idx",
-          "columns": [
-            {
-              "expression": "folder_id",
-              "isExpression": false,
-              "asc": true,
-              "nulls": "last"
-            }
-          ],
-          "isUnique": false,
-          "concurrently": false,
-          "method": "btree",
-          "with": {}
-        },
-        "payload_folders_updated_at_idx": {
-          "name": "payload_folders_updated_at_idx",
-          "columns": [
-            {
-              "expression": "updated_at",
-              "isExpression": false,
-              "asc": true,
-              "nulls": "last"
-            }
-          ],
-          "isUnique": false,
-          "concurrently": false,
-          "method": "btree",
-          "with": {}
-        },
-        "payload_folders_created_at_idx": {
-          "name": "payload_folders_created_at_idx",
-          "columns": [
-            {
-              "expression": "created_at",
-              "isExpression": false,
-              "asc": true,
-              "nulls": "last"
-            }
-          ],
-          "isUnique": false,
-          "concurrently": false,
-          "method": "btree",
-          "with": {}
-        }
-      },
-      "foreignKeys": {
-        "payload_folders_folder_id_payload_folders_id_fk": {
-          "name": "payload_folders_folder_id_payload_folders_id_fk",
-          "tableFrom": "payload_folders",
-          "tableTo": "payload_folders",
-          "columnsFrom": [
-            "folder_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
-          "onDelete": "set null",
-          "onUpdate": "no action"
-        }
-      },
-      "compositePrimaryKeys": {},
-      "uniqueConstraints": {},
-      "policies": {},
-      "checkConstraints": {},
-      "isRLSEnabled": false
-    },
     "public.payload_locked_documents": {
       "name": "payload_locked_documents",
       "schema": "",
@@ -23604,14 +23592,14 @@
           "primaryKey": false,
           "notNull": false
         },
-        "payload_jobs_id": {
-          "name": "payload_jobs_id",
+        "payload_folders_id": {
+          "name": "payload_folders_id",
           "type": "uuid",
           "primaryKey": false,
           "notNull": false
         },
-        "payload_folders_id": {
-          "name": "payload_folders_id",
+        "payload_jobs_id": {
+          "name": "payload_jobs_id",
           "type": "uuid",
           "primaryKey": false,
           "notNull": false
@@ -23828,11 +23816,11 @@
           "method": "btree",
           "with": {}
         },
-        "payload_locked_documents_rels_payload_jobs_id_idx": {
-          "name": "payload_locked_documents_rels_payload_jobs_id_idx",
+        "payload_locked_documents_rels_payload_folders_id_idx": {
+          "name": "payload_locked_documents_rels_payload_folders_id_idx",
           "columns": [
             {
-              "expression": "payload_jobs_id",
+              "expression": "payload_folders_id",
               "isExpression": false,
               "asc": true,
               "nulls": "last"
@@ -23843,11 +23831,11 @@
           "method": "btree",
           "with": {}
         },
-        "payload_locked_documents_rels_payload_folders_id_idx": {
-          "name": "payload_locked_documents_rels_payload_folders_id_idx",
+        "payload_locked_documents_rels_payload_jobs_id_idx": {
+          "name": "payload_locked_documents_rels_payload_jobs_id_idx",
           "columns": [
             {
-              "expression": "payload_folders_id",
+              "expression": "payload_jobs_id",
               "isExpression": false,
               "asc": true,
               "nulls": "last"
@@ -24016,12 +24004,12 @@
           "onDelete": "cascade",
           "onUpdate": "no action"
         },
-        "payload_locked_documents_rels_payload_jobs_fk": {
-          "name": "payload_locked_documents_rels_payload_jobs_fk",
+        "payload_locked_documents_rels_payload_folders_fk": {
+          "name": "payload_locked_documents_rels_payload_folders_fk",
           "tableFrom": "payload_locked_documents_rels",
-          "tableTo": "payload_jobs",
+          "tableTo": "payload_folders",
           "columnsFrom": [
-            "payload_jobs_id"
+            "payload_folders_id"
           ],
           "columnsTo": [
             "id"
@@ -24029,12 +24017,12 @@
           "onDelete": "cascade",
           "onUpdate": "no action"
         },
-        "payload_locked_documents_rels_payload_folders_fk": {
-          "name": "payload_locked_documents_rels_payload_folders_fk",
+        "payload_locked_documents_rels_payload_jobs_fk": {
+          "name": "payload_locked_documents_rels_payload_jobs_fk",
           "tableFrom": "payload_locked_documents_rels",
-          "tableTo": "payload_folders",
+          "tableTo": "payload_jobs",
           "columnsFrom": [
-            "payload_folders_id"
+            "payload_jobs_id"
           ],
           "columnsTo": [
             "id"
@@ -27415,13 +27403,6 @@
       "values": [
         "inline",
         "schedulePublish"
-      ]
-    },
-    "public.enum_payload_folders_folder_type": {
-      "name": "enum_payload_folders_folder_type",
-      "schema": "public",
-      "values": [
-        "media"
       ]
     },
     "public.enum_header_tabs_nav_items_style": {
