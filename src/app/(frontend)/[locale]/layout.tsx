@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import localFont from 'next/font/local'
 import { hasLocale } from 'next-intl'
 import { notFound } from 'next/navigation'
 import { routing } from '@/i18n/routing'
@@ -24,6 +25,22 @@ import { setRequestLocale } from 'next-intl/server'
 //   return routing.locales.map((locale) => ({ locale }))
 // }
 
+const aktivGrotesk = localFont({
+  src: [
+    {
+      path: '/fonts/Aktiv-Grotesk-Regular.ttf',
+      weight: '400',
+      style: 'normal',
+    },
+    {
+      path: '/fonts/Aktiv-Grotesk-SemiBold.ttf',
+      weight: '600',
+      style: 'normal',
+    },
+  ],
+  display: 'swap',
+})
+
 export default async function RootLayout({
   children,
   params,
@@ -43,7 +60,7 @@ export default async function RootLayout({
 
   return (
     <html
-      className={cn(GeistSans.variable, GeistMono.variable)}
+      className={aktivGrotesk.className}
       lang={locale}
       dir={locale === 'ar' ? 'rtl' : 'ltr'}
       suppressHydrationWarning
