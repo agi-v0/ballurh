@@ -45,6 +45,7 @@ export default async function RootLayout({
     <html
       className={cn(GeistSans.variable, GeistMono.variable)}
       lang={locale}
+      dir={locale === 'ar' ? 'rtl' : 'ltr'}
       suppressHydrationWarning
     >
       <head>
