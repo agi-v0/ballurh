@@ -1,10 +1,7 @@
-'use client'
 import React from 'react'
 import { FeaturesBlock } from '@/payload-types'
 import { Media } from '@/components/MediaResponsive'
 import { Card, CardContent } from '@/components/ui/card'
-
-import { cn } from '@/utilities/ui'
 
 export const Features14: React.FC<FeaturesBlock> = ({ columns, link, CTALabel }) => {
   if (!columns?.length) return null
