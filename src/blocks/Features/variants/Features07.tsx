@@ -12,7 +12,7 @@ export const Features07: React.FC<FeaturesBlock> = ({ columns, blockImage, block
   if (!columns || columns.length === 0) return null
 
   return (
-    <div className="gap-md rounded-space-sm py-xl container flex flex-col">
+    <div className="gap-md rounded-space-sm container flex flex-col py-section-small">
       <div className="gap-md flex flex-col">
         {blockHeader && <BlockHeader {...blockHeader} className="px-0" />}
         <motion.div
@@ -25,7 +25,7 @@ export const Features07: React.FC<FeaturesBlock> = ({ columns, blockImage, block
             <Media
               resource={blockImage}
               className="rounded-space-sm h-auto w-full overflow-hidden lg:basis-1/2"
-              imgClassName="w-full h-auto aspect-video object-cover"
+              imgClassName="aspect-video h-auto w-full object-cover"
             />
           )}
         </motion.div>
@@ -44,13 +44,13 @@ export const Features07: React.FC<FeaturesBlock> = ({ columns, blockImage, block
           return (
             <motion.div
               key={index}
-              className="gap-sm bg-background-neutral rounded-space-sm p-sm flex flex-col items-start"
+              className="gap-sm rounded-space-sm p-sm flex flex-col items-start bg-background-neutral"
               variants={itemsFling}
             >
               {icon && (
-                <div className="bg-background-neutral-subtle p-xs inline rounded-full">
+                <div className="p-xs inline rounded-full bg-background-neutral-subtle">
                   <Icon
-                    className="text-base-secondary size-sm"
+                    className="size-sm text-base-secondary"
                     height="none"
                     icon={`material-symbols:${icon}`}
                     color="currentColor"
@@ -59,7 +59,7 @@ export const Features07: React.FC<FeaturesBlock> = ({ columns, blockImage, block
               )}
               <div className="flex flex-col gap-2">
                 {content?.title && (
-                  <h3 className="text-body-md text-base-primary font-medium">{content.title}</h3>
+                  <h3 className="text-body-md font-medium text-base-primary">{content.title}</h3>
                 )}
                 {content?.subtitle && (
                   <p className="text-body-sm text-base-secondary">{content.subtitle}</p>

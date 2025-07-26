@@ -33,7 +33,7 @@ export const CallToAction01: React.FC<CallToActionProps> = ({
   const y = useTransform(scrollYProgress, [0, 1], ['-50%', '50%'])
 
   return (
-    <div className={cn('py-xl container', className)} ref={containerRef}>
+    <div className={cn('container py-section-small', className)} ref={containerRef}>
       <div className="rounded-space-sm relative overflow-hidden">
         <div
           data-theme="dark"
@@ -56,7 +56,7 @@ export const CallToAction01: React.FC<CallToActionProps> = ({
             <Media
               fill
               className="relative h-full w-full object-cover"
-              imgClassName="object-cover rounded-space-sm overflow-hidden"
+              imgClassName="rounded-space-sm overflow-hidden object-cover"
               media={media}
             />
           </motion.div>

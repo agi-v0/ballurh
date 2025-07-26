@@ -22,7 +22,7 @@ export const Gallery02: React.FC<Gallery02Props> = ({ images, className }) => {
   }
 
   return (
-    <div className={cn('py-xl container w-full', className)}>
+    <div className={cn('container w-full py-section-small', className)}>
       <Carousel slidesPerView={1} className="w-full">
         <CarouselContent className="-ms-xs">
           {images.map((image, index) => (
@@ -30,7 +30,7 @@ export const Gallery02: React.FC<Gallery02Props> = ({ images, className }) => {
               {typeof image === 'object' && image !== null && (
                 <Media
                   resource={image}
-                  className="rounded-space-sm bg-background-neutral-subtle h-full w-full overflow-clip object-cover"
+                  className="rounded-space-sm h-full w-full overflow-clip bg-background-neutral-subtle object-cover"
                 />
               )}
             </CarouselItem>

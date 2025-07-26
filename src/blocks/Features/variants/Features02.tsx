@@ -30,7 +30,7 @@ export const Features02: React.FC<Features02Props> = ({ columns, readMoreLabel }
   if (!safeColumns.length) return null
 
   return (
-    <div className="gap-xs py-xl container grid grid-cols-1 md:grid-cols-4 lg:grid-cols-12">
+    <div className="gap-xs container grid grid-cols-1 py-section-small md:grid-cols-4 lg:grid-cols-12">
       {safeColumns.map((column, index) => {
         const { content, image, size } = column
         const lgColSpanClass = colSpanClass[size || 'full']
@@ -43,7 +43,7 @@ export const Features02: React.FC<Features02Props> = ({ columns, readMoreLabel }
             viewport={{ once: true, amount: 0.3 }}
             variants={itemVariants}
             className={cn(
-              'gap-xs group rounded-space-sm bg-background-neutral col-span-4 flex flex-col p-4',
+              'gap-xs group rounded-space-sm col-span-4 flex flex-col bg-background-neutral p-4',
               lgColSpanClass,
               {
                 'lg:flex-row': size === 'full',
@@ -90,7 +90,7 @@ function FeatureCardContent({
         {content && (
           <div className="gap-xs flex flex-col">
             {content.title && (
-              <h3 className="text-h3 text-base-primary font-medium">{content.title}</h3>
+              <h3 className="text-h3 font-medium text-base-primary">{content.title}</h3>
             )}
             {content.subtitle && (
               <p className="text-body-md text-base-tertiary">{content.subtitle}</p>
@@ -111,10 +111,10 @@ function FeatureCardContent({
       {image && (
         <Media
           resource={image}
-          className={cn('group bg-background w-full flex-1 overflow-hidden rounded-lg', {
+          className={cn('group w-full flex-1 overflow-hidden rounded-lg bg-background', {
             'flex-auto lg:basis-1/2': size === 'full',
           })}
-          imgClassName="w-full group-hover:scale-102 transition-all duration-300 h-full object-cover"
+          imgClassName="h-full w-full object-cover transition-all duration-300 group-hover:scale-102"
         />
       )}
     </>

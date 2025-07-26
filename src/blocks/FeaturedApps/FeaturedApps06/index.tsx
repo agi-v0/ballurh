@@ -20,7 +20,7 @@ interface FeaturedApps06Props {
 
 export const FeaturedApps06: React.FC<FeaturedApps06Props> = ({ cards }) => {
   return (
-    <div className="py-xl container">
+    <div className="container py-section-small">
       {/* disable carousel in less than md */}
       <Carousel
         slidesPerView={{
@@ -36,9 +36,9 @@ export const FeaturedApps06: React.FC<FeaturedApps06Props> = ({ cards }) => {
                 <CardContent className="rounded-space-sm gap-sm bg-background-neutral">
                   <div className="gap-xs flex flex-col">
                     <h3 className="text-h3">{title}</h3>
-                    <p className="text-body-md text-base-secondary font-normal">{subtitle}</p>
+                    <p className="text-body-md font-normal text-base-secondary">{subtitle}</p>
                   </div>
-                  <hr className="border-border w-full" />
+                  <hr className="w-full border-border" />
                   <div className="gap-xs flex flex-col">
                     {appReference?.map((app) => {
                       if (typeof app.value === 'string') return null
@@ -46,7 +46,7 @@ export const FeaturedApps06: React.FC<FeaturedApps06Props> = ({ cards }) => {
                       return (
                         <CMSLink
                           key={app.value?.id}
-                          className="text-body-lg group text-base-secondary hover:text-base-primary gap-xs flex h-fit flex-row items-center justify-between font-medium hover:no-underline"
+                          className="text-body-lg group gap-xs flex h-fit flex-row items-center justify-between font-medium text-base-secondary hover:text-base-primary hover:no-underline"
                           variant="inline"
                           {...app.value.link}
                           label={null}
@@ -56,7 +56,7 @@ export const FeaturedApps06: React.FC<FeaturedApps06Props> = ({ cards }) => {
                               <Media
                                 resource={app.value?.icon as MediaType}
                                 className="size-8 shrink-0"
-                                imgClassName="w-full h-full rounded-md aspect-square"
+                                imgClassName="aspect-square h-full w-full rounded-md"
                               />
                             )}
                             {app.value?.name}

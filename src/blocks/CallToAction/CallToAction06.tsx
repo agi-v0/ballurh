@@ -117,7 +117,7 @@ export const CallToAction06: React.FC<CTABlockType> = (props) => {
     [router, formID, redirect, confirmationType],
   )
   return (
-    <div className="py-xl container">
+    <div className="container py-section-small">
       <div className="gap-sm px-md rounded-space-sm py-lg flex flex-col items-center">
         <div className="gap-lg flex flex-col items-center">
           {richText && (

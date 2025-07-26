@@ -71,6 +71,31 @@ const config = {
                 marginBottom: '0.5em',
                 fontSize: 'var(--text-h1)',
               },
+              h2: {
+                fontWeight: 600,
+                marginBottom: '0.5em',
+                fontSize: 'var(--text-h2)',
+              },
+              h3: {
+                fontWeight: 600,
+                marginBottom: '0.5em',
+                fontSize: 'var(--text-h3)',
+              },
+              h4: {
+                fontWeight: 600,
+                marginBottom: '0.5em',
+                fontSize: 'var(--text-h4)',
+              },
+              h5: {
+                fontWeight: 600,
+                marginBottom: '0.5em',
+                fontSize: 'var(--text-h5)',
+              },
+              h6: {
+                fontWeight: 600,
+                marginBottom: '0.5em',
+                fontSize: 'var(--text-h6)',
+              },
               p: {
                 color: 'var(--color-base-secondary)',
                 fontSize: 'var(--text-main)',

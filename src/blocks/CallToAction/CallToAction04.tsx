@@ -26,13 +26,13 @@ export const CallToAction04: React.FC<CallToActionProps> = ({
   const { desktop, mobile } = media || {}
 
   return (
-    <div className={cn('py-xl container', className)}>
+    <div className={cn('container py-section-small', className)}>
       <motion.div
         variants={containerVariants}
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.3 }}
-        className="bg-background-neutral gap-md p-xl rounded-space-sm flex flex-col md:flex-row md:items-center md:justify-between"
+        className="gap-md p-xl rounded-space-sm flex flex-col bg-background-neutral md:flex-row md:items-center md:justify-between"
       >
         {richText && (
           <RichText className="mx-0 mb-0 lg:max-w-lg" data={richText} enableGutter={false} />

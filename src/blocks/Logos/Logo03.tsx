@@ -48,7 +48,7 @@ export const Logo03: React.FC<Logo03Props> = ({ logos, className }) => {
   const secondRow = currentLogos.slice(midpoint)
 
   return (
-    <div className={cn('py-xl container w-full', className)}>
+    <div className={cn('container w-full py-section-small', className)}>
       <div className="space-y-lg">
         {/* First Row */}
         <AnimatedGroup

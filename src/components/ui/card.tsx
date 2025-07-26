@@ -5,7 +5,7 @@ const Card: React.FC<
   { ref?: React.Ref<HTMLDivElement> } & React.HTMLAttributes<HTMLDivElement>
 > = ({ className, ref, ...props }) => (
   <div
-    className={cn('rounded-lg border bg-card text-card-foreground shadow-xs', className)}
+    className={cn('rounded-3xl border bg-card text-card-foreground shadow-xs', className)}
     ref={ref}
     {...props}
   />
@@ -21,7 +21,7 @@ const CardTitle: React.FC<
   { ref?: React.Ref<HTMLHeadingElement> } & React.HTMLAttributes<HTMLHeadingElement>
 > = ({ className, ref, ...props }) => (
   <h3
-    className={cn('text-2xl font-semibold leading-none tracking-tight', className)}
+    className={cn('text-2xl leading-none font-semibold tracking-tight', className)}
     ref={ref}
     {...props}
   />

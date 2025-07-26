@@ -28,7 +28,7 @@ export const Features01: React.FC<FeaturesBlock> = ({ columns }) => {
   }
 
   return (
-    <div className="bg-background gap-xs py-xl container grid grid-cols-1">
+    <div className="gap-xs container grid grid-cols-1 bg-background py-section-small">
       {rows.map((row, index) => (
         <div
           key={index}
@@ -46,7 +46,7 @@ export const Features01: React.FC<FeaturesBlock> = ({ columns }) => {
                 whileInView="visible"
                 viewport={{ once: true, amount: 0.3 }}
                 variants={itemVariants}
-                className={cn('rounded-space-sm bg-background-neutral w-full p-4')}
+                className={cn('rounded-space-sm w-full bg-background-neutral p-4')}
               >
                 {/* {appReference && (
                   <AppReference appReference={appReference} className="py-xs px-xs" />
@@ -62,8 +62,8 @@ export const Features01: React.FC<FeaturesBlock> = ({ columns }) => {
                   {image && (
                     <Media
                       resource={image}
-                      className="group bg-background h-auto w-full overflow-hidden rounded-lg"
-                      imgClassName="w-full group-hover:scale-105 transition-all duration-300 h-auto aspect-4/3 object-cover"
+                      className="group h-auto w-full overflow-hidden rounded-lg bg-background"
+                      imgClassName="aspect-4/3 h-auto w-full object-cover transition-all duration-300 group-hover:scale-105"
                     />
                   )}
                 </div>

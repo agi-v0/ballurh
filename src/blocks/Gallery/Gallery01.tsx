@@ -22,7 +22,7 @@ export const Gallery01: React.FC<Gallery01Props> = ({ images, className }) => {
   }
 
   return (
-    <div className={cn('py-xl container w-full', className)}>
+    <div className={cn('container w-full py-section-small', className)}>
       <Carousel slidesPerView={1} className="w-full">
         <CarouselContent className="-ms-xs">
           {images.map((image, index) => (
@@ -32,7 +32,7 @@ export const Gallery01: React.FC<Gallery01Props> = ({ images, className }) => {
                   resource={image}
                   //image class name w-full important to make image take full width in blog post layout
                   imgClassName="w-full"
-                  className="rounded-space-sm bg-background-neutral-subtle h-full w-full overflow-clip"
+                  className="rounded-space-sm h-full w-full overflow-clip bg-background-neutral-subtle"
                 />
               )}
             </CarouselItem>

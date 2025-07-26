@@ -14,7 +14,7 @@ import { Features10 } from './variants/Features10'
 import { Features11 } from './variants/Features11'
 import { Features12 } from './variants/Features12'
 import { Features13 } from './variants/Features13'
-// import { Features14 } from './variants/Features14'
+import { Features14 } from './variants/Features14'
 // import { Features15 } from './variants/Features15'
 // import { Features16 } from './variants/Features16'
 // import { Features17 } from './variants/Features17'
@@ -39,7 +39,7 @@ const featureVariants: Record<string, React.FC<FeaturesBlockWithLocale>> = {
   '11': Features11 as React.FC<FeaturesBlockWithLocale>,
   '12': Features12 as React.FC<FeaturesBlockWithLocale>,
   '13': Features13 as React.FC<FeaturesBlockWithLocale>,
-  // '14': Features14 as React.FC<FeaturesBlockWithLocale>,
+  '14': Features14 as React.FC<FeaturesBlockWithLocale>,
   // '15': Features15 as React.FC<FeaturesBlockWithLocale>,
   // '16': Features16 as React.FC<FeaturesBlockWithLocale>,
   // '17': Features17 as React.FC<FeaturesBlockWithLocale>,
