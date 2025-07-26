@@ -10,23 +10,37 @@ import { fileURLToPath } from 'url'
 
 import { anyone } from '../access/anyone'
 import { authenticated } from '../access/authenticated'
+import { generateBlurHash } from '@/utilities/generateBlurHash'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
 
 export const Media: CollectionConfig = {
   slug: 'media',
+  folders: true,
   access: {
     create: authenticated,
     delete: authenticated,
     read: anyone,
     update: authenticated,
   },
+  admin: {
+    defaultColumns: ['filename', 'alt', 'category', 'locale'],
+  },
   fields: [
+    {
+      name: 'prefix',
+      type: 'text',
+      defaultValue: 'media',
+      admin: {
+        readOnly: true,
+        hidden: true,
+      },
+    },
     {
       name: 'alt',
       type: 'text',
-      //required: true,
+      required: true,
     },
     {
       name: 'caption',
@@ -36,6 +50,36 @@ export const Media: CollectionConfig = {
           return [...rootFeatures, FixedToolbarFeature(), InlineToolbarFeature()]
         },
       }),
+    },
+    {
+      name: 'locale',
+      type: 'select',
+      options: ['en', 'ar'],
+    },
+    {
+      name: 'category',
+      type: 'relationship',
+      relationTo: 'categories',
+      filterOptions: {
+        'parent.slug': { equals: 'media' },
+      },
+      hasMany: true,
+      admin: {
+        components: {
+          afterInput: ['@/components/ImageCategoryGuide'],
+          Field: '@/components/RelationshipChipSelect',
+        },
+      },
+    },
+
+    {
+      name: 'blurhash',
+      type: 'text',
+      admin: {
+        hidden: true,
+        disableListColumn: true,
+        disableListFilter: true,
+      },
     },
   ],
   upload: {
@@ -76,5 +120,8 @@ export const Media: CollectionConfig = {
         crop: 'center',
       },
     ],
+  },
+  hooks: {
+    beforeChange: [generateBlurHash],
   },
 }

@@ -24,7 +24,7 @@ export const generatePreviewPath = ({ collection, slug, req, locale }: Props) =>
     .map((segment) => encodeURIComponent(segment))
     .join('/')
 
-  const path = `/${collectionPrefixMap[collection]}/${encodedSlug}`
+  const path = `${collectionPrefixMap[collection]}/${encodedSlug}`
 
   const params = {
     slug: encodedSlug,

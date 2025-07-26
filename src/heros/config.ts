@@ -86,34 +86,33 @@ export const hero: Field = {
                 relationTo: 'media',
                 required: false,
               },
-              overrides: {
-                admin: {
-                  hideGutter: true,
-                },
-                name: 'desktop',
-                label: 'Default (Desktop)',
-              },
+              // overrides: {
+              //   admin: {
+              //     hideGutter: true,
+              //   },
+              //   // name: 'desktop',
+              //   // label: 'Default (Desktop)',
+              // },
             }),
-            mediaGroup({
-              mediaOverrides: {
-                localized: true,
-                relationTo: 'media',
-                required: false,
-              },
-              overrides: {
-                admin: {
-                  hideGutter: true,
-                  description: 'Optional',
-                },
-                name: 'mobile',
-                label: 'Mobile (Optional)',
-              },
-            }),
+            // mediaGroup({
+            //   mediaOverrides: {
+            //     localized: true,
+            //     relationTo: 'media',
+            //     required: false,
+            //   },
+            //   overrides: {
+            //     admin: {
+            //       hideGutter: true,
+            //       description: 'Optional',
+            //     },
+            //     name: 'mobile',
+            //     label: 'Mobile (Optional)',
+            //   },
+            // }),
           ],
         },
       ],
     },
-
     {
       type: 'collapsible',
       label: 'Logos',

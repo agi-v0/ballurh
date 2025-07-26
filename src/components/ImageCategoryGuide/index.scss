@@ -1,0 +1,113 @@
+.image-category-guide {
+  &__description {
+    margin-bottom: calc(var(--base) / 4);
+  }
+
+  // Table styles
+  &__table {
+    width: 100%;
+    caption-side: bottom;
+    border-collapse: separate;
+    border-spacing: 0;
+
+    &-container {
+      position: relative;
+      width: 100%;
+      overflow-x: auto;
+    }
+
+    &-header {
+      tr {
+        // border-bottom: 1px solid var(--border-color);
+      }
+    }
+
+    &-body {
+      tr:last-child {
+        border: 0;
+      }
+    }
+
+    &-footer {
+      background-color: var(--theme-elevation-400);
+      //   border-top: 1px solid var(--border-color);
+      font-weight: 500;
+      tr:last-child {
+        border-bottom: 0;
+      }
+    }
+
+    &-row {
+      border-bottom: 1px solid var(--border-color);
+      transition: colors 0.2s ease;
+
+      //   &:hover {
+      //     background-color: var(--theme-elevation-50);
+      //   }
+
+      &--selected {
+        background-color: var(--theme-elevation-100);
+      }
+    }
+
+    &-head {
+      height: 2.5rem;
+      padding: 0.5rem;
+      text-align: left;
+      vertical-align: middle;
+      font-weight: 500;
+      white-space: nowrap;
+      color: var(--foreground-color);
+
+      &--category {
+        width: 240px;
+        font-weight: 500;
+      }
+
+      &:has([role='checkbox']) {
+        padding-right: 0;
+      }
+
+      > [role='checkbox'] {
+        transform: translateY(2px);
+      }
+
+      border: none;
+
+      &:last-child {
+        border-right: none;
+      }
+    }
+
+    &-cell {
+      padding: 0.5rem;
+      vertical-align: middle;
+      white-space: nowrap;
+      color: var(--theme-elevation-400);
+
+      &--category {
+        font-weight: 500;
+      }
+
+      &:has([role='checkbox']) {
+        padding-right: 0;
+      }
+
+      > [role='checkbox'] {
+        transform: translateY(2px);
+      }
+
+      border: none;
+
+      &:last-child {
+        border-right: none;
+      }
+    }
+
+    &-caption {
+      margin-top: 1rem;
+      font-size: 0.875rem;
+      color: var(--muted-foreground);
+    }
+  }
+}

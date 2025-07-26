@@ -91,15 +91,15 @@ export default buildConfig({
       ],
     },
     meta: {
-      titleSuffix: 'Marn POS',
-      title: 'Marn POS Admin Panel',
+      titleSuffix: 'Ballurh CMS',
+      title: 'Ballurh CMS Admin Panel',
       description:
-        'Easily manage your Marn POS website with our user-friendly admin panel, developed by Studio Valence.',
+        'Easily manage your Ballurh website with our user-friendly admin panel, developed by Studio Valence.',
       openGraph: {
-        title: 'Marn POS Admin Panel',
+        title: 'Ballurh CMS Admin Panel',
         description:
-          'Easily manage your Marn POS website with our user-friendly admin panel, developed by Studio Valence.',
-        siteName: 'Marn POS Admin Panel',
+          'Easily manage your Ballurh website with our user-friendly admin panel, developed by Studio Valence.',
+        siteName: 'Ballurh CMS Admin Panel',
         images: [
           {
             url: '',
@@ -170,7 +170,7 @@ export default buildConfig({
   editor: defaultLexical,
   email: resendAdapter({
     defaultFromAddress: process.env.RESEND_EMAIL || '',
-    defaultFromName: 'Marn CMS',
+    defaultFromName: 'Ballurh CMS',
     apiKey: process.env.RESEND_API_KEY || '',
   }),
   folders: {

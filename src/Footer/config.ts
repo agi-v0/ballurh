@@ -1,32 +1,44 @@
 import type { GlobalConfig } from 'payload'
 
-import { link } from '@/fields/link'
-import { revalidateFooter } from './hooks/revalidateFooter'
+import { revalidatePath } from 'next/cache'
+
+import { authenticated } from '../access/authenticated'
+import { link } from '../fields/link'
 
 export const Footer: GlobalConfig = {
   slug: 'footer',
   access: {
     read: () => true,
+    update: authenticated,
   },
   fields: [
     {
-      name: 'navItems',
+      name: 'columns',
       type: 'array',
       fields: [
-        link({
-          appearances: false,
-        }),
-      ],
-      maxRows: 6,
-      admin: {
-        initCollapsed: true,
-        components: {
-          RowLabel: '@/Footer/RowLabel#RowLabel',
+        {
+          name: 'label',
+          type: 'text',
+          required: true,
         },
-      },
+        {
+          name: 'navItems',
+          type: 'array',
+          fields: [
+            link({
+              variants: false,
+              colors: false,
+              icon: false,
+              description: false,
+            }),
+          ],
+        },
+      ],
+      maxRows: 4,
+      minRows: 1,
     },
   ],
   hooks: {
-    afterChange: [revalidateFooter],
+    afterChange: [() => revalidatePath('/', 'layout')],
   },
 }

@@ -1,0 +1,35 @@
+@import '~@payloadcms/ui/scss';
+
+.category-chip-select .field-label {
+  margin-bottom: 8px; /* Add some space below the label */
+  display: block; /* Ensure it takes full width if needed */
+  color: var(--theme-elevation-800); /* Using a typical Payload label color */
+  font-weight: 500;
+}
+
+.category-chip-select .input-wrapper {
+  /* This class is often used in Payload to wrap input controls */
+}
+
+.chip-group {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px; /* Spacing between chips */
+}
+
+.chip-group .chip {
+  padding: 6px 12px;
+  border-radius: var(--style-radius-full); /* Rounded chips */
+  background: var(--theme-input-bg);
+  color: var(--theme-elevation-800);
+  border: 1px solid var(--theme-elevation-150); /* Subtle border */
+  cursor: pointer;
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease;
+  font-size: 14px;
+}

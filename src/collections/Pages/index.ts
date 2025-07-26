@@ -158,6 +158,7 @@ export const Pages: CollectionConfig<'pages'> = {
     beforeChange: [populatePublishedAt],
     afterDelete: [revalidateDelete],
   },
+
   versions: {
     drafts: {
       autosave: {
