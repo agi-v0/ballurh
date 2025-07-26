@@ -20,6 +20,7 @@ export async function GET(
   const { searchParams } = new URL(req.url)
 
   const path = searchParams.get('path')
+  const locale = searchParams.get('locale')
   const collection = searchParams.get('collection') as CollectionSlug
   const slug = searchParams.get('slug')
   const previewSecret = searchParams.get('previewSecret')
@@ -59,5 +60,7 @@ export async function GET(
 
   draft.enable()
 
-  redirect(path)
+  const localizedPath = locale ? `/${locale}${path}` : path
+  console.log('localizedPath', localizedPath)
+  redirect(localizedPath)
 }

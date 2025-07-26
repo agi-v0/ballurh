@@ -2,10 +2,11 @@ import type { Metadata } from 'next'
 
 import { PayloadRedirects } from '@/components/PayloadRedirects'
 import configPromise from '@payload-config'
-import { getPayload, type RequiredDataFromCollectionSlug } from 'payload'
+import { getPayload } from 'payload'
 import { draftMode } from 'next/headers'
 import React, { cache } from 'react'
-import { homeStatic } from '@/endpoints/seed/home-static'
+
+import type { Page as PageType } from '@/payload-types'
 
 import { RenderBlocks } from '@/blocks/RenderBlocks'
 import { RenderHero } from '@/heros/RenderHero'
@@ -13,50 +14,61 @@ import { generateMeta } from '@/utilities/generateMeta'
 import PageClient from './page.client'
 import { LivePreviewListener } from '@/components/LivePreviewListener'
 
-export async function generateStaticParams() {
+export async function generateStaticParams({ params: paramsPromise }: Args) {
   const payload = await getPayload({ config: configPromise })
-  const pages = await payload.find({
-    collection: 'pages',
-    draft: false,
-    limit: 1000,
-    overrideAccess: false,
-    pagination: false,
-    select: {
-      slug: true,
-    },
-  })
+  const locales = ['en', 'ar']
+  const params: { slug: string[]; locale: 'ar' | 'en' }[] = []
 
-  const params = pages.docs
-    ?.filter((doc) => {
-      return doc.slug !== 'home'
+  for (const locale of locales) {
+    const pages = await payload.find({
+      collection: 'pages',
+      locale: locale as 'ar' | 'en',
+      draft: false,
+      limit: 1000,
+      overrideAccess: false,
+      pagination: false,
+      select: {
+        slug: true,
+      },
     })
-    .map(({ slug }) => {
-      return { slug }
-    })
+    pages.docs
+      ?.filter((doc) => {
+        return doc.slug && doc.slug !== 'home'
+      })
+      .map((doc) => {
+        params.push({
+          slug: doc.slug?.split('/') || [],
+          locale: locale as 'ar' | 'en',
+        })
+      })
+  }
 
+  // console.log('params', params)
   return params
 }
 
 type Args = {
   params: Promise<{
-    slug?: string
+    slug?: string[]
+    locale?: 'ar' | 'en' | undefined
   }>
 }
 
 export default async function Page({ params: paramsPromise }: Args) {
   const { isEnabled: draft } = await draftMode()
-  const { slug = 'home' } = await paramsPromise
-  const url = '/' + slug
+  const { slug: slugSegments = ['home'], locale = 'ar' } = await paramsPromise
+  const slugPath = slugSegments.join('/') || 'home'
+  const url = `/${locale}/${slugPath}`
 
-  let page: RequiredDataFromCollectionSlug<'pages'> | null
+  let page: PageType | null
 
   page = await queryPageBySlug({
-    slug,
+    slug: slugPath,
+    locale,
   })
 
-  // Remove this code once your website is seeded
-  if (!page && slug === 'home') {
-    page = homeStatic
+  if (!page && slugPath === 'home') {
+    page = null
   }
 
   if (!page) {
@@ -66,35 +78,38 @@ export default async function Page({ params: paramsPromise }: Args) {
   const { hero, layout } = page
 
   return (
-    <article className="pt-16 pb-24">
+    <article className="bg-background overflow-x-clip">
       <PageClient />
-      {/* Allows redirects for valid pages too */}
       <PayloadRedirects disableNotFound url={url} />
 
       {draft && <LivePreviewListener />}
 
       <RenderHero {...hero} />
-      <RenderBlocks blocks={layout} />
+      <RenderBlocks blocks={layout as any} locale={locale} />
     </article>
   )
 }
 
 export async function generateMetadata({ params: paramsPromise }: Args): Promise<Metadata> {
-  const { slug = 'home' } = await paramsPromise
+  const { slug: slugSegments = ['home'], locale = 'ar' } = await paramsPromise
+  const slugPath = slugSegments.join('/') || 'home'
+
   const page = await queryPageBySlug({
-    slug,
+    slug: slugPath,
+    locale,
   })
 
   return generateMeta({ doc: page })
 }
 
-const queryPageBySlug = cache(async ({ slug }: { slug: string }) => {
+const queryPageBySlug = cache(async ({ slug, locale }: { slug: string; locale?: 'ar' | 'en' }) => {
   const { isEnabled: draft } = await draftMode()
 
   const payload = await getPayload({ config: configPromise })
 
   const result = await payload.find({
     collection: 'pages',
+    locale: locale,
     draft,
     limit: 1,
     pagination: false,

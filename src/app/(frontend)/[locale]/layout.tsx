@@ -18,10 +18,11 @@ import { draftMode } from 'next/headers'
 
 import './globals.css'
 import { getServerSideURL } from '@/utilities/getURL'
+import { setRequestLocale } from 'next-intl/server'
 
-export function generateStaticParams() {
-  return routing.locales.map((locale) => ({ locale }))
-}
+// export function generateStaticParams() {
+//   return routing.locales.map((locale) => ({ locale }))
+// }
 
 export default async function RootLayout({
   children,
@@ -33,9 +34,12 @@ export default async function RootLayout({
   const { isEnabled } = await draftMode()
   // Ensure that the incoming `locale` is valid
   const { locale } = await params
+
   if (!hasLocale(routing.locales, locale)) {
     notFound()
   }
+  // Enable static rendering
+  setRequestLocale(locale)
 
   return (
     <html
@@ -50,13 +54,13 @@ export default async function RootLayout({
       </head>
       <body>
         <Providers>
-          <AdminBar
+          {/* <AdminBar
             adminBarProps={{
               preview: isEnabled,
             }}
-          />
+          /> */}
 
-          <Header />
+          <Header adminBarProps={{ preview: isEnabled }} />
           {children}
           <Footer />
         </Providers>
