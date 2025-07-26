@@ -250,6 +250,16 @@ export interface Page {
   title: string;
   hero: {
     type: 'none' | 'highImpact' | 'mediumImpact' | 'lowImpact';
+    badge?: {
+      type?: ('label' | 'reference') | null;
+      label?: string | null;
+      color?: ('blue' | 'red' | 'green' | 'yellow' | 'gray' | 'inverted') | null;
+      /**
+       * Select an icon from the Material Symbols icon set. You can preview all available icons at https://fonts.google.com/icons
+       */
+      icon?: string | null;
+      icon_position?: ('flex-row' | 'flex-row-reverse') | null;
+    };
     richText?: {
       root: {
         type: string;
@@ -293,9 +303,40 @@ export interface Page {
           id?: string | null;
         }[]
       | null;
-    media?: (string | null) | Media;
+    caption?: string | null;
+    media?: {
+      desktop?: {
+        light?: (string | null) | Media;
+        dark?: (string | null) | Media;
+      };
+      /**
+       * Optional
+       */
+      mobile?: {
+        light?: (string | null) | Media;
+        dark?: (string | null) | Media;
+      };
+    };
+    logos?: {
+      headline?: string | null;
+      logos?: (string | Media)[] | null;
+    };
   };
-  layout: unknown[];
+  layout: (
+    | ArchiveBlock
+    | BlogBlock
+    | CallToActionBlock
+    | CustomHtmlBlock
+    | DividerBlock
+    | FaqBlock
+    | FeaturesBlock
+    | FormBlock
+    | GalleryBlock
+    | LogoBlock
+    | MetricsBlock
+    | RichTextBlock
+    | TestimonialsBlock
+  )[];
   meta?: {
     title?: string | null;
     /**
@@ -610,6 +651,7 @@ export interface CallToActionBlock {
         id?: string | null;
       }[]
     | null;
+  caption?: string | null;
   list?:
     | {
         /**
@@ -1138,6 +1180,32 @@ export interface FeaturesBlock {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "FormBlock".
+ */
+export interface FormBlock {
+  form: string | Form;
+  enableIntro?: boolean | null;
+  introContent?: {
+    root: {
+      type: string;
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'formBlock';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "GalleryBlock".
  */
 export interface GalleryBlock {
@@ -1227,32 +1295,6 @@ export interface GalleryBlock {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "FormBlock".
- */
-export interface FormBlock {
-  form: string | Form;
-  enableIntro?: boolean | null;
-  introContent?: {
-    root: {
-      type: string;
-      children: {
-        type: string;
-        version: number;
-        [k: string]: unknown;
-      }[];
-      direction: ('ltr' | 'rtl') | null;
-      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-      indent: number;
-      version: number;
-    };
-    [k: string]: unknown;
-  } | null;
-  id?: string | null;
-  blockName?: string | null;
-  blockType: 'formBlock';
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "LogoBlock".
  */
 export interface LogoBlock {
@@ -1317,16 +1359,6 @@ export interface LogoBlock {
   id?: string | null;
   blockName?: string | null;
   blockType: 'logosBlock';
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "MediaBlock".
- */
-export interface MediaBlock {
-  media: string | Media;
-  id?: string | null;
-  blockName?: string | null;
-  blockType: 'mediaBlock';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -1573,24 +1605,6 @@ export interface RichTextBlock {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "StyledListBlock".
- */
-export interface StyledListBlock {
-  listStyle?: ('bullet' | 'numbered' | 'icons') | null;
-  items: {
-    text: string;
-    /**
-     * Select an icon from the Material Symbols icon set. You can preview all available icons at https://fonts.google.com/icons
-     */
-    icon?: string | null;
-    id?: string | null;
-  }[];
-  id?: string | null;
-  blockName?: string | null;
-  blockType: 'styledListBlock';
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "TestimonialsBlock".
  */
 export interface TestimonialsBlock {
@@ -1772,6 +1786,34 @@ export interface Customer {
   updatedAt: string;
   createdAt: string;
   _status?: ('draft' | 'published') | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "MediaBlock".
+ */
+export interface MediaBlock {
+  media: string | Media;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'mediaBlock';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "StyledListBlock".
+ */
+export interface StyledListBlock {
+  listStyle?: ('bullet' | 'numbered' | 'icons') | null;
+  items: {
+    text: string;
+    /**
+     * Select an icon from the Material Symbols icon set. You can preview all available icons at https://fonts.google.com/icons
+     */
+    icon?: string | null;
+    id?: string | null;
+  }[];
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'styledListBlock';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -2046,6 +2088,15 @@ export interface PagesSelect<T extends boolean = true> {
     | T
     | {
         type?: T;
+        badge?:
+          | T
+          | {
+              type?: T;
+              label?: T;
+              color?: T;
+              icon?: T;
+              icon_position?: T;
+            };
         richText?: T;
         links?:
           | T
@@ -2063,7 +2114,29 @@ export interface PagesSelect<T extends boolean = true> {
                   };
               id?: T;
             };
-        media?: T;
+        caption?: T;
+        media?:
+          | T
+          | {
+              desktop?:
+                | T
+                | {
+                    light?: T;
+                    dark?: T;
+                  };
+              mobile?:
+                | T
+                | {
+                    light?: T;
+                    dark?: T;
+                  };
+            };
+        logos?:
+          | T
+          | {
+              headline?: T;
+              logos?: T;
+            };
       };
   layout?: T | {};
   meta?:

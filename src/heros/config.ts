@@ -8,10 +8,14 @@ import {
 } from '@payloadcms/richtext-lexical'
 
 import { linkGroup } from '@/fields/linkGroup'
+import { badge } from '@/fields/badge'
+import { mediaGroup } from '@/fields/media'
+import { logos } from '@/fields/logos'
 
 export const hero: Field = {
   name: 'hero',
   type: 'group',
+  label: false,
   fields: [
     {
       name: 'type',
@@ -38,6 +42,7 @@ export const hero: Field = {
       ],
       required: true,
     },
+    badge({}),
     {
       name: 'richText',
       type: 'richText',
@@ -52,21 +57,92 @@ export const hero: Field = {
         },
       }),
       label: false,
+      localized: true,
     },
     linkGroup({
       overrides: {
         maxRows: 2,
       },
+      caption: true,
     }),
     {
-      name: 'media',
-      type: 'upload',
+      type: 'collapsible',
+      label: 'Media',
       admin: {
-        condition: (_, { type } = {}) => ['highImpact', 'mediumImpact'].includes(type),
+        initCollapsed: true,
       },
-      relationTo: 'media',
-      required: true,
+      fields: [
+        {
+          name: 'media',
+          type: 'group',
+          label: false,
+          admin: {
+            hideGutter: true,
+          },
+          fields: [
+            mediaGroup({
+              mediaOverrides: {
+                localized: true,
+                relationTo: 'media',
+                required: false,
+              },
+              overrides: {
+                admin: {
+                  hideGutter: true,
+                },
+                name: 'desktop',
+                label: 'Default (Desktop)',
+              },
+            }),
+            mediaGroup({
+              mediaOverrides: {
+                localized: true,
+                relationTo: 'media',
+                required: false,
+              },
+              overrides: {
+                admin: {
+                  hideGutter: true,
+                  description: 'Optional',
+                },
+                name: 'mobile',
+                label: 'Mobile (Optional)',
+              },
+            }),
+          ],
+        },
+      ],
+    },
+
+    {
+      type: 'collapsible',
+      label: 'Logos',
+      admin: {
+        initCollapsed: true,
+      },
+      fields: [
+        {
+          name: 'logos',
+          label: false,
+          type: 'group',
+          admin: {
+            hideGutter: true,
+          },
+          fields: [
+            {
+              name: 'headline',
+              type: 'text',
+              label: 'Headline',
+              required: false,
+              localized: true,
+              admin: {
+                placeholder: 'e.g., As Featured In, Our Partners',
+              },
+            },
+            logos({}),
+          ],
+        },
+      ],
     },
   ],
-  label: false,
 }
