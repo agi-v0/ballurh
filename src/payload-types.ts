@@ -179,7 +179,7 @@ export interface ArchiveBlock {
     badge?: {
       type?: ('label' | 'reference') | null;
       label?: string | null;
-      color?: ('blue' | 'red' | 'green' | 'yellow' | 'gray' | 'inverted') | null;
+      color?: ('blue' | 'red' | 'green' | 'yellow' | 'gray' | 'inverted' | 'outline') | null;
       /**
        * Select an icon from the Material Symbols icon set. You can preview all available icons at https://fonts.google.com/icons
        */
@@ -259,7 +259,7 @@ export interface Page {
     badge?: {
       type?: ('label' | 'reference') | null;
       label?: string | null;
-      color?: ('blue' | 'red' | 'green' | 'yellow' | 'gray' | 'inverted') | null;
+      color?: ('blue' | 'red' | 'green' | 'yellow' | 'gray' | 'inverted' | 'outline') | null;
       /**
        * Select an icon from the Material Symbols icon set. You can preview all available icons at https://fonts.google.com/icons
        */
@@ -617,7 +617,7 @@ export interface CallToActionBlock {
   badge?: {
     type?: ('label' | 'reference') | null;
     label?: string | null;
-    color?: ('blue' | 'red' | 'green' | 'yellow' | 'gray' | 'inverted') | null;
+    color?: ('blue' | 'red' | 'green' | 'yellow' | 'gray' | 'inverted' | 'outline') | null;
     /**
      * Select an icon from the Material Symbols icon set. You can preview all available icons at https://fonts.google.com/icons
      */
@@ -881,7 +881,7 @@ export interface CustomHtmlBlock {
     badge?: {
       type?: ('label' | 'reference') | null;
       label?: string | null;
-      color?: ('blue' | 'red' | 'green' | 'yellow' | 'gray' | 'inverted') | null;
+      color?: ('blue' | 'red' | 'green' | 'yellow' | 'gray' | 'inverted' | 'outline') | null;
       /**
        * Select an icon from the Material Symbols icon set. You can preview all available icons at https://fonts.google.com/icons
        */
@@ -961,7 +961,7 @@ export interface FaqBlock {
     badge?: {
       type?: ('label' | 'reference') | null;
       label?: string | null;
-      color?: ('blue' | 'red' | 'green' | 'yellow' | 'gray' | 'inverted') | null;
+      color?: ('blue' | 'red' | 'green' | 'yellow' | 'gray' | 'inverted' | 'outline') | null;
       /**
        * Select an icon from the Material Symbols icon set. You can preview all available icons at https://fonts.google.com/icons
        */
@@ -1055,7 +1055,7 @@ export interface FeaturesBlock {
     badge?: {
       type?: ('label' | 'reference') | null;
       label?: string | null;
-      color?: ('blue' | 'red' | 'green' | 'yellow' | 'gray' | 'inverted') | null;
+      color?: ('blue' | 'red' | 'green' | 'yellow' | 'gray' | 'inverted' | 'outline') | null;
       /**
        * Select an icon from the Material Symbols icon set. You can preview all available icons at https://fonts.google.com/icons
        */
@@ -1144,6 +1144,20 @@ export interface FeaturesBlock {
     url?: string | null;
     label: string;
   };
+  stat?: {
+    /**
+     * Label for the stat
+     */
+    label?: string | null;
+    /**
+     * Value for the stat. Example: 85% or 250 SAR
+     */
+    value?: string | null;
+    /**
+     * Whether the value is an increase or decrease
+     */
+    indicator?: ('increase' | 'decrease' | 'noChange') | null;
+  };
   columns?:
     | {
         size?: ('half' | 'full' | 'oneThird' | 'twoThirds' | 'sixtyPercent' | 'fortyPercent') | null;
@@ -1172,13 +1186,27 @@ export interface FeaturesBlock {
           };
           [k: string]: unknown;
         } | null;
+        stat?: {
+          /**
+           * Label for the stat
+           */
+          label?: string | null;
+          /**
+           * Value for the stat. Example: 85% or 250 SAR
+           */
+          value?: string | null;
+          /**
+           * Whether the value is an increase or decrease
+           */
+          indicator?: ('increase' | 'decrease' | 'noChange') | null;
+        };
         enableBadge?: boolean | null;
         enableCta?: boolean | null;
         reverseOrder?: boolean | null;
         badge?: {
           type?: ('label' | 'reference') | null;
           label?: string | null;
-          color?: ('blue' | 'red' | 'green' | 'yellow' | 'gray' | 'inverted') | null;
+          color?: ('blue' | 'red' | 'green' | 'yellow' | 'gray' | 'inverted' | 'outline') | null;
           /**
            * Select an icon from the Material Symbols icon set. You can preview all available icons at https://fonts.google.com/icons
            */
@@ -1243,7 +1271,7 @@ export interface GalleryBlock {
     badge?: {
       type?: ('label' | 'reference') | null;
       label?: string | null;
-      color?: ('blue' | 'red' | 'green' | 'yellow' | 'gray' | 'inverted') | null;
+      color?: ('blue' | 'red' | 'green' | 'yellow' | 'gray' | 'inverted' | 'outline') | null;
       /**
        * Select an icon from the Material Symbols icon set. You can preview all available icons at https://fonts.google.com/icons
        */
@@ -1332,7 +1360,7 @@ export interface LogoBlock {
     badge?: {
       type?: ('label' | 'reference') | null;
       label?: string | null;
-      color?: ('blue' | 'red' | 'green' | 'yellow' | 'gray' | 'inverted') | null;
+      color?: ('blue' | 'red' | 'green' | 'yellow' | 'gray' | 'inverted' | 'outline') | null;
       /**
        * Select an icon from the Material Symbols icon set. You can preview all available icons at https://fonts.google.com/icons
        */
@@ -1399,7 +1427,7 @@ export interface MetricsBlock {
     badge?: {
       type?: ('label' | 'reference') | null;
       label?: string | null;
-      color?: ('blue' | 'red' | 'green' | 'yellow' | 'gray' | 'inverted') | null;
+      color?: ('blue' | 'red' | 'green' | 'yellow' | 'gray' | 'inverted' | 'outline') | null;
       /**
        * Select an icon from the Material Symbols icon set. You can preview all available icons at https://fonts.google.com/icons
        */
@@ -1553,7 +1581,7 @@ export interface RichTextBlock {
     badge?: {
       type?: ('label' | 'reference') | null;
       label?: string | null;
-      color?: ('blue' | 'red' | 'green' | 'yellow' | 'gray' | 'inverted') | null;
+      color?: ('blue' | 'red' | 'green' | 'yellow' | 'gray' | 'inverted' | 'outline') | null;
       /**
        * Select an icon from the Material Symbols icon set. You can preview all available icons at https://fonts.google.com/icons
        */
@@ -1642,7 +1670,7 @@ export interface TestimonialsBlock {
     badge?: {
       type?: ('label' | 'reference') | null;
       label?: string | null;
-      color?: ('blue' | 'red' | 'green' | 'yellow' | 'gray' | 'inverted') | null;
+      color?: ('blue' | 'red' | 'green' | 'yellow' | 'gray' | 'inverted' | 'outline') | null;
       /**
        * Select an icon from the Material Symbols icon set. You can preview all available icons at https://fonts.google.com/icons
        */

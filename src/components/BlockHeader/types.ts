@@ -11,15 +11,28 @@ export interface BlockHeaderType {
   badge?: {
     type?: ('label' | 'reference') | null
     label?: string | null
-    color?: ('blue' | 'red' | 'green' | 'yellow' | 'gray' | 'inverted') | null
-
+    color?: ('blue' | 'red' | 'green' | 'yellow' | 'gray' | 'inverted' | 'outline') | null
     /**
-     * Select an icon from the Lucide icon set. You can preview all available icons at https://lucide.dev/icons/
+     * Select an icon from the Material Symbols icon set. You can preview all available icons at https://fonts.google.com/icons
      */
     icon?: string | null
     icon_position?: ('flex-row' | 'flex-row-reverse') | null
   }
-  headerText?: DefaultTypedEditorState
+  headerText?: {
+    root: {
+      type: string
+      children: {
+        type: string
+        version: number
+        [k: string]: unknown
+      }[]
+      direction: ('ltr' | 'rtl') | null
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | ''
+      indent: number
+      version: number
+    }
+    [k: string]: unknown
+  } | null
   links?:
     | {
         link: {
@@ -34,12 +47,15 @@ export interface BlockHeaderType {
                 relationTo: 'blog-posts'
                 value: string | BlogPost
               } | null)
-
           url?: string | null
           label: string
-
+          /**
+           * Choose the button style.
+           */
           color?: ('brand' | 'neutral') | null
-
+          /**
+           * Choose how the link should be rendered.
+           */
           variant?: ('primary' | 'secondary' | 'tertiary' | 'ghost' | 'link') | null
         }
         id?: string | null

@@ -5,8 +5,7 @@ import { Media } from '@/components/MediaResponsive'
 import { cn } from '@/utilities/ui'
 // import { AppReference } from '@/components/AppReference'
 import RichText from '@/components/RichText'
-import { motion } from 'motion/react'
-import { itemVariants } from '@/utilities/motion'
+import { motion, stagger, Variants } from 'motion/react'
 
 export const Features01: React.FC<FeaturesBlock> = ({ columns }) => {
   if (!columns?.length) return null
@@ -26,52 +25,116 @@ export const Features01: React.FC<FeaturesBlock> = ({ columns }) => {
       i += 2
     }
   }
+  const containerVariants: Variants = {
+    hidden: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+        type: 'spring',
+        stiffness: 900,
+        damping: 80,
+        mass: 10,
+      },
+    },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+        type: 'spring',
+        stiffness: 900,
+        damping: 80,
+        mass: 10,
+      },
+    },
+  }
+
+  const itemVariants: Variants = {
+    hidden: { opacity: 0, y: 50, x: 0 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      x: 0,
+      transition: {
+        type: 'spring',
+        stiffness: 800,
+        damping: 100,
+        mass: 4,
+      },
+    },
+  }
 
   return (
-    <div className="gap-xs container grid grid-cols-1 bg-background py-section-small">
+    <motion.div
+      variants={containerVariants}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.2 }}
+      transition={{
+        delayChildren: stagger(0.2),
+      }}
+      className="container grid grid-cols-1 gap-4 bg-background py-section-small"
+    >
       {rows.map((row, index) => (
-        <div
+        <motion.div
           key={index}
-          className={cn('gap-xs grid w-full grid-cols-1', {
+          className={cn('grid w-full grid-cols-1 gap-4', {
             'md:grid-cols-2': row?.length === 2,
           })}
         >
           {row?.map((column, index) => {
-            const { richTextContent, image, appReference, size = 'half' } = column // Removed 'content' as it's unused
+            const { richTextContent, image, size = 'half', stat } = column // Removed 'content' as it's unused
             return (
               <motion.div
                 key={index}
-                custom={index}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, amount: 0.3 }}
                 variants={itemVariants}
-                className={cn('rounded-space-sm w-full bg-background-neutral p-4')}
+                className={cn(
+                  'flex w-full flex-col overflow-hidden rounded-3xl border bg-teal-100 shadow-xs',
+                  {
+                    'lg:flex-row': size === 'full' || row?.length === 1,
+                  },
+                )}
               >
-                {/* {appReference && (
-                  <AppReference appReference={appReference} className="py-xs px-xs" />
-                )} */}
                 <div
-                  className={cn('gap-xs flex flex-col', {
-                    'md:flex-row': size === 'full' || row?.length === 1,
+                  className={cn('flex flex-col justify-between gap-6 p-(--text-h3)', {
+                    'pe-4': size == 'full',
                   })}
                 >
                   {richTextContent && (
-                    <RichText data={richTextContent} className="pe-md p-xs ps-xs w-full" />
+                    <RichText data={richTextContent} className="mx-0 w-full" enableGutter={false} />
                   )}
-                  {image && (
-                    <Media
-                      resource={image}
-                      className="group h-auto w-full overflow-hidden rounded-lg bg-background"
-                      imgClassName="aspect-4/3 h-auto w-full object-cover transition-all duration-300 group-hover:scale-105"
-                    />
+                  {size === 'full' && stat && (
+                    <p className="flex flex-row items-center gap-6 rounded-full bg-teal-950 px-6 py-4">
+                      <span className="text-h3 whitespace-nowrap text-inverted-primary">
+                        {stat.value}
+                      </span>
+                      <span className="text-main text-pretty text-inverted-tertiary">
+                        {stat.label}
+                      </span>
+                    </p>
                   )}
                 </div>
+                {image && (
+                  <Media
+                    resource={image}
+                    className="group h-auto w-full overflow-hidden rounded-lg"
+                    imgClassName="h-auto w-full object-cover"
+                  />
+                )}
+                {size !== 'full' && stat && (
+                  <p className="mx-(--text-h3) mb-(--text-h3) flex flex-row items-center gap-6 rounded-full bg-teal-950 px-6 py-4">
+                    <span className="text-h3 whitespace-nowrap text-inverted-primary">
+                      {stat.value}
+                    </span>
+                    <span className="text-main text-pretty text-inverted-tertiary">
+                      {stat.label}
+                    </span>
+                  </p>
+                )}
               </motion.div>
             )
           })}
-        </div>
+        </motion.div>
       ))}
-    </div>
+    </motion.div>
   )
 }

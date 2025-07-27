@@ -4,15 +4,13 @@ import { cva } from 'class-variance-authority'
 
 import { cn } from '@/utilities/ui'
 import { Icon } from '@iconify-icon/react'
-import { Media as MediaType } from '@/payload-types'
-import { Media } from '../Media'
 
 const badgeVariants = cva(
-  'focus:ring-ring inline-flex max-w-max items-center gap-1 rounded-full px-4 py-1.5 text-sm font-medium transition-colors select-none focus:ring-2 focus:ring-offset-2 focus:outline-hidden',
+  'inline-flex max-w-max items-center gap-1 rounded-full px-4 py-1.5 text-sm font-medium transition-colors select-none focus:ring-2 focus:ring-ring focus:ring-offset-2 focus:outline-hidden',
   {
     variants: {
       color: {
-        default: 'text-base-tertiary bg-transparent',
+        default: 'bg-transparent text-base-tertiary',
         blue: 'text-marn-500 dark:text-marn-400 bg-sky-100 disabled:bg-sky-50 disabled:text-blue-500/70 dark:bg-sky-950',
         red: 'bg-tomato-100 text-tomato-600 disabled:bg-tomato-50 disabled:text-tomato-500/70 dark:bg-tomato-950',
         green:
@@ -23,6 +21,7 @@ const badgeVariants = cva(
           'bg-fuchsia-300 text-violet-800 disabled:bg-fuchsia-50 disabled:text-violet-500/70 dark:bg-fuchsia-950 dark:text-violet-400',
         gray: 'bg-neutral-100 text-neutral-600 disabled:bg-neutral-50 disabled:text-neutral-500/70 dark:bg-neutral-700 dark:text-neutral-400',
         inverted: 'bg-background-inverted text-inverted-secondary',
+        outline: 'border border-base-tertiary bg-transparent text-base-tertiary',
       },
       size: {
         sm: 'text-sm',
@@ -31,7 +30,7 @@ const badgeVariants = cva(
       },
     },
     defaultVariants: {
-      color: 'blue',
+      color: 'outline',
       size: 'sm',
     },
   },
@@ -40,7 +39,7 @@ const badgeVariants = cva(
 export interface BadgeProps {
   type?: ('label' | 'reference') | null
   label?: string | null
-  color?: ('blue' | 'red' | 'green' | 'yellow' | 'gray' | 'violet' | 'inverted') | null
+  color?: ('blue' | 'red' | 'green' | 'yellow' | 'gray' | 'violet' | 'inverted' | 'outline') | null
   // reference?:
   //   | ({
   //       relationTo: 'solutions'
@@ -77,7 +76,7 @@ function Badge({
           <Icon
             icon={`material-symbols:${iconName}`}
             color="currentColor"
-            size={16}
+            className="size-4"
             height="none"
           />
         )}

@@ -29,17 +29,17 @@ const blockComponents = {
   customHtmlBlock: RenderCustomHtmlBlock,
   dividerBlock: RenderDividerBlock,
   faqBlock: RenderFAQBlock,
-  // featuredAppsBlock: RenderFeaturedAppsBlock,
   featuresBlock: RenderFeaturesBlock,
   formBlock: FormBlock,
   galleryBlock: RenderGalleryBlock,
-  // marketplaceBlock: SearchableIntegrationsGrid,
   logosBlock: RenderLogoBlock,
   mediaBlock: MediaBlock,
   metricsBlock: RenderMetricsBlock,
-  // pricingBlock: RenderPricingBlock,
   richTextBlock: RenderRichTextBlock,
   testimonialsBlock: RenderTestimonialsBlock,
+  // featuredAppsBlock: RenderFeaturedAppsBlock,
+  // marketplaceBlock: SearchableIntegrationsGrid,
+  // pricingBlock: RenderPricingBlock,
 }
 
 type BlockWithHeader = {
@@ -64,14 +64,16 @@ export const RenderBlocks: React.FC<{
         if (!Block) {
           return null
         }
+        // console.log(blockType, block.type)
 
         return (
           <div
             id={block.blockName || undefined}
-            className={cn()
-            // 'pt-[clamp(4rem,2.4rem+4vw,6rem)]',
-            // block.blockType === 'pricingBlock' && block.type === '01' && 'pt-0',
-            // block.blockType === 'marketplaceBlock' && 'pt-0',
+            className={
+              cn()
+              // 'pt-[clamp(4rem,2.4rem+4vw,6rem)]',
+              // block.blockType === 'pricingBlock' && block.type === '01' && 'pt-0',
+              // block.blockType === 'marketplaceBlock' && 'pt-0',
             }
             key={index}
           >

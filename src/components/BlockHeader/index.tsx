@@ -32,7 +32,9 @@ export const BlockHeader: React.FC<BlockHeaderType> = (props) => {
         className,
       )}
     >
-      {badge?.label && <Badge size="lg" {...badge} className={cn('col-span-2', badgeClassName)} />}
+      {badge?.label && (
+        <Badge size="lg" {...badge} className={cn('col-span-2 mb-6', badgeClassName)} />
+      )}
 
       {headerText && (
         <RichText

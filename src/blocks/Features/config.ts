@@ -105,6 +105,59 @@ export const FeaturesBlock: Block = {
       },
     },
     {
+      label: 'Featured stat',
+      type: 'collapsible',
+      fields: [
+        {
+          name: 'stat',
+          type: 'group',
+          fields: [
+            {
+              type: 'row',
+              fields: [
+                {
+                  name: 'label',
+                  type: 'text',
+                  // required: true,
+                  admin: {
+                    width: '50%',
+                    description: 'Label for the stat',
+                  },
+                  localized: true,
+                },
+                {
+                  name: 'value',
+                  type: 'text',
+                  // required: true,
+                  admin: {
+                    width: '50%',
+                    description: 'Value for the stat. Example: 85% or 250 SAR',
+                  },
+                },
+              ],
+            },
+            {
+              type: 'select',
+              label: 'Indicator',
+              name: 'indicator',
+              options: [
+                { label: 'Increase', value: 'increase' },
+                { label: 'Decrease', value: 'decrease' },
+                { label: 'None', value: 'noChange' },
+              ],
+              defaultValue: 'noChange',
+              admin: {
+                description: 'Whether the value is an increase or decrease',
+              },
+            },
+          ],
+        },
+      ],
+      admin: {
+        condition: (_, siblingData, { blockData }) => ['06'].includes(blockData?.type),
+      },
+    },
+    {
       name: 'columns',
       type: 'array',
       label: 'Feature Columns',
@@ -209,6 +262,59 @@ export const FeaturesBlock: Block = {
           localized: true,
         },
         {
+          label: 'Featured stat',
+          type: 'collapsible',
+          fields: [
+            {
+              name: 'stat',
+              type: 'group',
+              fields: [
+                {
+                  type: 'row',
+                  fields: [
+                    {
+                      name: 'label',
+                      type: 'text',
+                      // required: true,
+                      admin: {
+                        width: '50%',
+                        description: 'Label for the stat',
+                      },
+                      localized: true,
+                    },
+                    {
+                      name: 'value',
+                      type: 'text',
+                      // required: true,
+                      admin: {
+                        width: '50%',
+                        description: 'Value for the stat. Example: 85% or 250 SAR',
+                      },
+                    },
+                  ],
+                },
+                {
+                  type: 'select',
+                  label: 'Indicator',
+                  name: 'indicator',
+                  options: [
+                    { label: 'Increase', value: 'increase' },
+                    { label: 'Decrease', value: 'decrease' },
+                    { label: 'None', value: 'noChange' },
+                  ],
+                  defaultValue: 'noChange',
+                  admin: {
+                    description: 'Whether the value is an increase or decrease',
+                  },
+                },
+              ],
+            },
+          ],
+          admin: {
+            condition: (_, siblingData, { blockData }) => ['01'].includes(blockData?.type),
+          },
+        },
+        {
           type: 'row',
           fields: [
             {
@@ -244,7 +350,8 @@ export const FeaturesBlock: Block = {
         badge({
           overrides: {
             admin: {
-              condition: (_, siblingData) => Boolean(siblingData?.enableBadge),
+              condition: (_: Partial<any>, siblingData: Partial<any>) =>
+                Boolean(siblingData?.enableBadge),
             },
           },
         }),

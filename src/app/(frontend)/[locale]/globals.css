@@ -157,7 +157,7 @@
   --accent: oklch(0.968 0.007 247.896);
   --accent-foreground: oklch(0.208 0.042 265.755);
   --destructive: oklch(0.577 0.245 27.325);
-  --border: oklch(0.929 0.013 255.508);
+  --border: --alpha(var(--color-slate-950) / 10%);
   --input: oklch(0.929 0.013 255.508);
   --ring: oklch(0.704 0.04 256.788);
   --chart-1: var(--color-teal-300);
@@ -183,20 +183,20 @@
   --background-inverted: var(--color-slate-950);
 
   /*for foreground (text & icons) */
-  --neutral-primary: var(--color-slate-950);
-  --neutral-secondary: var(--color-slate-700);
-  --neutral-tertiary: var(--color-slate-500);
-  --neutral-quaternary: var(--color-slate-300);
+  --neutral-primary: --alpha(var(--color-slate-950) / 100%);
+  --neutral-secondary: --alpha(var(--color-slate-950) / 60%);
+  --neutral-tertiary: --alpha(var(--color-slate-950) / 40%);
+  --neutral-quaternary: --alpha(var(--color-slate-950) / 25%);
 
   --brand-primary: --alpha(var(--color-brand) / 100%);
-  --brand-secondary: --alpha(var(--color-brand) / 70%);
-  --brand-tertiary: --alpha(var(--color-brand) / 50%);
-  --brand-quaternary: --alpha(var(--color-brand) / 30%);
+  --brand-secondary: --alpha(var(--color-brand) / 60%);
+  --brand-tertiary: --alpha(var(--color-brand) / 40%);
+  --brand-quaternary: --alpha(var(--color-brand) / 25%);
 
   --inverted-primary: var(--color-white);
-  --inverted-secondary: var(--color-slate-200);
-  --inverted-tertiary: var(--color-slate-400);
-  --inverted-quaternary: var(--color-slate-600);
+  --inverted-secondary: --alpha(var(--color-white) / 60%);
+  --inverted-tertiary: --alpha(var(--color-white) / 40%);
+  --inverted-quaternary: --alpha(var(--color-white) / 25%);
 }
 
 [data-theme='dark'] {
