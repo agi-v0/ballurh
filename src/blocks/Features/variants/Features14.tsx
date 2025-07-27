@@ -25,7 +25,7 @@ export const Features14: React.FC<FeaturesBlock> = ({ columns, link, CTALabel })
                 )}
                 {column.content && (
                   <div className="not-prose flex flex-col items-center gap-2 px-4 pt-2 pb-4 text-start md:text-center">
-                    <h3 className="text-h4 font-medium text-base-primary group-hover:text-teal-700">
+                    <h3 className="text-h4 font-semibold text-base-primary group-hover:text-teal-700">
                       {column.content?.title}
                     </h3>
                     {column.content.subtitle && (

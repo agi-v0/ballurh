@@ -1,7 +1,5 @@
 'use client'
-
 import React from 'react'
-// import { getTranslations } from 'next-intl/server' // Cannot use in client components without passing down props
 import { motion } from 'motion/react'
 
 import { Customer } from '@/payload-types'
@@ -9,15 +7,25 @@ import RichText from '@/components/RichText'
 import { Media } from '@/components/MediaResponsive'
 import { cn } from '@/utilities/ui'
 // import { LinkBlock } from '@/components/LinkBlock'
-import { containerVariants, itemVariants, itemsFling } from '@/utilities/motion'
+import { containerVariants, itemsFling } from '@/utilities/motion'
 import { Stat } from '../stat'
 
 interface Props {
   testimonials: Customer[]
   linkLabel: string
+  bgColor: BgColor
 }
 
-export const TestimonialsBlock02: React.FC<Props> = ({ testimonials, linkLabel }) => {
+const bgColors = {
+  lightTeal: 'bg-teal-100',
+  violet: 'bg-violet-100',
+  gray: 'bg-background-neutral-subtle',
+  inverted: 'bg-teal-950',
+} as const
+
+type BgColor = keyof typeof bgColors
+
+export const TestimonialsBlock02: React.FC<Props> = ({ testimonials, bgColor, linkLabel }) => {
   const testimonial = testimonials?.[0]
   if (!testimonial) {
     return null
@@ -30,7 +38,10 @@ export const TestimonialsBlock02: React.FC<Props> = ({ testimonials, linkLabel }
   const { companyLogo } = company
 
   return (
-    <section className="bg-background py-section-small">
+    <section
+      data-theme={bgColor !== 'inverted' ? 'light' : 'dark'}
+      className={`${bgColors[bgColor]} py-section-small`}
+    >
       <motion.div
         initial="hidden"
         whileInView="visible"
@@ -39,7 +50,7 @@ export const TestimonialsBlock02: React.FC<Props> = ({ testimonials, linkLabel }
         className="container overflow-hidden"
       >
         <motion.div
-          variants={itemVariants} // Animate the main card as one item
+          variants={itemsFling} // Animate the main card as one item
           className=""
         >
           <div className="flex flex-col justify-start gap-4">

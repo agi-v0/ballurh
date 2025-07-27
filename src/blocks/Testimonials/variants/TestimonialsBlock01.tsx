@@ -1,120 +1,105 @@
 'use client'
-
 import React from 'react'
-import RichText from '@/components/RichText'
-import { cn } from '@/utilities/ui'
-import type { Customer, Media as MediaType } from '@/payload-types'
-import { Media } from '@/components/MediaResponsive'
+import { motion } from 'motion/react'
 
-interface TestimonialsBlock01 {
+import { Customer } from '@/payload-types'
+import RichText from '@/components/RichText'
+import { Media } from '@/components/MediaResponsive'
+import { cn } from '@/utilities/ui'
+// import { LinkBlock } from '@/components/LinkBlock'
+import { containerVariants, itemsFling } from '@/utilities/motion'
+import { Stat } from '../stat'
+
+interface Props {
   testimonials: Customer[]
-  linkLabel?: string // Optional link label from parent
+  linkLabel: string
+  bgColor: BgColor
 }
 
-// Define predictable cell size patterns WITH associated types
-const cellPatterns = [
-  { classes: 'col-span-2', type: 'quote' }, // Wide Quote
-  { classes: 'col-span-1', type: 'image' }, // Standard Image
-  // { classes: 'col-span-1', type: 'stat' }, // Standard Stat
-  { classes: 'col-span-1', type: 'logo' }, // Standard Logo
-  { classes: 'col-span-2', type: 'quote' }, // Standard Quote
-  { classes: 'col-span-1', type: 'image' }, // Standard Image
-  // Add more patterns as needed, combining size and intended type
-]
+const bgColors = {
+  lightTeal: 'bg-teal-100',
+  violet: 'bg-violet-100',
+  gray: 'bg-background-neutral-subtle',
+  inverted: 'bg-teal-950',
+} as const
 
-export const TestimonialsBlock01: React.FC<TestimonialsBlock01> = ({ testimonials }) => {
-  const gridItems = testimonials.map((customer, index) => {
-    // Get the pattern for the current index
-    const pattern = cellPatterns[index % cellPatterns.length]
-    const assignedType = pattern.type as 'quote' | 'image' | 'logo' // Removed 'stat'
-    const sizeClasses = pattern.classes
+type BgColor = keyof typeof bgColors
 
-    return {
-      ...customer,
-      cellType: assignedType, // The type used for rendering content (might be fallback)
-      sizeClasses, // The size classes from the pattern
-    }
-  })
+export const TestimonialsBlock01: React.FC<Props> = ({ testimonials, bgColor, linkLabel }) => {
+  const testimonial = testimonials?.[0]
+  if (!testimonial) {
+    return null
+  }
+
+  // Extract data from the Customer structure
+  const { testimonial: testimonialData, slug, enableCaseStudy } = testimonial
+  const { quote, featuredImage, stats, company, authorInfo } = testimonialData
+
+  const { companyLogo } = company
+
   return (
-    <section className="py-space-xl md:py-space-2xl lg:py-space-3xl container">
-      <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
-        {gridItems.map((customer) => {
-          const { id, testimonial: testimonialData, cellType, sizeClasses } = customer
-          const { authorInfo, company, quote } = testimonialData
-          const { companyLogo } = company
+    <section
+      data-theme={bgColor !== 'inverted' ? 'light' : 'dark'}
+      className={`${bgColors[bgColor]} py-section-small`}
+    >
+      <motion.div
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.3 }}
+        variants={containerVariants}
+        className="container overflow-hidden"
+      >
+        <motion.div
+          variants={itemsFling} // Animate the main card as one item
+          className="flex flex-col items-center gap-space-7"
+        >
+          <div className="flex grow flex-col items-center gap-space-4">
+            {companyLogo && (
+              <Media resource={companyLogo} imgClassName="h-8 w-auto opacity-50 dark:invert" />
+            )}
 
-          const avatar = authorInfo?.avatar as MediaType | undefined
-          const logo = companyLogo as MediaType | undefined // Renamed for clarity
-          // const firstStat = stats && stats.length > 0 ? stats[0] : null
-
-          // Theme V: Background, Radius (Padding removed)
-          const baseClasses =
-            'bg-background-neutral flex flex-col justify-between overflow-hidden rounded-3xl'
-          // Apply size classes and conditionally add padding
-          const itemClasses = cn(
-            baseClasses,
-            sizeClasses,
-            // Add p-md unless it's an image or logo cell
-            cellType !== 'image' ? 'p-md' : 'p-0',
-            cellType === 'quote' ? '' : 'aspect-square h-auto w-full',
-          )
-
-          return (
-            <div key={id} className={itemClasses}>
-              {cellType === 'quote' && quote && (
-                <>
-                  <div className="mb-4 w-full">
-                    <RichText
-                      data={quote}
-                      enableProse={false}
-                      className="text-h4 font-medium text-base-primary"
-                    />
-                  </div>
-                  <div className="border-base pt-sm text-body-sm mt-auto border-t font-medium">
-                    {authorInfo?.name}
-                    {authorInfo?.title && (
-                      <span className="text-caption block text-muted-foreground">
-                        {authorInfo.title}
-                      </span>
-                    )}
-                  </div>
-                </>
-              )}
-
-              {cellType === 'image' && avatar && (
+            {quote && (
+              <RichText
+                data={quote}
+                enableProse={false}
+                enableGutter={false}
+                className="mx-0 max-w-4xl text-center text-(length:--text-h3) font-semibold text-base-primary"
+              />
+            )}
+          </div>
+          {authorInfo && (
+            <div className="flex flex-col items-center gap-4 text-center">
+              {authorInfo.avatar && (
                 <Media
-                  resource={avatar}
+                  resource={authorInfo.avatar}
                   fill
-                  className="relative h-full w-full rounded-lg"
-                  imgClassName="h-full w-full rounded-lg object-cover"
+                  className="relative size-12 overflow-hidden rounded-full"
+                  imgClassName="object-cover"
                 />
               )}
-
-              {/* {cellType === 'stat' && firstStat && ( */}
-              {/*  <> */}
-              {/*    <div className="text-h3 text-base-primary flex grow flex-col items-start text-start font-medium"> */}
-              {/*      <p className=""> */}
-              {/*        {firstStat.value} */}
-              {/*        {firstStat.isPercentage ? '%' : ''} */}
-              {/*      </p> */}
-              {/*      <p className="">{firstStat.label}</p> */}
-              {/*    </div> */}
-              {/*  </> */}
-              {/* )} */}
-
-              {cellType === 'logo' && logo && (
-                <div className="p-md flex h-full w-full flex-col items-center justify-center">
-                  <Media
-                    resource={logo}
-                    className="w-full"
-                    imgClassName="mx-auto h-auto w-full opacity-70"
-                  />
-                </div>
-              )}
+              <div>
+                <p className="text-body-sm font-medium text-base-primary">{authorInfo.name}</p>
+                <p className="text-body-sm text-base-secondary">{authorInfo.title}</p>
+              </div>
             </div>
-          )
-        })}
-      </div>
+          )}
+        </motion.div>
+        {/* {stats && stats.length > 0 && (
+          <div className="mt-space-7 grid grid-cols-2 gap-4 lg:grid-cols-4">
+            {stats.map((stat, index) => (
+              <motion.div key={stat.id || index} variants={itemsFling}>
+                {
+                  <Stat
+                    stat={stat}
+                    index={index}
+                    className="items-center bg-transparent text-center"
+                  />
+                }
+              </motion.div>
+            ))}
+          </div>
+        )} */}
+      </motion.div>
     </section>
   )
 }

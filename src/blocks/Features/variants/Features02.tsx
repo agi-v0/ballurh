@@ -8,7 +8,7 @@ import { CMSLink } from '@/components/Link'
 
 import { Icon } from '@iconify-icon/react'
 import * as motion from 'motion/react-client'
-import { itemVariants } from '@/utilities/motion'
+import { itemVariantsCustom } from '@/utilities/motion'
 
 const colSpanClass = {
   full: 'md:col-span-4 lg:col-span-12',
@@ -41,7 +41,7 @@ export const Features02: React.FC<Features02Props> = ({ columns, readMoreLabel }
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, amount: 0.3 }}
-            variants={itemVariants}
+            variants={itemVariantsCustom}
             className={cn(
               'gap-xs group col-span-4 flex flex-col rounded-3xl bg-background-neutral p-4',
               lgColSpanClass,

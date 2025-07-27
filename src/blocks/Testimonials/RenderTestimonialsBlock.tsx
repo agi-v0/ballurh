@@ -14,7 +14,7 @@ const blockComponents = {
 }
 
 export const RenderTestimonialsBlock: React.FC<TestimonialsBlockType> = async (props) => {
-  const { type, selectedTestimonials } = props
+  const { type, selectedTestimonials, bgColor } = props
   const locale = await getLocale()
   const t = await getTranslations('TestimonialsBlock')
 
@@ -24,7 +24,11 @@ export const RenderTestimonialsBlock: React.FC<TestimonialsBlockType> = async (p
 
   return (
     <Fragment>
-      <BlockComponent testimonials={testimonialsToRender} linkLabel={t('readMore')} />
+      <BlockComponent
+        testimonials={testimonialsToRender}
+        linkLabel={t('readMore')}
+        bgColor={bgColor}
+      />
     </Fragment>
   )
 }

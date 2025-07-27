@@ -53,6 +53,7 @@
 }
 
 @theme inline {
+  --font-sans: var(--font-aktiv-grotesk);
   --spacing-header: var(--header-height);
   --spacing-header-plus-admin-bar: calc(var(--header-height) + var(--admin-bar-height));
 

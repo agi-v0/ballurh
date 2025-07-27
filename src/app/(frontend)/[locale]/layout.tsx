@@ -26,24 +26,10 @@ import { setRequestLocale } from 'next-intl/server'
 // }
 
 const aktivGrotesk = localFont({
-  src: [
-    {
-      path: '/fonts/Aktiv-Grotesk-Regular.ttf',
-      weight: '400',
-      style: 'normal',
-    },
-    {
-      path: '/fonts/Aktiv-Grotesk-Medium.ttf',
-      weight: '500',
-      style: 'normal',
-    },
-    {
-      path: '/fonts/Aktiv-Grotesk-SemiBold.ttf',
-      weight: '600',
-      style: 'normal',
-    },
-  ],
+  src: '/fonts/AktivGroteskVF.woff2',
+  weight: '100 900',
   display: 'swap',
+  variable: '--font-aktive-grotesk',
 })
 
 export default async function RootLayout({
