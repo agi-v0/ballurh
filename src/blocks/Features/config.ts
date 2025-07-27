@@ -323,7 +323,7 @@ export const FeaturesBlock: Block = {
               type: 'checkbox',
               admin: {
                 condition: (_, siblingData, { blockData }) =>
-                  ['02', '03', '04', '05', '08'].includes(blockData?.type),
+                  ['01', '02', '03', '04', '05', '08'].includes(blockData?.type),
                 width: '50%',
               },
             },

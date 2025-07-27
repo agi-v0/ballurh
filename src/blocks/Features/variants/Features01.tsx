@@ -6,6 +6,7 @@ import { cn } from '@/utilities/ui'
 // import { AppReference } from '@/components/AppReference'
 import RichText from '@/components/RichText'
 import { motion, stagger, Variants } from 'motion/react'
+import { Badge } from '@/components/ui/badge'
 
 export const Features01: React.FC<FeaturesBlock> = ({ columns }) => {
   if (!columns?.length) return null
@@ -82,7 +83,7 @@ export const Features01: React.FC<FeaturesBlock> = ({ columns }) => {
           })}
         >
           {row?.map((column, index) => {
-            const { richTextContent, image, size = 'half', stat } = column // Removed 'content' as it's unused
+            const { badge, richTextContent, image, size = 'half', stat } = column // Removed 'content' as it's unused
             return (
               <motion.div
                 key={index}
@@ -99,9 +100,18 @@ export const Features01: React.FC<FeaturesBlock> = ({ columns }) => {
                     'pe-4': size == 'full',
                   })}
                 >
-                  {richTextContent && (
-                    <RichText data={richTextContent} className="mx-0 w-full" enableGutter={false} />
-                  )}
+                  <div>
+                    {badge?.label && (
+                      <Badge size="lg" {...badge} className="col-span-2 mb-6 border-none p-0" />
+                    )}
+                    {richTextContent && (
+                      <RichText
+                        data={richTextContent}
+                        className="mx-0 w-full"
+                        enableGutter={false}
+                      />
+                    )}
+                  </div>
                   {size === 'full' && stat && (
                     <p className="flex flex-row items-center gap-6 rounded-full bg-teal-950 px-6 py-4">
                       <span className="text-h3 whitespace-nowrap text-inverted-primary">
