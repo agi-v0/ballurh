@@ -15,7 +15,7 @@ export const RenderFields: React.FC<{ form: FormType; locale?: string }> = ({ fo
   let i = 0
   while (i < formFields.length) {
     const field = formFields[i]
-    const Field = fields?.[field.blockType]
+    const Field = fields?.[field.blockType as keyof typeof fields] as React.FC<any>
     if (!Field) {
       i++
       continue
@@ -37,7 +37,7 @@ export const RenderFields: React.FC<{ form: FormType; locale?: string }> = ({ fo
       nextFieldCandidate.width === 50
     ) {
       const nextField = nextFieldCandidate
-      const NextField = fields?.[nextField.blockType]
+      const NextField = fields?.[nextField.blockType as keyof typeof fields] as React.FC<any>
       if (NextField) {
         const nextFieldProps = {
           form,

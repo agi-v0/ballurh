@@ -222,8 +222,10 @@ function MobileNavItem({ item, onClick }: MobileNavItemProps) {
                   )}
                 >
                   {/* Icon/Image Rendering */}
-                  {(subLink.link.icon ||
-                    (isReferenceObject && 'icon' in referenceValue && referenceValue.icon)) && (
+                  {!!(
+                    subLink.link.icon ||
+                    (isReferenceObject && 'icon' in referenceValue && referenceValue.icon)
+                  ) && (
                     <div className="flex size-10 flex-none items-center justify-center rounded-full bg-background text-base-tertiary group-hover:bg-background-neutral [&_svg]:size-4">
                       {subLink.link.icon ? (
                         subLink.link.icon === 'marn-icon' ? (
@@ -235,41 +237,15 @@ function MobileNavItem({ item, onClick }: MobileNavItemProps) {
                             height="none"
                           />
                         )
-                      ) : // Check for reference icon only if subLink.link.icon is not present
-                      isReferenceObject &&
-                        'icon' in referenceValue &&
-                        typeof referenceValue.icon === 'object' && // Ensure icon itself is an object
-                        referenceValue.icon ? (
-                        <Image
-                          src={
-                            referenceValue.icon.sizes?.thumbnail?.url ||
-                            referenceValue.icon.url ||
-                            ''
-                          }
-                          alt={referenceValue.icon.alt ?? ''} // Safe to access now
-                          width={40}
-                          height={40}
-                          className="aspect-square size-10 flex-none rounded-md"
-                          priority
-                          sizes="40px"
-                        />
                       ) : null}
                     </div>
                   )}
                   {/* Text Content (with type safety for tagline) */}
                   <div className="grow space-y-1 font-medium">
                     {subLink.link.label}
-                    {(subLink.link.description ||
-                      (isReferenceObject &&
-                        'tagline' in referenceValue &&
-                        referenceValue.tagline)) && (
-                      <p className="line-clamp-2 text-sm leading-snug font-normal whitespace-normal text-base-tertiary">
-                        {subLink.link.description ||
-                          (isReferenceObject && 'tagline' in referenceValue
-                            ? referenceValue.tagline
-                            : '')}
-                      </p>
-                    )}
+                    <p className="line-clamp-2 text-sm leading-snug font-normal whitespace-normal text-base-tertiary">
+                      {subLink.link.description}
+                    </p>
                   </div>
                 </CMSLink>
               </div>

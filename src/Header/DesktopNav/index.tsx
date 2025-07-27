@@ -14,7 +14,7 @@ import {
 } from '@/components/ui/navigation-menu'
 import Image from 'next/image'
 import { CMSLink } from '@/components/Link'
-import type { Header as HeaderType } from '@/payload-types'
+import type { BlogPost, Header as HeaderType, Page } from '@/payload-types'
 import RichText from '@/components/RichText'
 import { Icon } from '@iconify-icon/react'
 import MarnIcon from '@/components/ui/marn-icon'
@@ -27,6 +27,27 @@ interface DesktopNavProps extends Omit<HeaderType, 'id' | 'updatedAt' | 'created
 
 // Define the type for a single nav item directly based on HeaderType structure
 type NavItem = NonNullable<NonNullable<HeaderType['tabs']>[number]['navItems']>[number]
+
+type LinkType = {
+  type?: ('reference' | 'custom') | null
+  newTab?: boolean | null
+  reference?:
+    | ({
+        relationTo: 'pages'
+        value: string | Page
+      } | null)
+    | ({
+        relationTo: 'blog-posts'
+        value: string | BlogPost
+      } | null)
+  url?: string | null
+  label: string
+  description?: string | null
+  /**
+   * Select an icon from the Material Symbols icon set. You can preview all available icons at https://fonts.google.com/icons
+   */
+  icon?: string | null
+}
 
 // Explicitly define props for ListItem based on the NavItem structure
 interface ListItemProps {
@@ -144,25 +165,25 @@ export function DesktopNav({ tabs, cta, className }: DesktopNavProps) {
 
 const ListItem = React.forwardRef<HTMLAnchorElement | HTMLDivElement, ListItemProps>(
   ({ className, style, defaultLink, featuredLink, listLinks, ...props }, ref) => {
-    let itemContent: React.ReactNode | null = null
+    let ListItem
 
     switch (style) {
       case 'featured':
-        itemContent = (
+        ListItem = (
           <div ref={ref as React.Ref<HTMLDivElement>} className={cn('p-3', className)} {...props}>
             {featuredLink?.tag && (
-              <div className="text-base-tertiary mb-1 text-xs font-semibold">
+              <div className="mb-1 text-xs font-semibold text-base-tertiary">
                 {featuredLink.tag}
               </div>
             )}
 
             <RichText data={featuredLink?.label} />
             <div className="mt-2 flex flex-col space-y-1">
-              {featuredLink?.links?.map((subLink, i) => (
+              {featuredLink?.links?.map((subLink: LinkType, i: any) => (
                 <CMSLink
                   key={i}
-                  {...subLink.link}
-                  className="text-base-tertiary hover:text-base-secondary text-sm"
+                  {...subLink}
+                  className="text-sm text-base-tertiary hover:text-base-secondary"
                 />
               ))}
             </div>
@@ -170,70 +191,54 @@ const ListItem = React.forwardRef<HTMLAnchorElement | HTMLDivElement, ListItemPr
         )
         break
       case 'list':
-        itemContent = (
+        ListItem = (
           <div ref={ref as React.Ref<HTMLDivElement>} className={cn('', className)} {...props}>
             {listLinks?.tag && (
-              <div className="text-base-tertiary mb-1 px-4 text-xs font-normal">
+              <div className="mb-1 px-4 text-xs font-normal text-base-tertiary">
                 {listLinks.tag}
               </div>
             )}
             <div className="mt-1 flex flex-col gap-0">
-              {listLinks?.links?.map((subLink, i) => {
+              {listLinks?.links?.map((subLink: LinkType, i: any) => {
                 return (
                   <CMSLink
                     key={i}
-                    {...subLink.link}
+                    // {...subLink}
+                    {...subLink}
                     icon={null}
                     label={null}
                     variant="inline"
                     className={cn(
                       navigationMenuTriggerStyle(),
                       'ease-in-out-quad relative h-fit w-full gap-4 rounded-2xl px-3 text-base transition-all duration-300 hover:px-4 [&_svg]:size-5',
-                      subLink.link.type === 'reference' &&
-                        subLink.link.reference?.value?.icon &&
-                        'items-start',
                     )}
                   >
-                    {subLink.link.icon && (
-                      <div className="group-hover:bg-background-neutral text-base-tertiary group-hover:text-base-secondary bg-background flex size-10 flex-none items-center justify-center rounded-md">
-                        {subLink.link.icon === 'marn-icon' ? (
+                    {subLink.icon && (
+                      <div className="flex size-10 flex-none items-center justify-center rounded-md bg-background text-base-tertiary group-hover:bg-background-neutral group-hover:text-base-secondary">
+                        {subLink.icon === 'marn-icon' ? (
                           <MarnIcon className="" />
                         ) : (
                           <Icon
-                            icon={`material-symbols:${subLink.link.icon}`}
+                            icon={`material-symbols:${subLink.icon}`}
                             className="size-6"
                             height="none"
                           />
                         )}
                       </div>
                     )}
-                    {subLink.link.type === 'reference' && subLink.link.reference?.value?.icon && (
-                      <Image
-                        src={
-                          subLink.link.reference.value.icon.url ||
-                          subLink.link.reference.value.icon.sizes?.thumbnail?.url ||
-                          ''
-                        }
-                        alt={subLink.link.reference.value.icon.alt}
-                        width={40}
-                        height={40}
-                        className="aspect-square size-10 flex-none rounded-md"
-                        priority
-                        sizes="40px"
-                      />
-                    )}
+
                     <div className="flex flex-1 flex-col justify-start gap-1">
-                      {subLink.link.label}
-                      {(subLink.link.description || subLink.link.reference?.value?.tagline) && (
-                        <p className="text-base-tertiary line-clamp-2 text-sm leading-snug font-normal whitespace-normal">
-                          {subLink.link.description || subLink.link.reference?.value?.tagline}
+                      {subLink.label}
+                      {subLink.description && (
+                        <p className="line-clamp-2 text-sm leading-snug font-normal whitespace-normal text-base-tertiary">
+                          {subLink.description}
                         </p>
                       )}
                     </div>
                     <Icon
                       icon="tabler:caret-left-filled"
                       height="none"
-                      className="text-base-tertiary group-hover:text-base-tertiary size-4 shrink-0 translate-x-[4px] opacity-0 transition-all group-hover:translate-x-0 group-hover:opacity-100"
+                      className="size-4 shrink-0 translate-x-[4px] text-base-tertiary opacity-0 transition-all group-hover:translate-x-0 group-hover:text-base-tertiary group-hover:opacity-100"
                     />
                   </CMSLink>
                 )
@@ -250,7 +255,7 @@ const ListItem = React.forwardRef<HTMLAnchorElement | HTMLDivElement, ListItemPr
             <CMSLink
               ref={ref as React.Ref<HTMLAnchorElement>}
               className={cn(
-                'hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground block space-y-1 rounded-md p-3 leading-none no-underline transition-colors outline-hidden select-none',
+                'block space-y-1 rounded-md p-3 leading-none no-underline outline-hidden transition-colors select-none hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground',
                 className,
               )}
               {...defaultLink.link}
@@ -258,7 +263,7 @@ const ListItem = React.forwardRef<HTMLAnchorElement | HTMLDivElement, ListItemPr
             >
               <div className="text-sm leading-none font-medium">{defaultLink.link.label}</div>
               {defaultLink.description && (
-                <p className="text-base-tertiary line-clamp-2 text-sm leading-snug">
+                <p className="line-clamp-2 text-sm leading-snug text-base-tertiary">
                   {defaultLink.description}
                 </p>
               )}
@@ -267,7 +272,7 @@ const ListItem = React.forwardRef<HTMLAnchorElement | HTMLDivElement, ListItemPr
         )
     }
 
-    return itemContent
+    return ListItem
   },
 )
 ListItem.displayName = 'ListItem'

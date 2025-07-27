@@ -13,8 +13,8 @@ type BlogBlockType = BlogBlock & {
 }
 
 const variants: Record<string, React.FC<BlogBlockType>> = {
-  featuredPost: FeaturedPost,
-  '2-columns': TwoColumns,
+  featuredPost: FeaturedPost as any,
+  '2-columns': TwoColumns as any,
 }
 
 export const RenderBlogBlock: React.FC<BlogBlockType> = async (props) => {

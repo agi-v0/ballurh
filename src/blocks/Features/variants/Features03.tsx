@@ -12,6 +12,8 @@ const colSpanClass = {
   half: 'md:col-span-2 lg:col-span-6',
   oneThird: 'md:col-span-2 lg:col-span-4',
   twoThirds: 'md:col-span-2 lg:col-span-2',
+  sixtyPercent: '',
+  fortyPercent: '',
 }
 
 export const Features03: React.FC<FeaturesBlock> = ({ columns }) => {
@@ -49,7 +51,7 @@ export const Features03: React.FC<FeaturesBlock> = ({ columns }) => {
                 {column.enableBadge && column.badge && <Badge {...column.badge} />}
                 {richTextContent && <RichText data={richTextContent} />}
                 {column.enableCta && column.link?.label && (
-                  <CMSLink className="mt-auto w-fit" size="md" {...column.link} />
+                  <CMSLink className="mt-auto w-fit" size="lg" {...column.link} />
                 )}
               </div>
             </div>

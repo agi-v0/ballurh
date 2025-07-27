@@ -25,7 +25,7 @@ export const BlockHeader: React.FC<BlockHeaderType> = (props) => {
   return (
     <div
       className={cn(
-        'pt-section-large',
+        'pt-section-main',
         'gap-y-space-md container grid grid-cols-1 justify-items-start',
         type === 'split' && 'md:gap-space-sm md:grid-cols-2',
         type === 'center' && 'justify-items-center',

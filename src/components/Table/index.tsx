@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useState } from 'react'
-import type { Integration, Solution } from '@/payload-types'
+
 import {
   Table,
   TableHeader,
@@ -76,10 +76,9 @@ interface PricingTableProps {
       compact?: boolean | null
     }
   }
-  badges?: (Solution | Integration)[]
 }
 
-export const StructuredTable: React.FC<PricingTableProps> = ({ table, badges }) => {
+export const StructuredTable: React.FC<PricingTableProps> = ({ table }) => {
   const [expandedRows, setExpandedRows] = useState<Set<number>>(new Set())
 
   const toggleRow = (rowIndex: number) => {
@@ -104,13 +103,13 @@ export const StructuredTable: React.FC<PricingTableProps> = ({ table, badges }) 
       <Table
         className={cn(
           'overflow-hidden rounded-3xl',
-          styling?.bordered && 'border-border border',
+          styling?.bordered && 'border border-border',
           styling?.compact && 'text-sm',
         )}
       >
         <TableHeader
           className={cn(
-            'hover:bg-background-neutral bg-background-neutral rounded-b-3xl [&_tr]:border-0',
+            'rounded-b-3xl bg-background-neutral hover:bg-background-neutral [&_tr]:border-0',
             styling?.bordered && '[&_tr]:border-b',
           )}
         >
@@ -142,7 +141,7 @@ export const StructuredTable: React.FC<PricingTableProps> = ({ table, badges }) 
                 <TableRow
                   className={cn(
                     styling?.striped
-                      ? 'even:bg-background-neutral even:hover:bg-background-neutral odd:bg-background odd:hover:bg-background'
+                      ? 'odd:bg-background even:bg-background-neutral odd:hover:bg-background even:hover:bg-background-neutral'
                       : 'hover:bg-background-neutral',
                     styling?.bordered && 'border-b',
                   )}
@@ -163,7 +162,7 @@ export const StructuredTable: React.FC<PricingTableProps> = ({ table, badges }) 
                       >
                         <Icon
                           data-expanded={isExpanded ? 'true' : 'false'}
-                          className="text-base-secondary size-4 transition-transform duration-200 data-[expanded=true]:-rotate-90 ltr:rotate-180 data-[expanded=true]:ltr:rotate-270"
+                          className="size-4 text-base-secondary transition-transform duration-200 data-[expanded=true]:-rotate-90 ltr:rotate-180 data-[expanded=true]:ltr:rotate-270"
                           height="none"
                           icon="material-symbols:chevron-left-rounded"
                         />
@@ -179,20 +178,7 @@ export const StructuredTable: React.FC<PricingTableProps> = ({ table, badges }) 
                         styling?.bordered && cellIndex < row.cells!.length - 1 && 'border-e',
                       )}
                     >
-                      {badges?.find((solution) => solution.slug === cell.content) ? (
-                        <Badge
-                          className="flex"
-                          type="reference"
-                          reference={{
-                            relationTo: 'solutions',
-                            value: badges.find(
-                              (solution) => solution.slug === cell.content,
-                            ) as Solution,
-                          }}
-                        />
-                      ) : (
-                        cell.content
-                      )}
+                      {cell.content}
                     </TableCell>
                   ))}
                 </TableRow>

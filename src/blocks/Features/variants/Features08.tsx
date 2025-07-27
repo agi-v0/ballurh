@@ -28,7 +28,7 @@ export const Features08: React.FC<Features08Props> = ({ columns, readMoreLabel }
                 <Button
                   key={column.id || `tab-${index}`}
                   type="button"
-                  size="md"
+                  size="default"
                   variant="ghost"
                   color="neutral"
                   onClick={() => setCarouselIndex(index)}

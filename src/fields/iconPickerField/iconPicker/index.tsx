@@ -10,6 +10,7 @@ import { isFieldRTL } from '@/utilities/isFieldRTL'
 import { mergeFieldStyles } from '@/utilities/mergeFieldStyles'
 
 import { IconPickerInput } from './Input'
+import { TextField, ValidateOptions } from 'payload'
 
 const IconPickerField: IconPickerFieldClientComponent = (props) => {
   const {
@@ -36,7 +37,7 @@ const IconPickerField: IconPickerFieldClientComponent = (props) => {
   } = useConfig()
 
   const memoizedValidate = useCallback(
-    (value, options) => {
+    (value: string, options: any) => {
       if (typeof validate === 'function') {
         return validate(value, { ...options, maxLength, minLength, required }) || true
       }

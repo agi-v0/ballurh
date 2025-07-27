@@ -131,7 +131,7 @@ export const FormBlock: React.FC<
       {enableIntro && introContent && !hasSubmitted && (
         <RichText className="mb-8 lg:mb-12" data={introContent} enableGutter={false} />
       )}
-      <div className="border-border rounded-[0.8rem] border p-4 lg:p-6">
+      <div className="rounded-[0.8rem] border border-border p-4 lg:p-6">
         <FormProvider {...formMethods}>
           {!isLoading && hasSubmitted && confirmationType === 'message' && (
             <RichText data={confirmationMessage} />
@@ -144,7 +144,7 @@ export const FormBlock: React.FC<
                 {formFromProps &&
                   formFromProps.fields &&
                   formFromProps.fields?.map((field, index) => {
-                    const Field: React.FC<any> = fields?.[field.blockType]
+                    const Field = fields?.[field.blockType as keyof typeof fields] as React.FC<any>
                     if (Field) {
                       return (
                         <div className="mb-6 last:mb-0" key={index}>

@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from 'react'
 import { useField, usePayloadAPI, useLocale } from '@payloadcms/ui'
-import type { RelationshipFieldClientComponent } from 'payload'
+import type { RelationshipFieldClientComponent, TypedLocale, StaticLabel } from 'payload'
 
 import './index.scss'
 
@@ -18,7 +18,6 @@ export const RelationshipChipSelect: RelationshipFieldClientComponent = (props) 
 
   const { value, setValue, showError, errorMessage } = useField<number[] | number | null>({
     path,
-    validate,
   })
   const [selectedRelationships, setSelectedRelationships] = useState<number[]>(
     hasMany ? (Array.isArray(value) ? value : []) : value ? [value as number] : [],
@@ -82,11 +81,12 @@ export const RelationshipChipSelect: RelationshipFieldClientComponent = (props) 
   return (
     <div className="payload-custom-field category-chip-select">
       <label htmlFor={path} className="field-label">
-        {label?.[locale as any] || label}
+        {/* support localized labels */}
+        {typeof label === 'object' && label !== null ? label[locale.code] : label}
       </label>
       <div className="input-wrapper">
         <ul className="chip-group">
-          {relationships.map((relationship) => {
+          {relationships.map((relationship: any) => {
             if (!relationship || typeof relationship.id === 'undefined') {
               return null
             }
