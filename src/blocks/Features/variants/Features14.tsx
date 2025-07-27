@@ -18,7 +18,7 @@ export const Features14: React.FC<FeaturesBlock> = ({ columns, link, CTALabel })
                     <Media
                       resource={column.image}
                       className="h-auto w-full p-4"
-                      imgClassName="rounded-space-sm aspect-square h-auto w-full object-cover"
+                      imgClassName="aspect-square h-auto w-full rounded-3xl object-cover"
                     />
                     <div className="absolute inset-0 z-2 bg-teal-600 opacity-0 mix-blend-overlay duration-300 ease-out group-hover:opacity-100" />
                   </div>

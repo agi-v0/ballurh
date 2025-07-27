@@ -33,7 +33,7 @@ export const FeaturedApps06: React.FC<FeaturedApps06Props> = ({ cards }) => {
           {cards?.map(({ title, subtitle, appReference, id }) => (
             <CarouselItem key={id} className="md:not-first:ps-space-xs">
               <Card key={id} className="h-full w-full">
-                <CardContent className="rounded-space-sm gap-sm bg-background-neutral">
+                <CardContent className="gap-sm rounded-3xl bg-background-neutral">
                   <div className="gap-xs flex flex-col">
                     <h3 className="text-h3">{title}</h3>
                     <p className="text-body-md font-normal text-base-secondary">{subtitle}</p>

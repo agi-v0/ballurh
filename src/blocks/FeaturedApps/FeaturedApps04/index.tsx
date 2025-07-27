@@ -27,22 +27,22 @@ const AppCard: React.FC<{ app: Integration; locale?: TypedLocale }> = ({ app, lo
   const { name, icon, tagline, summary, link } = app
 
   return (
-    <div className="bg-background-neutral rounded-space-sm flex h-full w-full flex-col overflow-hidden lg:flex-row">
+    <div className="flex h-full w-full flex-col overflow-hidden rounded-3xl bg-background-neutral lg:flex-row">
       <div className="p-md flex w-full flex-col justify-between text-start">
         <div className="gap-sm flex flex-col items-start justify-start">
           {/* App Badge (Icon + Name) */}
           <div className="gap-xs flex items-center justify-end">
             {icon && <Media resource={icon} className="size-8 overflow-hidden rounded-md" />}
-            {name && <span className="text-body-lg text-base-secondary font-medium">{name}</span>}
+            {name && <span className="text-body-lg font-medium text-base-secondary">{name}</span>}
           </div>
           {/* Title and Description */}
           <div className="gap-xs flex flex-col">
-            {tagline && <h3 className="text-h4 text-base-primary font-medium">{tagline}</h3>}
+            {tagline && <h3 className="text-h4 font-medium text-base-primary">{tagline}</h3>}
             {summary && (
               <RichText
                 data={summary}
                 enableGutter={true}
-                className="text-body-sm text-base-secondary font-normal"
+                className="text-body-sm font-normal text-base-secondary"
               />
             )}
           </div>
@@ -52,7 +52,7 @@ const AppCard: React.FC<{ app: Integration; locale?: TypedLocale }> = ({ app, lo
           <CMSLink
             {...link}
             // Use text size, color variables, and explicit gap
-            className="text-body-lg mt-space-xs text-base-tertiary hover:text-base-primary w-fit px-0 py-0 hover:bg-transparent"
+            className="text-body-lg mt-space-xs w-fit px-0 py-0 text-base-tertiary hover:bg-transparent hover:text-base-primary"
             label={locale === 'ar' ? 'المزيد' : 'Learn More'}
             variant="link"
           />

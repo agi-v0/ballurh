@@ -37,7 +37,7 @@ export const CallToAction05: React.FC<CallToActionProps> = ({
     <div data-theme="dark" className="py-xl bg-background-neutral" ref={containerRef}>
       <div
         className={cn(
-          'px-md py-xl gap-md rounded-space-sm container flex flex-col items-center md:flex-row md:items-center md:justify-between',
+          'px-md py-xl gap-md container flex flex-col items-center rounded-3xl md:flex-row md:items-center md:justify-between',
           className,
         )}
       >
@@ -59,10 +59,7 @@ export const CallToAction05: React.FC<CallToActionProps> = ({
           </div>
         </motion.div>
         {media && (
-          <Media
-            media={media}
-            className="rounded-space-sm overflow-hidden md:max-w-lg md:basis-1/2"
-          />
+          <Media media={media} className="overflow-hidden rounded-3xl md:max-w-lg md:basis-1/2" />
         )}
       </div>
     </div>

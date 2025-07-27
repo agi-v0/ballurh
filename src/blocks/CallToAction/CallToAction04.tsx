@@ -32,7 +32,7 @@ export const CallToAction04: React.FC<CallToActionProps> = ({
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.3 }}
-        className="gap-md p-xl rounded-space-sm flex flex-col bg-background-neutral md:flex-row md:items-center md:justify-between"
+        className="gap-md p-xl flex flex-col rounded-3xl bg-background-neutral md:flex-row md:items-center md:justify-between"
       >
         {richText && (
           <RichText className="mx-0 mb-0 lg:max-w-lg" data={richText} enableGutter={false} />

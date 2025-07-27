@@ -1722,6 +1722,7 @@ export interface TestimonialsBlock {
       | null;
   };
   type: '01' | '02' | '03';
+  bgColor: 'lightTeal' | 'violet' | 'gray' | 'inverted';
   /**
    * Select specific testimonials to display. Leave blank to show the 5 most recently updated testimonials.
    */
@@ -1830,7 +1831,21 @@ export interface Customer {
       };
       [k: string]: unknown;
     } | null;
-    layout?: unknown[] | null;
+    layout?:
+      | (
+          | ArchiveBlock
+          | CallToActionBlock
+          | CustomHtmlBlock
+          | DividerBlock
+          | FaqBlock
+          | FeaturesBlock
+          | FormBlock
+          | GalleryBlock
+          | LogoBlock
+          | RichTextBlock
+          | TestimonialsBlock
+        )[]
+      | null;
   };
   enableCaseStudy?: boolean | null;
   slug?: string | null;

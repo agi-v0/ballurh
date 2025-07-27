@@ -32,7 +32,7 @@ export const Gallery01: React.FC<Gallery01Props> = ({ images, className }) => {
                   resource={image}
                   //image class name w-full important to make image take full width in blog post layout
                   imgClassName="w-full"
-                  className="rounded-space-sm h-full w-full overflow-clip bg-background-neutral-subtle"
+                  className="h-full w-full overflow-clip rounded-3xl bg-background-neutral-subtle"
                 />
               )}
             </CarouselItem>

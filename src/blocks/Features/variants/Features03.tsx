@@ -18,7 +18,7 @@ export const Features03: React.FC<FeaturesBlock> = ({ columns }) => {
   if (!columns?.length) return null
 
   return (
-    <div className="bg-background py-xl gap-md container grid grid-cols-1 md:grid-cols-4 lg:grid-cols-12">
+    <div className="py-xl gap-md container grid grid-cols-1 bg-background md:grid-cols-4 lg:grid-cols-12">
       {columns.map((column, index) => {
         const { image, size = 'full', richTextContent } = column
         const lgColSpanClass = colSpanClass[size || 'full']
@@ -33,11 +33,11 @@ export const Features03: React.FC<FeaturesBlock> = ({ columns }) => {
               {image && (
                 <Media
                   resource={image}
-                  className={cn('rounded-space-sm overflow-hidden', {
+                  className={cn('overflow-hidden rounded-3xl', {
                     'lg:basis-1/2': size === 'full', // Adjust width for full-size columns
                     'w-full': size !== 'full', // Full width for non-full-size columns
                   })}
-                  imgClassName="w-full h-auto aspect-video object-cover"
+                  imgClassName="aspect-video h-auto w-full object-cover"
                 />
               )}
               <div

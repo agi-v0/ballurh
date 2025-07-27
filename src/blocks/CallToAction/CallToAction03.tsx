@@ -33,7 +33,7 @@ export const CallToAction03: React.FC<CallToActionProps> = ({
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.3 }}
-        className="gap-sm rounded-space-sm flex flex-col items-center bg-background-neutral"
+        className="gap-sm flex flex-col items-center rounded-3xl bg-background-neutral"
       >
         <div className="gap-sm px-md pt-space-2xl flex flex-col items-center">
           {richText && (

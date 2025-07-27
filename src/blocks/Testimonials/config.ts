@@ -16,6 +16,20 @@ const fields: Field[] = [
     defaultValue: '01',
   },
   {
+    name: 'bgColor',
+    label: 'Background color',
+    type: 'select',
+    options: [
+      { value: 'lightTeal', label: 'Light teal' },
+      { value: 'violet', label: 'Violet' },
+      { value: 'gray', label: 'Gray' },
+      { value: 'inverted', label: 'Inverted' },
+      // Add other layout options here later (e.g., Slider)
+    ],
+    required: true,
+    defaultValue: 'gray',
+  },
+  {
     name: 'selectedTestimonials',
     type: 'relationship',
     label: 'Select Testimonials',

@@ -12,7 +12,7 @@ export const Features07: React.FC<FeaturesBlock> = ({ columns, blockImage, block
   if (!columns || columns.length === 0) return null
 
   return (
-    <div className="gap-md rounded-space-sm container flex flex-col py-section-small">
+    <div className="gap-md container flex flex-col rounded-3xl py-section-small">
       <div className="gap-md flex flex-col">
         {blockHeader && <BlockHeader {...blockHeader} className="px-0" />}
         <motion.div
@@ -24,7 +24,7 @@ export const Features07: React.FC<FeaturesBlock> = ({ columns, blockImage, block
           {blockImage && (
             <Media
               resource={blockImage}
-              className="rounded-space-sm h-auto w-full overflow-hidden lg:basis-1/2"
+              className="h-auto w-full overflow-hidden rounded-3xl lg:basis-1/2"
               imgClassName="aspect-video h-auto w-full object-cover"
             />
           )}
@@ -44,7 +44,7 @@ export const Features07: React.FC<FeaturesBlock> = ({ columns, blockImage, block
           return (
             <motion.div
               key={index}
-              className="gap-sm rounded-space-sm p-sm flex flex-col items-start bg-background-neutral"
+              className="gap-sm p-sm flex flex-col items-start rounded-3xl bg-background-neutral"
               variants={itemsFling}
             >
               {icon && (

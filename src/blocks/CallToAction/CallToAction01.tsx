@@ -34,10 +34,10 @@ export const CallToAction01: React.FC<CallToActionProps> = ({
 
   return (
     <div className={cn('container py-section-small', className)} ref={containerRef}>
-      <div className="rounded-space-sm relative overflow-hidden">
+      <div className="relative overflow-hidden rounded-3xl">
         <div
           data-theme="dark"
-          className="rounded-space-sm p-md gap-sm relative z-1 flex aspect-9/16 h-auto w-full flex-col items-start justify-end overflow-hidden bg-transparent md:aspect-video md:flex-row md:items-end md:justify-between"
+          className="p-md gap-sm relative z-1 flex aspect-9/16 h-auto w-full flex-col items-start justify-end overflow-hidden rounded-3xl bg-transparent md:aspect-video md:flex-row md:items-end md:justify-between"
         >
           {richText && (
             <RichText className="mx-0 lg:max-w-lg" data={richText} enableGutter={false} />
@@ -56,7 +56,7 @@ export const CallToAction01: React.FC<CallToActionProps> = ({
             <Media
               fill
               className="relative h-full w-full object-cover"
-              imgClassName="rounded-space-sm overflow-hidden object-cover"
+              imgClassName="overflow-hidden rounded-3xl object-cover"
               media={media}
             />
           </motion.div>

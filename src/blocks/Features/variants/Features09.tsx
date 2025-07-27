@@ -38,11 +38,11 @@ export const Features09: React.FC<FeaturesBlock> = ({ columns }) => {
               key={index}
               value={String(index)}
               className={cn(
-                'rounded-space-sm p-sm border-0 transition-colors duration-200',
+                'p-sm rounded-3xl border-0 transition-colors duration-200',
                 isActive && 'bg-background-neutral',
               )}
             >
-              <AccordionTrigger className="text-base-tertiary gap-xs flex items-center justify-start bg-transparent p-0 hover:no-underline">
+              <AccordionTrigger className="gap-xs flex items-center justify-start bg-transparent p-0 text-base-tertiary hover:no-underline">
                 {column.icon && (
                   <div className={`shrink-0`}>
                     <Icon
@@ -64,7 +64,7 @@ export const Features09: React.FC<FeaturesBlock> = ({ columns }) => {
                 className={`flex flex-col items-start gap-4 p-0 ${column.icon && 'ps-[clamp(2rem,1.2rem+2vw,3rem)]'}`}
               >
                 {column.content && (
-                  <p className="text-base-secondary text-(length:--text-body-md)">
+                  <p className="text-(length:--text-body-md) text-base-secondary">
                     {column.content.subtitle}
                   </p>
                 )}
@@ -73,7 +73,7 @@ export const Features09: React.FC<FeaturesBlock> = ({ columns }) => {
                   <Media
                     resource={column.image}
                     className="h-auto w-full overflow-hidden rounded-lg md:hidden"
-                    imgClassName="w-full h-auto object-cover"
+                    imgClassName="h-auto w-full object-cover"
                   />
                 )}
               </AccordionContent>
@@ -86,8 +86,8 @@ export const Features09: React.FC<FeaturesBlock> = ({ columns }) => {
           {columns[parseInt(activeAccordionId)].image && (
             <Media
               resource={columns[parseInt(activeAccordionId)].image || undefined}
-              className="rounded-space-sm hidden h-auto w-full overflow-hidden md:sticky md:top-[calc(var(--header-height)+var(--admin-bar-height))] md:block"
-              imgClassName="w-full h-auto object-cover"
+              className="hidden h-auto w-full overflow-hidden rounded-3xl md:sticky md:top-[calc(var(--header-height)+var(--admin-bar-height))] md:block"
+              imgClassName="h-auto w-full object-cover"
             />
           )}
         </>

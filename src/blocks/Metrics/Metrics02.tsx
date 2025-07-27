@@ -94,7 +94,7 @@ export const Metrics02: React.FC<MetricsBlockProps> = ({
             <Media
               resource={media}
               className="h-auto w-full"
-              imgClassName="rounded-space-sm h-auto w-full object-cover"
+              imgClassName="h-auto w-full rounded-3xl object-cover"
             />
           </div>
         )}
@@ -106,7 +106,7 @@ export const Metrics02: React.FC<MetricsBlockProps> = ({
           )}
         >
           {stats?.map((stat, index) => (
-            <div key={stat.id || index} className="rounded-space-sm bg-card p-6">
+            <div key={stat.id || index} className="rounded-3xl bg-card p-6">
               <div className="flex h-full flex-col items-center justify-between">
                 <StatDisplay
                   value={stat.value}
@@ -123,7 +123,7 @@ export const Metrics02: React.FC<MetricsBlockProps> = ({
             <div
               key={'logos'}
               className={cn(
-                'rounded-space-sm flex w-full flex-row items-center bg-card p-6',
+                'flex w-full flex-row items-center rounded-3xl bg-card p-6',
 
                 stats?.length === 1 && 'lg:col-span-1',
                 stats?.length === 3 && 'lg:col-span-3',

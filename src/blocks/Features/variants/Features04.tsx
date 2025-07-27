@@ -62,15 +62,13 @@ export const Features04: React.FC<FeaturesBlock> = ({ columns, blockHeader }) =>
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: scrollDirection === 'down' ? -20 : 20 }}
                 transition={{ duration: 0.3 }}
-                className={cn(
-                  'rounded-space-sm bg-background-neutral-subtle w-full overflow-hidden',
-                )}
+                className={cn('w-full overflow-hidden rounded-3xl bg-background-neutral-subtle')}
               >
                 {activeColumn?.image && (
                   <Media
                     resource={activeColumn.image}
                     className="h-auto w-full"
-                    imgClassName="w-full h-auto object-cover"
+                    imgClassName="h-auto w-full object-cover"
                   />
                 )}
               </motion.div>

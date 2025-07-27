@@ -39,7 +39,7 @@ interface MobileNavProps extends Omit<HeaderType, 'id' | 'updatedAt' | 'createdA
 }
 
 const navigationMenuTriggerStyle = cva(
-  'hover:text-base-primary inline-flex w-full items-center justify-start gap-2 bg-transparent py-4 text-(length:--text-h3) font-medium transition-colors hover:no-underline focus:bg-transparent focus:outline-hidden disabled:pointer-events-none disabled:opacity-50 data-expanded:bg-transparent data-expanded:focus:bg-transparent',
+  'inline-flex w-full items-center justify-start gap-2 bg-transparent py-4 text-(length:--text-h3) font-medium transition-colors hover:text-base-primary hover:no-underline focus:bg-transparent focus:outline-hidden disabled:pointer-events-none disabled:opacity-50 data-expanded:bg-transparent data-expanded:focus:bg-transparent',
 )
 
 export function MobileNav({ tabs, cta, onLinkClick }: MobileNavProps) {
@@ -62,7 +62,7 @@ export function MobileNav({ tabs, cta, onLinkClick }: MobileNavProps) {
   }
 
   return (
-    <div className="bg-background-neutral flex h-full w-full flex-col rounded-3xl">
+    <div className="flex h-full w-full flex-col rounded-3xl bg-background-neutral">
       {/* Preload all navigation images */}
       <NavigationImagePreloader tabs={tabs} />
 
@@ -71,7 +71,7 @@ export function MobileNav({ tabs, cta, onLinkClick }: MobileNavProps) {
         {/* Added pb-20 for CTA spacing */}
         {/* Main Menu View using Accordion */}
         <Accordion
-          className="divide-border flex w-full flex-col divide-y"
+          className="flex w-full flex-col divide-y divide-border"
           onValueChange={handleAccordionValueChange}
           expandedValue={expandedValue}
         >
@@ -119,7 +119,7 @@ export function MobileNav({ tabs, cta, onLinkClick }: MobileNavProps) {
                   variant="inline"
                   className={cn(
                     navigationMenuTriggerStyle(),
-                    'text-base-secondary text-(length:--text-h3)',
+                    'text-(length:--text-h3) text-base-secondary',
                     expandedValue !== null && expandedValue !== `item-${i}` && 'text-base-tertiary',
                   )}
                 />
@@ -164,14 +164,14 @@ interface MobileNavItemProps {
 function MobileNavItem({ item, onClick }: MobileNavItemProps) {
   // Base class for all nav items in the submenu for consistent padding/hover
   const baseItemClasses =
-    'text-base-secondary hover:no-underline h-fit hover:bg-background-neutral-subtle hover:text-base-primary block rounded-space-sm py-2 text-(length:--text-body-md) px-3'
+    'text-base-secondary hover:no-underline h-fit hover:bg-background-neutral-subtle hover:text-base-primary block rounded-3xl py-2 text-(length:--text-body-md) px-3'
 
   switch (item.style) {
     case 'featured':
       return (
         <div className="">
           {item.featuredLink?.tag && (
-            <div className="text-base-tertiary mx-3 mb-2 text-sm font-normal">
+            <div className="mx-3 mb-2 text-sm font-normal text-base-tertiary">
               {item.featuredLink.tag}
             </div>
           )}
@@ -194,7 +194,7 @@ function MobileNavItem({ item, onClick }: MobileNavItemProps) {
       return (
         <div className="space-y-2">
           {item.listLinks?.tag && (
-            <div className="text-base-tertiary mx-3 mb-2 text-sm font-normal">
+            <div className="mx-3 mb-2 text-sm font-normal text-base-tertiary">
               {item.listLinks.tag}
             </div>
           )}
@@ -224,7 +224,7 @@ function MobileNavItem({ item, onClick }: MobileNavItemProps) {
                   {/* Icon/Image Rendering */}
                   {(subLink.link.icon ||
                     (isReferenceObject && 'icon' in referenceValue && referenceValue.icon)) && (
-                    <div className="group-hover:bg-background-neutral text-base-tertiary bg-background flex size-10 flex-none items-center justify-center rounded-full [&_svg]:size-4">
+                    <div className="flex size-10 flex-none items-center justify-center rounded-full bg-background text-base-tertiary group-hover:bg-background-neutral [&_svg]:size-4">
                       {subLink.link.icon ? (
                         subLink.link.icon === 'marn-icon' ? (
                           <MarnIcon className="" />
@@ -263,7 +263,7 @@ function MobileNavItem({ item, onClick }: MobileNavItemProps) {
                       (isReferenceObject &&
                         'tagline' in referenceValue &&
                         referenceValue.tagline)) && (
-                      <p className="text-base-tertiary line-clamp-2 text-sm leading-snug font-normal whitespace-normal">
+                      <p className="line-clamp-2 text-sm leading-snug font-normal whitespace-normal text-base-tertiary">
                         {subLink.link.description ||
                           (isReferenceObject && 'tagline' in referenceValue
                             ? referenceValue.tagline

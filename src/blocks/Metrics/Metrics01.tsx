@@ -93,7 +93,7 @@ export const Metrics01: React.FC<MetricsBlockProps> = ({ stats, enableLogos, log
             key={stat.id || index}
             id={`stat-${index}`}
             className={cn(
-              'rounded-space-sm bg-card p-6',
+              'rounded-3xl bg-card p-6',
               stats?.length === 3 && index === 2 && 'max-lg:col-span-2',
             )}
           >
@@ -113,7 +113,7 @@ export const Metrics01: React.FC<MetricsBlockProps> = ({ stats, enableLogos, log
           <div
             key={'logos'}
             className={cn(
-              'rounded-space-sm flex w-full flex-row items-center bg-background-neutral p-6 pb-8',
+              'flex w-full flex-row items-center rounded-3xl bg-background-neutral p-6 pb-8',
               stats?.length === 1 && 'lg:col-span-1',
               stats?.length === 3 && 'col-span-2 lg:col-span-3',
               stats?.length === 4 && 'lg:col-span-2',

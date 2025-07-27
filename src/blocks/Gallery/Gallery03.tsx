@@ -23,7 +23,7 @@ export const Gallery03: React.FC<Gallery03Props> = ({ images, className }) => {
           <Media
             key={index}
             resource={image}
-            imgClassName="rounded-space-sm h-[60vh]  w-auto object-cover"
+            imgClassName="h-[60vh] w-auto rounded-3xl object-cover"
           />
         ))}
       </InfiniteSlider>

@@ -25,7 +25,7 @@ export const CallToAction02: React.FC<CallToActionProps> = ({
     <div className={cn('py-xl relative container overflow-hidden', className)}>
       <motion.div
         className={cn(
-          'gap-xl px-xl rounded-space-sm relative flex flex-col items-center overflow-hidden py-[calc(var(--spacing-xl)*2)]',
+          'gap-xl px-xl relative flex flex-col items-center overflow-hidden rounded-3xl py-[calc(var(--spacing-xl)*2)]',
         )}
         variants={containerVariants}
         initial="hidden"
@@ -44,7 +44,7 @@ export const CallToAction02: React.FC<CallToActionProps> = ({
             })}
           </motion.div>
         </motion.div>
-        <motion.hr variants={itemsFling} className="border-border z-1 w-full" />
+        <motion.hr variants={itemsFling} className="z-1 w-full border-border" />
         {list && (
           <div
             className="gap-sm z-1 grid w-full grid-cols-2 md:grid-cols-(--columns)"
@@ -61,9 +61,9 @@ export const CallToAction02: React.FC<CallToActionProps> = ({
                   className="gap-sm flex flex-col items-start"
                 >
                   {icon && (
-                    <div className="bg-background-neutral-subtle p-xs inline aspect-square rounded-full">
+                    <div className="p-xs inline aspect-square rounded-full bg-background-neutral-subtle">
                       <Icon
-                        className="text-base-secondary size-sm"
+                        className="size-sm text-base-secondary"
                         height="none"
                         icon={`material-symbols:${icon}`}
                         color="currentColor"
@@ -72,7 +72,7 @@ export const CallToAction02: React.FC<CallToActionProps> = ({
                   )}
                   <div className="flex flex-col gap-2">
                     {title && (
-                      <h3 className="text-body-md text-base-primary font-medium">{title}</h3>
+                      <h3 className="text-body-md font-medium text-base-primary">{title}</h3>
                     )}
                     {subtitle && <p className="text-body-sm text-base-secondary">{subtitle}</p>}
                   </div>

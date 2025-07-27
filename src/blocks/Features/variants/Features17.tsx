@@ -20,13 +20,13 @@ export const Features17: React.FC<FeaturesBlock> = ({ columns, blockHeader }) =>
                     <Media
                       resource={column.image}
                       className="h-auto w-full"
-                      imgClassName="w-full h-auto aspect-square object-cover rounded-space-sm"
+                      imgClassName="aspect-square h-auto w-full rounded-3xl object-cover"
                     />
                   </div>
                 )}
                 {column.content && (
                   <div>
-                    <h3 className="text-body-lg text-base-primary mb-2 font-medium">
+                    <h3 className="text-body-lg mb-2 font-medium text-base-primary">
                       {column.content?.title}
                     </h3>
                     <p className="text-body-sm text-base-secondary">{column.content?.subtitle}</p>

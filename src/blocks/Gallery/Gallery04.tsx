@@ -72,14 +72,14 @@ export const Gallery04: React.FC<Gallery04Props> = ({ interactiveGallery, classN
               {typeof item.image === 'object' && item.image !== null && (
                 <Media
                   resource={item.image}
-                  className="rounded-space-sm bg-background-neutral-subtle h-full w-full overflow-clip object-cover"
+                  className="h-full w-full overflow-clip rounded-3xl bg-background-neutral-subtle object-cover"
                 />
               )}
             </CarouselItem>
           ))}
         </CarouselContent>
       </Carousel>
-      <div className="max-lg:mt-sm space-y-sm rounded-space-sm p-sm z-1 h-fit w-full overflow-hidden bg-neutral-950 max-lg:relative lg:absolute lg:start-[calc(var(--spacing-site)+var(--spacing-site))] lg:bottom-[calc(var(--spacing-xl)+var(--spacing-site))] lg:max-w-[400px]">
+      <div className="max-lg:mt-sm space-y-sm p-sm z-1 h-fit w-full overflow-hidden rounded-3xl bg-neutral-950 max-lg:relative lg:absolute lg:start-[calc(var(--spacing-site)+var(--spacing-site))] lg:bottom-[calc(var(--spacing-xl)+var(--spacing-site))] lg:max-w-[400px]">
         <TransitionPanel
           activeIndex={activeIndex}
           variants={{

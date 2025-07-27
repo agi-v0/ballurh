@@ -43,7 +43,7 @@ export const Features02: React.FC<Features02Props> = ({ columns, readMoreLabel }
             viewport={{ once: true, amount: 0.3 }}
             variants={itemVariants}
             className={cn(
-              'gap-xs group rounded-space-sm col-span-4 flex flex-col bg-background-neutral p-4',
+              'gap-xs group col-span-4 flex flex-col rounded-3xl bg-background-neutral p-4',
               lgColSpanClass,
               {
                 'lg:flex-row': size === 'full',

@@ -30,7 +30,7 @@ export const Gallery02: React.FC<Gallery02Props> = ({ images, className }) => {
               {typeof image === 'object' && image !== null && (
                 <Media
                   resource={image}
-                  className="rounded-space-sm h-full w-full overflow-clip bg-background-neutral-subtle object-cover"
+                  className="h-full w-full overflow-clip rounded-3xl bg-background-neutral-subtle object-cover"
                 />
               )}
             </CarouselItem>

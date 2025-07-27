@@ -24,11 +24,11 @@ export const Features13: React.FC<FeaturesBlock> = ({ columns }) => {
         const iconName = column.icon as string
         return (
           <motion.div key={index} variants={itemsFling}>
-            <Card className="rounded-space-sm p-md bg-card h-full w-full grow border-0">
+            <Card className="p-md h-full w-full grow rounded-3xl border-0 bg-card">
               <CardContent className={cn('gap-md flex flex-col justify-start p-0')}>
                 {column.icon && (
                   <Icon
-                    className="text-base-secondary size-md"
+                    className="size-md text-base-secondary"
                     icon={`material-symbols:${iconName}`}
                     height="none"
                     color="currentColor"
@@ -36,7 +36,7 @@ export const Features13: React.FC<FeaturesBlock> = ({ columns }) => {
                 )}
                 {column.content?.title && (
                   <div className="flex flex-col gap-2">
-                    <h3 className="text-body-lg text-base-primary font-medium">
+                    <h3 className="text-body-lg font-medium text-base-primary">
                       {column.content?.title}
                     </h3>
                     <p className="text-body-md text-base-tertiary">{column.content?.subtitle}</p>

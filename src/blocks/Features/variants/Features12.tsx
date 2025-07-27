@@ -60,19 +60,19 @@ export const Features12: React.FC<Features11Props> = ({ columns, locale }) => {
                 <MorphingDialogTrigger className="h-full w-full">
                   <Card
                     dir={locale === 'ar' ? 'rtl' : 'ltr'}
-                    className="pb-xl hover:bg-background-neutral/90 relative h-full w-full border border-none text-start transition-colors"
+                    className="pb-xl relative h-full w-full border border-none text-start transition-colors hover:bg-background-neutral/90"
                   >
-                    <CardContent className="rounded-space-sm pe-md flex flex-col items-start gap-2 pb-4">
+                    <CardContent className="pe-md flex flex-col items-start gap-2 rounded-3xl pb-4">
                       {column.icon && (
                         <Icon
-                          className="text-base-secondary mb-sm size-md"
+                          className="mb-sm size-md text-base-secondary"
                           icon={`material-symbols:${column.icon}`}
                           height="none"
                           color="currentColor"
                         />
                       )}
                       {column.content?.title && (
-                        <MorphingDialogTitle className="text-base-primary text-body-lg font-medium">
+                        <MorphingDialogTitle className="text-body-lg font-medium text-base-primary">
                           {column.content.title}
                         </MorphingDialogTitle>
                       )}
@@ -83,8 +83,8 @@ export const Features12: React.FC<Features11Props> = ({ columns, locale }) => {
                       )}
                     </CardContent>
                     <div className="absolute end-4 bottom-4 w-full">
-                      <div className="bg-neutral/10 hover:bg-neutral/30 text-base-secondary ms-auto flex size-8 items-center justify-center rounded-full px-2 py-2">
-                        <Plus className="text-base-secondary size-sm" strokeWidth={2.5} />
+                      <div className="bg-neutral/10 hover:bg-neutral/30 ms-auto flex size-8 items-center justify-center rounded-full px-2 py-2 text-base-secondary">
+                        <Plus className="size-sm text-base-secondary" strokeWidth={2.5} />
                       </div>
                     </div>
                   </Card>
@@ -94,7 +94,7 @@ export const Features12: React.FC<Features11Props> = ({ columns, locale }) => {
                     style={{
                       borderRadius: 'var(--radius-space-sm)',
                     }}
-                    className="border-border bg-background-neutral relative h-auto w-[calc(100vw-(var(--spacing-space-site)*2))] max-w-3xl"
+                    className="relative h-auto w-[calc(100vw-(var(--spacing-space-site)*2))] max-w-3xl border-border bg-background-neutral"
                   >
                     <ScrollArea
                       dir={locale === 'ar' ? 'rtl' : 'ltr'}
@@ -102,18 +102,18 @@ export const Features12: React.FC<Features11Props> = ({ columns, locale }) => {
                       type="scroll"
                     >
                       <Card className="h-full border border-none transition-colors">
-                        <CardContent className="rounded-space-sm gap-xs flex h-full flex-col items-start p-0">
-                          <MorphingDialogClose className="bg-neutral/10 hover:bg-neutral/30 text-base-secondary h-10 w-10 rounded-full px-2 py-2" />
+                        <CardContent className="gap-xs flex h-full flex-col items-start rounded-3xl p-0">
+                          <MorphingDialogClose className="bg-neutral/10 hover:bg-neutral/30 h-10 w-10 rounded-full px-2 py-2 text-base-secondary" />
                           {column.icon && (
                             <Icon
-                              className="text-base-secondary size-md my-2"
+                              className="size-md my-2 text-base-secondary"
                               icon={`material-symbols:${column.icon}`}
                               height="none"
                               color="currentColor"
                             />
                           )}
                           {column.content?.title && (
-                            <MorphingDialogTitle className="text-base-primary text-body-lg font-medium">
+                            <MorphingDialogTitle className="text-body-lg font-medium text-base-primary">
                               {column.content.title}
                             </MorphingDialogTitle>
                           )}
@@ -122,12 +122,12 @@ export const Features12: React.FC<Features11Props> = ({ columns, locale }) => {
                               {column.content.subtitle}
                             </MorphingDialogSubtitle>
                           )}
-                          <hr className="border-border w-full" />
+                          <hr className="w-full border-border" />
                           {column.image && (
                             <Media
                               resource={column.image}
-                              className="rounded-space-sm mt-xs h-auto w-full overflow-hidden"
-                              imgClassName="w-full h-auto object-cover"
+                              className="mt-xs h-auto w-full overflow-hidden rounded-3xl"
+                              imgClassName="h-auto w-full object-cover"
                             />
                           )}
                           {column.richTextContent && (

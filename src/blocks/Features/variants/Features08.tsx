@@ -78,7 +78,7 @@ export const Features08: React.FC<Features08Props> = ({ columns, readMoreLabel }
                   {
                     key: index,
                     className: cn(
-                      'gap-xs group bg-background-neutral rounded-space-sm hover:shadow-border grid grid-cols-1 p-4 hover:no-underline md:grid-cols-2',
+                      'gap-xs group grid grid-cols-1 rounded-3xl bg-background-neutral p-4 hover:no-underline hover:shadow-border md:grid-cols-2',
                     ),
                     ...(column.link?.label
                       ? { ...column.link, label: null, variant: 'inline' }
@@ -94,7 +94,7 @@ export const Features08: React.FC<Features08Props> = ({ columns, readMoreLabel }
                       {column.content && (
                         <div className="gap-xs flex grow auto-rows-auto flex-col">
                           {column.content.title && (
-                            <h3 className="text-h3 text-base-primary font-medium">
+                            <h3 className="text-h3 font-medium text-base-primary">
                               {column.content.title}
                             </h3>
                           )}
@@ -118,7 +118,7 @@ export const Features08: React.FC<Features08Props> = ({ columns, readMoreLabel }
                       <Media
                         resource={column.image}
                         className="h-auto w-full"
-                        imgClassName="w-full h-auto aspect-4/3 object-cover rounded-lg"
+                        imgClassName="aspect-4/3 h-auto w-full rounded-lg object-cover"
                       />
                     )}
                   </>,

@@ -32,7 +32,7 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({ testimonial, linkLabe
   const { companyLogo } = company
 
   return (
-    <div className="bg-background-neutral rounded-space-sm grid w-full max-w-360 grid-cols-1 lg:grid-cols-2 lg:items-stretch">
+    <div className="grid w-full max-w-360 grid-cols-1 rounded-3xl bg-background-neutral lg:grid-cols-2 lg:items-stretch">
       <div className="gap-md p-md pb-xs md:pb-md flex w-full flex-col justify-start md:justify-between">
         <div className="gap-sm flex grow flex-col justify-start">
           {companyLogo && (
@@ -45,7 +45,7 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({ testimonial, linkLabe
             <RichText
               data={quote}
               enableProse={false}
-              className="text-base-primary text-(length:--text-h3) font-medium"
+              className="text-(length:--text-h3) font-medium text-base-primary"
             />
           )}
         </div>
@@ -76,14 +76,14 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({ testimonial, linkLabe
                 />
               )}
               <div>
-                <p className="text-base-primary text-body-sm font-medium">{authorInfo.name}</p>
+                <p className="text-body-sm font-medium text-base-primary">{authorInfo.name}</p>
                 <p className="text-body-sm text-base-secondary">{authorInfo.title}</p>
               </div>
             </div>
           )}
           {enableCaseStudy && slug && (
             <CMSLink
-              className="text-body-md text-base-secondary relative font-medium"
+              className="text-body-md relative font-medium text-base-secondary"
               variant="link"
               url={`/customers/${slug}`}
             >

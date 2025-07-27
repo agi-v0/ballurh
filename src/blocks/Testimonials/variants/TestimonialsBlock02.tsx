@@ -30,19 +30,19 @@ export const TestimonialsBlock02: React.FC<Props> = ({ testimonials, linkLabel }
   const { companyLogo } = company
 
   return (
-    <section className="bg-background py-lg">
+    <section className="bg-background py-section-small">
       <motion.div
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.3 }}
         variants={containerVariants}
-        className="py-lg container"
+        className="container overflow-hidden"
       >
         <motion.div
           variants={itemVariants} // Animate the main card as one item
-          className="bg-background-neutral rounded-space-sm grid grid-cols-1 md:grid-cols-2 lg:items-stretch"
+          className=""
         >
-          <div className="gap-md p-md pb-xs md:pb-md flex flex-col justify-start">
+          <div className="flex flex-col justify-start gap-4">
             <div className="gap-md flex grow flex-col justify-start">
               {companyLogo && (
                 <Media resource={companyLogo} imgClassName="h-8 w-auto opacity-50 dark:invert" />
@@ -51,43 +51,34 @@ export const TestimonialsBlock02: React.FC<Props> = ({ testimonials, linkLabel }
                 <RichText
                   data={quote}
                   enableProse={false}
-                  className="text-base-primary text-(length:--text-h3) font-medium"
+                  enableGutter={false}
+                  className="mx-0 text-(length:--text-h3) font-semibold text-base-primary"
                 />
               )}
             </div>
             {authorInfo && (
-              <div className="gap-xs flex flex-row items-center">
+              <div className="flex flex-row items-center gap-4">
                 {authorInfo.avatar && (
                   <Media
                     resource={authorInfo.avatar}
                     fill
-                    className="relative h-12 w-12 overflow-hidden rounded-full"
+                    className="relative size-12 overflow-hidden rounded-full"
                     imgClassName="object-cover"
                   />
                 )}
                 <div>
-                  <p className="text-base-primary text-body-sm font-medium">{authorInfo.name}</p>
+                  <p className="text-body-sm font-medium text-base-primary">{authorInfo.name}</p>
                   <p className="text-body-sm text-base-secondary">{authorInfo.title}</p>
                 </div>
               </div>
             )}
           </div>
-          {featuredImage && (
-            <motion.div variants={itemVariants} className="p-xs flex items-center justify-center">
-              <Media
-                resource={featuredImage}
-                fill
-                className="relative aspect-4/3 h-auto w-full overflow-hidden rounded-lg"
-                imgClassName="object-cover"
-              />
-            </motion.div>
-          )}
         </motion.div>
         {stats && stats.length > 0 && (
-          <div className="mt-space-xs gap-xs grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="mt-space-7 grid grid-cols-2 gap-4 lg:grid-cols-4">
             {stats.map((stat, index) => (
               <motion.div key={stat.id || index} variants={itemsFling}>
-                {<Stat stat={stat} index={index} />}
+                {<Stat stat={stat} index={index} className="bg-transparent" />}
               </motion.div>
             ))}
 

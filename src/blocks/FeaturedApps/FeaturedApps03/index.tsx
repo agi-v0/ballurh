@@ -27,25 +27,25 @@ const AppCard: React.FC<{ app: Integration }> = ({ app }) => {
 
   return (
     // Use background variable and explicit rounding from Figma
-    <div className="bg-background-neutral rounded-space-sm flex w-full flex-col overflow-hidden lg:flex-row">
+    <div className="flex w-full flex-col overflow-hidden rounded-3xl bg-background-neutral lg:flex-row">
       {/* Content Section */}
       <div className="p-md flex w-full flex-col justify-between text-start">
         <div className="gap-sm flex flex-col items-start justify-start">
           {/* Integration Badge (Icon + Name) */}
           <div className="gap-xs flex items-center justify-end">
             {icon && <Media resource={icon} className="size-16 overflow-hidden rounded-xl" />}
-            {name && <span className="text-h3 text-base-secondary font-medium">{name}</span>}
+            {name && <span className="text-h3 font-medium text-base-secondary">{name}</span>}
           </div>
           {/* Title and Description */}
           <div className="gap-xs flex flex-col">
-            {tagline && <h3 className="text-h3 text-base-primary font-medium">{tagline}</h3>}
+            {tagline && <h3 className="text-h3 font-medium text-base-primary">{tagline}</h3>}
             {/* Render summary using RichText component with `data` prop */}
             {summary && (
-              <div className="text-body-lg text-base-secondary font-normal">
+              <div className="text-body-lg font-normal text-base-secondary">
                 <RichText
                   data={summary}
                   enableGutter={false}
-                  className="text-body-lg text-base-secondary font-normal"
+                  className="text-body-lg font-normal text-base-secondary"
                 />
               </div>
             )}
@@ -55,7 +55,7 @@ const AppCard: React.FC<{ app: Integration }> = ({ app }) => {
         {link && (
           <CMSLink
             {...link}
-            className="text-body-md text-base-tertiary hover:text-base-primary w-fit px-0 py-0 hover:bg-transparent"
+            className="text-body-md w-fit px-0 py-0 text-base-tertiary hover:bg-transparent hover:text-base-primary"
             label="المزيد"
           />
         )}

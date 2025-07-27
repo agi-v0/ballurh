@@ -28,17 +28,17 @@ export const Features10: React.FC<FeaturesBlock> = ({ columns }) => {
           {columns.map((column, index) => (
             <CarouselItem key={index} className="ps-xs">
               <Card className="h-full w-full p-4 transition-colors">
-                <CardContent className="rounded-space-sm gap-xs flex h-full flex-col items-start">
+                <CardContent className="gap-xs flex h-full flex-col items-start rounded-3xl">
                   {column.image && (
                     <Media
                       resource={column.image}
                       className="h-auto w-full overflow-hidden rounded-lg"
-                      imgClassName="w-full h-auto aspect-square object-cover"
+                      imgClassName="aspect-square h-auto w-full object-cover"
                     />
                   )}
                   {column.content && (
                     <div className="p-xs pe-md flex flex-col">
-                      <h3 className="text-body-lg text-base-primary font-medium">
+                      <h3 className="text-body-lg font-medium text-base-primary">
                         {column.content.title}
                       </h3>
                       <p className="text-body-md text-base-secondary">{column.content.subtitle}</p>
