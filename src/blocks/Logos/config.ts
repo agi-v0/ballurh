@@ -20,7 +20,7 @@ export const LogosBlock: Block = {
       options: [
         { value: '01', label: '01 - Infinite Slider' },
         { value: '02', label: '02 - Grid (12 Logos)' },
-        { value: '03', label: '03 - Grid (24 Logos)' },
+        { value: '03', label: '03 - Static (Regulatory & Legal)' },
       ],
     },
     logos(),

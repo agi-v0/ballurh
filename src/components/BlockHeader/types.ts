@@ -1,5 +1,6 @@
 // import { Integration, Page, BlogPost, Solution } from '@/payload-types'
 import { Page, BlogPost } from '@/payload-types'
+import { DefaultTypedEditorState } from '@payloadcms/richtext-lexical'
 
 export interface BlockHeaderType {
   className?: string | null
@@ -18,21 +19,7 @@ export interface BlockHeaderType {
     icon?: string | null
     icon_position?: ('flex-row' | 'flex-row-reverse') | null
   }
-  headerText?: {
-    root: {
-      type: string
-      children: {
-        type: string
-        version: number
-        [k: string]: unknown
-      }[]
-      direction: ('ltr' | 'rtl') | null
-      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | ''
-      indent: number
-      version: number
-    }
-    [k: string]: unknown
-  } | null
+  headerText?: DefaultTypedEditorState
   links?:
     | {
         link: {

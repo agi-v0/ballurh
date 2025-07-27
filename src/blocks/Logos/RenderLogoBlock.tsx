@@ -5,6 +5,7 @@ import { Logo01 } from './Logo01'
 import { Logo02 } from './Logo02'
 import { Logo03 } from './Logo03'
 import { TypedLocale } from 'payload'
+import { BlockHeaderType } from '@/components/BlockHeader/types'
 
 type LogoBlockType = LogoBlock & {
   locale: TypedLocale
@@ -40,7 +41,7 @@ export const RenderLogoBlock: React.FC<LogoBlockType> = async (props) => {
 
   return (
     <Fragment>
-      <BlockComponent logos={logos} />
+      <BlockComponent logos={logos} blockHeader={blockHeader as BlockHeaderType} />
     </Fragment>
   )
 }

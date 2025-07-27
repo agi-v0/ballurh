@@ -25,15 +25,14 @@ export const BlockHeader: React.FC<BlockHeaderType> = (props) => {
   return (
     <div
       className={cn(
+        'pt-section-large',
         'gap-y-space-md container grid grid-cols-1 justify-items-start',
         type === 'split' && 'md:gap-space-sm md:grid-cols-2',
         type === 'center' && 'justify-items-center',
         className,
       )}
     >
-      {(badge?.label || badge?.reference) && (
-        <Badge size="lg" {...badge} className={cn('col-span-2', badgeClassName)} />
-      )}
+      {badge?.label && <Badge size="lg" {...badge} className={cn('col-span-2', badgeClassName)} />}
 
       {headerText && (
         <RichText

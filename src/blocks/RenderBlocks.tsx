@@ -68,16 +68,16 @@ export const RenderBlocks: React.FC<{
         return (
           <div
             id={block.blockName || undefined}
-            className={cn(
-              'pt-[clamp(4rem,2.4rem+4vw,6rem)]',
-              // block.blockType === 'pricingBlock' && block.type === '01' && 'pt-0',
-              // block.blockType === 'marketplaceBlock' && 'pt-0',
-            )}
+            className={cn()
+            // 'pt-[clamp(4rem,2.4rem+4vw,6rem)]',
+            // block.blockType === 'pricingBlock' && block.type === '01' && 'pt-0',
+            // block.blockType === 'marketplaceBlock' && 'pt-0',
+            }
             key={index}
           >
             {blockHeader &&
               !(block?.blockType === 'featuresBlock' && ['06', '07', '17'].includes(block.type)) &&
-              // !(block.blockType === 'featuredAppsBlock' && block.type === '01') &&
+              !(block.blockType === 'logosBlock' && block.type === '03') &&
               !(block.blockType === 'faqBlock' && block.type === '02') && (
                 <BlockHeader {...blockHeader} />
               )}
