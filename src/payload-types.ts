@@ -80,6 +80,7 @@ export interface Config {
     metricsBlock: MetricsBlock;
     richTextBlock: RichTextBlock;
     styledListBlock: StyledListBlock;
+    teamBlock: TeamBlock;
     testimonialsBlock: TestimonialsBlock;
   };
   collections: {
@@ -341,6 +342,7 @@ export interface Page {
     | LogoBlock
     | MetricsBlock
     | RichTextBlock
+    | TeamBlock
     | TestimonialsBlock
   )[];
   meta?: {
@@ -1659,6 +1661,84 @@ export interface RichTextBlock {
   id?: string | null;
   blockName?: string | null;
   blockType: 'richTextBlock';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "TeamBlock".
+ */
+export interface TeamBlock {
+  blockHeader: {
+    type: 'center' | 'split' | 'start';
+    badge?: {
+      type?: ('label' | 'reference') | null;
+      label?: string | null;
+      color?: ('blue' | 'red' | 'green' | 'yellow' | 'gray' | 'inverted' | 'outline') | null;
+      /**
+       * Select an icon from the Material Symbols icon set. You can preview all available icons at https://fonts.google.com/icons
+       */
+      icon?: string | null;
+      icon_position?: ('flex-row' | 'flex-row-reverse') | null;
+    };
+    headerText?: {
+      root: {
+        type: string;
+        children: {
+          type: string;
+          version: number;
+          [k: string]: unknown;
+        }[];
+        direction: ('ltr' | 'rtl') | null;
+        format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+        indent: number;
+        version: number;
+      };
+      [k: string]: unknown;
+    } | null;
+    links?:
+      | {
+          link: {
+            type?: ('reference' | 'custom') | null;
+            newTab?: boolean | null;
+            reference?:
+              | ({
+                  relationTo: 'pages';
+                  value: string | Page;
+                } | null)
+              | ({
+                  relationTo: 'blog-posts';
+                  value: string | BlogPost;
+                } | null);
+            url?: string | null;
+            label: string;
+            /**
+             * Choose the button style.
+             */
+            color?: ('brand' | 'neutral') | null;
+            /**
+             * Choose how the link should be rendered.
+             */
+            variant?: ('primary' | 'secondary' | 'tertiary' | 'ghost' | 'link') | null;
+          };
+          id?: string | null;
+        }[]
+      | null;
+  };
+  team?:
+    | {
+        name?: string | null;
+        position?: string | null;
+        bio?: string | null;
+        image?: (string | null) | Media;
+        social?: {
+          linkedin?: string | null;
+          x?: string | null;
+        };
+        id?: string | null;
+      }[]
+    | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'teamBlock';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema

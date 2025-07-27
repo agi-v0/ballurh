@@ -8,7 +8,7 @@ import { RenderFeaturesBlock } from '@/blocks/Features/RenderFeaturesBlock'
 import { BlockHeader } from '@/components/BlockHeader'
 import { BlockHeaderType } from '@/components/BlockHeader/types'
 // import { RenderFeaturedAppsBlock } from './FeaturedApps/RenderFeaturedAppsBlock'
-import { RenderTestimonialsBlock } from './Testimonials/RenderTestimonialsBlock'
+import { RenderBlogBlock } from './Blog/RenderBlogBlock'
 import { RenderFAQBlock } from './FAQ/RenderFAQBlock'
 import { RenderGalleryBlock } from './Gallery/RenderGalleryBlock'
 import { RenderCallToActionBlock } from './CallToAction/RenderCallToActionBlock'
@@ -18,8 +18,9 @@ import { RenderLogoBlock } from './Logos/RenderLogoBlock'
 import { RenderRichTextBlock } from './RichText/RenderRichTextBlock'
 import { RenderMetricsBlock } from './Metrics/RenderMetricsBlock'
 // import { RenderPricingBlock } from './Pricing/RenderPricingBlock'
+import { RenderTeamBlock } from './Team/RenderTeamBlock'
+import { RenderTestimonialsBlock } from './Testimonials/RenderTestimonialsBlock'
 // import { SearchableIntegrationsGrid } from '@/blocks/Marketplace/SearchableGrid'
-import { RenderBlogBlock } from './Blog/RenderBlogBlock'
 import { cn } from '@/utilities/ui'
 
 const blockComponents = {
@@ -36,6 +37,7 @@ const blockComponents = {
   mediaBlock: MediaBlock,
   metricsBlock: RenderMetricsBlock,
   richTextBlock: RenderRichTextBlock,
+  teamBlock: RenderTeamBlock,
   testimonialsBlock: RenderTestimonialsBlock,
   // featuredAppsBlock: RenderFeaturedAppsBlock,
   // marketplaceBlock: SearchableIntegrationsGrid,

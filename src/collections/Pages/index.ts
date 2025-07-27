@@ -104,6 +104,7 @@ export const Pages: CollectionConfig<'pages'> = {
                 'metricsBlock',
                 // 'pricingBlock',
                 'richTextBlock',
+                'teamBlock',
                 'testimonialsBlock',
               ],
               required: true,

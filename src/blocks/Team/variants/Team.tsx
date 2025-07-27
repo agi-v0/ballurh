@@ -1,0 +1,41 @@
+'use client'
+import React from 'react'
+import { TeamBlock } from '@/payload-types'
+import { motion } from 'motion/react'
+import { containerVariants, itemsFling } from '@/utilities/motion'
+
+import { cn } from '@/utilities/ui'
+
+import { Card, CardContent } from '@/components/ui/card'
+import { Icon } from '@iconify-icon/react'
+
+export const Team: React.FC<TeamBlock> = ({ team }) => {
+  return (
+    <motion.div
+      className="py-xl gap-xs container grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3"
+      variants={containerVariants}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.3 }}
+    >
+      {team?.map((member, index) => {
+        return (
+          <motion.div key={index} variants={itemsFling}>
+            <Card className="p-md h-full w-full grow rounded-3xl border-0 bg-card">
+              <CardContent className={cn('gap-md flex flex-col justify-start p-0')}>
+                {member.name && (
+                  <div className="flex flex-col gap-2">
+                    <h3 className="text-body-lg font-medium text-base-primary">{member.name}</h3>
+                    <p className="text-body-md text-base-tertiary">{member.position}</p>
+                    <p className="text-body-md text-base-tertiary">{member.bio}</p>
+                    <div>{member.social?.linkedin}</div>
+                  </div>
+                )}
+              </CardContent>
+            </Card>
+          </motion.div>
+        )
+      })}
+    </motion.div>
+  )
+}

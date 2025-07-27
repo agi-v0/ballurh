@@ -42,10 +42,11 @@ import { GalleryBlock } from '@/blocks/Gallery/config'
 import { FaqBlock } from '@/blocks/FAQ/config'
 import { DividerBlock } from '@/blocks/Divider/config'
 import { LogosBlock } from '@/blocks/Logos/config'
+import { MetricsBlock } from '@/blocks/Metrics/config'
 import { RichTextBlock } from '@/blocks/RichText/config'
+import { TeamBlock } from './blocks/Team/config'
 
 // import { Marketplace } from './blocks/Marketplace/config'
-import { MetricsBlock } from '@/blocks/Metrics/config'
 
 import { en } from '@payloadcms/translations/languages/en'
 import { ar } from '@payloadcms/translations/languages/ar'
@@ -144,6 +145,7 @@ export default buildConfig({
     // PricingBlock,
     RichTextBlock,
     StyledList,
+    TeamBlock,
     TestimonialsBlock,
   ],
   collections: [
