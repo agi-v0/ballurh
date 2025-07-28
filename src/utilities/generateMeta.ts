@@ -27,11 +27,13 @@ export const generateMeta = async (args: {
   const ogImage = getImageURL(doc?.meta?.image)
 
   const title = doc?.meta?.title
-    ? doc?.meta?.title + ' | Payload Website Template'
-    : 'Payload Website Template'
+    ? doc?.meta?.title + ' | بلورة'
+    : 'بلّورة | منصة ذكاء أعمال لقطاع التجزئة والمطاعم والمقاهي'
 
   return {
-    description: doc?.meta?.description,
+    description:
+      doc?.meta?.description ||
+      '‏زد مبيعاتك، تنبأ بسلوكيات الطلب وقم بتحسين مؤشرات الأداء من خلال إتخاذ قرارات نمو تعتمد على البيانات باستخدام قوة تقنيات ذكاء الأعمال.',
     openGraph: mergeOpenGraph({
       description: doc?.meta?.description || '',
       images: ogImage
