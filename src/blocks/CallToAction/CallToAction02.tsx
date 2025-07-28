@@ -1,7 +1,7 @@
 'use client'
 import React from 'react'
-import { motion } from 'motion/react'
-import { containerVariants, itemsFling } from '@/utilities/motion'
+import { motion, Variants } from 'motion/react'
+import { itemsFling } from '@/utilities/motion'
 import { cn } from '@/utilities/ui'
 
 import type { CallToActionBlock } from '@/payload-types'
@@ -15,6 +15,22 @@ type CallToActionProps = CallToActionBlock & {
   className?: string
 }
 
+const containerVariants: Variants = {
+  hidden: { opacity: 0, y: 20, scale: 0.95 }, // opacity could be 0
+  visible: {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    transition: {
+      staggerChildren: 0.1,
+      type: 'spring',
+      stiffness: 800,
+      damping: 100,
+      mass: 4,
+    },
+  },
+}
+
 export const CallToAction02: React.FC<CallToActionProps> = ({
   links,
   richText,
@@ -22,17 +38,18 @@ export const CallToAction02: React.FC<CallToActionProps> = ({
   className,
 }) => {
   return (
-    <div className={cn('py-xl relative container overflow-hidden', className)}>
+    <div
+      data-theme="dark"
+      className={cn('relative container overflow-hidden py-space-7', className)}
+    >
       <motion.div
-        className={cn(
-          'gap-xl px-xl relative flex flex-col items-center overflow-hidden rounded-3xl py-[calc(var(--spacing-xl)*2)]',
-        )}
+        className="relative flex flex-col items-center gap-space-7 overflow-hidden rounded-3xl bg-teal-950 px-space-7 py-space-7 shadow-xs"
         variants={containerVariants}
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: false, amount: 0.1 }}
+        viewport={{ once: false, amount: 0.3 }}
       >
-        <motion.div className="gap-lg z-1 flex flex-col items-center">
+        <motion.div className="z-1 flex flex-col items-center gap-6">
           {richText && (
             <motion.div variants={itemsFling}>
               <RichText className="mb-0 text-center" data={richText} enableGutter={false} />
@@ -44,68 +61,38 @@ export const CallToAction02: React.FC<CallToActionProps> = ({
             })}
           </motion.div>
         </motion.div>
-        <motion.hr variants={itemsFling} className="z-1 w-full border-border" />
+
         {list && (
-          <div
-            className="gap-sm z-1 grid w-full grid-cols-2 md:grid-cols-(--columns)"
+          <motion.div
+            className="z-1 flex w-full flex-col items-center gap-4 md:flex-row md:justify-center"
             style={
               { '--columns': `repeat(${list?.length}, minmax(0, 1fr))` } as React.CSSProperties
             }
           >
             {list.map((column, index) => {
-              const { title, subtitle, icon } = column
+              const { title, icon } = column
               return (
                 <motion.div
                   key={index}
                   variants={itemsFling}
-                  className="gap-sm flex flex-col items-start"
+                  className="flex flex-row items-start gap-2"
                 >
                   {icon && (
                     <div className="p-xs inline aspect-square rounded-full bg-background-neutral-subtle">
                       <Icon
-                        className="size-sm text-base-secondary"
+                        className="size-4 text-base-secondary"
                         height="none"
                         icon={`material-symbols:${icon}`}
                         color="currentColor"
                       />
                     </div>
                   )}
-                  <div className="flex flex-col gap-2">
-                    {title && (
-                      <h3 className="text-body-md font-medium text-base-primary">{title}</h3>
-                    )}
-                    {subtitle && <p className="text-body-sm text-base-secondary">{subtitle}</p>}
-                  </div>
+                  {title && <h3 className="text-small font-medium text-base-tertiary">{title}</h3>}
                 </motion.div>
               )
             })}
-          </div>
+          </motion.div>
         )}
-        <motion.div
-          // style={{
-          //   scaleX: useTransform(scrollYProgress, [0, 1], [0.8, 1]),
-          // }}
-          initial="hidden"
-          whileInView="visible"
-          variants={{
-            hidden: {
-              opacity: 1,
-              scale: 0.9,
-            },
-            visible: {
-              opacity: 1,
-              scale: 1,
-              transition: {
-                type: 'spring',
-                stiffness: 800,
-                damping: 80,
-                mass: 4,
-              },
-            },
-          }}
-          viewport={{ once: false, amount: 0.05 }}
-          className="absolute inset-0 mx-auto rounded-3xl bg-red-200"
-        />
       </motion.div>
     </div>
   )
