@@ -16,7 +16,7 @@ export const HighImpactHero: React.FC<Page['hero']> = ({ links, media, richText 
   // })
 
   return (
-    <div className="relative grid min-h-screen w-full grid-cols-8 items-center justify-center px-(--gutter-h) py-10 max-lg:mt-header-plus-admin-bar lg:grid-cols-16 lg:py-0">
+    <div className="xpx-(--gutter-h) relative container grid min-h-screen w-full grid-cols-8 items-center justify-center py-10 max-lg:mt-header-plus-admin-bar lg:grid-cols-16 lg:py-0">
       <div className="relative z-1 col-span-8 mb-10 flex flex-col lg:col-span-6 lg:mb-0">
         {richText && (
           <RichText className="mb-6 [&>p]:text-large" data={richText} enableGutter={false} />
