@@ -71,7 +71,7 @@ export default async function RootLayout({
 
           <Header adminBarProps={{ preview: isEnabled }} />
           {children}
-          <Footer />
+          {/* <Footer /> */}
         </Providers>
       </body>
     </html>

@@ -8,12 +8,14 @@ import { InfiniteSlider } from '@/components/motion-ui/infinite-slider'
 import { Icon } from '@iconify-icon/react/dist/iconify.mjs'
 import { SlidingNumber } from '@/components/motion-ui/sliding-number'
 import { useInView } from 'motion/react'
+import { BlockHeader } from '@/components/BlockHeader'
 
 export const Metrics02: React.FC<MetricsBlockProps> = ({
   stats,
   blockImage: { media } = {},
   enableLogos,
   logos,
+  blockHeader,
 }) => {
   const renderIndicator = (indicator?: 'increase' | 'decrease' | 'noChange' | null) => {
     switch (indicator) {
@@ -86,40 +88,47 @@ export const Metrics02: React.FC<MetricsBlockProps> = ({
   }
 
   return (
-    <div className="container py-section-small">
-      <div className="gap-xl grid lg:grid-cols-2 lg:items-center">
-        {/* Image Section */}
-        {media && typeof media === 'object' && (
-          <div className="order-2 lg:order-1">
-            <Media
-              resource={media}
-              className="h-auto w-full"
-              imgClassName="h-auto w-full rounded-3xl object-cover"
-            />
-          </div>
-        )}
-
-        <div
-          className={cn(
-            'grid grid-cols-1 gap-4 md:grid-cols-2',
-            stats?.length === 1 && 'lg:grid-cols-2',
+    <div className="bg-background-neutral-subtle">
+      <div className="container py-section-small">
+        <div className="grid gap-space-7 lg:grid-cols-2 lg:items-center">
+          {/* Image Section */}
+          {media && typeof media === 'object' && (
+            <div className="order-2">
+              <Media
+                resource={media}
+                className="h-auto w-full"
+                imgClassName="h-auto w-full rounded-3xl object-cover"
+              />
+            </div>
           )}
-        >
-          {stats?.map((stat, index) => (
-            <div key={stat.id || index} className="rounded-3xl bg-card p-6">
-              <div className="flex h-full flex-col items-center justify-between">
+
+          <div
+            className={cn(
+              'grid grid-cols-1 gap-6 md:grid-cols-2',
+              stats?.length === 1 && 'lg:grid-cols-2',
+            )}
+          >
+            <BlockHeader
+              {...blockHeader}
+              type="start"
+              className="col-span-1 mb-space-7 p-0 pt-0! md:col-span-full"
+            />
+            {stats?.map((stat, index) => (
+              <div
+                key={stat.id || index}
+                className="flex h-full flex-col items-start justify-start pe-4"
+              >
                 <StatDisplay
                   value={stat.value}
-                  className="flex-1 text-(length:--text-h3) font-medium text-base-primary"
+                  className="text-(length:--text-h3) font-medium text-base-primary"
                 />
-                <div className="flex flex-row items-center justify-center text-center">
+                <div className="flex flex-row items-center justify-start text-start">
                   {renderIndicator(stat.indicator)}
-                  <p className="text-body-md text-base-tertiary">{stat.label}</p>
+                  <p className="text-small text-base-tertiary">{stat.label}</p>
                 </div>
               </div>
-            </div>
-          ))}
-          {enableLogos && logosGroup && logosGroup.length > 0 && (
+            ))}
+            {/* {enableLogos && logosGroup && logosGroup.length > 0 && (
             <div
               key={'logos'}
               className={cn(
@@ -156,7 +165,8 @@ export const Metrics02: React.FC<MetricsBlockProps> = ({
                 </ul>
               </div>
             </div>
-          )}
+          )} */}
+          </div>
         </div>
       </div>
     </div>

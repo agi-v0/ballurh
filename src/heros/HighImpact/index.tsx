@@ -19,14 +19,14 @@ export const HighImpactHero: React.FC<Page['hero']> = ({ links, media, richText 
     <div className="relative grid min-h-screen w-full grid-cols-8 items-center justify-center px-(--gutter-h) py-10 max-lg:mt-header-plus-admin-bar lg:grid-cols-16 lg:py-0">
       <div className="relative col-span-8 mb-10 flex flex-col lg:col-span-6 lg:mb-0">
         {richText && (
-          <RichText className="[&>p]:text-large mb-6" data={richText} enableGutter={false} />
+          <RichText className="mb-6 [&>p]:text-large" data={richText} enableGutter={false} />
         )}
         {Array.isArray(links) && links.length > 0 && (
           <ul className="flex gap-1">
             {links.map(({ link }, i) => {
               return (
                 <li key={i}>
-                  <CMSLink {...link} size="lg" />
+                  <CMSLink {...link} size="lg" className="text-(length:--text-main)" />
                 </li>
               )
             })}

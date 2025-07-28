@@ -74,11 +74,11 @@ export const HeaderClient: React.FC<HeaderType & AdminBarProps> = ({
     <header
       // data-theme={headerTheme || 'light'}
       className={cn(
-        'border-border fixed top-0 left-0 z-10 w-full max-w-screen border-0 bg-transparent transition-colors duration-300',
+        'fixed top-0 left-0 z-10 w-full max-w-screen border-0 border-border bg-transparent transition-colors duration-300',
         '-md:top-[var(--admin-bar-height,0px)]',
         hideBackground && 'before:opacity-0 after:opacity-0',
-        isMobileNavOpen && 'bg-background border-none',
-        y > 20 && 'bg-background border-b',
+        isMobileNavOpen && 'border-none bg-background',
+        y > 20 && 'border-b bg-background',
       )}
     >
       <AdminBar adminBarProps={adminBarProps} />
@@ -91,7 +91,7 @@ export const HeaderClient: React.FC<HeaderType & AdminBarProps> = ({
         <div className="z-50 w-full max-w-54">
           <Link
             href="/"
-            className="hover:text-base-secondary text-base-primary shrink-0 transition-colors"
+            className="shrink-0 text-base-primary transition-colors hover:text-orange-500"
           >
             <Logo className="h-6 w-auto" />
           </Link>

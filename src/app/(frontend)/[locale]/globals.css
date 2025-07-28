@@ -86,7 +86,7 @@
   --sidebar-border: oklch(0.929 0.013 255.508);
   --sidebar-ring: oklch(0.704 0.04 256.788);
 
-  --brand: var(--color-orange-600);
+  --brand: var(--color-orange-500);
   --neutral: var(--color-slate-950);
   /* use for background */
   --background: var(--color-slate-50);
@@ -144,6 +144,8 @@
   --sidebar-border: oklch(1 0 0 / 10%);
   --sidebar-ring: oklch(0.551 0.027 264.364);
 
+  --neutral: var(--color-white);
+
   --neutral-primary: --alpha(var(--color-white) / 100%);
   --neutral-secondary: --alpha(var(--color-white) / 60%);
   --neutral-tertiary: --alpha(var(--color-white) / 40%);
@@ -178,6 +180,9 @@
   --text-large: clamp(1.14rem, 1.106rem + 0.17vw, 1.26rem);
   --text-main: clamp(1rem, 0.986rem + 0.07vw, 1.05rem);
   --text-small: clamp(0.875rem, 0.875rem + 0vw, 0.875rem);
+
+  --color-brand: var(--brand);
+  --color-neutral: var(--neutral);
 
   /* use for background */
   --color-background: var(--background);

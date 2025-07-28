@@ -147,15 +147,15 @@ export function DesktopNav({ tabs, cta, className }: DesktopNavProps) {
           </NavigationMenuList>
         </NavigationMenu>
       </div>
-      <div className="pointer-events-none flex w-full max-w-54 flex-row items-center justify-end gap-2">
+      <div className="pointer-events-none flex w-full max-w-54 flex-row items-center justify-end gap-1">
         {cta &&
           cta.map((ctaItem, id) => (
             <CMSLink
               key={id}
               {...ctaItem.link}
-              size="sm"
+              size="default"
               color={ctaItem.link.color ?? undefined}
-              className="pointer-events-auto z-10 h-10 text-sm"
+              className="pointer-events-auto z-10 px-3 text-sm"
             />
           ))}
       </div>

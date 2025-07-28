@@ -4,37 +4,95 @@ import { type VariantProps, cva } from 'class-variance-authority'
 import * as React from 'react'
 
 const buttonVariants = cva(
-  'inline-flex items-center justify-center rounded-lg text-sm font-medium whitespace-nowrap ring-offset-background transition-colors focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:outline-hidden disabled:pointer-events-none disabled:opacity-50',
+  'inline-flex items-center justify-center rounded-xl text-sm font-medium whitespace-nowrap ring-offset-background transition-colors focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:outline-hidden disabled:pointer-events-none disabled:opacity-50',
   {
     defaultVariants: {
       size: 'default',
       variant: 'default',
+      color: 'neutral',
     },
     variants: {
       size: {
         clear: '',
         default: 'h-10 px-4 py-2',
-        icon: 'h-10 w-10',
-        lg: 'text-main h-12 rounded-xl px-5',
-        sm: 'h-9 rounded px-3',
+        icon: 'h-10 w-10 rounded-full',
+        lg: 'h-12 rounded-xl px-5 text-main',
+        sm: 'h-9 px-3',
       },
       variant: {
-        default: 'bg-primary text-primary-foreground hover:bg-primary/90',
-        destructive: 'bg-destructive text-destructive-foreground hover:bg-destructive/90',
-        ghost: 'hover:bg-primary/20 hover:text-accent-foreground',
-        link: 'items-start justify-start text-primary underline-offset-4 hover:underline',
-        outline: 'border border-border bg-background hover:bg-card hover:text-accent-foreground',
-
-        primary: 'bg-primary text-primary-foreground hover:bg-primary/90',
-        secondary: 'bg-secondary text-secondary-foreground hover:bg-secondary/80',
-        tertiary: 'bg-tertiary text-tertiary-foreground hover:bg-tertiary/90',
+        default: '',
+        destructive: '',
+        ghost: '',
+        link: '',
+        outline: '',
+        primary: '',
+        secondary: '',
+        tertiary: '',
+      },
+      color: {
+        neutral: '',
+        brand: '',
       },
     },
+    compoundVariants: [
+      {
+        color: 'brand',
+        variant: 'primary',
+        className: 'bg-brand text-white hover:bg-brand/90',
+      },
+      {
+        color: 'brand',
+        variant: 'secondary',
+        className: 'border-input bg-transparent text-base-secondary hover:bg-background-neutral',
+      },
+      {
+        color: 'brand',
+        variant: 'tertiary',
+        className: 'bg-brand/10 text-brand-secondary hover:bg-brand/30',
+      },
+      {
+        color: 'brand',
+        variant: 'ghost',
+        className: 'text-brand-secondary hover:bg-brand/10',
+      },
+      {
+        color: 'brand',
+        variant: 'link',
+        className: 'p-0 text-brand-primary hover:text-brand-primary/90',
+      },
+      {
+        color: 'neutral',
+        variant: 'primary',
+        className:
+          'border bg-teal-950 text-white shadow-xs hover:bg-orange-500 hover:text-base-primary',
+      },
+      {
+        color: 'neutral',
+        variant: 'secondary',
+        className:
+          'border-input bg-transparent text-base-secondary hover:border-neutral/20 hover:bg-background-neutral',
+      },
+      {
+        color: 'neutral',
+        variant: 'tertiary',
+        className: 'bg-neutral/10 text-base-secondary hover:bg-neutral/30',
+      },
+      {
+        color: 'neutral',
+        variant: 'ghost',
+        className: 'text-base-secondary hover:bg-neutral/10',
+      },
+      {
+        color: 'neutral',
+        variant: 'link',
+        className: 'p-0 text-base-secondary hover:text-base-secondary/90',
+      },
+    ],
   },
 )
 
 export interface ButtonProps
-  extends React.ButtonHTMLAttributes<HTMLButtonElement>,
+  extends Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, 'color'>,
     VariantProps<typeof buttonVariants> {
   asChild?: boolean
   ref?: React.Ref<HTMLButtonElement>
@@ -46,6 +104,7 @@ const Button: React.FC<ButtonProps> = ({
   size,
   variant,
   ref,
+  color = 'neutral',
   ...props
 }) => {
   const Comp = asChild ? SlotPrimitive.Slot : 'button'

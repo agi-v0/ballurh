@@ -82,6 +82,7 @@ export const RenderBlocks: React.FC<{
             {blockHeader &&
               !(block?.blockType === 'featuresBlock' && ['06', '07', '17'].includes(block.type)) &&
               !(block.blockType === 'logosBlock' && block.type === '03') &&
+              !(block.blockType === 'metricsBlock' && block.type === '02') &&
               !(block.blockType === 'faqBlock' && block.type === '02') && (
                 <BlockHeader {...blockHeader} />
               )}
