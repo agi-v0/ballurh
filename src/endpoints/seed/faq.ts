@@ -1,9 +1,5 @@
 import type { Payload, PayloadRequest } from 'payload'
-import type { Category } from '@/payload-types'
-
-export interface FAQsResult {
-  faqs: any[]
-}
+import type { Category, Faq } from '@/payload-types'
 
 export async function seedFAQs(
   payload: Payload,
@@ -14,7 +10,7 @@ export async function seedFAQs(
     manageCategory?: Category
     otherCategory?: Category
   },
-): Promise<FAQsResult> {
+): Promise<Faq[]> {
   const faqsData = [
     // بيع - Selling FAQs
     {
@@ -433,9 +429,9 @@ export async function seedFAQs(
   })
 
   const faqResults = await Promise.all(faqPromises)
-  const faqs = faqResults.filter(Boolean)
+  const faqs = faqResults.filter((faq) => faq !== null)
 
   payload.logger.info(`✓ Seeded ${faqs.length} FAQs`)
 
-  return { faqs }
+  return faqs
 }

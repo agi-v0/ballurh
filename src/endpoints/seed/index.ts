@@ -805,7 +805,7 @@ export const seed = async ({
   )
 
   payload.logger.info(`— Seeding FAQs...`)
-  await seedFAQs(payload, req, {
+  const allFAQs = await seedFAQs(payload, req, {
     sellCategory,
     operateCategory,
     manageCategory,
@@ -829,15 +829,6 @@ export const seed = async ({
     sort: '-publishedAt',
   })
   const allBlogPosts = blogPostsResponse.docs
-
-  payload.logger.info(`— Fetching FAQs for demo pages...`)
-  const faqsResponse = await payload.find({
-    collection: 'faq',
-    depth: 1,
-    limit: 10,
-    sort: '-updatedAt',
-  })
-  const allFAQs = faqsResponse.docs
 
   payload.logger.info(`— Fetching customers for demo pages...`)
   // Seed Customers (replaces both testimonials and case studies)
