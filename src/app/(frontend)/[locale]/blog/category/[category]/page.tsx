@@ -94,7 +94,7 @@ export default async function Page({ params: paramsPromise }: Args) {
   // }
 
   return (
-    <article className="bg-background overflow-x-clip">
+    <article className="overflow-x-clip bg-background">
       <PageClient />
 
       <RenderHero {...hero} />
@@ -103,7 +103,7 @@ export default async function Page({ params: paramsPromise }: Args) {
 
       <div className="container mb-8">
         <PageRange
-          collection="posts"
+          collection="blog-posts"
           currentPage={posts.page}
           limit={12}
           totalDocs={posts.totalDocs}
