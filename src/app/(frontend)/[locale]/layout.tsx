@@ -56,11 +56,7 @@ export default async function RootLayout({
       dir={locale === 'ar' ? 'rtl' : 'ltr'}
       suppressHydrationWarning
     >
-      <head>
-        <InitTheme />
-        <link href="/favicon.ico" rel="icon" sizes="32x32" />
-        <link href="/favicon.svg" rel="icon" type="image/svg+xml" />
-      </head>
+      <head>{/* <InitTheme /> */}</head>
       <body>
         <Providers>
           {/* <AdminBar

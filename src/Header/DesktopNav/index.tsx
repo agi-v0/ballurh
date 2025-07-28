@@ -17,7 +17,7 @@ import { CMSLink } from '@/components/Link'
 import type { BlogPost, Header as HeaderType, Page } from '@/payload-types'
 import RichText from '@/components/RichText'
 import { Icon } from '@iconify-icon/react'
-import MarnIcon from '@/components/ui/marn-icon'
+import BallurhIcon from '@/components/ui/ballurh-icon'
 
 interface DesktopNavProps extends Omit<HeaderType, 'id' | 'updatedAt' | 'createdAt'> {
   className?: string
@@ -214,7 +214,7 @@ const ListItem = React.forwardRef<HTMLAnchorElement | HTMLDivElement, ListItemPr
                     {subLink.icon && (
                       <div className="flex size-10 flex-none items-center justify-center rounded-md bg-background text-base-tertiary group-hover:bg-background-neutral group-hover:text-base-secondary">
                         {subLink.icon === 'marn-icon' ? (
-                          <MarnIcon className="" />
+                          <BallurhIcon className="" />
                         ) : (
                           <Icon icon={`ri:${subLink.icon}`} className="size-6" height="none" />
                         )}

@@ -8,7 +8,7 @@ import { cn } from '@/utilities/ui'
 import { CMSLink } from '@/components/Link'
 import type { Header as HeaderType } from '@/payload-types'
 import { Icon } from '@iconify-icon/react'
-import MarnIcon from '@/components/ui/marn-icon'
+import BallurhIcon from '@/components/ui/ballurh-icon'
 import { cva } from 'class-variance-authority'
 import {
   Accordion,
@@ -229,7 +229,7 @@ function MobileNavItem({ item, onClick }: MobileNavItemProps) {
                     <div className="flex size-10 flex-none items-center justify-center rounded-full bg-background text-base-tertiary group-hover:bg-background-neutral [&_svg]:size-4">
                       {subLink.link.icon ? (
                         subLink.link.icon === 'marn-icon' ? (
-                          <MarnIcon className="" />
+                          <BallurhIcon className="" />
                         ) : (
                           <Icon icon={`ri:${subLink.link.icon}`} className="size-6" height="none" />
                         )
