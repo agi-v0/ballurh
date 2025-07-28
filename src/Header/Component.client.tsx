@@ -82,13 +82,13 @@ export const HeaderClient: React.FC<HeaderType & AdminBarProps> = ({
       {/* Main container with flex layout */}
       <div
         className={cn(
-          'relative container flex h-[var(--header-height)] flex-row items-center justify-between transition-colors',
+          'relative container flex h-(--header-height) flex-row items-center justify-between gap-6 transition-colors',
         )}
       >
-        <div className="z-50 w-full max-w-54">
+        <div className="z-50">
           <Link
             href="/"
-            className="flex-shrink-0 text-base-primary transition-colors hover:text-base-secondary"
+            className="flex-shrink-0 text-base-primary transition-colors hover:text-brand"
           >
             <Logo className="h-6 w-auto" />
           </Link>

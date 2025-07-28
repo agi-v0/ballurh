@@ -19,8 +19,6 @@ import RichText from '@/components/RichText'
 import { Icon } from '@iconify-icon/react'
 import MarnIcon from '@/components/ui/marn-icon'
 
-import { NavigationImagePreloader } from '../NavigationIconPreloader'
-
 interface DesktopNavProps extends Omit<HeaderType, 'id' | 'updatedAt' | 'createdAt'> {
   className?: string
 }
@@ -65,9 +63,9 @@ export function DesktopNav({ tabs, cta, className }: DesktopNavProps) {
   return (
     <div id="parent" className={cn('', className)}>
       {/* Preload all navigation images */}
-      <NavigationImagePreloader tabs={tabs} />
+      {/* <NavigationImagePreloader tabs={tabs} /> */}
 
-      <div className="px-site absolute start-0 end-0 w-full">
+      <div className="w-full">
         <NavigationMenu className="" dir="rtl">
           <NavigationMenuList className="space-x-0">
             {validTabs.map((tab, i) => {
