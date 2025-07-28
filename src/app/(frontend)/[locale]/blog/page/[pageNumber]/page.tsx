@@ -1,25 +1,45 @@
 import type { Metadata } from 'next/types'
+import type { Page as PageType } from '@/payload-types'
 
 import { CollectionArchive } from '@/components/CollectionArchive'
 import { PageRange } from '@/components/PageRange'
 import { Pagination } from '@/components/Pagination'
 import configPromise from '@payload-config'
 import { getPayload } from 'payload'
-import React from 'react'
+import React, { cache } from 'react'
 import PageClient from './page.client'
 import { notFound } from 'next/navigation'
+import { draftMode } from 'next/headers'
+import { RenderHero } from '@/heros/RenderHero'
+import { RenderBlocks } from '@/blocks/RenderBlocks'
+import { generateMeta } from '@/utilities/generateMeta'
 
 export const revalidate = 600
 
 type Args = {
   params: Promise<{
     pageNumber: string
+    locale?: 'ar' | 'en' | undefined
   }>
 }
 
 export default async function Page({ params: paramsPromise }: Args) {
-  const { pageNumber } = await paramsPromise
+  const { pageNumber, locale = 'ar' } = await paramsPromise
+  const slug = 'blog'
   const payload = await getPayload({ config: configPromise })
+
+  let page: PageType | null
+
+  page = await queryPageBySlug({
+    slug,
+    locale,
+  })
+
+  const { hero, layout } = page
+
+  if (!page) {
+    page = null
+  }
 
   const sanitizedPageNumber = Number(pageNumber)
 
@@ -27,6 +47,7 @@ export default async function Page({ params: paramsPromise }: Args) {
 
   const posts = await payload.find({
     collection: 'blog-posts',
+    locale: locale,
     depth: 1,
     limit: 12,
     page: sanitizedPageNumber,
@@ -34,13 +55,12 @@ export default async function Page({ params: paramsPromise }: Args) {
   })
 
   return (
-    <div className="pt-24 pb-24">
+    <article className="bg-background overflow-x-clip">
       <PageClient />
-      <div className="container mb-16">
-        <div className="prose dark:prose-invert max-w-none">
-          <h1>Posts</h1>
-        </div>
-      </div>
+
+      <RenderHero {...hero} />
+
+      {sanitizedPageNumber === 1 && <RenderBlocks blocks={layout as any} locale={locale} />}
 
       <div className="container mb-8">
         <PageRange
@@ -54,25 +74,35 @@ export default async function Page({ params: paramsPromise }: Args) {
       <CollectionArchive posts={posts.docs} />
 
       <div className="container">
-        {posts?.page && posts?.totalPages > 1 && (
+        {posts.totalPages > 1 && posts.page && (
           <Pagination page={posts.page} totalPages={posts.totalPages} />
         )}
       </div>
-    </div>
+    </article>
   )
 }
 
 export async function generateMetadata({ params: paramsPromise }: Args): Promise<Metadata> {
-  const { pageNumber } = await paramsPromise
-  return {
-    title: `Payload Website Template Posts Page ${pageNumber || ''}`,
-  }
+  const { locale = 'ar' } = await paramsPromise
+  const slug = 'blog'
+
+  const page = await queryPageBySlug({
+    slug,
+    locale,
+  })
+
+  return generateMeta({ doc: page })
 }
 
-export async function generateStaticParams() {
+export async function generateStaticParams({
+  params: { locale },
+}: {
+  params: { locale?: 'ar' | 'en' | undefined }
+}) {
   const payload = await getPayload({ config: configPromise })
   const { totalDocs } = await payload.count({
     collection: 'blog-posts',
+    locale: locale,
     overrideAccess: false,
   })
 
@@ -86,3 +116,25 @@ export async function generateStaticParams() {
 
   return pages
 }
+
+const queryPageBySlug = cache(async ({ slug, locale }: { slug: string; locale?: 'ar' | 'en' }) => {
+  const { isEnabled: draft } = await draftMode()
+
+  const payload = await getPayload({ config: configPromise })
+
+  const result = await payload.find({
+    collection: 'pages',
+    locale: locale,
+    draft,
+    limit: 1,
+    pagination: false,
+    overrideAccess: draft,
+    where: {
+      slug: {
+        equals: slug,
+      },
+    },
+  })
+
+  return result.docs?.[0] || null
+})

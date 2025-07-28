@@ -10,8 +10,7 @@ import { seedCustomers } from './customers'
 import { image169 } from './image-16-9'
 import { image43 } from './image-4-3'
 import { imageSquare } from './image-square'
-import { seedIntegrations } from './integrations'
-import { seedSolutions } from './solutions'
+
 import { seedFeaturesShowcasePage } from './features-showcase-page'
 import { seedArchiveBlockDemo } from './archive-block-demo'
 import { seedCTABlockDemo } from './cta-block-demo'
@@ -22,14 +21,14 @@ import { seedRichTextDemo } from './rich-text-demo'
 import { seedFAQBlockDemo } from './faq-block-demo'
 import { seedGalleryBlockDemo } from './gallery-block-demo'
 import { seedFormBlockDemo } from './form-block-demo'
+// @ts-ignore
 import { seedPricingBlockDemo } from './pricing-block-demo'
-import { seedFeaturedAppsBlockDemo } from './featured-apps-block-demo'
+
 import { seedTestimonialsBlockDemo } from './testimonials-block-demo'
 import { seedLogosBlockDemo } from './logos-block-demo'
 import { seedMetricsBlockDemo } from './metrics-block-demo'
-import { seedMarketplaceBlockDemo } from './marketplace-block-demo'
+
 import { seedBlocksDemoIndex } from './blocks-demo-index'
-import { seedChangelog } from './changelog'
 
 import { seedFAQs } from './faq'
 import { seedBlogPosts } from './blog-posts'
@@ -952,10 +951,10 @@ export const seed = async ({
     logos: allLogos,
   })
 
-  const marketplaceBlockDemoData = seedMarketplaceBlockDemo({
-    image169: image169Doc,
-    filterCategory: integrationCategoriesMap['payment-gateways']?.id,
-  })
+  // const marketplaceBlockDemoData = seedMarketplaceBlockDemo({
+  //   image169: image169Doc,
+  //   filterCategory: integrationCategoriesMap['payment-gateways']?.id,
+  // })
 
   const pagesData = [
     {
@@ -1032,10 +1031,10 @@ export const seed = async ({
       data: metricsBlockDemoData,
       key: 'metrics-block-demo',
     },
-    {
-      data: marketplaceBlockDemoData,
-      key: 'marketplace-block-demo',
-    },
+    // {
+    //   data: marketplaceBlockDemoData,
+    //   key: 'marketplace-block-demo',
+    // },
   ]
 
   // Create pages sequentially to identify any validation errors

@@ -27,6 +27,7 @@ export const seedTestimonialsBlockDemo = (
           },
         ]),
       },
+      bgColor: 'gray',
       selectedTestimonials: [customers[0].id],
     },
     // Variant 03 - Carousel
@@ -39,6 +40,7 @@ export const seedTestimonialsBlockDemo = (
           { type: 'h2', text: 'آراء من مجتمعنا', direction: 'rtl' },
         ]),
       },
+      bgColor: 'gray',
       selectedTestimonials: customers.slice(1, 4).map((c) => c.id),
     },
   ]

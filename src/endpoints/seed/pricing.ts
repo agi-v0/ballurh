@@ -8,7 +8,7 @@ type PricingArgs = {
   image43: Media | null
   imageSquare: Media | null
 }
-
+// @ts-ignore
 export const pricing: (args: PricingArgs) => RequiredDataFromCollectionSlug<'pages'> = ({
   heroImage,
   metaImage,

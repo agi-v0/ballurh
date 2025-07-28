@@ -3,9 +3,9 @@ import type {
   FeaturesBlock,
   Media,
   User,
-  // RichText, // Removed as it's not a direct export
-  Solution,
-  Integration,
+
+  // Solution,
+  // Integration,
   BlogPost,
 } from '@/payload-types'
 import { generateLexicalContent } from '@/utilities/generateLexicalContent'
@@ -35,7 +35,7 @@ type CommonPayloadLink = {
   newTab?: boolean | null
   reference?: {
     relationTo: 'pages' | 'blog-posts' | 'solutions' | 'integrations' // Add all valid relationTo targets
-    value: string | string | Page | BlogPost | Solution | Integration // Or the actual related document type
+    value: string | string | Page | BlogPost // Or the actual related document type
   } | null
   url?: string | null
   label: string // Label is often required
@@ -66,11 +66,11 @@ export const seedFeaturesShowcasePage = (media: {
     '10',
     '11',
     '12',
-    '13',
+    // '13',
     '14',
-    '15',
-    '16',
-    '17',
+    // '15',
+    // '16',
+    // '17',
   ]
 
   const featuresBlocks: FeaturesBlock[] = []
@@ -292,7 +292,7 @@ export const seedFeaturesShowcasePage = (media: {
   const pageSlug = 'features' // Can keep slug in English or change
 
   const heroData: Page['hero'] = {
-    type: 'hero01',
+    type: 'mediumImpact',
     // title: 'نظام نقاط بيع حديث ومرن لمشروعك', // Arabic Hero Title
     richText: generateLexicalContent([
       { type: 'h2', text: 'نظام نقاط بيع حديث ومرن لمشروعك', direction: 'rtl' },

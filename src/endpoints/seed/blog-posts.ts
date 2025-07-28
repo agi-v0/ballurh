@@ -510,18 +510,18 @@ export const seedBlogPosts = async (
   ]
 
   const posts = postsData.map((post) => ({
-    title: post.data.title[post.locale],
+    title: post.data.title[post.locale as 'ar'],
     slug: post.data.slug,
     heroImage: post.data.heroImage,
     _status: post.data._status,
     authors: post.data.authors,
     categories: post.data.categories,
     meta: {
-      title: post.data.meta.title[post.locale],
-      description: post.data.meta.description[post.locale],
+      title: post.data.meta.title[post.locale as 'ar'],
+      description: post.data.meta.description[post.locale as 'ar'],
       image: post.data.heroImage,
     },
-    content: post.data.content[post.locale],
+    content: post.data.content[post.locale as 'ar'],
     publishedAt: new Date().toISOString(),
   }))
 
