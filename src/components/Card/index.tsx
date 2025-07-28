@@ -7,8 +7,9 @@ import React, { Fragment } from 'react'
 import type { BlogPost } from '@/payload-types'
 
 import { Media } from '@/components/MediaResponsive'
+import { formatDateTime } from '@/utilities/formatDateTime'
 
-export type CardPostData = Pick<BlogPost, 'slug' | 'categories' | 'meta' | 'title'>
+export type CardPostData = Pick<BlogPost, 'slug' | 'categories' | 'meta' | 'title' | 'publishedAt'>
 
 export const Card: React.FC<{
   alignItems?: 'center'
@@ -21,7 +22,7 @@ export const Card: React.FC<{
   const { card, link } = useClickableCard({})
   const { className, doc, relationTo, showCategories, title: titleFromProps } = props
 
-  const { slug, categories, meta, title } = doc || {}
+  const { slug, categories, meta, title, publishedAt } = doc || {}
   const { description, image: metaImage } = meta || {}
 
   const hasCategories = categories && Array.isArray(categories) && categories.length > 0
@@ -31,19 +32,21 @@ export const Card: React.FC<{
 
   return (
     <article
-      className={cn(
-        'border border-border rounded-lg overflow-hidden bg-card hover:cursor-pointer',
-        className,
-      )}
+      className={cn('grid grid-cols-12 overflow-hidden hover:cursor-pointer', className)}
       ref={card.ref}
     >
-      <div className="relative w-full ">
+      {/* <div className="relative w-full">
         {!metaImage && <div className="">No image</div>}
         {metaImage && typeof metaImage !== 'string' && <Media resource={metaImage} size="33vw" />}
-      </div>
-      <div className="p-4">
+      </div> */}
+      <div className="col-span-4 flex flex-col gap-2">
+        {publishedAt && (
+          <time className="text-sm text-base-tertiary" dateTime={publishedAt}>
+            {formatDateTime(publishedAt)}
+          </time>
+        )}
         {showCategories && hasCategories && (
-          <div className="uppercase text-sm mb-4">
+          <div className="text-base font-medium uppercase">
             {showCategories && hasCategories && (
               <div>
                 {categories?.map((category, index) => {
@@ -68,6 +71,8 @@ export const Card: React.FC<{
             )}
           </div>
         )}
+      </div>
+      <div className="col-span-8">
         {titleToUse && (
           <div className="prose">
             <h3>

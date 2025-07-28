@@ -557,6 +557,7 @@ export interface FolderInterface {
 export interface User {
   id: string;
   name?: string | null;
+  avatar?: (string | null) | Media;
   updatedAt: string;
   createdAt: string;
   email: string;
@@ -2522,6 +2523,7 @@ export interface FaqSelect<T extends boolean = true> {
  */
 export interface UsersSelect<T extends boolean = true> {
   name?: T;
+  avatar?: T;
   updatedAt?: T;
   createdAt?: T;
   email?: T;

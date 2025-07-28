@@ -3,7 +3,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import type { Header as HeaderType } from '@/payload-types'
 import { Link } from '@/i18n/navigation'
 import { usePathname } from 'next/navigation'
-// import { useHeaderObserver } from '@/providers/HeaderIntersectionObserver'
+
 import { cn } from '@/utilities/ui'
 import Logo from '@/components/ui/logo'
 
@@ -29,8 +29,6 @@ export const HeaderClient: React.FC<HeaderType & AdminBarProps> = ({
   const lastScrollY = useRef(0)
 
   const pathname = usePathname()
-
-  // const { headerTheme, setHeaderTheme } = useHeaderObserver()
 
   const { scrollY } = useScroll()
   const [scrollDirection, setScrollDirection] = useState('down')
@@ -72,7 +70,6 @@ export const HeaderClient: React.FC<HeaderType & AdminBarProps> = ({
 
   return (
     <header
-      // data-theme={headerTheme || 'light'}
       className={cn(
         'fixed top-0 left-0 z-10 w-full max-w-screen border-0 border-border bg-transparent transition-colors duration-300',
         '-md:top-[var(--admin-bar-height,0px)]',
@@ -85,13 +82,13 @@ export const HeaderClient: React.FC<HeaderType & AdminBarProps> = ({
       {/* Main container with flex layout */}
       <div
         className={cn(
-          'relative container flex h-(--header-height) flex-row items-center justify-between transition-colors',
+          'relative container flex h-[var(--header-height)] flex-row items-center justify-between transition-colors',
         )}
       >
         <div className="z-50 w-full max-w-54">
           <Link
             href="/"
-            className="shrink-0 text-base-primary transition-colors hover:text-orange-500"
+            className="flex-shrink-0 text-base-primary transition-colors hover:text-base-secondary"
           >
             <Logo className="h-6 w-auto" />
           </Link>
@@ -100,10 +97,10 @@ export const HeaderClient: React.FC<HeaderType & AdminBarProps> = ({
         <DesktopNav
           cta={cta}
           tabs={tabs}
-          className="hidden lg:flex lg:w-full lg:items-center lg:justify-end"
+          className="hidden lg:relative lg:flex lg:w-full lg:items-center lg:justify-end"
         />
 
-        <div className="flex shrink-0 justify-end lg:hidden">
+        <div className="flex flex-shrink-0 justify-end lg:hidden">
           <AnimatedToggle
             isOpen={isMobileNavOpen}
             onClick={() => setIsMobileNavOpen((prev) => !prev)}
@@ -128,7 +125,7 @@ export const HeaderClient: React.FC<HeaderType & AdminBarProps> = ({
               mass: 1,
             }}
             className={cn(
-              'px-site pb-site fixed inset-x-0 top-(--header-height) bottom-0 z-50 overflow-y-auto lg:hidden',
+              'px-site pb-site fixed inset-x-0 top-[var(--header-height)] bottom-0 z-50 overflow-y-auto lg:hidden',
               // 'animate-in slide-in-from-top-4 duration-300 ease-out',
             )}
           >

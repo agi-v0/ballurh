@@ -55,28 +55,26 @@ export default async function Page({ params: paramsPromise }: Args) {
   })
 
   return (
-    <article className="bg-background overflow-x-clip">
+    <article className="overflow-x-clip bg-background">
       <PageClient />
 
       <RenderHero {...hero} />
 
-      {sanitizedPageNumber === 1 && <RenderBlocks blocks={layout as any} locale={locale} />}
+      {/* {sanitizedPageNumber === 1 && <RenderBlocks blocks={layout as any} locale={locale} />} */}
 
-      <div className="container mb-8">
+      <CollectionArchive posts={posts.docs} />
+
+      <div className="container my-space-8 flex flex-col items-center justify-between gap-4 md:flex-row">
+        {posts.totalPages > 1 && posts.page && (
+          <Pagination className="my-0" page={posts.page} totalPages={posts.totalPages} />
+        )}
         <PageRange
-          collection="posts"
+          className="w-fit shrink-0"
+          collection="blog-posts"
           currentPage={posts.page}
           limit={12}
           totalDocs={posts.totalDocs}
         />
-      </div>
-
-      <CollectionArchive posts={posts.docs} />
-
-      <div className="container">
-        {posts.totalPages > 1 && posts.page && (
-          <Pagination page={posts.page} totalPages={posts.totalPages} />
-        )}
       </div>
     </article>
   )

@@ -13,6 +13,7 @@ import { RenderBlocks } from '@/blocks/RenderBlocks'
 import { draftMode } from 'next/headers'
 import { generateMeta } from '@/utilities/generateMeta'
 import { Link } from '@/i18n/navigation'
+import RecentBlogPosts from '@/components/RecentBlogPosts'
 
 export const dynamic = 'force-static'
 export const revalidate = 600
@@ -78,15 +79,15 @@ export default async function Page({ params: paramsPromise }: Args) {
 
       <RenderHero {...hero} />
 
-      <RenderBlocks blocks={layout as any} locale={locale} />
+      {/* <RenderBlocks blocks={layout as any} locale={locale} /> */}
       {/* <h2 className="mb-space-sm text-h2 font-medium">{t('allArticles')}</h2> */}
 
-      <div className="py-md container flex flex-row items-center justify-between">
+      <div className="container flex flex-row items-center justify-between py-space-7">
         {categories.length > 0 && (
           <div className="flex flex-wrap gap-2">
             <Link
               href="/blog"
-              className="rounded-full bg-background-neutral px-4 py-2 text-sm font-medium text-base-primary transition-colors hover:bg-background-neutral-subtle hover:text-base-secondary"
+              className="bg-transparent-neutral h-8 rounded-full px-2.5 py-1.5 text-sm font-medium text-base-primary outline transition-colors hover:bg-background-neutral-subtle hover:text-base-secondary"
             >
               {locale === 'ar' ? 'الكل' : 'All'}
             </Link>
@@ -95,7 +96,7 @@ export default async function Page({ params: paramsPromise }: Args) {
                 <Link
                   href={`/blog/category/${category.slug}`}
                   key={index}
-                  className="rounded-full bg-background-neutral px-4 py-2 text-sm font-medium text-base-primary transition-colors hover:bg-background-neutral-subtle hover:text-base-secondary"
+                  className="rounded-full bg-transparent px-4 py-2 text-sm font-medium text-base-primary transition-colors hover:bg-background-neutral hover:text-base-secondary hover:outline"
                 >
                   {category.title}
                 </Link>
@@ -104,16 +105,17 @@ export default async function Page({ params: paramsPromise }: Args) {
           </div>
         )}
       </div>
+      <RecentBlogPosts posts={posts.docs.slice(0, 5) as any} />
 
       <CollectionArchive posts={posts.docs as BlogPost[]} />
 
-      <div className="my-space-xl container flex flex-col items-center justify-between gap-4 md:flex-row">
+      <div className="container my-space-8 flex flex-col items-center justify-between gap-4 md:flex-row">
         {posts.totalPages > 1 && posts.page && (
           <Pagination className="my-0" page={posts.page} totalPages={posts.totalPages} />
         )}
         <PageRange
           className="w-fit shrink-0"
-          collection="posts"
+          collection="blog-posts"
           currentPage={posts.page}
           limit={12}
           totalDocs={posts.totalDocs}
