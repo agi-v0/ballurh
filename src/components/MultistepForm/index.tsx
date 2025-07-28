@@ -79,7 +79,7 @@ const ProfitabilityCalculator: React.FC = () => {
   )
 
   return (
-    <div className="mx-auto max-w-2xl rounded-lg bg-white p-6 shadow-lg">
+    <div className="mx-auto max-w-2xl rounded-lg p-6 shadow-lg">
       <h1 className="mb-6 text-center text-2xl font-bold">نموذج حاسبة الربحية</h1>
       <p className="mb-8 text-center text-gray-600">
         البيانات الشخصية تُستخدم فقط لتقدير كيف يمكن لحل بلورة أن يعزز من ربحيتك
