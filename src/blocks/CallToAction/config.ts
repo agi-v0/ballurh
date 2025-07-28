@@ -8,7 +8,7 @@ import {
 } from '@payloadcms/richtext-lexical'
 
 import { iconPickerField } from '@/fields/iconPickerField'
-import materialIcons from '@/fields/iconPickerField/material-symbols-icons.json'
+import remixIcons from '@/fields/iconPickerField/remix-icons.json'
 
 import { badge } from '@/fields/badge'
 import { linkGroup } from '@/fields/linkGroup'
@@ -28,13 +28,13 @@ export const CallToActionBlock: Block = {
       type: 'select',
       defaultValue: '01',
       options: [
-        { label: '01 - Card (Split)', value: '01' },
-        { label: '02 - Card (Centered)', value: '02' },
-        { label: '03 - Brief (Centered)', value: '03' },
-        { label: '04 - Banner', value: '04' },
-        { label: '05 - Brief (Inverted Colors)', value: '05' },
-        { label: '06 - Form (Centered)', value: '06' },
-        { label: '07 - Form (Card - Split)', value: '07' },
+        { label: '01 - Card (Split) [NOT READY]', value: '01' },
+        { label: '02 - Card (Centered) [NOT READY]', value: '02' },
+        { label: '03 - Brief (Centered) [NOT READY]', value: '03' },
+        { label: '04 - Banner [NOT READY]', value: '04' },
+        { label: '05 - Brief (Inverted Colors) [NOT READY]', value: '05' },
+        { label: '06 - Form (Centered) [NOT READY]', value: '06' },
+        { label: '07 - Form (Card - Split) [NOT READY]', value: '07' },
       ],
       required: true,
     },
@@ -117,10 +117,10 @@ export const CallToActionBlock: Block = {
         iconPickerField({
           name: 'icon',
           label: 'Icon',
-          icons: materialIcons,
+          icons: remixIcons,
           admin: {
             description:
-              'Select an icon from the Material Symbols icon set. You can preview all available icons at https://fonts.google.com/icons',
+              'Select an icon from the Remix icon library. You can preview all available icons at https://remixicon.com/',
           },
         }),
         {

@@ -29,7 +29,7 @@ export const Features13: React.FC<FeaturesBlock> = ({ columns }) => {
                 {column.icon && (
                   <Icon
                     className="size-md text-base-secondary"
-                    icon={`material-symbols:${iconName}`}
+                    icon={`ri:${iconName}`}
                     height="none"
                     color="currentColor"
                   />

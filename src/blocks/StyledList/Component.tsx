@@ -27,15 +27,10 @@ export const StyledListBlock: React.FC<Props> = ({ className, items, listStyle =
           {items.map((item, index) => (
             <li
               key={item.id || `item-${index}`}
-              className="text-base-secondary flex list-none items-center gap-3"
+              className="flex list-none items-center gap-3 text-base-secondary"
             >
               {item.icon && (
-                <Icon
-                  icon={`material-symbols:${item.icon}`}
-                  className="shrink-0"
-                  height={20}
-                  width={20}
-                />
+                <Icon icon={`ri:${item.icon}`} className="shrink-0" height={20} width={20} />
               )}
               <span className="mt-0">{item.text}</span>
             </li>

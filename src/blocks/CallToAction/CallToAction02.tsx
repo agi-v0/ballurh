@@ -47,12 +47,16 @@ export const CallToAction02: React.FC<CallToActionProps> = ({
         variants={containerVariants}
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: false, amount: 0.3 }}
+        viewport={{ once: true, amount: 0.3 }}
       >
         <motion.div className="z-1 flex flex-col items-center gap-6">
           {richText && (
             <motion.div variants={itemsFling}>
-              <RichText className="mb-0 text-center" data={richText} enableGutter={false} />
+              <RichText
+                className="mb-0 max-w-4xl text-center"
+                data={richText}
+                enableGutter={false}
+              />
             </motion.div>
           )}
           <motion.div variants={itemsFling} className="flex flex-col gap-8">
@@ -75,19 +79,17 @@ export const CallToAction02: React.FC<CallToActionProps> = ({
                 <motion.div
                   key={index}
                   variants={itemsFling}
-                  className="flex flex-row items-start gap-2"
+                  className="flex flex-row items-center gap-2"
                 >
                   {icon && (
-                    <div className="p-xs inline aspect-square rounded-full bg-background-neutral-subtle">
-                      <Icon
-                        className="size-4 text-base-secondary"
-                        height="none"
-                        icon={`material-symbols:${icon}`}
-                        color="currentColor"
-                      />
-                    </div>
+                    <Icon
+                      className="size-4 text-base-tertiary"
+                      height="none"
+                      icon={`ri:${icon}`}
+                      color="currentColor"
+                    />
                   )}
-                  {title && <h3 className="text-small font-medium text-base-tertiary">{title}</h3>}
+                  {title && <h3 className="text-small text-base-tertiary">{title}</h3>}
                 </motion.div>
               )
             })}

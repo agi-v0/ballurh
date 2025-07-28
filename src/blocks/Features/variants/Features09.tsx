@@ -50,7 +50,7 @@ export const Features09: React.FC<FeaturesBlock> = ({ columns }) => {
                         'size-md',
                         isActive ? 'text-base-primary' : 'text-base-tertiary',
                       )}
-                      icon={`material-symbols:${iconName}`}
+                      icon={`ri:${iconName}`}
                       height="none"
                       color="currentColor"
                     />

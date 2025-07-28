@@ -73,12 +73,7 @@ function Badge({
     return (
       <div className={cn(badgeVariants({ color, size }), icon_position, className)} {...props}>
         {iconName && (
-          <Icon
-            icon={`material-symbols:${iconName}`}
-            color="currentColor"
-            className="size-4"
-            height="none"
-          />
+          <Icon icon={`ri:${iconName}`} color="currentColor" className="size-4" height="none" />
         )}
         <p>{label}</p>
       </div>

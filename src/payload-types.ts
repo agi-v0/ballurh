@@ -182,7 +182,7 @@ export interface ArchiveBlock {
       label?: string | null;
       color?: ('blue' | 'red' | 'green' | 'yellow' | 'gray' | 'inverted' | 'outline') | null;
       /**
-       * Select an icon from the Material Symbols icon set. You can preview all available icons at https://fonts.google.com/icons
+       * Select an icon from the Remix icon library. You can preview all available icons at https://remixicon.com/
        */
       icon?: string | null;
       icon_position?: ('flex-row' | 'flex-row-reverse') | null;
@@ -262,7 +262,7 @@ export interface Page {
       label?: string | null;
       color?: ('blue' | 'red' | 'green' | 'yellow' | 'gray' | 'inverted' | 'outline') | null;
       /**
-       * Select an icon from the Material Symbols icon set. You can preview all available icons at https://fonts.google.com/icons
+       * Select an icon from the Remix icon library. You can preview all available icons at https://remixicon.com/
        */
       icon?: string | null;
       icon_position?: ('flex-row' | 'flex-row-reverse') | null;
@@ -621,7 +621,7 @@ export interface CallToActionBlock {
     label?: string | null;
     color?: ('blue' | 'red' | 'green' | 'yellow' | 'gray' | 'inverted' | 'outline') | null;
     /**
-     * Select an icon from the Material Symbols icon set. You can preview all available icons at https://fonts.google.com/icons
+     * Select an icon from the Remix icon library. You can preview all available icons at https://remixicon.com/
      */
     icon?: string | null;
     icon_position?: ('flex-row' | 'flex-row-reverse') | null;
@@ -686,7 +686,7 @@ export interface CallToActionBlock {
   list?:
     | {
         /**
-         * Select an icon from the Material Symbols icon set. You can preview all available icons at https://fonts.google.com/icons
+         * Select an icon from the Remix icon library. You can preview all available icons at https://remixicon.com/
          */
         icon?: string | null;
         title?: string | null;
@@ -885,7 +885,7 @@ export interface CustomHtmlBlock {
       label?: string | null;
       color?: ('blue' | 'red' | 'green' | 'yellow' | 'gray' | 'inverted' | 'outline') | null;
       /**
-       * Select an icon from the Material Symbols icon set. You can preview all available icons at https://fonts.google.com/icons
+       * Select an icon from the Remix icon library. You can preview all available icons at https://remixicon.com/
        */
       icon?: string | null;
       icon_position?: ('flex-row' | 'flex-row-reverse') | null;
@@ -965,7 +965,7 @@ export interface FaqBlock {
       label?: string | null;
       color?: ('blue' | 'red' | 'green' | 'yellow' | 'gray' | 'inverted' | 'outline') | null;
       /**
-       * Select an icon from the Material Symbols icon set. You can preview all available icons at https://fonts.google.com/icons
+       * Select an icon from the Remix icon library. You can preview all available icons at https://remixicon.com/
        */
       icon?: string | null;
       icon_position?: ('flex-row' | 'flex-row-reverse') | null;
@@ -1059,7 +1059,7 @@ export interface FeaturesBlock {
       label?: string | null;
       color?: ('blue' | 'red' | 'green' | 'yellow' | 'gray' | 'inverted' | 'outline') | null;
       /**
-       * Select an icon from the Material Symbols icon set. You can preview all available icons at https://fonts.google.com/icons
+       * Select an icon from the Remix icon library. You can preview all available icons at https://remixicon.com/
        */
       icon?: string | null;
       icon_position?: ('flex-row' | 'flex-row-reverse') | null;
@@ -1108,24 +1108,7 @@ export interface FeaturesBlock {
         }[]
       | null;
   };
-  type:
-    | '01'
-    | '02'
-    | '03'
-    | '04'
-    | '05'
-    | '06'
-    | '07'
-    | '08'
-    | '09'
-    | '10'
-    | '11'
-    | '12'
-    | '13'
-    | '14'
-    | '15'
-    | '16'
-    | '17';
+  type: '01' | '02' | '03' | '04' | '05' | '06' | '07' | '08' | '09' | '10' | '11' | '12' | '14';
   blockImage?: (string | null) | Media;
   /**
    * Extra text to display alongside the link
@@ -1166,7 +1149,7 @@ export interface FeaturesBlock {
         image?: (string | null) | Media;
         tabLabel?: string | null;
         /**
-         * Select an icon from the Material Symbols icon set. You can preview all available icons at https://fonts.google.com/icons
+         * Select an icon from the Remix icon library. You can preview all available icons at https://remixicon.com/
          */
         icon?: string | null;
         content?: {
@@ -1210,7 +1193,7 @@ export interface FeaturesBlock {
           label?: string | null;
           color?: ('blue' | 'red' | 'green' | 'yellow' | 'gray' | 'inverted' | 'outline') | null;
           /**
-           * Select an icon from the Material Symbols icon set. You can preview all available icons at https://fonts.google.com/icons
+           * Select an icon from the Remix icon library. You can preview all available icons at https://remixicon.com/
            */
           icon?: string | null;
           icon_position?: ('flex-row' | 'flex-row-reverse') | null;
@@ -1275,7 +1258,7 @@ export interface GalleryBlock {
       label?: string | null;
       color?: ('blue' | 'red' | 'green' | 'yellow' | 'gray' | 'inverted' | 'outline') | null;
       /**
-       * Select an icon from the Material Symbols icon set. You can preview all available icons at https://fonts.google.com/icons
+       * Select an icon from the Remix icon library. You can preview all available icons at https://remixicon.com/
        */
       icon?: string | null;
       icon_position?: ('flex-row' | 'flex-row-reverse') | null;
@@ -1364,7 +1347,7 @@ export interface LogoBlock {
       label?: string | null;
       color?: ('blue' | 'red' | 'green' | 'yellow' | 'gray' | 'inverted' | 'outline') | null;
       /**
-       * Select an icon from the Material Symbols icon set. You can preview all available icons at https://fonts.google.com/icons
+       * Select an icon from the Remix icon library. You can preview all available icons at https://remixicon.com/
        */
       icon?: string | null;
       icon_position?: ('flex-row' | 'flex-row-reverse') | null;
@@ -1431,7 +1414,7 @@ export interface MetricsBlock {
       label?: string | null;
       color?: ('blue' | 'red' | 'green' | 'yellow' | 'gray' | 'inverted' | 'outline') | null;
       /**
-       * Select an icon from the Material Symbols icon set. You can preview all available icons at https://fonts.google.com/icons
+       * Select an icon from the Remix icon library. You can preview all available icons at https://remixicon.com/
        */
       icon?: string | null;
       icon_position?: ('flex-row' | 'flex-row-reverse') | null;
@@ -1585,7 +1568,7 @@ export interface RichTextBlock {
       label?: string | null;
       color?: ('blue' | 'red' | 'green' | 'yellow' | 'gray' | 'inverted' | 'outline') | null;
       /**
-       * Select an icon from the Material Symbols icon set. You can preview all available icons at https://fonts.google.com/icons
+       * Select an icon from the Remix icon library. You can preview all available icons at https://remixicon.com/
        */
       icon?: string | null;
       icon_position?: ('flex-row' | 'flex-row-reverse') | null;
@@ -1674,7 +1657,7 @@ export interface TeamBlock {
       label?: string | null;
       color?: ('blue' | 'red' | 'green' | 'yellow' | 'gray' | 'inverted' | 'outline') | null;
       /**
-       * Select an icon from the Material Symbols icon set. You can preview all available icons at https://fonts.google.com/icons
+       * Select an icon from the Remix icon library. You can preview all available icons at https://remixicon.com/
        */
       icon?: string | null;
       icon_position?: ('flex-row' | 'flex-row-reverse') | null;
@@ -1752,7 +1735,7 @@ export interface TestimonialsBlock {
       label?: string | null;
       color?: ('blue' | 'red' | 'green' | 'yellow' | 'gray' | 'inverted' | 'outline') | null;
       /**
-       * Select an icon from the Material Symbols icon set. You can preview all available icons at https://fonts.google.com/icons
+       * Select an icon from the Remix icon library. You can preview all available icons at https://remixicon.com/
        */
       icon?: string | null;
       icon_position?: ('flex-row' | 'flex-row-reverse') | null;
@@ -1958,7 +1941,7 @@ export interface StyledListBlock {
   items: {
     text: string;
     /**
-     * Select an icon from the Material Symbols icon set. You can preview all available icons at https://fonts.google.com/icons
+     * Select an icon from the Remix icon library. You can preview all available icons at https://remixicon.com/
      */
     icon?: string | null;
     id?: string | null;
@@ -2919,7 +2902,7 @@ export interface Header {
                   url?: string | null;
                   label: string;
                   /**
-                   * Select an icon from the Material Symbols icon set. You can preview all available icons at https://fonts.google.com/icons
+                   * Select an icon from the Remix icon library. You can preview all available icons at https://remixicon.com/
                    */
                   icon?: string | null;
                 };
@@ -2959,7 +2942,7 @@ export interface Header {
                         url?: string | null;
                         label: string;
                         /**
-                         * Select an icon from the Material Symbols icon set. You can preview all available icons at https://fonts.google.com/icons
+                         * Select an icon from the Remix icon library. You can preview all available icons at https://remixicon.com/
                          */
                         icon?: string | null;
                       };
@@ -2987,7 +2970,7 @@ export interface Header {
                         label: string;
                         description?: string | null;
                         /**
-                         * Select an icon from the Material Symbols icon set. You can preview all available icons at https://fonts.google.com/icons
+                         * Select an icon from the Remix icon library. You can preview all available icons at https://remixicon.com/
                          */
                         icon?: string | null;
                       };

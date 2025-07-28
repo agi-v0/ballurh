@@ -66,7 +66,7 @@ export const Features12: React.FC<Features11Props> = ({ columns, locale }) => {
                       {column.icon && (
                         <Icon
                           className="mb-sm size-md text-base-secondary"
-                          icon={`material-symbols:${column.icon}`}
+                          icon={`ri:${column.icon}`}
                           height="none"
                           color="currentColor"
                         />
@@ -107,7 +107,7 @@ export const Features12: React.FC<Features11Props> = ({ columns, locale }) => {
                           {column.icon && (
                             <Icon
                               className="size-md my-2 text-base-secondary"
-                              icon={`material-symbols:${column.icon}`}
+                              icon={`ri:${column.icon}`}
                               height="none"
                               color="currentColor"
                             />

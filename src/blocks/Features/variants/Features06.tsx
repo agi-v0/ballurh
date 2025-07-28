@@ -94,7 +94,7 @@ export const Features06: React.FC<FeaturesBlock> = ({ columns, blockImage, stat,
                       <Icon
                         className="size-sm text-base-secondary"
                         height="none"
-                        icon={`material-symbols:${icon}`}
+                        icon={`ri:${icon}`}
                         color="currentColor"
                       />
                     </div>

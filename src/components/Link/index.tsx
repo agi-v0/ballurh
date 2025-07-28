@@ -70,7 +70,7 @@ export const CMSLink: React.FC<CMSLinkType> = (props) => {
   return (
     <Button asChild className={className} size={size} variant={variant} color={color || 'neutral'}>
       <Link className={cn('group', className)} href={href || url || ''} {...newTabProps}>
-        {icon && <Icon icon={`material-symbols:${icon}`} className="size-3" />}
+        {icon && <Icon icon={`ri:${icon}`} className="size-3" />}
         {label && label}
         {children && children}
         {variant === 'link' && (

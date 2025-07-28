@@ -38,25 +38,25 @@ CONTAINER_DUMP_PATH="/tmp/$DUMP_FILE"
 
 # echo "▶ Dumping remote database using Dockerized pg_dump..."
 
-# docker run --rm \
-#   -e PGPASSWORD=temppassword \
-#   --network="$DOCKER_NETWORK" \
-#   -v "$PWD":/dump \
-#   postgres:$POSTGRES_VERSION \
-#   bash -c "pg_dump '$DATABASE_URI' \
-#     --clean \
-#     --if-exists \
-#     --quote-all-identifiers \
-#     --no-owner \
-#     --no-privileges \
-#     -f /dump/$DUMP_FILE"
+docker run --rm \
+  -e PGPASSWORD=temppassword \
+  --network="$DOCKER_NETWORK" \
+  -v "$PWD":/dump \
+  postgres:$POSTGRES_VERSION \
+  bash -c "pg_dump '$DATABASE_URI' \
+    --clean \
+    --if-exists \
+    --quote-all-identifiers \
+    --no-owner \
+    --no-privileges \
+    -f /dump/$DUMP_FILE"
 
-# if [ $? -ne 0 ]; then
-#   echo "❌ Failed to dump remote database."
-#   exit 1
-# fi
+if [ $? -ne 0 ]; then
+  echo "❌ Failed to dump remote database."
+  exit 1
+fi
 
-# echo "✅ Remote dump saved at $LOCAL_DUMP_PATH"
+echo "✅ Remote dump saved at $LOCAL_DUMP_PATH"
 
 
 

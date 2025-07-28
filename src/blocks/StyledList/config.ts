@@ -1,6 +1,6 @@
 import { iconPickerField } from '@/fields/iconPickerField'
 import type { Block } from 'payload'
-import materialIcons from '@/fields/iconPickerField/material-symbols-icons.json'
+import remixIcons from '@/fields/iconPickerField/remix-icons.json'
 
 export const StyledList: Block = {
   slug: 'styledListBlock',
@@ -45,11 +45,11 @@ export const StyledList: Block = {
         iconPickerField({
           name: 'icon',
           label: 'Icon',
-          icons: materialIcons,
+          icons: remixIcons,
           admin: {
             condition: (data, siblingData, { blockData }) => blockData.listStyle === 'icons',
             description:
-              'Select an icon from the Material Symbols icon set. You can preview all available icons at https://fonts.google.com/icons',
+              'Select an icon from the Remix icon library. You can preview all available icons at https://remixicon.com/',
           },
         }),
       ],

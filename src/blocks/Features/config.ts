@@ -12,7 +12,7 @@ import { link } from '@/fields/link'
 import { blockHeader } from '@/components/BlockHeader/config'
 import { badge } from '@/fields/badge'
 import { iconPickerField } from '@/fields/iconPickerField'
-import materialIcons from '@/fields/iconPickerField/material-symbols-icons.json'
+import remixIcons from '@/fields/iconPickerField/remix-icons.json'
 import { StyledList } from '@/blocks/StyledList/config'
 
 const richTextEditor = lexicalEditor({
@@ -211,12 +211,12 @@ export const FeaturesBlock: Block = {
         iconPickerField({
           name: 'icon',
           label: 'Icon',
-          icons: materialIcons,
+          icons: remixIcons,
           admin: {
             condition: (_, siblingData, { blockData }) =>
               ['03', '06', '07', '09', '11', '12', '03'].includes(blockData?.type),
             description:
-              'Select an icon from the Material Symbols icon set. You can preview all available icons at https://fonts.google.com/icons',
+              'Select an icon from the Remix icon library. You can preview all available icons at https://remixicon.com/',
           },
         }),
 

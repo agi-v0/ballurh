@@ -40,11 +40,7 @@ export const Features08: React.FC<Features08Props> = ({ columns, readMoreLabel }
                   )}
                 >
                   {column.icon && (
-                    <Icon
-                      icon={`material-symbols:${column.icon}`}
-                      className="size-4"
-                      height="none"
-                    />
+                    <Icon icon={`ri:${column.icon}`} className="size-4" height="none" />
                   )}
                   {column?.tabLabel}
                 </Button>

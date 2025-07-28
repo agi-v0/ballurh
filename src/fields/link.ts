@@ -1,6 +1,6 @@
 import type { Field } from 'payload'
 
-import materialIcons from './iconPickerField/material-symbols-icons.json'
+import remixIcons from './iconPickerField/remix-icons.json'
 import deepMerge from '@/utilities/deepMerge'
 
 import { iconPickerField } from './iconPickerField'
@@ -169,10 +169,10 @@ export const link: LinkType = ({
       iconPickerField({
         name: 'icon',
         label: 'Icon',
-        icons: materialIcons,
+        icons: remixIcons,
         admin: {
           description:
-            'Select an icon from the Material Symbols icon set. You can preview all available icons at https://fonts.google.com/icons',
+            'Select an icon from the Remix icon library. You can preview all available icons at https://remixicon.com/',
         },
       }),
     )

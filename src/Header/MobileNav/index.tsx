@@ -231,11 +231,7 @@ function MobileNavItem({ item, onClick }: MobileNavItemProps) {
                         subLink.link.icon === 'marn-icon' ? (
                           <MarnIcon className="" />
                         ) : (
-                          <Icon
-                            icon={`material-symbols:${subLink.link.icon}`}
-                            className="size-6"
-                            height="none"
-                          />
+                          <Icon icon={`ri:${subLink.link.icon}`} className="size-6" height="none" />
                         )
                       ) : null}
                     </div>

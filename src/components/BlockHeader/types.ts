@@ -13,7 +13,7 @@ export interface BlockHeaderType {
     label?: string | null
     color?: ('blue' | 'red' | 'green' | 'yellow' | 'gray' | 'inverted' | 'outline') | null
     /**
-     * Select an icon from the Material Symbols icon set. You can preview all available icons at https://fonts.google.com/icons
+     * Select an icon from the Remix icon library. You can preview all available icons at https://remixicon.com/
      */
     icon?: string | null
     icon_position?: ('flex-row' | 'flex-row-reverse') | null

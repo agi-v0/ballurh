@@ -44,7 +44,7 @@ type LinkType = {
   label: string
   description?: string | null
   /**
-   * Select an icon from the Material Symbols icon set. You can preview all available icons at https://fonts.google.com/icons
+   * Select an icon from the Remix icon library. You can preview all available icons at https://remixicon.com/
    */
   icon?: string | null
 }
@@ -218,11 +218,7 @@ const ListItem = React.forwardRef<HTMLAnchorElement | HTMLDivElement, ListItemPr
                         {subLink.icon === 'marn-icon' ? (
                           <MarnIcon className="" />
                         ) : (
-                          <Icon
-                            icon={`material-symbols:${subLink.icon}`}
-                            className="size-6"
-                            height="none"
-                          />
+                          <Icon icon={`ri:${subLink.icon}`} className="size-6" height="none" />
                         )}
                       </div>
                     )}

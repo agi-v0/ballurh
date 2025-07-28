@@ -9,9 +9,11 @@ export const Providers: React.FC<{
 }> = ({ children }) => {
   return (
     <NextIntlClientProvider>
-      <ThemeProvider>
-        <HeaderThemeProvider>{children}</HeaderThemeProvider>
-      </ThemeProvider>
+      {/* <ThemeProvider> */}
+      {/* <HeaderThemeProvider> */}
+      {children}
+      {/* </HeaderThemeProvider> */}
+      {/* </ThemeProvider> */}
     </NextIntlClientProvider>
   )
 }

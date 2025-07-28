@@ -52,7 +52,7 @@ export const Features07: React.FC<FeaturesBlock> = ({ columns, blockImage, block
                   <Icon
                     className="size-sm text-base-secondary"
                     height="none"
-                    icon={`material-symbols:${icon}`}
+                    icon={`ri:${icon}`}
                     color="currentColor"
                   />
                 </div>
