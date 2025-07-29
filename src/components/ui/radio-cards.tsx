@@ -50,8 +50,6 @@ const radioCardsItemVariants = cva(
   },
 )
 
-type ResponsiveValue<T> = T | { sm?: T; md?: T; lg?: T; xl?: T }
-
 interface RadioCardsRootProps
   extends Omit<
       React.ComponentPropsWithoutRef<typeof RadioGroupPrimitive.Root>,
@@ -76,6 +74,7 @@ const RadioCardsRoot = React.forwardRef<
 >(({ className, size, variant, highContrast, gap, style, ...props }, ref) => {
   return (
     <RadioGroupPrimitive.Root
+      data-slot="radio-group"
       className={cn(radioCardsRootVariants({ size, variant, highContrast }), className)}
       style={{
         ...style,
@@ -94,6 +93,7 @@ const RadioCardsItem = React.forwardRef<
   return (
     <RadioGroupPrimitive.Item
       ref={ref}
+      data-slot="radio-group-item"
       className={cn(radioCardsItemVariants({ size, variant }), className)}
       {...props}
     >
