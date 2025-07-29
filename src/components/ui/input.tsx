@@ -8,9 +8,9 @@ const inputVariants = cva(
   {
     variants: {
       variant: {
-        lg: 'h-12 rounded-xl px-5 text-sm file:me-5 file:pe-5',
-        md: 'h-10 rounded-xl px-4 text-[0.8125rem] leading-(--text-sm--line-height) file:me-4 file:pe-4',
-        sm: 'h-9 rounded-xl px-3 text-xs file:me-3 file:pe-3',
+        lg: 'h-12 px-5 text-sm file:me-5 file:pe-5',
+        md: 'h-10 px-4 text-[0.8125rem] leading-(--text-sm--line-height) file:me-4 file:pe-4',
+        sm: 'h-9 px-3 text-xs file:me-3 file:pe-3',
       },
     },
     defaultVariants: {
@@ -49,7 +49,7 @@ const inputGroupVariants = cva(
 )
 
 const inputWrapperVariants = cva(
-  `flex items-center gap-1.5 has-[:focus-visible]:border-ring has-[:focus-visible]:ring-[3px] has-[:focus-visible]:ring-ring/30 has-[:focus-visible]:outline-none [&_[data-slot=datefield]]:grow [&_[data-slot=input]]:flex [&_[data-slot=input]]:h-auto [&_[data-slot=input]]:w-full [&_[data-slot=input]]:border-0 [&_[data-slot=input]]:bg-transparent [&_[data-slot=input]]:p-0 [&_[data-slot=input]]:text-foreground [&_[data-slot=input]]:shadow-none [&_[data-slot=input]]:transition-colors [&_[data-slot=input]]:outline-none [&_[data-slot=input]]:placeholder:text-muted-foreground [&_[data-slot=input]]:focus-visible:ring-0 [&_[data-slot=input]]:disabled:cursor-not-allowed [&_[data-slot=input]]:disabled:opacity-50 [&_[data-slot=input]]:data-focus-within:border-0 [&_[data-slot=input]]:data-focus-within:ring-0 [&_[data-slot=input]]:data-focus-within:ring-transparent [&_svg]:text-muted-foreground`,
+  `flex items-center gap-1.5 rounded-xl has-[:focus-visible]:border-ring has-[:focus-visible]:ring-[3px] has-[:focus-visible]:ring-ring/30 has-[:focus-visible]:outline-none [&_[data-slot=datefield]]:grow [&_[data-slot=input]]:flex [&_[data-slot=input]]:h-auto [&_[data-slot=input]]:w-full [&_[data-slot=input]]:border-0 [&_[data-slot=input]]:bg-transparent [&_[data-slot=input]]:p-0 [&_[data-slot=input]]:text-foreground [&_[data-slot=input]]:shadow-none [&_[data-slot=input]]:transition-colors [&_[data-slot=input]]:outline-none [&_[data-slot=input]]:placeholder:text-muted-foreground [&_[data-slot=input]]:focus-visible:ring-0 [&_[data-slot=input]]:disabled:cursor-not-allowed [&_[data-slot=input]]:disabled:opacity-50 [&_[data-slot=input]]:data-focus-within:border-0 [&_[data-slot=input]]:data-focus-within:ring-0 [&_[data-slot=input]]:data-focus-within:ring-transparent [&_svg]:text-muted-foreground`,
   {
     variants: {
       variant: {
