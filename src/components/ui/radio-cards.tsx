@@ -1,34 +1,107 @@
 'use client'
 
 import * as React from 'react'
-import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group'
-import { Card } from '@/components/ui/card'
+import * as RadioGroupPrimitive from '@radix-ui/react-radio-group'
+import { cva, type VariantProps } from 'class-variance-authority'
+
 import { cn } from '@/utilities/ui'
 
-export interface RadioCardGroupProps extends React.ComponentPropsWithoutRef<typeof RadioGroup> {}
+const radioCardsRootVariants = cva('grid w-full', {
+  variants: {
+    size: {
+      '1': 'gap-2',
+      '2': 'gap-4',
+      '3': 'gap-6',
+    },
+    variant: {
+      surface: '',
+      classic: 'rounded-lg border bg-card p-4',
+    },
+    highContrast: {
+      true: 'contrast-more',
+      false: '',
+    },
+  },
+  defaultVariants: {
+    size: '2',
+    variant: 'surface',
+    highContrast: false,
+  },
+})
 
-export const RadioCardGroup: React.FC<RadioCardGroupProps> = ({ className, ...props }) => {
-  return <RadioGroup className={cn('grid gap-4', className)} {...props} />
+const radioCardsItemVariants = cva(
+  'relative grid cursor-pointer grid-cols-[repeat(auto-fit,minmax(160px,1fr))] items-center justify-between rounded-lg border p-4 transition-colors select-none hover:bg-accent hover:text-accent-foreground focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 data-[state=checked]:border-primary data-[state=checked]:bg-primary/5',
+  {
+    variants: {
+      size: {
+        '1': 'gap-2 p-2 text-sm',
+        '2': 'gap-4 p-4',
+        '3': 'gap-6 p-6 text-lg',
+      },
+      variant: {
+        surface: 'border-border bg-card',
+        classic: 'border-2 bg-background',
+      },
+    },
+    defaultVariants: {
+      size: '2',
+      variant: 'surface',
+    },
+  },
+)
+
+type ResponsiveValue<T> = T | { sm?: T; md?: T; lg?: T; xl?: T }
+
+interface RadioCardsRootProps
+  extends Omit<
+      React.ComponentPropsWithoutRef<typeof RadioGroupPrimitive.Root>,
+      'asChild' | 'color' | 'defaultChecked'
+    >,
+    VariantProps<typeof radioCardsRootVariants> {
+  asChild?: boolean
+  color?: string
+  // removed columns prop
+  gap?: React.CSSProperties['gap']
 }
-RadioCardGroup.displayName = 'RadioCardGroup'
 
-export interface RadioCardProps extends React.ComponentPropsWithoutRef<typeof RadioGroupItem> {
-  children: React.ReactNode
+interface RadioCardsItemProps
+  extends Omit<React.ComponentPropsWithoutRef<typeof RadioGroupPrimitive.Item>, 'asChild'>,
+    VariantProps<typeof radioCardsItemVariants> {
+  asChild?: boolean
 }
 
-export const RadioCard: React.FC<RadioCardProps> = ({ className, children, ...props }) => {
+const RadioCardsRoot = React.forwardRef<
+  React.ElementRef<typeof RadioGroupPrimitive.Root>,
+  RadioCardsRootProps
+>(({ className, size, variant, highContrast, gap, style, ...props }, ref) => {
   return (
-    <RadioGroupItem asChild {...props}>
-      <Card
-        className={cn(
-          'cursor-pointer rounded-md border border-input p-4 focus-within:ring-2 focus-within:ring-ring focus-within:ring-offset-2',
-          'data-[state=checked]:border-primary data-[state=checked]:bg-primary/10',
-          className,
-        )}
-      >
-        {children}
-      </Card>
-    </RadioGroupItem>
+    <RadioGroupPrimitive.Root
+      className={cn(radioCardsRootVariants({ size, variant, highContrast }), className)}
+      style={{
+        ...style,
+      }}
+      {...props}
+      ref={ref}
+    />
   )
-}
-RadioCard.displayName = 'RadioCard'
+})
+RadioCardsRoot.displayName = 'RadioCards.Root'
+
+const RadioCardsItem = React.forwardRef<
+  React.ElementRef<typeof RadioGroupPrimitive.Item>,
+  RadioCardsItemProps
+>(({ className, size, variant, children, ...props }, ref) => {
+  return (
+    <RadioGroupPrimitive.Item
+      ref={ref}
+      className={cn(radioCardsItemVariants({ size, variant }), className)}
+      {...props}
+    >
+      {children}
+    </RadioGroupPrimitive.Item>
+  )
+})
+RadioCardsItem.displayName = 'RadioCards.Item'
+
+export { RadioCardsRoot, RadioCardsItem }
+export type { RadioCardsRootProps, RadioCardsItemProps }

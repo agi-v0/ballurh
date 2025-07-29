@@ -1,7 +1,5 @@
 'use client'
 import type { Footer } from '@/payload-types'
-import { motion, useMotionValue, animate } from 'motion/react'
-import { useEffect, useRef } from 'react'
 
 import { Button } from '@/components/ui/button'
 import { Link } from '@/i18n/navigation'
@@ -71,151 +69,14 @@ const WHEEL_IDLE = 65 // ms gap that ends a wheel gesture
 
 export function FooterClient({ columns, currentYear, locale }: Props) {
   /* live transform */
-  const y = useMotionValue(0)
+
   const t = useTranslations('Footer')
-
-  /* refs that never cause React re-renders */
-  const peekRef = useRef(0) // current lift in px
-  const idleTimer = useRef<NodeJS.Timeout | null>(null) // wheel idle
-  const touchDown = useRef(false) // finger is on screen
-  const springing = useRef(false) // footer is snapping back
-  const footerRef = useRef<HTMLDivElement>(null)
-  const lastWheelTS = useRef(0)
-
-  /* helpers */
-  const setPeek = (val: number) => {
-    peekRef.current = Math.min(Math.max(val, 0), MAX_PEEK)
-    y.set(-peekRef.current) // immediate follow
-  }
-
-  const springBack = () => {
-    springing.current = true
-    animate(y, 0, {
-      type: 'spring',
-      stiffness: 550,
-      damping: 44,
-      onComplete: () => {
-        springing.current = false
-        peekRef.current = 0
-      },
-    })
-  }
-
-  /* unified overscroll handler */
-  const overscroll = (inputDelta: number) => {
-    if (springing.current) return
-
-    // Improved bottom detection for Safari compatibility
-    const scrollTop = window.scrollY
-    const windowHeight = window.innerHeight
-    const documentHeight = document.documentElement.scrollHeight
-    const threshold = 5 // Safari needs more tolerance
-
-    const atBottom = scrollTop + windowHeight >= documentHeight - threshold
-
-    if (!atBottom || inputDelta <= 0) return
-
-    setPeek(peekRef.current + inputDelta) // accumulate
-
-    /* wheel: restart idle timer every tick */
-    if (!touchDown.current) {
-      if (idleTimer.current) {
-        clearTimeout(idleTimer.current)
-      }
-      idleTimer.current = setTimeout(springBack, WHEEL_IDLE)
-    }
-  }
-
-  /* event wiring */
-  useEffect(() => {
-    // Detect Safari for different behavior
-    const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent)
-
-    /* velocity-aware onWheel  */
-    const onWheel = (e: WheelEvent) => {
-      // Only handle downward scrolling when actually at bottom
-      if (e.deltaY <= 0) return
-
-      // Check if we're truly at the bottom before doing anything
-      const scrollTop = window.scrollY
-      const windowHeight = window.innerHeight
-      const documentHeight = document.documentElement.scrollHeight
-      const threshold = isSafari ? 10 : 5 // More tolerance for Safari
-
-      const atBottom = scrollTop + windowHeight >= documentHeight - threshold
-
-      // Don't interfere with normal scrolling if not at bottom
-      if (!atBottom) return
-
-      /* 1 — normalise delta exactly as before */
-      const gain = Math.sign(e.deltaY) * Math.max(1, Math.abs(e.deltaY)) * WHEEL_GAIN
-
-      overscroll(gain) // <-- your existing helper
-
-      /* 2 — compute idle time from event spacing */
-      const now = performance.now()
-      const gap = now - lastWheelTS.current // time since previous tick
-      lastWheelTS.current = now
-
-      const idle = Math.min(65, Math.max(40, gap * 1.5))
-
-      if (idleTimer.current) {
-        clearTimeout(idleTimer.current)
-      }
-      idleTimer.current = setTimeout(springBack, idle)
-
-      /* 3 — suppress browser rubber-band while we're peeking */
-      // Only prevent default if we're actually showing the footer peek
-      // and we're definitely at the bottom
-      if (peekRef.current > 0 && atBottom) {
-        e.preventDefault()
-      }
-    }
-
-    /* 2 - touch */
-    let lastY = 0
-    const tStart = (e: TouchEvent) => {
-      touchDown.current = true
-      lastY = e.touches[0].clientY
-    }
-    const tMove = (e: TouchEvent) => {
-      const dy = lastY - e.touches[0].clientY
-      lastY = e.touches[0].clientY
-      overscroll(dy * TOUCH_GAIN)
-    }
-    const tEnd = () => {
-      touchDown.current = false
-      if (peekRef.current) springBack()
-    }
-
-    // Use passive wheel events for Safari to avoid interference
-    const wheelOptions = isSafari ? { passive: true } : { passive: false }
-
-    window.addEventListener('wheel', onWheel, wheelOptions)
-    window.addEventListener('touchstart', tStart, { passive: true })
-    window.addEventListener('touchmove', tMove, { passive: true })
-    window.addEventListener('touchend', tEnd, { passive: true })
-    window.addEventListener('touchcancel', tEnd, { passive: true })
-
-    return () => {
-      window.removeEventListener('wheel', onWheel)
-      window.removeEventListener('touchstart', tStart)
-      window.removeEventListener('touchmove', tMove)
-      window.removeEventListener('touchend', tEnd)
-      window.removeEventListener('touchcancel', tEnd)
-    }
-  }, [])
 
   return (
     <div className="pt-md bg-background">
       <div className="container">
         <div className="relative">
-          <motion.footer
-            ref={footerRef}
-            // data-theme="dark"
-            style={{ y }}
-            className="py-md relative z-2 w-full rounded-3xl bg-background-neutral will-change-transform"
-          >
+          <footer className="py-md relative z-2 w-full rounded-3xl bg-background-neutral will-change-transform">
             <div className="container grid grid-cols-1 gap-4 max-lg:gap-y-8 lg:grid-cols-12">
               <div className="flex flex-wrap items-start gap-4 lg:col-span-4">
                 <div id="newsletter" className="md:pe-md flex w-full flex-col gap-3">
@@ -298,7 +159,7 @@ export function FooterClient({ columns, currentYear, locale }: Props) {
                 })}
               </nav>
             </div>
-          </motion.footer>
+          </footer>
 
           <div className="px-site pointer-events-none absolute bottom-0 z-0 container mx-auto w-full">
             <Link href="/" className="flex h-auto w-full justify-center">
