@@ -7,6 +7,9 @@ import './index.scss'
 const baseClass = 'before-dashboard'
 
 const BeforeDashboard: React.FC = () => {
+  if (process.env.NODE_ENV === 'production') {
+    return null
+  }
   return (
     <div className={baseClass}>
       <Banner className={`${baseClass}__banner`} type="success">
