@@ -1,63 +1,54 @@
+'use client'
 import React from 'react'
 import { FeaturesBlock } from '@/payload-types'
-import { Badge } from '@/components/ui/badge'
-import { Media } from '@/components/MediaResponsive'
+import { motion } from 'motion/react'
+import { containerVariants, itemsFling } from '@/utilities/motion'
+
 import { cn } from '@/utilities/ui'
-import RichText from '@/components/RichText'
 
-import { CMSLink } from '@/components/Link'
-
-const colSpanClass = {
-  full: 'md:col-span-4 lg:col-span-12',
-  half: 'md:col-span-2 lg:col-span-6',
-  oneThird: 'md:col-span-2 lg:col-span-4',
-  twoThirds: 'md:col-span-2 lg:col-span-2',
-  sixtyPercent: '',
-  fortyPercent: '',
-}
+import { Card, CardContent, CardTitle } from '@/components/ui/card'
+import { Icon } from '@iconify-icon/react'
 
 export const Features03: React.FC<FeaturesBlock> = ({ columns }) => {
-  if (!columns?.length) return null
+  if (!columns || columns.length === 0) return null
 
   return (
-    <div className="py-xl gap-md container grid grid-cols-1 bg-background md:grid-cols-4 lg:grid-cols-12">
+    <motion.div
+      className="container grid grid-cols-1 gap-2 py-space-7 sm:grid-cols-2 md:grid-cols-3"
+      variants={containerVariants}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.3 }}
+    >
       {columns.map((column, index) => {
-        const { image, size = 'full', richTextContent } = column
-        const lgColSpanClass = colSpanClass[size || 'full']
-
+        const iconName = column.icon as string
         return (
-          <div key={index} className={cn('col-span-full', lgColSpanClass)}>
-            <div
-              className={cn('gap-sm flex flex-col', {
-                'md:flex-row md:items-center md:justify-start': size === 'full',
-              })}
-            >
-              {image && (
-                <Media
-                  resource={image}
-                  className={cn('overflow-hidden rounded-3xl', {
-                    'lg:basis-1/2': size === 'full', // Adjust width for full-size columns
-                    'w-full': size !== 'full', // Full width for non-full-size columns
-                  })}
-                  imgClassName="aspect-video h-auto w-full object-cover"
-                />
+          <motion.div key={index} variants={itemsFling}>
+            <Card className="h-full w-full grow rounded-3xl border-0 bg-card p-6 shadow-none">
+              {column.content?.title && (
+                <CardTitle className="mb-2 flex flex-row items-center gap-2">
+                  {column.icon && (
+                    <Icon
+                      className="size-5 text-base-secondary"
+                      icon={`ri:${iconName}`}
+                      height="none"
+                      color="currentColor"
+                    />
+                  )}
+                  <h3 className="text-main font-semibold text-base-primary">
+                    {column.content.title}
+                  </h3>
+                </CardTitle>
               )}
-              <div
-                className={cn('gap-sm flex flex-col items-start', {
-                  'md:px-md w-full lg:basis-1/2': size === 'full',
-                  'md:px-sm': size !== 'full',
-                })}
-              >
-                {column.enableBadge && column.badge && <Badge {...column.badge} />}
-                {richTextContent && <RichText data={richTextContent} />}
-                {column.enableCta && column.link?.label && (
-                  <CMSLink className="mt-auto w-fit" size="lg" {...column.link} />
-                )}
-              </div>
-            </div>
-          </div>
+              {column.content?.subtitle && (
+                <CardContent className="flex flex-col justify-start gap-4 p-0 ps-[calc(0.5rem+1.25rem)]">
+                  <p className="text-main text-base-tertiary">{column.content?.subtitle}</p>
+                </CardContent>
+              )}
+            </Card>
+          </motion.div>
         )
       })}
-    </div>
+    </motion.div>
   )
 }
