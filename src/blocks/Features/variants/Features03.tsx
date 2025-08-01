@@ -27,7 +27,7 @@ export const Features03: React.FC<FeaturesBlock> = ({ columns }) => {
             <Card className="h-full w-full grow rounded-3xl border-0 bg-card p-6 shadow-none">
               {column.content?.title && (
                 <CardTitle className="mb-2 flex flex-row items-center gap-2">
-                  {column.icon && (
+                  {iconName && (
                     <Icon
                       className="size-5 text-base-secondary"
                       icon={`ri:${iconName}`}
@@ -41,7 +41,9 @@ export const Features03: React.FC<FeaturesBlock> = ({ columns }) => {
                 </CardTitle>
               )}
               {column.content?.subtitle && (
-                <CardContent className="flex flex-col justify-start gap-4 p-0 ps-[calc(0.5rem+1.25rem)]">
+                <CardContent
+                  className={`flex flex-col justify-start gap-4 p-0 ${iconName && 'ps-[calc(0.5rem+1.25rem)]'}`}
+                >
                   <p className="text-main text-base-tertiary">{column.content?.subtitle}</p>
                 </CardContent>
               )}
