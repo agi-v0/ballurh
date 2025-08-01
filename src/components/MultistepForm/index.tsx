@@ -262,6 +262,7 @@ const ProfitabilityCalculator: React.FC = () => {
                         className="rounded-xl"
                         id="physicalBranchesCount"
                         type="number"
+                        inputMode="numeric"
                         placeholder="مثال: 3"
                         {...field}
                       />
@@ -318,6 +319,7 @@ const ProfitabilityCalculator: React.FC = () => {
                           className="rounded-xl"
                           id="cloudBrandsCount"
                           type="number"
+                          inputMode="numeric"
                           placeholder="أدخل عدد العلامات"
                           {...field}
                         />
@@ -352,6 +354,7 @@ const ProfitabilityCalculator: React.FC = () => {
                           className="rounded-xl"
                           id="deliverySalesPercentage"
                           type="number"
+                          inputMode="numeric"
                           placeholder="أدخل النسبة"
                           {...field}
                         />
@@ -378,6 +381,7 @@ const ProfitabilityCalculator: React.FC = () => {
                           className="rounded-xl"
                           id="monthlyOrders"
                           type="number"
+                          inputMode="numeric"
                           placeholder="مثال: 850 طلب شهرياً"
                           {...field}
                         />
@@ -409,6 +413,7 @@ const ProfitabilityCalculator: React.FC = () => {
                             className="rounded-xl"
                             id="avgCommissionRate"
                             type="number"
+                            inputMode="numeric"
                             placeholder="20-35%"
                             value={field.value}
                             onChange={field.onChange}
@@ -463,6 +468,7 @@ const ProfitabilityCalculator: React.FC = () => {
                             className="rounded-xl"
                             id="foodCostPercentage"
                             type="number"
+                            inputMode="numeric"
                             placeholder="20-50%"
                             value={field.value}
                             onChange={field.onChange}
@@ -501,6 +507,7 @@ const ProfitabilityCalculator: React.FC = () => {
                           className="rounded-xl"
                           id="monthlyAdBudget"
                           type="number"
+                          inputMode="numeric"
                           placeholder="مثال: 1,000"
                           {...field}
                         />
@@ -528,6 +535,7 @@ const ProfitabilityCalculator: React.FC = () => {
                             className="rounded-xl"
                             id="promoDiscountPercentage"
                             type="number"
+                            inputMode="numeric"
                             placeholder="0-50%"
                             value={field.value}
                             onChange={field.onChange}
@@ -617,6 +625,7 @@ const ProfitabilityCalculator: React.FC = () => {
                         className="rounded-xl"
                         id="phone"
                         type="tel"
+                        inputMode="numeric"
                         placeholder="أدخل رقم جوالك"
                         {...field}
                         autoComplete="tel"
