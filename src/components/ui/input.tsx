@@ -8,7 +8,7 @@ const inputVariants = cva(
   {
     variants: {
       variant: {
-        lg: 'h-12 px-5 text-sm file:me-5 file:pe-5',
+        lg: 'h-12 px-5 text-base file:me-5 file:pe-5',
         md: 'h-10 px-4 text-[0.8125rem] leading-(--text-sm--line-height) file:me-4 file:pe-4',
         sm: 'h-9 px-3 text-xs file:me-3 file:pe-3',
       },
