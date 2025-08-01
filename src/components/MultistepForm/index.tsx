@@ -1,6 +1,6 @@
 'use client'
 import React, { ReactElement, useState } from 'react'
-import { useForm, Controller } from 'react-hook-form'
+import { useForm, Controller, SubmitHandler } from 'react-hook-form'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { Button } from '@/components/ui/button'
@@ -18,33 +18,45 @@ import { Link } from '@/i18n/navigation'
 import { z } from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
 
-const step1Schema = z.object({
-  activityType: z.string({ error: 'يرجى اختيار نوع النشاط' }),
-  physicalBranchesCount: z.string().min(1, 'يجب أن تكون القيمة 1 على الأقل'),
-  hasCloudBrands: z.enum(['نعم', 'لا'], { error: 'يرجى الاختيار' }),
-  cloudBrandsCount: z.string().optional(),
-})
+const step1Schema = z
+  .object({
+    activityType: z.string({ error: 'يرجى اختيار نوع النشاط' }),
+    physicalBranchesCount: z.coerce.number().min(1, 'يجب أن تكون القيمة 1 على الأقل'),
+    hasCloudBrands: z.enum(['نعم', 'لا'], { error: 'يرجى الاختيار' }),
+    cloudBrandsCount: z.coerce.number().optional(),
+  })
+  .superRefine((data, ctx) => {
+    if (data.hasCloudBrands === 'نعم' && !data.cloudBrandsCount) {
+      ctx.addIssue({
+        path: ['cloudBrandsCount'],
+        code: z.ZodIssueCode.custom,
+        message: 'أدخل عدد العلامات',
+      })
+    }
+  })
 
 const step2Schema = z.object({
-  deliverySalesPercentage: z.string({ error: 'هذا الحقل مطلوب' }),
-  monthlyOrders: z.string({ error: 'هذا الحقل مطلوب' }),
-  avgCommissionRate: z.string({ error: 'هذا الحقل مطلوب' }),
+  deliverySalesPercentage: z.coerce.number().min(1, { error: 'هذا الحقل مطلوب' }),
+  monthlyOrders: z.string().min(1, { error: 'هذا الحقل مطلوب' }),
+  avgCommissionRate: z.coerce.number().min(1, { error: 'هذا الحقل مطلوب' }),
 })
 
 const step3Schema = z.object({
-  foodCostPercentage: z.string({ error: 'هذا الحقل مطلوب' }),
+  foodCostPercentage: z.coerce.number().min(1, { error: 'هذا الحقل مطلوب' }),
   monthlyAdBudget: z.string({ error: 'هذا الحقل مطلوب' }),
-  promoDiscountPercentage: z.string({ error: 'هذا الحقل مطلوب' }),
+  promoDiscountPercentage: z.coerce.number().min(10, { error: 'هذا الحقل مطلوب' }),
 })
 
 const step4Schema = z.object({
-  name: z.string({ error: 'هذا الحقل مطلوب' }),
+  name: z.string().min(1, { error: 'هذا الحقل مطلوب' }),
   email: z.email({
     error: (iss) => (iss.input === undefined ? 'هذا الحقل مطلوب' : 'يرجى إدخال بريد إلكتروني صحيح'),
   }),
-  phone: z.string({ error: 'هذا الحقل مطلوب' }),
+  phone: z.string().min(1, { error: 'هذا الحقل مطلوب' }),
   businessName: z.string().optional(),
 })
+
+const stepSchemas = [step1Schema, step2Schema, step3Schema, step4Schema] as const
 
 const formSchema = step1Schema.merge(step2Schema).merge(step3Schema).merge(step4Schema)
 
@@ -86,6 +98,7 @@ const AnimatedStepWrapper = ({
 const ProfitabilityCalculator: React.FC = () => {
   const [formStep, setFormStep] = useState<number>(1)
   const [isSubmitted, setIsSubmitted] = useState(false)
+  const currentSchema = stepSchemas[formStep - 1]
 
   const {
     control,
@@ -94,18 +107,19 @@ const ProfitabilityCalculator: React.FC = () => {
     trigger,
     formState: { errors },
   } = useForm<FormData>({
-    resolver: zodResolver(formSchema),
+    resolver: zodResolver(currentSchema),
+    shouldUnregister: true,
     defaultValues: {
       activityType: 'hybridRestaurant',
-      physicalBranchesCount: '1',
+      physicalBranchesCount: 1,
       hasCloudBrands: 'لا',
-      cloudBrandsCount: '1',
-      deliverySalesPercentage: '25',
+      cloudBrandsCount: 1,
+      deliverySalesPercentage: 25,
       monthlyOrders: '',
-      avgCommissionRate: '25',
-      foodCostPercentage: '30',
+      avgCommissionRate: 25,
+      foodCostPercentage: 30,
       monthlyAdBudget: '',
-      promoDiscountPercentage: '10',
+      promoDiscountPercentage: 10,
       name: '',
       email: '',
       phone: '',
@@ -147,33 +161,23 @@ const ProfitabilityCalculator: React.FC = () => {
   const totalFormSteps = 4
 
   const nextStep = async () => {
-    let isValid = false
-    if (formStep === 1) {
-      isValid = await trigger([
-        'activityType',
-        'physicalBranchesCount',
-        'hasCloudBrands',
-        'cloudBrandsCount',
-      ])
-    } else if (formStep === 2) {
-      isValid = await trigger(['deliverySalesPercentage', 'monthlyOrders', 'avgCommissionRate'])
-    } else if (formStep === 3) {
-      isValid = await trigger(['foodCostPercentage', 'monthlyAdBudget', 'promoDiscountPercentage'])
-    }
+    let isValid = await trigger()
 
     if (isValid) {
       setFormStep((prev) => Math.min(prev + 1, totalFormSteps))
+    }
+    if (!isValid) {
+      const first = Object.keys(errors)[0]
+      document.getElementsByName(first)?.[0]?.scrollIntoView({ behavior: 'smooth' })
     }
   }
 
   const prevStep = () => {
     setFormStep((prev) => Math.max(prev - 1, 1))
   }
-
-  const onSubmit = (data: FormData) => {
+  const onSubmit: SubmitHandler<FormData> = async (data) => {
     console.log('Form submitted:', data)
-    // Here you would typically send the data to your backend
-    setIsSubmitted(true)
+    // send to backend …
   }
 
   if (isSubmitted) {
@@ -412,7 +416,7 @@ const ProfitabilityCalculator: React.FC = () => {
                           <span className="absolute end-3 top-2.5 text-slate-500">%</span>
                         </div>
                         <Slider
-                          value={[parseInt(field.value, 10)]}
+                          value={[field.value]}
                           onValueChange={(value) => field.onChange(String(value[0]))}
                           min={0}
                           max={99}
@@ -466,7 +470,7 @@ const ProfitabilityCalculator: React.FC = () => {
                           <span className="absolute end-3 top-2.5 text-slate-500">%</span>
                         </div>
                         <Slider
-                          value={[parseInt(field.value, 10)]}
+                          value={[field.value]}
                           onValueChange={(value) => field.onChange(String(value[0]))}
                           min={1}
                           max={50}
@@ -531,7 +535,7 @@ const ProfitabilityCalculator: React.FC = () => {
                           <span className="absolute end-3 top-2.5 text-slate-500">%</span>
                         </div>
                         <Slider
-                          value={[parseInt(field.value, 10)]}
+                          value={[field.value]}
                           onValueChange={(value) => field.onChange(String(value[0]))}
                           min={0}
                           max={100}
