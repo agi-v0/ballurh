@@ -1,66 +1,87 @@
 'use client'
-import React, { ReactElement, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useForm, Controller, SubmitHandler } from 'react-hook-form'
+import { z } from 'zod'
+import { zodResolver } from '@hookform/resolvers/zod'
+import { Icon } from '@iconify-icon/react'
+import { Link } from '@/i18n/navigation'
+import { motion, AnimatePresence } from 'motion/react'
+
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { Button } from '@/components/ui/button'
 import { RadioCardsIndicator, RadioCardsItem, RadioCardsRoot } from '@/components/ui/radio-cards'
-import { Card, CardContent, CardTitle } from '@/components/ui/card'
-import { cn } from '@/utilities/ui'
-import StepperBar from '../stepper/title-bar'
-import { motion, AnimatePresence } from 'motion/react'
-import { Icon } from '@iconify-icon/react'
 import { Slider } from '@/components/ui/slider'
+import StepperBar from '../stepper/title-bar'
+import { cn } from '@/utilities/ui'
 import HybridRestaurant from '../Graphics/hybrid-restaurant'
 import CloudKitchen from '../Graphics/cloud-kitchen'
 import Restaurant from '../Graphics/restaurant'
-import { Link } from '@/i18n/navigation'
-import { z } from 'zod'
-import { zodResolver } from '@hookform/resolvers/zod'
 
 const step1Schema = z
   .object({
-    activityType: z.string({ error: 'يرجى اختيار نوع النشاط' }),
+    activityType: z.string({ message: 'يرجى اختيار نوع النشاط' }),
     physicalBranchesCount: z.coerce.number().min(1, 'يجب أن تكون القيمة 1 على الأقل'),
-    hasCloudBrands: z.enum(['نعم', 'لا'], { error: 'يرجى الاختيار' }),
+    hasCloudBrands: z.enum(['نعم', 'لا'], { message: 'يرجى الاختيار' }),
     cloudBrandsCount: z.coerce.number().optional(),
   })
   .superRefine((data, ctx) => {
     if (data.hasCloudBrands === 'نعم' && !data.cloudBrandsCount) {
       ctx.addIssue({
         path: ['cloudBrandsCount'],
-        code: z.ZodIssueCode.custom,
+        code: 'custom',
         message: 'أدخل عدد العلامات',
       })
     }
   })
 
 const step2Schema = z.object({
-  deliverySalesPercentage: z.coerce.number().min(1, { error: 'هذا الحقل مطلوب' }),
-  monthlyOrders: z.string().min(1, { error: 'هذا الحقل مطلوب' }),
-  avgCommissionRate: z.coerce.number().min(1, { error: 'هذا الحقل مطلوب' }),
+  deliverySalesPercentage: z.coerce.number().min(1, { message: 'هذا الحقل مطلوب' }),
+  monthlyOrders: z.string().min(1, { message: 'هذا الحقل مطلوب' }),
+  avgCommissionRate: z.coerce.number().min(1, { message: 'هذا الحقل مطلوب' }),
 })
 
 const step3Schema = z.object({
-  foodCostPercentage: z.coerce.number().min(1, { error: 'هذا الحقل مطلوب' }),
-  monthlyAdBudget: z.string({ error: 'هذا الحقل مطلوب' }),
-  promoDiscountPercentage: z.coerce.number().min(10, { error: 'هذا الحقل مطلوب' }),
+  foodCostPercentage: z.coerce.number().min(1, { message: 'هذا الحقل مطلوب' }),
+  monthlyAdBudget: z.string().min(1, { message: 'هذا الحقل مطلوب' }),
+  promoDiscountPercentage: z.coerce.number().min(10, { message: 'هذا الحقل مطلوب' }),
 })
 
 const step4Schema = z.object({
-  name: z.string().min(1, { error: 'هذا الحقل مطلوب' }),
-  email: z.email({
-    error: (iss) => (iss.input === undefined ? 'هذا الحقل مطلوب' : 'يرجى إدخال بريد إلكتروني صحيح'),
-  }),
-  phone: z.string().min(1, { error: 'هذا الحقل مطلوب' }),
+  name: z.string().min(1, { message: 'هذا الحقل مطلوب' }),
+  email: z
+    .string()
+    .min(1, { message: 'هذا الحقل مطلوب' }) // empty string
+    .pipe(z.email({ message: 'يرجى إدخال بريد إلكتروني صحيح' })), // bad format
+  phone: z.string().min(1, { message: 'هذا الحقل مطلوب' }),
   businessName: z.string().optional(),
 })
 
 const stepSchemas = [step1Schema, step2Schema, step3Schema, step4Schema] as const
 
-const formSchema = step1Schema.merge(step2Schema).merge(step3Schema).merge(step4Schema)
+const formSchema = step1Schema
+  .extend(step2Schema.shape)
+  .extend(step3Schema.shape)
+  .extend(step4Schema.shape)
 
 type FormData = z.infer<typeof formSchema>
+
+const defaultValues = {
+  activityType: 'hybridRestaurant',
+  physicalBranchesCount: 1,
+  hasCloudBrands: 'لا' as 'نعم' | 'لا',
+  cloudBrandsCount: 1,
+  deliverySalesPercentage: 25,
+  monthlyOrders: '',
+  avgCommissionRate: 25,
+  foodCostPercentage: 30,
+  monthlyAdBudget: '',
+  promoDiscountPercentage: 10,
+  name: '',
+  email: '',
+  phone: '',
+  businessName: '',
+}
 
 interface StepHeaderProps {
   title: string
@@ -95,89 +116,112 @@ const AnimatedStepWrapper = ({
   )
 }
 
+const stepperSteps = [
+  { title: 'البنية التشغيلية', steps: [0] },
+  { title: 'بيانات التوصيل الأساسية', steps: [1] },
+  { title: 'التكاليف التشغيلية والترويجية', steps: [2] },
+  { title: 'بيانات التواصل وإرسال التقرير', steps: [3] },
+]
+
+const activityTypeOptions: {
+  value: string
+  label: string
+  icon: (props: React.SVGProps<SVGSVGElement>) => React.ReactElement
+}[] = [
+  {
+    value: 'restaurant',
+    label: 'فرع فعلي (مطعم، مقهى، مخبز، محل حلويات… إلخ)',
+    icon: (props) => <Restaurant {...props} />,
+  },
+  {
+    value: 'cloudKitchen',
+    label: 'نشاط سحابي (دارك ستور)',
+    icon: (props) => <CloudKitchen {...props} />,
+  },
+  {
+    value: 'hybridRestaurant',
+    label: 'فرع فعلي يقدّم أيضاً علامات سحابية',
+    icon: (props) => <HybridRestaurant {...props} />,
+  },
+]
+
+const stepFields: (keyof FormData)[][] = [
+  ['activityType', 'physicalBranchesCount', 'hasCloudBrands', 'cloudBrandsCount'],
+  ['deliverySalesPercentage', 'monthlyOrders', 'avgCommissionRate'],
+  ['foodCostPercentage', 'monthlyAdBudget', 'promoDiscountPercentage'],
+  ['name', 'email', 'phone', 'businessName'],
+]
+
 const ProfitabilityCalculator: React.FC = () => {
-  const [formStep, setFormStep] = useState<number>(1)
+  const [formStep, setFormStep] = useState<number>(0)
   const [isSubmitted, setIsSubmitted] = useState(false)
-  const currentSchema = stepSchemas[formStep - 1]
+  const currentSchema = stepSchemas[formStep]
 
   const {
     control,
     handleSubmit,
     watch,
     trigger,
+    setValue,
+    clearErrors,
+    getValues,
+    register,
+    unregister,
+    reset,
+    setError,
     formState: { errors },
   } = useForm<FormData>({
-    resolver: zodResolver(currentSchema),
-    shouldUnregister: true,
-    defaultValues: {
-      activityType: 'hybridRestaurant',
-      physicalBranchesCount: 1,
-      hasCloudBrands: 'لا',
-      cloudBrandsCount: 1,
-      deliverySalesPercentage: 25,
-      monthlyOrders: '',
-      avgCommissionRate: 25,
-      foodCostPercentage: 30,
-      monthlyAdBudget: '',
-      promoDiscountPercentage: 10,
-      name: '',
-      email: '',
-      phone: '',
-      businessName: '',
-    },
+    defaultValues,
+    // currentSchema resolver resets values of fields when step advances
+    resolver: zodResolver(formSchema, undefined, {}),
+    mode: 'onSubmit',
+    // shouldUnregister: true, // when true, values are not preserved when step advances but this also avoids premature validation in the last step
   })
+
+  // monitor errors per form step
+  useEffect(() => {
+    console.log('formStep: ', formStep, 'errors: ', errors)
+    clearErrors(stepFields[formStep])
+  }, [formStep, errors])
 
   const hasCloudBrands = watch('hasCloudBrands')
 
-  const stepperSteps = [
-    { title: 'البنية التشغيلية', steps: [1] },
-    { title: 'بيانات التوصيل الأساسية', steps: [2] },
-    { title: 'التكاليف التشغيلية والترويجية', steps: [3] },
-    { title: 'بيانات التواصل وإرسال التقرير', steps: [4] },
-  ]
-
-  const activityTypeOptions: {
-    value: string
-    label: string
-    icon: (props: React.SVGProps<SVGSVGElement>) => React.ReactElement
-  }[] = [
-    {
-      value: 'restaurant',
-      label: 'فرع فعلي (مطعم، مقهى، مخبز، محل حلويات… إلخ)',
-      icon: (props) => <Restaurant {...props} />,
-    },
-    {
-      value: 'cloudKitchen',
-      label: 'نشاط سحابي (دارك ستور)',
-      icon: (props) => <CloudKitchen {...props} />,
-    },
-    {
-      value: 'hybridRestaurant',
-      label: 'فرع فعلي يقدّم أيضاً علامات سحابية',
-      icon: (props) => <HybridRestaurant {...props} />,
-    },
-  ]
-
   const totalFormSteps = 4
 
-  const nextStep = async () => {
-    const isValid = await trigger()
+  const pick = <T extends object, K extends keyof T>(obj: T, keys: K[]) =>
+    keys.reduce((a, k) => ((a[k] = obj[k]), a), {} as Pick<T, K>)
 
-    if (isValid) {
-      setFormStep((prev) => Math.min(prev + 1, totalFormSteps))
+  const nextStep = async () => {
+    const names = stepFields[formStep]
+    const values = pick(getValues(), names)
+    const parsed = stepSchemas[formStep].safeParse(values)
+
+    // clear any stale errors for this step
+    clearErrors(names)
+
+    if (!parsed.success) {
+      parsed.error.issues.forEach((i) => {
+        const name = i.path[0] as keyof FormData
+        setError(name, { type: 'zod', message: i.message }, { shouldFocus: true })
+      })
+      const el = document.getElementById(parsed.error.issues[0].path[0] as string)
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth' })
+        el.focus()
+      }
+      return
     }
-    if (!isValid) {
-      const first = Object.keys(errors)[0]
-      document.getElementsByName(first)?.[0]?.scrollIntoView({ behavior: 'smooth' })
-    }
+    setFormStep((s) => Math.min(s + 1, totalFormSteps - 1))
   }
 
   const prevStep = () => {
-    setFormStep((prev) => Math.max(prev - 1, 1))
+    setFormStep((prev) => Math.max(prev - 1, 0))
   }
+
   const onSubmit: SubmitHandler<FormData> = async (data) => {
-    console.log('Form submitted:', data)
+    console.log('data submitted:', data)
     // send to backend …
+    setIsSubmitted(true)
   }
 
   if (isSubmitted) {
@@ -196,7 +240,7 @@ const ProfitabilityCalculator: React.FC = () => {
 
   return (
     <div className="relative flex w-full grow flex-col rounded-3xl border p-4">
-      {formStep > 1 && (
+      {formStep > 0 && (
         <Button
           type="button"
           onClick={prevStep}
@@ -210,7 +254,7 @@ const ProfitabilityCalculator: React.FC = () => {
       )}
       <form onSubmit={handleSubmit(onSubmit)}>
         <AnimatePresence mode="wait">
-          {formStep === 1 && (
+          {formStep === 0 && (
             <AnimatedStepWrapper key={1}>
               <StepHeader title="ما نوع نشاطك الرئيسي؟" />
               <div className="space-y-6">
@@ -336,7 +380,7 @@ const ProfitabilityCalculator: React.FC = () => {
             </AnimatedStepWrapper>
           )}
 
-          {formStep === 2 && (
+          {formStep === 1 && (
             <AnimatedStepWrapper key={2}>
               <StepHeader title="مبيعات التوصيل والعمولة" />
               <div className="space-y-6">
@@ -422,7 +466,7 @@ const ProfitabilityCalculator: React.FC = () => {
                         </div>
                         <Slider
                           value={[field.value]}
-                          onValueChange={(value) => field.onChange(String(value[0]))}
+                          onValueChange={(value) => field.onChange(value[0])}
                           min={0}
                           max={99}
                           step={1}
@@ -451,7 +495,7 @@ const ProfitabilityCalculator: React.FC = () => {
             </AnimatedStepWrapper>
           )}
 
-          {formStep === 3 && (
+          {formStep === 2 && (
             <AnimatedStepWrapper key={3}>
               <StepHeader title="تكلفة المواد الغذائية والإعلانات" />
               <div className="space-y-6">
@@ -477,7 +521,7 @@ const ProfitabilityCalculator: React.FC = () => {
                         </div>
                         <Slider
                           value={[field.value]}
-                          onValueChange={(value) => field.onChange(String(value[0]))}
+                          onValueChange={(value) => field.onChange(value[0])}
                           min={1}
                           max={50}
                           step={1}
@@ -544,7 +588,7 @@ const ProfitabilityCalculator: React.FC = () => {
                         </div>
                         <Slider
                           value={[field.value]}
-                          onValueChange={(value) => field.onChange(String(value[0]))}
+                          onValueChange={(value) => field.onChange(value[0])}
                           min={0}
                           max={100}
                           step={1}
@@ -565,7 +609,7 @@ const ProfitabilityCalculator: React.FC = () => {
             </AnimatedStepWrapper>
           )}
 
-          {formStep === 4 && (
+          {formStep === 3 && (
             <AnimatedStepWrapper key={4}>
               <StepHeader title="خلينا نرسلك تقريرك" />
               <div className="space-y-4">
@@ -661,7 +705,7 @@ const ProfitabilityCalculator: React.FC = () => {
         </AnimatePresence>
 
         <div className="mx-auto mt-8 flex max-w-4xl justify-end lg:mb-2.5">
-          {formStep < totalFormSteps ? (
+          {formStep < totalFormSteps - 1 ? (
             <Button
               type="button"
               onClick={nextStep}
@@ -679,12 +723,11 @@ const ProfitabilityCalculator: React.FC = () => {
           )}
         </div>
       </form>
-
       <StepperBar
         steps={stepperSteps.map((s) => ({ title: s.title }))}
-        currentStep={formStep}
-        // className="mt-auto"
+        currentStep={formStep + 1}
       />
+      {/* <DevTool control={control} />  */}
     </div>
   )
 }
