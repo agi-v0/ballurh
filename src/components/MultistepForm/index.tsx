@@ -1,46 +1,66 @@
 'use client'
-import React, { useState } from 'react'
-import { useForm, Controller, Control, FieldErrors } from 'react-hook-form'
+import React, { ReactElement, useState } from 'react'
+import { useForm, Controller } from 'react-hook-form'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { Button } from '@/components/ui/button'
-import { RadioCardsItem, RadioCardsRoot } from '@/components/ui/radio-cards'
-import { Card, CardContent } from '@/components/ui/card'
+import { RadioCardsIndicator, RadioCardsItem, RadioCardsRoot } from '@/components/ui/radio-cards'
+import { Card, CardContent, CardTitle } from '@/components/ui/card'
 import { cn } from '@/utilities/ui'
 import StepperBar from '../stepper/title-bar'
 import { motion, AnimatePresence } from 'motion/react'
-import { Icon } from '@iconify-icon/react/dist/iconify.mjs'
+import { Icon } from '@iconify-icon/react'
+import { Slider } from '@/components/ui/slider'
+import HybridRestaurant from '../Graphics/hybrid-restaurant'
+import CloudKitchen from '../Graphics/cloud-kitchen'
+import Restaurant from '../Graphics/restaurant'
+import { Link } from '@/i18n/navigation'
+import { z } from 'zod'
+import { zodResolver } from '@hookform/resolvers/zod'
 
-// Define TypeScript interfaces
-interface ContactDetails {
-  name: string
-  email: string
-  phone: string
-}
+const step1Schema = z.object({
+  activityType: z.string({ error: 'يرجى اختيار نوع النشاط' }),
+  physicalBranchesCount: z.string().min(1, 'يجب أن تكون القيمة 1 على الأقل'),
+  hasCloudBrands: z.enum(['نعم', 'لا'], { error: 'يرجى الاختيار' }),
+  cloudBrandsCount: z.string().optional(),
+})
 
-interface FormData {
-  activityType: string
-  outletsCount: string
-  hasVirtualBrands: string
-  virtualBrandsCount: string
-  annualTurnover: string
-  onlineSalesPercentage: string
-  averageCommission: string
-  averageMaterialCost: string
-  contactDetails: ContactDetails
-}
+const step2Schema = z.object({
+  deliverySalesPercentage: z.string({ error: 'هذا الحقل مطلوب' }),
+  monthlyOrders: z.string({ error: 'هذا الحقل مطلوب' }),
+  avgCommissionRate: z.string({ error: 'هذا الحقل مطلوب' }),
+})
 
-interface StepHeader {
+const step3Schema = z.object({
+  foodCostPercentage: z.string({ error: 'هذا الحقل مطلوب' }),
+  monthlyAdBudget: z.string({ error: 'هذا الحقل مطلوب' }),
+  promoDiscountPercentage: z.string({ error: 'هذا الحقل مطلوب' }),
+})
+
+const step4Schema = z.object({
+  name: z.string({ error: 'هذا الحقل مطلوب' }),
+  email: z.email({
+    error: (iss) => (iss.input === undefined ? 'هذا الحقل مطلوب' : 'يرجى إدخال بريد إلكتروني صحيح'),
+  }),
+  phone: z.string({ error: 'هذا الحقل مطلوب' }),
+  businessName: z.string().optional(),
+})
+
+const formSchema = step1Schema.merge(step2Schema).merge(step3Schema).merge(step4Schema)
+
+type FormData = z.infer<typeof formSchema>
+
+interface StepHeaderProps {
   title: string
   description?: string
   className?: string
 }
 
-const StepHeader: React.FC<StepHeader> = ({ title, description, className }) => {
+const StepHeader: React.FC<StepHeaderProps> = ({ title, description, className }) => {
   return (
     <div className={cn('mb-6 flex flex-col items-center pt-space-7', className)}>
       <h2 className="mb-4 text-h2 font-semibold">{title}</h2>
-      {description && <p className="mb-4"> {description}</p>}
+      {description && <p className="mb-4 text-center"> {description}</p>}
     </div>
   )
 }
@@ -65,491 +85,593 @@ const AnimatedStepWrapper = ({
 
 const ProfitabilityCalculator: React.FC = () => {
   const [formStep, setFormStep] = useState<number>(1)
-  const [stepperStep, setStepperStep] = useState<number>(1)
+  const [isSubmitted, setIsSubmitted] = useState(false)
 
   const {
     control,
     handleSubmit,
     watch,
+    trigger,
     formState: { errors },
   } = useForm<FormData>({
+    resolver: zodResolver(formSchema),
     defaultValues: {
-      activityType: '',
-      outletsCount: '',
-      hasVirtualBrands: '',
-      virtualBrandsCount: '',
-      annualTurnover: '',
-      onlineSalesPercentage: '',
-      averageCommission: '',
-      averageMaterialCost: '',
-      contactDetails: {
-        name: '',
-        email: '',
-        phone: '',
-      },
+      activityType: 'hybridRestaurant',
+      physicalBranchesCount: '1',
+      hasCloudBrands: 'لا',
+      cloudBrandsCount: '1',
+      deliverySalesPercentage: '25',
+      monthlyOrders: '',
+      avgCommissionRate: '25',
+      foodCostPercentage: '30',
+      monthlyAdBudget: '',
+      promoDiscountPercentage: '10',
+      name: '',
+      email: '',
+      phone: '',
+      businessName: '',
     },
   })
 
-  const hasVirtualBrands = watch('hasVirtualBrands')
+  const hasCloudBrands = watch('hasCloudBrands')
 
   const stepperSteps = [
-    { title: 'معلومات النشاط', steps: [1, 2, 3] },
-    { title: 'البيانات المالية', steps: [4, 5, 6, 7] },
-    { title: 'معلومات التواصل', steps: [8] },
+    { title: 'البنية التشغيلية', steps: [1] },
+    { title: 'بيانات التوصيل الأساسية', steps: [2] },
+    { title: 'التكاليف التشغيلية والترويجية', steps: [3] },
+    { title: 'بيانات التواصل وإرسال التقرير', steps: [4] },
   ]
 
-  const totalFormSteps = 8 // Or calculate from stepperSteps
+  const activityTypeOptions: {
+    value: string
+    label: string
+    icon: (props: React.SVGProps<SVGSVGElement>) => React.ReactElement
+  }[] = [
+    {
+      value: 'restaurant',
+      label: 'فرع فعلي (مطعم، مقهى، مخبز، محل حلويات… إلخ)',
+      icon: (props) => <Restaurant {...props} />,
+    },
+    {
+      value: 'cloudKitchen',
+      label: 'نشاط سحابي (دارك ستور)',
+      icon: (props) => <CloudKitchen {...props} />,
+    },
+    {
+      value: 'hybridRestaurant',
+      label: 'فرع فعلي يقدّم أيضاً علامات سحابية',
+      icon: (props) => <HybridRestaurant {...props} />,
+    },
+  ]
 
-  const nextStep = () => {
-    const newFormStep = Math.min(formStep + 1, totalFormSteps)
-    setFormStep(newFormStep)
-    const newStepperStep = stepperSteps.findIndex((s) => s.steps.includes(newFormStep)) + 1
-    setStepperStep(newStepperStep)
+  const totalFormSteps = 4
+
+  const nextStep = async () => {
+    let isValid = false
+    if (formStep === 1) {
+      isValid = await trigger([
+        'activityType',
+        'physicalBranchesCount',
+        'hasCloudBrands',
+        'cloudBrandsCount',
+      ])
+    } else if (formStep === 2) {
+      isValid = await trigger(['deliverySalesPercentage', 'monthlyOrders', 'avgCommissionRate'])
+    } else if (formStep === 3) {
+      isValid = await trigger(['foodCostPercentage', 'monthlyAdBudget', 'promoDiscountPercentage'])
+    }
+
+    if (isValid) {
+      setFormStep((prev) => Math.min(prev + 1, totalFormSteps))
+    }
   }
 
   const prevStep = () => {
-    const newFormStep = Math.max(formStep - 1, 1)
-    setFormStep(newFormStep)
-    const newStepperStep = stepperSteps.findIndex((s) => s.steps.includes(newFormStep)) + 1
-    setStepperStep(newStepperStep)
+    setFormStep((prev) => Math.max(prev - 1, 1))
   }
 
   const onSubmit = (data: FormData) => {
     console.log('Form submitted:', data)
-    alert('Form submitted successfully! Check console for data.')
+    // Here you would typically send the data to your backend
+    setIsSubmitted(true)
+  }
+
+  if (isSubmitted) {
+    return (
+      <div className="flex w-full grow flex-col items-center justify-center rounded-3xl border p-4">
+        <AnimatedStepWrapper>
+          <div className="text-center">
+            <h2 className="text-2xl font-semibold">
+              ✅ تم استلام بياناتك، التقرير في الطريق لبريدك الإلكتروني أو واتساب.
+            </h2>
+          </div>
+        </AnimatedStepWrapper>
+      </div>
+    )
   }
 
   return (
-    <div className="flex w-full grow flex-col rounded-3xl border p-4">
-      {/* <h1 className="mb-6 text-center text-2xl font-bold">نموذج حاسبة الربحية</h1>
-      <p className="mb-8 text-center text-gray-600">
-        البيانات الشخصية تُستخدم فقط لتقدير كيف يمكن لحل بلورة أن يعزز من ربحيتك
-      </p> */}
-      <div className="relative grow">
-        {formStep > 1 && (
-          <Button
-            type="button"
-            onClick={prevStep}
-            variant="ghost"
-            size="sm"
-            className="absolute start-0 top-0"
-          >
-            <Icon icon="ri:arrow-right-line" height="none" className="size-4" />
-            الرجوع
-          </Button>
-        )}
-        <form onSubmit={handleSubmit(onSubmit)}>
-          <AnimatePresence mode="wait">
-            {formStep === 1 && (
-              <AnimatedStepWrapper key={1}>
-                <div>
-                  <StepHeader title="1 – نوع النشاط" description="حدد نوع نقطة البيع:" />
+    <div className="relative flex w-full grow flex-col rounded-3xl border p-4">
+      {formStep > 1 && (
+        <Button
+          type="button"
+          onClick={prevStep}
+          variant="ghost"
+          size="sm"
+          className="absolute inset-1 w-fit md:inset-2 lg:inset-4"
+        >
+          <Icon icon="ri:arrow-right-line" height="none" className="size-4" />
+          الرجوع
+        </Button>
+      )}
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <AnimatePresence mode="wait">
+          {formStep === 1 && (
+            <AnimatedStepWrapper key={1}>
+              <StepHeader title="ما نوع نشاطك الرئيسي؟" />
+              <div className="space-y-6">
+                <Controller
+                  name="activityType"
+                  control={control}
+                  render={({ field }) => (
+                    <RadioCardsRoot
+                      onValueChange={field.onChange}
+                      value={field.value}
+                      className="grid-cols-1 gap-2 md:grid-cols-3"
+                    >
+                      {activityTypeOptions.map(({ value, label, icon }) => (
+                        <RadioCardsItem
+                          key={value}
+                          value={value}
+                          aria-label={label}
+                          className="rounded-[20px] data-[state=checked]:bg-background-neutral data-[state=checked]:shadow-xs max-md:flex max-md:flex-row"
+                        >
+                          <RadioCardsIndicator
+                            placement="top-right"
+                            className="[&>iconify-icon]:size-6"
+                          />
+                          <div className="p-2 max-md:max-w-[30%] md:p-6">
+                            {icon({
+                              className: `h-auto w-full transition-[opacity,color] ${field.value === value ? 'text-teal-500 opacity-100' : 'text-slate-950 opacity-50'}`,
+                            })}
+                          </div>
+                          <p className="text-start text-base font-medium md:text-center">{label}</p>
+                        </RadioCardsItem>
+                      ))}
+                    </RadioCardsRoot>
+                  )}
+                />
+                {errors.activityType && (
+                  <p className="mt-1 animate-shake-enter text-xs text-orange-600/80">
+                    {errors.activityType.message}
+                  </p>
+                )}
+
+                <div className="space-y-2.5">
+                  <Label htmlFor="physicalBranchesCount">كم عدد الفروع الفعلية (نقاط البيع)؟</Label>
                   <Controller
-                    name="activityType"
+                    name="physicalBranchesCount"
                     control={control}
-                    rules={{ required: 'يرجى اختيار نوع النشاط' }}
                     render={({ field }) => (
-                      <RadioCardsRoot
-                        onValueChange={field.onChange}
-                        value={field.value}
-                        className="h-48 grid-cols-2 gap-2"
-                        defaultValue="مطعم"
-                      >
-                        {['مطعم', 'مطبخ سحابي (Dark Kitchen)'].map((type) => (
-                          <RadioCardsItem
-                            key={type}
-                            value={type}
-                            className="rounded-[20px] data-[state=checked]:bg-background-neutral data-[state=checked]:shadow-xs"
-                            asChild
-                          >
-                            <Card className="bg-transparent shadow-none">
-                              <CardContent>
-                                <div className="">{type}</div>
-                              </CardContent>
-                            </Card>
-                          </RadioCardsItem>
-                        ))}
-                      </RadioCardsRoot>
+                      <Input
+                        variant="lg"
+                        className="rounded-xl"
+                        id="physicalBranchesCount"
+                        type="number"
+                        placeholder="مثال: 3"
+                        {...field}
+                      />
                     )}
                   />
-                  {errors.activityType && (
+                  {errors.physicalBranchesCount && (
                     <p className="mt-1 animate-shake-enter text-xs text-orange-600/80">
-                      {errors.activityType.message}
+                      {errors.physicalBranchesCount.message}
                     </p>
                   )}
                 </div>
-              </AnimatedStepWrapper>
-            )}
 
-            {formStep === 2 && (
-              <AnimatedStepWrapper key={2}>
-                <div>
-                  <StepHeader title="2 – عدد نقاط البيع" />
-                  <div className="mb-4 space-y-2.5">
-                    <Label htmlFor="outletsCount">عدد الفروع أو المواقع</Label>
-                    <Controller
-                      name="outletsCount"
-                      control={control}
-                      rules={{
-                        required: 'هذا الحقل مطلوب',
-                        min: { value: 1, message: 'يجب أن تكون القيمة 1 على الأقل' },
-                      }}
-                      render={({ field }) => (
-                        <Input
-                          variant="lg"
-                          className="rounded-xl"
-                          id="outletsCount"
-                          type="number"
-                          placeholder="أدخل عدد الفروع أو المواقع"
-                          {...field}
-                        />
-                      )}
-                    />
-                    {errors.outletsCount && (
-                      <p className="mt-1 animate-shake-enter text-xs text-orange-600/80">
-                        {errors.outletsCount.message}
-                      </p>
-                    )}
-                  </div>
-                </div>
-              </AnimatedStepWrapper>
-            )}
-
-            {formStep === 3 && (
-              <AnimatedStepWrapper key={3}>
-                <div>
-                  <StepHeader title="3 – هل لديك علامات تجارية افتراضية؟" />
+                <div className="space-y-2.5">
+                  <Label>هل لديك علامات تجارية سحابية؟</Label>
                   <Controller
-                    name="hasVirtualBrands"
+                    name="hasCloudBrands"
                     control={control}
-                    rules={{ required: 'يرجى الاختيار' }}
                     render={({ field }) => (
                       <RadioCardsRoot
                         onValueChange={field.onChange}
                         value={field.value}
-                        className="grid-cols-2"
+                        className="grid-cols-2 gap-2"
                       >
                         {['نعم', 'لا'].map((option) => (
-                          <RadioCardsItem key={option} value={option}>
+                          <RadioCardsItem
+                            key={option}
+                            value={option}
+                            variant="classic"
+                            className="flex h-12 flex-row rounded-xl py-2 text-sm font-medium data-[state=checked]:bg-background-neutral data-[state=checked]:text-base-primary data-[state=checked]:shadow-xs"
+                          >
                             {option}
+                            <RadioCardsIndicator className="end-2 top-0 bottom-0 [&>iconify-icon]:size-6" />
                           </RadioCardsItem>
                         ))}
                       </RadioCardsRoot>
                     )}
                   />
-                  {errors.hasVirtualBrands && (
+                  {errors.hasCloudBrands && (
                     <p className="mt-1 animate-shake-enter text-xs text-orange-600/80">
-                      {errors.hasVirtualBrands.message}
+                      {errors.hasCloudBrands.message}
                     </p>
                   )}
-                  {hasVirtualBrands === 'نعم' && (
-                    <div className="mt-6 mb-4 space-y-2.5">
-                      <Label className="inline-block" htmlFor="virtualBrandsCount">
-                        عدد العلامات التجارية الافتراضية
-                      </Label>
-                      <Controller
-                        name="virtualBrandsCount"
-                        control={control}
-                        rules={{
-                          required: 'هذا الحقل مطلوب',
-                          min: { value: 1, message: 'يجب أن تكون القيمة 1 على الأقل' },
-                        }}
-                        render={({ field }) => (
-                          <Input
-                            variant="lg"
-                            className="rounded-xl"
-                            id="virtualBrandsCount"
-                            type="number"
-                            placeholder="أدخل عدد العلامات التجارية الافتراضية"
-                            {...field}
-                          />
-                        )}
-                      />
-                      {errors.virtualBrandsCount && (
-                        <p className="mt-1 animate-shake-enter text-xs text-orange-600/80">
-                          {errors.virtualBrandsCount.message}
-                        </p>
+                </div>
+
+                {hasCloudBrands === 'نعم' && (
+                  <div className="space-y-2.5">
+                    <Label htmlFor="cloudBrandsCount">كم عدد العلامات التجارية السحابية؟</Label>
+                    <Controller
+                      name="cloudBrandsCount"
+                      control={control}
+                      render={({ field }) => (
+                        <Input
+                          variant="lg"
+                          className="rounded-xl"
+                          id="cloudBrandsCount"
+                          type="number"
+                          placeholder="أدخل عدد العلامات"
+                          {...field}
+                        />
                       )}
-                    </div>
+                    />
+                    {errors.cloudBrandsCount && (
+                      <p className="mt-1 animate-shake-enter text-xs text-orange-600/80">
+                        {errors.cloudBrandsCount.message}
+                      </p>
+                    )}
+                  </div>
+                )}
+              </div>
+            </AnimatedStepWrapper>
+          )}
+
+          {formStep === 2 && (
+            <AnimatedStepWrapper key={2}>
+              <StepHeader title="مبيعات التوصيل والعمولة" />
+              <div className="space-y-6">
+                <div className="space-y-2.5">
+                  <Label htmlFor="deliverySalesPercentage">
+                    ما النسبة التقديرية لمبيعاتك اللي تجي من تطبيقات التوصيل؟
+                  </Label>
+                  <Controller
+                    name="deliverySalesPercentage"
+                    control={control}
+                    render={({ field }) => (
+                      <div className="relative">
+                        <Input
+                          variant="lg"
+                          className="rounded-xl"
+                          id="deliverySalesPercentage"
+                          type="number"
+                          placeholder="أدخل النسبة"
+                          {...field}
+                        />
+                        <span className="absolute end-3 top-2.5 text-slate-500">%</span>
+                      </div>
+                    )}
+                  />
+                  {errors.deliverySalesPercentage && (
+                    <p className="mt-1 animate-shake-enter text-xs text-orange-600/80">
+                      {errors.deliverySalesPercentage.message}
+                    </p>
                   )}
                 </div>
-              </AnimatedStepWrapper>
-            )}
 
-            {formStep === 4 && (
-              <AnimatedStepWrapper key={4}>
-                <div>
-                  <StepHeader title="4 – رقم المعاملات السنوية (Turnover)" />
-                  <div className="mb-4 space-y-2.5">
-                    <Label htmlFor="annualTurnover">رقم معاملاتك السنوية</Label>
-                    <Controller
-                      name="annualTurnover"
-                      control={control}
-                      rules={{
-                        required: 'هذا الحقل مطلوب',
-                        min: { value: 0, message: 'يجب أن تكون القيمة 0 على الأقل' },
-                      }}
-                      render={({ field }) => (
-                        <div className="relative">
-                          <Input
-                            variant="lg"
-                            className="rounded-xl"
-                            id="annualTurnover"
-                            type="number"
-                            placeholder="أدخل رقم معاملاتك السنوية"
-                            {...field}
-                          />
-                          <span className="absolute end-3 top-2.5 text-gray-500">﷼</span>
-                        </div>
-                      )}
-                    />
-                    {errors.annualTurnover && (
-                      <p className="mt-1 animate-shake-enter text-xs text-orange-600/80">
-                        {errors.annualTurnover.message}
-                      </p>
-                    )}
-                  </div>
-                </div>
-              </AnimatedStepWrapper>
-            )}
-
-            {formStep === 5 && (
-              <AnimatedStepWrapper key={5}>
-                <div>
-                  <StepHeader
-                    title="5 – نسبة المبيعات عبر المنصات الإلكترونية"
-                    description="ما النسبة المئوية من رقم معاملاتك السنوية التي تأتي من الطلبات عبر المنصات الإلكترونية؟"
-                  />
-                  <div className="mb-4 space-y-2.5">
-                    <Label htmlFor="onlineSalesPercentage">نسبة المبيعات عبر المنصات</Label>
-                    <Controller
-                      name="onlineSalesPercentage"
-                      control={control}
-                      rules={{
-                        required: 'هذا الحقل مطلوب',
-                        min: { value: 0, message: 'يجب أن تكون القيمة 0 على الأقل' },
-                        max: { value: 100, message: 'يجب أن تكون القيمة 100 كحد أقصى' },
-                      }}
-                      render={({ field }) => (
-                        <div className="relative">
-                          <Input
-                            variant="lg"
-                            className="rounded-xl"
-                            id="onlineSalesPercentage"
-                            type="number"
-                            placeholder="أدخل النسبة المئوية"
-                            {...field}
-                          />
-                          <span className="absolute end-3 top-2.5 text-gray-500">%</span>
-                        </div>
-                      )}
-                    />
-                    {errors.onlineSalesPercentage && (
-                      <p className="mt-1 animate-shake-enter text-xs text-orange-600/80">
-                        {errors.onlineSalesPercentage.message}
-                      </p>
-                    )}
-                  </div>
-                </div>
-              </AnimatedStepWrapper>
-            )}
-
-            {formStep === 6 && (
-              <AnimatedStepWrapper key={6}>
-                <div>
-                  <StepHeader
-                    title="6 – متوسط العمولة التي تدفعها"
-                    description="أدخل متوسط النسبة المئوية التي تدفعها كعمولة للمنصات الإلكترونية"
-                  />
-                  <div className="mb-4 space-y-2.5">
-                    <Label htmlFor="averageCommission">متوسط العمولة</Label>
-                    <Controller
-                      name="averageCommission"
-                      control={control}
-                      rules={{
-                        required: 'هذا الحقل مطلوب',
-                        min: { value: 0, message: 'يجب أن تكون القيمة 0 على الأقل' },
-                        max: { value: 100, message: 'يجب أن تكون القيمة 100 كحد أقصى' },
-                      }}
-                      render={({ field }) => (
-                        <div className="relative">
-                          <Input
-                            variant="lg"
-                            className="rounded-xl"
-                            id="averageCommission"
-                            type="number"
-                            placeholder="أدخل متوسط العمولة"
-                            {...field}
-                          />
-                          <span className="absolute end-3 top-2.5 text-gray-500">%</span>
-                        </div>
-                      )}
-                    />
-                    {errors.averageCommission && (
-                      <p className="mt-1 animate-shake-enter text-xs text-orange-600/80">
-                        {errors.averageCommission.message}
-                      </p>
-                    )}
-                  </div>
-                </div>
-              </AnimatedStepWrapper>
-            )}
-
-            {formStep === 7 && (
-              <AnimatedStepWrapper key={7}>
-                <div>
-                  <StepHeader
-                    title="7 – متوسط تكلفة المواد"
-                    description="ما هي النسبة المئوية لمصاريفك التي تذهب لتكلفة المواد الخام؟"
-                  />
-                  <div className="mb-4 space-y-2.5">
-                    <Label htmlFor="averageMaterialCost">نسبة تكلفة المواد</Label>
-                    <Controller
-                      name="averageMaterialCost"
-                      control={control}
-                      rules={{
-                        required: 'هذا الحقل مطلوب',
-                        min: { value: 0, message: 'يجب أن تكون القيمة 0 على الأقل' },
-                        max: { value: 100, message: 'يجب أن تكون القيمة 100 كحد أقصى' },
-                      }}
-                      render={({ field }) => (
-                        <div className="relative">
-                          <Input
-                            variant="lg"
-                            className="rounded-xl"
-                            id="averageMaterialCost"
-                            type="number"
-                            placeholder="أدخل نسبة تكلفة المواد"
-                            {...field}
-                          />
-                          <span className="absolute end-3 top-2.5 text-gray-500">%</span>
-                        </div>
-                      )}
-                    />
-                    {errors.averageMaterialCost && (
-                      <p className="mt-1 animate-shake-enter text-xs text-orange-600/80">
-                        {errors.averageMaterialCost.message}
-                      </p>
-                    )}
-                  </div>
-                </div>
-              </AnimatedStepWrapper>
-            )}
-
-            {formStep === 8 && (
-              <AnimatedStepWrapper key={8}>
-                <div>
-                  <StepHeader title="8 – تفاصيل الاتصال لتلقي المحاكاة" />
-                  <div className="mb-4 space-y-2.5">
-                    <Label htmlFor="contactDetails.name">الاسم</Label>
-                    <Controller
-                      name="contactDetails.name"
-                      control={control}
-                      rules={{ required: 'هذا الحقل مطلوب' }}
-                      render={({ field }) => (
+                <div className="space-y-2.5">
+                  <Label htmlFor="monthlyOrders">كم متوسط عدد الطلبات الشهري؟</Label>
+                  <Controller
+                    name="monthlyOrders"
+                    control={control}
+                    render={({ field }) => (
+                      <div className="relative">
                         <Input
                           variant="lg"
                           className="rounded-xl"
-                          id="contactDetails.name"
-                          placeholder="أدخل اسمك"
+                          id="monthlyOrders"
+                          type="number"
+                          placeholder="مثال: 850 طلب شهرياً"
                           {...field}
-                          autoComplete="name"
                         />
-                      )}
-                    />
-                    {errors.contactDetails?.name && (
-                      <p className="mt-1 animate-shake-enter text-xs text-orange-600/80">
-                        {errors.contactDetails.name.message}
-                      </p>
+                      </div>
                     )}
-                  </div>
-                  <div className="mb-4 space-y-2.5">
-                    <Label htmlFor="contactDetails.email">البريد الإلكتروني</Label>
-                    <Controller
-                      name="contactDetails.email"
-                      control={control}
-                      rules={{
-                        required: 'هذا الحقل مطلوب',
-                        pattern: {
-                          value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
-                          message: 'يرجى إدخال بريد إلكتروني صحيح',
-                        },
-                      }}
-                      render={({ field }) => (
-                        <Input
-                          variant="lg"
-                          className="rounded-xl"
-                          id="contactDetails.email"
-                          type="email"
-                          placeholder="أدخل بريدك الإلكتروني"
-                          {...field}
-                          autoComplete="email"
-                        />
-                      )}
-                    />
-                    {errors.contactDetails?.email && (
-                      <p className="mt-1 animate-shake-enter text-xs text-orange-600/80">
-                        {errors.contactDetails.email.message}
-                      </p>
-                    )}
-                  </div>
-                  <div className="mb-4 space-y-2.5">
-                    <Label htmlFor="contactDetails.phone">رقم الهاتف</Label>
-                    <Controller
-                      name="contactDetails.phone"
-                      control={control}
-                      rules={{ required: 'هذا الحقل مطلوب' }}
-                      render={({ field }) => (
-                        <Input
-                          variant="lg"
-                          className="rounded-xl"
-                          id="contactDetails.phone"
-                          type="tel"
-                          placeholder="أدخل رقم هاتفك"
-                          {...field}
-                          autoComplete="tel"
-                        />
-                      )}
-                    />
-                    {errors.contactDetails?.phone && (
-                      <p className="mt-1 animate-shake-enter text-xs text-orange-600/80">
-                        {errors.contactDetails.phone.message}
-                      </p>
-                    )}
-                  </div>
+                  />
+                  {errors.monthlyOrders && (
+                    <p className="mt-1 animate-shake-enter text-xs text-orange-600/80">
+                      {errors.monthlyOrders.message}
+                    </p>
+                  )}
                 </div>
-              </AnimatedStepWrapper>
-            )}
-          </AnimatePresence>
 
-          {/* Navigation Buttons */}
-          <div className="mx-auto mt-8 flex max-w-4xl justify-end">
-            {/* {formStep > 1 && (
-              <Button type="button" onClick={prevStep} variant="ghost">
-                السابق
-              </Button>
-            )} */}
+                <div className="space-y-2.5">
+                  <Label htmlFor="avgCommissionRate">
+                    كم متوسط النسبة اللي تدفعها كتطبيقات توصيل؟
+                  </Label>
+                  <p className="text-sm text-slate-500">
+                    (تشمل عمولة التطبيق + الدفع الإلكتروني + التسويق)
+                  </p>
+                  <Controller
+                    name="avgCommissionRate"
+                    control={control}
+                    render={({ field }) => (
+                      <>
+                        <div className="relative">
+                          <Input
+                            variant="lg"
+                            className="rounded-xl"
+                            id="avgCommissionRate"
+                            type="number"
+                            placeholder="20-35%"
+                            value={field.value}
+                            onChange={field.onChange}
+                          />
+                          <span className="absolute end-3 top-2.5 text-slate-500">%</span>
+                        </div>
+                        <Slider
+                          value={[parseInt(field.value, 10)]}
+                          onValueChange={(value) => field.onChange(String(value[0]))}
+                          min={0}
+                          max={99}
+                          step={1}
+                        />
+                      </>
+                    )}
+                  />
+                  <p className="text-sm text-slate-500">
+                    المتوسط في السوق بين 20% و30%. مو متأكد؟{' '}
+                    <Link
+                      href="/"
+                      target="_blank"
+                      rel="noreferrer"
+                      className="text-teal-600 transition-colors hover:text-slate-600"
+                    >
+                      نساعدك نطلّع الرقم بدقة.
+                    </Link>
+                  </p>
+                  {errors.avgCommissionRate && (
+                    <p className="mt-1 animate-shake-enter text-xs text-orange-600/80">
+                      {errors.avgCommissionRate.message}
+                    </p>
+                  )}
+                </div>
+              </div>
+            </AnimatedStepWrapper>
+          )}
 
-            {formStep < totalFormSteps ? (
-              <Button
-                type="button"
-                onClick={nextStep}
-                variant="primary"
-                color="brand"
-                size="lg"
-                className="w-full"
-              >
-                التالي
-              </Button>
-            ) : (
-              <Button type="submit" variant="primary" color="brand" size="lg" className="w-full">
-                إرسال
-              </Button>
-            )}
-          </div>
-        </form>
-      </div>
-      <StepperBar steps={stepperSteps} currentStep={stepperStep} />
+          {formStep === 3 && (
+            <AnimatedStepWrapper key={3}>
+              <StepHeader title="تكلفة المواد الغذائية والإعلانات" />
+              <div className="space-y-6">
+                <div className="space-y-2.5">
+                  <Label htmlFor="foodCostPercentage">كم تُمثل تكلفة المواد (Food Cost)؟</Label>
+                  <Controller
+                    name="foodCostPercentage"
+                    control={control}
+                    render={({ field }) => (
+                      <>
+                        <div className="relative">
+                          <Input
+                            variant="lg"
+                            className="rounded-xl"
+                            id="foodCostPercentage"
+                            type="number"
+                            placeholder="20-50%"
+                            value={field.value}
+                            onChange={field.onChange}
+                          />
+                          <span className="absolute end-3 top-2.5 text-slate-500">%</span>
+                        </div>
+                        <Slider
+                          value={[parseInt(field.value, 10)]}
+                          onValueChange={(value) => field.onChange(String(value[0]))}
+                          min={1}
+                          max={50}
+                          step={1}
+                        />
+                      </>
+                    )}
+                  />
+                  <p className="text-sm text-slate-500">المتوسط في السوق من 25% إلى 30%</p>
+                  {errors.foodCostPercentage && (
+                    <p className="mt-1 animate-shake-enter text-xs text-orange-600/80">
+                      {errors.foodCostPercentage.message}
+                    </p>
+                  )}
+                </div>
+
+                <div className="space-y-2.5">
+                  <Label htmlFor="monthlyAdBudget">
+                    كم ميزانيتك الإعلانية الشهرية على تطبيقات التوصيل؟
+                  </Label>
+                  <Controller
+                    name="monthlyAdBudget"
+                    control={control}
+                    render={({ field }) => (
+                      <div className="relative">
+                        <Input
+                          variant="lg"
+                          className="rounded-xl"
+                          id="monthlyAdBudget"
+                          type="number"
+                          placeholder="مثال: 1,000"
+                          {...field}
+                        />
+                        <span className="absolute end-3 top-2.5 text-slate-500">ريال</span>
+                      </div>
+                    )}
+                  />
+                  {errors.monthlyAdBudget && (
+                    <p className="mt-1 animate-shake-enter text-xs text-orange-600/80">
+                      {errors.monthlyAdBudget.message}
+                    </p>
+                  )}
+                </div>
+
+                <div className="space-y-2.5">
+                  <Label htmlFor="promoDiscountPercentage">كم عادة تقدم خصومات ترويجية؟</Label>
+                  <Controller
+                    name="promoDiscountPercentage"
+                    control={control}
+                    render={({ field }) => (
+                      <>
+                        <div className="relative">
+                          <Input
+                            variant="lg"
+                            className="rounded-xl"
+                            id="promoDiscountPercentage"
+                            type="number"
+                            placeholder="0-50%"
+                            value={field.value}
+                            onChange={field.onChange}
+                          />
+                          <span className="absolute end-3 top-2.5 text-slate-500">%</span>
+                        </div>
+                        <Slider
+                          value={[parseInt(field.value, 10)]}
+                          onValueChange={(value) => field.onChange(String(value[0]))}
+                          min={0}
+                          max={100}
+                          step={1}
+                        />
+                      </>
+                    )}
+                  />
+                  <p className="text-sm text-slate-500">
+                    مثال: "خصومات مثل: توصيل مجاني، اطلب 1 واحصل على 1، 25% خصم، إلخ"
+                  </p>
+                  {errors.promoDiscountPercentage && (
+                    <p className="mt-1 animate-shake-enter text-xs text-orange-600/80">
+                      {errors.promoDiscountPercentage.message}
+                    </p>
+                  )}
+                </div>
+              </div>
+            </AnimatedStepWrapper>
+          )}
+
+          {formStep === 4 && (
+            <AnimatedStepWrapper key={4}>
+              <StepHeader title="خلينا نرسلك تقريرك" />
+              <div className="space-y-4">
+                <div className="space-y-2.5">
+                  <Label htmlFor="name">الاسم</Label>
+                  <Controller
+                    name="name"
+                    control={control}
+                    render={({ field }) => (
+                      <Input
+                        variant="lg"
+                        className="rounded-xl"
+                        id="name"
+                        placeholder="أدخل اسمك"
+                        {...field}
+                        autoComplete="name"
+                      />
+                    )}
+                  />
+                  {errors.name && (
+                    <p className="mt-1 animate-shake-enter text-xs text-orange-600/80">
+                      {errors.name.message}
+                    </p>
+                  )}
+                </div>
+                <div className="space-y-2.5">
+                  <Label htmlFor="email">البريد الإلكتروني</Label>
+                  <Controller
+                    name="email"
+                    control={control}
+                    render={({ field }) => (
+                      <Input
+                        variant="lg"
+                        className="rounded-xl"
+                        id="email"
+                        type="email"
+                        placeholder="أدخل بريدك الإلكتروني"
+                        {...field}
+                        autoComplete="email"
+                      />
+                    )}
+                  />
+                  {errors.email && (
+                    <p className="mt-1 animate-shake-enter text-xs text-orange-600/80">
+                      {errors.email.message}
+                    </p>
+                  )}
+                </div>
+                <div className="space-y-2.5">
+                  <Label htmlFor="phone">رقم الجوال</Label>
+                  <Controller
+                    name="phone"
+                    control={control}
+                    render={({ field }) => (
+                      <Input
+                        variant="lg"
+                        className="rounded-xl"
+                        id="phone"
+                        type="tel"
+                        placeholder="أدخل رقم جوالك"
+                        {...field}
+                        autoComplete="tel"
+                      />
+                    )}
+                  />
+                  {errors.phone && (
+                    <p className="mt-1 animate-shake-enter text-xs text-orange-600/80">
+                      {errors.phone.message}
+                    </p>
+                  )}
+                </div>
+                <div className="space-y-2.5">
+                  <Label htmlFor="businessName">اسم النشاط التجاري (اختياري)</Label>
+                  <Controller
+                    name="businessName"
+                    control={control}
+                    render={({ field }) => (
+                      <Input
+                        variant="lg"
+                        className="rounded-xl"
+                        id="businessName"
+                        placeholder="أدخل اسم نشاطك التجاري"
+                        {...field}
+                        autoComplete="organization"
+                      />
+                    )}
+                  />
+                </div>
+              </div>
+            </AnimatedStepWrapper>
+          )}
+        </AnimatePresence>
+
+        <div className="mx-auto mt-8 flex max-w-4xl justify-end lg:mb-2.5">
+          {formStep < totalFormSteps ? (
+            <Button
+              type="button"
+              onClick={nextStep}
+              variant="primary"
+              color="brand"
+              size="lg"
+              className="w-full"
+            >
+              التالي
+            </Button>
+          ) : (
+            <Button type="submit" variant="primary" color="brand" size="lg" className="w-full">
+              احصل على تقريرك الآن
+            </Button>
+          )}
+        </div>
+      </form>
+
+      <StepperBar
+        steps={stepperSteps.map((s) => ({ title: s.title }))}
+        currentStep={formStep}
+        // className="mt-auto"
+      />
     </div>
   )
 }

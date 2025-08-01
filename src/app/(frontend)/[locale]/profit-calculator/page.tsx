@@ -37,7 +37,7 @@ export default async function Page({ params: paramsPromise }: Args) {
 
   return (
     <article className="overflow-x-clip bg-background">
-      <div className="container flex min-h-screen w-full pt-header-plus-admin-bar pb-4">
+      <div className="container flex min-h-screen w-full flex-col pt-header-plus-admin-bar pb-4">
         <ProfitabilityCalculator />
       </div>
     </article>
