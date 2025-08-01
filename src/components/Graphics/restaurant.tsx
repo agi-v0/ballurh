@@ -16,7 +16,7 @@ const Restaurant = (props: SVGProps<SVGSVGElement>) => (
       height={17.333}
       rx={6.067}
       fill="currentColor"
-      fillOpacity={0.4}
+      fillOpacity={0.8}
     />
     <rect
       x={0.553}
@@ -36,7 +36,7 @@ const Restaurant = (props: SVGProps<SVGSVGElement>) => (
     <path
       d="M78.553 6.535a6.07 6.07 0 0 1 6.07-6.07h91.86a6.07 6.07 0 0 1 6.07 6.07v37.263h-104z"
       fill="currentColor"
-      fillOpacity={0.4}
+      fillOpacity={0.8}
     />
     <path
       d="M52.553 173.782a6.067 6.067 0 0 1 6.066-6.067h39.867a6.067 6.067 0 0 1 6.067 6.067v49.416h-52z"

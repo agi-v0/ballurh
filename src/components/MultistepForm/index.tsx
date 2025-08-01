@@ -280,7 +280,7 @@ const ProfitabilityCalculator: React.FC = () => {
                           />
                           <div className="p-2 max-md:max-w-[30%] md:p-6">
                             {icon({
-                              className: `h-auto w-full transition-[opacity,color] ${field.value === value ? 'text-teal-500 opacity-100' : 'text-slate-950 opacity-50'}`,
+                              className: `h-auto w-full transition-[opacity,color] ${field.value === value ? 'text-teal-500 opacity-100' : 'text-slate-950 opacity-20'}`,
                             })}
                           </div>
                           <p className="text-start text-base font-medium md:text-center">{label}</p>
