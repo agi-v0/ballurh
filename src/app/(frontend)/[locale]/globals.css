@@ -23,6 +23,7 @@
   ::backdrop,
   ::file-selector-button {
     border-color: var(--color-gray-200, currentcolor);
+    scroll-margin-top: calc(var(--header-plus-admin-bar-height) + 3rem);
   }
   * {
     @apply border-border outline-ring/50;
