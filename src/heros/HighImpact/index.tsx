@@ -41,7 +41,7 @@ export const HighImpactHero: React.FC<Page['hero']> = ({ links, media, richText 
             media={media}
           />
         )}
-        <div className="absolute top-1/2 left-[15%] -z-1 aspect-square h-auto w-screen -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(ellipse_50.00%_50.00%_at_50.00%_50.00%,_rgba(236,_255,_249,_0)_75%,_#D2F9EC_100%)]" />
+        <div className="absolute end-[15%] top-1/2 -z-1 aspect-square h-auto w-screen -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(ellipse_50.00%_50.00%_at_50.00%_50.00%,_rgba(236,_255,_249,_0)_75%,_#D2F9EC_100%)] mask-b-from-50% mask-b-to-95% ltr:translate-x-1/2" />
       </div>
     </div>
   )

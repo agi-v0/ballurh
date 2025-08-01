@@ -61,7 +61,14 @@ export const CallToAction02: React.FC<CallToActionProps> = ({
           )}
           <motion.div variants={itemsFling} className="flex flex-col gap-8">
             {(links || []).map(({ link }, i) => {
-              return <CMSLink key={i} size="lg" {...(link as CMSLinkType)} />
+              return (
+                <CMSLink
+                  key={i}
+                  size="lg"
+                  {...(link as CMSLinkType)}
+                  className="bg-orange-500 text-inverted-primary outline-offset-2 hover:bg-white hover:text-inverted-primary hover:outline-2 hover:outline-white/20"
+                />
+              )
             })}
           </motion.div>
         </motion.div>

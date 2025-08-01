@@ -151,6 +151,11 @@
   --neutral-secondary: --alpha(var(--color-white) / 60%);
   --neutral-tertiary: --alpha(var(--color-white) / 40%);
   --neutral-quaternary: --alpha(var(--color-white) / 25%);
+
+  --inverted-primary: --alpha(var(--color-slate-950) / 100%);
+  --inverted-secondary: --alpha(var(--color-slate-950) / 60%);
+  --inverted-tertiary: --alpha(var(--color-slate-950) / 40%);
+  --inverted-quaternary: --alpha(var(--color-slate-950) / 25%);
 }
 
 @theme inline {
