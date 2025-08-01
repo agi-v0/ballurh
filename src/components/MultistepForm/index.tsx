@@ -69,7 +69,7 @@ type FormData = z.infer<typeof formSchema>
 const defaultValues = {
   activityType: 'hybridRestaurant',
   physicalBranchesCount: 1,
-  hasCloudBrands: 'لا' as 'نعم' | 'لا',
+  hasCloudBrands: '' as 'نعم' | 'لا',
   cloudBrandsCount: 1,
   deliverySalesPercentage: 25,
   monthlyOrders: '',
@@ -226,7 +226,7 @@ const ProfitabilityCalculator: React.FC = () => {
 
   if (isSubmitted) {
     return (
-      <div className="flex w-full grow flex-col items-center justify-center rounded-3xl border p-4">
+      <div className="flex w-full grow flex-col items-center justify-center rounded-3xl border bg-background-neutral p-4">
         <AnimatedStepWrapper>
           <div className="text-center">
             <h2 className="text-2xl font-semibold">
