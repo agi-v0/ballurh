@@ -161,7 +161,7 @@ const ProfitabilityCalculator: React.FC = () => {
   const totalFormSteps = 4
 
   const nextStep = async () => {
-    let isValid = await trigger()
+    const isValid = await trigger()
 
     if (isValid) {
       setFormStep((prev) => Math.min(prev + 1, totalFormSteps))
@@ -545,7 +545,7 @@ const ProfitabilityCalculator: React.FC = () => {
                     )}
                   />
                   <p className="text-sm text-slate-500">
-                    مثال: "خصومات مثل: توصيل مجاني، اطلب 1 واحصل على 1، 25% خصم، إلخ"
+                    مثال: خصومات مثل: &quot;توصيل مجاني، اطلب 1 واحصل على 1، 25% خصم، إلخ&quot;
                   </p>
                   {errors.promoDiscountPercentage && (
                     <p className="mt-1 animate-shake-enter text-xs text-orange-600/80">
