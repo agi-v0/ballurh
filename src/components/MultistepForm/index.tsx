@@ -1,5 +1,5 @@
 'use client'
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { useForm, Controller, SubmitHandler, SubmitErrorHandler } from 'react-hook-form'
 import { z } from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
@@ -311,15 +311,37 @@ const ProfitabilityCalculator: React.FC = () => {
                     name="physicalBranchesCount"
                     control={control}
                     render={({ field }) => (
-                      <Input
-                        variant="lg"
-                        className="rounded-xl"
-                        id="physicalBranchesCount"
-                        type="number"
-                        inputMode="numeric"
-                        placeholder="مثال: 3"
-                        {...field}
-                      />
+                      <div className="relative flex items-center">
+                        <Button
+                          type="button"
+                          size="icon"
+                          variant="secondary"
+                          onClick={() =>
+                            field.onChange(Math.max(1, (Number(field.value) || 1) - 1))
+                          }
+                          className="size-12 shrink-0 rounded-s-xl rounded-e-none border border-e-0"
+                        >
+                          <Icon icon="ri:subtract-line" height="none" className="size-5" />
+                        </Button>
+                        <Input
+                          variant="lg"
+                          className="rounded-none text-center"
+                          id="physicalBranchesCount"
+                          type="number"
+                          inputMode="numeric"
+                          placeholder="مثال: 3"
+                          {...field}
+                        />
+                        <Button
+                          type="button"
+                          size="icon"
+                          variant="secondary"
+                          onClick={() => field.onChange((Number(field.value) || 0) + 1)}
+                          className="size-12 shrink-0 rounded-s-none rounded-e-xl border border-s-0"
+                        >
+                          <Icon icon="ri:add-line" height="none" className="size-5" />
+                        </Button>
+                      </div>
                     )}
                   />
                   {errors.physicalBranchesCount && (
@@ -368,15 +390,37 @@ const ProfitabilityCalculator: React.FC = () => {
                       name="cloudBrandsCount"
                       control={control}
                       render={({ field }) => (
-                        <Input
-                          variant="lg"
-                          className="rounded-xl"
-                          id="cloudBrandsCount"
-                          type="number"
-                          inputMode="numeric"
-                          placeholder="أدخل عدد العلامات"
-                          {...field}
-                        />
+                        <div className="relative flex items-center">
+                          <Button
+                            type="button"
+                            size="icon"
+                            variant="secondary"
+                            onClick={() =>
+                              field.onChange(Math.max(1, (Number(field.value) || 1) - 1))
+                            }
+                            className="size-12 shrink-0 rounded-s-xl rounded-e-none border border-e-0"
+                          >
+                            <Icon icon="ri:subtract-line" height="none" className="size-5" />
+                          </Button>
+                          <Input
+                            variant="lg"
+                            className="grow rounded-none text-center"
+                            id="cloudBrandsCount"
+                            type="number"
+                            inputMode="numeric"
+                            placeholder="أدخل عدد العلامات"
+                            {...field}
+                          />
+                          <Button
+                            type="button"
+                            size="icon"
+                            variant="secondary"
+                            onClick={() => field.onChange((Number(field.value) || 0) + 1)}
+                            className="size-12 shrink-0 rounded-s-none rounded-e-xl border border-s-0"
+                          >
+                            <Icon icon="ri:add-line" height="none" className="size-5" />
+                          </Button>
+                        </div>
                       )}
                     />
                     {errors.cloudBrandsCount && (
@@ -727,6 +771,7 @@ const ProfitabilityCalculator: React.FC = () => {
               التالي
             </Button>
           ) : (
+            // if submit is handled by the form, the submit function is automatically called when button with type submit is mounted
             <Button
               type="button"
               onClick={handleSubmit(onSubmit, onError)}
