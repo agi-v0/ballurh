@@ -16,8 +16,8 @@ services:
   #     - .env
 
   postgres:
-    image: 'postgres:17.4'
-    container_name: 'postgres17.4'
+    image: 'postgres:17.5'
+    container_name: 'postgres17.5'
     environment:
       POSTGRES_PASSWORD: '0000'
     ports:
