@@ -217,9 +217,26 @@ const ProfitabilityCalculator: React.FC = () => {
   }
 
   const onSubmit: SubmitHandler<FormData> = async (data) => {
-    console.log('data submitted:', data)
-    // send to backend …
-    setIsSubmitted(true)
+    try {
+      const response = await fetch('/next/calculate-profit', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      })
+
+      if (response.ok) {
+        setIsSubmitted(true)
+      } else {
+        // Handle server errors or invalid responses
+        console.error('Submission failed:', await response.text())
+        // Optionally, set an error state to show a message to the user
+      }
+    } catch (error) {
+      console.error('An error occurred during submission:', error)
+      // Optionally, set an error state to show a message to the user
+    }
   }
 
   const onError: SubmitErrorHandler<FormData> = async (errors, e) => {
