@@ -67,6 +67,7 @@ export const seedBlogBlockDemo = (
         } as any,
       },
     ],
+    list: { items: [] },
   }
 
   const pageData: Omit<Page, 'id' | 'updatedAt' | 'createdAt' | 'sizes'> = {

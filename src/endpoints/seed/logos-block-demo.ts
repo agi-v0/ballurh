@@ -73,6 +73,7 @@ export const seedLogosBlockDemo = (media: { image169: Media | null; logos: Media
         } as any,
       },
     ],
+    list: { items: [] },
   }
 
   const pageData: Omit<Page, 'id' | 'updatedAt' | 'createdAt' | 'sizes'> = {

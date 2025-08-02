@@ -400,6 +400,7 @@ export const seedBlocksDemoIndex = (media: {
         } as any,
       },
     ],
+    list: { items: [] },
   }
 
   const pageData: Omit<Page, 'id' | 'updatedAt' | 'createdAt' | 'sizes'> = {

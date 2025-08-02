@@ -109,6 +109,7 @@ export const home: (args: HomeArgs) => RequiredDataFromCollectionSlug<'pages'> =
         icon: null,
         icon_position: null,
       },
+      list: { items: [] },
     },
 
     layout: [

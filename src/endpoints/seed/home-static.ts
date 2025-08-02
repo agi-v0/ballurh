@@ -78,6 +78,7 @@ export const homeStatic: RequiredDataFromCollectionSlug<'pages'> = {
         version: 1,
       },
     },
+    list: { items: [] },
   },
   meta: {
     description: 'An open-source website built with Payload and Next.js.',

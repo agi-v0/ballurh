@@ -322,6 +322,7 @@ export const seedFeaturesShowcasePage = (media: {
         },
       },
     ],
+    list: { items: [] },
   }
 
   const showcasePageData: Omit<Page, 'id' | 'updatedAt' | 'createdAt' | 'sizes'> & {
