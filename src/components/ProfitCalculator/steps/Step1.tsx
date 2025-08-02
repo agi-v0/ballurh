@@ -23,7 +23,7 @@ const activityTypeOptions: {
   },
   {
     value: 'cloudKitchen',
-    label: 'نشاط سحابي (دارك ستور)',
+    label: 'نشاط سحابي (دارك كتشن / دارك ستور)',
     icon: (props) => <CloudKitchen {...props} />,
   },
   {

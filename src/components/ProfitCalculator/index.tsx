@@ -7,11 +7,13 @@ import {
   SubmitErrorHandler,
   FormProvider,
 } from 'react-hook-form'
+import { formSchema, type FormData } from './schema'
 import { z } from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { Icon } from '@iconify-icon/react'
 import { motion, AnimatePresence } from 'motion/react'
 
+import { calculateProfit } from '@/app/actions'
 import { Button } from '@/components/ui/button'
 
 import StepperBar from '../stepper/title-bar'
@@ -22,56 +24,28 @@ import Step2 from './steps/Step2'
 import Step3 from './steps/Step3'
 import Step4 from './steps/Step4'
 
-const step1Schema = z
-  .object({
-    activityType: z.string({ message: 'يرجى اختيار نوع النشاط' }),
-    physicalBranchesCount: z.coerce.number().min(1, 'يجب أن تكون القيمة 1 على الأقل'),
-    hasCloudBrands: z.enum(['نعم', 'لا'], { message: 'يرجى الاختيار' }),
-    cloudBrandsCount: z.coerce.number().optional(),
-  })
-  .superRefine((data, ctx) => {
-    if (data.hasCloudBrands === 'نعم' && !data.cloudBrandsCount) {
-      ctx.addIssue({
-        path: ['cloudBrandsCount'],
-        code: 'custom',
-        message: 'أدخل عدد العلامات',
-      })
-    }
-  })
-
-const step2Schema = z.object({
-  annualSales: z.string().min(1, { message: 'هذا الحقل مطلوب' }),
-  monthlyOrders: z.string().min(1, { message: 'هذا الحقل مطلوب' }),
-  deliverySalesPercentage: z.coerce.number().min(1, { message: 'هذا الحقل مطلوب' }),
-  avgCommissionRate: z.coerce.number().min(1, { message: 'هذا الحقل مطلوب' }),
-})
-
-const step3Schema = z.object({
-  foodCostPercentage: z.coerce.number().min(1, { message: 'هذا الحقل مطلوب' }),
-  monthlyAdBudget: z.string().min(1, { message: 'هذا الحقل مطلوب' }),
-  promoDiscountPercentage: z.coerce.number().min(10, { message: 'هذا الحقل مطلوب' }),
-})
-
-const step4Schema = z.object({
-  name: z.string().min(1, { message: 'هذا الحقل مطلوب' }),
-  email: z
-    .string()
-    .min(1, { message: 'هذا الحقل مطلوب' }) // empty string
-    .pipe(z.email({ message: 'يرجى إدخال بريد إلكتروني صحيح' })), // bad format
-  phone: z.string().min(1, { message: 'هذا الحقل مطلوب' }),
-  businessName: z.string().optional(),
-})
-
-const stepSchemas = [step1Schema, step2Schema, step3Schema, step4Schema] as const
+const stepSchemas = [
+  formSchema.pick({
+    activityType: true,
+    physicalBranchesCount: true,
+    hasCloudBrands: true,
+    cloudBrandsCount: true,
+  }),
+  formSchema.pick({
+    annualSales: true,
+    monthlyOrders: true,
+    deliverySalesPercentage: true,
+    avgCommissionRate: true,
+  }),
+  formSchema.pick({
+    foodCostPercentage: true,
+    monthlyAdBudget: true,
+    deliveryFeeBorne: true,
+  }),
+  formSchema.pick({ name: true, email: true, phone: true, businessName: true }),
+]
 
 const stepFields = stepSchemas.map((schema) => Object.keys(schema.shape)) as (keyof FormData)[][]
-
-const formSchema = step1Schema
-  .extend(step2Schema.shape)
-  .extend(step3Schema.shape)
-  .extend(step4Schema.shape)
-
-type FormData = z.infer<typeof formSchema>
 
 const defaultValues = {
   activityType: 'hybridRestaurant',
@@ -84,7 +58,7 @@ const defaultValues = {
   avgCommissionRate: 25,
   foodCostPercentage: 30,
   monthlyAdBudget: '',
-  promoDiscountPercentage: 10,
+  deliveryFeeBorne: 10,
   name: '',
   email: '',
   phone: '',
@@ -143,6 +117,8 @@ const formSteps = [
 const ProfitabilityCalculator: React.FC = () => {
   const [formStep, setFormStep] = useState<number>(0)
   const [isSubmitted, setIsSubmitted] = useState(false)
+  const [calculatedProfit, setCalculatedProfit] = useState<number | undefined>(undefined)
+  const [isSubmitting, setIsSubmitting] = useState(false)
 
   const methods = useForm<FormData>({
     defaultValues,
@@ -206,26 +182,25 @@ const ProfitabilityCalculator: React.FC = () => {
     setFormStep((prev) => Math.max(prev - 1, 0))
   }
 
-  const onSubmit: SubmitHandler<FormData> = async (data) => {
+  const onSubmit: SubmitHandler<FormData> = async (data: FormData) => {
+    setIsSubmitting(true)
+    await setTimeout(() => {}, 10000)
     try {
-      const response = await fetch('/next/calculate-profit', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(data),
-      })
+      const response = await calculateProfit(data)
 
-      if (response.ok) {
+      if (response.success) {
+        setCalculatedProfit(response.totalAnnualProfit)
         setIsSubmitted(true)
       } else {
         // Handle server errors or invalid responses
-        console.error('Submission failed:', await response.text())
+        console.error('Submission failed:', response.message)
         // Optionally, set an error state to show a message to the user
       }
     } catch (error) {
       console.error('An error occurred during submission:', error)
       // Optionally, set an error state to show a message to the user
+    } finally {
+      setIsSubmitting(false)
     }
   }
 
@@ -245,6 +220,15 @@ const ProfitabilityCalculator: React.FC = () => {
             <h2 className="text-2xl font-semibold">
               ✅ تم استلام بياناتك، التقرير في الطريق لبريدك الإلكتروني أو واتساب.
             </h2>
+            {/* {calculatedProfit && (
+              <p className="mt-4 text-lg">
+                الربح السنوي المتوقع:{' '}
+                {new Intl.NumberFormat('en-US', {
+                  style: 'currency',
+                  currency: 'SAR',
+                }).format(calculatedProfit)}
+              </p>
+            )} */}
           </div>
         </AnimatedStepWrapper>
       </div>
@@ -313,8 +297,33 @@ const ProfitabilityCalculator: React.FC = () => {
                 color="brand"
                 size="lg"
                 className="w-full"
+                disabled={isSubmitting}
               >
-                احصل على تقريرك الآن
+                {isSubmitting ? (
+                  <svg
+                    data-loading={isSubmitting}
+                    className="ms-2 size-4 animate-spin text-white duration-300 data-[loading=false]:hidden"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                  >
+                    <circle
+                      className="opacity-25"
+                      cx="12"
+                      cy="12"
+                      r="10"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                    ></circle>
+                    <path
+                      className="opacity-75"
+                      fill="currentColor"
+                      d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                    ></path>
+                  </svg>
+                ) : (
+                  'احصل على تقريرك الآن'
+                )}
               </Button>
             )}
           </div>
