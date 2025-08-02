@@ -25,6 +25,7 @@ const Step3 = () => {
                   className="rounded-xl"
                   id="foodCostPercentage"
                   type="number"
+                  inputMode="numeric"
                   placeholder="20-50%"
                   value={field.value}
                   onChange={field.onChange}
@@ -32,8 +33,8 @@ const Step3 = () => {
                 <span className="absolute end-3 top-2.5 text-slate-500">%</span>
               </div>
               <Slider
-                value={[parseInt(field.value, 10)]}
-                onValueChange={(value) => field.onChange(String(value[0]))}
+                value={[field.value]}
+                onValueChange={(value) => field.onChange(value[0])}
                 min={1}
                 max={50}
                 step={1}
@@ -50,9 +51,7 @@ const Step3 = () => {
       </div>
 
       <div className="space-y-2.5">
-        <Label htmlFor="monthlyAdBudget">
-          كم ميزانيتك الإعلانية الشهرية على تطبيقات التوصيل؟
-        </Label>
+        <Label htmlFor="monthlyAdBudget">كم ميزانيتك الإعلانية الشهرية على تطبيقات التوصيل؟</Label>
         <Controller
           name="monthlyAdBudget"
           control={control}
@@ -63,6 +62,7 @@ const Step3 = () => {
                 className="rounded-xl"
                 id="monthlyAdBudget"
                 type="number"
+                inputMode="numeric"
                 placeholder="مثال: 1,000"
                 {...field}
               />
@@ -90,6 +90,7 @@ const Step3 = () => {
                   className="rounded-xl"
                   id="promoDiscountPercentage"
                   type="number"
+                  inputMode="numeric"
                   placeholder="0-50%"
                   value={field.value}
                   onChange={field.onChange}
@@ -97,8 +98,8 @@ const Step3 = () => {
                 <span className="absolute end-3 top-2.5 text-slate-500">%</span>
               </div>
               <Slider
-                value={[parseInt(field.value, 10)]}
-                onValueChange={(value) => field.onChange(String(value[0]))}
+                value={[field.value]}
+                onValueChange={(value) => field.onChange(value[0])}
                 min={0}
                 max={100}
                 step={1}
@@ -107,7 +108,7 @@ const Step3 = () => {
           )}
         />
         <p className="text-sm text-slate-500">
-          مثال - خصومات مثل: &quot;توصيل مجاني، اطلب 1 واحصل على 1، 25% خصم، إلخ&quot;
+          مثال: خصومات مثل: &quot;توصيل مجاني، اطلب 1 واحصل على 1، 25% خصم، إلخ&quot;
         </p>
         {errors.promoDiscountPercentage && (
           <p className="mt-1 animate-shake-enter text-xs text-orange-600/80">

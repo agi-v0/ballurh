@@ -27,6 +27,7 @@ const Step2 = () => {
                 className="rounded-xl"
                 id="deliverySalesPercentage"
                 type="number"
+                inputMode="numeric"
                 placeholder="أدخل النسبة"
                 {...field}
               />
@@ -53,6 +54,7 @@ const Step2 = () => {
                 className="rounded-xl"
                 id="monthlyOrders"
                 type="number"
+                inputMode="numeric"
                 placeholder="مثال: 850 طلب شهرياً"
                 {...field}
               />
@@ -68,9 +70,7 @@ const Step2 = () => {
 
       <div className="space-y-2.5">
         <Label htmlFor="avgCommissionRate">كم متوسط النسبة اللي تدفعها كتطبيقات توصيل؟</Label>
-        <p className="text-sm text-slate-500">
-          (تشمل عمولة التطبيق + الدفع الإلكتروني + التسويق)
-        </p>
+        <p className="text-sm text-slate-500">(تشمل عمولة التطبيق + الدفع الإلكتروني + التسويق)</p>
         <Controller
           name="avgCommissionRate"
           control={control}
@@ -82,6 +82,7 @@ const Step2 = () => {
                   className="rounded-xl"
                   id="avgCommissionRate"
                   type="number"
+                  inputMode="numeric"
                   placeholder="20-35%"
                   value={field.value}
                   onChange={field.onChange}
@@ -89,8 +90,8 @@ const Step2 = () => {
                 <span className="absolute end-3 top-2.5 text-slate-500">%</span>
               </div>
               <Slider
-                value={[parseInt(field.value, 10)]}
-                onValueChange={(value) => field.onChange(String(value[0]))}
+                value={[field.value]}
+                onValueChange={(value) => field.onChange(value[0])}
                 min={0}
                 max={99}
                 step={1}
@@ -104,7 +105,7 @@ const Step2 = () => {
             href="/"
             target="_blank"
             rel="noreferrer"
-            className="text-slate-400 transition-colors hover:text-slate-600"
+            className="text-teal-600 transition-colors hover:text-slate-600"
           >
             نساعدك نطلّع الرقم بدقة.
           </Link>

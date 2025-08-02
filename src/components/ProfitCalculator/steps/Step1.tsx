@@ -1,3 +1,4 @@
+'use client'
 import React from 'react'
 import { Controller, useFormContext } from 'react-hook-form'
 import { Input } from '@/components/ui/input'
@@ -7,6 +8,8 @@ import Restaurant from '@/components/Graphics/restaurant'
 import CloudKitchen from '@/components/Graphics/cloud-kitchen'
 import HybridRestaurant from '@/components/Graphics/hybrid-restaurant'
 import z from 'zod'
+import { Button } from '@/components/ui/button'
+import { Icon } from '@iconify-icon/react/dist/iconify.mjs'
 
 const activityTypeOptions: {
   value: string
@@ -68,7 +71,7 @@ const Step1 = () => {
                 <RadioCardsIndicator placement="top-right" className="[&>iconify-icon]:size-6" />
                 <div className="p-2 max-md:max-w-[30%] md:p-6">
                   {icon({
-                    className: `h-auto w-full transition-[opacity,color] ${activityType === value ? 'text-teal-500 opacity-100' : 'text-slate-950 opacity-50'}`,
+                    className: `h-auto w-full transition-[opacity,color] ${field.value === value ? 'text-teal-500 opacity-100' : 'text-slate-950 opacity-20'}`,
                   })}
                 </div>
                 <p className="text-start text-base font-medium md:text-center">{label}</p>
@@ -89,14 +92,35 @@ const Step1 = () => {
           name="physicalBranchesCount"
           control={control}
           render={({ field }) => (
-            <Input
-              variant="lg"
-              className="rounded-xl"
-              id="physicalBranchesCount"
-              type="number"
-              placeholder="مثال: 3"
-              {...field}
-            />
+            <div className="relative flex items-center">
+              <Button
+                type="button"
+                size="icon"
+                variant="secondary"
+                onClick={() => field.onChange(Math.max(1, (Number(field.value) || 1) - 1))}
+                className="size-12 shrink-0 rounded-s-xl rounded-e-none border border-e-0"
+              >
+                <Icon icon="ri:subtract-line" height="none" className="size-5" />
+              </Button>
+              <Input
+                variant="lg"
+                className="rounded-none text-center"
+                id="physicalBranchesCount"
+                type="number"
+                inputMode="numeric"
+                placeholder="مثال: 3"
+                {...field}
+              />
+              <Button
+                type="button"
+                size="icon"
+                variant="secondary"
+                onClick={() => field.onChange((Number(field.value) || 0) + 1)}
+                className="size-12 shrink-0 rounded-s-none rounded-e-xl border border-s-0"
+              >
+                <Icon icon="ri:add-line" height="none" className="size-5" />
+              </Button>
+            </div>
           )}
         />
         {errors.physicalBranchesCount && (
@@ -145,14 +169,35 @@ const Step1 = () => {
             name="cloudBrandsCount"
             control={control}
             render={({ field }) => (
-              <Input
-                variant="lg"
-                className="rounded-xl"
-                id="cloudBrandsCount"
-                type="number"
-                placeholder="أدخل عدد العلامات"
-                {...field}
-              />
+              <div className="relative flex items-center">
+                <Button
+                  type="button"
+                  size="icon"
+                  variant="secondary"
+                  onClick={() => field.onChange(Math.max(1, (Number(field.value) || 1) - 1))}
+                  className="size-12 shrink-0 rounded-s-xl rounded-e-none border border-e-0"
+                >
+                  <Icon icon="ri:subtract-line" height="none" className="size-5" />
+                </Button>
+                <Input
+                  variant="lg"
+                  className="grow rounded-none text-center"
+                  id="cloudBrandsCount"
+                  type="number"
+                  inputMode="numeric"
+                  placeholder="أدخل عدد العلامات"
+                  {...field}
+                />
+                <Button
+                  type="button"
+                  size="icon"
+                  variant="secondary"
+                  onClick={() => field.onChange((Number(field.value) || 0) + 1)}
+                  className="size-12 shrink-0 rounded-s-none rounded-e-xl border border-s-0"
+                >
+                  <Icon icon="ri:add-line" height="none" className="size-5" />
+                </Button>
+              </div>
             )}
           />
           {errors.cloudBrandsCount && (

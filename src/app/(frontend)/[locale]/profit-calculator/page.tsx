@@ -14,7 +14,7 @@ import { draftMode } from 'next/headers'
 import { generateMeta } from '@/utilities/generateMeta'
 import { Link } from '@/i18n/navigation'
 import RecentBlogPosts from '@/components/RecentBlogPosts'
-import ProfitabilityCalculator from '@/components/MultistepForm'
+import ProfitabilityCalculator from '@/components/ProfitCalculator'
 
 type Args = {
   params: Promise<{

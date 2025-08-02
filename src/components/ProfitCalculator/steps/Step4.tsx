@@ -67,6 +67,7 @@ const Step4 = () => {
               className="rounded-xl"
               id="phone"
               type="tel"
+              inputMode="numeric"
               placeholder="أدخل رقم جوالك"
               {...field}
               autoComplete="tel"
