@@ -11,6 +11,8 @@ import { linkGroup } from '@/fields/linkGroup'
 import { badge } from '@/fields/badge'
 import { mediaGroup } from '@/fields/media'
 import { logos } from '@/fields/logos'
+import remixIcons from '@/fields/iconPickerField/remix-icons.json'
+import { iconPickerField } from '@/fields/iconPickerField'
 
 export const hero: Field = {
   name: 'hero',
@@ -20,7 +22,7 @@ export const hero: Field = {
     {
       name: 'type',
       type: 'select',
-      defaultValue: 'lowImpact',
+      defaultValue: 'mediumImpact',
       label: 'Type',
       options: [
         {
@@ -141,6 +143,68 @@ export const hero: Field = {
               },
             },
             logos({}),
+          ],
+        },
+      ],
+    },
+    {
+      type: 'collapsible',
+      label: 'Trust statements',
+      admin: {
+        initCollapsed: true,
+        condition: (_, siblingData) => {
+          return siblingData.type === 'highImpact'
+        },
+      },
+      fields: [
+        {
+          name: 'list',
+          type: 'group',
+          label: false,
+          admin: { hideGutter: true },
+          fields: [
+            {
+              name: 'style',
+              type: 'select',
+              defaultValue: 'bullet',
+              options: [
+                {
+                  label: 'Bullets',
+                  value: 'bullet',
+                },
+                {
+                  label: 'Numbers',
+                  value: 'numbered',
+                },
+                {
+                  label: 'Icons',
+                  value: 'icons',
+                },
+              ],
+            },
+            {
+              name: 'items',
+              type: 'array',
+              required: true,
+              minRows: 1,
+              fields: [
+                {
+                  name: 'text',
+                  type: 'text',
+                  required: true,
+                  localized: true,
+                },
+                iconPickerField({
+                  name: 'icon',
+                  label: 'Icon',
+                  icons: remixIcons,
+                  admin: {
+                    description:
+                      'Select an icon from the Remix icon library. You can preview all available icons at https://remixicon.com/',
+                  },
+                }),
+              ],
+            },
           ],
         },
       ],

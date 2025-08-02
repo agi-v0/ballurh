@@ -328,6 +328,17 @@ export interface Page {
       headline?: string | null;
       logos?: (string | Media)[] | null;
     };
+    list: {
+      style?: ('bullet' | 'numbered' | 'icons') | null;
+      items: {
+        text: string;
+        /**
+         * Select an icon from the Remix icon library. You can preview all available icons at https://remixicon.com/
+         */
+        icon?: string | null;
+        id?: string | null;
+      }[];
+    };
   };
   layout: (
     | ArchiveBlock
@@ -2276,6 +2287,18 @@ export interface PagesSelect<T extends boolean = true> {
           | {
               headline?: T;
               logos?: T;
+            };
+        list?:
+          | T
+          | {
+              style?: T;
+              items?:
+                | T
+                | {
+                    text?: T;
+                    icon?: T;
+                    id?: T;
+                  };
             };
       };
   layout?: T | {};
