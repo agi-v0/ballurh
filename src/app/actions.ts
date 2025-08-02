@@ -3,6 +3,30 @@
 import { FormData } from '@/components/ProfitCalculator/schema'
 
 const round = (num: number) => Math.round((num + Number.EPSILON) * 100) / 100
+// const annualSalesOptions = [
+//   'أقل من 500,000',
+//   '500,000 - 750,000',
+//   '750,000 - 1,250,000',
+//   '1,250,000 - 2,000,000',
+//   'أكثر من 2,000,000',
+// ]
+
+const getSales = (str: string) => {
+  switch (str) {
+    case 'أقل من 500,000':
+      return 250000
+    case '500,000 - 750,000':
+      return 625000
+    case '750,000 - 1,250,000':
+      return 1000000
+    case '1,250,000 - 2,000,000':
+      return 1625000
+    case 'أكثر من 2,000,000':
+      return 2000000
+    default:
+      return 500000
+  }
+}
 
 export async function calculateProfit(data: FormData) {
   try {
@@ -10,9 +34,9 @@ export async function calculateProfit(data: FormData) {
     const {
       activityType = 'hybridRestaurant',
       physicalBranchesCount = 1,
-      hasCloudBrands = '' as 'نعم' | 'لا',
+      hasCloudBrands = 'لا',
       cloudBrandsCount = 1,
-      annualSales = '',
+      annualSales = 'أقل من 500,000',
       monthlyOrders = '',
       deliverySalesPercentage = 0.25,
       avgCommissionRate = 0.25,
@@ -26,7 +50,7 @@ export async function calculateProfit(data: FormData) {
     } = data
 
     // const annualSalesNumber = Number(annualSales)
-    const annualSalesNumber = 150000
+    const annualSalesNumber = getSales(annualSales)
     const onlinePaymentRate = 0.025
     const annualOnlinePaymentAmount = onlinePaymentRate * annualSalesNumber
     const annualSalesCommissionsAmount = annualSalesNumber * avgCommissionRate

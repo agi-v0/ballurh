@@ -50,9 +50,9 @@ const stepFields = stepSchemas.map((schema) => Object.keys(schema.shape)) as (ke
 const defaultValues = {
   activityType: 'hybridRestaurant',
   physicalBranchesCount: 1,
-  hasCloudBrands: '' as 'نعم' | 'لا',
+  hasCloudBrands: 'نعم' as 'نعم' | 'لا',
   cloudBrandsCount: 1,
-  annualSales: '',
+  annualSales: 'أقل من 500,000',
   monthlyOrders: '',
   deliverySalesPercentage: 25,
   avgCommissionRate: 25,

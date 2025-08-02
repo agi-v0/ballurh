@@ -86,87 +86,11 @@ const Step1 = () => {
         </p>
       )}
 
-      <div className="space-y-2.5">
-        <Label htmlFor="physicalBranchesCount">كم عدد الفروع الفعلية (نقاط البيع)؟</Label>
-        <Controller
-          name="physicalBranchesCount"
-          control={control}
-          render={({ field }) => (
-            <div className="relative flex items-center">
-              <Button
-                type="button"
-                size="icon"
-                variant="secondary"
-                onClick={() => field.onChange(Math.max(1, (Number(field.value) || 1) - 1))}
-                className="size-12 shrink-0 rounded-s-xl rounded-e-none border border-e-0"
-              >
-                <Icon icon="ri:subtract-line" height="none" className="size-5" />
-              </Button>
-              <Input
-                variant="lg"
-                className="rounded-none text-center"
-                id="physicalBranchesCount"
-                type="number"
-                inputMode="numeric"
-                placeholder="مثال: 3"
-                {...field}
-              />
-              <Button
-                type="button"
-                size="icon"
-                variant="secondary"
-                onClick={() => field.onChange((Number(field.value) || 0) + 1)}
-                className="size-12 shrink-0 rounded-s-none rounded-e-xl border border-s-0"
-              >
-                <Icon icon="ri:add-line" height="none" className="size-5" />
-              </Button>
-            </div>
-          )}
-        />
-        {errors.physicalBranchesCount && (
-          <p className="mt-1 animate-shake-enter text-xs text-orange-600/80">
-            {errors.physicalBranchesCount.message as string}
-          </p>
-        )}
-      </div>
-
-      <div className="space-y-2.5">
-        <Label>هل لديك علامات تجارية سحابية؟</Label>
-        <Controller
-          name="hasCloudBrands"
-          control={control}
-          render={({ field }) => (
-            <RadioCardsRoot
-              onValueChange={field.onChange}
-              value={field.value}
-              className="grid-cols-2 gap-2"
-            >
-              {['نعم', 'لا'].map((option) => (
-                <RadioCardsItem
-                  key={option}
-                  value={option}
-                  variant="classic"
-                  className="flex h-12 flex-row rounded-xl py-2 text-sm font-medium data-[state=checked]:bg-background-neutral data-[state=checked]:text-base-primary data-[state=checked]:shadow-xs"
-                >
-                  {option}
-                  <RadioCardsIndicator className="end-2 top-0 bottom-0 [&>iconify-icon]:size-6" />
-                </RadioCardsItem>
-              ))}
-            </RadioCardsRoot>
-          )}
-        />
-        {errors.hasCloudBrands && (
-          <p className="mt-1 animate-shake-enter text-xs text-orange-600/80">
-            {errors.hasCloudBrands.message as string}
-          </p>
-        )}
-      </div>
-
-      {hasCloudBrands === 'نعم' && (
+      {(activityType === 'restaurant' || activityType === 'hybridRestaurant') && (
         <div className="space-y-2.5">
-          <Label htmlFor="cloudBrandsCount">كم عدد العلامات التجارية السحابية؟</Label>
+          <Label htmlFor="physicalBranchesCount">كم عدد الفروع الفعلية (نقاط البيع)؟</Label>
           <Controller
-            name="cloudBrandsCount"
+            name="physicalBranchesCount"
             control={control}
             render={({ field }) => (
               <div className="relative flex items-center">
@@ -181,11 +105,11 @@ const Step1 = () => {
                 </Button>
                 <Input
                   variant="lg"
-                  className="grow rounded-none text-center"
-                  id="cloudBrandsCount"
+                  className="rounded-none text-center"
+                  id="physicalBranchesCount"
                   type="number"
                   inputMode="numeric"
-                  placeholder="أدخل عدد العلامات"
+                  placeholder="مثال: 3"
                   {...field}
                 />
                 <Button
@@ -200,12 +124,94 @@ const Step1 = () => {
               </div>
             )}
           />
-          {errors.cloudBrandsCount && (
+          {errors.physicalBranchesCount && (
             <p className="mt-1 animate-shake-enter text-xs text-orange-600/80">
-              {errors.cloudBrandsCount.message as string}
+              {errors.physicalBranchesCount.message as string}
             </p>
           )}
         </div>
+      )}
+
+      {(activityType === 'hybridRestaurant' || activityType === 'cloudKitchen') && (
+        <>
+          <div className="space-y-2.5">
+            <Label>هل لديك علامات تجارية سحابية؟</Label>
+            <Controller
+              name="hasCloudBrands"
+              control={control}
+              render={({ field }) => (
+                <RadioCardsRoot
+                  onValueChange={field.onChange}
+                  value={field.value}
+                  className="grid-cols-2 gap-2"
+                >
+                  {['نعم', 'لا'].map((option) => (
+                    <RadioCardsItem
+                      key={option}
+                      value={option}
+                      variant="classic"
+                      className="flex h-12 flex-row rounded-xl py-2 text-sm font-medium data-[state=checked]:bg-background-neutral data-[state=checked]:text-base-primary data-[state=checked]:shadow-xs"
+                    >
+                      {option}
+                      <RadioCardsIndicator className="end-2 top-0 bottom-0 [&>iconify-icon]:size-6" />
+                    </RadioCardsItem>
+                  ))}
+                </RadioCardsRoot>
+              )}
+            />
+            {errors.hasCloudBrands && (
+              <p className="mt-1 animate-shake-enter text-xs text-orange-600/80">
+                {errors.hasCloudBrands.message as string}
+              </p>
+            )}
+          </div>
+
+          {hasCloudBrands === 'نعم' && (
+            <div className="space-y-2.5">
+              <Label htmlFor="cloudBrandsCount">كم عدد العلامات التجارية السحابية؟</Label>
+              <Controller
+                name="cloudBrandsCount"
+                control={control}
+                render={({ field }) => (
+                  <div className="relative flex items-center">
+                    <Button
+                      type="button"
+                      size="icon"
+                      variant="secondary"
+                      onClick={() => field.onChange(Math.max(1, (Number(field.value) || 1) - 1))}
+                      className="size-12 shrink-0 rounded-s-xl rounded-e-none border border-e-0"
+                    >
+                      <Icon icon="ri:subtract-line" height="none" className="size-5" />
+                    </Button>
+                    <Input
+                      variant="lg"
+                      className="grow rounded-none text-center"
+                      id="cloudBrandsCount"
+                      type="number"
+                      inputMode="numeric"
+                      placeholder="أدخل عدد العلامات"
+                      {...field}
+                    />
+                    <Button
+                      type="button"
+                      size="icon"
+                      variant="secondary"
+                      onClick={() => field.onChange((Number(field.value) || 0) + 1)}
+                      className="size-12 shrink-0 rounded-s-none rounded-e-xl border border-s-0"
+                    >
+                      <Icon icon="ri:add-line" height="none" className="size-5" />
+                    </Button>
+                  </div>
+                )}
+              />
+              {errors.cloudBrandsCount && (
+                <p className="mt-1 animate-shake-enter text-xs text-orange-600/80">
+                  {errors.cloudBrandsCount.message as string}
+                </p>
+              )}
+            </div>
+          )}
+        </>
       )}
     </div>
   )
