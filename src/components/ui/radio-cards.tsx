@@ -123,12 +123,12 @@ function RadioCardsIndicator({
   const pos = placement === 'top-right' ? 'top-2 end-2' : 'top-2 start-2'
 
   return (
-    <RadioGroupPrimitive.Indicator asChild forceMount={forceMount} {...props}>
+    <RadioGroupPrimitive.Indicator asChild {...props}>
       {/* This <span> only exists when the parent Item is checked */}
       <span
         aria-hidden
         className={cn(
-          'pointer-events-none absolute inline-grid place-items-center rounded-full text-primary [&>iconify-icon]:size-5',
+          'pointer-events-none absolute inline-grid place-items-center rounded-full text-primary animate-in fade-in [&>iconify-icon]:size-5',
           pos,
           className,
         )}

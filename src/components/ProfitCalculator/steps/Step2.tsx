@@ -4,6 +4,15 @@ import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { Slider } from '@/components/ui/slider'
 import { Link } from '@/i18n/navigation'
+import { RadioCardsRoot, RadioCardsItem, RadioCardsIndicator } from '@/components/ui/radio-cards'
+
+const annualSalesOptions = [
+  'أقل من 500,000',
+  '500,000 - 750,000',
+  '750,000 - 1,250,000',
+  '1,250,000 - 2,000,000',
+  'أكثر من 2,000,000',
+]
 
 const Step2 = () => {
   const {
@@ -14,34 +23,36 @@ const Step2 = () => {
   return (
     <div className="space-y-6">
       <div className="space-y-2.5">
-        <Label htmlFor="deliverySalesPercentage">
-          ما النسبة التقديرية لمبيعاتك اللي تجي من تطبيقات التوصيل؟
-        </Label>
+        <Label>كم إجمالي مبيعاتك السنوية؟</Label>
         <Controller
-          name="deliverySalesPercentage"
+          name="annualSales"
           control={control}
           render={({ field }) => (
-            <div className="relative">
-              <Input
-                variant="lg"
-                className="rounded-xl"
-                id="deliverySalesPercentage"
-                type="number"
-                inputMode="numeric"
-                placeholder="أدخل النسبة"
-                {...field}
-              />
-              <span className="absolute end-3 top-2.5 text-slate-500">%</span>
-            </div>
+            <RadioCardsRoot
+              onValueChange={field.onChange}
+              defaultValue={field.value}
+              className="grid-cols-2 gap-2 md:grid-cols-3"
+            >
+              {annualSalesOptions.map((option) => (
+                <RadioCardsItem
+                  value={option}
+                  key={option}
+                  variant="classic"
+                  className="rounded-xl text-start"
+                >
+                  <span>{option}</span>
+                  <RadioCardsIndicator />
+                </RadioCardsItem>
+              ))}
+            </RadioCardsRoot>
           )}
         />
-        {errors.deliverySalesPercentage && (
+        {errors.annualSales && (
           <p className="mt-1 animate-shake-enter text-xs text-orange-600/80">
-            {errors.deliverySalesPercentage.message as string}
+            {errors.annualSales.message as string}
           </p>
         )}
       </div>
-
       <div className="space-y-2.5">
         <Label htmlFor="monthlyOrders">كم متوسط عدد الطلبات الشهري؟</Label>
         <Controller
@@ -64,6 +75,35 @@ const Step2 = () => {
         {errors.monthlyOrders && (
           <p className="mt-1 animate-shake-enter text-xs text-orange-600/80">
             {errors.monthlyOrders.message as string}
+          </p>
+        )}
+      </div>
+
+      <div className="space-y-2.5">
+        <Label htmlFor="deliverySalesPercentage">
+          ما النسبة التقديرية لمبيعاتك اللي تجي من تطبيقات التوصيل (هنقرستيشن، جاهز، كيتا، ... إلخ)؟
+        </Label>
+        <Controller
+          name="deliverySalesPercentage"
+          control={control}
+          render={({ field }) => (
+            <div className="relative">
+              <Input
+                variant="lg"
+                className="rounded-xl"
+                id="deliverySalesPercentage"
+                type="number"
+                inputMode="numeric"
+                placeholder="أدخل النسبة"
+                {...field}
+              />
+              <span className="absolute end-3 top-2.5 text-slate-500">%</span>
+            </div>
+          )}
+        />
+        {errors.deliverySalesPercentage && (
+          <p className="mt-1 animate-shake-enter text-xs text-orange-600/80">
+            {errors.deliverySalesPercentage.message as string}
           </p>
         )}
       </div>

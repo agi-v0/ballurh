@@ -40,8 +40,9 @@ const step1Schema = z
   })
 
 const step2Schema = z.object({
-  deliverySalesPercentage: z.coerce.number().min(1, { message: 'هذا الحقل مطلوب' }),
+  annualSales: z.string().min(1, { message: 'هذا الحقل مطلوب' }),
   monthlyOrders: z.string().min(1, { message: 'هذا الحقل مطلوب' }),
+  deliverySalesPercentage: z.coerce.number().min(1, { message: 'هذا الحقل مطلوب' }),
   avgCommissionRate: z.coerce.number().min(1, { message: 'هذا الحقل مطلوب' }),
 })
 
@@ -63,6 +64,8 @@ const step4Schema = z.object({
 
 const stepSchemas = [step1Schema, step2Schema, step3Schema, step4Schema] as const
 
+const stepFields = stepSchemas.map((schema) => Object.keys(schema.shape)) as (keyof FormData)[][]
+
 const formSchema = step1Schema
   .extend(step2Schema.shape)
   .extend(step3Schema.shape)
@@ -75,8 +78,9 @@ const defaultValues = {
   physicalBranchesCount: 1,
   hasCloudBrands: '' as 'نعم' | 'لا',
   cloudBrandsCount: 1,
-  deliverySalesPercentage: 25,
+  annualSales: '',
   monthlyOrders: '',
+  deliverySalesPercentage: 25,
   avgCommissionRate: 25,
   foodCostPercentage: 30,
   monthlyAdBudget: '',
@@ -89,15 +93,15 @@ const defaultValues = {
 
 interface StepHeaderProps {
   title: string
-  description?: string
+  subtitle?: string
   className?: string
 }
 
-const StepHeader: React.FC<StepHeaderProps> = ({ title, description, className }) => {
+const StepHeader: React.FC<StepHeaderProps> = ({ title, subtitle, className }) => {
   return (
     <div className={cn('mb-6 flex flex-col items-center pt-space-7', className)}>
       <h2 className="mb-4 text-h2 font-semibold">{title}</h2>
-      {description && <p className="mb-4 text-center"> {description}</p>}
+      {subtitle && <p className="mb-4 text-center"> {subtitle}</p>}
     </div>
   )
 }
@@ -121,21 +125,19 @@ const AnimatedStepWrapper = ({
 }
 
 const formSteps = [
-  { category: 'البنية التشغيلية', title: 'ما نوع نشاطك الرئيسي؟', steps: [<Step1 />] },
-  { category: 'بيانات التوصيل الأساسية', title: 'مبيعات التوصيل والعمولة', steps: [<Step2 />] },
+  { category: 'البنية التشغيلية', title: 'ما نوع نشاطك الرئيسي؟', Component: Step1 },
+  { category: 'بيانات التوصيل الأساسية', title: 'مبيعات التوصيل والعمولة', Component: Step2 },
   {
     category: 'التكاليف التشغيلية والترويجية',
     title: 'تكلفة المواد الغذائية والإعلانات',
-    steps: [<Step3 />],
+    Component: Step3,
   },
-  { category: 'بيانات التواصل وإرسال التقرير', title: 'خلينا نرسلك تقريرك', steps: [<Step4 />] },
-]
-
-const stepFields: (keyof FormData)[][] = [
-  ['activityType', 'physicalBranchesCount', 'hasCloudBrands', 'cloudBrandsCount'],
-  ['deliverySalesPercentage', 'monthlyOrders', 'avgCommissionRate'],
-  ['foodCostPercentage', 'monthlyAdBudget', 'promoDiscountPercentage'],
-  ['name', 'email', 'phone', 'businessName'],
+  {
+    category: 'بيانات التواصل وإرسال التقرير',
+    title: 'باقي خطوة وحدة!',
+    subtitle: 'شاركنا بياناتك، وراح نرسلك تقرير الربحية المخصّص لك',
+    Component: Step4,
+  },
 ]
 
 const ProfitabilityCalculator: React.FC = () => {
@@ -249,70 +251,81 @@ const ProfitabilityCalculator: React.FC = () => {
     )
   }
 
+  const Step = formSteps[formStep].Component
+
   return (
     <div className="relative flex w-full grow flex-col rounded-3xl border p-4">
-      <AnimatePresence mode="wait">
+      <div className="relative flex w-full">
         {formStep > 0 && (
           <Button
             type="button"
             onClick={prevStep}
             variant="ghost"
             size="sm"
-            className="absolute inset-1 w-fit md:inset-2 lg:inset-4"
+            className="absolute top-1/2 -ms-3 w-9 -translate-y-1/2 gap-1 md:ms-0 md:w-fit"
           >
             <Icon icon="ri:arrow-right-line" height="none" className="size-4" />
-            الرجوع
+            <span className="hidden font-normal md:block">الرجوع</span>
           </Button>
         )}
-
-        <span className="mx-auto rounded-full border px-3 py-1 text-sm">
-          {formStep + 1}/{formSteps.length} - {formSteps[formStep].category}
+        <span className="mx-auto rounded-full border px-3 py-1 text-sm font-medium text-base-secondary">
+          {formStep + 1}/{formSteps.length} -{' '}
+          <span className="animate-in fade-in slide-in-from-right-4">
+            {formSteps[formStep].category}
+          </span>
         </span>
-        <FormProvider {...methods}>
-          <form
-            onSubmit={(e) => {
-              e.preventDefault()
-            }}
-          >
+      </div>
+      <FormProvider {...methods} key="form">
+        <form
+          onSubmit={(e) => {
+            e.preventDefault()
+          }}
+        >
+          <AnimatePresence mode="wait">
             <AnimatedStepWrapper key={formStep}>
-              <StepHeader title={formSteps[formStep].title} />
-              {formSteps[formStep].steps}
+              <StepHeader
+                // title={formSteps[formStep].title}
+                // subtitle={formSteps[formStep].subtitle}
+                {...formSteps[formStep]}
+              />
+              <Step />
             </AnimatedStepWrapper>
+          </AnimatePresence>
 
-            <div className="mx-auto mt-8 flex max-w-4xl justify-end lg:mb-2.5">
-              {formStep < totalFormSteps - 1 ? (
-                <Button
-                  type="button"
-                  onClick={nextStep}
-                  variant="primary"
-                  color="brand"
-                  size="lg"
-                  className="w-full"
-                >
-                  التالي
-                </Button>
-              ) : (
-                // if submit is handled by the form, the submit function is automatically called when button with type submit is mounted
-                <Button
-                  type="button"
-                  onClick={handleSubmit(onSubmit, onError)}
-                  variant="primary"
-                  color="brand"
-                  size="lg"
-                  className="w-full"
-                >
-                  احصل على تقريرك الآن
-                </Button>
-              )}
-            </div>
-          </form>
-        </FormProvider>
-        <StepperBar
-          steps={formSteps.map((s) => ({ title: s.category }))}
-          currentStep={formStep + 1}
-        />
-        {/* <DevTool control={control} />  */}
-      </AnimatePresence>
+          <div className="mx-auto mt-8 flex max-w-4xl justify-end lg:mb-2.5">
+            {formStep < totalFormSteps - 1 ? (
+              <Button
+                type="button"
+                onClick={nextStep}
+                variant="primary"
+                color="brand"
+                size="lg"
+                className="w-full"
+              >
+                التالي
+              </Button>
+            ) : (
+              // if submit is handled by the form, the submit function is automatically called when button with type submit is mounted
+              <Button
+                type="button"
+                onClick={handleSubmit(onSubmit, onError)}
+                variant="primary"
+                color="brand"
+                size="lg"
+                className="w-full"
+              >
+                احصل على تقريرك الآن
+              </Button>
+            )}
+          </div>
+        </form>
+      </FormProvider>
+      <StepperBar
+        steps={formSteps.map((s) => ({ title: s.category }))}
+        currentStep={formStep + 1}
+        key="stepperBar"
+      />
+      {/* <DevTool control={control} />  */}
     </div>
   )
 }
