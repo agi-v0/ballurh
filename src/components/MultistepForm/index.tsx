@@ -1,6 +1,6 @@
 'use client'
 import React, { useEffect, useState } from 'react'
-import { useForm, Controller, SubmitHandler } from 'react-hook-form'
+import { useForm, Controller, SubmitHandler, SubmitErrorHandler } from 'react-hook-form'
 import { z } from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { Icon } from '@iconify-icon/react'
@@ -155,20 +155,15 @@ const stepFields: (keyof FormData)[][] = [
 const ProfitabilityCalculator: React.FC = () => {
   const [formStep, setFormStep] = useState<number>(0)
   const [isSubmitted, setIsSubmitted] = useState(false)
-  const currentSchema = stepSchemas[formStep]
 
   const {
     control,
     handleSubmit,
     watch,
     trigger,
-    setValue,
+    setError,
     clearErrors,
     getValues,
-    register,
-    unregister,
-    reset,
-    setError,
     formState: { errors },
   } = useForm<FormData>({
     defaultValues,
@@ -179,10 +174,9 @@ const ProfitabilityCalculator: React.FC = () => {
   })
 
   // monitor errors per form step
-  useEffect(() => {
-    console.log('formStep: ', formStep, 'errors: ', errors)
-    clearErrors(stepFields[formStep])
-  }, [formStep, errors])
+  // useEffect(() => {
+  //   console.log('formStep: ', formStep, 'errors: ', errors)
+  // }, [formStep, errors])
 
   const hasCloudBrands = watch('hasCloudBrands')
 
@@ -192,26 +186,30 @@ const ProfitabilityCalculator: React.FC = () => {
     keys.reduce((a, k) => ((a[k] = obj[k]), a), {} as Pick<T, K>)
 
   const nextStep = async () => {
-    const names = stepFields[formStep]
-    const values = pick(getValues(), names)
-    const parsed = stepSchemas[formStep].safeParse(values)
-
-    // clear any stale errors for this step
-    clearErrors(names)
-
-    if (!parsed.success) {
-      parsed.error.issues.forEach((i) => {
-        const name = i.path[0] as keyof FormData
-        setError(name, { type: 'zod', message: i.message }, { shouldFocus: true })
-      })
-      const el = document.getElementById(parsed.error.issues[0].path[0] as string)
-      if (el) {
-        el.scrollIntoView({ behavior: 'smooth' })
-        el.focus()
-      }
-      return
+    const isValid = await trigger(stepFields[formStep])
+    if (isValid) {
+      setFormStep((s) => Math.min(s + 1, totalFormSteps - 1))
     }
-    setFormStep((s) => Math.min(s + 1, totalFormSteps - 1))
+    // alternative validation logic
+    // const names = stepFields[formStep]
+    // const values = pick(getValues(), names)
+    // const parsed = stepSchemas[formStep].safeParse(values)
+
+    // // clear any stale errors for this step
+    // clearErrors(names)
+
+    // if (!parsed.success) {
+    //   parsed.error.issues.forEach((i) => {
+    //     const name = i.path[0] as keyof FormData
+    //     setError(name, { type: 'zod', message: i.message }, { shouldFocus: true })
+    //   })
+    //   const el = document.getElementById(parsed.error.issues[0].path[0] as string)
+    //   if (el) {
+    //     el.scrollIntoView({ behavior: 'smooth' })
+    //     el.focus()
+    //   }
+    //   return
+    // }
   }
 
   const prevStep = () => {
@@ -222,6 +220,14 @@ const ProfitabilityCalculator: React.FC = () => {
     console.log('data submitted:', data)
     // send to backend …
     setIsSubmitted(true)
+  }
+
+  const onError: SubmitErrorHandler<FormData> = async (errors, e) => {
+    // Object.keys(errors).forEach((key) => {
+    //   setError(key as keyof FormData, {
+    //     message: errors[key as keyof FormData]?.message,
+    //   })
+    // })
   }
 
   if (isSubmitted) {
@@ -252,7 +258,11 @@ const ProfitabilityCalculator: React.FC = () => {
           الرجوع
         </Button>
       )}
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <form
+        onSubmit={(e) => {
+          e.preventDefault()
+        }}
+      >
         <AnimatePresence mode="wait">
           {formStep === 0 && (
             <AnimatedStepWrapper key={1}>
@@ -717,12 +727,20 @@ const ProfitabilityCalculator: React.FC = () => {
               التالي
             </Button>
           ) : (
-            <Button type="submit" variant="primary" color="brand" size="lg" className="w-full">
+            <Button
+              type="button"
+              onClick={handleSubmit(onSubmit, onError)}
+              variant="primary"
+              color="brand"
+              size="lg"
+              className="w-full"
+            >
               احصل على تقريرك الآن
             </Button>
           )}
         </div>
       </form>
+
       <StepperBar
         steps={stepperSteps.map((s) => ({ title: s.title }))}
         currentStep={formStep + 1}
