@@ -30,22 +30,20 @@ export const FAQBlock01: React.FC<FaqBlockProps> = async (props) => {
                   <AccordionItem
                     value={'item-' + idx}
                     key={idx}
-                    className="group ps-sm relative rounded-3xl bg-background-neutral py-4 pe-[calc((var(--spacing-space-sm)+8px)+var(--spacing-space-md))]"
+                    className="group relative rounded-3xl bg-background-neutral py-4 ps-4 pe-4"
                   >
-                    <AccordionTrigger className="flex flex-row justify-between text-start text-(length:--text-body-lg) text-base-secondary data-[state=open]:text-base-primary [&[data-state=open]_iconify-icon]:rotate-45">
+                    <AccordionTrigger className="relative flex flex-row justify-between pe-6 text-start text-(length:--text-main) font-medium text-base-secondary data-[state=open]:text-base-primary [&[data-state=open]_iconify-icon]:rotate-90">
                       {faq.question}
-                      <div className="bg-neutral/10 end-xs absolute h-8 rounded-full p-1 text-base-tertiary">
-                        <Icon
-                          icon="material-symbols:add-rounded"
-                          className="size-6 transition-transform duration-200"
-                          height="none"
-                        />
-                      </div>
+                      <Icon
+                        icon="ri:arrow-down-s-line"
+                        className="absolute end-0 size-6 text-base-tertiary transition-transform duration-150 ease-in-out"
+                        height="none"
+                      />
                     </AccordionTrigger>
-                    <AccordionContent className="pb-2">
+                    <AccordionContent className="pe-6 pt-2 pb-0">
                       {faq.answer && (
                         <RichText
-                          className="text-start [&_p]:text-(length:--text-body-md) [&_p]:text-base-tertiary"
+                          className="text-start font-normal [&_p]:text-(length:--text-main) [&_p]:text-base-tertiary"
                           data={faq.answer}
                           enableGutter={false}
                         />
