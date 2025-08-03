@@ -78,6 +78,8 @@ ALTER TABLE IF EXISTS ONLY "public"."pages_locales" DROP CONSTRAINT IF EXISTS "p
 ALTER TABLE IF EXISTS ONLY "public"."pages_locales" DROP CONSTRAINT IF EXISTS "pages_locales_hero_media_mobile_dark_id_media_id_fk";
 ALTER TABLE IF EXISTS ONLY "public"."pages_locales" DROP CONSTRAINT IF EXISTS "pages_locales_hero_media_desktop_light_id_media_id_fk";
 ALTER TABLE IF EXISTS ONLY "public"."pages_locales" DROP CONSTRAINT IF EXISTS "pages_locales_hero_media_desktop_dark_id_media_id_fk";
+ALTER TABLE IF EXISTS ONLY "public"."pages_hero_list_items" DROP CONSTRAINT IF EXISTS "pages_hero_list_items_parent_id_fk";
+ALTER TABLE IF EXISTS ONLY "public"."pages_hero_list_items_locales" DROP CONSTRAINT IF EXISTS "pages_hero_list_items_locales_parent_id_fk";
 ALTER TABLE IF EXISTS ONLY "public"."pages_hero_links" DROP CONSTRAINT IF EXISTS "pages_hero_links_parent_id_fk";
 ALTER TABLE IF EXISTS ONLY "public"."pages_hero_links_locales" DROP CONSTRAINT IF EXISTS "pages_hero_links_locales_parent_id_fk";
 ALTER TABLE IF EXISTS ONLY "public"."metricsBlock_table_rows" DROP CONSTRAINT IF EXISTS "metricsBlock_table_rows_parent_id_fk";
@@ -227,6 +229,8 @@ ALTER TABLE IF EXISTS ONLY "public"."_richTextBlock_v" DROP CONSTRAINT IF EXISTS
 ALTER TABLE IF EXISTS ONLY "public"."_richTextBlock_v_locales" DROP CONSTRAINT IF EXISTS "_richTextBlock_v_locales_parent_id_fk";
 ALTER TABLE IF EXISTS ONLY "public"."_richTextBlock_v_block_header_links" DROP CONSTRAINT IF EXISTS "_richTextBlock_v_block_header_links_parent_id_fk";
 ALTER TABLE IF EXISTS ONLY "public"."_richTextBlock_v_block_header_links_locales" DROP CONSTRAINT IF EXISTS "_richTextBlock_v_block_header_links_locales_parent_id_fk";
+ALTER TABLE IF EXISTS ONLY "public"."_pages_v_version_hero_list_items" DROP CONSTRAINT IF EXISTS "_pages_v_version_hero_list_items_parent_id_fk";
+ALTER TABLE IF EXISTS ONLY "public"."_pages_v_version_hero_list_items_locales" DROP CONSTRAINT IF EXISTS "_pages_v_version_hero_list_items_locales_parent_id_fk";
 ALTER TABLE IF EXISTS ONLY "public"."_pages_v_version_hero_links" DROP CONSTRAINT IF EXISTS "_pages_v_version_hero_links_parent_id_fk";
 ALTER TABLE IF EXISTS ONLY "public"."_pages_v_version_hero_links_locales" DROP CONSTRAINT IF EXISTS "_pages_v_version_hero_links_locales_parent_id_fk";
 ALTER TABLE IF EXISTS ONLY "public"."_pages_v_rels" DROP CONSTRAINT IF EXISTS "_pages_v_rels_parent_fk";
@@ -442,6 +446,9 @@ DROP INDEX IF EXISTS "public"."pages_hero_media_mobile_hero_media_mobile_light_i
 DROP INDEX IF EXISTS "public"."pages_hero_media_mobile_hero_media_mobile_dark_idx";
 DROP INDEX IF EXISTS "public"."pages_hero_media_desktop_hero_media_desktop_light_idx";
 DROP INDEX IF EXISTS "public"."pages_hero_media_desktop_hero_media_desktop_dark_idx";
+DROP INDEX IF EXISTS "public"."pages_hero_list_items_parent_id_idx";
+DROP INDEX IF EXISTS "public"."pages_hero_list_items_order_idx";
+DROP INDEX IF EXISTS "public"."pages_hero_list_items_locales_locale_parent_id_unique";
 DROP INDEX IF EXISTS "public"."pages_hero_links_parent_id_idx";
 DROP INDEX IF EXISTS "public"."pages_hero_links_order_idx";
 DROP INDEX IF EXISTS "public"."pages_hero_links_locales_locale_parent_id_unique";
@@ -729,6 +736,9 @@ DROP INDEX IF EXISTS "public"."_pages_v_version_meta_version_meta_image_idx";
 DROP INDEX IF EXISTS "public"."_pages_v_version_hero_media_mobile_version_hero_media_mobile_li";
 DROP INDEX IF EXISTS "public"."_pages_v_version_hero_media_mobile_version_hero_media_mobile_da";
 DROP INDEX IF EXISTS "public"."_pages_v_version_hero_media_desktop_version_hero_media_desktop_";
+DROP INDEX IF EXISTS "public"."_pages_v_version_hero_list_items_parent_id_idx";
+DROP INDEX IF EXISTS "public"."_pages_v_version_hero_list_items_order_idx";
+DROP INDEX IF EXISTS "public"."_pages_v_version_hero_list_items_locales_locale_parent_id_uniqu";
 DROP INDEX IF EXISTS "public"."_pages_v_version_hero_links_parent_id_idx";
 DROP INDEX IF EXISTS "public"."_pages_v_version_hero_links_order_idx";
 DROP INDEX IF EXISTS "public"."_pages_v_version_hero_links_locales_locale_parent_id_unique";
@@ -948,6 +958,8 @@ ALTER TABLE IF EXISTS ONLY "public"."payload_folders" DROP CONSTRAINT IF EXISTS 
 ALTER TABLE IF EXISTS ONLY "public"."pages_rels" DROP CONSTRAINT IF EXISTS "pages_rels_pkey";
 ALTER TABLE IF EXISTS ONLY "public"."pages" DROP CONSTRAINT IF EXISTS "pages_pkey";
 ALTER TABLE IF EXISTS ONLY "public"."pages_locales" DROP CONSTRAINT IF EXISTS "pages_locales_pkey";
+ALTER TABLE IF EXISTS ONLY "public"."pages_hero_list_items" DROP CONSTRAINT IF EXISTS "pages_hero_list_items_pkey";
+ALTER TABLE IF EXISTS ONLY "public"."pages_hero_list_items_locales" DROP CONSTRAINT IF EXISTS "pages_hero_list_items_locales_pkey";
 ALTER TABLE IF EXISTS ONLY "public"."pages_hero_links" DROP CONSTRAINT IF EXISTS "pages_hero_links_pkey";
 ALTER TABLE IF EXISTS ONLY "public"."pages_hero_links_locales" DROP CONSTRAINT IF EXISTS "pages_hero_links_locales_pkey";
 ALTER TABLE IF EXISTS ONLY "public"."metricsBlock_table_rows" DROP CONSTRAINT IF EXISTS "metricsBlock_table_rows_pkey";
@@ -1073,6 +1085,8 @@ ALTER TABLE IF EXISTS ONLY "public"."_richTextBlock_v" DROP CONSTRAINT IF EXISTS
 ALTER TABLE IF EXISTS ONLY "public"."_richTextBlock_v_locales" DROP CONSTRAINT IF EXISTS "_richTextBlock_v_locales_pkey";
 ALTER TABLE IF EXISTS ONLY "public"."_richTextBlock_v_block_header_links" DROP CONSTRAINT IF EXISTS "_richTextBlock_v_block_header_links_pkey";
 ALTER TABLE IF EXISTS ONLY "public"."_richTextBlock_v_block_header_links_locales" DROP CONSTRAINT IF EXISTS "_richTextBlock_v_block_header_links_locales_pkey";
+ALTER TABLE IF EXISTS ONLY "public"."_pages_v_version_hero_list_items" DROP CONSTRAINT IF EXISTS "_pages_v_version_hero_list_items_pkey";
+ALTER TABLE IF EXISTS ONLY "public"."_pages_v_version_hero_list_items_locales" DROP CONSTRAINT IF EXISTS "_pages_v_version_hero_list_items_locales_pkey";
 ALTER TABLE IF EXISTS ONLY "public"."_pages_v_version_hero_links" DROP CONSTRAINT IF EXISTS "_pages_v_version_hero_links_pkey";
 ALTER TABLE IF EXISTS ONLY "public"."_pages_v_version_hero_links_locales" DROP CONSTRAINT IF EXISTS "_pages_v_version_hero_links_locales_pkey";
 ALTER TABLE IF EXISTS ONLY "public"."_pages_v_rels" DROP CONSTRAINT IF EXISTS "_pages_v_rels_pkey";
@@ -1154,6 +1168,7 @@ ALTER TABLE IF EXISTS "public"."payload_preferences_rels" ALTER COLUMN "id" DROP
 ALTER TABLE IF EXISTS "public"."payload_locked_documents_rels" ALTER COLUMN "id" DROP DEFAULT;
 ALTER TABLE IF EXISTS "public"."pages_rels" ALTER COLUMN "id" DROP DEFAULT;
 ALTER TABLE IF EXISTS "public"."pages_locales" ALTER COLUMN "id" DROP DEFAULT;
+ALTER TABLE IF EXISTS "public"."pages_hero_list_items_locales" ALTER COLUMN "id" DROP DEFAULT;
 ALTER TABLE IF EXISTS "public"."pages_hero_links_locales" ALTER COLUMN "id" DROP DEFAULT;
 ALTER TABLE IF EXISTS "public"."metricsBlock_stats_locales" ALTER COLUMN "id" DROP DEFAULT;
 ALTER TABLE IF EXISTS "public"."metricsBlock_locales" ALTER COLUMN "id" DROP DEFAULT;
@@ -1211,6 +1226,7 @@ ALTER TABLE IF EXISTS "public"."_teamBlock_v_locales" ALTER COLUMN "id" DROP DEF
 ALTER TABLE IF EXISTS "public"."_teamBlock_v_block_header_links_locales" ALTER COLUMN "id" DROP DEFAULT;
 ALTER TABLE IF EXISTS "public"."_richTextBlock_v_locales" ALTER COLUMN "id" DROP DEFAULT;
 ALTER TABLE IF EXISTS "public"."_richTextBlock_v_block_header_links_locales" ALTER COLUMN "id" DROP DEFAULT;
+ALTER TABLE IF EXISTS "public"."_pages_v_version_hero_list_items_locales" ALTER COLUMN "id" DROP DEFAULT;
 ALTER TABLE IF EXISTS "public"."_pages_v_version_hero_links_locales" ALTER COLUMN "id" DROP DEFAULT;
 ALTER TABLE IF EXISTS "public"."_pages_v_rels" ALTER COLUMN "id" DROP DEFAULT;
 ALTER TABLE IF EXISTS "public"."_pages_v_locales" ALTER COLUMN "id" DROP DEFAULT;
@@ -1292,6 +1308,9 @@ DROP SEQUENCE IF EXISTS "public"."pages_rels_id_seq";
 DROP TABLE IF EXISTS "public"."pages_rels";
 DROP SEQUENCE IF EXISTS "public"."pages_locales_id_seq";
 DROP TABLE IF EXISTS "public"."pages_locales";
+DROP SEQUENCE IF EXISTS "public"."pages_hero_list_items_locales_id_seq";
+DROP TABLE IF EXISTS "public"."pages_hero_list_items_locales";
+DROP TABLE IF EXISTS "public"."pages_hero_list_items";
 DROP SEQUENCE IF EXISTS "public"."pages_hero_links_locales_id_seq";
 DROP TABLE IF EXISTS "public"."pages_hero_links_locales";
 DROP TABLE IF EXISTS "public"."pages_hero_links";
@@ -1475,6 +1494,9 @@ DROP SEQUENCE IF EXISTS "public"."_richTextBlock_v_block_header_links_locales_id
 DROP TABLE IF EXISTS "public"."_richTextBlock_v_block_header_links_locales";
 DROP TABLE IF EXISTS "public"."_richTextBlock_v_block_header_links";
 DROP TABLE IF EXISTS "public"."_richTextBlock_v";
+DROP SEQUENCE IF EXISTS "public"."_pages_v_version_hero_list_items_locales_id_seq";
+DROP TABLE IF EXISTS "public"."_pages_v_version_hero_list_items_locales";
+DROP TABLE IF EXISTS "public"."_pages_v_version_hero_list_items";
 DROP SEQUENCE IF EXISTS "public"."_pages_v_version_hero_links_locales_id_seq";
 DROP TABLE IF EXISTS "public"."_pages_v_version_hero_links_locales";
 DROP TABLE IF EXISTS "public"."_pages_v_version_hero_links";
@@ -1587,6 +1609,7 @@ DROP TYPE IF EXISTS "public"."enum_payload_jobs_log_task_slug";
 DROP TYPE IF EXISTS "public"."enum_payload_jobs_log_state";
 DROP TYPE IF EXISTS "public"."enum_pages_status";
 DROP TYPE IF EXISTS "public"."enum_pages_hero_type";
+DROP TYPE IF EXISTS "public"."enum_pages_hero_list_style";
 DROP TYPE IF EXISTS "public"."enum_pages_hero_badge_type";
 DROP TYPE IF EXISTS "public"."enum_metricsBlock_type";
 DROP TYPE IF EXISTS "public"."enum_metricsBlock_table_headers_width";
@@ -1639,6 +1662,7 @@ DROP TYPE IF EXISTS "public"."enum__richTextBlock_v_block_header_type";
 DROP TYPE IF EXISTS "public"."enum__richTextBlock_v_block_header_badge_type";
 DROP TYPE IF EXISTS "public"."enum__pages_v_version_status";
 DROP TYPE IF EXISTS "public"."enum__pages_v_version_hero_type";
+DROP TYPE IF EXISTS "public"."enum__pages_v_version_hero_list_style";
 DROP TYPE IF EXISTS "public"."enum__pages_v_version_hero_badge_type";
 DROP TYPE IF EXISTS "public"."enum__pages_v_published_locale";
 DROP TYPE IF EXISTS "public"."enum__metricsBlock_v_type";
@@ -2164,6 +2188,17 @@ CREATE TYPE "public"."enum__pages_v_published_locale" AS ENUM (
 CREATE TYPE "public"."enum__pages_v_version_hero_badge_type" AS ENUM (
     'label',
     'reference'
+);
+
+
+--
+-- Name: enum__pages_v_version_hero_list_style; Type: TYPE; Schema: public; Owner: -
+--
+
+CREATE TYPE "public"."enum__pages_v_version_hero_list_style" AS ENUM (
+    'bullet',
+    'numbered',
+    'icons'
 );
 
 
@@ -2734,6 +2769,17 @@ CREATE TYPE "public"."enum_metricsBlock_type" AS ENUM (
 CREATE TYPE "public"."enum_pages_hero_badge_type" AS ENUM (
     'label',
     'reference'
+);
+
+
+--
+-- Name: enum_pages_hero_list_style; Type: TYPE; Schema: public; Owner: -
+--
+
+CREATE TYPE "public"."enum_pages_hero_list_style" AS ENUM (
+    'bullet',
+    'numbered',
+    'icons'
 );
 
 
@@ -4433,7 +4479,7 @@ CREATE TABLE "public"."_pages_v" (
     "id" "uuid" DEFAULT "gen_random_uuid"() NOT NULL,
     "parent_id" "uuid",
     "version_title" character varying,
-    "version_hero_type" "public"."enum__pages_v_version_hero_type" DEFAULT 'lowImpact'::"public"."enum__pages_v_version_hero_type",
+    "version_hero_type" "public"."enum__pages_v_version_hero_type" DEFAULT 'mediumImpact'::"public"."enum__pages_v_version_hero_type",
     "version_hero_badge_type" "public"."enum__pages_v_version_hero_badge_type",
     "version_hero_badge_color" "public"."badge_color" DEFAULT 'blue'::"public"."badge_color",
     "version_hero_badge_icon" character varying,
@@ -4450,7 +4496,8 @@ CREATE TABLE "public"."_pages_v" (
     "snapshot" boolean,
     "published_locale" "public"."enum__pages_v_published_locale",
     "latest" boolean,
-    "autosave" boolean
+    "autosave" boolean,
+    "version_hero_list_style" "public"."enum__pages_v_version_hero_list_style" DEFAULT 'bullet'::"public"."enum__pages_v_version_hero_list_style"
 );
 
 
@@ -4581,6 +4628,51 @@ CREATE SEQUENCE "public"."_pages_v_version_hero_links_locales_id_seq"
 --
 
 ALTER SEQUENCE "public"."_pages_v_version_hero_links_locales_id_seq" OWNED BY "public"."_pages_v_version_hero_links_locales"."id";
+
+
+--
+-- Name: _pages_v_version_hero_list_items; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE "public"."_pages_v_version_hero_list_items" (
+    "_order" integer NOT NULL,
+    "_parent_id" "uuid" NOT NULL,
+    "id" "uuid" DEFAULT "gen_random_uuid"() NOT NULL,
+    "icon" character varying,
+    "_uuid" character varying
+);
+
+
+--
+-- Name: _pages_v_version_hero_list_items_locales; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE "public"."_pages_v_version_hero_list_items_locales" (
+    "text" character varying,
+    "id" integer NOT NULL,
+    "_locale" "public"."_locales" NOT NULL,
+    "_parent_id" "uuid" NOT NULL
+);
+
+
+--
+-- Name: _pages_v_version_hero_list_items_locales_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE "public"."_pages_v_version_hero_list_items_locales_id_seq"
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: _pages_v_version_hero_list_items_locales_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE "public"."_pages_v_version_hero_list_items_locales_id_seq" OWNED BY "public"."_pages_v_version_hero_list_items_locales"."id";
 
 
 --
@@ -7579,7 +7671,7 @@ CREATE TABLE "public"."metricsBlock_table_rows_children_cells" (
 CREATE TABLE "public"."pages" (
     "id" "uuid" DEFAULT "gen_random_uuid"() NOT NULL,
     "title" character varying,
-    "hero_type" "public"."enum_pages_hero_type" DEFAULT 'lowImpact'::"public"."enum_pages_hero_type",
+    "hero_type" "public"."enum_pages_hero_type" DEFAULT 'mediumImpact'::"public"."enum_pages_hero_type",
     "hero_badge_type" "public"."enum_pages_hero_badge_type",
     "hero_badge_color" "public"."badge_color" DEFAULT 'blue'::"public"."badge_color",
     "hero_badge_icon" character varying,
@@ -7590,7 +7682,8 @@ CREATE TABLE "public"."pages" (
     "slug_lock" boolean DEFAULT true,
     "updated_at" timestamp(3) with time zone DEFAULT "now"() NOT NULL,
     "created_at" timestamp(3) with time zone DEFAULT "now"() NOT NULL,
-    "_status" "public"."enum_pages_status" DEFAULT 'draft'::"public"."enum_pages_status"
+    "_status" "public"."enum_pages_status" DEFAULT 'draft'::"public"."enum_pages_status",
+    "hero_list_style" "public"."enum_pages_hero_list_style" DEFAULT 'bullet'::"public"."enum_pages_hero_list_style"
 );
 
 
@@ -7640,6 +7733,50 @@ CREATE SEQUENCE "public"."pages_hero_links_locales_id_seq"
 --
 
 ALTER SEQUENCE "public"."pages_hero_links_locales_id_seq" OWNED BY "public"."pages_hero_links_locales"."id";
+
+
+--
+-- Name: pages_hero_list_items; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE "public"."pages_hero_list_items" (
+    "_order" integer NOT NULL,
+    "_parent_id" "uuid" NOT NULL,
+    "id" character varying NOT NULL,
+    "icon" character varying
+);
+
+
+--
+-- Name: pages_hero_list_items_locales; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE "public"."pages_hero_list_items_locales" (
+    "text" character varying,
+    "id" integer NOT NULL,
+    "_locale" "public"."_locales" NOT NULL,
+    "_parent_id" character varying NOT NULL
+);
+
+
+--
+-- Name: pages_hero_list_items_locales_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE "public"."pages_hero_list_items_locales_id_seq"
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: pages_hero_list_items_locales_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE "public"."pages_hero_list_items_locales_id_seq" OWNED BY "public"."pages_hero_list_items_locales"."id";
 
 
 --
@@ -8727,6 +8864,13 @@ ALTER TABLE ONLY "public"."_pages_v_version_hero_links_locales" ALTER COLUMN "id
 
 
 --
+-- Name: _pages_v_version_hero_list_items_locales id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY "public"."_pages_v_version_hero_list_items_locales" ALTER COLUMN "id" SET DEFAULT "nextval"('"public"."_pages_v_version_hero_list_items_locales_id_seq"'::"regclass");
+
+
+--
 -- Name: _richTextBlock_v_block_header_links_locales id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -9126,6 +9270,13 @@ ALTER TABLE ONLY "public"."pages_hero_links_locales" ALTER COLUMN "id" SET DEFAU
 
 
 --
+-- Name: pages_hero_list_items_locales id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY "public"."pages_hero_list_items_locales" ALTER COLUMN "id" SET DEFAULT "nextval"('"public"."pages_hero_list_items_locales_id_seq"'::"regclass");
+
+
+--
 -- Name: pages_locales id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -9336,6 +9487,15 @@ COPY "public"."_callToActionBlock_v" ("_order", "_parent_id", "_path", "id", "ty
 8	abeae401-02ea-4a9d-bd80-73851afc2ffd	version.layout	51ace41f-b511-4760-97c1-650cbbe3192f	02	\N	blue	\N	flex-row	\N	\N	6886a1475a3935fab3feb21f	\N
 8	990afa8d-fbf0-4bab-9b6a-8cbfe7488ddc	version.layout	4c535c80-ef1d-4811-89e3-76565825a381	02	\N	blue	\N	flex-row	\N	\N	6886a1475a3935fab3feb21f	\N
 8	70b04d51-b412-4e9d-95a4-7bf9fdd2a1c1	version.layout	3aa126a6-7754-406c-8bf4-cd1a0e088f32	02	\N	blue	\N	flex-row	\N	\N	6886a1475a3935fab3feb21f	\N
+8	191829da-fed4-4378-835d-355bb725534e	version.layout	291db422-8598-4ff3-8228-3a0e9afe59cb	02	\N	blue	\N	flex-row	\N	\N	6886a1475a3935fab3feb21f	\N
+8	9f09b6d6-5dd1-4b72-b23f-90cd5c745e61	version.layout	30cb70f8-806f-4637-8cdd-17f834a26a59	02	\N	blue	\N	flex-row	\N	\N	6886a1475a3935fab3feb21f	\N
+8	01fe3f95-b2e0-4adc-8e06-a37200de75b3	version.layout	1bbd0421-9752-45e1-8233-00b978e74310	02	\N	blue	\N	flex-row	\N	\N	6886a1475a3935fab3feb21f	\N
+8	3b7333a2-daa5-498c-88e2-379fe5c31d7b	version.layout	cccd9cef-dd9c-4f9e-b4aa-c44dc753e51f	02	\N	blue	\N	flex-row	\N	\N	6886a1475a3935fab3feb21f	\N
+8	67aa8e57-e509-4c57-b165-2c5bfd47d94f	version.layout	7a228e71-da70-43b8-b61f-391870850013	02	\N	blue	\N	flex-row	\N	\N	6886a1475a3935fab3feb21f	\N
+8	be9c7e75-dc9a-4619-8a8e-5ef58c098864	version.layout	52895ee2-5837-4111-bc57-2b4c100e725a	02	\N	blue	\N	flex-row	\N	\N	6886a1475a3935fab3feb21f	\N
+8	475931ac-474c-47ac-a1ba-e14920a6ebb8	version.layout	da499771-362f-4eb4-83ae-6357adbf2144	02	\N	blue	\N	flex-row	\N	\N	6886a1475a3935fab3feb21f	\N
+8	df9022a7-63b1-4017-b716-518f2d69d9c2	version.layout	572bee22-6e9c-41c5-b15b-87e07b5d2f53	02	\N	blue	\N	flex-row	\N	\N	6886a1475a3935fab3feb21f	\N
+8	57af9290-93a8-46d6-8475-65260fba9301	version.layout	042cb45e-dbe3-4eac-bbfe-0d45ad473294	02	\N	blue	\N	flex-row	\N	\N	6886a1475a3935fab3feb21f	\N
 \.
 
 
@@ -9351,6 +9511,15 @@ COPY "public"."_callToActionBlock_v_links" ("_order", "_parent_id", "id", "link_
 1	51ace41f-b511-4760-97c1-650cbbe3192f	ab2b77b0-50d0-4c13-9b83-6a843fd630a2	custom	\N	/	neutral	primary	6886a17b5a3935fab3feb220
 1	4c535c80-ef1d-4811-89e3-76565825a381	9c2c40d6-80e8-4c19-8ca1-d41fd234cf08	custom	\N	/	neutral	primary	6886a17b5a3935fab3feb220
 1	3aa126a6-7754-406c-8bf4-cd1a0e088f32	5a3a7569-c2e7-40ca-8213-5416c3fa7c01	custom	\N	/	neutral	primary	6886a17b5a3935fab3feb220
+1	291db422-8598-4ff3-8228-3a0e9afe59cb	5285c7e5-7f18-4f90-8d26-ca8e8d2a87b8	custom	\N	/	neutral	primary	6886a17b5a3935fab3feb220
+1	30cb70f8-806f-4637-8cdd-17f834a26a59	9dc3853f-8347-4615-8d04-6e11bc0754b1	custom	\N	/	neutral	primary	6886a17b5a3935fab3feb220
+1	1bbd0421-9752-45e1-8233-00b978e74310	382b92a6-c3a8-49f7-8fb5-f6b77efdfc0b	custom	\N	/	neutral	primary	6886a17b5a3935fab3feb220
+1	cccd9cef-dd9c-4f9e-b4aa-c44dc753e51f	ffc7dc30-99ea-4a19-9058-4a909ca8f939	custom	\N	/	neutral	primary	6886a17b5a3935fab3feb220
+1	7a228e71-da70-43b8-b61f-391870850013	d38177d0-08bc-4207-bbda-52f53d855b8b	custom	\N	/	neutral	primary	6886a17b5a3935fab3feb220
+1	52895ee2-5837-4111-bc57-2b4c100e725a	8bf66e9b-9589-4313-89ec-258760163edb	custom	\N	/	neutral	primary	6886a17b5a3935fab3feb220
+1	da499771-362f-4eb4-83ae-6357adbf2144	765695b0-566d-42b2-b7e4-eb2945303e5f	custom	\N	/	neutral	primary	6886a17b5a3935fab3feb220
+1	572bee22-6e9c-41c5-b15b-87e07b5d2f53	4917ecee-ee26-42d4-8f05-66d37cd4eb07	custom	\N	/	neutral	primary	6886a17b5a3935fab3feb220
+1	042cb45e-dbe3-4eac-bbfe-0d45ad473294	42c85024-a8ec-4879-a29a-cc703f0b1945	custom	\N	/	neutral	primary	6886a17b5a3935fab3feb220
 \.
 
 
@@ -9366,6 +9535,15 @@ COPY "public"."_callToActionBlock_v_links_locales" ("link_label", "id", "_locale
 اطلب استشارة مجانية	14	ar	ab2b77b0-50d0-4c13-9b83-6a843fd630a2
 اطلب استشارة مجانية	16	ar	9c2c40d6-80e8-4c19-8ca1-d41fd234cf08
 اطلب استشارة مجانية	17	ar	5a3a7569-c2e7-40ca-8213-5416c3fa7c01
+اطلب استشارة مجانية	20	ar	5285c7e5-7f18-4f90-8d26-ca8e8d2a87b8
+اطلب استشارة مجانية	21	ar	9dc3853f-8347-4615-8d04-6e11bc0754b1
+اطلب استشارة مجانية	22	ar	382b92a6-c3a8-49f7-8fb5-f6b77efdfc0b
+إطلب عرض تجريبي	23	ar	ffc7dc30-99ea-4a19-9058-4a909ca8f939
+إطلب عرض تجريبي	24	ar	d38177d0-08bc-4207-bbda-52f53d855b8b
+إطلب عرض تجريبي	40	ar	8bf66e9b-9589-4313-89ec-258760163edb
+إطلب عرض تجريبي	41	ar	765695b0-566d-42b2-b7e4-eb2945303e5f
+إطلب عرض تجريبي	42	ar	4917ecee-ee26-42d4-8f05-66d37cd4eb07
+إطلب عرض تجريبي	43	ar	42c85024-a8ec-4879-a29a-cc703f0b1945
 \.
 
 
@@ -9374,6 +9552,12 @@ COPY "public"."_callToActionBlock_v_links_locales" ("link_label", "id", "_locale
 --
 
 COPY "public"."_callToActionBlock_v_list" ("_order", "_parent_id", "_locale", "id", "icon", "title", "subtitle", "_uuid") FROM stdin;
+1	572bee22-6e9c-41c5-b15b-87e07b5d2f53	ar	155e9e96-6b27-4c16-9122-15be61d37743	\N	تحدث مع متخصص	\N	6886a19a5a3935fab3feb221
+2	572bee22-6e9c-41c5-b15b-87e07b5d2f53	ar	fddbcb89-53ed-49b6-948d-d5f19367f2a7	\N	شاهد كيف تعمل المنصة	\N	6886a1c05a3935fab3feb222
+3	572bee22-6e9c-41c5-b15b-87e07b5d2f53	ar	6c42dd41-7bf7-4e3d-945e-35d8c9296688	\N	ما عليك أي التزام	\N	6886a2575a3935fab3feb225
+1	042cb45e-dbe3-4eac-bbfe-0d45ad473294	ar	d9179254-53e7-42b6-bc39-a4a02a1c2374	\N	تحدث مع متخصص	\N	6886a19a5a3935fab3feb221
+2	042cb45e-dbe3-4eac-bbfe-0d45ad473294	ar	a404f30b-2ec1-4fcc-ad83-4240dee54d03	\N	شاهد كيف تعمل المنصة	\N	6886a1c05a3935fab3feb222
+3	042cb45e-dbe3-4eac-bbfe-0d45ad473294	ar	a258fb16-9bb5-42e2-9dbf-b1641b67353b	\N	ما عليك أي التزام	\N	6886a2575a3935fab3feb225
 1	fbb24a02-8420-4514-8bdb-c7b547b11431	ar	3626be3b-640b-4142-8c3d-4517328a2126	\N	تحدث مع متخصص	\N	6886a19a5a3935fab3feb221
 2	fbb24a02-8420-4514-8bdb-c7b547b11431	ar	fd0c9940-13b4-4980-bebc-3d2bc1d1f066	\N	شاهد كيف تعمل المنصة	\N	6886a1c05a3935fab3feb222
 3	fbb24a02-8420-4514-8bdb-c7b547b11431	ar	fb286029-ba0d-4f34-86ff-b3d010261b92	\N	\N	\N	6886a1cf5a3935fab3feb223
@@ -9395,6 +9579,27 @@ COPY "public"."_callToActionBlock_v_list" ("_order", "_parent_id", "_locale", "i
 1	3aa126a6-7754-406c-8bf4-cd1a0e088f32	ar	1e88cd2f-66fe-44b8-9725-98dc80e9f0b4	\N	تحدث مع متخصص	\N	6886a19a5a3935fab3feb221
 2	3aa126a6-7754-406c-8bf4-cd1a0e088f32	ar	6a437712-a70c-4710-b820-4e0379c22e9f	\N	شاهد كيف تعمل المنصة	\N	6886a1c05a3935fab3feb222
 3	3aa126a6-7754-406c-8bf4-cd1a0e088f32	ar	f7c9834a-5689-401c-b002-640e5abb7475	\N	ما عليك أي التزام	\N	6886a2575a3935fab3feb225
+1	291db422-8598-4ff3-8228-3a0e9afe59cb	ar	34e1dab1-bb72-4cfc-8537-893d34009f1e	\N	تحدث مع متخصص	\N	6886a19a5a3935fab3feb221
+2	291db422-8598-4ff3-8228-3a0e9afe59cb	ar	6c906d94-0a4f-4d66-8218-80bb3dc4b020	\N	شاهد كيف تعمل المنصة	\N	6886a1c05a3935fab3feb222
+3	291db422-8598-4ff3-8228-3a0e9afe59cb	ar	4f5aae8e-f560-41c9-aa98-9bedecc6bd23	\N	ما عليك أي التزام	\N	6886a2575a3935fab3feb225
+1	30cb70f8-806f-4637-8cdd-17f834a26a59	ar	4f4bc4ef-6109-4dcd-b93c-5bf053c07a92	\N	تحدث مع متخصص	\N	6886a19a5a3935fab3feb221
+2	30cb70f8-806f-4637-8cdd-17f834a26a59	ar	8501610b-6f44-45fc-b19f-2b760eb59160	\N	شاهد كيف تعمل المنصة	\N	6886a1c05a3935fab3feb222
+3	30cb70f8-806f-4637-8cdd-17f834a26a59	ar	70387173-1eb3-4913-934b-9f7e06c1a382	\N	ما عليك أي التزام	\N	6886a2575a3935fab3feb225
+1	1bbd0421-9752-45e1-8233-00b978e74310	ar	a193308e-7c62-4fff-89d9-52da23d49047	\N	تحدث مع متخصص	\N	6886a19a5a3935fab3feb221
+2	1bbd0421-9752-45e1-8233-00b978e74310	ar	aad6c635-a6ff-4d23-9e05-3231c1d14ccb	\N	شاهد كيف تعمل المنصة	\N	6886a1c05a3935fab3feb222
+3	1bbd0421-9752-45e1-8233-00b978e74310	ar	287c8e05-adab-4b7c-a7f3-70afcda2241a	\N	ما عليك أي التزام	\N	6886a2575a3935fab3feb225
+1	cccd9cef-dd9c-4f9e-b4aa-c44dc753e51f	ar	0381b478-fd07-468f-ace4-a787b6b399a7	\N	تحدث مع متخصص	\N	6886a19a5a3935fab3feb221
+2	cccd9cef-dd9c-4f9e-b4aa-c44dc753e51f	ar	d405f55a-b9af-4426-8cc0-b0332003d5ed	\N	شاهد كيف تعمل المنصة	\N	6886a1c05a3935fab3feb222
+3	cccd9cef-dd9c-4f9e-b4aa-c44dc753e51f	ar	47c16d85-60b0-406c-8626-ca4c0c9f2781	\N	ما عليك أي التزام	\N	6886a2575a3935fab3feb225
+1	7a228e71-da70-43b8-b61f-391870850013	ar	cd4537da-2b06-49e1-817f-8855e806a50a	\N	تحدث مع متخصص	\N	6886a19a5a3935fab3feb221
+2	7a228e71-da70-43b8-b61f-391870850013	ar	48ef8bc2-9770-4376-9a75-488deb37b49b	\N	شاهد كيف تعمل المنصة	\N	6886a1c05a3935fab3feb222
+3	7a228e71-da70-43b8-b61f-391870850013	ar	a190460a-4a5b-49f4-99d2-55aac2a2771a	\N	ما عليك أي التزام	\N	6886a2575a3935fab3feb225
+1	52895ee2-5837-4111-bc57-2b4c100e725a	ar	ffb6b250-04dc-42a9-a2ac-3a58d2fa2ec5	\N	تحدث مع متخصص	\N	6886a19a5a3935fab3feb221
+2	52895ee2-5837-4111-bc57-2b4c100e725a	ar	f28b148a-a677-4e00-83d8-b6d7c01b6697	\N	شاهد كيف تعمل المنصة	\N	6886a1c05a3935fab3feb222
+3	52895ee2-5837-4111-bc57-2b4c100e725a	ar	1c576847-55a3-434f-888e-7911ef57823d	\N	ما عليك أي التزام	\N	6886a2575a3935fab3feb225
+1	da499771-362f-4eb4-83ae-6357adbf2144	ar	9f523289-0c02-480e-b2cf-c9265c5af935	\N	تحدث مع متخصص	\N	6886a19a5a3935fab3feb221
+2	da499771-362f-4eb4-83ae-6357adbf2144	ar	722d4797-7751-460c-9af8-e1f9069bb07d	\N	شاهد كيف تعمل المنصة	\N	6886a1c05a3935fab3feb222
+3	da499771-362f-4eb4-83ae-6357adbf2144	ar	0f5ae5e5-8b7f-42b5-bbb2-15c3c0c637ad	\N	ما عليك أي التزام	\N	6886a2575a3935fab3feb225
 \.
 
 
@@ -9410,6 +9615,15 @@ COPY "public"."_callToActionBlock_v_locales" ("badge_label", "rich_text", "media
 \N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h3", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "جاهز تزيد ارباحك؟", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "بنعرّفك على كل أدوات بلورة، ونطلع لك بأفكار سهلة تزيد من أرباح مطعمك... عشان تبدأ تشوف الفرق من بكرة.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}], "direction": "rtl"}}	\N	\N	\N	\N	20	ar	51ace41f-b511-4760-97c1-650cbbe3192f
 \N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h3", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "جاهز تزيد ارباحك؟", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "بنعرّفك على كل أدوات بلورة، ونطلع لك بأفكار سهلة تزيد من أرباح مطعمك... عشان تبدأ تشوف الفرق من بكرة.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}], "direction": "rtl"}}	\N	\N	\N	\N	22	ar	4c535c80-ef1d-4811-89e3-76565825a381
 \N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h3", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "جاهز تزيد ارباحك؟", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "بنعرّفك على كل أدوات بلورة، ونطلع لك بأفكار سهلة تزيد من أرباح مطعمك... عشان تبدأ تشوف الفرق من بكرة.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}], "direction": "rtl"}}	\N	\N	\N	\N	23	ar	3aa126a6-7754-406c-8bf4-cd1a0e088f32
+\N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h3", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "جاهز تزيد ارباحك؟", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "بنعرّفك على كل أدوات بلورة، ونطلع لك بأفكار سهلة تزيد من أرباح مطعمك... عشان تبدأ تشوف الفرق من بكرة.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}], "direction": "rtl"}}	\N	\N	\N	\N	26	ar	291db422-8598-4ff3-8228-3a0e9afe59cb
+\N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h3", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "جاهز تزيد ارباحك؟", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "بنعرّفك على كل أدوات بلورة، ونطلع لك بأفكار سهلة تزيد من أرباح مطعمك... عشان تبدأ تشوف الفرق من بكرة.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}], "direction": "rtl"}}	\N	\N	\N	\N	27	ar	30cb70f8-806f-4637-8cdd-17f834a26a59
+\N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h3", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "جاهز تزيد ارباحك؟", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "بنعرّفك على كل أدوات بلورة، ونطلع لك بأفكار سهلة تزيد من أرباح مطعمك... عشان تبدأ تشوف الفرق من بكرة.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}], "direction": "rtl"}}	\N	\N	\N	\N	28	ar	1bbd0421-9752-45e1-8233-00b978e74310
+\N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h3", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "جاهز تزيد ارباحك؟", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "بنعرّفك على كل أدوات بلورة، ونطلع لك بأفكار سهلة تزيد من أرباح مطعمك... عشان تبدأ تشوف الفرق من بكرة.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}], "direction": "rtl"}}	\N	\N	\N	\N	29	ar	cccd9cef-dd9c-4f9e-b4aa-c44dc753e51f
+\N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h3", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "جاهز تزيد ارباحك؟", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "بنعرّفك على كل أدوات بلورة، ونطلع لك بأفكار سهلة تزيد من أرباح مطعمك... عشان تبدأ تشوف الفرق من بكرة.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}], "direction": "rtl"}}	\N	\N	\N	\N	30	ar	7a228e71-da70-43b8-b61f-391870850013
+\N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h3", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "جاهز تزيد ارباحك؟", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "بنعرّفك على كل أدوات بلورة، ونطلع لك بأفكار سهلة تزيد من أرباح مطعمك... عشان تبدأ تشوف الفرق من بكرة.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}], "direction": "rtl"}}	\N	\N	\N	\N	46	ar	52895ee2-5837-4111-bc57-2b4c100e725a
+\N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h3", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "جاهز تزيد ارباحك؟", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "بنعرّفك على كل أدوات بلورة، ونطلع لك بأفكار سهلة تزيد من أرباح مطعمك... عشان تبدأ تشوف الفرق من بكرة.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}], "direction": "rtl"}}	\N	\N	\N	\N	47	ar	da499771-362f-4eb4-83ae-6357adbf2144
+\N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h3", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "جاهز تزيد ارباحك؟", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "بنعرّفك على كل أدوات بلورة، ونطلع لك بأفكار سهلة تزيد من أرباح مطعمك... عشان تبدأ تشوف الفرق من بكرة.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}], "direction": "rtl"}}	\N	\N	\N	\N	48	ar	572bee22-6e9c-41c5-b15b-87e07b5d2f53
+\N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h3", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "جاهز تزيد ارباحك؟", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "بنعرّفك على كل أدوات بلورة، ونطلع لك بأفكار سهلة تزيد من أرباح مطعمك... عشان تبدأ تشوف الفرق من بكرة.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}], "direction": "rtl"}}	\N	\N	\N	\N	49	ar	042cb45e-dbe3-4eac-bbfe-0d45ad473294
 \.
 
 
@@ -9521,6 +9735,10 @@ COPY "public"."_dividerBlock_v" ("_order", "_parent_id", "_path", "id", "size", 
 --
 
 COPY "public"."_faqBlock_v" ("_order", "_parent_id", "_path", "id", "block_header_type", "block_header_badge_type", "block_header_badge_color", "block_header_badge_icon", "block_header_badge_icon_position", "type", "_uuid", "block_name") FROM stdin;
+9	be9c7e75-dc9a-4619-8a8e-5ef58c098864	version.layout	9257f6bb-290e-4625-9815-8598a1b15656	center	\N	blue	\N	flex-row	01	688f13dcdb5b5b92cc7fdde8	\N
+9	475931ac-474c-47ac-a1ba-e14920a6ebb8	version.layout	975b2a97-f9fe-44fa-a510-ee0b76a835d3	center	\N	blue	\N	flex-row	01	688f13dcdb5b5b92cc7fdde8	\N
+9	df9022a7-63b1-4017-b716-518f2d69d9c2	version.layout	2bb028f4-ec43-4cec-b0bd-57295b0e275a	center	\N	blue	\N	flex-row	02	688f13dcdb5b5b92cc7fdde8	\N
+9	57af9290-93a8-46d6-8475-65260fba9301	version.layout	5f23cb9b-517c-4e0a-b409-3512476946a9	center	\N	blue	\N	flex-row	02	688f13dcdb5b5b92cc7fdde8	\N
 \.
 
 
@@ -9545,6 +9763,10 @@ COPY "public"."_faqBlock_v_block_header_links_locales" ("link_label", "id", "_lo
 --
 
 COPY "public"."_faqBlock_v_locales" ("block_header_badge_label", "block_header_header_text", "id", "_locale", "_parent_id") FROM stdin;
+\N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h2", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "الأسئلة الشائعة", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}], "direction": "rtl"}}	12	ar	9257f6bb-290e-4625-9815-8598a1b15656
+\N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h2", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "الأسئلة الشائعة", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}], "direction": "rtl"}}	13	ar	975b2a97-f9fe-44fa-a510-ee0b76a835d3
+\N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h2", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "الأسئلة الشائعة", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}], "direction": "rtl"}}	14	ar	2bb028f4-ec43-4cec-b0bd-57295b0e275a
+\N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h2", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "الأسئلة الشائعة", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}], "direction": "rtl"}}	15	ar	5f23cb9b-517c-4e0a-b409-3512476946a9
 \.
 
 
@@ -9553,6 +9775,26 @@ COPY "public"."_faqBlock_v_locales" ("block_header_badge_label", "block_header_h
 --
 
 COPY "public"."_faq_v" ("id", "parent_id", "version_category_id", "version_updated_at", "version_created_at", "version__status", "created_at", "updated_at", "snapshot", "published_locale", "latest", "autosave") FROM stdin;
+9eed6172-41d2-47c3-aef4-cd86a51c9243	487d16ef-4d7e-4603-885d-53d42734b0f1	\N	2025-08-03 07:40:53.706+00	2025-08-03 07:40:30.346+00	published	2025-08-03 07:40:54.112+00	2025-08-03 07:40:54.112+00	\N	\N	t	f
+4b10054a-2bda-436c-8b39-292edde91ded	487d16ef-4d7e-4603-885d-53d42734b0f1	\N	2025-08-03 07:40:30.396+00	2025-08-03 07:40:30.346+00	draft	2025-08-03 07:40:30.604+00	2025-08-03 07:40:30.604+00	\N	\N	f	f
+93c8a0ad-db61-4739-a743-6af30f6b7f24	487d16ef-4d7e-4603-885d-53d42734b0f1	\N	2025-08-03 07:40:45.82+00	2025-08-03 07:40:30.346+00	draft	2025-08-03 07:40:37.472+00	2025-08-03 07:40:45.916+00	\N	\N	f	t
+7615ef28-12c5-4976-83e0-c5dcece28939	2d37f238-e71e-4291-8919-33e4c7a73544	\N	2025-08-03 07:41:33.283+00	2025-08-03 07:41:01.929+00	published	2025-08-03 07:41:33.663+00	2025-08-03 07:41:33.663+00	\N	\N	t	f
+8eed7bbd-9401-4111-928a-24cf0219047d	2d37f238-e71e-4291-8919-33e4c7a73544	\N	2025-08-03 07:41:01.977+00	2025-08-03 07:41:01.929+00	draft	2025-08-03 07:41:02.17+00	2025-08-03 07:41:02.17+00	\N	\N	f	f
+5e7cfe1a-ade1-450f-ae8c-e695eda5d975	2d37f238-e71e-4291-8919-33e4c7a73544	\N	2025-08-03 07:41:27.194+00	2025-08-03 07:41:01.929+00	draft	2025-08-03 07:41:14.559+00	2025-08-03 07:41:27.291+00	\N	\N	f	t
+b78af6b2-085c-4610-87d6-157676c04c3d	4696359a-45b8-4fea-b14f-ca34e928e5d0	\N	2025-08-03 07:42:01.416+00	2025-08-03 07:41:46.698+00	published	2025-08-03 07:42:01.797+00	2025-08-03 07:42:01.797+00	\N	\N	t	f
+587d9523-7983-4578-bd53-92f10b57c6cd	4696359a-45b8-4fea-b14f-ca34e928e5d0	\N	2025-08-03 07:41:46.747+00	2025-08-03 07:41:46.698+00	draft	2025-08-03 07:41:46.936+00	2025-08-03 07:41:46.936+00	\N	\N	f	f
+630f16c0-3d7a-43d2-be0f-dbc6c07f74d3	4696359a-45b8-4fea-b14f-ca34e928e5d0	\N	2025-08-03 07:41:59.644+00	2025-08-03 07:41:46.698+00	draft	2025-08-03 07:41:51.438+00	2025-08-03 07:41:59.739+00	\N	\N	f	t
+34c41008-7fa7-4b23-8d79-fb0a7fce0652	0786b804-85ea-4269-841e-5f4fe762ada3	\N	2025-08-03 07:42:45.255+00	2025-08-03 07:42:19.174+00	published	2025-08-03 07:42:45.64+00	2025-08-03 07:42:45.64+00	\N	\N	t	f
+5102297a-d4d7-4945-9c49-b7f22a669b87	0786b804-85ea-4269-841e-5f4fe762ada3	\N	2025-08-03 07:42:19.221+00	2025-08-03 07:42:19.174+00	draft	2025-08-03 07:42:19.411+00	2025-08-03 07:42:19.412+00	\N	\N	f	f
+5278b8e2-3f22-4f64-ab8b-9ca104a31180	0786b804-85ea-4269-841e-5f4fe762ada3	\N	2025-08-03 07:42:43.322+00	2025-08-03 07:42:19.174+00	draft	2025-08-03 07:42:26.983+00	2025-08-03 07:42:43.419+00	\N	\N	f	t
+a5b93ee8-12d6-4d7d-8fc2-72e238828c6c	cf06eaf5-c215-44fc-82c2-a7696336ef41	\N	2025-08-03 07:43:27.046+00	2025-08-03 07:43:05.982+00	published	2025-08-03 07:43:27.428+00	2025-08-03 07:43:27.428+00	\N	\N	t	f
+2134df03-2a26-46d7-b94e-c45392e66721	cf06eaf5-c215-44fc-82c2-a7696336ef41	\N	2025-08-03 07:43:06.029+00	2025-08-03 07:43:05.982+00	draft	2025-08-03 07:43:06.218+00	2025-08-03 07:43:06.218+00	\N	\N	f	f
+1c8ef918-7bc4-49e6-b5c3-94eb1c2e56ce	cf06eaf5-c215-44fc-82c2-a7696336ef41	\N	2025-08-03 07:43:25.26+00	2025-08-03 07:43:05.982+00	draft	2025-08-03 07:43:10.994+00	2025-08-03 07:43:25.356+00	\N	\N	f	t
+1b1371db-06c3-4d4f-a566-ddef708178b5	0ad17856-43c0-4ec9-bd88-c26f826dfb68	\N	2025-08-03 07:45:43.588+00	2025-08-03 07:43:42.883+00	published	2025-08-03 07:45:43.971+00	2025-08-03 07:45:43.971+00	\N	\N	t	f
+32f69c07-e1e4-432e-aadc-8a901fcddc9d	0ad17856-43c0-4ec9-bd88-c26f826dfb68	\N	2025-08-03 07:45:41.181+00	2025-08-03 07:43:42.883+00	draft	2025-08-03 07:45:41.181+00	2025-08-03 07:45:41.277+00	\N	\N	f	t
+e7bc351c-4c64-4cd5-abdd-08578f1b8671	0ad17856-43c0-4ec9-bd88-c26f826dfb68	\N	2025-08-03 07:45:36.155+00	2025-08-03 07:43:42.883+00	published	2025-08-03 07:45:36.537+00	2025-08-03 07:45:36.537+00	\N	\N	f	f
+b1d941f9-a011-478d-aaed-b70de54ce0c5	0ad17856-43c0-4ec9-bd88-c26f826dfb68	\N	2025-08-03 07:43:42.93+00	2025-08-03 07:43:42.883+00	draft	2025-08-03 07:43:43.122+00	2025-08-03 07:43:43.123+00	\N	\N	f	f
+9e583320-4bef-4241-b211-581c1c8630df	0ad17856-43c0-4ec9-bd88-c26f826dfb68	\N	2025-08-03 07:45:33.291+00	2025-08-03 07:43:42.883+00	draft	2025-08-03 07:43:47.964+00	2025-08-03 07:45:33.389+00	\N	\N	f	t
 \.
 
 
@@ -9561,6 +9803,46 @@ COPY "public"."_faq_v" ("id", "parent_id", "version_category_id", "version_updat
 --
 
 COPY "public"."_faq_v_locales" ("version_question", "version_answer", "id", "_locale", "_parent_id") FROM stdin;
+\N	\N	1	en	4b10054a-2bda-436c-8b39-292edde91ded
+\N	\N	2	ar	4b10054a-2bda-436c-8b39-292edde91ded
+\N	\N	5	en	93c8a0ad-db61-4739-a743-6af30f6b7f24
+خلال متى راح أقدر أشوف نتائج حقيقية؟	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "كثير من عملائنا لاحظوا فرق فعلي خلال أول شهرين، خاصة في ظهور المطعم على التطبيقات وتحسّن نتائج الحملات الترويجية والمؤشرات التشغيلة", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}], "direction": "rtl"}}	6	ar	93c8a0ad-db61-4739-a743-6af30f6b7f24
+\N	\N	7	en	9eed6172-41d2-47c3-aef4-cd86a51c9243
+خلال متى راح أقدر أشوف نتائج حقيقية؟	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "كثير من عملائنا لاحظوا فرق فعلي خلال أول شهرين، خاصة في ظهور المطعم على التطبيقات وتحسّن نتائج الحملات الترويجية والمؤشرات التشغيلة", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}], "direction": "rtl"}}	8	ar	9eed6172-41d2-47c3-aef4-cd86a51c9243
+\N	\N	9	en	8eed7bbd-9401-4111-928a-24cf0219047d
+\N	\N	10	ar	8eed7bbd-9401-4111-928a-24cf0219047d
+\N	\N	13	en	5e7cfe1a-ade1-450f-ae8c-e695eda5d975
+هل أحتاج ألتزم بعقد أو اشتراك طويل؟	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "لا أبداً، تقدر تبدأ معنا بدون التزام طويل، وإذا ما ناسبتك التجربة، تقدر توقف في أي وقت", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}], "direction": "rtl"}}	14	ar	5e7cfe1a-ade1-450f-ae8c-e695eda5d975
+\N	\N	15	en	7615ef28-12c5-4976-83e0-c5dcece28939
+هل أحتاج ألتزم بعقد أو اشتراك طويل؟	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "لا أبداً، تقدر تبدأ معنا بدون التزام طويل، وإذا ما ناسبتك التجربة، تقدر توقف في أي وقت", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}], "direction": "rtl"}}	16	ar	7615ef28-12c5-4976-83e0-c5dcece28939
+\N	\N	17	en	587d9523-7983-4578-bd53-92f10b57c6cd
+\N	\N	18	ar	587d9523-7983-4578-bd53-92f10b57c6cd
+\N	\N	21	en	630f16c0-3d7a-43d2-be0f-dbc6c07f74d3
+كم أحتاج أخصص ميزانية عشان أبدأ؟	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "ما تحتاج ميزانية إعلانية ضخمة، بلّورة تساعدك توزّع ميزانيتك الحالية بشكل أذكى، وتزيد العائد على كل ريال تصرفه حتى لو كانت ميزانيتك محدودة", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}], "direction": "rtl"}}	22	ar	630f16c0-3d7a-43d2-be0f-dbc6c07f74d3
+\N	\N	23	en	b78af6b2-085c-4610-87d6-157676c04c3d
+كم أحتاج أخصص ميزانية عشان أبدأ؟	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "ما تحتاج ميزانية إعلانية ضخمة، بلّورة تساعدك توزّع ميزانيتك الحالية بشكل أذكى، وتزيد العائد على كل ريال تصرفه حتى لو كانت ميزانيتك محدودة", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}], "direction": "rtl"}}	24	ar	b78af6b2-085c-4610-87d6-157676c04c3d
+\N	\N	25	en	5102297a-d4d7-4945-9c49-b7f22a669b87
+\N	\N	26	ar	5102297a-d4d7-4945-9c49-b7f22a669b87
+\N	\N	37	en	2134df03-2a26-46d7-b94e-c45392e66721
+\N	\N	38	ar	2134df03-2a26-46d7-b94e-c45392e66721
+\N	\N	33	en	5278b8e2-3f22-4f64-ab8b-9ca104a31180
+هل بلّورة تشتغل مع جميع تطبيقات التوصيل؟	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"type": "paragraph", "format": "right", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "نعم، بلّورة تشتغل مع التطبيقات الأساسية في السوق مثل هنقرستيشن، كيتا، جاهز وغيرها، وتعرض لك كل بياناتك في لوحة وحدة تساعدك تفهم الصورة كاملة وتتحرك بثقة", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}], "direction": "rtl"}}	34	ar	5278b8e2-3f22-4f64-ab8b-9ca104a31180
+\N	\N	35	en	34c41008-7fa7-4b23-8d79-fb0a7fce0652
+هل بلّورة تشتغل مع جميع تطبيقات التوصيل؟	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"type": "paragraph", "format": "right", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "نعم، بلّورة تشتغل مع التطبيقات الأساسية في السوق مثل هنقرستيشن، كيتا، جاهز وغيرها، وتعرض لك كل بياناتك في لوحة وحدة تساعدك تفهم الصورة كاملة وتتحرك بثقة", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}], "direction": "rtl"}}	36	ar	34c41008-7fa7-4b23-8d79-fb0a7fce0652
+\N	\N	53	en	b1d941f9-a011-478d-aaed-b70de54ce0c5
+\N	\N	54	ar	b1d941f9-a011-478d-aaed-b70de54ce0c5
+\N	\N	49	en	1c8ef918-7bc4-49e6-b5c3-94eb1c2e56ce
+هل تحتاج خبرة تقنية أو فريق تسويق عشان أستخدمها؟	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"type": "paragraph", "format": "right", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "لا، بلّورة مصممة تكون سهلة حتى لو ما عندك أي خبرة فنية، وفريقنا يساعدك من أول يوم خطوة بخطوة", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}], "direction": "rtl"}}	50	ar	1c8ef918-7bc4-49e6-b5c3-94eb1c2e56ce
+\N	\N	51	en	a5b93ee8-12d6-4d7d-8fc2-72e238828c6c
+هل تحتاج خبرة تقنية أو فريق تسويق عشان أستخدمها؟	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"type": "paragraph", "format": "right", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "لا، بلّورة مصممة تكون سهلة حتى لو ما عندك أي خبرة فنية، وفريقنا يساعدك من أول يوم خطوة بخطوة", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}], "direction": "rtl"}}	52	ar	a5b93ee8-12d6-4d7d-8fc2-72e238828c6c
+\N	\N	87	en	9e583320-4bef-4241-b211-581c1c8630df
+هل بلّورة بس للمطاعم الكبيرة؟	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"type": "paragraph", "format": "right", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "بلّورة تناسب المطاعم الصغيرة والمتوسطة، سواء كان عندك فرع واحد أو أكثرـ وتكبر معك حسب احتياجك.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}], "direction": "rtl"}}	88	ar	9e583320-4bef-4241-b211-581c1c8630df
+\N	\N	89	en	e7bc351c-4c64-4cd5-abdd-08578f1b8671
+هل بلّورة بس للمطاعم الكبيرة؟	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"type": "paragraph", "format": "right", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "بلّورة تناسب المطاعم الصغيرة والمتوسطة، سواء كان عندك فرع واحد أو أكثرـ وتكبر معك حسب احتياجك.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}], "direction": "rtl"}}	90	ar	e7bc351c-4c64-4cd5-abdd-08578f1b8671
+\N	\N	91	en	32f69c07-e1e4-432e-aadc-8a901fcddc9d
+هل بلّورة بس للمطاعم الكبيرة؟	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"type": "paragraph", "format": "right", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "بلّورة تناسب المطاعم الصغيرة والمتوسطة، سواء كان عندك فرع واحد أو أكثرـ وتكبر معك حسب احتياجك", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}], "direction": "rtl"}}	92	ar	32f69c07-e1e4-432e-aadc-8a901fcddc9d
+\N	\N	93	en	1b1371db-06c3-4d4f-a566-ddef708178b5
+هل بلّورة بس للمطاعم الكبيرة؟	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"type": "paragraph", "format": "right", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "بلّورة تناسب المطاعم الصغيرة والمتوسطة، سواء كان عندك فرع واحد أو أكثرـ وتكبر معك حسب احتياجك", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}], "direction": "rtl"}}	94	ar	1b1371db-06c3-4d4f-a566-ddef708178b5
 \.
 
 
@@ -9677,8 +9959,48 @@ COPY "public"."_featuresBlock_v" ("_order", "_parent_id", "_path", "id", "block_
 5	2522dd02-3c88-4d0f-8f54-000c6331c042	version.layout	dc2bc5ad-30e3-4a2f-ae56-ab29a28f9f74	center	\N	blue	\N	flex-row	03	\N	reference	\N	\N	6886ac02df64ca6dd9ecfe6a	\N	\N	noChange
 1	39ed86c1-7622-472a-a921-06def66d1ca6	version.layout	5e56dd19-7338-4891-ba12-ec8c67024e25	center	label	gray	\N	flex-row	07	\N	reference	\N	\N	68869c85f3705a4904040d2e	\N	\N	noChange
 5	39ed86c1-7622-472a-a921-06def66d1ca6	version.layout	59792665-8210-4a4a-a063-1bc89b7bd691	center	\N	blue	\N	flex-row	03	\N	reference	\N	\N	6886ac02df64ca6dd9ecfe6a	\N	\N	noChange
+1	9f09b6d6-5dd1-4b72-b23f-90cd5c745e61	version.layout	83ae1d07-a3d0-484c-b834-e49b255fe2c0	center	\N	blue	\N	flex-row	14	\N	custom	\N	/	688694d473e9e43a4a6e3c05	\N	\N	noChange
+4	9f09b6d6-5dd1-4b72-b23f-90cd5c745e61	version.layout	969b59c0-559f-41e9-85c9-1a6652400c6f	center	\N	\N	\N	flex-row	01	\N	reference	\N	\N	688695d673e9e43a4a6e3c0a	\N	\N	noChange
+5	9f09b6d6-5dd1-4b72-b23f-90cd5c745e61	version.layout	4c7fb42d-95a9-441e-b87b-10c3252719a2	center	label	outline	\N	flex-row	06	fe54a595-3fe0-406c-8274-f5ed27ea3ec5	reference	\N	\N	68869a4d5a3935fab3feb217	\N	2-8%	noChange
+6	9f09b6d6-5dd1-4b72-b23f-90cd5c745e61	version.layout	42492313-848a-456f-a8c5-5bf4492a8ec7	center	\N	blue	\N	flex-row	04	\N	reference	\N	\N	68869d495a3935fab3feb219	\N	\N	noChange
+1	475931ac-474c-47ac-a1ba-e14920a6ebb8	version.layout	6ae60f62-e703-47c7-b69b-ba766c4818ef	center	\N	blue	\N	flex-row	14	\N	custom	\N	/	688694d473e9e43a4a6e3c05	\N	\N	noChange
+4	475931ac-474c-47ac-a1ba-e14920a6ebb8	version.layout	30c0fb2c-73ad-461b-be52-9495d71c602d	center	\N	\N	\N	flex-row	01	\N	reference	\N	\N	688695d673e9e43a4a6e3c0a	\N	\N	noChange
+5	475931ac-474c-47ac-a1ba-e14920a6ebb8	version.layout	b8bd223e-0f75-418a-b4ac-e000d1eefa0f	center	label	outline	\N	flex-row	06	fe54a595-3fe0-406c-8274-f5ed27ea3ec5	reference	\N	\N	68869a4d5a3935fab3feb217	\N	2-8%	noChange
+6	475931ac-474c-47ac-a1ba-e14920a6ebb8	version.layout	8d4ca5e2-759a-4777-96ea-883abadc904b	center	\N	blue	\N	flex-row	04	\N	reference	\N	\N	68869d495a3935fab3feb219	\N	\N	noChange
 1	7cb3435f-1591-4a85-9538-1a329412829b	version.layout	32a0c746-2b42-4498-a1ee-9206a1978f95	center	label	gray	\N	flex-row	07	\N	reference	\N	\N	68869c85f3705a4904040d2e	\N	\N	noChange
 5	7cb3435f-1591-4a85-9538-1a329412829b	version.layout	3cfdc750-c852-48c6-b914-eaa383575303	center	\N	blue	\N	flex-row	03	\N	reference	\N	\N	6886ac02df64ca6dd9ecfe6a	\N	\N	noChange
+1	191829da-fed4-4378-835d-355bb725534e	version.layout	4db3b9eb-f20b-4928-9be2-dcff601a4f23	center	\N	blue	\N	flex-row	14	\N	custom	\N	/	688694d473e9e43a4a6e3c05	\N	\N	noChange
+4	191829da-fed4-4378-835d-355bb725534e	version.layout	1ac4faaa-ff50-4577-8279-ff4a6c395bfd	center	\N	\N	\N	flex-row	01	\N	reference	\N	\N	688695d673e9e43a4a6e3c0a	\N	\N	noChange
+5	191829da-fed4-4378-835d-355bb725534e	version.layout	9b6aabe5-636a-4069-9bab-8d9e831a60ae	center	label	outline	\N	flex-row	06	fe54a595-3fe0-406c-8274-f5ed27ea3ec5	reference	\N	\N	68869a4d5a3935fab3feb217	\N	2-8%	noChange
+6	191829da-fed4-4378-835d-355bb725534e	version.layout	1d41680c-ee7f-4b86-af12-54582cc01082	center	\N	blue	\N	flex-row	04	\N	reference	\N	\N	68869d495a3935fab3feb219	\N	\N	noChange
+1	01fe3f95-b2e0-4adc-8e06-a37200de75b3	version.layout	8a89b85e-edb1-4c7d-af78-613fb249750b	center	\N	blue	\N	flex-row	14	\N	custom	\N	/	688694d473e9e43a4a6e3c05	\N	\N	noChange
+4	01fe3f95-b2e0-4adc-8e06-a37200de75b3	version.layout	6a280100-add4-49ad-95ac-90597a7da682	center	\N	\N	\N	flex-row	01	\N	reference	\N	\N	688695d673e9e43a4a6e3c0a	\N	\N	noChange
+5	01fe3f95-b2e0-4adc-8e06-a37200de75b3	version.layout	d752df66-861d-4f76-8c8c-565bc137ad88	center	label	outline	\N	flex-row	06	fe54a595-3fe0-406c-8274-f5ed27ea3ec5	reference	\N	\N	68869a4d5a3935fab3feb217	\N	2-8%	noChange
+6	01fe3f95-b2e0-4adc-8e06-a37200de75b3	version.layout	20df0ff6-08e0-4ff5-b29b-805c8b5ee4bd	center	\N	blue	\N	flex-row	04	\N	reference	\N	\N	68869d495a3935fab3feb219	\N	\N	noChange
+1	be9c7e75-dc9a-4619-8a8e-5ef58c098864	version.layout	abeddfc5-570e-40f0-ac73-391235569c45	center	\N	blue	\N	flex-row	14	\N	custom	\N	/	688694d473e9e43a4a6e3c05	\N	\N	noChange
+4	be9c7e75-dc9a-4619-8a8e-5ef58c098864	version.layout	526608bc-69f2-4991-ae13-9fe3da69a4d0	center	\N	\N	\N	flex-row	01	\N	reference	\N	\N	688695d673e9e43a4a6e3c0a	\N	\N	noChange
+5	be9c7e75-dc9a-4619-8a8e-5ef58c098864	version.layout	1c4ada83-01b2-496f-b392-084372233e9e	center	label	outline	\N	flex-row	06	fe54a595-3fe0-406c-8274-f5ed27ea3ec5	reference	\N	\N	68869a4d5a3935fab3feb217	\N	2-8%	noChange
+6	be9c7e75-dc9a-4619-8a8e-5ef58c098864	version.layout	f5ed2bfe-69fe-4506-80df-8eab89a8e555	center	\N	blue	\N	flex-row	04	\N	reference	\N	\N	68869d495a3935fab3feb219	\N	\N	noChange
+1	df9022a7-63b1-4017-b716-518f2d69d9c2	version.layout	c17b1e3b-3808-4e7d-90f9-498bee1058bd	center	\N	blue	\N	flex-row	14	\N	custom	\N	/	688694d473e9e43a4a6e3c05	\N	\N	noChange
+4	df9022a7-63b1-4017-b716-518f2d69d9c2	version.layout	91e9ca25-4e18-482d-8c79-b73c503e9e03	center	\N	\N	\N	flex-row	01	\N	reference	\N	\N	688695d673e9e43a4a6e3c0a	\N	\N	noChange
+5	df9022a7-63b1-4017-b716-518f2d69d9c2	version.layout	8d8efaad-b13e-42f1-bb9a-c61f6e6e8b09	center	label	outline	\N	flex-row	06	fe54a595-3fe0-406c-8274-f5ed27ea3ec5	reference	\N	\N	68869a4d5a3935fab3feb217	\N	2-8%	noChange
+6	df9022a7-63b1-4017-b716-518f2d69d9c2	version.layout	879d1fec-d0f6-47db-8115-ec4fa2a2c95a	center	\N	blue	\N	flex-row	04	\N	reference	\N	\N	68869d495a3935fab3feb219	\N	\N	noChange
+1	57af9290-93a8-46d6-8475-65260fba9301	version.layout	706db240-1d25-4ffb-870b-2f04e3f2add0	center	\N	blue	\N	flex-row	14	\N	custom	\N	/	688694d473e9e43a4a6e3c05	\N	\N	noChange
+4	57af9290-93a8-46d6-8475-65260fba9301	version.layout	96263471-3bed-4d5c-bccb-4f1c437c2a4c	center	\N	\N	\N	flex-row	01	\N	reference	\N	\N	688695d673e9e43a4a6e3c0a	\N	\N	noChange
+5	57af9290-93a8-46d6-8475-65260fba9301	version.layout	df8306e3-8bac-437b-ac4b-60df2bbd890f	center	label	outline	\N	flex-row	06	fe54a595-3fe0-406c-8274-f5ed27ea3ec5	reference	\N	\N	68869a4d5a3935fab3feb217	\N	2-8%	noChange
+6	57af9290-93a8-46d6-8475-65260fba9301	version.layout	ffa0f63d-e94d-4b43-b00f-6d4e232caf6e	center	\N	blue	\N	flex-row	04	\N	reference	\N	\N	68869d495a3935fab3feb219	\N	\N	noChange
+1	5cf29f02-25c3-4b24-b574-1aadab774686	version.layout	3150dff4-3156-4f22-9828-4e701e627978	center	label	gray	\N	flex-row	07	\N	reference	\N	\N	68869c85f3705a4904040d2e	\N	\N	noChange
+5	5cf29f02-25c3-4b24-b574-1aadab774686	version.layout	83e89ed3-1fef-4a8d-9d37-d4daac4ab2a4	center	\N	blue	\N	flex-row	03	\N	reference	\N	\N	6886ac02df64ca6dd9ecfe6a	\N	\N	noChange
+1	5a14f13d-26a1-40fe-af37-216b5bd0fe17	version.layout	b960e3b9-f9f6-4be8-97bb-21d5402c1284	center	label	gray	\N	flex-row	07	\N	reference	\N	\N	68869c85f3705a4904040d2e	\N	\N	noChange
+5	5a14f13d-26a1-40fe-af37-216b5bd0fe17	version.layout	274752fe-78e5-4bcb-b2d4-d64b5686cb60	center	\N	blue	\N	flex-row	03	\N	reference	\N	\N	6886ac02df64ca6dd9ecfe6a	\N	\N	noChange
+1	3b7333a2-daa5-498c-88e2-379fe5c31d7b	version.layout	43971856-bf24-40d9-b317-b1a4dd63c516	center	\N	blue	\N	flex-row	14	\N	custom	\N	/	688694d473e9e43a4a6e3c05	\N	\N	noChange
+4	3b7333a2-daa5-498c-88e2-379fe5c31d7b	version.layout	d53d45fc-d873-4a78-9d8e-22b9f8075c16	center	\N	\N	\N	flex-row	01	\N	reference	\N	\N	688695d673e9e43a4a6e3c0a	\N	\N	noChange
+5	3b7333a2-daa5-498c-88e2-379fe5c31d7b	version.layout	d3b231af-dd13-4399-bfae-c84d7dac29c0	center	label	outline	\N	flex-row	06	fe54a595-3fe0-406c-8274-f5ed27ea3ec5	reference	\N	\N	68869a4d5a3935fab3feb217	\N	2-8%	noChange
+6	3b7333a2-daa5-498c-88e2-379fe5c31d7b	version.layout	767b7c00-1897-42d3-be2e-6682bf11c6cc	center	\N	blue	\N	flex-row	04	\N	reference	\N	\N	68869d495a3935fab3feb219	\N	\N	noChange
+1	67aa8e57-e509-4c57-b165-2c5bfd47d94f	version.layout	be8dca89-74f3-4f35-82ee-14afc620808b	center	\N	blue	\N	flex-row	14	\N	custom	\N	/	688694d473e9e43a4a6e3c05	\N	\N	noChange
+4	67aa8e57-e509-4c57-b165-2c5bfd47d94f	version.layout	764ed95d-be62-4a6a-be5d-de09f2ba4ed7	center	\N	\N	\N	flex-row	01	\N	reference	\N	\N	688695d673e9e43a4a6e3c0a	\N	\N	noChange
+5	67aa8e57-e509-4c57-b165-2c5bfd47d94f	version.layout	fa8b9b8e-7cf2-4e8b-9ed1-2c48b13151cc	center	label	outline	\N	flex-row	06	fe54a595-3fe0-406c-8274-f5ed27ea3ec5	reference	\N	\N	68869a4d5a3935fab3feb217	\N	2-8%	noChange
+6	67aa8e57-e509-4c57-b165-2c5bfd47d94f	version.layout	090df94b-27fd-4e5f-baf8-9a1d5d5da341	center	\N	blue	\N	flex-row	04	\N	reference	\N	\N	68869d495a3935fab3feb219	\N	\N	noChange
 \.
 
 
@@ -9765,6 +10087,9 @@ COPY "public"."_featuresBlock_v_columns" ("_order", "_parent_id", "id", "size", 
 1	1a0d44e7-09b4-428c-b9e3-b9fdf2affbb0	3c45bd9e-f5ec-455a-bd15-b53e7ce125d9	full	\N	f	\N	\N	label	blue	\N	flex-row	reference	\N	\N	688695df73e9e43a4a6e3c0b	6 ريال	noChange
 2	1a0d44e7-09b4-428c-b9e3-b9fdf2affbb0	8f45e4a1-af6c-4530-833b-036465ca8ebe	half	\N	t	\N	\N	label	outline	\N	flex-row	reference	\N	\N	6886984273e9e43a4a6e3c0d	+32%	noChange
 3	1a0d44e7-09b4-428c-b9e3-b9fdf2affbb0	451ef1bd-0607-4a4e-8ec1-ab4d66be04df	half	\N	t	\N	\N	label	outline	\N	flex-row	reference	\N	\N	688698ec5a3935fab3feb215	15-30%	noChange
+1	43971856-bf24-40d9-b317-b1a4dd63c516	bca0eb17-d003-4186-9889-a8e91c7f875d	half	\N	\N	\N	\N	\N	blue	\N	flex-row	reference	\N	\N	688694e973e9e43a4a6e3c06	\N	noChange
+2	43971856-bf24-40d9-b317-b1a4dd63c516	3a611c65-7ae5-4b20-9347-721a6f06ec56	half	\N	\N	\N	\N	\N	blue	\N	flex-row	reference	\N	\N	688694f973e9e43a4a6e3c07	\N	noChange
+3	43971856-bf24-40d9-b317-b1a4dd63c516	97113670-469e-41a8-adfc-73411af4e5d5	half	\N	\N	\N	\N	\N	blue	\N	flex-row	reference	\N	\N	6886950873e9e43a4a6e3c08	\N	noChange
 1	ac9b0188-e70a-4fab-b59c-fd5d9f8a1647	df3c14cf-19f4-441f-8e51-0bc1692b111d	half	\N	\N	\N	\N	\N	blue	\N	flex-row	reference	\N	\N	6886ac0edf64ca6dd9ecfe6b	\N	noChange
 2	ac9b0188-e70a-4fab-b59c-fd5d9f8a1647	5848f55d-de9b-4829-ad9a-3287b5e3f85e	half	\N	\N	\N	\N	\N	blue	\N	flex-row	reference	\N	\N	6886ac2fdf64ca6dd9ecfe6d	\N	noChange
 3	ac9b0188-e70a-4fab-b59c-fd5d9f8a1647	51dcede5-a971-4033-a2d1-f2fb02410356	half	\N	\N	\N	\N	\N	blue	\N	flex-row	reference	\N	\N	6886ac36df64ca6dd9ecfe70	\N	noChange
@@ -9889,6 +10214,72 @@ COPY "public"."_featuresBlock_v_columns" ("_order", "_parent_id", "id", "size", 
 1	3978e94e-2841-4ec2-a4de-f8054f30effd	1a0a1c42-e33c-4d66-a511-be123cd456d7	half	\N	\N	\N	\N	\N	blue	\N	flex-row	reference	\N	\N	6886ac0edf64ca6dd9ecfe6b	\N	noChange
 2	3978e94e-2841-4ec2-a4de-f8054f30effd	d75dfab3-9de7-442c-8d78-643889395eee	half	\N	\N	\N	\N	\N	blue	\N	flex-row	reference	\N	\N	6886ac2fdf64ca6dd9ecfe6d	\N	noChange
 3	3978e94e-2841-4ec2-a4de-f8054f30effd	1bbfd28a-3816-432f-8eec-f3b49bd11cc6	half	\N	\N	\N	\N	\N	blue	\N	flex-row	reference	\N	\N	6886ac36df64ca6dd9ecfe70	\N	noChange
+1	d53d45fc-d873-4a78-9d8e-22b9f8075c16	fecb5a44-32db-4ea5-bc67-cf4b0062bae1	full	\N	t	\N	\N	label	outline	\N	flex-row	reference	\N	\N	688695df73e9e43a4a6e3c0b	6 ريال	noChange
+2	d53d45fc-d873-4a78-9d8e-22b9f8075c16	a7d92552-bf40-4c67-9933-fb858bfc4ce9	half	\N	t	\N	\N	label	outline	\N	flex-row	reference	\N	\N	6886984273e9e43a4a6e3c0d	+32%	noChange
+3	d53d45fc-d873-4a78-9d8e-22b9f8075c16	a2d25223-ae1e-459f-8748-cf27e06b32aa	half	\N	t	\N	\N	label	outline	\N	flex-row	reference	\N	\N	688698ec5a3935fab3feb215	15-30%	noChange
+1	767b7c00-1897-42d3-be2e-6682bf11c6cc	27e4ccc0-5b26-400a-a157-61c008f3d5b5	half	\N	\N	t	\N	\N	blue	\N	flex-row	custom	\N	/	68869d6c5a3935fab3feb21a	\N	noChange
+1	be8dca89-74f3-4f35-82ee-14afc620808b	7d0025b3-afb2-4419-9be8-e4378030149a	half	\N	\N	\N	\N	\N	blue	\N	flex-row	reference	\N	\N	688694e973e9e43a4a6e3c06	\N	noChange
+2	be8dca89-74f3-4f35-82ee-14afc620808b	6843cdfe-4da7-4193-99d6-4f155929f945	half	\N	\N	\N	\N	\N	blue	\N	flex-row	reference	\N	\N	688694f973e9e43a4a6e3c07	\N	noChange
+3	be8dca89-74f3-4f35-82ee-14afc620808b	ab94111f-a235-4473-8e94-59089b4f2783	half	\N	\N	\N	\N	\N	blue	\N	flex-row	reference	\N	\N	6886950873e9e43a4a6e3c08	\N	noChange
+1	764ed95d-be62-4a6a-be5d-de09f2ba4ed7	4f7dc80b-96e7-4c55-9877-229d19b52ff5	full	\N	t	\N	\N	label	outline	\N	flex-row	reference	\N	\N	688695df73e9e43a4a6e3c0b	6 ريال	noChange
+2	764ed95d-be62-4a6a-be5d-de09f2ba4ed7	66d48ad9-0b01-413a-95f6-26f89c107d86	half	\N	t	\N	\N	label	outline	\N	flex-row	reference	\N	\N	6886984273e9e43a4a6e3c0d	+32%	noChange
+3	764ed95d-be62-4a6a-be5d-de09f2ba4ed7	c1777401-00cb-4004-9504-e645028a0ada	half	\N	t	\N	\N	label	outline	\N	flex-row	reference	\N	\N	688698ec5a3935fab3feb215	15-30%	noChange
+1	090df94b-27fd-4e5f-baf8-9a1d5d5da341	0264843b-c2cd-4fad-91f1-42c3451001e3	half	\N	\N	t	\N	\N	blue	\N	flex-row	custom	\N	/	68869d6c5a3935fab3feb21a	\N	noChange
+1	c17b1e3b-3808-4e7d-90f9-498bee1058bd	1cbbec31-de3f-4b14-83e2-e08bce565cbf	half	\N	\N	\N	\N	\N	blue	\N	flex-row	reference	\N	\N	688694e973e9e43a4a6e3c06	\N	noChange
+1	4db3b9eb-f20b-4928-9be2-dcff601a4f23	a08b0f90-55b5-41e8-8b87-50785eecd1bc	half	\N	\N	\N	\N	\N	blue	\N	flex-row	reference	\N	\N	688694e973e9e43a4a6e3c06	\N	noChange
+2	4db3b9eb-f20b-4928-9be2-dcff601a4f23	afec06f3-76f6-4ed5-9d36-d230d33467d4	half	\N	\N	\N	\N	\N	blue	\N	flex-row	reference	\N	\N	688694f973e9e43a4a6e3c07	\N	noChange
+3	4db3b9eb-f20b-4928-9be2-dcff601a4f23	b7cc03ec-372e-4397-a748-a8f1550be5c6	half	\N	\N	\N	\N	\N	blue	\N	flex-row	reference	\N	\N	6886950873e9e43a4a6e3c08	\N	noChange
+1	1ac4faaa-ff50-4577-8279-ff4a6c395bfd	326a423b-66e5-4efd-885a-aff2b5dd2e64	full	\N	t	\N	\N	label	outline	\N	flex-row	reference	\N	\N	688695df73e9e43a4a6e3c0b	6 ريال	noChange
+2	1ac4faaa-ff50-4577-8279-ff4a6c395bfd	fc5952c6-eac9-4c7e-a010-9e06d6a012bb	half	\N	t	\N	\N	label	outline	\N	flex-row	reference	\N	\N	6886984273e9e43a4a6e3c0d	+32%	noChange
+3	1ac4faaa-ff50-4577-8279-ff4a6c395bfd	1d6fef71-1e28-49d1-88de-b045ef9eb0c2	half	\N	t	\N	\N	label	outline	\N	flex-row	reference	\N	\N	688698ec5a3935fab3feb215	15-30%	noChange
+1	1d41680c-ee7f-4b86-af12-54582cc01082	ca2bba31-edf3-4c22-abf1-0bef4d54f14a	half	\N	\N	t	\N	\N	blue	\N	flex-row	custom	\N	/	68869d6c5a3935fab3feb21a	\N	noChange
+1	83ae1d07-a3d0-484c-b834-e49b255fe2c0	a009aecb-af58-4994-92f7-1d6ba9556ed0	half	\N	\N	\N	\N	\N	blue	\N	flex-row	reference	\N	\N	688694e973e9e43a4a6e3c06	\N	noChange
+2	83ae1d07-a3d0-484c-b834-e49b255fe2c0	475d5e43-4452-4c3a-a3a7-95e6cb39934c	half	\N	\N	\N	\N	\N	blue	\N	flex-row	reference	\N	\N	688694f973e9e43a4a6e3c07	\N	noChange
+3	83ae1d07-a3d0-484c-b834-e49b255fe2c0	6f150a96-3945-495d-8342-048758ec5b3d	half	\N	\N	\N	\N	\N	blue	\N	flex-row	reference	\N	\N	6886950873e9e43a4a6e3c08	\N	noChange
+1	969b59c0-559f-41e9-85c9-1a6652400c6f	b60d7bfc-ce64-483c-a3f1-5f98c36d069f	full	\N	t	\N	\N	label	outline	\N	flex-row	reference	\N	\N	688695df73e9e43a4a6e3c0b	6 ريال	noChange
+2	969b59c0-559f-41e9-85c9-1a6652400c6f	922f7248-b660-4324-81d7-30a04dc0d12a	half	\N	t	\N	\N	label	outline	\N	flex-row	reference	\N	\N	6886984273e9e43a4a6e3c0d	+32%	noChange
+3	969b59c0-559f-41e9-85c9-1a6652400c6f	816c330d-0896-4683-8df0-e26ae4f45c44	half	\N	t	\N	\N	label	outline	\N	flex-row	reference	\N	\N	688698ec5a3935fab3feb215	15-30%	noChange
+1	42492313-848a-456f-a8c5-5bf4492a8ec7	4dc9b16f-d06d-4ed2-98db-58aa7d4c040e	half	\N	\N	t	\N	\N	blue	\N	flex-row	custom	\N	/	68869d6c5a3935fab3feb21a	\N	noChange
+1	8a89b85e-edb1-4c7d-af78-613fb249750b	e9ae8501-1f3b-416d-97e1-fe37b1122e33	half	\N	\N	\N	\N	\N	blue	\N	flex-row	reference	\N	\N	688694e973e9e43a4a6e3c06	\N	noChange
+2	8a89b85e-edb1-4c7d-af78-613fb249750b	c148f978-7996-4997-b915-0988274b0857	half	\N	\N	\N	\N	\N	blue	\N	flex-row	reference	\N	\N	688694f973e9e43a4a6e3c07	\N	noChange
+3	8a89b85e-edb1-4c7d-af78-613fb249750b	6ac0efcb-823b-48b7-b94d-9f74157d6f02	half	\N	\N	\N	\N	\N	blue	\N	flex-row	reference	\N	\N	6886950873e9e43a4a6e3c08	\N	noChange
+1	6a280100-add4-49ad-95ac-90597a7da682	c3ac3689-401e-48ad-a396-34223738e2c9	full	\N	t	\N	\N	label	outline	\N	flex-row	reference	\N	\N	688695df73e9e43a4a6e3c0b	6 ريال	noChange
+2	6a280100-add4-49ad-95ac-90597a7da682	d2e30f0e-fc35-4021-a92b-129c33df52cc	half	\N	t	\N	\N	label	outline	\N	flex-row	reference	\N	\N	6886984273e9e43a4a6e3c0d	+32%	noChange
+3	6a280100-add4-49ad-95ac-90597a7da682	1564dfe4-ff14-482d-9cf4-403dde755348	half	\N	t	\N	\N	label	outline	\N	flex-row	reference	\N	\N	688698ec5a3935fab3feb215	15-30%	noChange
+1	20df0ff6-08e0-4ff5-b29b-805c8b5ee4bd	501406dd-5d68-4830-a487-c59c7a8b0f98	half	\N	\N	t	\N	\N	blue	\N	flex-row	custom	\N	/	68869d6c5a3935fab3feb21a	\N	noChange
+2	c17b1e3b-3808-4e7d-90f9-498bee1058bd	e6fbdf5d-9b9c-4493-a306-24d2f2b54b0f	half	\N	\N	\N	\N	\N	blue	\N	flex-row	reference	\N	\N	688694f973e9e43a4a6e3c07	\N	noChange
+3	c17b1e3b-3808-4e7d-90f9-498bee1058bd	66450d45-7dd7-4304-9250-0cbfbe90bd4a	half	\N	\N	\N	\N	\N	blue	\N	flex-row	reference	\N	\N	6886950873e9e43a4a6e3c08	\N	noChange
+1	91e9ca25-4e18-482d-8c79-b73c503e9e03	9e7d6d08-2852-4470-b2b6-2394568b1b3b	full	\N	t	\N	\N	label	outline	\N	flex-row	reference	\N	\N	688695df73e9e43a4a6e3c0b	6 ريال	noChange
+2	91e9ca25-4e18-482d-8c79-b73c503e9e03	2d3809bd-df38-4537-b3eb-fc4ec660707f	half	\N	t	\N	\N	label	outline	\N	flex-row	reference	\N	\N	6886984273e9e43a4a6e3c0d	+32%	noChange
+3	91e9ca25-4e18-482d-8c79-b73c503e9e03	87b03f8b-365c-4fc6-91c6-a27107a929a2	half	\N	t	\N	\N	label	outline	\N	flex-row	reference	\N	\N	688698ec5a3935fab3feb215	15-30%	noChange
+1	879d1fec-d0f6-47db-8115-ec4fa2a2c95a	92229873-60c6-4a01-8a10-6a2e03e9ef5a	half	\N	\N	t	\N	\N	blue	\N	flex-row	custom	\N	/	68869d6c5a3935fab3feb21a	\N	noChange
+1	83e89ed3-1fef-4a8d-9d37-d4daac4ab2a4	2ea5c96f-9a77-4665-a937-5dd02b955f83	half	accessibility-line	\N	\N	\N	\N	blue	\N	flex-row	reference	\N	\N	6886ac0edf64ca6dd9ecfe6b	\N	noChange
+2	83e89ed3-1fef-4a8d-9d37-d4daac4ab2a4	3d30a86d-1661-4173-a2e7-9ae227d1db44	half	line-chart-line	\N	\N	\N	\N	blue	\N	flex-row	reference	\N	\N	6886ac2fdf64ca6dd9ecfe6d	\N	noChange
+3	83e89ed3-1fef-4a8d-9d37-d4daac4ab2a4	05f4cdcf-1deb-4bec-bd7c-baf2792f8d09	half	shield-star-line	\N	\N	\N	\N	blue	\N	flex-row	reference	\N	\N	6886ac36df64ca6dd9ecfe70	\N	noChange
+1	274752fe-78e5-4bcb-b2d4-d64b5686cb60	479fdb3b-68a0-461d-b521-813f27dac6f7	half	accessibility-line	\N	\N	\N	\N	blue	\N	flex-row	reference	\N	\N	6886ac0edf64ca6dd9ecfe6b	\N	noChange
+2	274752fe-78e5-4bcb-b2d4-d64b5686cb60	7799ad44-687f-4c80-99df-b69057d80ce5	half	line-chart-line	\N	\N	\N	\N	blue	\N	flex-row	reference	\N	\N	6886ac2fdf64ca6dd9ecfe6d	\N	noChange
+3	274752fe-78e5-4bcb-b2d4-d64b5686cb60	e6934e29-8f84-4cb0-81df-9b6bd48c383c	half	shield-star-line	\N	\N	\N	\N	blue	\N	flex-row	reference	\N	\N	6886ac36df64ca6dd9ecfe70	\N	noChange
+1	abeddfc5-570e-40f0-ac73-391235569c45	a189bf7d-f70f-4834-b5d6-d61f9aab59f7	half	\N	\N	\N	\N	\N	blue	\N	flex-row	reference	\N	\N	688694e973e9e43a4a6e3c06	\N	noChange
+2	abeddfc5-570e-40f0-ac73-391235569c45	5dac6a8f-bf42-4df2-af6d-84807b900e7c	half	\N	\N	\N	\N	\N	blue	\N	flex-row	reference	\N	\N	688694f973e9e43a4a6e3c07	\N	noChange
+3	abeddfc5-570e-40f0-ac73-391235569c45	3e167708-b414-4513-b38a-02dc83a9182f	half	\N	\N	\N	\N	\N	blue	\N	flex-row	reference	\N	\N	6886950873e9e43a4a6e3c08	\N	noChange
+1	526608bc-69f2-4991-ae13-9fe3da69a4d0	e57546f2-7633-4db0-a860-4b6a1b8b5bb2	full	\N	t	\N	\N	label	outline	\N	flex-row	reference	\N	\N	688695df73e9e43a4a6e3c0b	6 ريال	noChange
+2	526608bc-69f2-4991-ae13-9fe3da69a4d0	f707c295-5267-419d-b00e-07ee353d66ae	half	\N	t	\N	\N	label	outline	\N	flex-row	reference	\N	\N	6886984273e9e43a4a6e3c0d	+32%	noChange
+3	526608bc-69f2-4991-ae13-9fe3da69a4d0	970db27a-064b-4594-be2f-1e798542d0c3	half	\N	t	\N	\N	label	outline	\N	flex-row	reference	\N	\N	688698ec5a3935fab3feb215	15-30%	noChange
+1	f5ed2bfe-69fe-4506-80df-8eab89a8e555	0f58c5eb-7aaf-432f-ab3e-ec04d27b623d	half	\N	\N	t	\N	\N	blue	\N	flex-row	custom	\N	/	68869d6c5a3935fab3feb21a	\N	noChange
+1	6ae60f62-e703-47c7-b69b-ba766c4818ef	1719d78f-f8d4-484d-9a3a-3d5c1a8e74a6	half	\N	\N	\N	\N	\N	blue	\N	flex-row	reference	\N	\N	688694e973e9e43a4a6e3c06	\N	noChange
+2	6ae60f62-e703-47c7-b69b-ba766c4818ef	cc30203f-1d07-4f67-a416-808d1152d7de	half	\N	\N	\N	\N	\N	blue	\N	flex-row	reference	\N	\N	688694f973e9e43a4a6e3c07	\N	noChange
+3	6ae60f62-e703-47c7-b69b-ba766c4818ef	c8709591-d659-4e94-a16e-9cd2b2680610	half	\N	\N	\N	\N	\N	blue	\N	flex-row	reference	\N	\N	6886950873e9e43a4a6e3c08	\N	noChange
+1	30c0fb2c-73ad-461b-be52-9495d71c602d	740f6b74-b2c3-4103-8798-ad88f25571a5	full	\N	t	\N	\N	label	outline	\N	flex-row	reference	\N	\N	688695df73e9e43a4a6e3c0b	6 ريال	noChange
+2	30c0fb2c-73ad-461b-be52-9495d71c602d	65637100-6446-4581-8dd7-0034ffe6a7ed	half	\N	t	\N	\N	label	outline	\N	flex-row	reference	\N	\N	6886984273e9e43a4a6e3c0d	+32%	noChange
+3	30c0fb2c-73ad-461b-be52-9495d71c602d	f117634c-4f2b-432e-8981-37592c8ea345	half	\N	t	\N	\N	label	outline	\N	flex-row	reference	\N	\N	688698ec5a3935fab3feb215	15-30%	noChange
+1	8d4ca5e2-759a-4777-96ea-883abadc904b	925a6bb5-6db5-47eb-b3c4-db5b22ab09a8	half	\N	\N	t	\N	\N	blue	\N	flex-row	custom	\N	/	68869d6c5a3935fab3feb21a	\N	noChange
+1	706db240-1d25-4ffb-870b-2f04e3f2add0	71f85c9d-3b7f-46e4-b325-2e2c38c10c6b	half	\N	\N	\N	\N	\N	blue	\N	flex-row	reference	\N	\N	688694e973e9e43a4a6e3c06	\N	noChange
+2	706db240-1d25-4ffb-870b-2f04e3f2add0	a82de0fb-c523-474a-8bae-ff71f3c87410	half	\N	\N	\N	\N	\N	blue	\N	flex-row	reference	\N	\N	688694f973e9e43a4a6e3c07	\N	noChange
+3	706db240-1d25-4ffb-870b-2f04e3f2add0	9d6f3458-8095-418e-9967-4fc193c241fc	half	\N	\N	\N	\N	\N	blue	\N	flex-row	reference	\N	\N	6886950873e9e43a4a6e3c08	\N	noChange
+1	96263471-3bed-4d5c-bccb-4f1c437c2a4c	1c716589-d83d-4234-9c50-ab0eea7f97ee	full	\N	t	\N	\N	label	outline	\N	flex-row	reference	\N	\N	688695df73e9e43a4a6e3c0b	6 ريال	noChange
+2	96263471-3bed-4d5c-bccb-4f1c437c2a4c	a56881ae-1db3-4d70-b33c-e8f5ca55323e	half	\N	t	\N	\N	label	outline	\N	flex-row	reference	\N	\N	6886984273e9e43a4a6e3c0d	+32%	noChange
+3	96263471-3bed-4d5c-bccb-4f1c437c2a4c	4a429bdf-d961-42d6-b57c-8bf07df07181	half	\N	t	\N	\N	label	outline	\N	flex-row	reference	\N	\N	688698ec5a3935fab3feb215	15-30%	noChange
+1	ffa0f63d-e94d-4b43-b00f-6d4e232caf6e	8782f13b-3e8e-4c58-924c-44c4e7947b97	half	\N	\N	t	\N	\N	blue	\N	flex-row	custom	\N	/	68869d6c5a3935fab3feb21a	\N	noChange
 \.
 
 
@@ -9912,6 +10303,9 @@ cd2d9b5d-5b74-4846-b1eb-85e3535f944a	\N	\N	\N	{"root": {"type": "root", "format"
 f8f05216-7b1e-4f38-9c78-712c86d1057c	\N	كل بياناتك في مكان واحد، من الكاشير الى تطبيقات التوصيل	\N	\N	\N	\N	697	ar	fa27dacb-dca3-45a2-a5bf-7bbcc597e1d4	\N
 edbc376c-731b-4c47-8220-478db6cd03e4	\N	اطلق حملاتك التسويقية بطريقة اذكى ومدروسة	\N	\N	\N	\N	698	ar	65503d7b-857c-4218-b37b-b2505576f095	\N
 712fc138-f7e2-48e4-bcc8-5e24ff9e79b7	\N	استرجع مبالغ التعويضات المفقودة وانت مرتاح	\N	\N	\N	\N	699	ar	77260aa5-f711-4ad0-b879-af7a8c5dc912	\N
+f8f05216-7b1e-4f38-9c78-712c86d1057c	\N	كل بياناتك في مكان واحد، من الكاشير الى تطبيقات التوصيل	\N	\N	\N	\N	1464	ar	bca0eb17-d003-4186-9889-a8e91c7f875d	\N
+edbc376c-731b-4c47-8220-478db6cd03e4	\N	اطلق حملاتك التسويقية بطريقة اذكى ومدروسة	\N	\N	\N	\N	1465	ar	3a611c65-7ae5-4b20-9347-721a6f06ec56	\N
+712fc138-f7e2-48e4-bcc8-5e24ff9e79b7	\N	استرجع مبالغ التعويضات المفقودة وانت مرتاح	\N	\N	\N	\N	1466	ar	97113670-469e-41a8-adfc-73411af4e5d5	\N
 f8f05216-7b1e-4f38-9c78-712c86d1057c	\N	كل بياناتك في مكان واحد، من الكاشير الى تطبيقات التوصيل	\N	\N	\N	\N	26	ar	b9c2b68c-1b47-41e6-abf7-8cd6fabdd164	\N
 edbc376c-731b-4c47-8220-478db6cd03e4	\N	اطلق حملاتك التسويقية بطريقة اذكى ومدروسة	\N	\N	\N	\N	27	ar	50d3f2fd-7645-41e9-894d-4b6af0a986bd	\N
 712fc138-f7e2-48e4-bcc8-5e24ff9e79b7	\N	استرجع مبالغ التعويضات المفقودة وانت مرتاح	\N	\N	\N	\N	28	ar	97260979-a9b9-4c26-8398-bfa7f611bf53	\N
@@ -9929,6 +10323,9 @@ cd2d9b5d-5b74-4846-b1eb-85e3535f944a	\N	\N	\N	{"root": {"type": "root", "format"
 5b3e3903-897a-4182-a331-61f448da95d0	\N	\N	\N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h4", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "افهم وش قاعد يصير، اول باول", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}], "direction": "rtl"}}	لوحة أداء شاملة	\N	708	ar	d002c745-4693-4f07-821e-bcd34e0c3304	متوسط عائد لكل ريال يُصرف على  الحملات من داخل بلّورة
 7a8a5f6d-dc53-40ab-9daa-217ee1027234	\N	\N	\N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h4", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "تفصيل الإيرادات حسب القناة والفرع لسهولة المقارنة", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}], "direction": "rtl"}}	وضوح المؤشرات المهمة	\N	709	ar	1ad6a84d-6206-429e-8cca-fbbd54205f87	زيادة فعلية في الإيرادات بعد استخدام بلّورة
 \N	\N	\N	\N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h3", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "احسب ارباحك المتوقعة", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "بنعرّفك على كل أدوات بلورة، ونطلع لك بأفكار سهلة تزيد من أرباح مطعمك... عشان تبدأ تشوف الفرق من بكرة.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}], "direction": "rtl"}}	\N	حاسبة الربحية	710	ar	96edd338-bec1-4e96-90b4-073e982f4213	\N
+f8f05216-7b1e-4f38-9c78-712c86d1057c	\N	كل بياناتك في مكان واحد، من الكاشير الى تطبيقات التوصيل	\N	\N	\N	\N	1597	ar	1cbbec31-de3f-4b14-83e2-e08bce565cbf	\N
+edbc376c-731b-4c47-8220-478db6cd03e4	\N	اطلق حملاتك التسويقية بطريقة اذكى ومدروسة	\N	\N	\N	\N	1598	ar	e6fbdf5d-9b9c-4493-a306-24d2f2b54b0f	\N
+712fc138-f7e2-48e4-bcc8-5e24ff9e79b7	\N	استرجع مبالغ التعويضات المفقودة وانت مرتاح	\N	\N	\N	\N	1599	ar	66450d45-7dd7-4304-9250-0cbfbe90bd4a	\N
 \N	\N	نختار التقدّم على الكمال	نبدأ بخطوات ذكية ونطوّر على الطريق، نتحرّك بسرعة ونركّز على التقدّم الحقيقي بدل انتظار المثالية	\N	\N	\N	1324	ar	df3c14cf-19f4-441f-8e51-0bc1692b111d	\N
 \N	\N	نمو العميل هو نمونا	نشتغل مع المطاعم كشركاء، نهتم بالنتائج اللي تهمهم ونبني حلول تخدمهم على المدى البعيد	\N	\N	\N	1325	ar	5848f55d-de9b-4829-ad9a-3287b5e3f85e	\N
 \N	\N	نقدّم أفضل نسخة من أنفسنا	نشتغل بوضوح وروح ملكية، نتحمّل المسؤولية، نطوّر من أنفسنا، وندعم بعض لننجح كفريق واحد	\N	\N	\N	1326	ar	51dcede5-a971-4033-a2d1-f2fb02410356	\N
@@ -9944,6 +10341,7 @@ cd2d9b5d-5b74-4846-b1eb-85e3535f944a	\N	\N	\N	{"root": {"type": "root", "format"
 \N	\N	نختار التقدّم على الكمال	نبدأ بخطوات ذكية ونطوّر على الطريق، نتحرّك بسرعة ونركّز على التقدّم الحقيقي بدل انتظار المثالية	\N	\N	\N	1348	ar	5765c7bf-c9b5-4d20-8aa2-746b1bd8a677	\N
 \N	\N	نمو العميل هو نمونا	نشتغل مع المطاعم كشركاء، نهتم بالنتائج اللي تهمهم ونبني حلول تخدمهم على المدى البعيد	\N	\N	\N	1349	ar	0e25676b-14f2-4e31-9950-3f13f6bc9bca	\N
 \N	\N	نقدّم أفضل نسخة من أنفسنا	نشتغل بوضوح وروح ملكية، نتحمّل المسؤولية، نطوّر من أنفسنا، وندعم بعض لننجح كفريق واحد	\N	\N	\N	1350	ar	d26780bf-bcd7-4ba2-9919-a553d48dcee7	\N
+cd2d9b5d-5b74-4846-b1eb-85e3535f944a	\N	\N	\N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h3", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "حدّد أفضل وقت، قناة، ونسبة خصم لعروضك الترويجية", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "محركنا يحلل الطلبات عبر HungerStation و Jahez و Careem والمزيد ليخبرك متى تطلق، وأين تظهر، وأي عرض يحقق أفضل اداء بدون هدر الميزانية.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}], "direction": "rtl"}}	إعداد عروض مستهدفة 	\N	1375	ar	b60d7bfc-ce64-483c-a3f1-5f98c36d069f	متوسط عائد لكل ريال يُصرف على  الحملات من داخل بلّورة
 \N	\N	الزخم أهم من الكمال	نؤمن بأن التقدم المستمر واتخاذ خطوات عملية أهم من انتظار المثالية، فالتعلم والتطوير يحدثان من خلال الحركة والعمل.	\N	\N	\N	1104	ar	55b41856-c409-4823-a7f9-0aaad801553f	\N
 \N	\N	نمو العملاء هو نموّنا	نجاح عملائنا هو مقياس نجاحنا، لذلك نركز على تمكينهم، وفهم احتياجاتهم، وبناء علاقات قائمة على الثقة والقيمة المضافة.	\N	\N	\N	1105	ar	4efbc34c-f2cc-4e42-b438-38968a60be14	\N
 \N	\N	قدّم أفضل نسخة من نفسك	نسعى دائمًا لتطوير مهاراتنا، والالتزام بالجودة في كل ما نقوم به، والعمل بروح المسؤولية والاحترام.	\N	\N	\N	1106	ar	b7e2662a-8edb-41df-894d-c028a9d598af	\N
@@ -10007,6 +10405,7 @@ cd2d9b5d-5b74-4846-b1eb-85e3535f944a	\N	\N	\N	{"root": {"type": "root", "format"
 \N	\N	نختار التقدّم على الكمال	نبدأ بخطوات ذكية ونطوّر على الطريق، نتحرّك بسرعة ونركّز على التقدّم الحقيقي بدل انتظار المثالية	\N	\N	\N	1345	ar	1fba1fa9-0fe1-4417-8356-5a8633ee03d9	\N
 \N	\N	نمو العميل هو نمونا	نشتغل مع المطاعم كشركاء، نهتم بالنتائج اللي تهمهم ونبني حلول تخدمهم على المدى البعيد	\N	\N	\N	1346	ar	f2631aa0-b803-4bf3-a95f-88d9211724ab	\N
 \N	\N	نقدّم أفضل نسخة من أنفسنا	نشتغل بوضوح وروح ملكية، نتحمّل المسؤولية، نطوّر من أنفسنا، وندعم بعض لننجح كفريق واحد	\N	\N	\N	1347	ar	28c8b240-4a71-4ad4-94fa-2c330de3bc0a	\N
+5b3e3903-897a-4182-a331-61f448da95d0	\N	\N	\N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h4", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "افهم وش قاعد يصير، اول باول", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}], "direction": "rtl"}}	لوحة أداء شاملة	\N	1376	ar	922f7248-b660-4324-81d7-30a04dc0d12a	متوسط عائد لكل ريال يُصرف على  الحملات من داخل بلّورة
 f8f05216-7b1e-4f38-9c78-712c86d1057c	\N	كل بياناتك في مكان واحد، من الكاشير الى تطبيقات التوصيل	\N	\N	\N	\N	1143	ar	bd7e2fae-b517-4cfd-a098-377bd600d55c	\N
 edbc376c-731b-4c47-8220-478db6cd03e4	\N	اطلق حملاتك التسويقية بطريقة اذكى ومدروسة	\N	\N	\N	\N	1144	ar	7888e536-5dd6-496f-b701-938561375d74	\N
 712fc138-f7e2-48e4-bcc8-5e24ff9e79b7	\N	استرجع مبالغ التعويضات المفقودة وانت مرتاح	\N	\N	\N	\N	1145	ar	5d3fd021-049a-4e99-83ed-2e5d0927a84e	\N
@@ -10020,12 +10419,20 @@ edbc376c-731b-4c47-8220-478db6cd03e4	\N	اطلق حملاتك التسويقية
 cd2d9b5d-5b74-4846-b1eb-85e3535f944a	\N	\N	\N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h3", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "حدّد أفضل وقت، قناة، ونسبة خصم لعروضك الترويجية", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "محركنا يحلل الطلبات عبر HungerStation و Jahez و Careem والمزيد ليخبرك متى تطلق، وأين تظهر، وأي عرض يحقق أفضل اداء بدون هدر الميزانية.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}], "direction": "rtl"}}	\N	\N	526	ar	38861a89-5f24-4051-b444-23587e2d1470	متوسط عائد لكل ريال يُصرف على  الحملات من داخل بلّورة
 5b3e3903-897a-4182-a331-61f448da95d0	\N	\N	\N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h4", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "افهم وش قاعد يصير، اول باول", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}], "direction": "rtl"}}	لوحة أداء شاملة	\N	527	ar	03ce5ad4-31e3-494d-ad04-a1e63cdb33b8	متوسط عائد لكل ريال يُصرف على  الحملات من داخل بلّورة
 7a8a5f6d-dc53-40ab-9daa-217ee1027234	\N	\N	\N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h4", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "تفصيل الإيرادات حسب القناة والفرع لسهولة المقارنة", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}], "direction": "rtl"}}	وضوح المؤشرات المهمة	\N	528	ar	74c0880c-ecbc-4a46-89af-1f633cb6fff9	زيادة فعلية في الإيرادات بعد استخدام بلّورة
+cd2d9b5d-5b74-4846-b1eb-85e3535f944a	\N	\N	\N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h3", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "حدّد أفضل وقت، قناة، ونسبة خصم لعروضك الترويجية", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "محركنا يحلل الطلبات عبر HungerStation و Jahez و Careem والمزيد ليخبرك متى تطلق، وأين تظهر، وأي عرض يحقق أفضل اداء بدون هدر الميزانية.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}], "direction": "rtl"}}	إعداد عروض مستهدفة 	\N	1467	ar	fecb5a44-32db-4ea5-bc67-cf4b0062bae1	متوسط عائد لكل ريال يُصرف على  الحملات من داخل بلّورة
+5b3e3903-897a-4182-a331-61f448da95d0	\N	\N	\N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h4", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "افهم وش قاعد يصير، اول باول", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}], "direction": "rtl"}}	لوحة أداء شاملة	\N	1468	ar	a7d92552-bf40-4c67-9933-fb858bfc4ce9	متوسط عائد لكل ريال يُصرف على  الحملات من داخل بلّورة
+7a8a5f6d-dc53-40ab-9daa-217ee1027234	\N	\N	\N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h4", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "تفصيل الإيرادات حسب القناة والفرع لسهولة المقارنة", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}], "direction": "rtl"}}	وضوح المؤشرات المهمة	\N	1469	ar	a2d25223-ae1e-459f-8748-cf27e06b32aa	زيادة فعلية في الإيرادات بعد استخدام بلّورة
+\N	\N	\N	\N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h3", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "احسب ارباحك المتوقعة", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "بنعرّفك على كل أدوات بلورة، ونطلع لك بأفكار سهلة تزيد من أرباح مطعمك... عشان تبدأ تشوف الفرق من بكرة.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}], "direction": "rtl"}}	\N	حاسبة الربحية	1470	ar	27e4ccc0-5b26-400a-a157-61c008f3d5b5	\N
+f8f05216-7b1e-4f38-9c78-712c86d1057c	\N	كل بياناتك في مكان واحد، من الكاشير الى تطبيقات التوصيل	\N	\N	\N	\N	1471	ar	7d0025b3-afb2-4419-9be8-e4378030149a	\N
+edbc376c-731b-4c47-8220-478db6cd03e4	\N	اطلق حملاتك التسويقية بطريقة اذكى ومدروسة	\N	\N	\N	\N	1472	ar	6843cdfe-4da7-4193-99d6-4f155929f945	\N
+712fc138-f7e2-48e4-bcc8-5e24ff9e79b7	\N	استرجع مبالغ التعويضات المفقودة وانت مرتاح	\N	\N	\N	\N	1473	ar	ab94111f-a235-4473-8e94-59089b4f2783	\N
 f8f05216-7b1e-4f38-9c78-712c86d1057c	\N	كل بياناتك في مكان واحد، من الكاشير الى تطبيقات التوصيل	\N	\N	\N	\N	1157	ar	583f472c-6e64-4921-9eaf-7b4e103b03e7	\N
 edbc376c-731b-4c47-8220-478db6cd03e4	\N	اطلق حملاتك التسويقية بطريقة اذكى ومدروسة	\N	\N	\N	\N	1158	ar	93186197-319c-43bc-8275-13d466b25cb1	\N
 712fc138-f7e2-48e4-bcc8-5e24ff9e79b7	\N	استرجع مبالغ التعويضات المفقودة وانت مرتاح	\N	\N	\N	\N	1159	ar	74188cb7-9bd6-44a1-bb13-f4b07ff506ef	\N
 cd2d9b5d-5b74-4846-b1eb-85e3535f944a	\N	\N	\N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h3", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "حدّد أفضل وقت، قناة، ونسبة خصم لعروضك الترويجية", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "محركنا يحلل الطلبات عبر HungerStation و Jahez و Careem والمزيد ليخبرك متى تطلق، وأين تظهر، وأي عرض يحقق أفضل اداء بدون هدر الميزانية.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}], "direction": "rtl"}}	إعداد عروض مستهدفة 	\N	1160	ar	c3da117f-a09d-48f5-a1ec-756b37dc6426	متوسط عائد لكل ريال يُصرف على  الحملات من داخل بلّورة
 5b3e3903-897a-4182-a331-61f448da95d0	\N	\N	\N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h4", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "افهم وش قاعد يصير، اول باول", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}], "direction": "rtl"}}	لوحة أداء شاملة	\N	1161	ar	d330c48d-e2af-4df4-b8d8-4df6a90110e8	متوسط عائد لكل ريال يُصرف على  الحملات من داخل بلّورة
 7a8a5f6d-dc53-40ab-9daa-217ee1027234	\N	\N	\N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h4", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "تفصيل الإيرادات حسب القناة والفرع لسهولة المقارنة", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}], "direction": "rtl"}}	وضوح المؤشرات المهمة	\N	1162	ar	19e99c13-cec8-400c-b82d-a2419984f03e	زيادة فعلية في الإيرادات بعد استخدام بلّورة
+7a8a5f6d-dc53-40ab-9daa-217ee1027234	\N	\N	\N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h4", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "تفصيل الإيرادات حسب القناة والفرع لسهولة المقارنة", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}], "direction": "rtl"}}	وضوح المؤشرات المهمة	\N	1377	ar	816c330d-0896-4683-8df0-e26ae4f45c44	زيادة فعلية في الإيرادات بعد استخدام بلّورة
 \N	\N	\N	\N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h3", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "احسب ارباحك المتوقعة", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "بنعرّفك على كل أدوات بلورة، ونطلع لك بأفكار سهلة تزيد من أرباح مطعمك... عشان تبدأ تشوف الفرق من بكرة.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}], "direction": "rtl"}}	\N	حاسبة الربحية	1163	ar	7cb3651c-8c38-478e-95fd-c6ac01079aa1	\N
 f8f05216-7b1e-4f38-9c78-712c86d1057c	\N	كل بياناتك في مكان واحد، من الكاشير الى تطبيقات التوصيل	\N	\N	\N	\N	963	ar	26e296ab-f4ed-4686-ab57-5cab29d3d04f	\N
 edbc376c-731b-4c47-8220-478db6cd03e4	\N	اطلق حملاتك التسويقية بطريقة اذكى ومدروسة	\N	\N	\N	\N	964	ar	4f664156-f650-4fdf-960e-3cc178372a32	\N
@@ -10048,6 +10455,25 @@ cd2d9b5d-5b74-4846-b1eb-85e3535f944a	\N	\N	\N	{"root": {"type": "root", "format"
 5b3e3903-897a-4182-a331-61f448da95d0	\N	\N	\N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h4", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "افهم وش قاعد يصير، اول باول", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}], "direction": "rtl"}}	لوحة أداء شاملة	\N	1168	ar	bb30513b-dc58-4864-b665-af7856255b59	متوسط عائد لكل ريال يُصرف على  الحملات من داخل بلّورة
 7a8a5f6d-dc53-40ab-9daa-217ee1027234	\N	\N	\N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h4", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "تفصيل الإيرادات حسب القناة والفرع لسهولة المقارنة", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}], "direction": "rtl"}}	وضوح المؤشرات المهمة	\N	1169	ar	831881ba-94c3-4615-a6d8-a72325a62a9a	زيادة فعلية في الإيرادات بعد استخدام بلّورة
 \N	\N	\N	\N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h3", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "احسب ارباحك المتوقعة", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "بنعرّفك على كل أدوات بلورة، ونطلع لك بأفكار سهلة تزيد من أرباح مطعمك... عشان تبدأ تشوف الفرق من بكرة.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}], "direction": "rtl"}}	\N	حاسبة الربحية	1170	ar	17de926a-480c-476b-a9e8-9dae5df91531	\N
+\N	\N	نختار التقدّم على الكمال	نبدأ بخطوات ذكية ونطوّر على الطريق، نتحرّك بسرعة ونركّز على التقدّم الحقيقي بدل انتظار المثالية	\N	\N	\N	1458	ar	2ea5c96f-9a77-4665-a937-5dd02b955f83	\N
+\N	\N	نمو العميل هو نمونا	نشتغل مع المطاعم كشركاء، نهتم بالنتائج اللي تهمهم ونبني حلول تخدمهم على المدى البعيد	\N	\N	\N	1459	ar	3d30a86d-1661-4173-a2e7-9ae227d1db44	\N
+\N	\N	نقدّم أفضل نسخة من أنفسنا	نشتغل بوضوح وروح ملكية، نتحمّل المسؤولية، نطوّر من أنفسنا، وندعم بعض لننجح كفريق واحد	\N	\N	\N	1460	ar	05f4cdcf-1deb-4bec-bd7c-baf2792f8d09	\N
+\N	\N	نختار التقدّم على الكمال	نبدأ بخطوات ذكية ونطوّر على الطريق، نتحرّك بسرعة ونركّز على التقدّم الحقيقي بدل انتظار المثالية	\N	\N	\N	1461	ar	479fdb3b-68a0-461d-b521-813f27dac6f7	\N
+\N	\N	نمو العميل هو نمونا	نشتغل مع المطاعم كشركاء، نهتم بالنتائج اللي تهمهم ونبني حلول تخدمهم على المدى البعيد	\N	\N	\N	1462	ar	7799ad44-687f-4c80-99df-b69057d80ce5	\N
+\N	\N	نقدّم أفضل نسخة من أنفسنا	نشتغل بوضوح وروح ملكية، نتحمّل المسؤولية، نطوّر من أنفسنا، وندعم بعض لننجح كفريق واحد	\N	\N	\N	1463	ar	e6934e29-8f84-4cb0-81df-9b6bd48c383c	\N
+cd2d9b5d-5b74-4846-b1eb-85e3535f944a	\N	\N	\N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h3", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "حدّد أفضل وقت، قناة، ونسبة خصم لعروضك الترويجية", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "محركنا يحلل الطلبات عبر HungerStation و Jahez و Careem والمزيد ليخبرك متى تطلق، وأين تظهر، وأي عرض يحقق أفضل اداء بدون هدر الميزانية.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}], "direction": "rtl"}}	إعداد عروض مستهدفة 	\N	1474	ar	4f7dc80b-96e7-4c55-9877-229d19b52ff5	متوسط عائد لكل ريال يُصرف على  الحملات من داخل بلّورة
+5b3e3903-897a-4182-a331-61f448da95d0	\N	\N	\N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h4", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "افهم وش قاعد يصير، اول باول", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}], "direction": "rtl"}}	لوحة أداء شاملة	\N	1475	ar	66d48ad9-0b01-413a-95f6-26f89c107d86	متوسط عائد لكل ريال يُصرف على  الحملات من داخل بلّورة
+f8f05216-7b1e-4f38-9c78-712c86d1057c	\N	كل بياناتك في مكان واحد، من الكاشير الى تطبيقات التوصيل	\N	\N	\N	\N	1365	ar	a08b0f90-55b5-41e8-8b87-50785eecd1bc	\N
+edbc376c-731b-4c47-8220-478db6cd03e4	\N	اطلق حملاتك التسويقية بطريقة اذكى ومدروسة	\N	\N	\N	\N	1366	ar	afec06f3-76f6-4ed5-9d36-d230d33467d4	\N
+712fc138-f7e2-48e4-bcc8-5e24ff9e79b7	\N	استرجع مبالغ التعويضات المفقودة وانت مرتاح	\N	\N	\N	\N	1367	ar	b7cc03ec-372e-4397-a748-a8f1550be5c6	\N
+cd2d9b5d-5b74-4846-b1eb-85e3535f944a	\N	\N	\N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h3", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "حدّد أفضل وقت، قناة، ونسبة خصم لعروضك الترويجية", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "محركنا يحلل الطلبات عبر HungerStation و Jahez و Careem والمزيد ليخبرك متى تطلق، وأين تظهر، وأي عرض يحقق أفضل اداء بدون هدر الميزانية.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}], "direction": "rtl"}}	إعداد عروض مستهدفة 	\N	1368	ar	326a423b-66e5-4efd-885a-aff2b5dd2e64	متوسط عائد لكل ريال يُصرف على  الحملات من داخل بلّورة
+5b3e3903-897a-4182-a331-61f448da95d0	\N	\N	\N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h4", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "افهم وش قاعد يصير، اول باول", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}], "direction": "rtl"}}	لوحة أداء شاملة	\N	1369	ar	fc5952c6-eac9-4c7e-a010-9e06d6a012bb	متوسط عائد لكل ريال يُصرف على  الحملات من داخل بلّورة
+7a8a5f6d-dc53-40ab-9daa-217ee1027234	\N	\N	\N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h4", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "تفصيل الإيرادات حسب القناة والفرع لسهولة المقارنة", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}], "direction": "rtl"}}	وضوح المؤشرات المهمة	\N	1370	ar	1d6fef71-1e28-49d1-88de-b045ef9eb0c2	زيادة فعلية في الإيرادات بعد استخدام بلّورة
+\N	\N	\N	\N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h3", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "احسب ارباحك المتوقعة", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "بنعرّفك على كل أدوات بلورة، ونطلع لك بأفكار سهلة تزيد من أرباح مطعمك... عشان تبدأ تشوف الفرق من بكرة.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}], "direction": "rtl"}}	\N	حاسبة الربحية	1371	ar	ca2bba31-edf3-4c22-abf1-0bef4d54f14a	\N
+\N	\N	\N	\N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h3", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "احسب ارباحك المتوقعة", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "بنعرّفك على كل أدوات بلورة، ونطلع لك بأفكار سهلة تزيد من أرباح مطعمك... عشان تبدأ تشوف الفرق من بكرة.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}], "direction": "rtl"}}	\N	حاسبة الربحية	1378	ar	4dc9b16f-d06d-4ed2-98db-58aa7d4c040e	\N
+f8f05216-7b1e-4f38-9c78-712c86d1057c	\N	كل بياناتك في مكان واحد، من الكاشير الى تطبيقات التوصيل	\N	\N	\N	\N	1379	ar	e9ae8501-1f3b-416d-97e1-fe37b1122e33	\N
+edbc376c-731b-4c47-8220-478db6cd03e4	\N	اطلق حملاتك التسويقية بطريقة اذكى ومدروسة	\N	\N	\N	\N	1380	ar	c148f978-7996-4997-b915-0988274b0857	\N
+712fc138-f7e2-48e4-bcc8-5e24ff9e79b7	\N	استرجع مبالغ التعويضات المفقودة وانت مرتاح	\N	\N	\N	\N	1381	ar	6ac0efcb-823b-48b7-b94d-9f74157d6f02	\N
 \N	\N	الزخم أهم من الكمال	نؤمن بأن التقدم المستمر واتخاذ خطوات عملية أهم من انتظار المثالية، فالتعلم والتطوير يحدثان من خلال الحركة والعمل.	\N	\N	\N	1252	ar	662bbff6-10af-417e-b4a6-5c000ef958c1	\N
 f8f05216-7b1e-4f38-9c78-712c86d1057c	\N	كل بياناتك في مكان واحد، من الكاشير الى تطبيقات التوصيل	\N	\N	\N	\N	991	ar	024a99eb-8a66-45b9-9a15-5b6b3209d4a1	\N
 edbc376c-731b-4c47-8220-478db6cd03e4	\N	اطلق حملاتك التسويقية بطريقة اذكى ومدروسة	\N	\N	\N	\N	992	ar	77722ea1-2e91-4bf2-a042-31b4cfc12736	\N
@@ -10067,6 +10493,8 @@ cd2d9b5d-5b74-4846-b1eb-85e3535f944a	\N	\N	\N	{"root": {"type": "root", "format"
 \N	\N	الزخم أهم من الكمال	نؤمن بأن التقدم المستمر واتخاذ خطوات عملية أهم من انتظار المثالية، فالتعلم والتطوير يحدثان من خلال الحركة والعمل.	\N	\N	\N	1270	ar	1a0a1c42-e33c-4d66-a511-be123cd456d7	\N
 \N	\N	نمو العملاء هو نموّنا	نجاح عملائنا هو مقياس نجاحنا، لذلك نركز على تمكينهم، وفهم احتياجاتهم، وبناء علاقات قائمة على الثقة والقيمة المضافة.	\N	\N	\N	1271	ar	d75dfab3-9de7-442c-8d78-643889395eee	\N
 \N	\N	قدّم أفضل نسخة من نفسك	نسعى دائمًا لتطوير مهاراتنا، والالتزام بالجودة في كل ما نقوم به، والعمل بروح المسؤولية والاحترام.	\N	\N	\N	1272	ar	1bbfd28a-3816-432f-8eec-f3b49bd11cc6	\N
+f8f05216-7b1e-4f38-9c78-712c86d1057c	\N	كل بياناتك في مكان واحد، من الكاشير الى تطبيقات التوصيل	\N	\N	\N	\N	1372	ar	a009aecb-af58-4994-92f7-1d6ba9556ed0	\N
+edbc376c-731b-4c47-8220-478db6cd03e4	\N	اطلق حملاتك التسويقية بطريقة اذكى ومدروسة	\N	\N	\N	\N	1373	ar	475d5e43-4452-4c3a-a3a7-95e6cb39934c	\N
 \N	\N	الزخم أهم من الكمال	نؤمن بأن التقدم المستمر واتخاذ خطوات عملية أهم من انتظار المثالية، فالتعلم والتطوير يحدثان من خلال الحركة والعمل.	\N	\N	\N	1258	ar	0e6c0f8e-2c73-421e-80ee-1f201fcc98d2	\N
 f8f05216-7b1e-4f38-9c78-712c86d1057c	\N	كل بياناتك في مكان واحد، من الكاشير الى تطبيقات التوصيل	\N	\N	\N	\N	998	ar	0b69caa1-4f65-4d0a-895c-f20305407367	\N
 edbc376c-731b-4c47-8220-478db6cd03e4	\N	اطلق حملاتك التسويقية بطريقة اذكى ومدروسة	\N	\N	\N	\N	999	ar	99c1185c-6b26-494b-8c1e-8ddbc005b8a9	\N
@@ -10077,12 +10505,44 @@ cd2d9b5d-5b74-4846-b1eb-85e3535f944a	\N	\N	\N	{"root": {"type": "root", "format"
 \N	\N	\N	\N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h3", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "احسب ارباحك المتوقعة", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "بنعرّفك على كل أدوات بلورة، ونطلع لك بأفكار سهلة تزيد من أرباح مطعمك... عشان تبدأ تشوف الفرق من بكرة.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}], "direction": "rtl"}}	\N	حاسبة الربحية	1004	ar	f5425ec7-0315-4194-842c-7437e3c70779	\N
 \N	\N	نمو العملاء هو نموّنا	نجاح عملائنا هو مقياس نجاحنا، لذلك نركز على تمكينهم، وفهم احتياجاتهم، وبناء علاقات قائمة على الثقة والقيمة المضافة.	\N	\N	\N	1259	ar	d22b1d65-9178-49e9-860d-340f265e7a06	\N
 \N	\N	قدّم أفضل نسخة من نفسك	نسعى دائمًا لتطوير مهاراتنا، والالتزام بالجودة في كل ما نقوم به، والعمل بروح المسؤولية والاحترام.	\N	\N	\N	1260	ar	70a91842-4622-44c1-9ad5-6bdd5f6bd05d	\N
+712fc138-f7e2-48e4-bcc8-5e24ff9e79b7	\N	استرجع مبالغ التعويضات المفقودة وانت مرتاح	\N	\N	\N	\N	1374	ar	6f150a96-3945-495d-8342-048758ec5b3d	\N
+7a8a5f6d-dc53-40ab-9daa-217ee1027234	\N	\N	\N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h4", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "تفصيل الإيرادات حسب القناة والفرع لسهولة المقارنة", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}], "direction": "rtl"}}	وضوح المؤشرات المهمة	\N	1476	ar	c1777401-00cb-4004-9504-e645028a0ada	زيادة فعلية في الإيرادات بعد استخدام بلّورة
 \N	\N	الزخم أهم من الكمال	نؤمن بأن التقدم المستمر واتخاذ خطوات عملية أهم من انتظار المثالية، فالتعلم والتطوير يحدثان من خلال الحركة والعمل.	\N	\N	\N	1267	ar	09a7f88c-058b-4bb4-b79d-f7618eb453b8	\N
 \N	\N	نمو العملاء هو نموّنا	نجاح عملائنا هو مقياس نجاحنا، لذلك نركز على تمكينهم، وفهم احتياجاتهم، وبناء علاقات قائمة على الثقة والقيمة المضافة.	\N	\N	\N	1268	ar	9b15b2eb-2c7d-4e38-a80f-9db3a6f282d5	\N
 \N	\N	قدّم أفضل نسخة من نفسك	نسعى دائمًا لتطوير مهاراتنا، والالتزام بالجودة في كل ما نقوم به، والعمل بروح المسؤولية والاحترام.	\N	\N	\N	1269	ar	3c883894-af9b-4dca-9fdf-f7d0605334fe	\N
 \N	\N	الزخم أهم من الكمال	نؤمن بأن التقدم المستمر واتخاذ خطوات عملية أهم من انتظار المثالية، فالتعلم والتطوير يحدثان من خلال الحركة والعمل.	\N	\N	\N	1282	ar	002ae730-50e8-4c2f-8813-3190563649ae	\N
 \N	\N	نمو العملاء هو نموّنا	نجاح عملائنا هو مقياس نجاحنا، لذلك نركز على تمكينهم، وفهم احتياجاتهم، وبناء علاقات قائمة على الثقة والقيمة المضافة.	\N	\N	\N	1283	ar	a12bdd7b-2b2a-4d8f-93ee-41f6c0480b14	\N
 \N	\N	قدّم أفضل نسخة من نفسك	نسعى دائمًا لتطوير مهاراتنا، والالتزام بالجودة في كل ما نقوم به، والعمل بروح المسؤولية والاحترام.	\N	\N	\N	1284	ar	ff38e19e-2adf-4a11-bc76-49e4ca672135	\N
+cd2d9b5d-5b74-4846-b1eb-85e3535f944a	\N	\N	\N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h3", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "حدّد أفضل وقت، قناة، ونسبة خصم لعروضك الترويجية", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "محركنا يحلل الطلبات عبر HungerStation و Jahez و Careem والمزيد ليخبرك متى تطلق، وأين تظهر، وأي عرض يحقق أفضل اداء بدون هدر الميزانية.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}], "direction": "rtl"}}	إعداد عروض مستهدفة 	\N	1382	ar	c3ac3689-401e-48ad-a396-34223738e2c9	متوسط عائد لكل ريال يُصرف على  الحملات من داخل بلّورة
+5b3e3903-897a-4182-a331-61f448da95d0	\N	\N	\N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h4", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "افهم وش قاعد يصير، اول باول", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}], "direction": "rtl"}}	لوحة أداء شاملة	\N	1383	ar	d2e30f0e-fc35-4021-a92b-129c33df52cc	متوسط عائد لكل ريال يُصرف على  الحملات من داخل بلّورة
+7a8a5f6d-dc53-40ab-9daa-217ee1027234	\N	\N	\N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h4", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "تفصيل الإيرادات حسب القناة والفرع لسهولة المقارنة", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}], "direction": "rtl"}}	وضوح المؤشرات المهمة	\N	1384	ar	1564dfe4-ff14-482d-9cf4-403dde755348	زيادة فعلية في الإيرادات بعد استخدام بلّورة
+\N	\N	\N	\N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h3", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "احسب ارباحك المتوقعة", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "بنعرّفك على كل أدوات بلورة، ونطلع لك بأفكار سهلة تزيد من أرباح مطعمك... عشان تبدأ تشوف الفرق من بكرة.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}], "direction": "rtl"}}	\N	حاسبة الربحية	1385	ar	501406dd-5d68-4830-a487-c59c7a8b0f98	\N
+\N	\N	\N	\N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h3", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "احسب ارباحك المتوقعة", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "بنعرّفك على كل أدوات بلورة، ونطلع لك بأفكار سهلة تزيد من أرباح مطعمك... عشان تبدأ تشوف الفرق من بكرة.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}], "direction": "rtl"}}	\N	حاسبة الربحية	1477	ar	0264843b-c2cd-4fad-91f1-42c3451001e3	\N
+cd2d9b5d-5b74-4846-b1eb-85e3535f944a	\N	\N	\N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h3", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "حدّد أفضل وقت، قناة، ونسبة خصم لعروضك الترويجية", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "محركنا يحلل الطلبات عبر HungerStation و Jahez و Careem والمزيد ليخبرك متى تطلق، وأين تظهر، وأي عرض يحقق أفضل اداء بدون هدر الميزانية.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}], "direction": "rtl"}}	إعداد عروض مستهدفة 	\N	1600	ar	9e7d6d08-2852-4470-b2b6-2394568b1b3b	متوسط عائد لكل ريال يُصرف على  الحملات من داخل بلّورة
+5b3e3903-897a-4182-a331-61f448da95d0	\N	\N	\N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h4", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "افهم وش قاعد يصير، اول باول", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}], "direction": "rtl"}}	لوحة أداء شاملة	\N	1601	ar	2d3809bd-df38-4537-b3eb-fc4ec660707f	متوسط عائد لكل ريال يُصرف على  الحملات من داخل بلّورة
+7a8a5f6d-dc53-40ab-9daa-217ee1027234	\N	\N	\N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h4", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "تفصيل الإيرادات حسب القناة والفرع لسهولة المقارنة", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}], "direction": "rtl"}}	وضوح المؤشرات المهمة	\N	1602	ar	87b03f8b-365c-4fc6-91c6-a27107a929a2	زيادة فعلية في الإيرادات بعد استخدام بلّورة
+\N	\N	\N	\N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h3", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "احسب ارباحك المتوقعة", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "بنعرّفك على كل أدوات بلورة، ونطلع لك بأفكار سهلة تزيد من أرباح مطعمك... عشان تبدأ تشوف الفرق من بكرة.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}], "direction": "rtl"}}	\N	حاسبة الربحية	1603	ar	92229873-60c6-4a01-8a10-6a2e03e9ef5a	\N
+f8f05216-7b1e-4f38-9c78-712c86d1057c	\N	كل بياناتك في مكان واحد، من الكاشير الى تطبيقات التوصيل	\N	\N	\N	\N	1604	ar	71f85c9d-3b7f-46e4-b325-2e2c38c10c6b	\N
+edbc376c-731b-4c47-8220-478db6cd03e4	\N	اطلق حملاتك التسويقية بطريقة اذكى ومدروسة	\N	\N	\N	\N	1605	ar	a82de0fb-c523-474a-8bae-ff71f3c87410	\N
+712fc138-f7e2-48e4-bcc8-5e24ff9e79b7	\N	استرجع مبالغ التعويضات المفقودة وانت مرتاح	\N	\N	\N	\N	1606	ar	9d6f3458-8095-418e-9967-4fc193c241fc	\N
+cd2d9b5d-5b74-4846-b1eb-85e3535f944a	\N	\N	\N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h3", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "حدّد أفضل وقت، قناة، ونسبة خصم لعروضك الترويجية", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "محركنا يحلل الطلبات عبر HungerStation و Jahez و Careem والمزيد ليخبرك متى تطلق، وأين تظهر، وأي عرض يحقق أفضل اداء بدون هدر الميزانية.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}], "direction": "rtl"}}	إعداد عروض مستهدفة 	\N	1607	ar	1c716589-d83d-4234-9c50-ab0eea7f97ee	متوسط عائد لكل ريال يُصرف على  الحملات من داخل بلّورة
+5b3e3903-897a-4182-a331-61f448da95d0	\N	\N	\N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h4", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "افهم وش قاعد يصير، اول باول", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}], "direction": "rtl"}}	لوحة أداء شاملة	\N	1608	ar	a56881ae-1db3-4d70-b33c-e8f5ca55323e	متوسط عائد لكل ريال يُصرف على  الحملات من داخل بلّورة
+7a8a5f6d-dc53-40ab-9daa-217ee1027234	\N	\N	\N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h4", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "تفصيل الإيرادات حسب القناة والفرع لسهولة المقارنة", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}], "direction": "rtl"}}	وضوح المؤشرات المهمة	\N	1609	ar	4a429bdf-d961-42d6-b57c-8bf07df07181	زيادة فعلية في الإيرادات بعد استخدام بلّورة
+\N	\N	\N	\N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h3", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "احسب ارباحك المتوقعة", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "بنعرّفك على كل أدوات بلورة، ونطلع لك بأفكار سهلة تزيد من أرباح مطعمك... عشان تبدأ تشوف الفرق من بكرة.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}], "direction": "rtl"}}	\N	حاسبة الربحية	1610	ar	8782f13b-3e8e-4c58-924c-44c4e7947b97	\N
+f8f05216-7b1e-4f38-9c78-712c86d1057c	\N	كل بياناتك في مكان واحد، من الكاشير الى تطبيقات التوصيل	\N	\N	\N	\N	1590	ar	1719d78f-f8d4-484d-9a3a-3d5c1a8e74a6	\N
+edbc376c-731b-4c47-8220-478db6cd03e4	\N	اطلق حملاتك التسويقية بطريقة اذكى ومدروسة	\N	\N	\N	\N	1591	ar	cc30203f-1d07-4f67-a416-808d1152d7de	\N
+712fc138-f7e2-48e4-bcc8-5e24ff9e79b7	\N	استرجع مبالغ التعويضات المفقودة وانت مرتاح	\N	\N	\N	\N	1592	ar	c8709591-d659-4e94-a16e-9cd2b2680610	\N
+f8f05216-7b1e-4f38-9c78-712c86d1057c	\N	كل بياناتك في مكان واحد، من الكاشير الى تطبيقات التوصيل	\N	\N	\N	\N	1583	ar	a189bf7d-f70f-4834-b5d6-d61f9aab59f7	\N
+edbc376c-731b-4c47-8220-478db6cd03e4	\N	اطلق حملاتك التسويقية بطريقة اذكى ومدروسة	\N	\N	\N	\N	1584	ar	5dac6a8f-bf42-4df2-af6d-84807b900e7c	\N
+712fc138-f7e2-48e4-bcc8-5e24ff9e79b7	\N	استرجع مبالغ التعويضات المفقودة وانت مرتاح	\N	\N	\N	\N	1585	ar	3e167708-b414-4513-b38a-02dc83a9182f	\N
+cd2d9b5d-5b74-4846-b1eb-85e3535f944a	\N	\N	\N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h3", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "حدّد أفضل وقت، قناة، ونسبة خصم لعروضك الترويجية", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "محركنا يحلل الطلبات عبر HungerStation و Jahez و Careem والمزيد ليخبرك متى تطلق، وأين تظهر، وأي عرض يحقق أفضل اداء بدون هدر الميزانية.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}], "direction": "rtl"}}	إعداد عروض مستهدفة 	\N	1586	ar	e57546f2-7633-4db0-a860-4b6a1b8b5bb2	متوسط عائد لكل ريال يُصرف على  الحملات من داخل بلّورة
+5b3e3903-897a-4182-a331-61f448da95d0	\N	\N	\N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h4", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "افهم وش قاعد يصير، اول باول", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}], "direction": "rtl"}}	لوحة أداء شاملة	\N	1587	ar	f707c295-5267-419d-b00e-07ee353d66ae	متوسط عائد لكل ريال يُصرف على  الحملات من داخل بلّورة
+7a8a5f6d-dc53-40ab-9daa-217ee1027234	\N	\N	\N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h4", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "تفصيل الإيرادات حسب القناة والفرع لسهولة المقارنة", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}], "direction": "rtl"}}	وضوح المؤشرات المهمة	\N	1588	ar	970db27a-064b-4594-be2f-1e798542d0c3	زيادة فعلية في الإيرادات بعد استخدام بلّورة
+\N	\N	\N	\N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h3", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "احسب ارباحك المتوقعة", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "بنعرّفك على كل أدوات بلورة، ونطلع لك بأفكار سهلة تزيد من أرباح مطعمك... عشان تبدأ تشوف الفرق من بكرة.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}], "direction": "rtl"}}	\N	حاسبة الربحية	1589	ar	0f58c5eb-7aaf-432f-ab3e-ec04d27b623d	\N
+cd2d9b5d-5b74-4846-b1eb-85e3535f944a	\N	\N	\N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h3", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "حدّد أفضل وقت، قناة، ونسبة خصم لعروضك الترويجية", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "محركنا يحلل الطلبات عبر HungerStation و Jahez و Careem والمزيد ليخبرك متى تطلق، وأين تظهر، وأي عرض يحقق أفضل اداء بدون هدر الميزانية.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}], "direction": "rtl"}}	إعداد عروض مستهدفة 	\N	1593	ar	740f6b74-b2c3-4103-8798-ad88f25571a5	متوسط عائد لكل ريال يُصرف على  الحملات من داخل بلّورة
+5b3e3903-897a-4182-a331-61f448da95d0	\N	\N	\N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h4", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "افهم وش قاعد يصير، اول باول", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}], "direction": "rtl"}}	لوحة أداء شاملة	\N	1594	ar	65637100-6446-4581-8dd7-0034ffe6a7ed	متوسط عائد لكل ريال يُصرف على  الحملات من داخل بلّورة
+7a8a5f6d-dc53-40ab-9daa-217ee1027234	\N	\N	\N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h4", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "تفصيل الإيرادات حسب القناة والفرع لسهولة المقارنة", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}], "direction": "rtl"}}	وضوح المؤشرات المهمة	\N	1595	ar	f117634c-4f2b-432e-8981-37592c8ea345	زيادة فعلية في الإيرادات بعد استخدام بلّورة
+\N	\N	\N	\N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h3", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "احسب ارباحك المتوقعة", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "بنعرّفك على كل أدوات بلورة، ونطلع لك بأفكار سهلة تزيد من أرباح مطعمك... عشان تبدأ تشوف الفرق من بكرة.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}], "direction": "rtl"}}	\N	حاسبة الربحية	1596	ar	925a6bb5-6db5-47eb-b3c4-db5b22ab09a8	\N
 \.
 
 
@@ -10116,6 +10576,8 @@ COPY "public"."_featuresBlock_v_locales" ("block_header_badge_label", "block_hea
 \N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h2", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "كيف نعمل في بلورة", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "قيمنا المشتركة تبقينا متصلين وتوجهنا كفريق واحد", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}], "direction": "rtl"}}	\N	\N	619	ar	96784687-51f5-4ef8-a2f8-c9d1ee9c0759	\N
 \N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h2", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "ليش تستخدم بلّورة؟", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}], "direction": "rtl"}}	\N	/	181	ar	502e24a6-4e0f-4013-814a-b50d6023250b	\N
 \N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h2", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": " زِد ظهورك على تطبيقات التوصيل", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": " بلّورة تساعدك تزيد ظهورك في الأوقات والمناطق الصح، بدون هدر في الميزانية.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}], "direction": "rtl"}}	\N	\N	182	ar	2419edc0-cfc5-4cff-8a15-7b261ac9b072	\N
+\N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h2", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "ليش تستخدم بلّورة؟", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}], "direction": "rtl"}}	\N	/	803	ar	6ae60f62-e703-47c7-b69b-ba766c4818ef	\N
+	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h2", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": " زِد ظهورك على تطبيقات التوصيل", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": " بلّورة تساعدك تزيد ظهورك في الأوقات والمناطق الصح، بدون هدر في الميزانية.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}], "direction": "rtl"}}	\N	\N	804	ar	30c0fb2c-73ad-461b-be52-9495d71c602d	\N
 استرجاع تلقائي للمبالغ	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h3", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "استرجع مبالغ الخصومات الخاطئة", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}, {"type": "linebreak", "version": 1}, {"mode": "normal", "text": "ووّفر صافي أرباحك", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": " نساعدك تراجع الخصومات، تعترض على الأخطاء، وتسترجع اللي لك من تطبيقات التوصيل — بخطوات واضحة وسهلة", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}], "direction": "rtl"}}	\N	\N	183	ar	41627b7c-924b-4f28-bf3e-3b291c34db18	من إيرادات الطلبات تقدر تسترجعها من خلال معالجة أخطاء الخصومات على بلّورة
 مهمتنا	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h2", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "تحسين الإيرادات وهوامش الربح لمطاعم والشركات عبر قنوات المبيعات عبر الإنترنت وخارجها", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}], "direction": "rtl"}}	\N	\N	620	ar	15ed21ae-53fe-4b28-8664-7972ce6cfab1	\N
 \N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h2", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "كيف نعمل في بلورة", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "قيمنا المشتركة تبقينا متصلين وتوجهنا كفريق واحد", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}], "direction": "rtl"}}	\N	\N	621	ar	3e4c6643-08f4-4782-b8c1-63df9d9c3151	\N
@@ -10159,6 +10621,7 @@ COPY "public"."_featuresBlock_v_locales" ("block_header_badge_label", "block_hea
 استرجاع تلقائي للمبالغ	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h3", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "استرجع مبالغ الخصومات الخاطئة", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}, {"type": "linebreak", "version": 1}, {"mode": "normal", "text": "ووّفر صافي أرباحك", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": " نساعدك تراجع الخصومات، تعترض على الأخطاء، وتسترجع اللي لك من تطبيقات التوصيل — بخطوات واضحة وسهلة", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}], "direction": "rtl"}}	\N	\N	228	ar	b990d3b5-b34f-4a45-8ac8-fe54c835f362	من إيرادات الطلبات تقدر تسترجعها من خلال معالجة أخطاء الخصومات على بلّورة
 مهمتنا	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h2", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "تحسين الإيرادات وهوامش الربح لمطاعم والشركات عبر قنوات المبيعات عبر الإنترنت وخارجها", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}], "direction": "rtl"}}	\N	\N	634	ar	8810360f-03e7-4be5-a019-9a6cce44e90b	\N
 \N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h2", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "كيف نعمل في بلورة", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "قيمنا المشتركة تبقينا متصلين وتوجهنا كفريق واحد", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}], "direction": "rtl"}}	\N	\N	635	ar	409db2c8-05c6-45ac-83a6-046102d21fdb	\N
+مهمتنا	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h2", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "تحسين الإيرادات وهوامش الربح لمطاعم والشركات عبر قنوات المبيعات عبر الإنترنت وخارجها", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}], "direction": "rtl"}}	\N	\N	745	ar	3150dff4-3156-4f22-9828-4e701e627978	\N
 مهمتنا	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h2", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "تحسين الإيرادات وهوامش الربح لمطاعم والشركات عبر قنوات المبيعات عبر الإنترنت وخارجها", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}], "direction": "rtl"}}	\N	\N	582	ar	6a8aaae4-38cc-4f12-a674-3586dab59a7e	\N
 \N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h2", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "كيف نعمل في بلورة", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "قيمنا المشتركة تبقينا متصلين وتوجهنا كفريق واحد", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}], "direction": "rtl"}}	\N	\N	583	ar	fc7ef4d6-3e67-4628-9232-13a63b624fd1	\N
 \N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h2", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "ليش تستخدم بلّورة؟", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}], "direction": "rtl"}}	\N	/	444	ar	5280275d-4d50-47c7-b03d-1aeaac5ca4ff	\N
@@ -10184,12 +10647,40 @@ COPY "public"."_featuresBlock_v_locales" ("block_header_badge_label", "block_hea
 \N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h2", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "ليش تستخدم بلّورة؟", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}], "direction": "rtl"}}	\N	/	255	ar	3e5d3e77-f3ae-480b-a93f-8b516bc36f93	\N
 	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h2", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": " زِد ظهورك على تطبيقات التوصيل", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": " بلّورة تساعدك تزيد ظهورك في الأوقات والمناطق الصح، بدون هدر في الميزانية.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}], "direction": "rtl"}}	\N	\N	256	ar	3c356f56-872c-419a-80ba-c81a331f411e	\N
 استرجاع تلقائي للمبالغ	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h3", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "استرجع مبالغ الخصومات الخاطئة", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}, {"type": "linebreak", "version": 1}, {"mode": "normal", "text": "ووّفر صافي أرباحك", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": " نساعدك تراجع الخصومات، تعترض على الأخطاء، وتسترجع اللي لك من تطبيقات التوصيل — بخطوات واضحة وسهلة", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}], "direction": "rtl"}}	\N	\N	257	ar	b22e3667-5c16-4675-bc1b-ed570dff6019	من إيرادات الطلبات تقدر تسترجعها من خلال معالجة أخطاء الخصومات على بلّورة
+\N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h2", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "كيف نشتغل في بلّورة", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "قيمنا المشتركة تجمعنا وتوجهنا كفريق واحد", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}], "direction": "rtl"}}	\N	\N	746	ar	83e89ed3-1fef-4a8d-9d37-d4daac4ab2a4	\N
 \N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h2", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "ليش تستخدم بلّورة؟", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}], "direction": "rtl"}}	\N	/	441	ar	cc7f4992-b52f-4ad7-9760-34416a6fd830	\N
+مهمتنا	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h2", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "تحسين الإيرادات وهوامش الربح لمطاعم والشركات عبر قنوات المبيعات عبر الإنترنت وخارجها", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}], "direction": "rtl"}}	\N	\N	747	ar	b960e3b9-f9f6-4be8-97bb-21d5402c1284	\N
+\N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h2", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "كيف نشتغل في بلّورة", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "قيمنا المشتركة تجمعنا وتوجهنا كفريق واحد", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}], "direction": "rtl"}}	\N	\N	748	ar	274752fe-78e5-4bcb-b2d4-d64b5686cb60	\N
 \N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h2", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "كيف نعمل في بلورة", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "قيمنا المشتركة تبقينا متصلين وتوجهنا كفريق واحد", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}], "direction": "rtl"}}	\N	\N	665	ar	ac9b0188-e70a-4fab-b59c-fd5d9f8a1647	\N
+\N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h2", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "ليش تستخدم بلّورة؟", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}], "direction": "rtl"}}	\N	/	749	ar	43971856-bf24-40d9-b317-b1a4dd63c516	\N
+	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h2", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": " زِد ظهورك على تطبيقات التوصيل", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": " بلّورة تساعدك تزيد ظهورك في الأوقات والمناطق الصح، بدون هدر في الميزانية.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}], "direction": "rtl"}}	\N	\N	750	ar	d53d45fc-d873-4a78-9d8e-22b9f8075c16	\N
+استرجاع تلقائي للمبالغ	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h3", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "استرجع مبالغ الخصومات الخاطئة", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}, {"type": "linebreak", "version": 1}, {"mode": "normal", "text": "ووّفر صافي أرباحك", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": " نساعدك تراجع الخصومات، تعترض على الأخطاء، وتسترجع اللي لك من تطبيقات التوصيل — بخطوات واضحة وسهلة", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}], "direction": "rtl"}}	\N	\N	751	ar	d3b231af-dd13-4399-bfae-c84d7dac29c0	من إيرادات الطلبات تقدر تسترجعها من خلال معالجة أخطاء الخصومات على بلّورة
+\N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h2", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "ليش تستخدم بلّورة؟", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}], "direction": "rtl"}}	\N	/	752	ar	be8dca89-74f3-4f35-82ee-14afc620808b	\N
 مهمتنا	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h2", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "تحسين الإيرادات وهوامش الربح لمطاعم والشركات عبر قنوات المبيعات عبر الإنترنت وخارجها", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}], "direction": "rtl"}}	\N	\N	680	ar	32a0c746-2b42-4498-a1ee-9206a1978f95	\N
 \N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h2", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "كيف نشتغل في بلّورة", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "قيمنا المشتركة تجمعنا وتوجهنا كفريق واحد", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}], "direction": "rtl"}}	\N	\N	681	ar	3cfdc750-c852-48c6-b914-eaa383575303	\N
+	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h2", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": " زِد ظهورك على تطبيقات التوصيل", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": " بلّورة تساعدك تزيد ظهورك في الأوقات والمناطق الصح، بدون هدر في الميزانية.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}], "direction": "rtl"}}	\N	\N	753	ar	764ed95d-be62-4a6a-be5d-de09f2ba4ed7	\N
+استرجاع تلقائي للمبالغ	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h3", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "استرجع مبالغ الخصومات الخاطئة", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}, {"type": "linebreak", "version": 1}, {"mode": "normal", "text": "ووّفر صافي أرباحك", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": " نساعدك تراجع الخصومات، تعترض على الأخطاء، وتسترجع اللي لك من تطبيقات التوصيل — بخطوات واضحة وسهلة", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}], "direction": "rtl"}}	\N	\N	754	ar	fa8b9b8e-7cf2-4e8b-9ed1-2c48b13151cc	من إيرادات الطلبات تقدر تسترجعها من خلال معالجة أخطاء الخصومات على بلّورة
 مهمتنا	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h2", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "تحسين الإيرادات وهوامش الربح لمطاعم والشركات عبر قنوات المبيعات عبر الإنترنت وخارجها", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}], "direction": "rtl"}}	\N	\N	678	ar	5e56dd19-7338-4891-ba12-ec8c67024e25	\N
 \N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h2", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "كيف نشتغل في بلّورة", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "قيمنا المشتركة تجمعنا وتوجهنا كفريق واحد", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}], "direction": "rtl"}}	\N	\N	679	ar	59792665-8210-4a4a-a063-1bc89b7bd691	\N
+\N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h2", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "ليش تستخدم بلّورة؟", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}], "direction": "rtl"}}	\N	/	691	ar	83ae1d07-a3d0-484c-b834-e49b255fe2c0	\N
+	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h2", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": " زِد ظهورك على تطبيقات التوصيل", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": " بلّورة تساعدك تزيد ظهورك في الأوقات والمناطق الصح، بدون هدر في الميزانية.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}], "direction": "rtl"}}	\N	\N	692	ar	969b59c0-559f-41e9-85c9-1a6652400c6f	\N
+\N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h2", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "ليش تستخدم بلّورة؟", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}], "direction": "rtl"}}	\N	/	688	ar	4db3b9eb-f20b-4928-9be2-dcff601a4f23	\N
+	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h2", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": " زِد ظهورك على تطبيقات التوصيل", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": " بلّورة تساعدك تزيد ظهورك في الأوقات والمناطق الصح، بدون هدر في الميزانية.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}], "direction": "rtl"}}	\N	\N	689	ar	1ac4faaa-ff50-4577-8279-ff4a6c395bfd	\N
+استرجاع تلقائي للمبالغ	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h3", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "استرجع مبالغ الخصومات الخاطئة", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}, {"type": "linebreak", "version": 1}, {"mode": "normal", "text": "ووّفر صافي أرباحك", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": " نساعدك تراجع الخصومات، تعترض على الأخطاء، وتسترجع اللي لك من تطبيقات التوصيل — بخطوات واضحة وسهلة", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}], "direction": "rtl"}}	\N	\N	690	ar	9b6aabe5-636a-4069-9bab-8d9e831a60ae	من إيرادات الطلبات تقدر تسترجعها من خلال معالجة أخطاء الخصومات على بلّورة
+استرجاع تلقائي للمبالغ	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h3", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "استرجع مبالغ الخصومات الخاطئة", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}, {"type": "linebreak", "version": 1}, {"mode": "normal", "text": "ووّفر صافي أرباحك", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": " نساعدك تراجع الخصومات، تعترض على الأخطاء، وتسترجع اللي لك من تطبيقات التوصيل — بخطوات واضحة وسهلة", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}], "direction": "rtl"}}	\N	\N	693	ar	4c7fb42d-95a9-441e-b87b-10c3252719a2	من إيرادات الطلبات تقدر تسترجعها من خلال معالجة أخطاء الخصومات على بلّورة
+\N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h2", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "ليش تستخدم بلّورة؟", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}], "direction": "rtl"}}	\N	/	694	ar	8a89b85e-edb1-4c7d-af78-613fb249750b	\N
+	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h2", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": " زِد ظهورك على تطبيقات التوصيل", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": " بلّورة تساعدك تزيد ظهورك في الأوقات والمناطق الصح، بدون هدر في الميزانية.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}], "direction": "rtl"}}	\N	\N	695	ar	6a280100-add4-49ad-95ac-90597a7da682	\N
+استرجاع تلقائي للمبالغ	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h3", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "استرجع مبالغ الخصومات الخاطئة", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}, {"type": "linebreak", "version": 1}, {"mode": "normal", "text": "ووّفر صافي أرباحك", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": " نساعدك تراجع الخصومات، تعترض على الأخطاء، وتسترجع اللي لك من تطبيقات التوصيل — بخطوات واضحة وسهلة", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}], "direction": "rtl"}}	\N	\N	696	ar	d752df66-861d-4f76-8c8c-565bc137ad88	من إيرادات الطلبات تقدر تسترجعها من خلال معالجة أخطاء الخصومات على بلّورة
+\N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h2", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "ليش تستخدم بلّورة؟", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}], "direction": "rtl"}}	\N	/	800	ar	abeddfc5-570e-40f0-ac73-391235569c45	\N
+	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h2", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": " زِد ظهورك على تطبيقات التوصيل", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": " بلّورة تساعدك تزيد ظهورك في الأوقات والمناطق الصح، بدون هدر في الميزانية.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}], "direction": "rtl"}}	\N	\N	801	ar	526608bc-69f2-4991-ae13-9fe3da69a4d0	\N
+استرجاع تلقائي للمبالغ	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h3", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "استرجع مبالغ الخصومات الخاطئة", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}, {"type": "linebreak", "version": 1}, {"mode": "normal", "text": "ووّفر صافي أرباحك", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": " نساعدك تراجع الخصومات، تعترض على الأخطاء، وتسترجع اللي لك من تطبيقات التوصيل — بخطوات واضحة وسهلة", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}], "direction": "rtl"}}	\N	\N	802	ar	1c4ada83-01b2-496f-b392-084372233e9e	من إيرادات الطلبات تقدر تسترجعها من خلال معالجة أخطاء الخصومات على بلّورة
+استرجاع تلقائي للمبالغ	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h3", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "استرجع مبالغ الخصومات الخاطئة", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}, {"type": "linebreak", "version": 1}, {"mode": "normal", "text": "ووّفر صافي أرباحك", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": " نساعدك تراجع الخصومات، تعترض على الأخطاء، وتسترجع اللي لك من تطبيقات التوصيل — بخطوات واضحة وسهلة", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}], "direction": "rtl"}}	\N	\N	805	ar	b8bd223e-0f75-418a-b4ac-e000d1eefa0f	من إيرادات الطلبات تقدر تسترجعها من خلال معالجة أخطاء الخصومات على بلّورة
+\N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h2", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "ليش تستخدم بلّورة؟", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}], "direction": "rtl"}}	\N	/	806	ar	c17b1e3b-3808-4e7d-90f9-498bee1058bd	\N
+	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h2", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": " زِد ظهورك على تطبيقات التوصيل", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": " بلّورة تساعدك تزيد ظهورك في الأوقات والمناطق الصح، بدون هدر في الميزانية.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}], "direction": "rtl"}}	\N	\N	807	ar	91e9ca25-4e18-482d-8c79-b73c503e9e03	\N
+استرجاع تلقائي للمبالغ	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h3", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "استرجع مبالغ الخصومات الخاطئة", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}, {"type": "linebreak", "version": 1}, {"mode": "normal", "text": "ووّفر صافي أرباحك", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": " نساعدك تراجع الخصومات، تعترض على الأخطاء، وتسترجع اللي لك من تطبيقات التوصيل — بخطوات واضحة وسهلة", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}], "direction": "rtl"}}	\N	\N	808	ar	8d8efaad-b13e-42f1-bb9a-c61f6e6e8b09	من إيرادات الطلبات تقدر تسترجعها من خلال معالجة أخطاء الخصومات على بلّورة
+\N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h2", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "ليش تستخدم بلّورة؟", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}], "direction": "rtl"}}	\N	/	809	ar	706db240-1d25-4ffb-870b-2f04e3f2add0	\N
+	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h2", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": " زِد ظهورك على تطبيقات التوصيل", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": " بلّورة تساعدك تزيد ظهورك في الأوقات والمناطق الصح، بدون هدر في الميزانية.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}], "direction": "rtl"}}	\N	\N	810	ar	96263471-3bed-4d5c-bccb-4f1c437c2a4c	\N
+استرجاع تلقائي للمبالغ	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h3", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "استرجع مبالغ الخصومات الخاطئة", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}, {"type": "linebreak", "version": 1}, {"mode": "normal", "text": "ووّفر صافي أرباحك", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": " نساعدك تراجع الخصومات، تعترض على الأخطاء، وتسترجع اللي لك من تطبيقات التوصيل — بخطوات واضحة وسهلة", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}], "direction": "rtl"}}	\N	\N	811	ar	df8306e3-8bac-437b-ac4b-60df2bbd890f	من إيرادات الطلبات تقدر تسترجعها من خلال معالجة أخطاء الخصومات على بلّورة
 \.
 
 
@@ -10254,6 +10745,8 @@ COPY "public"."_galleryBlock_v_locales" ("block_header_badge_label", "block_head
 --
 
 COPY "public"."_logosBlock_v" ("_order", "_parent_id", "_path", "id", "block_header_type", "block_header_badge_type", "block_header_badge_color", "block_header_badge_icon", "block_header_badge_icon_position", "type", "_uuid", "block_name") FROM stdin;
+2	3b7333a2-daa5-498c-88e2-379fe5c31d7b	version.layout	481cb764-fbcc-4dc2-8ef3-864397ab4f82	center	\N	blue	\N	flex-row	03	6886953573e9e43a4a6e3c09	\N
+2	67aa8e57-e509-4c57-b165-2c5bfd47d94f	version.layout	11b1b370-0fd5-4274-a81d-7a064b23944b	center	\N	blue	\N	flex-row	03	6886953573e9e43a4a6e3c09	\N
 6	5daad5c5-875d-4b1a-a149-104e6386d7e1	version.layout	cbc7b640-bf8b-4d38-8ad0-dde9cfc11284	center	\N	blue	\N	flex-row	03	6886ad3cdf64ca6dd9ecfe74	\N
 6	c21624fa-2468-4a75-81c3-2e915c43ea04	version.layout	9daa3ce3-9135-4b61-8df4-04ffe9edaf51	center	\N	blue	\N	flex-row	03	6886ad3cdf64ca6dd9ecfe74	\N
 6	66191476-6739-46e9-832b-99f58a05dcee	version.layout	c5918c40-86c6-465a-a628-479b6d8447ca	center	\N	blue	\N	flex-row	03	6886ad3cdf64ca6dd9ecfe74	\N
@@ -10263,12 +10756,16 @@ COPY "public"."_logosBlock_v" ("_order", "_parent_id", "_path", "id", "block_hea
 2	4389a3c7-2b44-4dda-b26c-b3db9aa06ea8	version.layout	68bc98bd-04ac-4331-84b8-4c835b93bba1	center	\N	blue	\N	flex-row	03	6886953573e9e43a4a6e3c09	\N
 2	ec2f0054-a44a-4dfe-b38c-2280a621a0df	version.layout	59505c97-d4c4-472c-912c-cd2463535739	center	\N	blue	\N	flex-row	03	6886953573e9e43a4a6e3c09	\N
 2	96a690f0-6b75-40a2-bc6b-94e17419a077	version.layout	4d9f872f-cd0d-4fde-876e-0096e7e22903	center	\N	blue	\N	flex-row	03	6886953573e9e43a4a6e3c09	\N
+2	be9c7e75-dc9a-4619-8a8e-5ef58c098864	version.layout	cbddacc6-4a04-41b5-86ad-f2b9dbdbbcfb	center	\N	blue	\N	flex-row	03	6886953573e9e43a4a6e3c09	\N
 6	c20c2c0b-4fa6-45f3-acb3-34e06f115342	version.layout	fb368842-77c7-477c-a986-f6eb1f923739	center	\N	blue	\N	flex-row	03	6886ad3cdf64ca6dd9ecfe74	\N
 6	90cf9707-369c-4799-8aa5-8c6eeab55ba2	version.layout	bca5cef7-f4b4-4445-84dd-a08d346300ea	center	\N	blue	\N	flex-row	03	6886ad3cdf64ca6dd9ecfe74	\N
 6	57ff426a-9250-4471-94f7-2ce9173606fa	version.layout	ffb62cbe-4816-4d86-b939-b8d2b9e04afb	center	\N	blue	\N	flex-row	03	6886ad3cdf64ca6dd9ecfe74	\N
 6	8a100411-d7e9-4035-bcda-bb9916e0c4ff	version.layout	b9f2c45b-f281-4019-a5a7-b12ebc04b999	center	\N	blue	\N	flex-row	03	6886ad3cdf64ca6dd9ecfe74	\N
+2	475931ac-474c-47ac-a1ba-e14920a6ebb8	version.layout	df9aae20-52f8-41e6-afc4-ae6ff9379b7d	center	\N	blue	\N	flex-row	03	6886953573e9e43a4a6e3c09	\N
 6	42c8f4e2-6b54-4c96-9da9-672741e82033	version.layout	20bdcb2e-81ff-4b93-a15d-b176a8848818	center	\N	blue	\N	flex-row	03	6886ad3cdf64ca6dd9ecfe74	\N
 6	0f74cab3-d27d-472e-b2eb-35ab19e69c72	version.layout	544390b1-e76f-4916-b385-f1cff380aeb9	center	\N	blue	\N	flex-row	03	6886ad3cdf64ca6dd9ecfe74	\N
+2	df9022a7-63b1-4017-b716-518f2d69d9c2	version.layout	0c8a9aa8-03bb-428f-abc6-6752bdbb357f	center	\N	blue	\N	flex-row	03	6886953573e9e43a4a6e3c09	\N
+2	57af9290-93a8-46d6-8475-65260fba9301	version.layout	0dfde786-b5e8-47ce-a207-67760f8151d4	center	\N	blue	\N	flex-row	03	6886953573e9e43a4a6e3c09	\N
 2	b8643aac-9e6d-40cb-960a-50219579096e	version.layout	f2635032-5446-4c14-a6b9-a2f364ea87b3	center	\N	blue	\N	flex-row	03	6886953573e9e43a4a6e3c09	\N
 2	bf780b52-7054-4988-a733-0d397f0f0b3a	version.layout	98759db0-165d-4694-af1e-00c13d498437	center	\N	blue	\N	flex-row	03	6886953573e9e43a4a6e3c09	\N
 6	c3e0ac67-68ff-45a0-a95f-0bae5b004b85	version.layout	181bf466-9fc3-4f08-9219-d1b49cbd5fad	center	\N	blue	\N	flex-row	03	6886ad3cdf64ca6dd9ecfe74	\N
@@ -10292,6 +10789,11 @@ COPY "public"."_logosBlock_v" ("_order", "_parent_id", "_path", "id", "block_hea
 2	70b04d51-b412-4e9d-95a4-7bf9fdd2a1c1	version.layout	9e877b60-3992-404b-9cd4-9afa73072675	center	\N	blue	\N	flex-row	03	6886953573e9e43a4a6e3c09	\N
 6	39ed86c1-7622-472a-a921-06def66d1ca6	version.layout	add48115-f047-44d3-90dc-a2ecccce2d34	center	\N	blue	\N	flex-row	03	6886ad3cdf64ca6dd9ecfe74	\N
 6	7cb3435f-1591-4a85-9538-1a329412829b	version.layout	01993a82-cef5-4794-aca1-5a58228bd80c	center	\N	blue	\N	flex-row	03	6886ad3cdf64ca6dd9ecfe74	\N
+2	191829da-fed4-4378-835d-355bb725534e	version.layout	a7bae3dc-c4ea-4361-b83a-35ff919a8e15	center	\N	blue	\N	flex-row	03	6886953573e9e43a4a6e3c09	\N
+2	9f09b6d6-5dd1-4b72-b23f-90cd5c745e61	version.layout	86ae1254-69fe-476e-8644-fb7683115927	center	\N	blue	\N	flex-row	03	6886953573e9e43a4a6e3c09	\N
+2	01fe3f95-b2e0-4adc-8e06-a37200de75b3	version.layout	b5157c4d-868b-43c3-92c8-7f138bab15fa	center	\N	blue	\N	flex-row	03	6886953573e9e43a4a6e3c09	\N
+6	5cf29f02-25c3-4b24-b574-1aadab774686	version.layout	4a09a395-5303-4db3-958c-0a3ab747a2cc	center	\N	blue	\N	flex-row	03	6886ad3cdf64ca6dd9ecfe74	\N
+6	5a14f13d-26a1-40fe-af37-216b5bd0fe17	version.layout	9949b2fb-abaf-4866-a952-3a164d8c271c	center	\N	blue	\N	flex-row	03	6886ad3cdf64ca6dd9ecfe74	\N
 \.
 
 
@@ -10346,6 +10848,12 @@ COPY "public"."_logosBlock_v_locales" ("block_header_badge_label", "block_header
 \N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "منصة مصممة للسوق السعودي", "type": "text", "style": "", "detail": 0, "format": 1, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 1}], "direction": "rtl", "textFormat": 1}}	206	ar	ffb62cbe-4816-4d86-b939-b8d2b9e04afb
 \N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "منصة مصممة للسوق السعودي", "type": "text", "style": "", "detail": 0, "format": 1, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 1}], "direction": "rtl", "textFormat": 1}}	207	ar	b9f2c45b-f281-4019-a5a7-b12ebc04b999
 \N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "منصة مصممة للسوق السعودي", "type": "text", "style": "", "detail": 0, "format": 1, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 1}], "direction": "rtl", "textFormat": 1}}	210	ar	544390b1-e76f-4916-b385-f1cff380aeb9
+\N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "منصة مصممة للسوق السعودي", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}], "direction": "rtl"}}	268	ar	481cb764-fbcc-4dc2-8ef3-864397ab4f82
+\N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "منصة مصممة للسوق السعودي", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}], "direction": "rtl"}}	269	ar	11b1b370-0fd5-4274-a81d-7a064b23944b
+\N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "منصة مصممة للسوق السعودي", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}], "direction": "rtl"}}	285	ar	cbddacc6-4a04-41b5-86ad-f2b9dbdbbcfb
+\N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "منصة مصممة للسوق السعودي", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}], "direction": "rtl"}}	287	ar	0c8a9aa8-03bb-428f-abc6-6752bdbb357f
+\N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "منصة مصممة للسوق السعودي", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}], "direction": "rtl"}}	288	ar	0dfde786-b5e8-47ce-a207-67760f8151d4
+\N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "منصة مصممة للسوق السعودي", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}], "direction": "rtl"}}	286	ar	df9aae20-52f8-41e6-afc4-ae6ff9379b7d
 \N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "منصة مصممة للسوق السعودي", "type": "text", "style": "", "detail": 0, "format": 1, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 1}], "direction": "rtl", "textFormat": 1}}	209	ar	20bdcb2e-81ff-4b93-a15d-b176a8848818
 \N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "منصة مصممة للسوق السعودي", "type": "text", "style": "", "detail": 0, "format": 1, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 1}], "direction": "rtl", "textFormat": 1}}	213	ar	181bf466-9fc3-4f08-9219-d1b49cbd5fad
 \N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "منصة مصممة للسوق السعودي", "type": "text", "style": "", "detail": 0, "format": 1, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 1}], "direction": "rtl", "textFormat": 1}}	214	ar	8251f39b-c272-4919-a0d2-c610ae3efc83
@@ -10354,6 +10862,11 @@ COPY "public"."_logosBlock_v_locales" ("block_header_badge_label", "block_header
 \N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "منصة مصممة للسوق السعودي", "type": "text", "style": "", "detail": 0, "format": 1, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 1}], "direction": "rtl", "textFormat": 1}}	229	ar	3214b3a1-4689-4a94-9232-9cae956e09af
 \N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "منصة مصممة للسوق السعودي", "type": "text", "style": "", "detail": 0, "format": 1, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 1}], "direction": "rtl", "textFormat": 1}}	235	ar	add48115-f047-44d3-90dc-a2ecccce2d34
 \N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "منصة مصممة للسوق السعودي", "type": "text", "style": "", "detail": 0, "format": 1, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 1}], "direction": "rtl", "textFormat": 1}}	236	ar	01993a82-cef5-4794-aca1-5a58228bd80c
+\N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "منصة مصممة للسوق السعودي", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}], "direction": "rtl"}}	239	ar	a7bae3dc-c4ea-4361-b83a-35ff919a8e15
+\N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "منصة مصممة للسوق السعودي", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}], "direction": "rtl"}}	240	ar	86ae1254-69fe-476e-8644-fb7683115927
+\N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "منصة مصممة للسوق السعودي", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}], "direction": "rtl"}}	241	ar	b5157c4d-868b-43c3-92c8-7f138bab15fa
+\N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "منصة مصممة للسوق السعودي", "type": "text", "style": "", "detail": 0, "format": 1, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 1}], "direction": "rtl", "textFormat": 1}}	266	ar	4a09a395-5303-4db3-958c-0a3ab747a2cc
+\N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "منصة مصممة للسوق السعودي", "type": "text", "style": "", "detail": 0, "format": 1, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 1}], "direction": "rtl", "textFormat": 1}}	267	ar	9949b2fb-abaf-4866-a952-3a164d8c271c
 \.
 
 
@@ -10379,6 +10892,8 @@ COPY "public"."_metricsBlock_v" ("_order", "_parent_id", "_path", "id", "block_h
 3	c21624fa-2468-4a75-81c3-2e915c43ea04	version.layout	00de8445-831c-40d0-8fc7-cf5bf36de884	center	\N	blue	\N	flex-row	02	t	t	f	\N	6886aaccdf64ca6dd9ecfe5d	\N
 3	66191476-6739-46e9-832b-99f58a05dcee	version.layout	5e6e029c-220b-4d7c-99df-f14012ef0b62	center	\N	blue	\N	flex-row	02	t	t	f	\N	6886aaccdf64ca6dd9ecfe5d	\N
 3	a97e39c7-1ff9-4ab6-8ff7-a5a7fe85b1ca	version.layout	e5ef1c4e-32c2-429e-ba45-0a7686fa0699	center	\N	blue	\N	flex-row	02	t	t	f	\N	6886aaccdf64ca6dd9ecfe5d	\N
+3	5cf29f02-25c3-4b24-b574-1aadab774686	version.layout	2ba73048-2747-4c92-a8b2-2b57dd5af645	center	\N	blue	\N	flex-row	02	t	t	f	\N	6886aaccdf64ca6dd9ecfe5d	\N
+3	5a14f13d-26a1-40fe-af37-216b5bd0fe17	version.layout	71ad8d09-dd95-497c-9b12-0439226abb1b	center	\N	blue	\N	flex-row	02	t	t	f	\N	6886aaccdf64ca6dd9ecfe5d	\N
 3	c20c2c0b-4fa6-45f3-acb3-34e06f115342	version.layout	492adb68-c5b0-4104-a18c-b9ba5166d956	center	\N	blue	\N	flex-row	02	t	t	f	\N	6886aaccdf64ca6dd9ecfe5d	\N
 3	90cf9707-369c-4799-8aa5-8c6eeab55ba2	version.layout	89c2b54c-6964-4179-adef-361ae152d675	center	\N	blue	\N	flex-row	02	t	t	f	\N	6886aaccdf64ca6dd9ecfe5d	\N
 3	57ff426a-9250-4471-94f7-2ce9173606fa	version.layout	0689a504-68f3-416e-8487-e0f3a03ebb5b	center	\N	blue	\N	flex-row	02	t	t	f	\N	6886aaccdf64ca6dd9ecfe5d	\N
@@ -10435,7 +10950,9 @@ COPY "public"."_metricsBlock_v_locales" ("block_header_badge_label", "block_head
 \N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h2", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "تحسين الإيرادات وهوامش الربح لمطاعم والشركات عبر قنوات المبيعات عبر الإنترنت وخارجها", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}], "direction": "rtl"}}	\N	\N	\N	122	ar	c38f8837-3d9f-413d-86ff-07144c3422c2
 \N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h2", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "تحسين الإيرادات وهوامش الربح لمطاعم والشركات عبر قنوات المبيعات عبر الإنترنت وخارجها", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}], "direction": "rtl"}}	\N	\N	\N	123	ar	37397468-0ed9-40ac-be26-7c33c917255b
 \N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h2", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "تحسين الإيرادات وهوامش الربح لمطاعم والشركات عبر قنوات المبيعات عبر الإنترنت وخارجها", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}], "direction": "rtl"}}	\N	\N	\N	129	ar	8dc3211d-d912-41fd-8e30-f9badd88e1c7
+\N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h2", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "تحسين الإيرادات وهوامش الربح لمطاعم والشركات عبر قنوات المبيعات عبر الإنترنت وخارجها", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}], "direction": "rtl"}}	\N	\N	\N	156	ar	71ad8d09-dd95-497c-9b12-0439226abb1b
 \N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h2", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "تحسين الإيرادات وهوامش الربح لمطاعم والشركات عبر قنوات المبيعات عبر الإنترنت وخارجها", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}], "direction": "rtl"}}	\N	\N	\N	130	ar	c11bdbff-61f7-4296-b9b9-44b7d6e100ed
+\N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h2", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "تحسين الإيرادات وهوامش الربح لمطاعم والشركات عبر قنوات المبيعات عبر الإنترنت وخارجها", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}], "direction": "rtl"}}	\N	\N	\N	155	ar	2ba73048-2747-4c92-a8b2-2b57dd5af645
 \.
 
 
@@ -10538,6 +11055,12 @@ COPY "public"."_metricsBlock_v_stats" ("_order", "_parent_id", "id", "value", "i
 1	c11bdbff-61f7-4296-b9b9-44b7d6e100ed	25cc19bb-ec89-44eb-aa8d-5a8b027ce6e9	+17 مليون طلب	noChange	6886ab80df64ca6dd9ecfe60
 2	c11bdbff-61f7-4296-b9b9-44b7d6e100ed	bf57907b-54c5-4a4c-a3b1-1eb991358f25	+1 مليار ريال	noChange	6886ab9cdf64ca6dd9ecfe62
 3	c11bdbff-61f7-4296-b9b9-44b7d6e100ed	2efc6d6d-8f09-4f1d-b177-2417738e25e3	+400 مطعم	noChange	6886ab9edf64ca6dd9ecfe65
+1	2ba73048-2747-4c92-a8b2-2b57dd5af645	9b9e35fc-e821-4416-bc22-efdfe6c5362a	+17 مليون طلب	noChange	6886ab80df64ca6dd9ecfe60
+2	2ba73048-2747-4c92-a8b2-2b57dd5af645	f76b9059-2fe6-4232-8d72-52c5edc8dacd	+1 مليار ريال	noChange	6886ab9cdf64ca6dd9ecfe62
+3	2ba73048-2747-4c92-a8b2-2b57dd5af645	cfb841b6-786f-4d5a-b0a4-b0c01438a3ed	+400 مطعم	noChange	6886ab9edf64ca6dd9ecfe65
+1	71ad8d09-dd95-497c-9b12-0439226abb1b	f6e399ac-a23d-4aa9-9529-7ff4493cb614	+17 مليون طلب	noChange	6886ab80df64ca6dd9ecfe60
+2	71ad8d09-dd95-497c-9b12-0439226abb1b	c48583ec-72e4-4945-9594-94263f69e883	+1 مليار ريال	noChange	6886ab9cdf64ca6dd9ecfe62
+3	71ad8d09-dd95-497c-9b12-0439226abb1b	1ffe66f5-d43d-4c0e-92cf-87b01bd9439f	+400 مطعم	noChange	6886ab9edf64ca6dd9ecfe65
 \.
 
 
@@ -10637,6 +11160,12 @@ COPY "public"."_metricsBlock_v_stats_locales" ("label", "id", "_locale", "_paren
 تم تتبّعها وتحليلها وربطها بالبيانات التشغيلية والإعلانية، لمساعدة المطاعم على اتخاذ قرارات أوضح وتحقيق نمو أكبر.	466	ar	bbf3df76-7d4c-4d9b-bf86-aef2df86074e
 إجمالي قيمة الطلبات (GMV) التي تعاملنا معها مع عملائنا على منصات التوصيل.	467	ar	3642015b-a9f6-4c04-bac3-bd4c4b443004
 من مطاعم مستقلة إلى علامات تدير عشرات الفروع، يعتمدون على بلّورة لتحسين ربحيتهم التشغيلية والإعلانية	468	ar	564e8946-f2a0-4d28-821e-cb20c739c6a2
+تم تتبّعها وتحليلها وربطها بالبيانات التشغيلية والإعلانية، لمساعدة المطاعم على اتخاذ قرارات أوضح وتحقيق نمو أكبر.	544	ar	9b9e35fc-e821-4416-bc22-efdfe6c5362a
+إجمالي قيمة الطلبات (GMV) التي تعاملنا معها مع عملائنا على منصات التوصيل.	545	ar	f76b9059-2fe6-4232-8d72-52c5edc8dacd
+من مطاعم مستقلة إلى علامات تدير عشرات الفروع، يعتمدون على بلّورة لتحسين ربحيتهم التشغيلية والإعلانية	546	ar	cfb841b6-786f-4d5a-b0a4-b0c01438a3ed
+تم تتبّعها وتحليلها وربطها بالبيانات التشغيلية والإعلانية، لمساعدة المطاعم على اتخاذ قرارات أوضح وتحقيق نمو أكبر.	547	ar	f6e399ac-a23d-4aa9-9529-7ff4493cb614
+إجمالي قيمة الطلبات (GMV) التي تعاملنا معها مع عملائنا على منصات التوصيل.	548	ar	c48583ec-72e4-4945-9594-94263f69e883
+من مطاعم مستقلة إلى علامات تدير عشرات الفروع، يعتمدون على بلّورة لتحسين ربحيتهم التشغيلية والإعلانية	549	ar	1ffe66f5-d43d-4c0e-92cf-87b01bd9439f
 تم تتبّعها وتحليلها وربطها بالبيانات التشغيلية والإعلانية، لمساعدة المطاعم على اتخاذ قرارات أوضح وتحقيق نمو أكبر.	469	ar	25cc19bb-ec89-44eb-aa8d-5a8b027ce6e9
 إجمالي قيمة الطلبات (GMV) التي تعاملنا معها مع عملائنا على منصات التوصيل.	470	ar	bf57907b-54c5-4a4c-a3b1-1eb991358f25
 من مطاعم مستقلة إلى علامات تدير عشرات الفروع، يعتمدون على بلّورة لتحسين ربحيتهم التشغيلية والإعلانية	471	ar	2efc6d6d-8f09-4f1d-b177-2417738e25e3
@@ -10687,56 +11216,67 @@ COPY "public"."_metricsBlock_v_table_rows_children_cells" ("_order", "_parent_id
 -- Data for Name: _pages_v; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-COPY "public"."_pages_v" ("id", "parent_id", "version_title", "version_hero_type", "version_hero_badge_type", "version_hero_badge_color", "version_hero_badge_icon", "version_hero_badge_icon_position", "version_hero_caption", "version_published_at", "version_slug", "version_slug_lock", "version_updated_at", "version_created_at", "version__status", "created_at", "updated_at", "snapshot", "published_locale", "latest", "autosave") FROM stdin;
-7cb3435f-1591-4a85-9538-1a329412829b	742d2308-808d-4f0e-91f2-03d18be57d5c	about	mediumImpact	label	gray	\N	flex-row	\N	2025-07-27 21:55:39.98+00	about	t	2025-08-01 21:42:29.981+00	2025-07-27 21:36:21.924+00	published	2025-08-01 21:42:33.567+00	2025-08-01 21:42:33.568+00	\N	\N	t	f
-bf44ecdc-b752-4d40-98af-9a8196b52040	e2c88328-cc74-46c9-aabd-7e7c2f92d013	\N	lowImpact	\N	blue	\N	flex-row	\N	\N	\N	t	2025-07-28 04:37:29.424+00	2025-07-28 04:37:29.274+00	draft	2025-07-28 04:37:29.946+00	2025-07-28 04:37:29.946+00	\N	\N	f	f
-0f74cab3-d27d-472e-b2eb-35ab19e69c72	742d2308-808d-4f0e-91f2-03d18be57d5c	about	mediumImpact	label	gray	\N	flex-row	\N	2025-07-27 21:55:39.98+00	about	t	2025-08-01 21:38:23.534+00	2025-07-27 21:36:21.924+00	draft	2025-08-01 21:38:23.534+00	2025-08-01 21:38:23.536+00	\N	\N	f	f
-8a100411-d7e9-4035-bcda-bb9916e0c4ff	742d2308-808d-4f0e-91f2-03d18be57d5c	about	mediumImpact	label	gray	\N	flex-row	\N	2025-07-27 21:55:39.98+00	about	t	2025-08-01 21:37:52.854+00	2025-07-27 21:36:21.924+00	draft	2025-08-01 21:37:52.854+00	2025-08-01 21:37:52.856+00	\N	\N	f	f
-90cf9707-369c-4799-8aa5-8c6eeab55ba2	742d2308-808d-4f0e-91f2-03d18be57d5c	about	mediumImpact	label	gray	\N	flex-row	\N	2025-07-27 21:55:39.98+00	about	t	2025-08-01 21:37:42.49+00	2025-07-27 21:36:21.924+00	draft	2025-08-01 21:37:42.49+00	2025-08-01 21:37:42.492+00	\N	\N	f	f
-c20c2c0b-4fa6-45f3-acb3-34e06f115342	742d2308-808d-4f0e-91f2-03d18be57d5c	about	mediumImpact	label	gray	\N	flex-row	\N	2025-07-27 21:55:39.98+00	about	t	2025-08-01 21:37:36.073+00	2025-07-27 21:36:21.924+00	draft	2025-08-01 21:32:11.769+00	2025-08-01 21:37:36.208+00	\N	\N	f	t
-a97e39c7-1ff9-4ab6-8ff7-a5a7fe85b1ca	742d2308-808d-4f0e-91f2-03d18be57d5c	about	mediumImpact	label	gray	\N	flex-row	\N	2025-07-27 21:55:39.98+00	about	t	2025-07-28 13:14:28.168+00	2025-07-27 21:36:21.924+00	published	2025-07-28 13:14:31.825+00	2025-07-28 13:14:31.827+00	\N	\N	f	f
-66191476-6739-46e9-832b-99f58a05dcee	742d2308-808d-4f0e-91f2-03d18be57d5c	about	mediumImpact	label	gray	\N	flex-row	\N	2025-07-27 21:55:39.98+00	about	t	2025-07-28 13:14:22.07+00	2025-07-27 21:36:21.924+00	draft	2025-07-28 13:14:22.07+00	2025-07-28 13:14:22.208+00	\N	\N	f	t
-f99ec098-a847-4647-872b-781d5d8abf92	742d2308-808d-4f0e-91f2-03d18be57d5c	about	mediumImpact	label	gray	\N	flex-row	\N	2025-07-27 21:55:39.98+00	about	t	2025-07-27 22:49:57.47+00	2025-07-27 21:36:21.924+00	published	2025-07-27 22:50:00.728+00	2025-07-27 22:50:00.73+00	\N	\N	f	f
-eb75a85f-8a75-4ada-b510-fbd186ded5fd	742d2308-808d-4f0e-91f2-03d18be57d5c	about	mediumImpact	label	gray	\N	flex-row	\N	2025-07-27 21:55:39.98+00	about	t	2025-07-27 22:43:52.284+00	2025-07-27 21:36:21.924+00	draft	2025-07-27 21:37:57.541+00	2025-07-27 22:43:52.422+00	\N	\N	f	t
-16fdc303-814a-4b89-aa3a-e7bf647df635	742d2308-808d-4f0e-91f2-03d18be57d5c	\N	lowImpact	\N	blue	\N	flex-row	\N	\N	\N	t	2025-07-27 21:36:50.459+00	2025-07-27 21:36:21.924+00	draft	2025-07-27 21:36:52.173+00	2025-07-27 21:36:52.174+00	\N	\N	f	f
-b8a5a99b-2195-4066-a86c-95aa63c90330	a14442b0-9282-4efc-9df0-51d6374608d8	home	highImpact	\N	blue	\N	flex-row	\N	2025-07-27 20:53:08.677+00	home	t	2025-07-27 22:04:16.112+00	2025-07-27 20:48:06.623+00	draft	2025-07-27 22:04:16.112+00	2025-07-27 22:04:16.114+00	\N	\N	f	f
-deefcd27-f08b-46fa-8843-0703ff59e6cc	a14442b0-9282-4efc-9df0-51d6374608d8	home	highImpact	\N	blue	\N	flex-row	\N	2025-07-27 20:53:08.677+00	home	t	2025-07-27 22:02:50.622+00	2025-07-27 20:48:06.623+00	draft	2025-07-27 22:02:50.622+00	2025-07-27 22:02:50.624+00	\N	\N	f	f
-41c60df7-54ab-4683-8983-1204117e7975	a14442b0-9282-4efc-9df0-51d6374608d8	home	highImpact	\N	blue	\N	flex-row	\N	2025-07-27 20:53:08.677+00	home	t	2025-07-27 22:01:54.131+00	2025-07-27 20:48:06.623+00	draft	2025-07-27 21:45:46.369+00	2025-07-27 22:01:54.253+00	\N	\N	f	t
-e534ac8f-d8b4-4fc4-b77d-febb04366632	a14442b0-9282-4efc-9df0-51d6374608d8	home	highImpact	\N	blue	\N	flex-row	\N	2025-07-27 20:53:08.677+00	home	t	2025-07-27 21:45:15.21+00	2025-07-27 20:48:06.623+00	draft	2025-07-27 21:45:15.21+00	2025-07-27 21:45:15.215+00	\N	\N	f	f
-5d7acef8-c5c7-41df-b43a-b0a7019f4c57	a14442b0-9282-4efc-9df0-51d6374608d8	home	highImpact	\N	blue	\N	flex-row	\N	2025-07-27 20:53:08.677+00	home	t	2025-07-27 21:40:37.661+00	2025-07-27 20:48:06.623+00	draft	2025-07-27 21:40:37.661+00	2025-07-27 21:40:37.663+00	\N	\N	f	f
-bf780b52-7054-4988-a733-0d397f0f0b3a	a14442b0-9282-4efc-9df0-51d6374608d8	home	highImpact	\N	blue	\N	flex-row	\N	2025-07-27 20:53:08.677+00	home	t	2025-07-27 21:39:16.333+00	2025-07-27 20:48:06.623+00	draft	2025-07-27 21:39:16.333+00	2025-07-27 21:39:16.334+00	\N	\N	f	f
-96a690f0-6b75-40a2-bc6b-94e17419a077	a14442b0-9282-4efc-9df0-51d6374608d8	home	highImpact	\N	blue	\N	flex-row	\N	2025-07-27 20:53:08.677+00	home	t	2025-07-27 21:36:05.978+00	2025-07-27 20:48:06.623+00	draft	2025-07-27 21:36:05.978+00	2025-07-27 21:36:05.981+00	\N	\N	f	f
-ec2f0054-a44a-4dfe-b38c-2280a621a0df	a14442b0-9282-4efc-9df0-51d6374608d8	home	highImpact	\N	blue	\N	flex-row	\N	2025-07-27 20:53:08.677+00	home	t	2025-07-27 21:35:16.994+00	2025-07-27 20:48:06.623+00	published	2025-07-27 21:35:27.622+00	2025-07-27 21:35:27.625+00	\N	\N	f	f
-4389a3c7-2b44-4dda-b26c-b3db9aa06ea8	a14442b0-9282-4efc-9df0-51d6374608d8	home	highImpact	\N	blue	\N	flex-row	\N	2025-07-27 20:53:08.677+00	home	t	2025-07-27 21:34:27.615+00	2025-07-27 20:48:06.623+00	draft	2025-07-27 21:27:40.895+00	2025-07-27 21:34:27.738+00	\N	\N	f	t
-1aa29553-e446-407b-b3c0-5c37067f4c85	a14442b0-9282-4efc-9df0-51d6374608d8	home	highImpact	\N	blue	\N	flex-row	\N	2025-07-27 20:53:08.677+00	home	t	2025-07-27 21:27:00.235+00	2025-07-27 20:48:06.623+00	draft	2025-07-27 21:27:00.235+00	2025-07-27 21:27:00.237+00	\N	\N	f	f
-b710c38f-af35-4722-9c8f-279f18021757	a14442b0-9282-4efc-9df0-51d6374608d8	home	highImpact	\N	blue	\N	flex-row	\N	2025-07-27 20:53:08.677+00	home	t	2025-07-27 22:04:13.495+00	2025-07-27 20:48:06.623+00	draft	2025-07-27 22:04:04.679+00	2025-07-27 22:04:13.618+00	\N	\N	f	t
-df25eab2-1f33-408c-930f-d845fabe2a9a	a14442b0-9282-4efc-9df0-51d6374608d8	home	highImpact	\N	blue	\N	flex-row	\N	2025-07-27 20:53:08.677+00	home	t	2025-07-27 21:26:48.148+00	2025-07-27 20:48:06.623+00	draft	2025-07-27 21:07:27.966+00	2025-07-27 21:26:48.295+00	\N	\N	f	t
-bc46ad15-d597-4471-8111-07e803be8f94	a14442b0-9282-4efc-9df0-51d6374608d8	\N	lowImpact	\N	blue	\N	flex-row	\N	\N	\N	t	2025-07-27 20:48:06.767+00	2025-07-27 20:48:06.623+00	draft	2025-07-27 20:48:07.29+00	2025-07-27 20:48:07.291+00	\N	\N	f	f
-2522dd02-3c88-4d0f-8f54-000c6331c042	742d2308-808d-4f0e-91f2-03d18be57d5c	about	mediumImpact	label	gray	\N	flex-row	\N	2025-07-27 21:55:39.98+00	about	t	2025-08-01 21:38:42.201+00	2025-07-27 21:36:21.924+00	draft	2025-08-01 21:38:42.201+00	2025-08-01 21:38:42.203+00	\N	\N	f	f
-c93e6899-deb6-44f3-a367-f01466a9d3d8	742d2308-808d-4f0e-91f2-03d18be57d5c	about	mediumImpact	label	gray	\N	flex-row	\N	2025-07-27 21:55:39.98+00	about	t	2025-07-27 22:50:43.498+00	2025-07-27 21:36:21.924+00	draft	2025-07-27 22:50:09.64+00	2025-07-27 22:50:43.623+00	\N	\N	f	t
-0184009f-30c7-4a91-970a-e632fdc5dd41	742d2308-808d-4f0e-91f2-03d18be57d5c	about	mediumImpact	label	gray	\N	flex-row	\N	2025-07-27 21:55:39.98+00	about	t	2025-07-28 00:22:52.613+00	2025-07-27 21:36:21.924+00	draft	2025-07-28 00:22:36.752+00	2025-07-28 00:22:52.764+00	\N	\N	f	t
-57ff426a-9250-4471-94f7-2ce9173606fa	742d2308-808d-4f0e-91f2-03d18be57d5c	about	mediumImpact	label	gray	\N	flex-row	\N	2025-07-27 21:55:39.98+00	about	t	2025-08-01 21:37:50.056+00	2025-07-27 21:36:21.924+00	draft	2025-08-01 21:37:50.056+00	2025-08-01 21:37:50.193+00	\N	\N	f	t
-c21624fa-2468-4a75-81c3-2e915c43ea04	742d2308-808d-4f0e-91f2-03d18be57d5c	about	mediumImpact	label	gray	\N	flex-row	\N	2025-07-27 21:55:39.98+00	about	t	2025-07-28 04:41:44.925+00	2025-07-27 21:36:21.924+00	published	2025-07-28 04:41:48.532+00	2025-07-28 04:41:48.533+00	\N	\N	f	f
-f223e689-6799-47bf-8a55-75f2d2a07e4b	742d2308-808d-4f0e-91f2-03d18be57d5c	about	mediumImpact	label	gray	\N	flex-row	\N	2025-07-27 21:55:39.98+00	about	t	2025-07-28 00:25:01.074+00	2025-07-27 21:36:21.924+00	published	2025-07-28 00:25:04.724+00	2025-07-28 00:25:04.727+00	\N	\N	f	f
-1e3d46fa-61b7-41fd-911c-46d1119016a1	e2c88328-cc74-46c9-aabd-7e7c2f92d013	blog	mediumImpact	\N	blue	\N	flex-row	\N	2025-07-28 04:38:21.68+00	blog	t	2025-07-28 04:38:21.693+00	2025-07-28 04:37:29.274+00	published	2025-07-28 04:38:23.721+00	2025-07-28 04:38:23.722+00	\N	\N	t	f
-141da744-820e-4f89-95f2-db68ef29930a	e2c88328-cc74-46c9-aabd-7e7c2f92d013	blog	mediumImpact	\N	blue	\N	flex-row	\N	2025-07-28 04:38:19.709+00	blog	t	2025-07-28 04:38:19.71+00	2025-07-28 04:37:29.274+00	draft	2025-07-28 04:37:35.1+00	2025-07-28 04:38:19.854+00	\N	\N	f	t
-70b04d51-b412-4e9d-95a4-7bf9fdd2a1c1	a14442b0-9282-4efc-9df0-51d6374608d8	home	highImpact	\N	blue	\N	flex-row	\N	2025-07-27 20:53:08.677+00	home	t	2025-07-28 02:05:13.11+00	2025-07-27 20:48:06.623+00	published	2025-07-28 02:05:16.507+00	2025-07-28 02:05:16.509+00	\N	\N	t	f
-abeae401-02ea-4a9d-bd80-73851afc2ffd	a14442b0-9282-4efc-9df0-51d6374608d8	home	highImpact	\N	blue	\N	flex-row	\N	2025-07-27 20:53:08.677+00	home	t	2025-07-28 01:59:10.379+00	2025-07-27 20:48:06.623+00	published	2025-07-28 01:59:13.897+00	2025-07-28 01:59:13.902+00	\N	\N	f	f
-31b5ae11-e3c5-4e2b-b6a6-24aaabf8f28a	a14442b0-9282-4efc-9df0-51d6374608d8	home	highImpact	\N	blue	\N	flex-row	\N	2025-07-27 20:53:08.677+00	home	t	2025-07-27 21:07:23.349+00	2025-07-27 20:48:06.623+00	published	2025-07-27 21:07:25.787+00	2025-07-27 21:07:25.788+00	\N	\N	f	f
-af90617d-cf5f-4812-afb8-2a0dfd9fdc12	a14442b0-9282-4efc-9df0-51d6374608d8	home	highImpact	\N	blue	\N	flex-row	\N	2025-07-27 20:53:08.677+00	home	t	2025-07-27 21:07:23.671+00	2025-07-27 20:48:06.623+00	draft	2025-07-27 20:48:50.154+00	2025-07-27 21:07:23.792+00	\N	\N	f	t
-b8643aac-9e6d-40cb-960a-50219579096e	a14442b0-9282-4efc-9df0-51d6374608d8	home	highImpact	\N	blue	\N	flex-row	\N	2025-07-27 20:53:08.677+00	home	t	2025-07-27 21:39:12.881+00	2025-07-27 20:48:06.623+00	draft	2025-07-27 21:37:40.408+00	2025-07-27 21:39:13.005+00	\N	\N	f	t
-1f91be73-fce5-4495-9619-5b10ba8b92c9	a14442b0-9282-4efc-9df0-51d6374608d8	home	highImpact	\N	blue	\N	flex-row	\N	2025-07-27 20:53:08.677+00	home	t	2025-07-27 21:44:47.725+00	2025-07-27 20:48:06.623+00	draft	2025-07-27 21:39:17.826+00	2025-07-27 21:44:47.859+00	\N	\N	f	t
-990afa8d-fbf0-4bab-9b6a-8cbfe7488ddc	a14442b0-9282-4efc-9df0-51d6374608d8	home	highImpact	\N	blue	\N	flex-row	\N	2025-07-27 20:53:08.677+00	home	t	2025-07-28 02:05:06.42+00	2025-07-27 20:48:06.623+00	draft	2025-07-28 02:04:59.858+00	2025-07-28 02:05:06.565+00	\N	\N	f	t
-39ed86c1-7622-472a-a921-06def66d1ca6	742d2308-808d-4f0e-91f2-03d18be57d5c	about	mediumImpact	label	gray	\N	flex-row	\N	2025-07-27 21:55:39.98+00	about	t	2025-08-01 21:42:29.071+00	2025-07-27 21:36:21.924+00	draft	2025-08-01 21:41:46.251+00	2025-08-01 21:42:29.2+00	\N	\N	f	t
-dbf959bb-8af9-427b-9320-f4aeb0536d2c	742d2308-808d-4f0e-91f2-03d18be57d5c	about	mediumImpact	label	gray	\N	flex-row	\N	2025-07-27 21:55:39.98+00	about	t	2025-08-01 21:41:20.867+00	2025-07-27 21:36:21.924+00	published	2025-08-01 21:41:24.54+00	2025-08-01 21:41:24.541+00	\N	\N	f	f
-274a0b43-8c00-4a28-aa9e-f2d70144f72e	742d2308-808d-4f0e-91f2-03d18be57d5c	about	mediumImpact	label	gray	\N	flex-row	\N	2025-07-27 21:55:39.98+00	about	t	2025-08-01 21:41:13.468+00	2025-07-27 21:36:21.924+00	draft	2025-08-01 21:41:13.468+00	2025-08-01 21:41:13.47+00	\N	\N	f	f
-0326068d-5498-4884-9909-417a1e302c9b	742d2308-808d-4f0e-91f2-03d18be57d5c	about	mediumImpact	label	gray	\N	flex-row	\N	2025-07-27 21:55:39.98+00	about	t	2025-07-27 22:50:47.448+00	2025-07-27 21:36:21.924+00	published	2025-07-27 22:50:51.283+00	2025-07-27 22:50:51.285+00	\N	\N	f	f
-b131c47a-ae81-4501-9cfc-d34c5970d09e	742d2308-808d-4f0e-91f2-03d18be57d5c	about	mediumImpact	label	gray	\N	flex-row	\N	2025-07-27 21:55:39.98+00	about	t	2025-07-27 22:43:53.927+00	2025-07-27 21:36:21.924+00	published	2025-07-27 22:43:56.738+00	2025-07-27 22:43:56.739+00	\N	\N	f	f
-76c86155-458d-4f2c-826b-7eef3e448239	742d2308-808d-4f0e-91f2-03d18be57d5c	about	mediumImpact	label	gray	\N	flex-row	\N	2025-07-27 21:55:39.98+00	about	t	2025-07-27 22:49:51.226+00	2025-07-27 21:36:21.924+00	draft	2025-07-27 22:44:55.556+00	2025-07-27 22:49:51.365+00	\N	\N	f	t
-c3e0ac67-68ff-45a0-a95f-0bae5b004b85	742d2308-808d-4f0e-91f2-03d18be57d5c	about	mediumImpact	label	gray	\N	flex-row	\N	2025-07-27 21:55:39.98+00	about	t	2025-08-01 21:38:37.044+00	2025-07-27 21:36:21.924+00	draft	2025-08-01 21:38:26.096+00	2025-08-01 21:38:37.181+00	\N	\N	f	t
-5daad5c5-875d-4b1a-a149-104e6386d7e1	742d2308-808d-4f0e-91f2-03d18be57d5c	about	mediumImpact	label	gray	\N	flex-row	\N	2025-07-27 21:55:39.98+00	about	t	2025-07-28 04:41:27.942+00	2025-07-27 21:36:21.924+00	draft	2025-07-28 04:40:36.157+00	2025-07-28 04:41:28.089+00	\N	\N	f	t
-42c8f4e2-6b54-4c96-9da9-672741e82033	742d2308-808d-4f0e-91f2-03d18be57d5c	about	mediumImpact	label	gray	\N	flex-row	\N	2025-07-27 21:55:39.98+00	about	t	2025-08-01 21:38:19.609+00	2025-07-27 21:36:21.924+00	draft	2025-08-01 21:38:14.072+00	2025-08-01 21:38:19.768+00	\N	\N	f	t
-9907622f-51f6-4107-b865-5f8fa357f96c	742d2308-808d-4f0e-91f2-03d18be57d5c	about	mediumImpact	label	gray	\N	flex-row	\N	2025-07-27 21:55:39.98+00	about	t	2025-08-01 21:41:09.512+00	2025-07-27 21:36:21.924+00	draft	2025-08-01 21:38:44.481+00	2025-08-01 21:41:09.658+00	\N	\N	f	t
+COPY "public"."_pages_v" ("id", "parent_id", "version_title", "version_hero_type", "version_hero_badge_type", "version_hero_badge_color", "version_hero_badge_icon", "version_hero_badge_icon_position", "version_hero_caption", "version_published_at", "version_slug", "version_slug_lock", "version_updated_at", "version_created_at", "version__status", "created_at", "updated_at", "snapshot", "published_locale", "latest", "autosave", "version_hero_list_style") FROM stdin;
+bf44ecdc-b752-4d40-98af-9a8196b52040	e2c88328-cc74-46c9-aabd-7e7c2f92d013	\N	lowImpact	\N	blue	\N	flex-row	\N	\N	\N	t	2025-07-28 04:37:29.424+00	2025-07-28 04:37:29.274+00	draft	2025-07-28 04:37:29.946+00	2025-07-28 04:37:29.946+00	\N	\N	f	f	bullet
+5a14f13d-26a1-40fe-af37-216b5bd0fe17	742d2308-808d-4f0e-91f2-03d18be57d5c	about	mediumImpact	label	gray	\N	flex-row	\N	2025-07-27 21:55:39.98+00	about	t	2025-08-01 22:30:42.537+00	2025-07-27 21:36:21.924+00	published	2025-08-01 22:30:46.461+00	2025-08-01 22:30:46.466+00	\N	\N	t	f	bullet
+5cf29f02-25c3-4b24-b574-1aadab774686	742d2308-808d-4f0e-91f2-03d18be57d5c	about	mediumImpact	label	gray	\N	flex-row	\N	2025-07-27 21:55:39.98+00	about	t	2025-08-01 22:30:38.624+00	2025-07-27 21:36:21.924+00	draft	2025-08-01 22:28:24.261+00	2025-08-01 22:30:38.738+00	\N	\N	f	t	bullet
+7cb3435f-1591-4a85-9538-1a329412829b	742d2308-808d-4f0e-91f2-03d18be57d5c	about	mediumImpact	label	gray	\N	flex-row	\N	2025-07-27 21:55:39.98+00	about	t	2025-08-01 21:42:29.981+00	2025-07-27 21:36:21.924+00	published	2025-08-01 21:42:33.567+00	2025-08-01 21:42:33.568+00	\N	\N	f	f	bullet
+0f74cab3-d27d-472e-b2eb-35ab19e69c72	742d2308-808d-4f0e-91f2-03d18be57d5c	about	mediumImpact	label	gray	\N	flex-row	\N	2025-07-27 21:55:39.98+00	about	t	2025-08-01 21:38:23.534+00	2025-07-27 21:36:21.924+00	draft	2025-08-01 21:38:23.534+00	2025-08-01 21:38:23.536+00	\N	\N	f	f	bullet
+8a100411-d7e9-4035-bcda-bb9916e0c4ff	742d2308-808d-4f0e-91f2-03d18be57d5c	about	mediumImpact	label	gray	\N	flex-row	\N	2025-07-27 21:55:39.98+00	about	t	2025-08-01 21:37:52.854+00	2025-07-27 21:36:21.924+00	draft	2025-08-01 21:37:52.854+00	2025-08-01 21:37:52.856+00	\N	\N	f	f	bullet
+90cf9707-369c-4799-8aa5-8c6eeab55ba2	742d2308-808d-4f0e-91f2-03d18be57d5c	about	mediumImpact	label	gray	\N	flex-row	\N	2025-07-27 21:55:39.98+00	about	t	2025-08-01 21:37:42.49+00	2025-07-27 21:36:21.924+00	draft	2025-08-01 21:37:42.49+00	2025-08-01 21:37:42.492+00	\N	\N	f	f	bullet
+c20c2c0b-4fa6-45f3-acb3-34e06f115342	742d2308-808d-4f0e-91f2-03d18be57d5c	about	mediumImpact	label	gray	\N	flex-row	\N	2025-07-27 21:55:39.98+00	about	t	2025-08-01 21:37:36.073+00	2025-07-27 21:36:21.924+00	draft	2025-08-01 21:32:11.769+00	2025-08-01 21:37:36.208+00	\N	\N	f	t	bullet
+a97e39c7-1ff9-4ab6-8ff7-a5a7fe85b1ca	742d2308-808d-4f0e-91f2-03d18be57d5c	about	mediumImpact	label	gray	\N	flex-row	\N	2025-07-27 21:55:39.98+00	about	t	2025-07-28 13:14:28.168+00	2025-07-27 21:36:21.924+00	published	2025-07-28 13:14:31.825+00	2025-07-28 13:14:31.827+00	\N	\N	f	f	bullet
+66191476-6739-46e9-832b-99f58a05dcee	742d2308-808d-4f0e-91f2-03d18be57d5c	about	mediumImpact	label	gray	\N	flex-row	\N	2025-07-27 21:55:39.98+00	about	t	2025-07-28 13:14:22.07+00	2025-07-27 21:36:21.924+00	draft	2025-07-28 13:14:22.07+00	2025-07-28 13:14:22.208+00	\N	\N	f	t	bullet
+f99ec098-a847-4647-872b-781d5d8abf92	742d2308-808d-4f0e-91f2-03d18be57d5c	about	mediumImpact	label	gray	\N	flex-row	\N	2025-07-27 21:55:39.98+00	about	t	2025-07-27 22:49:57.47+00	2025-07-27 21:36:21.924+00	published	2025-07-27 22:50:00.728+00	2025-07-27 22:50:00.73+00	\N	\N	f	f	bullet
+eb75a85f-8a75-4ada-b510-fbd186ded5fd	742d2308-808d-4f0e-91f2-03d18be57d5c	about	mediumImpact	label	gray	\N	flex-row	\N	2025-07-27 21:55:39.98+00	about	t	2025-07-27 22:43:52.284+00	2025-07-27 21:36:21.924+00	draft	2025-07-27 21:37:57.541+00	2025-07-27 22:43:52.422+00	\N	\N	f	t	bullet
+16fdc303-814a-4b89-aa3a-e7bf647df635	742d2308-808d-4f0e-91f2-03d18be57d5c	\N	lowImpact	\N	blue	\N	flex-row	\N	\N	\N	t	2025-07-27 21:36:50.459+00	2025-07-27 21:36:21.924+00	draft	2025-07-27 21:36:52.173+00	2025-07-27 21:36:52.174+00	\N	\N	f	f	bullet
+475931ac-474c-47ac-a1ba-e14920a6ebb8	a14442b0-9282-4efc-9df0-51d6374608d8	home	highImpact	\N	blue	\N	flex-row	\N	2025-07-27 20:53:08.677+00	home	t	2025-08-03 08:08:12.243+00	2025-07-27 20:48:06.623+00	published	2025-08-03 08:08:16.471+00	2025-08-03 08:08:16.474+00	\N	\N	f	f	icons
+01fe3f95-b2e0-4adc-8e06-a37200de75b3	a14442b0-9282-4efc-9df0-51d6374608d8	home	highImpact	\N	blue	\N	flex-row	\N	2025-07-27 20:53:08.677+00	home	t	2025-08-01 21:47:50.706+00	2025-07-27 20:48:06.623+00	published	2025-08-01 21:47:54.043+00	2025-08-01 21:47:54.045+00	\N	\N	f	f	bullet
+b8a5a99b-2195-4066-a86c-95aa63c90330	a14442b0-9282-4efc-9df0-51d6374608d8	home	highImpact	\N	blue	\N	flex-row	\N	2025-07-27 20:53:08.677+00	home	t	2025-07-27 22:04:16.112+00	2025-07-27 20:48:06.623+00	draft	2025-07-27 22:04:16.112+00	2025-07-27 22:04:16.114+00	\N	\N	f	f	bullet
+deefcd27-f08b-46fa-8843-0703ff59e6cc	a14442b0-9282-4efc-9df0-51d6374608d8	home	highImpact	\N	blue	\N	flex-row	\N	2025-07-27 20:53:08.677+00	home	t	2025-07-27 22:02:50.622+00	2025-07-27 20:48:06.623+00	draft	2025-07-27 22:02:50.622+00	2025-07-27 22:02:50.624+00	\N	\N	f	f	bullet
+41c60df7-54ab-4683-8983-1204117e7975	a14442b0-9282-4efc-9df0-51d6374608d8	home	highImpact	\N	blue	\N	flex-row	\N	2025-07-27 20:53:08.677+00	home	t	2025-07-27 22:01:54.131+00	2025-07-27 20:48:06.623+00	draft	2025-07-27 21:45:46.369+00	2025-07-27 22:01:54.253+00	\N	\N	f	t	bullet
+e534ac8f-d8b4-4fc4-b77d-febb04366632	a14442b0-9282-4efc-9df0-51d6374608d8	home	highImpact	\N	blue	\N	flex-row	\N	2025-07-27 20:53:08.677+00	home	t	2025-07-27 21:45:15.21+00	2025-07-27 20:48:06.623+00	draft	2025-07-27 21:45:15.21+00	2025-07-27 21:45:15.215+00	\N	\N	f	f	bullet
+5d7acef8-c5c7-41df-b43a-b0a7019f4c57	a14442b0-9282-4efc-9df0-51d6374608d8	home	highImpact	\N	blue	\N	flex-row	\N	2025-07-27 20:53:08.677+00	home	t	2025-07-27 21:40:37.661+00	2025-07-27 20:48:06.623+00	draft	2025-07-27 21:40:37.661+00	2025-07-27 21:40:37.663+00	\N	\N	f	f	bullet
+be9c7e75-dc9a-4619-8a8e-5ef58c098864	a14442b0-9282-4efc-9df0-51d6374608d8	home	highImpact	\N	blue	\N	flex-row	\N	2025-07-27 20:53:08.677+00	home	t	2025-08-03 08:08:07.625+00	2025-07-27 20:48:06.623+00	draft	2025-08-03 07:46:10.005+00	2025-08-03 08:08:07.769+00	\N	\N	f	t	icons
+bc46ad15-d597-4471-8111-07e803be8f94	a14442b0-9282-4efc-9df0-51d6374608d8	\N	lowImpact	\N	blue	\N	flex-row	\N	\N	\N	t	2025-07-27 20:48:06.767+00	2025-07-27 20:48:06.623+00	draft	2025-07-27 20:48:07.29+00	2025-07-27 20:48:07.291+00	\N	\N	f	f	bullet
+2522dd02-3c88-4d0f-8f54-000c6331c042	742d2308-808d-4f0e-91f2-03d18be57d5c	about	mediumImpact	label	gray	\N	flex-row	\N	2025-07-27 21:55:39.98+00	about	t	2025-08-01 21:38:42.201+00	2025-07-27 21:36:21.924+00	draft	2025-08-01 21:38:42.201+00	2025-08-01 21:38:42.203+00	\N	\N	f	f	bullet
+c93e6899-deb6-44f3-a367-f01466a9d3d8	742d2308-808d-4f0e-91f2-03d18be57d5c	about	mediumImpact	label	gray	\N	flex-row	\N	2025-07-27 21:55:39.98+00	about	t	2025-07-27 22:50:43.498+00	2025-07-27 21:36:21.924+00	draft	2025-07-27 22:50:09.64+00	2025-07-27 22:50:43.623+00	\N	\N	f	t	bullet
+0184009f-30c7-4a91-970a-e632fdc5dd41	742d2308-808d-4f0e-91f2-03d18be57d5c	about	mediumImpact	label	gray	\N	flex-row	\N	2025-07-27 21:55:39.98+00	about	t	2025-07-28 00:22:52.613+00	2025-07-27 21:36:21.924+00	draft	2025-07-28 00:22:36.752+00	2025-07-28 00:22:52.764+00	\N	\N	f	t	bullet
+57ff426a-9250-4471-94f7-2ce9173606fa	742d2308-808d-4f0e-91f2-03d18be57d5c	about	mediumImpact	label	gray	\N	flex-row	\N	2025-07-27 21:55:39.98+00	about	t	2025-08-01 21:37:50.056+00	2025-07-27 21:36:21.924+00	draft	2025-08-01 21:37:50.056+00	2025-08-01 21:37:50.193+00	\N	\N	f	t	bullet
+c21624fa-2468-4a75-81c3-2e915c43ea04	742d2308-808d-4f0e-91f2-03d18be57d5c	about	mediumImpact	label	gray	\N	flex-row	\N	2025-07-27 21:55:39.98+00	about	t	2025-07-28 04:41:44.925+00	2025-07-27 21:36:21.924+00	published	2025-07-28 04:41:48.532+00	2025-07-28 04:41:48.533+00	\N	\N	f	f	bullet
+f223e689-6799-47bf-8a55-75f2d2a07e4b	742d2308-808d-4f0e-91f2-03d18be57d5c	about	mediumImpact	label	gray	\N	flex-row	\N	2025-07-27 21:55:39.98+00	about	t	2025-07-28 00:25:01.074+00	2025-07-27 21:36:21.924+00	published	2025-07-28 00:25:04.724+00	2025-07-28 00:25:04.727+00	\N	\N	f	f	bullet
+df9022a7-63b1-4017-b716-518f2d69d9c2	a14442b0-9282-4efc-9df0-51d6374608d8	home	highImpact	\N	blue	\N	flex-row	\N	2025-07-27 20:53:08.677+00	home	t	2025-08-03 08:11:33.424+00	2025-07-27 20:48:06.623+00	draft	2025-08-03 08:11:33.424+00	2025-08-03 08:11:33.593+00	\N	\N	f	t	icons
+67aa8e57-e509-4c57-b165-2c5bfd47d94f	a14442b0-9282-4efc-9df0-51d6374608d8	home	highImpact	\N	blue	\N	flex-row	\N	2025-07-27 20:53:08.677+00	home	t	2025-08-02 21:03:08.952+00	2025-07-27 20:48:06.623+00	published	2025-08-02 21:03:12.452+00	2025-08-02 21:03:12.465+00	\N	\N	f	f	bullet
+bf780b52-7054-4988-a733-0d397f0f0b3a	a14442b0-9282-4efc-9df0-51d6374608d8	home	highImpact	\N	blue	\N	flex-row	\N	2025-07-27 20:53:08.677+00	home	t	2025-07-27 21:39:16.333+00	2025-07-27 20:48:06.623+00	draft	2025-07-27 21:39:16.333+00	2025-07-27 21:39:16.334+00	\N	\N	f	f	bullet
+1e3d46fa-61b7-41fd-911c-46d1119016a1	e2c88328-cc74-46c9-aabd-7e7c2f92d013	blog	mediumImpact	\N	blue	\N	flex-row	\N	2025-07-28 04:38:21.68+00	blog	t	2025-07-28 04:38:21.693+00	2025-07-28 04:37:29.274+00	published	2025-07-28 04:38:23.721+00	2025-07-28 04:38:23.722+00	\N	\N	t	f	bullet
+141da744-820e-4f89-95f2-db68ef29930a	e2c88328-cc74-46c9-aabd-7e7c2f92d013	blog	mediumImpact	\N	blue	\N	flex-row	\N	2025-07-28 04:38:19.709+00	blog	t	2025-07-28 04:38:19.71+00	2025-07-28 04:37:29.274+00	draft	2025-07-28 04:37:35.1+00	2025-07-28 04:38:19.854+00	\N	\N	f	t	bullet
+3b7333a2-daa5-498c-88e2-379fe5c31d7b	a14442b0-9282-4efc-9df0-51d6374608d8	home	highImpact	\N	blue	\N	flex-row	\N	2025-07-27 20:53:08.677+00	home	t	2025-08-02 21:02:51.257+00	2025-07-27 20:48:06.623+00	draft	2025-08-02 21:02:51.257+00	2025-08-02 21:02:51.434+00	\N	\N	f	t	bullet
+70b04d51-b412-4e9d-95a4-7bf9fdd2a1c1	a14442b0-9282-4efc-9df0-51d6374608d8	home	highImpact	\N	blue	\N	flex-row	\N	2025-07-27 20:53:08.677+00	home	t	2025-07-28 02:05:13.11+00	2025-07-27 20:48:06.623+00	published	2025-07-28 02:05:16.507+00	2025-07-28 02:05:16.509+00	\N	\N	f	f	bullet
+abeae401-02ea-4a9d-bd80-73851afc2ffd	a14442b0-9282-4efc-9df0-51d6374608d8	home	highImpact	\N	blue	\N	flex-row	\N	2025-07-27 20:53:08.677+00	home	t	2025-07-28 01:59:10.379+00	2025-07-27 20:48:06.623+00	published	2025-07-28 01:59:13.897+00	2025-07-28 01:59:13.902+00	\N	\N	f	f	bullet
+31b5ae11-e3c5-4e2b-b6a6-24aaabf8f28a	a14442b0-9282-4efc-9df0-51d6374608d8	home	highImpact	\N	blue	\N	flex-row	\N	2025-07-27 20:53:08.677+00	home	t	2025-07-27 21:07:23.349+00	2025-07-27 20:48:06.623+00	published	2025-07-27 21:07:25.787+00	2025-07-27 21:07:25.788+00	\N	\N	f	f	bullet
+af90617d-cf5f-4812-afb8-2a0dfd9fdc12	a14442b0-9282-4efc-9df0-51d6374608d8	home	highImpact	\N	blue	\N	flex-row	\N	2025-07-27 20:53:08.677+00	home	t	2025-07-27 21:07:23.671+00	2025-07-27 20:48:06.623+00	draft	2025-07-27 20:48:50.154+00	2025-07-27 21:07:23.792+00	\N	\N	f	t	bullet
+b8643aac-9e6d-40cb-960a-50219579096e	a14442b0-9282-4efc-9df0-51d6374608d8	home	highImpact	\N	blue	\N	flex-row	\N	2025-07-27 20:53:08.677+00	home	t	2025-07-27 21:39:12.881+00	2025-07-27 20:48:06.623+00	draft	2025-07-27 21:37:40.408+00	2025-07-27 21:39:13.005+00	\N	\N	f	t	bullet
+1f91be73-fce5-4495-9619-5b10ba8b92c9	a14442b0-9282-4efc-9df0-51d6374608d8	home	highImpact	\N	blue	\N	flex-row	\N	2025-07-27 20:53:08.677+00	home	t	2025-07-27 21:44:47.725+00	2025-07-27 20:48:06.623+00	draft	2025-07-27 21:39:17.826+00	2025-07-27 21:44:47.859+00	\N	\N	f	t	bullet
+990afa8d-fbf0-4bab-9b6a-8cbfe7488ddc	a14442b0-9282-4efc-9df0-51d6374608d8	home	highImpact	\N	blue	\N	flex-row	\N	2025-07-27 20:53:08.677+00	home	t	2025-07-28 02:05:06.42+00	2025-07-27 20:48:06.623+00	draft	2025-07-28 02:04:59.858+00	2025-07-28 02:05:06.565+00	\N	\N	f	t	bullet
+39ed86c1-7622-472a-a921-06def66d1ca6	742d2308-808d-4f0e-91f2-03d18be57d5c	about	mediumImpact	label	gray	\N	flex-row	\N	2025-07-27 21:55:39.98+00	about	t	2025-08-01 21:42:29.071+00	2025-07-27 21:36:21.924+00	draft	2025-08-01 21:41:46.251+00	2025-08-01 21:42:29.2+00	\N	\N	f	t	bullet
+dbf959bb-8af9-427b-9320-f4aeb0536d2c	742d2308-808d-4f0e-91f2-03d18be57d5c	about	mediumImpact	label	gray	\N	flex-row	\N	2025-07-27 21:55:39.98+00	about	t	2025-08-01 21:41:20.867+00	2025-07-27 21:36:21.924+00	published	2025-08-01 21:41:24.54+00	2025-08-01 21:41:24.541+00	\N	\N	f	f	bullet
+274a0b43-8c00-4a28-aa9e-f2d70144f72e	742d2308-808d-4f0e-91f2-03d18be57d5c	about	mediumImpact	label	gray	\N	flex-row	\N	2025-07-27 21:55:39.98+00	about	t	2025-08-01 21:41:13.468+00	2025-07-27 21:36:21.924+00	draft	2025-08-01 21:41:13.468+00	2025-08-01 21:41:13.47+00	\N	\N	f	f	bullet
+0326068d-5498-4884-9909-417a1e302c9b	742d2308-808d-4f0e-91f2-03d18be57d5c	about	mediumImpact	label	gray	\N	flex-row	\N	2025-07-27 21:55:39.98+00	about	t	2025-07-27 22:50:47.448+00	2025-07-27 21:36:21.924+00	published	2025-07-27 22:50:51.283+00	2025-07-27 22:50:51.285+00	\N	\N	f	f	bullet
+b131c47a-ae81-4501-9cfc-d34c5970d09e	742d2308-808d-4f0e-91f2-03d18be57d5c	about	mediumImpact	label	gray	\N	flex-row	\N	2025-07-27 21:55:39.98+00	about	t	2025-07-27 22:43:53.927+00	2025-07-27 21:36:21.924+00	published	2025-07-27 22:43:56.738+00	2025-07-27 22:43:56.739+00	\N	\N	f	f	bullet
+76c86155-458d-4f2c-826b-7eef3e448239	742d2308-808d-4f0e-91f2-03d18be57d5c	about	mediumImpact	label	gray	\N	flex-row	\N	2025-07-27 21:55:39.98+00	about	t	2025-07-27 22:49:51.226+00	2025-07-27 21:36:21.924+00	draft	2025-07-27 22:44:55.556+00	2025-07-27 22:49:51.365+00	\N	\N	f	t	bullet
+c3e0ac67-68ff-45a0-a95f-0bae5b004b85	742d2308-808d-4f0e-91f2-03d18be57d5c	about	mediumImpact	label	gray	\N	flex-row	\N	2025-07-27 21:55:39.98+00	about	t	2025-08-01 21:38:37.044+00	2025-07-27 21:36:21.924+00	draft	2025-08-01 21:38:26.096+00	2025-08-01 21:38:37.181+00	\N	\N	f	t	bullet
+5daad5c5-875d-4b1a-a149-104e6386d7e1	742d2308-808d-4f0e-91f2-03d18be57d5c	about	mediumImpact	label	gray	\N	flex-row	\N	2025-07-27 21:55:39.98+00	about	t	2025-07-28 04:41:27.942+00	2025-07-27 21:36:21.924+00	draft	2025-07-28 04:40:36.157+00	2025-07-28 04:41:28.089+00	\N	\N	f	t	bullet
+42c8f4e2-6b54-4c96-9da9-672741e82033	742d2308-808d-4f0e-91f2-03d18be57d5c	about	mediumImpact	label	gray	\N	flex-row	\N	2025-07-27 21:55:39.98+00	about	t	2025-08-01 21:38:19.609+00	2025-07-27 21:36:21.924+00	draft	2025-08-01 21:38:14.072+00	2025-08-01 21:38:19.768+00	\N	\N	f	t	bullet
+9907622f-51f6-4107-b865-5f8fa357f96c	742d2308-808d-4f0e-91f2-03d18be57d5c	about	mediumImpact	label	gray	\N	flex-row	\N	2025-07-27 21:55:39.98+00	about	t	2025-08-01 21:41:09.512+00	2025-07-27 21:36:21.924+00	draft	2025-08-01 21:38:44.481+00	2025-08-01 21:41:09.658+00	\N	\N	f	t	bullet
+57af9290-93a8-46d6-8475-65260fba9301	a14442b0-9282-4efc-9df0-51d6374608d8	home	highImpact	\N	blue	\N	flex-row	\N	2025-07-27 20:53:08.677+00	home	t	2025-08-03 08:11:39.402+00	2025-07-27 20:48:06.623+00	published	2025-08-03 08:11:43.243+00	2025-08-03 08:11:43.245+00	\N	\N	t	f	icons
+191829da-fed4-4378-835d-355bb725534e	a14442b0-9282-4efc-9df0-51d6374608d8	home	highImpact	\N	blue	\N	flex-row	\N	2025-07-27 20:53:08.677+00	home	t	2025-08-01 21:45:05.745+00	2025-07-27 20:48:06.623+00	draft	2025-08-01 21:44:56.358+00	2025-08-01 21:45:05.915+00	\N	\N	f	t	bullet
+9f09b6d6-5dd1-4b72-b23f-90cd5c745e61	a14442b0-9282-4efc-9df0-51d6374608d8	home	highImpact	\N	blue	\N	flex-row	\N	2025-07-27 20:53:08.677+00	home	t	2025-08-01 21:45:04.748+00	2025-07-27 20:48:06.623+00	published	2025-08-01 21:45:08.276+00	2025-08-01 21:45:08.278+00	\N	\N	f	f	bullet
+96a690f0-6b75-40a2-bc6b-94e17419a077	a14442b0-9282-4efc-9df0-51d6374608d8	home	highImpact	\N	blue	\N	flex-row	\N	2025-07-27 20:53:08.677+00	home	t	2025-07-27 21:36:05.978+00	2025-07-27 20:48:06.623+00	draft	2025-07-27 21:36:05.978+00	2025-07-27 21:36:05.981+00	\N	\N	f	f	bullet
+ec2f0054-a44a-4dfe-b38c-2280a621a0df	a14442b0-9282-4efc-9df0-51d6374608d8	home	highImpact	\N	blue	\N	flex-row	\N	2025-07-27 20:53:08.677+00	home	t	2025-07-27 21:35:16.994+00	2025-07-27 20:48:06.623+00	published	2025-07-27 21:35:27.622+00	2025-07-27 21:35:27.625+00	\N	\N	f	f	bullet
+4389a3c7-2b44-4dda-b26c-b3db9aa06ea8	a14442b0-9282-4efc-9df0-51d6374608d8	home	highImpact	\N	blue	\N	flex-row	\N	2025-07-27 20:53:08.677+00	home	t	2025-07-27 21:34:27.615+00	2025-07-27 20:48:06.623+00	draft	2025-07-27 21:27:40.895+00	2025-07-27 21:34:27.738+00	\N	\N	f	t	bullet
+1aa29553-e446-407b-b3c0-5c37067f4c85	a14442b0-9282-4efc-9df0-51d6374608d8	home	highImpact	\N	blue	\N	flex-row	\N	2025-07-27 20:53:08.677+00	home	t	2025-07-27 21:27:00.235+00	2025-07-27 20:48:06.623+00	draft	2025-07-27 21:27:00.235+00	2025-07-27 21:27:00.237+00	\N	\N	f	f	bullet
+b710c38f-af35-4722-9c8f-279f18021757	a14442b0-9282-4efc-9df0-51d6374608d8	home	highImpact	\N	blue	\N	flex-row	\N	2025-07-27 20:53:08.677+00	home	t	2025-07-27 22:04:13.495+00	2025-07-27 20:48:06.623+00	draft	2025-07-27 22:04:04.679+00	2025-07-27 22:04:13.618+00	\N	\N	f	t	bullet
+df25eab2-1f33-408c-930f-d845fabe2a9a	a14442b0-9282-4efc-9df0-51d6374608d8	home	highImpact	\N	blue	\N	flex-row	\N	2025-07-27 20:53:08.677+00	home	t	2025-07-27 21:26:48.148+00	2025-07-27 20:48:06.623+00	draft	2025-07-27 21:07:27.966+00	2025-07-27 21:26:48.295+00	\N	\N	f	t	bullet
 \.
 
 
@@ -10747,6 +11287,7 @@ c3e0ac67-68ff-45a0-a95f-0bae5b004b85	742d2308-808d-4f0e-91f2-03d18be57d5c	about	
 COPY "public"."_pages_v_locales" ("version_hero_badge_label", "version_hero_rich_text", "version_hero_media_desktop_light_id", "version_hero_media_desktop_dark_id", "version_hero_logos_headline", "version_meta_title", "version_meta_image_id", "version_meta_description", "id", "_locale", "_parent_id", "version_hero_media_mobile_light_id", "version_hero_media_mobile_dark_id") FROM stdin;
 \N	\N	\N	\N	\N	\N	\N	\N	2	ar	bc46ad15-d597-4471-8111-07e803be8f94	\N	\N
 عن بلّورة	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h1", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "نظام التشغيل الجديد لتحسين ربحية المطاعم على تطبيقات التوصيل", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "سوق تطبيقات التوصيل غيّر طريقة عمل المطاعم. الطلبات صارت رقمية، المنافسة صارت يومية، والربحية صارت مرتبطة بقرارات تسويقية وتشغيلية معقّدة، كل ريال ينصرف على خصم أو إعلان أو عمولة يحتاج يشتغل بكفاءة.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "بلّورة منصة سعودية تساعد المطاعم على تحسين ربحيتها من تطبيقات التوصيل.. نربط بين الإعلانات، الفواتير، والطلبات في لوحة تحكم واحدة، ونوفّر أدوات عملية وتحليلات قابلة للتنفيذ، مبنية على بيانات فعلية، وتخاطب الواقع اليومي للمشغّل.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "أصحاب المطاعم يستخدمون بلّورة لاسترجاع التكاليف المهدرة، ضبط التسويق، واتخاذ قرارات تشغيلية أوضح.. ", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "المستثمرون يشوفون فرصة في بناء بنية تشغيلية جديدة لقطاع الأغذية الرقمي.. والمواهب تنضم لفريق يشتغل على منتج له أثر واضح في سوق مليان فرص، وبمنهجية واقعية", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}], "direction": "rtl"}}	\N	\N	\N	بلّورة – منصة ذكاء أعمال لقطاع التجزئة والمطاعم والمقاهي	\N	‏زد مبيعاتك، تنبأ بسلوكيات الطلب وقم بتحسين مؤشرات الأداء من خلال إتخاذ قرارات نمو تعتمد على البيانات باستخدام قوة تقنيات ذكاء الأعمال.	381	ar	39ed86c1-7622-472a-a921-06def66d1ca6	\N	\N
+\N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h1", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "عزز نموك على تطبيقات التوصيل", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "بلّورة تبسّط إدارة التسويق وتحسّن أداء المطاعم على تطبيقات التوصيل من خلال منصة واحدة لإدارة الحملات، تحسين الإنفاق الإعلاني، وزيادة الربحية، بشكل تلقائي وذكي", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}], "direction": "rtl"}}	5afde42d-6a3f-4d34-a6ba-6eca5caea614	\N	\N	بلّورة – منصة ذكاء أعمال لقطاع التجزئة والمطاعم والمقاهي	\N	‏زد مبيعاتك، تنبأ بسلوكيات الطلب وقم بتحسين مؤشرات الأداء من خلال إتخاذ قرارات نمو تعتمد على البيانات باستخدام قوة تقنيات ذكاء الأعمال.	386	ar	9f09b6d6-5dd1-4b72-b23f-90cd5c745e61	\N	\N
 \N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h1", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "عزز نموك على تطبيقات التوصيل", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "بلّورة تبسّط إدارة التسويق وتحسّن أداء المطاعم على تطبيقات التوصيل من خلال منصة واحدة لإدارة الحملات، تحسين الإنفاق الإعلاني، وزيادة الربحية، بشكل تلقائي وذكي", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}], "direction": "rtl"}}	5afde42d-6a3f-4d34-a6ba-6eca5caea614	\N	\N	\N	\N	\N	93	ar	df25eab2-1f33-408c-930f-d845fabe2a9a	\N	\N
 \N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h1", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "عزز نموك على تطبيقات التوصيل", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "بلّورة تبسّط إدارة التسويق وتحسّن أداء المطاعم على تطبيقات التوصيل من خلال منصة واحدة لإدارة الحملات، تحسين الإنفاق الإعلاني، وزيادة الربحية، بشكل تلقائي وذكي", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}], "direction": "rtl"}}	5afde42d-6a3f-4d34-a6ba-6eca5caea614	\N	\N	\N	\N	\N	94	ar	1aa29553-e446-407b-b3c0-5c37067f4c85	\N	\N
 \N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h1", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "عزز نموك على تطبيقات التوصيل", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "بلّورة تبسّط إدارة التسويق وتحسّن أداء المطاعم على تطبيقات التوصيل من خلال منصة واحدة لإدارة الحملات، تحسين الإنفاق الإعلاني، وزيادة الربحية، بشكل تلقائي وذكي", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}], "direction": "rtl"}}	5afde42d-6a3f-4d34-a6ba-6eca5caea614	\N	\N	\N	\N	\N	225	ar	b710c38f-af35-4722-9c8f-279f18021757	\N	\N
@@ -10768,6 +11309,7 @@ COPY "public"."_pages_v_locales" ("version_hero_badge_label", "version_hero_rich
 عن بلّورة	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h1", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "منصة تحسين الإيرادات الشاملة للمطاعم.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "بلّورة تجمع بياناتك من تطبيقات التوصيل ونقاط البيع، و تساعدك تطلق حملات فعّالة، تسترجع مبالغ التعويضات المفقودة، وتطوّر استراتيجية تشغيلية وإعلانية واضحة – من مكان واحد، وبدون أي تعقيد", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}], "direction": "rtl"}}	\N	\N	\N	\N	\N	\N	302	ar	0326068d-5498-4884-9909-417a1e302c9b	\N	\N
 عن بلّورة	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h1", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "نظام التشغيل الجديد لتحسين ربحية المطاعم على تطبيقات التوصيل", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "سوق تطبيقات التوصيل غيّر طريقة عمل المطاعم. الطلبات صارت رقمية، المنافسة صارت يومية، والربحية صارت مرتبطة بقرارات تسويقية وتشغيلية معقّدة، كل ريال ينصرف على خصم أو إعلان أو عمولة يحتاج يشتغل بكفاءة.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "بلّورة منصة سعودية تساعد المطاعم على تحسين ربحيتها من تطبيقات التوصيل.. نربط بين الإعلانات، الفواتير، والطلبات في لوحة تحكم واحدة، ونوفّر أدوات عملية وتحليلات قابلة للتنفيذ، مبنية على بيانات فعلية، وتخاطب الواقع اليومي للمشغّل.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "أصحاب المطاعم يستخدمون بلّورة لاسترجاع التكاليف المهدرة، ضبط التسويق، واتخاذ قرارات تشغيلية أوضح.. ", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "المستثمرون يشوفون فرصة في بناء بنية تشغيلية جديدة لقطاع الأغذية الرقمي.. والمواهب تنضم لفريق يشتغل على منتج له أثر واضح في سوق مليان فرص، وبمنهجية واقعية", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}], "direction": "rtl"}}	\N	\N	\N	بلّورة – منصة ذكاء أعمال لقطاع التجزئة والمطاعم والمقاهي	\N	‏زد مبيعاتك، تنبأ بسلوكيات الطلب وقم بتحسين مؤشرات الأداء من خلال إتخاذ قرارات نمو تعتمد على البيانات باستخدام قوة تقنيات ذكاء الأعمال.	350	ar	c20c2c0b-4fa6-45f3-acb3-34e06f115342	\N	\N
 \N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h1", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "عزز نموك على تطبيقات التوصيل", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "بلّورة تبسّط إدارة التسويق وتحسّن أداء المطاعم على تطبيقات التوصيل من خلال منصة واحدة لإدارة الحملات، تحسين الإنفاق الإعلاني، وزيادة الربحية، بشكل تلقائي وذكي", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}], "direction": "rtl"}}	5afde42d-6a3f-4d34-a6ba-6eca5caea614	\N	\N	\N	\N	\N	159	ar	5d7acef8-c5c7-41df-b43a-b0a7019f4c57	\N	\N
+\N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h1", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "عزز نموك على تطبيقات التوصيل", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "بلّورة تبسّط إدارة التسويق وتحسّن أداء المطاعم على تطبيقات التوصيل من خلال منصة واحدة لإدارة الحملات، تحسين الإنفاق الإعلاني، وزيادة الربحية، بشكل تلقائي وذكي", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}], "direction": "rtl"}}	5afde42d-6a3f-4d34-a6ba-6eca5caea614	\N	\N	بلّورة – منصة ذكاء أعمال لقطاع التجزئة والمطاعم والمقاهي	\N	‏زد مبيعاتك، تنبأ بسلوكيات الطلب وقم بتحسين مؤشرات الأداء من خلال إتخاذ قرارات نمو تعتمد على البيانات باستخدام قوة تقنيات ذكاء الأعمال.	385	ar	191829da-fed4-4378-835d-355bb725534e	\N	\N
 عن بلّورة	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h1", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "منصة تحسين الإيرادات الشاملة للمطاعم.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "بلّورة تجمع بياناتك من تطبيقات التوصيل ونقاط البيع، و تساعدك تطلق حملات فعّالة، تسترجع مبالغ التعويضات المفقودة، وتطوّر استراتيجية تشغيلية وإعلانية واضحة – من مكان واحد، وبدون أي تعقيد", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}], "direction": "rtl"}}	\N	\N	\N	بلّورة – منصة ذكاء أعمال لقطاع التجزئة والمطاعم والمقاهي	\N	‏زد مبيعاتك، تنبأ بسلوكيات الطلب وقم بتحسين مؤشرات الأداء من خلال إتخاذ قرارات نمو تعتمد على البيانات باستخدام قوة تقنيات ذكاء الأعمال.	305	ar	0184009f-30c7-4a91-970a-e632fdc5dd41	\N	\N
 عن بلّورة	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h1", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "منصة تحسين الإيرادات الشاملة للمطاعم.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "بلّورة تجمع بياناتك من تطبيقات التوصيل ونقاط البيع، و تساعدك تطلق حملات فعّالة، تسترجع مبالغ التعويضات المفقودة، وتطوّر استراتيجية تشغيلية وإعلانية واضحة – من مكان واحد، وبدون أي تعقيد", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}], "direction": "rtl"}}	\N	\N	\N	\N	\N	\N	252	ar	eb75a85f-8a75-4ada-b510-fbd186ded5fd	\N	\N
 \N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h1", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "عزز نموك على تطبيقات التوصيل", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "بلّورة تبسّط إدارة التسويق وتحسّن أداء المطاعم على تطبيقات التوصيل من خلال منصة واحدة لإدارة الحملات، تحسين الإنفاق الإعلاني، وزيادة الربحية، بشكل تلقائي وذكي", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}], "direction": "rtl"}}	5afde42d-6a3f-4d34-a6ba-6eca5caea614	\N	\N	\N	\N	\N	307	ar	abeae401-02ea-4a9d-bd80-73851afc2ffd	\N	\N
@@ -10778,7 +11320,12 @@ COPY "public"."_pages_v_locales" ("version_hero_badge_label", "version_hero_rich
 \N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h1", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "عزز نموك على تطبيقات التوصيل", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "بلّورة تبسّط إدارة التسويق وتحسّن أداء المطاعم على تطبيقات التوصيل من خلال منصة واحدة لإدارة الحملات، تحسين الإنفاق الإعلاني، وزيادة الربحية، بشكل تلقائي وذكي", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}], "direction": "rtl"}}	5afde42d-6a3f-4d34-a6ba-6eca5caea614	\N	\N	بلّورة – منصة ذكاء أعمال لقطاع التجزئة والمطاعم والمقاهي	\N	‏زد مبيعاتك، تنبأ بسلوكيات الطلب وقم بتحسين مؤشرات الأداء من خلال إتخاذ قرارات نمو تعتمد على البيانات باستخدام قوة تقنيات ذكاء الأعمال.	310	ar	70b04d51-b412-4e9d-95a4-7bf9fdd2a1c1	\N	\N
 \N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h1", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "عزز نموك على تطبيقات التوصيل", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "بلّورة تبسّط إدارة التسويق وتحسّن أداء المطاعم على تطبيقات التوصيل من خلال منصة واحدة لإدارة الحملات، تحسين الإنفاق الإعلاني، وزيادة الربحية، بشكل تلقائي وذكي", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}], "direction": "rtl"}}	5afde42d-6a3f-4d34-a6ba-6eca5caea614	\N	\N	\N	\N	\N	221	ar	41c60df7-54ab-4683-8983-1204117e7975	\N	\N
 \N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h1", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "عزز نموك على تطبيقات التوصيل", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "بلّورة تبسّط إدارة التسويق وتحسّن أداء المطاعم على تطبيقات التوصيل من خلال منصة واحدة لإدارة الحملات، تحسين الإنفاق الإعلاني، وزيادة الربحية، بشكل تلقائي وذكي", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}], "direction": "rtl"}}	5afde42d-6a3f-4d34-a6ba-6eca5caea614	\N	\N	\N	\N	\N	222	ar	deefcd27-f08b-46fa-8843-0703ff59e6cc	\N	\N
+\N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h1", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "عزز نموك على تطبيقات التوصيل", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "بلّورة تبسّط إدارة التسويق وتحسّن أداء المطاعم على تطبيقات التوصيل من خلال منصة واحدة لإدارة الحملات، تحسين الإنفاق الإعلاني، وزيادة الربحية، بشكل تلقائي وذكي", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}], "direction": "rtl"}}	5afde42d-6a3f-4d34-a6ba-6eca5caea614	\N	\N	بلّورة – منصة ذكاء أعمال لقطاع التجزئة والمطاعم والمقاهي	\N	‏زد مبيعاتك، تنبأ بسلوكيات الطلب وقم بتحسين مؤشرات الأداء من خلال إتخاذ قرارات نمو تعتمد على البيانات باستخدام قوة تقنيات ذكاء الأعمال.	387	ar	01fe3f95-b2e0-4adc-8e06-a37200de75b3	\N	\N
+عن بلّورة	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h1", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "نظام التشغيل الجديد لتحسين ربحية المطاعم على تطبيقات التوصيل", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "سوق تطبيقات التوصيل غيّر طريقة عمل المطاعم. الطلبات صارت رقمية، المنافسة صارت يومية، والربحية صارت مرتبطة بقرارات تسويقية وتشغيلية معقّدة، كل ريال ينصرف على خصم أو إعلان أو عمولة يحتاج يشتغل بكفاءة.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "بلّورة منصة سعودية تساعد المطاعم على تحسين ربحيتها من تطبيقات التوصيل.. نربط بين الإعلانات، الفواتير، والطلبات في لوحة تحكم واحدة، ونوفّر أدوات عملية وتحليلات قابلة للتنفيذ، مبنية على بيانات فعلية، وتخاطب الواقع اليومي للمشغّل.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "أصحاب المطاعم يستخدمون بلّورة لاسترجاع التكاليف المهدرة، ضبط التسويق، واتخاذ قرارات تشغيلية أوضح.. ", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "المستثمرون يشوفون فرصة في بناء بنية تشغيلية جديدة لقطاع الأغذية الرقمي.. والمواهب تنضم لفريق يشتغل على منتج له أثر واضح في سوق مليان فرص، وبمنهجية واقعية", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}], "direction": "rtl"}}	\N	\N	\N	بلّورة – منصة ذكاء أعمال لقطاع التجزئة والمطاعم والمقاهي	\N	‏زد مبيعاتك، تنبأ بسلوكيات الطلب وقم بتحسين مؤشرات الأداء من خلال إتخاذ قرارات نمو تعتمد على البيانات باستخدام قوة تقنيات ذكاء الأعمال.	413	ar	5a14f13d-26a1-40fe-af37-216b5bd0fe17	\N	\N
+\N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h1", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "عزز نموك على تطبيقات التوصيل", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "بلّورة تبسّط إدارة التسويق وتحسّن أداء المطاعم على تطبيقات التوصيل من خلال منصة واحدة لإدارة الحملات، تحسين الإنفاق الإعلاني، وزيادة الربحية، بشكل تلقائي وذكي", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}], "direction": "rtl"}}	5afde42d-6a3f-4d34-a6ba-6eca5caea614	\N	\N	بلّورة – منصة ذكاء أعمال لقطاع التجزئة والمطاعم والمقاهي	\N	‏زد مبيعاتك، تنبأ بسلوكيات الطلب وقم بتحسين مؤشرات الأداء من خلال إتخاذ قرارات نمو تعتمد على البيانات باستخدام قوة تقنيات ذكاء الأعمال.	414	ar	3b7333a2-daa5-498c-88e2-379fe5c31d7b	\N	\N
+\N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h1", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "عزز نموك على تطبيقات التوصيل", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "بلّورة تبسّط إدارة التسويق وتحسّن أداء المطاعم على تطبيقات التوصيل من خلال منصة واحدة لإدارة الحملات، تحسين الإنفاق الإعلاني، وزيادة الربحية، بشكل تلقائي وذكي", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}], "direction": "rtl"}}	5afde42d-6a3f-4d34-a6ba-6eca5caea614	\N	\N	بلّورة – منصة ذكاء أعمال لقطاع التجزئة والمطاعم والمقاهي	\N	‏زد مبيعاتك، تنبأ بسلوكيات الطلب وقم بتحسين مؤشرات الأداء من خلال إتخاذ قرارات نمو تعتمد على البيانات باستخدام قوة تقنيات ذكاء الأعمال.	415	ar	67aa8e57-e509-4c57-b165-2c5bfd47d94f	\N	\N
 \N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h1", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "تحت المجهر: الاتجاهات والرؤى في قطاع المأكولات والمطاعم", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "أدلة قابلة للتنفيذ، ونصائح مدعومة بالبيانات، وقصص من العالم الحقيقي لمساعدتك في إدارة عملك الغذائي بشكل أكثر سلاسة وربحية - من عمليات المطبخ إلى تطبيقات التوصيل.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}], "direction": "rtl"}}	\N	\N	\N	\N	\N	\N	322	ar	1e3d46fa-61b7-41fd-911c-46d1119016a1	\N	\N
+عن بلّورة	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h1", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "نظام التشغيل الجديد لتحسين ربحية المطاعم على تطبيقات التوصيل", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "سوق تطبيقات التوصيل غيّر طريقة عمل المطاعم. الطلبات صارت رقمية، المنافسة صارت يومية، والربحية صارت مرتبطة بقرارات تسويقية وتشغيلية معقّدة، كل ريال ينصرف على خصم أو إعلان أو عمولة يحتاج يشتغل بكفاءة.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "بلّورة منصة سعودية تساعد المطاعم على تحسين ربحيتها من تطبيقات التوصيل.. نربط بين الإعلانات، الفواتير، والطلبات في لوحة تحكم واحدة، ونوفّر أدوات عملية وتحليلات قابلة للتنفيذ، مبنية على بيانات فعلية، وتخاطب الواقع اليومي للمشغّل.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "أصحاب المطاعم يستخدمون بلّورة لاسترجاع التكاليف المهدرة، ضبط التسويق، واتخاذ قرارات تشغيلية أوضح.. ", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "المستثمرون يشوفون فرصة في بناء بنية تشغيلية جديدة لقطاع الأغذية الرقمي.. والمواهب تنضم لفريق يشتغل على منتج له أثر واضح في سوق مليان فرص، وبمنهجية واقعية", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}], "direction": "rtl"}}	\N	\N	\N	بلّورة – منصة ذكاء أعمال لقطاع التجزئة والمطاعم والمقاهي	\N	‏زد مبيعاتك، تنبأ بسلوكيات الطلب وقم بتحسين مؤشرات الأداء من خلال إتخاذ قرارات نمو تعتمد على البيانات باستخدام قوة تقنيات ذكاء الأعمال.	412	ar	5cf29f02-25c3-4b24-b574-1aadab774686	\N	\N
 \N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h1", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "تحت المجهر: الاتجاهات والرؤى في قطاع المأكولات والمطاعم", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "أدلة قابلة للتنفيذ، ونصائح مدعومة بالبيانات، وقصص من العالم الحقيقي لمساعدتك في إدارة عملك الغذائي بشكل أكثر سلاسة وربحية - من عمليات المطبخ إلى تطبيقات التوصيل.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}], "direction": "rtl"}}	\N	\N	\N	\N	\N	\N	321	ar	141da744-820e-4f89-95f2-db68ef29930a	\N	\N
 عن بلّورة	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h1", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "منصة تحسين الإيرادات الشاملة للمطاعم.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "بلّورة تجمع بياناتك من تطبيقات التوصيل ونقاط البيع، و تساعدك تطلق حملات فعّالة، تسترجع مبالغ التعويضات المفقودة، وتطوّر استراتيجية تشغيلية وإعلانية واضحة – من مكان واحد، وبدون أي تعقيد", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}], "direction": "rtl"}}	\N	\N	\N	بلّورة – منصة ذكاء أعمال لقطاع التجزئة والمطاعم والمقاهي	\N	‏زد مبيعاتك، تنبأ بسلوكيات الطلب وقم بتحسين مؤشرات الأداء من خلال إتخاذ قرارات نمو تعتمد على البيانات باستخدام قوة تقنيات ذكاء الأعمال.	330	ar	5daad5c5-875d-4b1a-a149-104e6386d7e1	\N	\N
 عن بلّورة	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h1", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "منصة تحسين الإيرادات الشاملة للمطاعم.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "بلّورة تجمع بياناتك من تطبيقات التوصيل ونقاط البيع، و تساعدك تطلق حملات فعّالة، تسترجع مبالغ التعويضات المفقودة، وتطوّر استراتيجية تشغيلية وإعلانية واضحة – من مكان واحد، وبدون أي تعقيد", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}], "direction": "rtl"}}	\N	\N	\N	بلّورة – منصة ذكاء أعمال لقطاع التجزئة والمطاعم والمقاهي	\N	‏زد مبيعاتك، تنبأ بسلوكيات الطلب وقم بتحسين مؤشرات الأداء من خلال إتخاذ قرارات نمو تعتمد على البيانات باستخدام قوة تقنيات ذكاء الأعمال.	331	ar	c21624fa-2468-4a75-81c3-2e915c43ea04	\N	\N
@@ -10789,11 +11336,15 @@ COPY "public"."_pages_v_locales" ("version_hero_badge_label", "version_hero_rich
 عن بلّورة	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h1", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "منصة تحسين الإيرادات الشاملة للمطاعم.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "بلّورة تجمع بياناتك من تطبيقات التوصيل ونقاط البيع، و تساعدك تطلق حملات فعّالة، تسترجع مبالغ التعويضات المفقودة، وتطوّر استراتيجية تشغيلية وإعلانية واضحة – من مكان واحد، وبدون أي تعقيد", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}], "direction": "rtl"}}	\N	\N	\N	بلّورة – منصة ذكاء أعمال لقطاع التجزئة والمطاعم والمقاهي	\N	‏زد مبيعاتك، تنبأ بسلوكيات الطلب وقم بتحسين مؤشرات الأداء من خلال إتخاذ قرارات نمو تعتمد على البيانات باستخدام قوة تقنيات ذكاء الأعمال.	333	ar	a97e39c7-1ff9-4ab6-8ff7-a5a7fe85b1ca	\N	\N
 عن بلّورة	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h1", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "نظام التشغيل الجديد لتحسين ربحية المطاعم على تطبيقات التوصيل", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "سوق تطبيقات التوصيل غيّر طريقة عمل المطاعم. الطلبات صارت رقمية، المنافسة صارت يومية، والربحية صارت مرتبطة بقرارات تسويقية وتشغيلية معقّدة، كل ريال ينصرف على خصم أو إعلان أو عمولة يحتاج يشتغل بكفاءة.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "بلّورة منصة سعودية تساعد المطاعم على تحسين ربحيتها من تطبيقات التوصيل.. نربط بين الإعلانات، الفواتير، والطلبات في لوحة تحكم واحدة، ونوفّر أدوات عملية وتحليلات قابلة للتنفيذ، مبنية على بيانات فعلية، وتخاطب الواقع اليومي للمشغّل.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "أصحاب المطاعم يستخدمون بلّورة لاسترجاع التكاليف المهدرة، ضبط التسويق، واتخاذ قرارات تشغيلية أوضح.. ", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "المستثمرون يشوفون فرصة في بناء بنية تشغيلية جديدة لقطاع الأغذية الرقمي.. والمواهب تنضم لفريق يشتغل على منتج له أثر واضح في سوق مليان فرص، وبمنهجية واقعية", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}], "direction": "rtl"}}	\N	\N	\N	بلّورة – منصة ذكاء أعمال لقطاع التجزئة والمطاعم والمقاهي	\N	‏زد مبيعاتك، تنبأ بسلوكيات الطلب وقم بتحسين مؤشرات الأداء من خلال إتخاذ قرارات نمو تعتمد على البيانات باستخدام قوة تقنيات ذكاء الأعمال.	352	ar	57ff426a-9250-4471-94f7-2ce9173606fa	\N	\N
 عن بلّورة	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h1", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "نظام التشغيل الجديد لتحسين ربحية المطاعم على تطبيقات التوصيل", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "سوق تطبيقات التوصيل غيّر طريقة عمل المطاعم. الطلبات صارت رقمية، المنافسة صارت يومية، والربحية صارت مرتبطة بقرارات تسويقية وتشغيلية معقّدة، كل ريال ينصرف على خصم أو إعلان أو عمولة يحتاج يشتغل بكفاءة.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "بلّورة منصة سعودية تساعد المطاعم على تحسين ربحيتها من تطبيقات التوصيل.. نربط بين الإعلانات، الفواتير، والطلبات في لوحة تحكم واحدة، ونوفّر أدوات عملية وتحليلات قابلة للتنفيذ، مبنية على بيانات فعلية، وتخاطب الواقع اليومي للمشغّل.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "أصحاب المطاعم يستخدمون بلّورة لاسترجاع التكاليف المهدرة، ضبط التسويق، واتخاذ قرارات تشغيلية أوضح.. ", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "المستثمرون يشوفون فرصة في بناء بنية تشغيلية جديدة لقطاع الأغذية الرقمي.. والمواهب تنضم لفريق يشتغل على منتج له أثر واضح في سوق مليان فرص، وبمنهجية واقعية", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}], "direction": "rtl"}}	\N	\N	\N	بلّورة – منصة ذكاء أعمال لقطاع التجزئة والمطاعم والمقاهي	\N	‏زد مبيعاتك، تنبأ بسلوكيات الطلب وقم بتحسين مؤشرات الأداء من خلال إتخاذ قرارات نمو تعتمد على البيانات باستخدام قوة تقنيات ذكاء الأعمال.	355	ar	42c8f4e2-6b54-4c96-9da9-672741e82033	\N	\N
+\N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h1", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "عزز نموك على تطبيقات التوصيل", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "بلّورة تبسّط إدارة التسويق وتحسّن أداء المطاعم على تطبيقات التوصيل من خلال منصة واحدة لإدارة الحملات، تحسين الإنفاق الإعلاني، وزيادة الربحية، بشكل تلقائي وذكي", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}], "direction": "rtl"}}	5afde42d-6a3f-4d34-a6ba-6eca5caea614	\N	\N	بلّورة – منصة ذكاء أعمال لقطاع التجزئة والمطاعم والمقاهي	\N	‏زد مبيعاتك، تنبأ بسلوكيات الطلب وقم بتحسين مؤشرات الأداء من خلال إتخاذ قرارات نمو تعتمد على البيانات باستخدام قوة تقنيات ذكاء الأعمال.	431	ar	be9c7e75-dc9a-4619-8a8e-5ef58c098864	\N	\N
 عن بلّورة	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h1", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "نظام التشغيل الجديد لتحسين ربحية المطاعم على تطبيقات التوصيل", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "سوق تطبيقات التوصيل غيّر طريقة عمل المطاعم. الطلبات صارت رقمية، المنافسة صارت يومية، والربحية صارت مرتبطة بقرارات تسويقية وتشغيلية معقّدة، كل ريال ينصرف على خصم أو إعلان أو عمولة يحتاج يشتغل بكفاءة.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "بلّورة منصة سعودية تساعد المطاعم على تحسين ربحيتها من تطبيقات التوصيل.. نربط بين الإعلانات، الفواتير، والطلبات في لوحة تحكم واحدة، ونوفّر أدوات عملية وتحليلات قابلة للتنفيذ، مبنية على بيانات فعلية، وتخاطب الواقع اليومي للمشغّل.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "أصحاب المطاعم يستخدمون بلّورة لاسترجاع التكاليف المهدرة، ضبط التسويق، واتخاذ قرارات تشغيلية أوضح.. ", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "المستثمرون يشوفون فرصة في بناء بنية تشغيلية جديدة لقطاع الأغذية الرقمي.. والمواهب تنضم لفريق يشتغل على منتج له أثر واضح في سوق مليان فرص، وبمنهجية واقعية", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}], "direction": "rtl"}}	\N	\N	\N	بلّورة – منصة ذكاء أعمال لقطاع التجزئة والمطاعم والمقاهي	\N	‏زد مبيعاتك، تنبأ بسلوكيات الطلب وقم بتحسين مؤشرات الأداء من خلال إتخاذ قرارات نمو تعتمد على البيانات باستخدام قوة تقنيات ذكاء الأعمال.	359	ar	c3e0ac67-68ff-45a0-a95f-0bae5b004b85	\N	\N
 عن بلّورة	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h1", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "نظام التشغيل الجديد لتحسين ربحية المطاعم على تطبيقات التوصيل", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "سوق تطبيقات التوصيل غيّر طريقة عمل المطاعم. الطلبات صارت رقمية، المنافسة صارت يومية، والربحية صارت مرتبطة بقرارات تسويقية وتشغيلية معقّدة، كل ريال ينصرف على خصم أو إعلان أو عمولة يحتاج يشتغل بكفاءة.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "بلّورة منصة سعودية تساعد المطاعم على تحسين ربحيتها من تطبيقات التوصيل.. نربط بين الإعلانات، الفواتير، والطلبات في لوحة تحكم واحدة، ونوفّر أدوات عملية وتحليلات قابلة للتنفيذ، مبنية على بيانات فعلية، وتخاطب الواقع اليومي للمشغّل.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "أصحاب المطاعم يستخدمون بلّورة لاسترجاع التكاليف المهدرة، ضبط التسويق، واتخاذ قرارات تشغيلية أوضح.. ", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "المستثمرون يشوفون فرصة في بناء بنية تشغيلية جديدة لقطاع الأغذية الرقمي.. والمواهب تنضم لفريق يشتغل على منتج له أثر واضح في سوق مليان فرص، وبمنهجية واقعية", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}], "direction": "rtl"}}	\N	\N	\N	بلّورة – منصة ذكاء أعمال لقطاع التجزئة والمطاعم والمقاهي	\N	‏زد مبيعاتك، تنبأ بسلوكيات الطلب وقم بتحسين مؤشرات الأداء من خلال إتخاذ قرارات نمو تعتمد على البيانات باستخدام قوة تقنيات ذكاء الأعمال.	360	ar	2522dd02-3c88-4d0f-8f54-000c6331c042	\N	\N
 عن بلّورة	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h1", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "نظام التشغيل الجديد لتحسين ربحية المطاعم على تطبيقات التوصيل", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "سوق تطبيقات التوصيل غيّر طريقة عمل المطاعم. الطلبات صارت رقمية، المنافسة صارت يومية، والربحية صارت مرتبطة بقرارات تسويقية وتشغيلية معقّدة، كل ريال ينصرف على خصم أو إعلان أو عمولة يحتاج يشتغل بكفاءة.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "بلّورة منصة سعودية تساعد المطاعم على تحسين ربحيتها من تطبيقات التوصيل.. نربط بين الإعلانات، الفواتير، والطلبات في لوحة تحكم واحدة، ونوفّر أدوات عملية وتحليلات قابلة للتنفيذ، مبنية على بيانات فعلية، وتخاطب الواقع اليومي للمشغّل.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "أصحاب المطاعم يستخدمون بلّورة لاسترجاع التكاليف المهدرة، ضبط التسويق، واتخاذ قرارات تشغيلية أوضح.. ", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "المستثمرون يشوفون فرصة في بناء بنية تشغيلية جديدة لقطاع الأغذية الرقمي.. والمواهب تنضم لفريق يشتغل على منتج له أثر واضح في سوق مليان فرص، وبمنهجية واقعية", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}], "direction": "rtl"}}	\N	\N	\N	بلّورة – منصة ذكاء أعمال لقطاع التجزئة والمطاعم والمقاهي	\N	‏زد مبيعاتك، تنبأ بسلوكيات الطلب وقم بتحسين مؤشرات الأداء من خلال إتخاذ قرارات نمو تعتمد على البيانات باستخدام قوة تقنيات ذكاء الأعمال.	373	ar	9907622f-51f6-4107-b865-5f8fa357f96c	\N	\N
 عن بلّورة	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h1", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "نظام التشغيل الجديد لتحسين ربحية المطاعم على تطبيقات التوصيل", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "سوق تطبيقات التوصيل غيّر طريقة عمل المطاعم. الطلبات صارت رقمية، المنافسة صارت يومية، والربحية صارت مرتبطة بقرارات تسويقية وتشغيلية معقّدة، كل ريال ينصرف على خصم أو إعلان أو عمولة يحتاج يشتغل بكفاءة.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "بلّورة منصة سعودية تساعد المطاعم على تحسين ربحيتها من تطبيقات التوصيل.. نربط بين الإعلانات، الفواتير، والطلبات في لوحة تحكم واحدة، ونوفّر أدوات عملية وتحليلات قابلة للتنفيذ، مبنية على بيانات فعلية، وتخاطب الواقع اليومي للمشغّل.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "أصحاب المطاعم يستخدمون بلّورة لاسترجاع التكاليف المهدرة، ضبط التسويق، واتخاذ قرارات تشغيلية أوضح.. ", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "المستثمرون يشوفون فرصة في بناء بنية تشغيلية جديدة لقطاع الأغذية الرقمي.. والمواهب تنضم لفريق يشتغل على منتج له أثر واضح في سوق مليان فرص، وبمنهجية واقعية", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}], "direction": "rtl"}}	\N	\N	\N	بلّورة – منصة ذكاء أعمال لقطاع التجزئة والمطاعم والمقاهي	\N	‏زد مبيعاتك، تنبأ بسلوكيات الطلب وقم بتحسين مؤشرات الأداء من خلال إتخاذ قرارات نمو تعتمد على البيانات باستخدام قوة تقنيات ذكاء الأعمال.	374	ar	274a0b43-8c00-4a28-aa9e-f2d70144f72e	\N	\N
 عن بلّورة	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h1", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "نظام التشغيل الجديد لتحسين ربحية المطاعم على تطبيقات التوصيل", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "سوق تطبيقات التوصيل غيّر طريقة عمل المطاعم. الطلبات صارت رقمية، المنافسة صارت يومية، والربحية صارت مرتبطة بقرارات تسويقية وتشغيلية معقّدة، كل ريال ينصرف على خصم أو إعلان أو عمولة يحتاج يشتغل بكفاءة.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "بلّورة منصة سعودية تساعد المطاعم على تحسين ربحيتها من تطبيقات التوصيل.. نربط بين الإعلانات، الفواتير، والطلبات في لوحة تحكم واحدة، ونوفّر أدوات عملية وتحليلات قابلة للتنفيذ، مبنية على بيانات فعلية، وتخاطب الواقع اليومي للمشغّل.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "أصحاب المطاعم يستخدمون بلّورة لاسترجاع التكاليف المهدرة، ضبط التسويق، واتخاذ قرارات تشغيلية أوضح.. ", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "المستثمرون يشوفون فرصة في بناء بنية تشغيلية جديدة لقطاع الأغذية الرقمي.. والمواهب تنضم لفريق يشتغل على منتج له أثر واضح في سوق مليان فرص، وبمنهجية واقعية", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}], "direction": "rtl"}}	\N	\N	\N	بلّورة – منصة ذكاء أعمال لقطاع التجزئة والمطاعم والمقاهي	\N	‏زد مبيعاتك، تنبأ بسلوكيات الطلب وقم بتحسين مؤشرات الأداء من خلال إتخاذ قرارات نمو تعتمد على البيانات باستخدام قوة تقنيات ذكاء الأعمال.	375	ar	dbf959bb-8af9-427b-9320-f4aeb0536d2c	\N	\N
+\N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h1", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "عزز نموك على تطبيقات التوصيل", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "بلّورة تبسّط إدارة التسويق وتحسّن أداء المطاعم على تطبيقات التوصيل من خلال منصة واحدة لإدارة الحملات، تحسين الإنفاق الإعلاني، وزيادة الربحية، بشكل تلقائي وذكي", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}], "direction": "rtl"}}	5afde42d-6a3f-4d34-a6ba-6eca5caea614	\N	\N	بلّورة – منصة ذكاء أعمال لقطاع التجزئة والمطاعم والمقاهي	\N	‏زد مبيعاتك، تنبأ بسلوكيات الطلب وقم بتحسين مؤشرات الأداء من خلال إتخاذ قرارات نمو تعتمد على البيانات باستخدام قوة تقنيات ذكاء الأعمال.	432	ar	475931ac-474c-47ac-a1ba-e14920a6ebb8	\N	\N
+\N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h1", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "عزز نموك على تطبيقات التوصيل", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "بلّورة تبسّط إدارة التسويق وتحسّن أداء المطاعم على تطبيقات التوصيل من خلال منصة واحدة لإدارة الحملات، تحسين الإنفاق الإعلاني، وزيادة الربحية، بشكل تلقائي وذكي", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}], "direction": "rtl"}}	5afde42d-6a3f-4d34-a6ba-6eca5caea614	\N	\N	بلّورة – منصة ذكاء أعمال لقطاع التجزئة والمطاعم والمقاهي	\N	‏زد مبيعاتك، تنبأ بسلوكيات الطلب وقم بتحسين مؤشرات الأداء من خلال إتخاذ قرارات نمو تعتمد على البيانات باستخدام قوة تقنيات ذكاء الأعمال.	433	ar	df9022a7-63b1-4017-b716-518f2d69d9c2	\N	\N
+\N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h1", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "عزز نموك على تطبيقات التوصيل", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "بلّورة تبسّط إدارة التسويق وتحسّن أداء المطاعم على تطبيقات التوصيل من خلال منصة واحدة لإدارة الحملات، تحسين الإنفاق الإعلاني، وزيادة الربحية، بشكل تلقائي وذكي", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}], "direction": "rtl"}}	5afde42d-6a3f-4d34-a6ba-6eca5caea614	\N	\N	بلّورة – منصة ذكاء أعمال لقطاع التجزئة والمطاعم والمقاهي	\N	‏زد مبيعاتك، تنبأ بسلوكيات الطلب وقم بتحسين مؤشرات الأداء من خلال إتخاذ قرارات نمو تعتمد على البيانات باستخدام قوة تقنيات ذكاء الأعمال.	434	ar	57af9290-93a8-46d6-8475-65260fba9301	\N	\N
 \.
 
 
@@ -10802,6 +11353,8 @@ COPY "public"."_pages_v_locales" ("version_hero_badge_label", "version_hero_rich
 --
 
 COPY "public"."_pages_v_rels" ("id", "order", "parent_id", "path", "locale", "pages_id", "blog_posts_id", "media_id", "categories_id", "faq_id", "customers_id") FROM stdin;
+797	1	df9022a7-63b1-4017-b716-518f2d69d9c2	version.layout.1.logos	\N	\N	\N	513d34fb-5dbc-4333-b0ab-af8e3756cc8a	\N	\N	\N
+798	2	df9022a7-63b1-4017-b716-518f2d69d9c2	version.layout.1.logos	\N	\N	\N	92890105-dde4-4c79-acac-d81ad6dd978a	\N	\N	\N
 376	1	41c60df7-54ab-4683-8983-1204117e7975	version.layout.1.logos	\N	\N	\N	513d34fb-5dbc-4333-b0ab-af8e3756cc8a	\N	\N	\N
 377	2	41c60df7-54ab-4683-8983-1204117e7975	version.layout.1.logos	\N	\N	\N	92890105-dde4-4c79-acac-d81ad6dd978a	\N	\N	\N
 378	1	41c60df7-54ab-4683-8983-1204117e7975	version.layout.2.selectedTestimonials	\N	\N	\N	\N	\N	\N	b440e19a-7d00-487a-9927-d384dee97e22
@@ -10879,10 +11432,60 @@ COPY "public"."_pages_v_rels" ("id", "order", "parent_id", "path", "locale", "pa
 453	2	a97e39c7-1ff9-4ab6-8ff7-a5a7fe85b1ca	version.layout.5.logos	\N	\N	\N	513d34fb-5dbc-4333-b0ab-af8e3756cc8a	\N	\N	\N
 498	1	0f74cab3-d27d-472e-b2eb-35ab19e69c72	version.layout.5.logos	\N	\N	\N	92890105-dde4-4c79-acac-d81ad6dd978a	\N	\N	\N
 499	2	0f74cab3-d27d-472e-b2eb-35ab19e69c72	version.layout.5.logos	\N	\N	\N	513d34fb-5dbc-4333-b0ab-af8e3756cc8a	\N	\N	\N
+799	1	df9022a7-63b1-4017-b716-518f2d69d9c2	version.layout.2.selectedTestimonials	\N	\N	\N	\N	\N	\N	b440e19a-7d00-487a-9927-d384dee97e22
+800	1	df9022a7-63b1-4017-b716-518f2d69d9c2	version.layout.6.selectedTestimonials	\N	\N	\N	\N	\N	\N	ad1d03ad-f60b-4f83-90c2-d456f1fbaf21
+801	1	df9022a7-63b1-4017-b716-518f2d69d9c2	version.layout.8.faqs	\N	\N	\N	\N	\N	487d16ef-4d7e-4603-885d-53d42734b0f1	\N
+802	2	df9022a7-63b1-4017-b716-518f2d69d9c2	version.layout.8.faqs	\N	\N	\N	\N	\N	2d37f238-e71e-4291-8919-33e4c7a73544	\N
+803	3	df9022a7-63b1-4017-b716-518f2d69d9c2	version.layout.8.faqs	\N	\N	\N	\N	\N	4696359a-45b8-4fea-b14f-ca34e928e5d0	\N
+804	4	df9022a7-63b1-4017-b716-518f2d69d9c2	version.layout.8.faqs	\N	\N	\N	\N	\N	0786b804-85ea-4269-841e-5f4fe762ada3	\N
+805	5	df9022a7-63b1-4017-b716-518f2d69d9c2	version.layout.8.faqs	\N	\N	\N	\N	\N	0ad17856-43c0-4ec9-bd88-c26f826dfb68	\N
+806	6	df9022a7-63b1-4017-b716-518f2d69d9c2	version.layout.8.faqs	\N	\N	\N	\N	\N	cf06eaf5-c215-44fc-82c2-a7696336ef41	\N
+807	1	57af9290-93a8-46d6-8475-65260fba9301	version.layout.1.logos	\N	\N	\N	513d34fb-5dbc-4333-b0ab-af8e3756cc8a	\N	\N	\N
+808	2	57af9290-93a8-46d6-8475-65260fba9301	version.layout.1.logos	\N	\N	\N	92890105-dde4-4c79-acac-d81ad6dd978a	\N	\N	\N
+809	1	57af9290-93a8-46d6-8475-65260fba9301	version.layout.2.selectedTestimonials	\N	\N	\N	\N	\N	\N	b440e19a-7d00-487a-9927-d384dee97e22
+810	1	57af9290-93a8-46d6-8475-65260fba9301	version.layout.6.selectedTestimonials	\N	\N	\N	\N	\N	\N	ad1d03ad-f60b-4f83-90c2-d456f1fbaf21
+811	1	57af9290-93a8-46d6-8475-65260fba9301	version.layout.8.faqs	\N	\N	\N	\N	\N	487d16ef-4d7e-4603-885d-53d42734b0f1	\N
+812	2	57af9290-93a8-46d6-8475-65260fba9301	version.layout.8.faqs	\N	\N	\N	\N	\N	2d37f238-e71e-4291-8919-33e4c7a73544	\N
+813	3	57af9290-93a8-46d6-8475-65260fba9301	version.layout.8.faqs	\N	\N	\N	\N	\N	4696359a-45b8-4fea-b14f-ca34e928e5d0	\N
+814	4	57af9290-93a8-46d6-8475-65260fba9301	version.layout.8.faqs	\N	\N	\N	\N	\N	0786b804-85ea-4269-841e-5f4fe762ada3	\N
+815	5	57af9290-93a8-46d6-8475-65260fba9301	version.layout.8.faqs	\N	\N	\N	\N	\N	0ad17856-43c0-4ec9-bd88-c26f826dfb68	\N
+816	6	57af9290-93a8-46d6-8475-65260fba9301	version.layout.8.faqs	\N	\N	\N	\N	\N	cf06eaf5-c215-44fc-82c2-a7696336ef41	\N
+622	1	5a14f13d-26a1-40fe-af37-216b5bd0fe17	version.layout.5.logos	\N	\N	\N	92890105-dde4-4c79-acac-d81ad6dd978a	\N	\N	\N
+623	2	5a14f13d-26a1-40fe-af37-216b5bd0fe17	version.layout.5.logos	\N	\N	\N	513d34fb-5dbc-4333-b0ab-af8e3756cc8a	\N	\N	\N
+777	1	be9c7e75-dc9a-4619-8a8e-5ef58c098864	version.layout.1.logos	\N	\N	\N	513d34fb-5dbc-4333-b0ab-af8e3756cc8a	\N	\N	\N
+778	2	be9c7e75-dc9a-4619-8a8e-5ef58c098864	version.layout.1.logos	\N	\N	\N	92890105-dde4-4c79-acac-d81ad6dd978a	\N	\N	\N
+779	1	be9c7e75-dc9a-4619-8a8e-5ef58c098864	version.layout.2.selectedTestimonials	\N	\N	\N	\N	\N	\N	b440e19a-7d00-487a-9927-d384dee97e22
+780	1	be9c7e75-dc9a-4619-8a8e-5ef58c098864	version.layout.6.selectedTestimonials	\N	\N	\N	\N	\N	\N	ad1d03ad-f60b-4f83-90c2-d456f1fbaf21
+781	1	be9c7e75-dc9a-4619-8a8e-5ef58c098864	version.layout.8.faqs	\N	\N	\N	\N	\N	487d16ef-4d7e-4603-885d-53d42734b0f1	\N
+782	2	be9c7e75-dc9a-4619-8a8e-5ef58c098864	version.layout.8.faqs	\N	\N	\N	\N	\N	2d37f238-e71e-4291-8919-33e4c7a73544	\N
+783	3	be9c7e75-dc9a-4619-8a8e-5ef58c098864	version.layout.8.faqs	\N	\N	\N	\N	\N	4696359a-45b8-4fea-b14f-ca34e928e5d0	\N
+784	4	be9c7e75-dc9a-4619-8a8e-5ef58c098864	version.layout.8.faqs	\N	\N	\N	\N	\N	0786b804-85ea-4269-841e-5f4fe762ada3	\N
+785	5	be9c7e75-dc9a-4619-8a8e-5ef58c098864	version.layout.8.faqs	\N	\N	\N	\N	\N	0ad17856-43c0-4ec9-bd88-c26f826dfb68	\N
+786	6	be9c7e75-dc9a-4619-8a8e-5ef58c098864	version.layout.8.faqs	\N	\N	\N	\N	\N	cf06eaf5-c215-44fc-82c2-a7696336ef41	\N
+787	1	475931ac-474c-47ac-a1ba-e14920a6ebb8	version.layout.1.logos	\N	\N	\N	513d34fb-5dbc-4333-b0ab-af8e3756cc8a	\N	\N	\N
+788	2	475931ac-474c-47ac-a1ba-e14920a6ebb8	version.layout.1.logos	\N	\N	\N	92890105-dde4-4c79-acac-d81ad6dd978a	\N	\N	\N
 504	1	c3e0ac67-68ff-45a0-a95f-0bae5b004b85	version.layout.5.logos	\N	\N	\N	92890105-dde4-4c79-acac-d81ad6dd978a	\N	\N	\N
 505	2	c3e0ac67-68ff-45a0-a95f-0bae5b004b85	version.layout.5.logos	\N	\N	\N	513d34fb-5dbc-4333-b0ab-af8e3756cc8a	\N	\N	\N
 506	1	2522dd02-3c88-4d0f-8f54-000c6331c042	version.layout.5.logos	\N	\N	\N	92890105-dde4-4c79-acac-d81ad6dd978a	\N	\N	\N
 507	2	2522dd02-3c88-4d0f-8f54-000c6331c042	version.layout.5.logos	\N	\N	\N	513d34fb-5dbc-4333-b0ab-af8e3756cc8a	\N	\N	\N
+789	1	475931ac-474c-47ac-a1ba-e14920a6ebb8	version.layout.2.selectedTestimonials	\N	\N	\N	\N	\N	\N	b440e19a-7d00-487a-9927-d384dee97e22
+790	1	475931ac-474c-47ac-a1ba-e14920a6ebb8	version.layout.6.selectedTestimonials	\N	\N	\N	\N	\N	\N	ad1d03ad-f60b-4f83-90c2-d456f1fbaf21
+791	1	475931ac-474c-47ac-a1ba-e14920a6ebb8	version.layout.8.faqs	\N	\N	\N	\N	\N	487d16ef-4d7e-4603-885d-53d42734b0f1	\N
+792	2	475931ac-474c-47ac-a1ba-e14920a6ebb8	version.layout.8.faqs	\N	\N	\N	\N	\N	2d37f238-e71e-4291-8919-33e4c7a73544	\N
+793	3	475931ac-474c-47ac-a1ba-e14920a6ebb8	version.layout.8.faqs	\N	\N	\N	\N	\N	4696359a-45b8-4fea-b14f-ca34e928e5d0	\N
+794	4	475931ac-474c-47ac-a1ba-e14920a6ebb8	version.layout.8.faqs	\N	\N	\N	\N	\N	0786b804-85ea-4269-841e-5f4fe762ada3	\N
+795	5	475931ac-474c-47ac-a1ba-e14920a6ebb8	version.layout.8.faqs	\N	\N	\N	\N	\N	0ad17856-43c0-4ec9-bd88-c26f826dfb68	\N
+796	6	475931ac-474c-47ac-a1ba-e14920a6ebb8	version.layout.8.faqs	\N	\N	\N	\N	\N	cf06eaf5-c215-44fc-82c2-a7696336ef41	\N
+620	1	5cf29f02-25c3-4b24-b574-1aadab774686	version.layout.5.logos	\N	\N	\N	92890105-dde4-4c79-acac-d81ad6dd978a	\N	\N	\N
+621	2	5cf29f02-25c3-4b24-b574-1aadab774686	version.layout.5.logos	\N	\N	\N	513d34fb-5dbc-4333-b0ab-af8e3756cc8a	\N	\N	\N
+624	1	3b7333a2-daa5-498c-88e2-379fe5c31d7b	version.layout.1.logos	\N	\N	\N	513d34fb-5dbc-4333-b0ab-af8e3756cc8a	\N	\N	\N
+625	2	3b7333a2-daa5-498c-88e2-379fe5c31d7b	version.layout.1.logos	\N	\N	\N	92890105-dde4-4c79-acac-d81ad6dd978a	\N	\N	\N
+626	1	3b7333a2-daa5-498c-88e2-379fe5c31d7b	version.layout.2.selectedTestimonials	\N	\N	\N	\N	\N	\N	b440e19a-7d00-487a-9927-d384dee97e22
+627	1	3b7333a2-daa5-498c-88e2-379fe5c31d7b	version.layout.6.selectedTestimonials	\N	\N	\N	\N	\N	\N	ad1d03ad-f60b-4f83-90c2-d456f1fbaf21
+628	1	67aa8e57-e509-4c57-b165-2c5bfd47d94f	version.layout.1.logos	\N	\N	\N	513d34fb-5dbc-4333-b0ab-af8e3756cc8a	\N	\N	\N
+629	2	67aa8e57-e509-4c57-b165-2c5bfd47d94f	version.layout.1.logos	\N	\N	\N	92890105-dde4-4c79-acac-d81ad6dd978a	\N	\N	\N
+630	1	67aa8e57-e509-4c57-b165-2c5bfd47d94f	version.layout.2.selectedTestimonials	\N	\N	\N	\N	\N	\N	b440e19a-7d00-487a-9927-d384dee97e22
+631	1	67aa8e57-e509-4c57-b165-2c5bfd47d94f	version.layout.6.selectedTestimonials	\N	\N	\N	\N	\N	\N	ad1d03ad-f60b-4f83-90c2-d456f1fbaf21
 532	1	9907622f-51f6-4107-b865-5f8fa357f96c	version.layout.5.logos	\N	\N	\N	92890105-dde4-4c79-acac-d81ad6dd978a	\N	\N	\N
 533	2	9907622f-51f6-4107-b865-5f8fa357f96c	version.layout.5.logos	\N	\N	\N	513d34fb-5dbc-4333-b0ab-af8e3756cc8a	\N	\N	\N
 534	1	274a0b43-8c00-4a28-aa9e-f2d70144f72e	version.layout.5.logos	\N	\N	\N	92890105-dde4-4c79-acac-d81ad6dd978a	\N	\N	\N
@@ -10893,6 +11496,18 @@ COPY "public"."_pages_v_rels" ("id", "order", "parent_id", "path", "locale", "pa
 549	2	39ed86c1-7622-472a-a921-06def66d1ca6	version.layout.5.logos	\N	\N	\N	513d34fb-5dbc-4333-b0ab-af8e3756cc8a	\N	\N	\N
 550	1	7cb3435f-1591-4a85-9538-1a329412829b	version.layout.5.logos	\N	\N	\N	92890105-dde4-4c79-acac-d81ad6dd978a	\N	\N	\N
 551	2	7cb3435f-1591-4a85-9538-1a329412829b	version.layout.5.logos	\N	\N	\N	513d34fb-5dbc-4333-b0ab-af8e3756cc8a	\N	\N	\N
+560	1	191829da-fed4-4378-835d-355bb725534e	version.layout.1.logos	\N	\N	\N	513d34fb-5dbc-4333-b0ab-af8e3756cc8a	\N	\N	\N
+561	2	191829da-fed4-4378-835d-355bb725534e	version.layout.1.logos	\N	\N	\N	92890105-dde4-4c79-acac-d81ad6dd978a	\N	\N	\N
+562	1	191829da-fed4-4378-835d-355bb725534e	version.layout.2.selectedTestimonials	\N	\N	\N	\N	\N	\N	b440e19a-7d00-487a-9927-d384dee97e22
+563	1	191829da-fed4-4378-835d-355bb725534e	version.layout.6.selectedTestimonials	\N	\N	\N	\N	\N	\N	ad1d03ad-f60b-4f83-90c2-d456f1fbaf21
+564	1	9f09b6d6-5dd1-4b72-b23f-90cd5c745e61	version.layout.1.logos	\N	\N	\N	513d34fb-5dbc-4333-b0ab-af8e3756cc8a	\N	\N	\N
+565	2	9f09b6d6-5dd1-4b72-b23f-90cd5c745e61	version.layout.1.logos	\N	\N	\N	92890105-dde4-4c79-acac-d81ad6dd978a	\N	\N	\N
+566	1	9f09b6d6-5dd1-4b72-b23f-90cd5c745e61	version.layout.2.selectedTestimonials	\N	\N	\N	\N	\N	\N	b440e19a-7d00-487a-9927-d384dee97e22
+567	1	9f09b6d6-5dd1-4b72-b23f-90cd5c745e61	version.layout.6.selectedTestimonials	\N	\N	\N	\N	\N	\N	ad1d03ad-f60b-4f83-90c2-d456f1fbaf21
+568	1	01fe3f95-b2e0-4adc-8e06-a37200de75b3	version.layout.1.logos	\N	\N	\N	513d34fb-5dbc-4333-b0ab-af8e3756cc8a	\N	\N	\N
+569	2	01fe3f95-b2e0-4adc-8e06-a37200de75b3	version.layout.1.logos	\N	\N	\N	92890105-dde4-4c79-acac-d81ad6dd978a	\N	\N	\N
+570	1	01fe3f95-b2e0-4adc-8e06-a37200de75b3	version.layout.2.selectedTestimonials	\N	\N	\N	\N	\N	\N	b440e19a-7d00-487a-9927-d384dee97e22
+571	1	01fe3f95-b2e0-4adc-8e06-a37200de75b3	version.layout.6.selectedTestimonials	\N	\N	\N	\N	\N	\N	ad1d03ad-f60b-4f83-90c2-d456f1fbaf21
 \.
 
 
@@ -10939,6 +11554,24 @@ COPY "public"."_pages_v_version_hero_links" ("_order", "_parent_id", "id", "link
 1	31b5ae11-e3c5-4e2b-b6a6-24aaabf8f28a	b05b4e45-3268-46c2-818c-73ec328cc2ce	custom	\N	/	neutral	primary	688693af73e9e43a4a6e3c03
 2	31b5ae11-e3c5-4e2b-b6a6-24aaabf8f28a	a6a786a0-a0e0-48d8-963b-f84e5bc184ef	custom	\N	/	neutral	ghost	688693c973e9e43a4a6e3c04
 2	96a690f0-6b75-40a2-bc6b-94e17419a077	ca6fc1e6-a7ea-4f8d-aa3d-754925525751	custom	\N	/	neutral	ghost	688693c973e9e43a4a6e3c04
+1	191829da-fed4-4378-835d-355bb725534e	f48f9571-2f80-4e01-b980-dbb8438130a1	custom	\N	/profit-calculator	neutral	primary	688693af73e9e43a4a6e3c03
+2	191829da-fed4-4378-835d-355bb725534e	9c99e0f3-593f-4f27-8622-60a9415c2502	custom	\N	/	neutral	ghost	688693c973e9e43a4a6e3c04
+1	9f09b6d6-5dd1-4b72-b23f-90cd5c745e61	1cc86a58-7108-4184-a233-356389c396b6	custom	\N	/profit-calculator	neutral	primary	688693af73e9e43a4a6e3c03
+2	9f09b6d6-5dd1-4b72-b23f-90cd5c745e61	fead06fc-1bf4-46ef-bc36-65980275ac1c	custom	\N	/	neutral	ghost	688693c973e9e43a4a6e3c04
+1	01fe3f95-b2e0-4adc-8e06-a37200de75b3	9f15c518-cfcd-40c0-a3e8-53f78bc3a902	custom	\N	/profit-calculator	neutral	primary	688693af73e9e43a4a6e3c03
+2	01fe3f95-b2e0-4adc-8e06-a37200de75b3	91f87a28-9ce9-4203-99b2-8bb36c047f50	custom	\N	/	neutral	ghost	688693c973e9e43a4a6e3c04
+1	3b7333a2-daa5-498c-88e2-379fe5c31d7b	3c62f49b-b4f5-4a90-94ed-7d998185e8eb	custom	\N	/profit-calculator	neutral	primary	688693af73e9e43a4a6e3c03
+2	3b7333a2-daa5-498c-88e2-379fe5c31d7b	0c1f8842-0254-4012-9d0c-997fb6167243	custom	\N	/	neutral	ghost	688693c973e9e43a4a6e3c04
+1	67aa8e57-e509-4c57-b165-2c5bfd47d94f	affea297-cf40-473e-8eaf-dfc492ac804d	custom	\N	/profit-calculator	neutral	primary	688693af73e9e43a4a6e3c03
+2	67aa8e57-e509-4c57-b165-2c5bfd47d94f	590edb97-0cc2-43a0-8cca-0f978015fbdf	custom	\N	/	neutral	ghost	688693c973e9e43a4a6e3c04
+1	be9c7e75-dc9a-4619-8a8e-5ef58c098864	b447ca1f-8e05-434d-8a5b-ccbf4374e136	custom	\N	/profit-calculator	neutral	primary	688693af73e9e43a4a6e3c03
+2	be9c7e75-dc9a-4619-8a8e-5ef58c098864	52fbea48-6cf6-4330-a99a-920d5e40a02e	custom	\N	/	neutral	ghost	688693c973e9e43a4a6e3c04
+1	475931ac-474c-47ac-a1ba-e14920a6ebb8	7895ccf9-ff48-400d-9ccb-3b476509e62f	custom	\N	/profit-calculator	neutral	primary	688693af73e9e43a4a6e3c03
+2	475931ac-474c-47ac-a1ba-e14920a6ebb8	aa041492-17a8-42f3-95da-aa3d3f0d197f	custom	\N	/	neutral	ghost	688693c973e9e43a4a6e3c04
+1	df9022a7-63b1-4017-b716-518f2d69d9c2	4680393d-35eb-4b81-9c8c-ad37a17ff311	custom	\N	/profit-calculator	neutral	primary	688693af73e9e43a4a6e3c03
+2	df9022a7-63b1-4017-b716-518f2d69d9c2	d7f9ae8e-1e79-4c0b-880a-ca5a75dee41d	custom	\N	/	neutral	ghost	688693c973e9e43a4a6e3c04
+1	57af9290-93a8-46d6-8475-65260fba9301	c6fc57f8-beb9-48ca-bf8a-cb331d8e99d9	custom	\N	/profit-calculator	neutral	primary	688693af73e9e43a4a6e3c03
+2	57af9290-93a8-46d6-8475-65260fba9301	1195aa47-034f-49e9-8626-3a0e7af2a734	custom	\N	/	neutral	ghost	688693c973e9e43a4a6e3c04
 \.
 
 
@@ -10985,6 +11618,64 @@ COPY "public"."_pages_v_version_hero_links_locales" ("link_label", "id", "_local
 إطلب عرض تجريبي	221	ar	bd1aacd0-a03c-4d48-99cc-33053f9c4912
 جرب حاسبة الربحية	222	ar	e1330004-dc74-4e27-9ae7-e20878284456
 إطلب عرض تجريبي	223	ar	ca6fc1e6-a7ea-4f8d-aa3d-754925525751
+جرب حاسبة الربحية	402	ar	f48f9571-2f80-4e01-b980-dbb8438130a1
+إطلب عرض تجريبي	403	ar	9c99e0f3-593f-4f27-8622-60a9415c2502
+جرب حاسبة الربحية	404	ar	1cc86a58-7108-4184-a233-356389c396b6
+إطلب عرض تجريبي	405	ar	fead06fc-1bf4-46ef-bc36-65980275ac1c
+جرب حاسبة الربحية	406	ar	9f15c518-cfcd-40c0-a3e8-53f78bc3a902
+إطلب عرض تجريبي	407	ar	91f87a28-9ce9-4203-99b2-8bb36c047f50
+جرب حاسبة الربحية	408	ar	3c62f49b-b4f5-4a90-94ed-7d998185e8eb
+إطلب عرض تجريبي	409	ar	0c1f8842-0254-4012-9d0c-997fb6167243
+جرب حاسبة الربحية	410	ar	affea297-cf40-473e-8eaf-dfc492ac804d
+إطلب عرض تجريبي	411	ar	590edb97-0cc2-43a0-8cca-0f978015fbdf
+جرب حاسبة الربحية	442	ar	b447ca1f-8e05-434d-8a5b-ccbf4374e136
+إطلب عرض تجريبي	443	ar	52fbea48-6cf6-4330-a99a-920d5e40a02e
+جرب حاسبة الربحية	444	ar	7895ccf9-ff48-400d-9ccb-3b476509e62f
+إطلب عرض تجريبي	445	ar	aa041492-17a8-42f3-95da-aa3d3f0d197f
+جرب حاسبة الربحية	446	ar	4680393d-35eb-4b81-9c8c-ad37a17ff311
+إطلب عرض تجريبي	447	ar	d7f9ae8e-1e79-4c0b-880a-ca5a75dee41d
+جرب حاسبة الربحية	448	ar	c6fc57f8-beb9-48ca-bf8a-cb331d8e99d9
+إطلب عرض تجريبي	449	ar	1195aa47-034f-49e9-8626-3a0e7af2a734
+\.
+
+
+--
+-- Data for Name: _pages_v_version_hero_list_items; Type: TABLE DATA; Schema: public; Owner: -
+--
+
+COPY "public"."_pages_v_version_hero_list_items" ("_order", "_parent_id", "id", "icon", "_uuid") FROM stdin;
+1	be9c7e75-dc9a-4619-8a8e-5ef58c098864	07e249ac-3c3c-4c14-aed7-a9e24fb5c51f	checkbox-circle-line	688f18d4c8a1d504079d0ee6
+2	be9c7e75-dc9a-4619-8a8e-5ef58c098864	8e3c6b78-ddc9-4f98-a5f3-46ed57e3b431	checkbox-circle-line	688f18edc8a1d504079d0eeb
+3	be9c7e75-dc9a-4619-8a8e-5ef58c098864	9cf3d801-b406-45a5-a6a1-0e5ced93c214	checkbox-circle-line	688f18ebc8a1d504079d0ee8
+1	475931ac-474c-47ac-a1ba-e14920a6ebb8	d69a4eab-ce9c-484c-add3-ddf7a005b691	checkbox-circle-line	688f18d4c8a1d504079d0ee6
+2	475931ac-474c-47ac-a1ba-e14920a6ebb8	3686da60-685e-47b0-b532-72ec8e710589	checkbox-circle-line	688f18edc8a1d504079d0eeb
+3	475931ac-474c-47ac-a1ba-e14920a6ebb8	2299401a-29d7-4f3f-a7b7-0220568d3ffc	checkbox-circle-line	688f18ebc8a1d504079d0ee8
+1	df9022a7-63b1-4017-b716-518f2d69d9c2	4d606c99-f1df-45ac-8dd0-bf93104e22d6	checkbox-circle-line	688f18d4c8a1d504079d0ee6
+2	df9022a7-63b1-4017-b716-518f2d69d9c2	c9915182-5fed-4e32-833e-1ec69592857a	checkbox-circle-line	688f18edc8a1d504079d0eeb
+3	df9022a7-63b1-4017-b716-518f2d69d9c2	2181970e-9450-45af-a23f-76bc9e1dc2b9	checkbox-circle-line	688f18ebc8a1d504079d0ee8
+1	57af9290-93a8-46d6-8475-65260fba9301	293600c1-6924-41fb-9300-353a5868f4ca	checkbox-circle-line	688f18d4c8a1d504079d0ee6
+2	57af9290-93a8-46d6-8475-65260fba9301	24e80880-ae8a-453e-8b44-2e2ec7e78660	checkbox-circle-line	688f18edc8a1d504079d0eeb
+3	57af9290-93a8-46d6-8475-65260fba9301	903d47a5-115b-48a9-b9a9-734544068474	checkbox-circle-line	688f18ebc8a1d504079d0ee8
+\.
+
+
+--
+-- Data for Name: _pages_v_version_hero_list_items_locales; Type: TABLE DATA; Schema: public; Owner: -
+--
+
+COPY "public"."_pages_v_version_hero_list_items_locales" ("text", "id", "_locale", "_parent_id") FROM stdin;
+مجانا، ما عليك أي التزام	12	ar	07e249ac-3c3c-4c14-aed7-a9e24fb5c51f
+شاهد كيف المنصة تقدر تساعدك تطّور بالتفصيل	13	ar	8e3c6b78-ddc9-4f98-a5f3-46ed57e3b431
+نوريك كيف تقدر تربح اكثر من بكرة	14	ar	9cf3d801-b406-45a5-a6a1-0e5ced93c214
+مجانا، ما عليك أي التزام	15	ar	d69a4eab-ce9c-484c-add3-ddf7a005b691
+شاهد كيف المنصة تقدر تساعدك تطّور بالتفصيل	16	ar	3686da60-685e-47b0-b532-72ec8e710589
+نوريك كيف تقدر تربح اكثر من بكرة	17	ar	2299401a-29d7-4f3f-a7b7-0220568d3ffc
+مجانا، ما عليك أي التزام	18	ar	4d606c99-f1df-45ac-8dd0-bf93104e22d6
+شاهد كيف المنصة تقدر تساعدك تطّور بالتفصيل	19	ar	c9915182-5fed-4e32-833e-1ec69592857a
+نوريك كيف تقدر تربح اكثر من بكرة	20	ar	2181970e-9450-45af-a23f-76bc9e1dc2b9
+مجانا، ما عليك أي التزام	21	ar	293600c1-6924-41fb-9300-353a5868f4ca
+شاهد كيف المنصة تقدر تساعدك تطّور بالتفصيل	22	ar	24e80880-ae8a-453e-8b44-2e2ec7e78660
+نوريك كيف تقدر تربح اكثر من بكرة	23	ar	903d47a5-115b-48a9-b9a9-734544068474
 \.
 
 
@@ -11010,6 +11701,8 @@ COPY "public"."_richTextBlock_v" ("_order", "_parent_id", "_path", "id", "block_
 2	c21624fa-2468-4a75-81c3-2e915c43ea04	version.layout	54b4a9b2-cfd6-4fb7-9824-9cdb8897434b	center	\N	blue	\N	flex-row	02	default	1	68869cf2f3705a4904040d30	\N
 2	66191476-6739-46e9-832b-99f58a05dcee	version.layout	d73097d7-14c6-483d-931b-23111e229bf3	center	\N	blue	\N	flex-row	02	default	1	68869cf2f3705a4904040d30	\N
 2	a97e39c7-1ff9-4ab6-8ff7-a5a7fe85b1ca	version.layout	c7f24d15-d157-460d-89a3-23294896f9bb	center	\N	blue	\N	flex-row	02	default	1	68869cf2f3705a4904040d30	\N
+2	5cf29f02-25c3-4b24-b574-1aadab774686	version.layout	c421136c-1d9f-41a3-a85a-71fc51b22dec	center	\N	blue	\N	flex-row	02	default	1	68869cf2f3705a4904040d30	\N
+2	5a14f13d-26a1-40fe-af37-216b5bd0fe17	version.layout	e5c839a6-71f9-410f-ab27-9e4a3959fb5f	center	\N	blue	\N	flex-row	02	default	1	68869cf2f3705a4904040d30	\N
 2	c20c2c0b-4fa6-45f3-acb3-34e06f115342	version.layout	28a106a0-9fab-41c9-b855-6c703664ca9b	center	\N	blue	\N	flex-row	02	default	1	68869cf2f3705a4904040d30	\N
 2	90cf9707-369c-4799-8aa5-8c6eeab55ba2	version.layout	089fb5b1-6d9b-4579-9c06-19678b55d415	center	\N	blue	\N	flex-row	02	default	1	68869cf2f3705a4904040d30	\N
 2	57ff426a-9250-4471-94f7-2ce9173606fa	version.layout	c0d94d46-3c33-4943-afb6-dbf54a30cb2e	center	\N	blue	\N	flex-row	02	default	1	68869cf2f3705a4904040d30	\N
@@ -11066,7 +11759,9 @@ COPY "public"."_richTextBlock_v_locales" ("block_header_badge_label", "block_hea
 \N	\N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h4", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "اشتغلت بنفسي في تشغيل المطاعم، وأعرف وش يعني تحاول توازن بين الحملات، الخصومات، والعمولات، خاصة على تطبيقات التوصيل، بدون ما يكون عندك رؤية واضحة عن العائد.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}, {"type": "linebreak", "version": 1}, {"mode": "normal", "text": "ومع تحوّل قطاع التوصيل إلى تجارة إلكترونية مزدحمة، دخلت اللعبة متغيّرات جديدة: مطاعم سحابية جديدة كل شهر، عروض متغيرة، وتكلفة اكتساب عميل تزيد مع كل حملة.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}, {"type": "linebreak", "version": 1}, {"mode": "normal", "text": "عشان كذا انطلقت بلّورة.. مو كأداة تقارير، بل كنظام تشغيل يساعدك تربط الإعلان بالطلب والفاتورة، وتراجع كل ريال يطلع أو يضيع، بوضوح وكفاءة.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}, {"type": "linebreak", "version": 1}, {"mode": "normal", "text": "هدفنا إن كل مطعم يلاقي قدامه نظام واحد يوضّح له كل شيء، يساعده يسترجع التكاليف المهدرة، يضبط أداءه، ويكسب أكثر من نفس القنوات اللي يشتغل عليها كل يوم.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}, {"type": "linebreak", "version": 1}, {"mode": "normal", "text": "نبغى نكون جزء من يومهم، نشتغل معهم، ونكبر سوا.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}, {"type": "linebreak", "version": 1}], "direction": "rtl"}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [], "direction": "rtl", "textStyle": "", "textFormat": 0}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "عبدالوهاب الزيدي", "type": "text", "style": "", "detail": 0, "format": 1, "version": 1}, {"type": "linebreak", "version": 1}, {"mode": "normal", "text": "الشريك المؤسس والمدير التنفيذي", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 1}], "direction": "rtl", "textFormat": 1}}	118	ar	735acfa8-eaf0-4923-8d14-5cc3027c9d4f
 \N	\N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h4", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "اشتغلت بنفسي في تشغيل المطاعم، وأعرف وش يعني تحاول توازن بين الحملات، الخصومات، والعمولات، خاصة على تطبيقات التوصيل، بدون ما يكون عندك رؤية واضحة عن العائد.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}, {"type": "linebreak", "version": 1}, {"mode": "normal", "text": "ومع تحوّل قطاع التوصيل إلى تجارة إلكترونية مزدحمة، دخلت اللعبة متغيّرات جديدة: مطاعم سحابية جديدة كل شهر، عروض متغيرة، وتكلفة اكتساب عميل تزيد مع كل حملة.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}, {"type": "linebreak", "version": 1}, {"mode": "normal", "text": "عشان كذا انطلقت بلّورة.. مو كأداة تقارير، بل كنظام تشغيل يساعدك تربط الإعلان بالطلب والفاتورة، وتراجع كل ريال يطلع أو يضيع، بوضوح وكفاءة.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}, {"type": "linebreak", "version": 1}, {"mode": "normal", "text": "هدفنا إن كل مطعم يلاقي قدامه نظام واحد يوضّح له كل شيء، يساعده يسترجع التكاليف المهدرة، يضبط أداءه، ويكسب أكثر من نفس القنوات اللي يشتغل عليها كل يوم.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}, {"type": "linebreak", "version": 1}, {"mode": "normal", "text": "نبغى نكون جزء من يومهم، نشتغل معهم، ونكبر سوا.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}, {"type": "linebreak", "version": 1}], "direction": "rtl"}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [], "direction": "rtl", "textStyle": "", "textFormat": 0}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "عبدالوهاب الزيدي", "type": "text", "style": "", "detail": 0, "format": 1, "version": 1}, {"type": "linebreak", "version": 1}, {"mode": "normal", "text": "الشريك المؤسس والمدير التنفيذي", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 1}], "direction": "rtl", "textFormat": 1}}	122	ar	773b9b09-d9d7-410f-ab00-0d33618af57c
 \N	\N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h4", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "اشتغلت بنفسي في تشغيل المطاعم، وأعرف وش يعني تحاول توازن بين الحملات، الخصومات، والعمولات، خاصة على تطبيقات التوصيل، بدون ما يكون عندك رؤية واضحة عن العائد.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}, {"type": "linebreak", "version": 1}, {"mode": "normal", "text": "ومع تحوّل قطاع التوصيل إلى تجارة إلكترونية مزدحمة، دخلت اللعبة متغيّرات جديدة: مطاعم سحابية جديدة كل شهر، عروض متغيرة، وتكلفة اكتساب عميل تزيد مع كل حملة.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}, {"type": "linebreak", "version": 1}, {"mode": "normal", "text": "عشان كذا انطلقت بلّورة.. مو كأداة تقارير، بل كنظام تشغيل يساعدك تربط الإعلان بالطلب والفاتورة، وتراجع كل ريال يطلع أو يضيع، بوضوح وكفاءة.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}, {"type": "linebreak", "version": 1}, {"mode": "normal", "text": "هدفنا إن كل مطعم يلاقي قدامه نظام واحد يوضّح له كل شيء، يساعده يسترجع التكاليف المهدرة، يضبط أداءه، ويكسب أكثر من نفس القنوات اللي يشتغل عليها كل يوم.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}, {"type": "linebreak", "version": 1}, {"mode": "normal", "text": "نبغى نكون جزء من يومهم، نشتغل معهم، ونكبر سوا.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}, {"type": "linebreak", "version": 1}], "direction": "rtl"}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [], "direction": "rtl", "textStyle": "", "textFormat": 0}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "عبدالوهاب الزايدي", "type": "text", "style": "", "detail": 0, "format": 1, "version": 1}, {"type": "linebreak", "version": 1}, {"mode": "normal", "text": "الشريك المؤسس والمدير التنفيذي", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 1}], "direction": "rtl", "textFormat": 1}}	144	ar	ca0614a5-bd7d-41e9-81bd-2e7bf12a6fb3
+\N	\N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h4", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "اشتغلت بنفسي في تشغيل المطاعم، وأعرف وش يعني تحاول توازن بين الحملات، الخصومات، والعمولات، خاصة على تطبيقات التوصيل، بدون ما يكون عندك رؤية واضحة عن العائد.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}, {"type": "linebreak", "version": 1}, {"mode": "normal", "text": "ومع تحوّل قطاع التوصيل إلى تجارة إلكترونية مزدحمة، دخلت اللعبة متغيّرات جديدة: مطاعم سحابية جديدة كل شهر، عروض متغيرة، وتكلفة اكتساب عميل تزيد مع كل حملة.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}, {"type": "linebreak", "version": 1}, {"mode": "normal", "text": "عشان كذا انطلقت بلّورة.. مو كأداة تقارير، بل كنظام تشغيل يساعدك تربط الإعلان بالطلب والفاتورة، وتراجع كل ريال يطلع أو يضيع، بوضوح وكفاءة.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}, {"type": "linebreak", "version": 1}, {"mode": "normal", "text": "هدفنا إن كل مطعم يلاقي قدامه نظام واحد يوضّح له كل شيء، يساعده يسترجع التكاليف المهدرة، يضبط أداءه، ويكسب أكثر من نفس القنوات اللي يشتغل عليها كل يوم.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}, {"type": "linebreak", "version": 1}, {"mode": "normal", "text": "نبغى نكون جزء من يومهم، نشتغل معهم، ونكبر سوا.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}, {"type": "linebreak", "version": 1}], "direction": "rtl"}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [], "direction": "rtl", "textStyle": "", "textFormat": 0}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "عبدالوهاب الزايدي", "type": "text", "style": "", "detail": 0, "format": 1, "version": 1}, {"type": "linebreak", "version": 1}, {"mode": "normal", "text": "الشريك المؤسس والمدير التنفيذي", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 1}], "direction": "rtl", "textFormat": 1}}	169	ar	c421136c-1d9f-41a3-a85a-71fc51b22dec
 \N	\N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h4", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "اشتغلت بنفسي في تشغيل المطاعم، وأعرف وش يعني تحاول توازن بين الحملات، الخصومات، والعمولات، خاصة على تطبيقات التوصيل، بدون ما يكون عندك رؤية واضحة عن العائد.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}, {"type": "linebreak", "version": 1}, {"mode": "normal", "text": "ومع تحوّل قطاع التوصيل إلى تجارة إلكترونية مزدحمة، دخلت اللعبة متغيّرات جديدة: مطاعم سحابية جديدة كل شهر، عروض متغيرة، وتكلفة اكتساب عميل تزيد مع كل حملة.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}, {"type": "linebreak", "version": 1}, {"mode": "normal", "text": "عشان كذا انطلقت بلّورة.. مو كأداة تقارير، بل كنظام تشغيل يساعدك تربط الإعلان بالطلب والفاتورة، وتراجع كل ريال يطلع أو يضيع، بوضوح وكفاءة.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}, {"type": "linebreak", "version": 1}, {"mode": "normal", "text": "هدفنا إن كل مطعم يلاقي قدامه نظام واحد يوضّح له كل شيء، يساعده يسترجع التكاليف المهدرة، يضبط أداءه، ويكسب أكثر من نفس القنوات اللي يشتغل عليها كل يوم.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}, {"type": "linebreak", "version": 1}, {"mode": "normal", "text": "نبغى نكون جزء من يومهم، نشتغل معهم، ونكبر سوا.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}, {"type": "linebreak", "version": 1}], "direction": "rtl"}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [], "direction": "rtl", "textStyle": "", "textFormat": 0}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "عبدالوهاب الزيدي", "type": "text", "style": "", "detail": 0, "format": 1, "version": 1}, {"type": "linebreak", "version": 1}, {"mode": "normal", "text": "الشريك المؤسس والمدير التنفيذي", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 1}], "direction": "rtl", "textFormat": 1}}	121	ar	0f3d837e-b95e-4b4f-99d1-803c27b8b729
+\N	\N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h4", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "اشتغلت بنفسي في تشغيل المطاعم، وأعرف وش يعني تحاول توازن بين الحملات، الخصومات، والعمولات، خاصة على تطبيقات التوصيل، بدون ما يكون عندك رؤية واضحة عن العائد.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}, {"type": "linebreak", "version": 1}, {"mode": "normal", "text": "ومع تحوّل قطاع التوصيل إلى تجارة إلكترونية مزدحمة، دخلت اللعبة متغيّرات جديدة: مطاعم سحابية جديدة كل شهر، عروض متغيرة، وتكلفة اكتساب عميل تزيد مع كل حملة.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}, {"type": "linebreak", "version": 1}, {"mode": "normal", "text": "عشان كذا انطلقت بلّورة.. مو كأداة تقارير، بل كنظام تشغيل يساعدك تربط الإعلان بالطلب والفاتورة، وتراجع كل ريال يطلع أو يضيع، بوضوح وكفاءة.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}, {"type": "linebreak", "version": 1}, {"mode": "normal", "text": "هدفنا إن كل مطعم يلاقي قدامه نظام واحد يوضّح له كل شيء، يساعده يسترجع التكاليف المهدرة، يضبط أداءه، ويكسب أكثر من نفس القنوات اللي يشتغل عليها كل يوم.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}, {"type": "linebreak", "version": 1}, {"mode": "normal", "text": "نبغى نكون جزء من يومهم، نشتغل معهم، ونكبر سوا.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}, {"type": "linebreak", "version": 1}], "direction": "rtl"}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [], "direction": "rtl", "textStyle": "", "textFormat": 0}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "عبدالوهاب الزايدي", "type": "text", "style": "", "detail": 0, "format": 1, "version": 1}, {"type": "linebreak", "version": 1}, {"mode": "normal", "text": "الشريك المؤسس والمدير التنفيذي", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 1}], "direction": "rtl", "textFormat": 1}}	170	ar	e5c839a6-71f9-410f-ab27-9e4a3959fb5f
 \.
 
 
@@ -11087,6 +11782,8 @@ COPY "public"."_teamBlock_v" ("_order", "_parent_id", "_path", "id", "block_head
 4	c21624fa-2468-4a75-81c3-2e915c43ea04	version.layout	5582f0b9-a1e4-4fe2-a5e5-8e70628a739e	center	\N	blue	\N	flex-row	6886aadbdf64ca6dd9ecfe5f	\N
 4	66191476-6739-46e9-832b-99f58a05dcee	version.layout	332a8c49-4407-4b20-a320-d6f2e8fa0847	center	\N	blue	\N	flex-row	6886aadbdf64ca6dd9ecfe5f	\N
 4	a97e39c7-1ff9-4ab6-8ff7-a5a7fe85b1ca	version.layout	b7f91729-07ee-4a27-8213-d32fb6db7331	center	\N	blue	\N	flex-row	6886aadbdf64ca6dd9ecfe5f	\N
+4	5cf29f02-25c3-4b24-b574-1aadab774686	version.layout	6ef95bdd-f21d-4df0-8ddb-eceab6f767c8	center	\N	blue	\N	flex-row	6886aadbdf64ca6dd9ecfe5f	\N
+4	5a14f13d-26a1-40fe-af37-216b5bd0fe17	version.layout	fb75a210-1982-4d6d-9294-55792869e19b	center	\N	blue	\N	flex-row	6886aadbdf64ca6dd9ecfe5f	\N
 4	c20c2c0b-4fa6-45f3-acb3-34e06f115342	version.layout	237d87f5-0101-43c4-98db-fd2b38707f99	center	\N	blue	\N	flex-row	6886aadbdf64ca6dd9ecfe5f	\N
 4	90cf9707-369c-4799-8aa5-8c6eeab55ba2	version.layout	aebdf2fe-4732-4126-8601-fda506eee5b4	center	\N	blue	\N	flex-row	6886aadbdf64ca6dd9ecfe5f	\N
 4	57ff426a-9250-4471-94f7-2ce9173606fa	version.layout	3a9dff84-fa04-41ac-9fe7-fcce710f0bc0	center	\N	blue	\N	flex-row	6886aadbdf64ca6dd9ecfe5f	\N
@@ -11147,6 +11844,8 @@ COPY "public"."_teamBlock_v_locales" ("block_header_badge_label", "block_header_
 \N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h2", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "تعرف على فريقنا", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "فلسفتنا بسيطة - توظيف فريق متنوع ومتحمس وتعزيز ثقافة تمكّنك من تقديم أفضل ما لديك.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}], "direction": "rtl"}}	87	ar	1587bd65-b217-49cd-93e3-38cd7ade35a6
 \N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h2", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "تعرف على فريقنا", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "فلسفتنا بسيطة - توظيف فريق متنوع ومتحمس وتعزيز ثقافة تمكّنك من تقديم أفضل ما لديك.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}], "direction": "rtl"}}	93	ar	f2e3a65d-dde8-45b6-bfe7-3dea96c6d865
 \N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h2", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "تعرف على فريقنا", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "فلسفتنا بسيطة - توظيف فريق متنوع ومتحمس وتعزيز ثقافة تمكّنك من تقديم أفضل ما لديك.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}], "direction": "rtl"}}	94	ar	965d69a5-47ae-463b-a391-fd28da1ba0ba
+\N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h2", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "تعرف على فريقنا", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "فلسفتنا بسيطة - توظيف فريق متنوع ومتحمس وتعزيز ثقافة تمكّنك من تقديم أفضل ما لديك.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}], "direction": "rtl"}}	119	ar	6ef95bdd-f21d-4df0-8ddb-eceab6f767c8
+\N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h2", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "تعرف على فريقنا", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "فلسفتنا بسيطة - توظيف فريق متنوع ومتحمس وتعزيز ثقافة تمكّنك من تقديم أفضل ما لديك.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}], "direction": "rtl"}}	120	ar	fb75a210-1982-4d6d-9294-55792869e19b
 \.
 
 
@@ -11201,6 +11900,10 @@ COPY "public"."_teamBlock_v_team" ("_order", "_parent_id", "id", "image_id", "so
 2	b01b413e-3ea4-46f4-89ee-9d5f18920241	c0cb2230-318c-45d9-a034-8b5f085af200	\N	\N	\N	6886acd8df64ca6dd9ecfe73
 1	bb9df519-ec1d-4260-bd27-8416d1a270c3	99825be7-e5d5-4e93-af29-2ea32e3b6554	\N	\N	\N	6886acb4df64ca6dd9ecfe72
 2	bb9df519-ec1d-4260-bd27-8416d1a270c3	18c87be6-a0ad-4fd9-932f-500a9c5a41e6	\N	\N	\N	6886acd8df64ca6dd9ecfe73
+1	6ef95bdd-f21d-4df0-8ddb-eceab6f767c8	fa98bd60-151f-441b-97f5-8d9c2891ffd0	\N	\N	\N	6886acb4df64ca6dd9ecfe72
+2	6ef95bdd-f21d-4df0-8ddb-eceab6f767c8	53e20683-f541-481b-9836-f91e0f830559	\N	\N	\N	6886acd8df64ca6dd9ecfe73
+1	fb75a210-1982-4d6d-9294-55792869e19b	5dbe71f0-405a-4ac0-af55-137cbb186522	\N	\N	\N	6886acb4df64ca6dd9ecfe72
+2	fb75a210-1982-4d6d-9294-55792869e19b	69195561-7119-44fb-82eb-4c21751ecfcf	\N	\N	\N	6886acd8df64ca6dd9ecfe73
 \.
 
 
@@ -11255,6 +11958,10 @@ COPY "public"."_teamBlock_v_team_locales" ("name", "position", "bio", "id", "_lo
 عبدلله الهوساوي	مدير النمو، شريك مؤسس	\N	125	ar	c0cb2230-318c-45d9-a034-8b5f085af200
 عبدالوهاب الزيدي	مدير تنفيذي، شريك مؤسس	\N	126	ar	99825be7-e5d5-4e93-af29-2ea32e3b6554
 عبدلله الهوساوي	مدير النمو، شريك مؤسس	\N	127	ar	18c87be6-a0ad-4fd9-932f-500a9c5a41e6
+عبدالوهاب الزايدي	مدير تنفيذي، شريك مؤسس	\N	220	ar	fa98bd60-151f-441b-97f5-8d9c2891ffd0
+عبدلله الهوساوي	مدير النمو، شريك مؤسس	\N	221	ar	53e20683-f541-481b-9836-f91e0f830559
+عبدالوهاب الزايدي	مدير تنفيذي، شريك مؤسس	\N	222	ar	5dbe71f0-405a-4ac0-af55-137cbb186522
+عبدلله الهوساوي	مدير النمو، شريك مؤسس	\N	223	ar	69195561-7119-44fb-82eb-4c21751ecfcf
 \.
 
 
@@ -11277,6 +11984,24 @@ COPY "public"."_testimonialsBlock_v" ("_order", "_parent_id", "_path", "id", "bl
 7	990afa8d-fbf0-4bab-9b6a-8cbfe7488ddc	version.layout	5be272ae-a714-43fc-b8f1-df56c7c2b935	center	\N	blue	\N	flex-row	01	6886a0695a3935fab3feb21b	\N	gray
 3	70b04d51-b412-4e9d-95a4-7bf9fdd2a1c1	version.layout	514314c9-7eea-48fb-8c91-a6c89ce2be37	center	\N	blue	\N	flex-row	02	6886a0cc5a3935fab3feb21d	\N	violet
 7	70b04d51-b412-4e9d-95a4-7bf9fdd2a1c1	version.layout	92b460e9-ea27-4e84-acaf-2760218c2fcc	center	\N	blue	\N	flex-row	01	6886a0695a3935fab3feb21b	\N	gray
+3	191829da-fed4-4378-835d-355bb725534e	version.layout	ceada44a-8712-42ab-bfe9-f19dcb2909d4	center	\N	blue	\N	flex-row	02	6886a0cc5a3935fab3feb21d	\N	violet
+7	191829da-fed4-4378-835d-355bb725534e	version.layout	0cbf0c81-56e6-4656-acc1-b3248e5aa72c	center	\N	blue	\N	flex-row	01	6886a0695a3935fab3feb21b	\N	gray
+3	9f09b6d6-5dd1-4b72-b23f-90cd5c745e61	version.layout	6df2fe26-2c82-49ba-98f4-7f274846c7ae	center	\N	blue	\N	flex-row	02	6886a0cc5a3935fab3feb21d	\N	violet
+7	9f09b6d6-5dd1-4b72-b23f-90cd5c745e61	version.layout	53f22098-0dca-486c-ad6f-64918c1a4cb5	center	\N	blue	\N	flex-row	01	6886a0695a3935fab3feb21b	\N	gray
+3	01fe3f95-b2e0-4adc-8e06-a37200de75b3	version.layout	dffe54f4-ade5-44f4-abe1-7da74ac9fb8e	center	\N	blue	\N	flex-row	02	6886a0cc5a3935fab3feb21d	\N	violet
+7	01fe3f95-b2e0-4adc-8e06-a37200de75b3	version.layout	0a28e030-7665-489e-936a-4b2be9842b05	center	\N	blue	\N	flex-row	01	6886a0695a3935fab3feb21b	\N	gray
+3	3b7333a2-daa5-498c-88e2-379fe5c31d7b	version.layout	34c5f963-0b31-4d8d-952d-e3c1d9ec232b	center	\N	blue	\N	flex-row	02	6886a0cc5a3935fab3feb21d	\N	violet
+7	3b7333a2-daa5-498c-88e2-379fe5c31d7b	version.layout	712c5785-32db-41e4-bd6c-91a6cc678928	center	\N	blue	\N	flex-row	01	6886a0695a3935fab3feb21b	\N	gray
+3	67aa8e57-e509-4c57-b165-2c5bfd47d94f	version.layout	231aa94a-b9dc-4404-abc9-7c3083b04c9b	center	\N	blue	\N	flex-row	02	6886a0cc5a3935fab3feb21d	\N	violet
+7	67aa8e57-e509-4c57-b165-2c5bfd47d94f	version.layout	9efb461d-b4a3-4bea-8f5c-c225cf4e4f68	center	\N	blue	\N	flex-row	01	6886a0695a3935fab3feb21b	\N	gray
+3	be9c7e75-dc9a-4619-8a8e-5ef58c098864	version.layout	828398d4-6c1e-4708-b751-3aee252b2d5e	center	\N	blue	\N	flex-row	02	6886a0cc5a3935fab3feb21d	\N	violet
+7	be9c7e75-dc9a-4619-8a8e-5ef58c098864	version.layout	7b4a1aa6-b357-4637-bd85-0df4b3fe8bd1	center	\N	blue	\N	flex-row	01	6886a0695a3935fab3feb21b	\N	gray
+3	475931ac-474c-47ac-a1ba-e14920a6ebb8	version.layout	81574279-0688-4ad3-a185-d088a091d4c1	center	\N	blue	\N	flex-row	02	6886a0cc5a3935fab3feb21d	\N	violet
+7	475931ac-474c-47ac-a1ba-e14920a6ebb8	version.layout	5e0674e4-9149-4989-bed5-0c90ed72d915	center	\N	blue	\N	flex-row	01	6886a0695a3935fab3feb21b	\N	gray
+3	df9022a7-63b1-4017-b716-518f2d69d9c2	version.layout	47ed17d6-8ebc-460c-bf6e-ce888fab9505	center	\N	blue	\N	flex-row	02	6886a0cc5a3935fab3feb21d	\N	violet
+7	df9022a7-63b1-4017-b716-518f2d69d9c2	version.layout	2712815d-7b3c-4abb-905a-e88c1ee071f8	center	\N	blue	\N	flex-row	01	6886a0695a3935fab3feb21b	\N	gray
+3	57af9290-93a8-46d6-8475-65260fba9301	version.layout	897389f2-16c2-4ece-b139-9e9b4fa4c52d	center	\N	blue	\N	flex-row	02	6886a0cc5a3935fab3feb21d	\N	violet
+7	57af9290-93a8-46d6-8475-65260fba9301	version.layout	e6daf258-e186-4014-94d4-85d636d6663f	center	\N	blue	\N	flex-row	01	6886a0695a3935fab3feb21b	\N	gray
 \.
 
 
@@ -11407,7 +12132,7 @@ COPY "public"."callToActionBlock_links" ("_order", "_parent_id", "id", "link_typ
 --
 
 COPY "public"."callToActionBlock_links_locales" ("link_label", "id", "_locale", "_parent_id") FROM stdin;
-اطلب استشارة مجانية	2	ar	6886a17b5a3935fab3feb220
+إطلب عرض تجريبي	7	ar	6886a17b5a3935fab3feb220
 \.
 
 
@@ -11427,7 +12152,7 @@ COPY "public"."callToActionBlock_list" ("_order", "_parent_id", "_locale", "id",
 --
 
 COPY "public"."callToActionBlock_locales" ("badge_label", "rich_text", "media_desktop_light_id", "media_desktop_dark_id", "media_mobile_light_id", "media_mobile_dark_id", "id", "_locale", "_parent_id") FROM stdin;
-\N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h3", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "جاهز تزيد ارباحك؟", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "بنعرّفك على كل أدوات بلورة، ونطلع لك بأفكار سهلة تزيد من أرباح مطعمك... عشان تبدأ تشوف الفرق من بكرة.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}], "direction": "rtl"}}	\N	\N	\N	\N	2	ar	6886a1475a3935fab3feb21f
+\N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h3", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "جاهز تزيد ارباحك؟", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "بنعرّفك على كل أدوات بلورة، ونطلع لك بأفكار سهلة تزيد من أرباح مطعمك... عشان تبدأ تشوف الفرق من بكرة.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}], "direction": "rtl"}}	\N	\N	\N	\N	7	ar	6886a1475a3935fab3feb21f
 \.
 
 
@@ -11547,6 +12272,12 @@ COPY "public"."dividerBlock" ("_order", "_parent_id", "_path", "id", "size", "en
 --
 
 COPY "public"."faq" ("id", "category_id", "updated_at", "created_at", "_status") FROM stdin;
+487d16ef-4d7e-4603-885d-53d42734b0f1	\N	2025-08-03 07:40:53.706+00	2025-08-03 07:40:30.346+00	published
+2d37f238-e71e-4291-8919-33e4c7a73544	\N	2025-08-03 07:41:33.283+00	2025-08-03 07:41:01.929+00	published
+4696359a-45b8-4fea-b14f-ca34e928e5d0	\N	2025-08-03 07:42:01.416+00	2025-08-03 07:41:46.698+00	published
+0786b804-85ea-4269-841e-5f4fe762ada3	\N	2025-08-03 07:42:45.255+00	2025-08-03 07:42:19.174+00	published
+cf06eaf5-c215-44fc-82c2-a7696336ef41	\N	2025-08-03 07:43:27.046+00	2025-08-03 07:43:05.982+00	published
+0ad17856-43c0-4ec9-bd88-c26f826dfb68	\N	2025-08-03 07:45:43.588+00	2025-08-03 07:43:42.883+00	published
 \.
 
 
@@ -11555,6 +12286,7 @@ COPY "public"."faq" ("id", "category_id", "updated_at", "created_at", "_status")
 --
 
 COPY "public"."faqBlock" ("_order", "_parent_id", "_path", "id", "block_header_type", "block_header_badge_type", "block_header_badge_color", "block_header_badge_icon", "block_header_badge_icon_position", "type", "block_name") FROM stdin;
+9	a14442b0-9282-4efc-9df0-51d6374608d8	layout	688f13dcdb5b5b92cc7fdde8	center	\N	blue	\N	flex-row	02	\N
 \.
 
 
@@ -11579,6 +12311,7 @@ COPY "public"."faqBlock_block_header_links_locales" ("link_label", "id", "_local
 --
 
 COPY "public"."faqBlock_locales" ("block_header_badge_label", "block_header_header_text", "id", "_locale", "_parent_id") FROM stdin;
+\N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h2", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "الأسئلة الشائعة", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}], "direction": "rtl"}}	2	ar	688f13dcdb5b5b92cc7fdde8
 \.
 
 
@@ -11587,6 +12320,18 @@ COPY "public"."faqBlock_locales" ("block_header_badge_label", "block_header_head
 --
 
 COPY "public"."faq_locales" ("question", "answer", "id", "_locale", "_parent_id") FROM stdin;
+\N	\N	1	en	487d16ef-4d7e-4603-885d-53d42734b0f1
+خلال متى راح أقدر أشوف نتائج حقيقية؟	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "كثير من عملائنا لاحظوا فرق فعلي خلال أول شهرين، خاصة في ظهور المطعم على التطبيقات وتحسّن نتائج الحملات الترويجية والمؤشرات التشغيلة", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}], "direction": "rtl"}}	2	ar	487d16ef-4d7e-4603-885d-53d42734b0f1
+\N	\N	3	en	2d37f238-e71e-4291-8919-33e4c7a73544
+هل أحتاج ألتزم بعقد أو اشتراك طويل؟	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "لا أبداً، تقدر تبدأ معنا بدون التزام طويل، وإذا ما ناسبتك التجربة، تقدر توقف في أي وقت", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}], "direction": "rtl"}}	4	ar	2d37f238-e71e-4291-8919-33e4c7a73544
+\N	\N	5	en	4696359a-45b8-4fea-b14f-ca34e928e5d0
+كم أحتاج أخصص ميزانية عشان أبدأ؟	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "ما تحتاج ميزانية إعلانية ضخمة، بلّورة تساعدك توزّع ميزانيتك الحالية بشكل أذكى، وتزيد العائد على كل ريال تصرفه حتى لو كانت ميزانيتك محدودة", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}], "direction": "rtl"}}	6	ar	4696359a-45b8-4fea-b14f-ca34e928e5d0
+\N	\N	7	en	0786b804-85ea-4269-841e-5f4fe762ada3
+هل بلّورة تشتغل مع جميع تطبيقات التوصيل؟	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"type": "paragraph", "format": "right", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "نعم، بلّورة تشتغل مع التطبيقات الأساسية في السوق مثل هنقرستيشن، كيتا، جاهز وغيرها، وتعرض لك كل بياناتك في لوحة وحدة تساعدك تفهم الصورة كاملة وتتحرك بثقة", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}], "direction": "rtl"}}	8	ar	0786b804-85ea-4269-841e-5f4fe762ada3
+\N	\N	9	en	cf06eaf5-c215-44fc-82c2-a7696336ef41
+هل تحتاج خبرة تقنية أو فريق تسويق عشان أستخدمها؟	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"type": "paragraph", "format": "right", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "لا، بلّورة مصممة تكون سهلة حتى لو ما عندك أي خبرة فنية، وفريقنا يساعدك من أول يوم خطوة بخطوة", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}], "direction": "rtl"}}	10	ar	cf06eaf5-c215-44fc-82c2-a7696336ef41
+\N	\N	13	en	0ad17856-43c0-4ec9-bd88-c26f826dfb68
+هل بلّورة بس للمطاعم الكبيرة؟	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"type": "paragraph", "format": "right", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "بلّورة تناسب المطاعم الصغيرة والمتوسطة، سواء كان عندك فرع واحد أو أكثرـ وتكبر معك حسب احتياجك", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}], "direction": "rtl"}}	14	ar	0ad17856-43c0-4ec9-bd88-c26f826dfb68
 \.
 
 
@@ -11595,12 +12340,12 @@ COPY "public"."faq_locales" ("question", "answer", "id", "_locale", "_parent_id"
 --
 
 COPY "public"."featuresBlock" ("_order", "_parent_id", "_path", "id", "block_header_type", "block_header_badge_type", "block_header_badge_color", "block_header_badge_icon", "block_header_badge_icon_position", "type", "block_image_id", "link_type", "link_new_tab", "link_url", "block_name", "stat_value", "stat_indicator") FROM stdin;
+1	742d2308-808d-4f0e-91f2-03d18be57d5c	layout	68869c85f3705a4904040d2e	center	label	gray	\N	flex-row	07	\N	reference	\N	\N	\N	\N	noChange
+5	742d2308-808d-4f0e-91f2-03d18be57d5c	layout	6886ac02df64ca6dd9ecfe6a	center	\N	blue	\N	flex-row	03	\N	reference	\N	\N	\N	\N	noChange
 1	a14442b0-9282-4efc-9df0-51d6374608d8	layout	688694d473e9e43a4a6e3c05	center	\N	blue	\N	flex-row	14	\N	custom	\N	/	\N	\N	noChange
 4	a14442b0-9282-4efc-9df0-51d6374608d8	layout	688695d673e9e43a4a6e3c0a	center	\N	\N	\N	flex-row	01	\N	reference	\N	\N	\N	\N	noChange
 5	a14442b0-9282-4efc-9df0-51d6374608d8	layout	68869a4d5a3935fab3feb217	center	label	outline	\N	flex-row	06	fe54a595-3fe0-406c-8274-f5ed27ea3ec5	reference	\N	\N	\N	2-8%	noChange
 6	a14442b0-9282-4efc-9df0-51d6374608d8	layout	68869d495a3935fab3feb219	center	\N	blue	\N	flex-row	04	\N	reference	\N	\N	\N	\N	noChange
-1	742d2308-808d-4f0e-91f2-03d18be57d5c	layout	68869c85f3705a4904040d2e	center	label	gray	\N	flex-row	07	\N	reference	\N	\N	\N	\N	noChange
-5	742d2308-808d-4f0e-91f2-03d18be57d5c	layout	6886ac02df64ca6dd9ecfe6a	center	\N	blue	\N	flex-row	03	\N	reference	\N	\N	\N	\N	noChange
 \.
 
 
@@ -11632,9 +12377,9 @@ COPY "public"."featuresBlock_columns" ("_order", "_parent_id", "id", "size", "ic
 2	688695d673e9e43a4a6e3c0a	6886984273e9e43a4a6e3c0d	half	\N	t	\N	\N	label	outline	\N	flex-row	reference	\N	\N	+32%	noChange
 3	688695d673e9e43a4a6e3c0a	688698ec5a3935fab3feb215	half	\N	t	\N	\N	label	outline	\N	flex-row	reference	\N	\N	15-30%	noChange
 1	68869d495a3935fab3feb219	68869d6c5a3935fab3feb21a	half	\N	\N	t	\N	\N	blue	\N	flex-row	custom	\N	/	\N	noChange
-1	6886ac02df64ca6dd9ecfe6a	6886ac0edf64ca6dd9ecfe6b	half	\N	\N	\N	\N	\N	blue	\N	flex-row	reference	\N	\N	\N	noChange
-2	6886ac02df64ca6dd9ecfe6a	6886ac2fdf64ca6dd9ecfe6d	half	\N	\N	\N	\N	\N	blue	\N	flex-row	reference	\N	\N	\N	noChange
-3	6886ac02df64ca6dd9ecfe6a	6886ac36df64ca6dd9ecfe70	half	\N	\N	\N	\N	\N	blue	\N	flex-row	reference	\N	\N	\N	noChange
+1	6886ac02df64ca6dd9ecfe6a	6886ac0edf64ca6dd9ecfe6b	half	accessibility-line	\N	\N	\N	\N	blue	\N	flex-row	reference	\N	\N	\N	noChange
+2	6886ac02df64ca6dd9ecfe6a	6886ac2fdf64ca6dd9ecfe6d	half	line-chart-line	\N	\N	\N	\N	blue	\N	flex-row	reference	\N	\N	\N	noChange
+3	6886ac02df64ca6dd9ecfe6a	6886ac36df64ca6dd9ecfe70	half	shield-star-line	\N	\N	\N	\N	blue	\N	flex-row	reference	\N	\N	\N	noChange
 \.
 
 
@@ -11643,16 +12388,16 @@ COPY "public"."featuresBlock_columns" ("_order", "_parent_id", "id", "size", "ic
 --
 
 COPY "public"."featuresBlock_columns_locales" ("image_id", "tab_label", "content_title", "content_subtitle", "rich_text_content", "badge_label", "link_label", "id", "_locale", "_parent_id", "stat_label") FROM stdin;
-f8f05216-7b1e-4f38-9c78-712c86d1057c	\N	كل بياناتك في مكان واحد، من الكاشير الى تطبيقات التوصيل	\N	\N	\N	\N	26	ar	688694e973e9e43a4a6e3c06	\N
-edbc376c-731b-4c47-8220-478db6cd03e4	\N	اطلق حملاتك التسويقية بطريقة اذكى ومدروسة	\N	\N	\N	\N	27	ar	688694f973e9e43a4a6e3c07	\N
-712fc138-f7e2-48e4-bcc8-5e24ff9e79b7	\N	استرجع مبالغ التعويضات المفقودة وانت مرتاح	\N	\N	\N	\N	28	ar	6886950873e9e43a4a6e3c08	\N
-cd2d9b5d-5b74-4846-b1eb-85e3535f944a	\N	\N	\N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h3", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "حدّد أفضل وقت، قناة، ونسبة خصم لعروضك الترويجية", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "محركنا يحلل الطلبات عبر HungerStation و Jahez و Careem والمزيد ليخبرك متى تطلق، وأين تظهر، وأي عرض يحقق أفضل اداء بدون هدر الميزانية.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}], "direction": "rtl"}}	إعداد عروض مستهدفة 	\N	29	ar	688695df73e9e43a4a6e3c0b	متوسط عائد لكل ريال يُصرف على  الحملات من داخل بلّورة
-5b3e3903-897a-4182-a331-61f448da95d0	\N	\N	\N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h4", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "افهم وش قاعد يصير، اول باول", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}], "direction": "rtl"}}	لوحة أداء شاملة	\N	30	ar	6886984273e9e43a4a6e3c0d	متوسط عائد لكل ريال يُصرف على  الحملات من داخل بلّورة
-7a8a5f6d-dc53-40ab-9daa-217ee1027234	\N	\N	\N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h4", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "تفصيل الإيرادات حسب القناة والفرع لسهولة المقارنة", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}], "direction": "rtl"}}	وضوح المؤشرات المهمة	\N	31	ar	688698ec5a3935fab3feb215	زيادة فعلية في الإيرادات بعد استخدام بلّورة
-\N	\N	\N	\N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h3", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "احسب ارباحك المتوقعة", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "بنعرّفك على كل أدوات بلورة، ونطلع لك بأفكار سهلة تزيد من أرباح مطعمك... عشان تبدأ تشوف الفرق من بكرة.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}], "direction": "rtl"}}	\N	حاسبة الربحية	32	ar	68869d6c5a3935fab3feb21a	\N
-\N	\N	نختار التقدّم على الكمال	نبدأ بخطوات ذكية ونطوّر على الطريق، نتحرّك بسرعة ونركّز على التقدّم الحقيقي بدل انتظار المثالية	\N	\N	\N	42	ar	6886ac0edf64ca6dd9ecfe6b	\N
-\N	\N	نمو العميل هو نمونا	نشتغل مع المطاعم كشركاء، نهتم بالنتائج اللي تهمهم ونبني حلول تخدمهم على المدى البعيد	\N	\N	\N	43	ar	6886ac2fdf64ca6dd9ecfe6d	\N
-\N	\N	نقدّم أفضل نسخة من أنفسنا	نشتغل بوضوح وروح ملكية، نتحمّل المسؤولية، نطوّر من أنفسنا، وندعم بعض لننجح كفريق واحد	\N	\N	\N	44	ar	6886ac36df64ca6dd9ecfe70	\N
+f8f05216-7b1e-4f38-9c78-712c86d1057c	\N	كل بياناتك في مكان واحد، من الكاشير الى تطبيقات التوصيل	\N	\N	\N	\N	76	ar	688694e973e9e43a4a6e3c06	\N
+edbc376c-731b-4c47-8220-478db6cd03e4	\N	اطلق حملاتك التسويقية بطريقة اذكى ومدروسة	\N	\N	\N	\N	77	ar	688694f973e9e43a4a6e3c07	\N
+712fc138-f7e2-48e4-bcc8-5e24ff9e79b7	\N	استرجع مبالغ التعويضات المفقودة وانت مرتاح	\N	\N	\N	\N	78	ar	6886950873e9e43a4a6e3c08	\N
+cd2d9b5d-5b74-4846-b1eb-85e3535f944a	\N	\N	\N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h3", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "حدّد أفضل وقت، قناة، ونسبة خصم لعروضك الترويجية", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "محركنا يحلل الطلبات عبر HungerStation و Jahez و Careem والمزيد ليخبرك متى تطلق، وأين تظهر، وأي عرض يحقق أفضل اداء بدون هدر الميزانية.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}], "direction": "rtl"}}	إعداد عروض مستهدفة 	\N	79	ar	688695df73e9e43a4a6e3c0b	متوسط عائد لكل ريال يُصرف على  الحملات من داخل بلّورة
+5b3e3903-897a-4182-a331-61f448da95d0	\N	\N	\N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h4", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "افهم وش قاعد يصير، اول باول", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}], "direction": "rtl"}}	لوحة أداء شاملة	\N	80	ar	6886984273e9e43a4a6e3c0d	متوسط عائد لكل ريال يُصرف على  الحملات من داخل بلّورة
+7a8a5f6d-dc53-40ab-9daa-217ee1027234	\N	\N	\N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h4", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "تفصيل الإيرادات حسب القناة والفرع لسهولة المقارنة", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}], "direction": "rtl"}}	وضوح المؤشرات المهمة	\N	81	ar	688698ec5a3935fab3feb215	زيادة فعلية في الإيرادات بعد استخدام بلّورة
+\N	\N	\N	\N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h3", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "احسب ارباحك المتوقعة", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "بنعرّفك على كل أدوات بلورة، ونطلع لك بأفكار سهلة تزيد من أرباح مطعمك... عشان تبدأ تشوف الفرق من بكرة.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}], "direction": "rtl"}}	\N	حاسبة الربحية	82	ar	68869d6c5a3935fab3feb21a	\N
+\N	\N	نختار التقدّم على الكمال	نبدأ بخطوات ذكية ونطوّر على الطريق، نتحرّك بسرعة ونركّز على التقدّم الحقيقي بدل انتظار المثالية	\N	\N	\N	59	ar	6886ac0edf64ca6dd9ecfe6b	\N
+\N	\N	نمو العميل هو نمونا	نشتغل مع المطاعم كشركاء، نهتم بالنتائج اللي تهمهم ونبني حلول تخدمهم على المدى البعيد	\N	\N	\N	60	ar	6886ac2fdf64ca6dd9ecfe6d	\N
+\N	\N	نقدّم أفضل نسخة من أنفسنا	نشتغل بوضوح وروح ملكية، نتحمّل المسؤولية، نطوّر من أنفسنا، وندعم بعض لننجح كفريق واحد	\N	\N	\N	61	ar	6886ac36df64ca6dd9ecfe70	\N
 \.
 
 
@@ -11661,11 +12406,11 @@ cd2d9b5d-5b74-4846-b1eb-85e3535f944a	\N	\N	\N	{"root": {"type": "root", "format"
 --
 
 COPY "public"."featuresBlock_locales" ("block_header_badge_label", "block_header_header_text", "c_t_a_label", "link_label", "id", "_locale", "_parent_id", "stat_label") FROM stdin;
-\N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h2", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "ليش تستخدم بلّورة؟", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}], "direction": "rtl"}}	\N	/	15	ar	688694d473e9e43a4a6e3c05	\N
-	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h2", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": " زِد ظهورك على تطبيقات التوصيل", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": " بلّورة تساعدك تزيد ظهورك في الأوقات والمناطق الصح، بدون هدر في الميزانية.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}], "direction": "rtl"}}	\N	\N	16	ar	688695d673e9e43a4a6e3c0a	\N
-استرجاع تلقائي للمبالغ	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h3", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "استرجع مبالغ الخصومات الخاطئة", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}, {"type": "linebreak", "version": 1}, {"mode": "normal", "text": "ووّفر صافي أرباحك", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": " نساعدك تراجع الخصومات، تعترض على الأخطاء، وتسترجع اللي لك من تطبيقات التوصيل — بخطوات واضحة وسهلة", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}], "direction": "rtl"}}	\N	\N	17	ar	68869a4d5a3935fab3feb217	من إيرادات الطلبات تقدر تسترجعها من خلال معالجة أخطاء الخصومات على بلّورة
-مهمتنا	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h2", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "تحسين الإيرادات وهوامش الربح لمطاعم والشركات عبر قنوات المبيعات عبر الإنترنت وخارجها", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}], "direction": "rtl"}}	\N	\N	24	ar	68869c85f3705a4904040d2e	\N
-\N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h2", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "كيف نشتغل في بلّورة", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "قيمنا المشتركة تجمعنا وتوجهنا كفريق واحد", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}], "direction": "rtl"}}	\N	\N	25	ar	6886ac02df64ca6dd9ecfe6a	\N
+مهمتنا	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h2", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "تحسين الإيرادات وهوامش الربح لمطاعم والشركات عبر قنوات المبيعات عبر الإنترنت وخارجها", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}], "direction": "rtl"}}	\N	\N	32	ar	68869c85f3705a4904040d2e	\N
+\N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h2", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "كيف نشتغل في بلّورة", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "قيمنا المشتركة تجمعنا وتوجهنا كفريق واحد", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}], "direction": "rtl"}}	\N	\N	33	ar	6886ac02df64ca6dd9ecfe6a	\N
+\N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h2", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "ليش تستخدم بلّورة؟", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}], "direction": "rtl"}}	\N	/	40	ar	688694d473e9e43a4a6e3c05	\N
+	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h2", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": " زِد ظهورك على تطبيقات التوصيل", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": " بلّورة تساعدك تزيد ظهورك في الأوقات والمناطق الصح، بدون هدر في الميزانية.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}], "direction": "rtl"}}	\N	\N	41	ar	688695d673e9e43a4a6e3c0a	\N
+استرجاع تلقائي للمبالغ	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h3", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "استرجع مبالغ الخصومات الخاطئة", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}, {"type": "linebreak", "version": 1}, {"mode": "normal", "text": "ووّفر صافي أرباحك", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": " نساعدك تراجع الخصومات، تعترض على الأخطاء، وتسترجع اللي لك من تطبيقات التوصيل — بخطوات واضحة وسهلة", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}], "direction": "rtl"}}	\N	\N	42	ar	68869a4d5a3935fab3feb217	من إيرادات الطلبات تقدر تسترجعها من خلال معالجة أخطاء الخصومات على بلّورة
 \.
 
 
@@ -12101,8 +12846,8 @@ COPY "public"."header_tabs_nav_items_locales" ("default_link_link_label", "id", 
 --
 
 COPY "public"."logosBlock" ("_order", "_parent_id", "_path", "id", "block_header_type", "block_header_badge_type", "block_header_badge_color", "block_header_badge_icon", "block_header_badge_icon_position", "type", "block_name") FROM stdin;
-2	a14442b0-9282-4efc-9df0-51d6374608d8	layout	6886953573e9e43a4a6e3c09	center	\N	blue	\N	flex-row	03	\N
 6	742d2308-808d-4f0e-91f2-03d18be57d5c	layout	6886ad3cdf64ca6dd9ecfe74	center	\N	blue	\N	flex-row	03	\N
+2	a14442b0-9282-4efc-9df0-51d6374608d8	layout	6886953573e9e43a4a6e3c09	center	\N	blue	\N	flex-row	03	\N
 \.
 
 
@@ -12127,8 +12872,8 @@ COPY "public"."logosBlock_block_header_links_locales" ("link_label", "id", "_loc
 --
 
 COPY "public"."logosBlock_locales" ("block_header_badge_label", "block_header_header_text", "id", "_locale", "_parent_id") FROM stdin;
-\N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "منصة مصممة للسوق السعودي", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}], "direction": "rtl"}}	5	ar	6886953573e9e43a4a6e3c09
-\N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "منصة مصممة للسوق السعودي", "type": "text", "style": "", "detail": 0, "format": 1, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 1}], "direction": "rtl", "textFormat": 1}}	9	ar	6886ad3cdf64ca6dd9ecfe74
+\N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "منصة مصممة للسوق السعودي", "type": "text", "style": "", "detail": 0, "format": 1, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 1}], "direction": "rtl", "textFormat": 1}}	12	ar	6886ad3cdf64ca6dd9ecfe74
+\N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "منصة مصممة للسوق السعودي", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}], "direction": "rtl"}}	15	ar	6886953573e9e43a4a6e3c09
 \.
 
 
@@ -12188,7 +12933,7 @@ COPY "public"."metricsBlock_block_header_links_locales" ("link_label", "id", "_l
 --
 
 COPY "public"."metricsBlock_locales" ("block_header_badge_label", "block_header_header_text", "block_image_media_id", "table_title", "logos_headline", "id", "_locale", "_parent_id") FROM stdin;
-\N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h2", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "تحسين الإيرادات وهوامش الربح لمطاعم والشركات عبر قنوات المبيعات عبر الإنترنت وخارجها", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}], "direction": "rtl"}}	\N	\N	\N	8	ar	6886aaccdf64ca6dd9ecfe5d
+\N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h2", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "تحسين الإيرادات وهوامش الربح لمطاعم والشركات عبر قنوات المبيعات عبر الإنترنت وخارجها", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}], "direction": "rtl"}}	\N	\N	\N	9	ar	6886aaccdf64ca6dd9ecfe5d
 \.
 
 
@@ -12208,9 +12953,9 @@ COPY "public"."metricsBlock_stats" ("_order", "_parent_id", "id", "value", "indi
 --
 
 COPY "public"."metricsBlock_stats_locales" ("label", "id", "_locale", "_parent_id") FROM stdin;
-تم تتبّعها وتحليلها وربطها بالبيانات التشغيلية والإعلانية، لمساعدة المطاعم على اتخاذ قرارات أوضح وتحقيق نمو أكبر.	28	ar	6886ab80df64ca6dd9ecfe60
-إجمالي قيمة الطلبات (GMV) التي تعاملنا معها مع عملائنا على منصات التوصيل.	29	ar	6886ab9cdf64ca6dd9ecfe62
-من مطاعم مستقلة إلى علامات تدير عشرات الفروع، يعتمدون على بلّورة لتحسين ربحيتهم التشغيلية والإعلانية	30	ar	6886ab9edf64ca6dd9ecfe65
+تم تتبّعها وتحليلها وربطها بالبيانات التشغيلية والإعلانية، لمساعدة المطاعم على اتخاذ قرارات أوضح وتحقيق نمو أكبر.	31	ar	6886ab80df64ca6dd9ecfe60
+إجمالي قيمة الطلبات (GMV) التي تعاملنا معها مع عملائنا على منصات التوصيل.	32	ar	6886ab9cdf64ca6dd9ecfe62
+من مطاعم مستقلة إلى علامات تدير عشرات الفروع، يعتمدون على بلّورة لتحسين ربحيتهم التشغيلية والإعلانية	33	ar	6886ab9edf64ca6dd9ecfe65
 \.
 
 
@@ -12258,10 +13003,10 @@ COPY "public"."metricsBlock_table_rows_children_cells" ("_order", "_parent_id", 
 -- Data for Name: pages; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-COPY "public"."pages" ("id", "title", "hero_type", "hero_badge_type", "hero_badge_color", "hero_badge_icon", "hero_badge_icon_position", "hero_caption", "published_at", "slug", "slug_lock", "updated_at", "created_at", "_status") FROM stdin;
-a14442b0-9282-4efc-9df0-51d6374608d8	home	highImpact	\N	blue	\N	flex-row	\N	2025-07-27 20:53:08.677+00	home	t	2025-07-28 02:05:13.11+00	2025-07-27 20:48:06.623+00	published
-e2c88328-cc74-46c9-aabd-7e7c2f92d013	blog	mediumImpact	\N	blue	\N	flex-row	\N	2025-07-28 04:38:21.68+00	blog	t	2025-07-28 04:38:21.693+00	2025-07-28 04:37:29.274+00	published
-742d2308-808d-4f0e-91f2-03d18be57d5c	about	mediumImpact	label	gray	\N	flex-row	\N	2025-07-27 21:55:39.98+00	about	t	2025-08-01 21:42:29.981+00	2025-07-27 21:36:21.924+00	published
+COPY "public"."pages" ("id", "title", "hero_type", "hero_badge_type", "hero_badge_color", "hero_badge_icon", "hero_badge_icon_position", "hero_caption", "published_at", "slug", "slug_lock", "updated_at", "created_at", "_status", "hero_list_style") FROM stdin;
+e2c88328-cc74-46c9-aabd-7e7c2f92d013	blog	mediumImpact	\N	blue	\N	flex-row	\N	2025-07-28 04:38:21.68+00	blog	t	2025-07-28 04:38:21.693+00	2025-07-28 04:37:29.274+00	published	bullet
+742d2308-808d-4f0e-91f2-03d18be57d5c	about	mediumImpact	label	gray	\N	flex-row	\N	2025-07-27 21:55:39.98+00	about	t	2025-08-01 22:30:42.537+00	2025-07-27 21:36:21.924+00	published	bullet
+a14442b0-9282-4efc-9df0-51d6374608d8	home	highImpact	\N	blue	\N	flex-row	\N	2025-07-27 20:53:08.677+00	home	t	2025-08-03 08:11:39.402+00	2025-07-27 20:48:06.623+00	published	icons
 \.
 
 
@@ -12270,7 +13015,7 @@ e2c88328-cc74-46c9-aabd-7e7c2f92d013	blog	mediumImpact	\N	blue	\N	flex-row	\N	20
 --
 
 COPY "public"."pages_hero_links" ("_order", "_parent_id", "id", "link_type", "link_new_tab", "link_url", "link_color", "link_variant") FROM stdin;
-1	a14442b0-9282-4efc-9df0-51d6374608d8	688693af73e9e43a4a6e3c03	custom	\N	/	neutral	primary
+1	a14442b0-9282-4efc-9df0-51d6374608d8	688693af73e9e43a4a6e3c03	custom	\N	/profit-calculator	neutral	primary
 2	a14442b0-9282-4efc-9df0-51d6374608d8	688693c973e9e43a4a6e3c04	custom	\N	/	neutral	ghost
 \.
 
@@ -12280,8 +13025,30 @@ COPY "public"."pages_hero_links" ("_order", "_parent_id", "id", "link_type", "li
 --
 
 COPY "public"."pages_hero_links_locales" ("link_label", "id", "_locale", "_parent_id") FROM stdin;
-جرب حاسبة الربحية	7	ar	688693af73e9e43a4a6e3c03
-إطلب عرض تجريبي	8	ar	688693c973e9e43a4a6e3c04
+جرب حاسبة الربحية	17	ar	688693af73e9e43a4a6e3c03
+إطلب عرض تجريبي	18	ar	688693c973e9e43a4a6e3c04
+\.
+
+
+--
+-- Data for Name: pages_hero_list_items; Type: TABLE DATA; Schema: public; Owner: -
+--
+
+COPY "public"."pages_hero_list_items" ("_order", "_parent_id", "id", "icon") FROM stdin;
+1	a14442b0-9282-4efc-9df0-51d6374608d8	688f18d4c8a1d504079d0ee6	checkbox-circle-line
+2	a14442b0-9282-4efc-9df0-51d6374608d8	688f18edc8a1d504079d0eeb	checkbox-circle-line
+3	a14442b0-9282-4efc-9df0-51d6374608d8	688f18ebc8a1d504079d0ee8	checkbox-circle-line
+\.
+
+
+--
+-- Data for Name: pages_hero_list_items_locales; Type: TABLE DATA; Schema: public; Owner: -
+--
+
+COPY "public"."pages_hero_list_items_locales" ("text", "id", "_locale", "_parent_id") FROM stdin;
+مجانا، ما عليك أي التزام	4	ar	688f18d4c8a1d504079d0ee6
+شاهد كيف المنصة تقدر تساعدك تطّور بالتفصيل	5	ar	688f18edc8a1d504079d0eeb
+نوريك كيف تقدر تربح اكثر من بكرة	6	ar	688f18ebc8a1d504079d0ee8
 \.
 
 
@@ -12290,9 +13057,9 @@ COPY "public"."pages_hero_links_locales" ("link_label", "id", "_locale", "_paren
 --
 
 COPY "public"."pages_locales" ("hero_badge_label", "hero_rich_text", "hero_media_desktop_light_id", "hero_media_desktop_dark_id", "hero_logos_headline", "meta_title", "meta_image_id", "meta_description", "id", "_locale", "_parent_id", "hero_media_mobile_light_id", "hero_media_mobile_dark_id") FROM stdin;
-\N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h1", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "عزز نموك على تطبيقات التوصيل", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "بلّورة تبسّط إدارة التسويق وتحسّن أداء المطاعم على تطبيقات التوصيل من خلال منصة واحدة لإدارة الحملات، تحسين الإنفاق الإعلاني، وزيادة الربحية، بشكل تلقائي وذكي", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}], "direction": "rtl"}}	5afde42d-6a3f-4d34-a6ba-6eca5caea614	\N	\N	بلّورة – منصة ذكاء أعمال لقطاع التجزئة والمطاعم والمقاهي	\N	‏زد مبيعاتك، تنبأ بسلوكيات الطلب وقم بتحسين مؤشرات الأداء من خلال إتخاذ قرارات نمو تعتمد على البيانات باستخدام قوة تقنيات ذكاء الأعمال.	11	ar	a14442b0-9282-4efc-9df0-51d6374608d8	\N	\N
 \N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h1", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "تحت المجهر: الاتجاهات والرؤى في قطاع المأكولات والمطاعم", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "أدلة قابلة للتنفيذ، ونصائح مدعومة بالبيانات، وقصص من العالم الحقيقي لمساعدتك في إدارة عملك الغذائي بشكل أكثر سلاسة وربحية - من عمليات المطبخ إلى تطبيقات التوصيل.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}], "direction": "rtl"}}	\N	\N	\N	\N	\N	\N	13	ar	e2c88328-cc74-46c9-aabd-7e7c2f92d013	\N	\N
-عن بلّورة	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h1", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "نظام التشغيل الجديد لتحسين ربحية المطاعم على تطبيقات التوصيل", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "سوق تطبيقات التوصيل غيّر طريقة عمل المطاعم. الطلبات صارت رقمية، المنافسة صارت يومية، والربحية صارت مرتبطة بقرارات تسويقية وتشغيلية معقّدة، كل ريال ينصرف على خصم أو إعلان أو عمولة يحتاج يشتغل بكفاءة.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "بلّورة منصة سعودية تساعد المطاعم على تحسين ربحيتها من تطبيقات التوصيل.. نربط بين الإعلانات، الفواتير، والطلبات في لوحة تحكم واحدة، ونوفّر أدوات عملية وتحليلات قابلة للتنفيذ، مبنية على بيانات فعلية، وتخاطب الواقع اليومي للمشغّل.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "أصحاب المطاعم يستخدمون بلّورة لاسترجاع التكاليف المهدرة، ضبط التسويق، واتخاذ قرارات تشغيلية أوضح.. ", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "المستثمرون يشوفون فرصة في بناء بنية تشغيلية جديدة لقطاع الأغذية الرقمي.. والمواهب تنضم لفريق يشتغل على منتج له أثر واضح في سوق مليان فرص، وبمنهجية واقعية", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}], "direction": "rtl"}}	\N	\N	\N	بلّورة – منصة ذكاء أعمال لقطاع التجزئة والمطاعم والمقاهي	\N	‏زد مبيعاتك، تنبأ بسلوكيات الطلب وقم بتحسين مؤشرات الأداء من خلال إتخاذ قرارات نمو تعتمد على البيانات باستخدام قوة تقنيات ذكاء الأعمال.	17	ar	742d2308-808d-4f0e-91f2-03d18be57d5c	\N	\N
+عن بلّورة	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h1", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "نظام التشغيل الجديد لتحسين ربحية المطاعم على تطبيقات التوصيل", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "سوق تطبيقات التوصيل غيّر طريقة عمل المطاعم. الطلبات صارت رقمية، المنافسة صارت يومية، والربحية صارت مرتبطة بقرارات تسويقية وتشغيلية معقّدة، كل ريال ينصرف على خصم أو إعلان أو عمولة يحتاج يشتغل بكفاءة.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "بلّورة منصة سعودية تساعد المطاعم على تحسين ربحيتها من تطبيقات التوصيل.. نربط بين الإعلانات، الفواتير، والطلبات في لوحة تحكم واحدة، ونوفّر أدوات عملية وتحليلات قابلة للتنفيذ، مبنية على بيانات فعلية، وتخاطب الواقع اليومي للمشغّل.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "أصحاب المطاعم يستخدمون بلّورة لاسترجاع التكاليف المهدرة، ضبط التسويق، واتخاذ قرارات تشغيلية أوضح.. ", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "المستثمرون يشوفون فرصة في بناء بنية تشغيلية جديدة لقطاع الأغذية الرقمي.. والمواهب تنضم لفريق يشتغل على منتج له أثر واضح في سوق مليان فرص، وبمنهجية واقعية", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}], "direction": "rtl"}}	\N	\N	\N	بلّورة – منصة ذكاء أعمال لقطاع التجزئة والمطاعم والمقاهي	\N	‏زد مبيعاتك، تنبأ بسلوكيات الطلب وقم بتحسين مؤشرات الأداء من خلال إتخاذ قرارات نمو تعتمد على البيانات باستخدام قوة تقنيات ذكاء الأعمال.	20	ar	742d2308-808d-4f0e-91f2-03d18be57d5c	\N	\N
+\N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h1", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "عزز نموك على تطبيقات التوصيل", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "بلّورة تبسّط إدارة التسويق وتحسّن أداء المطاعم على تطبيقات التوصيل من خلال منصة واحدة لإدارة الحملات، تحسين الإنفاق الإعلاني، وزيادة الربحية، بشكل تلقائي وذكي", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}], "direction": "rtl"}}	5afde42d-6a3f-4d34-a6ba-6eca5caea614	\N	\N	بلّورة – منصة ذكاء أعمال لقطاع التجزئة والمطاعم والمقاهي	\N	‏زد مبيعاتك، تنبأ بسلوكيات الطلب وقم بتحسين مؤشرات الأداء من خلال إتخاذ قرارات نمو تعتمد على البيانات باستخدام قوة تقنيات ذكاء الأعمال.	23	ar	a14442b0-9282-4efc-9df0-51d6374608d8	\N	\N
 \.
 
 
@@ -12301,12 +13068,18 @@ COPY "public"."pages_locales" ("hero_badge_label", "hero_rich_text", "hero_media
 --
 
 COPY "public"."pages_rels" ("id", "order", "parent_id", "path", "locale", "pages_id", "blog_posts_id", "media_id", "categories_id", "faq_id", "customers_id") FROM stdin;
-11	1	a14442b0-9282-4efc-9df0-51d6374608d8	layout.1.logos	\N	\N	\N	513d34fb-5dbc-4333-b0ab-af8e3756cc8a	\N	\N	\N
-12	2	a14442b0-9282-4efc-9df0-51d6374608d8	layout.1.logos	\N	\N	\N	92890105-dde4-4c79-acac-d81ad6dd978a	\N	\N	\N
-13	1	a14442b0-9282-4efc-9df0-51d6374608d8	layout.2.selectedTestimonials	\N	\N	\N	\N	\N	\N	b440e19a-7d00-487a-9927-d384dee97e22
-14	1	a14442b0-9282-4efc-9df0-51d6374608d8	layout.6.selectedTestimonials	\N	\N	\N	\N	\N	\N	ad1d03ad-f60b-4f83-90c2-d456f1fbaf21
-21	1	742d2308-808d-4f0e-91f2-03d18be57d5c	layout.5.logos	\N	\N	\N	92890105-dde4-4c79-acac-d81ad6dd978a	\N	\N	\N
-22	2	742d2308-808d-4f0e-91f2-03d18be57d5c	layout.5.logos	\N	\N	\N	513d34fb-5dbc-4333-b0ab-af8e3756cc8a	\N	\N	\N
+31	1	742d2308-808d-4f0e-91f2-03d18be57d5c	layout.5.logos	\N	\N	\N	92890105-dde4-4c79-acac-d81ad6dd978a	\N	\N	\N
+32	2	742d2308-808d-4f0e-91f2-03d18be57d5c	layout.5.logos	\N	\N	\N	513d34fb-5dbc-4333-b0ab-af8e3756cc8a	\N	\N	\N
+47	1	a14442b0-9282-4efc-9df0-51d6374608d8	layout.1.logos	\N	\N	\N	513d34fb-5dbc-4333-b0ab-af8e3756cc8a	\N	\N	\N
+48	2	a14442b0-9282-4efc-9df0-51d6374608d8	layout.1.logos	\N	\N	\N	92890105-dde4-4c79-acac-d81ad6dd978a	\N	\N	\N
+49	1	a14442b0-9282-4efc-9df0-51d6374608d8	layout.2.selectedTestimonials	\N	\N	\N	\N	\N	\N	b440e19a-7d00-487a-9927-d384dee97e22
+50	1	a14442b0-9282-4efc-9df0-51d6374608d8	layout.6.selectedTestimonials	\N	\N	\N	\N	\N	\N	ad1d03ad-f60b-4f83-90c2-d456f1fbaf21
+51	1	a14442b0-9282-4efc-9df0-51d6374608d8	layout.8.faqs	\N	\N	\N	\N	\N	487d16ef-4d7e-4603-885d-53d42734b0f1	\N
+52	2	a14442b0-9282-4efc-9df0-51d6374608d8	layout.8.faqs	\N	\N	\N	\N	\N	2d37f238-e71e-4291-8919-33e4c7a73544	\N
+53	3	a14442b0-9282-4efc-9df0-51d6374608d8	layout.8.faqs	\N	\N	\N	\N	\N	4696359a-45b8-4fea-b14f-ca34e928e5d0	\N
+54	4	a14442b0-9282-4efc-9df0-51d6374608d8	layout.8.faqs	\N	\N	\N	\N	\N	0786b804-85ea-4269-841e-5f4fe762ada3	\N
+55	5	a14442b0-9282-4efc-9df0-51d6374608d8	layout.8.faqs	\N	\N	\N	\N	\N	0ad17856-43c0-4ec9-bd88-c26f826dfb68	\N
+56	6	a14442b0-9282-4efc-9df0-51d6374608d8	layout.8.faqs	\N	\N	\N	\N	\N	cf06eaf5-c215-44fc-82c2-a7696336ef41	\N
 \.
 
 
@@ -12344,6 +13117,7 @@ COPY "public"."payload_locked_documents" ("id", "global_slug", "updated_at", "cr
 b4176a8c-b80c-463c-b395-e16a8e94f85a	\N	2025-08-01 21:40:46.456+00	2025-08-01 21:40:46.503+00
 98f4a08e-37f2-4acf-b691-812814186bea	\N	2025-07-27 21:53:41.964+00	2025-07-27 21:53:42.017+00
 9f9bc525-6fe6-48d9-a323-5ac2fd5a952a	\N	2025-07-27 21:31:18.634+00	2025-07-27 21:31:18.683+00
+c90dc27a-1fc2-46f0-a927-009e6569008b	\N	2025-08-01 22:28:55.858+00	2025-08-01 22:28:55.907+00
 383c1696-0be9-4c45-97aa-c88cfe26e8fc	\N	2025-07-27 21:31:35.395+00	2025-07-27 21:31:35.443+00
 f6d01505-8570-4d0e-85c9-00a3e68f0535	\N	2025-07-27 21:33:19.051+00	2025-07-27 21:33:19.1+00
 1779ec8a-fe1f-4fa4-84c7-40e7437970f1	\N	2025-07-27 21:33:45.427+00	2025-07-27 21:33:45.474+00
@@ -12354,12 +13128,14 @@ e8211f10-733e-49fa-b1d6-e77b7f1d3456	\N	2025-07-27 21:38:48.415+00	2025-07-27 21
 e81c79da-151f-4f8e-8487-635c310b0ddf	\N	2025-07-28 04:40:47.759+00	2025-07-28 04:40:47.808+00
 53f3deff-9011-4a96-bafe-445f9b3d55dd	\N	2025-07-28 04:40:58.398+00	2025-07-28 04:40:58.445+00
 33f03b32-cc79-4a6a-a9d8-59b9a74e2cb3	\N	2025-07-27 21:40:48.746+00	2025-07-27 21:40:20.944+00
+40ba15ba-0b41-4718-a137-714471b07df5	\N	2025-08-03 07:41:27.156+00	2025-08-03 07:41:27.205+00
 50878b37-39bd-4ae4-94bd-0a768ceb57c6	\N	2025-07-27 21:41:40.411+00	2025-07-27 21:41:12.915+00
 0a6a3aee-da46-48f0-b277-5bc1558da6fb	\N	2025-07-27 21:22:04.896+00	2025-07-27 21:22:04.987+00
 954b3e2c-b292-4ae5-bc78-78bc53c23f1c	\N	2025-07-27 21:22:29.868+00	2025-07-27 21:22:29.916+00
 c643d519-8755-4e00-bc7a-5eb52c8f8eb9	\N	2025-07-27 21:22:59.011+00	2025-07-27 21:22:59.064+00
 5403f17f-fd3c-4c69-9aaa-97c9fc522567	\N	2025-07-27 21:43:54.833+00	2025-07-27 21:43:54.881+00
 00d16042-5439-43f8-89e0-ac97b592df70	\N	2025-07-27 22:45:07.649+00	2025-07-27 22:45:07.697+00
+5720748b-f89b-4ece-9a9e-4c7491dfb952	\N	2025-08-03 07:44:21.844+00	2025-08-03 07:44:21.893+00
 dc6dc024-c792-480d-95fa-ebaf62bdb20c	\N	2025-08-01 21:32:36.844+00	2025-08-01 21:32:36.893+00
 b9f18e76-e175-40b3-a36a-522f8c181b0f	\N	2025-07-27 21:50:28.987+00	2025-07-27 21:50:29.035+00
 704f41bc-7058-4c4a-bb0a-5ae50b20d879	\N	2025-07-27 22:47:54.224+00	2025-07-27 22:47:54.273+00
@@ -12390,6 +13166,7 @@ afe59fcf-c03a-4c3c-83ed-037756afca2a	20250727_131006	1	2025-07-27 20:42:58.506+0
 8c713b99-fc97-448a-ad66-208fbd0a8e3f	20250727_222224	2	2025-07-27 22:31:09.185+00	2025-07-27 22:31:08.553+00
 30ebd6bd-ae0e-4edf-b153-f95df2579619	20250728_025050	3	2025-07-28 02:54:13.57+00	2025-07-28 02:54:13.101+00
 d3f5ea49-79b4-4e8d-8759-dd9be572eae9	20250728_034603	4	2025-07-28 04:19:19.197+00	2025-07-28 04:19:18.857+00
+e5bdf3c6-0f67-4baa-b607-28bbd8436ae2	20250802_220035	5	2025-08-02 22:02:20.695+00	2025-08-02 22:02:20.265+00
 \.
 
 
@@ -12404,12 +13181,13 @@ d2f31f20-3c88-4314-b573-102ed2c12d6f	blog-posts-list	{"preset": null}	2025-07-27
 fef32b12-3d42-4fdd-933c-9bdee6b42f95	pages-list	{"limit": 10, "preset": null}	2025-07-27 21:00:31.974+00	2025-07-27 20:47:50.399+00
 0d5fde47-87f3-4c1c-90c5-bca704a2c00e	pages-list	{"limit": 10, "preset": null}	2025-07-27 21:00:32.248+00	2025-07-27 21:00:32.296+00
 9c1f8ab2-ecb8-4f9f-b278-3bc207f25826	categories-list	{"preset": null}	2025-07-27 21:55:07.733+00	2025-07-27 21:55:07.781+00
-c2ba4b5f-9157-42a7-9ccf-5bbf13dd0b71	nav	{"open": false}	2025-08-01 21:35:38.835+00	2025-08-01 21:35:38.885+00
-7df0e386-9de1-43ef-8633-8179bc57b9fe	collection-pages-742d2308-808d-4f0e-91f2-03d18be57d5c	{"fields": {"layout": {"collapsed": ["68869c85f3705a4904040d2e", "68869cf2f3705a4904040d30", "6886aaccdf64ca6dd9ecfe5d", "6886aadbdf64ca6dd9ecfe5f", "6886ac02df64ca6dd9ecfe6a", "6886ad3cdf64ca6dd9ecfe74"]}, "_index-1": {"tabIndex": 1}, "hero._index-1": {"collapsed": true}, "layout.4.team": {"collapsed": ["6886acb4df64ca6dd9ecfe72", "6886acd8df64ca6dd9ecfe73"]}, "layout.2.stats": {"collapsed": ["6886ab80df64ca6dd9ecfe60", "6886ab9cdf64ca6dd9ecfe62", "6886ab9edf64ca6dd9ecfe65"]}, "layout.5.columns": {"collapsed": ["6886ac0edf64ca6dd9ecfe6b", "6886ac2fdf64ca6dd9ecfe6c", "6886ac36df64ca6dd9ecfe6f"]}, "layout.0.blockHeader._index-1": {"collapsed": true}}}	2025-08-01 21:42:27.006+00	2025-07-27 21:38:07.537+00
+c2ba4b5f-9157-42a7-9ccf-5bbf13dd0b71	nav	{"open": true}	2025-08-01 21:44:27.022+00	2025-08-01 21:35:38.885+00
+7df0e386-9de1-43ef-8633-8179bc57b9fe	collection-pages-742d2308-808d-4f0e-91f2-03d18be57d5c	{"fields": {"layout": {"collapsed": ["68869c85f3705a4904040d2e", "68869cf2f3705a4904040d30", "6886aaccdf64ca6dd9ecfe5d", "6886ac02df64ca6dd9ecfe6a", "6886ad3cdf64ca6dd9ecfe74"]}, "_index-1": {"tabIndex": 1}, "hero._index-1": {"collapsed": true}, "layout.4.team": {"collapsed": ["6886acb4df64ca6dd9ecfe72", "6886acd8df64ca6dd9ecfe73"]}, "layout.2.stats": {"collapsed": ["6886ab80df64ca6dd9ecfe60", "6886ab9cdf64ca6dd9ecfe62", "6886ab9edf64ca6dd9ecfe65"]}, "layout.5.columns": {"collapsed": ["6886ac0edf64ca6dd9ecfe6b", "6886ac2fdf64ca6dd9ecfe6c", "6886ac36df64ca6dd9ecfe6f"]}, "layout.3.team.0._index-4": {"collapsed": false}, "layout.0.blockHeader._index-1": {"collapsed": true}}}	2025-08-02 21:04:34.435+00	2025-07-27 21:38:07.537+00
 fd0e9533-0c05-49dc-85c7-109fbf76d887	customers-list	{"limit": 10, "preset": null, "columns": [{"active": true, "accessor": "title"}, {"active": true, "accessor": "publishedAt"}, {"active": true, "accessor": "updatedAt"}, {"active": false, "accessor": "id"}, {"active": false, "accessor": "testimonial-quote"}, {"active": false, "accessor": "testimonial-featuredImage"}, {"active": false, "accessor": "testimonial-stats"}, {"active": false, "accessor": "testimonial-company-companyName"}, {"active": false, "accessor": "testimonial-company-companyLogo"}, {"active": false, "accessor": "testimonial-company-link-type"}, {"active": false, "accessor": "testimonial-company-link-newTab"}, {"active": false, "accessor": "testimonial-company-link-reference"}, {"active": false, "accessor": "testimonial-company-link-url"}, {"active": false, "accessor": "testimonial-company-link-label"}, {"active": false, "accessor": "testimonial-company-industry"}, {"active": false, "accessor": "testimonial-company-foundingYear"}, {"active": false, "accessor": "testimonial-company-location"}, {"active": false, "accessor": "testimonial-company-branches"}, {"active": false, "accessor": "testimonial-authorInfo-name"}, {"active": false, "accessor": "testimonial-authorInfo-title"}, {"active": false, "accessor": "testimonial-authorInfo-avatar"}, {"active": false, "accessor": "caseStudy-caseStudytitle"}, {"active": false, "accessor": "caseStudy-summary"}, {"active": false, "accessor": "caseStudy-content"}, {"active": false, "accessor": "caseStudy-layout"}, {"active": false, "accessor": "enableCaseStudy"}, {"active": false, "accessor": "slug"}, {"active": false, "accessor": "slugLock"}, {"active": false, "accessor": "categories"}, {"active": false, "accessor": "createdAt"}, {"active": true, "accessor": "_status"}]}	2025-07-28 02:00:47.752+00	2025-07-27 21:49:04.477+00
 e830f01f-a4c7-4c4a-b196-acc46bdd7bcb	collection-pages-e2c88328-cc74-46c9-aabd-7e7c2f92d013	{"fields": {"layout": {"collapsed": []}, "_index-1": {"tabIndex": 1}}}	2025-07-28 04:38:17.641+00	2025-07-28 04:38:08.902+00
 6858dc41-74c1-4a76-8c00-1469aefd755f	users-list	{"preset": null}	2025-07-31 08:37:03.324+00	2025-07-31 08:37:03.373+00
-974f1685-12c3-409f-b5a2-00e77551a633	collection-pages-a14442b0-9282-4efc-9df0-51d6374608d8	{"fields": {"layout": {"collapsed": ["688694d473e9e43a4a6e3c05", "6886953573e9e43a4a6e3c09", "6886a0cc5a3935fab3feb21c", "688695d673e9e43a4a6e3c0a", "68869a4d5a3935fab3feb217", "68869d495a3935fab3feb219", "6886a0695a3935fab3feb21b"]}, "_index-1": {"tabIndex": 1}, "hero.links": {"collapsed": ["688693af73e9e43a4a6e3c03", "688693c973e9e43a4a6e3c04"]}, "hero._index-3": {"collapsed": false}, "hero._index-4": {"collapsed": false}, "layout.7.list": {"collapsed": []}, "layout.0.columns": {"collapsed": ["688694e973e9e43a4a6e3c06", "688694f973e9e43a4a6e3c07", "6886950873e9e43a4a6e3c08"]}, "layout.2.columns": {"collapsed": []}, "layout.0._index-3": {"collapsed": false}, "layout.7._index-4": {"collapsed": false}, "layout.2.columns.0._index-6": {"collapsed": true}, "layout.2.columns.0._index-8": {"collapsed": false}, "layout.2.columns.1._index-6": {"collapsed": true}, "layout.2.columns.1._index-8": {"collapsed": false}, "layout.2.columns.2._index-8": {"collapsed": false}, "layout.2.blockHeader._index-1": {"collapsed": true}, "layout.3.blockHeader._index-1": {"collapsed": false}, "layout.4.blockHeader._index-3": {"collapsed": false}}}	2025-07-31 09:09:57.683+00	2025-07-27 21:00:42.514+00
+bd45a1e8-e9f6-4de0-a851-6cc359738125	faq-list	{"preset": null}	2025-08-03 07:40:28.196+00	2025-08-03 07:40:28.244+00
+974f1685-12c3-409f-b5a2-00e77551a633	collection-pages-a14442b0-9282-4efc-9df0-51d6374608d8	{"fields": {"layout": {"collapsed": ["688694d473e9e43a4a6e3c05", "6886953573e9e43a4a6e3c09", "6886a0cc5a3935fab3feb21d", "688695d673e9e43a4a6e3c0a", "68869a4d5a3935fab3feb217", "68869d495a3935fab3feb219", "6886a0695a3935fab3feb21b", "6886a1475a3935fab3feb21f"]}, "_index-1": {"tabIndex": 1}, "hero.links": {"collapsed": ["688693af73e9e43a4a6e3c03", "688693c973e9e43a4a6e3c04"]}, "hero._index-3": {"collapsed": false}, "hero._index-4": {"collapsed": false}, "hero._index-6": {"collapsed": false}, "layout.7.list": {"collapsed": []}, "layout.0.columns": {"collapsed": ["688694e973e9e43a4a6e3c06", "688694f973e9e43a4a6e3c07", "6886950873e9e43a4a6e3c08"]}, "layout.2.columns": {"collapsed": []}, "layout.0._index-3": {"collapsed": false}, "layout.7._index-4": {"collapsed": false}, "layout.2.columns.0._index-6": {"collapsed": true}, "layout.2.columns.0._index-8": {"collapsed": false}, "layout.2.columns.1._index-6": {"collapsed": true}, "layout.2.columns.1._index-8": {"collapsed": false}, "layout.2.columns.2._index-8": {"collapsed": false}, "layout.2.blockHeader._index-1": {"collapsed": true}, "layout.3.blockHeader._index-1": {"collapsed": false}, "layout.4.blockHeader._index-3": {"collapsed": false}}}	2025-08-03 08:10:12.753+00	2025-07-27 21:00:42.514+00
 \.
 
 
@@ -12424,12 +13202,13 @@ COPY "public"."payload_preferences_rels" ("id", "order", "parent_id", "path", "u
 6	\N	fef32b12-3d42-4fdd-933c-9bdee6b42f95	user	9bedf5d0-2a99-427f-b0e1-967bbc2487cb
 7	\N	0d5fde47-87f3-4c1c-90c5-bca704a2c00e	user	9bedf5d0-2a99-427f-b0e1-967bbc2487cb
 62	\N	9c1f8ab2-ecb8-4f9f-b278-3bc207f25826	user	9bedf5d0-2a99-427f-b0e1-967bbc2487cb
-123	\N	c2ba4b5f-9157-42a7-9ccf-5bbf13dd0b71	user	9bedf5d0-2a99-427f-b0e1-967bbc2487cb
-137	\N	7df0e386-9de1-43ef-8633-8179bc57b9fe	user	9bedf5d0-2a99-427f-b0e1-967bbc2487cb
+138	\N	c2ba4b5f-9157-42a7-9ccf-5bbf13dd0b71	user	9bedf5d0-2a99-427f-b0e1-967bbc2487cb
+148	\N	7df0e386-9de1-43ef-8633-8179bc57b9fe	user	9bedf5d0-2a99-427f-b0e1-967bbc2487cb
+149	\N	bd45a1e8-e9f6-4de0-a851-6cc359738125	user	9bedf5d0-2a99-427f-b0e1-967bbc2487cb
+155	\N	974f1685-12c3-409f-b5a2-00e77551a633	user	9bedf5d0-2a99-427f-b0e1-967bbc2487cb
 102	\N	fd0e9533-0c05-49dc-85c7-109fbf76d887	user	9bedf5d0-2a99-427f-b0e1-967bbc2487cb
 107	\N	e830f01f-a4c7-4c4a-b196-acc46bdd7bcb	user	9bedf5d0-2a99-427f-b0e1-967bbc2487cb
 112	\N	6858dc41-74c1-4a76-8c00-1469aefd755f	user	9bedf5d0-2a99-427f-b0e1-967bbc2487cb
-115	\N	974f1685-12c3-409f-b5a2-00e77551a633	user	9bedf5d0-2a99-427f-b0e1-967bbc2487cb
 \.
 
 
@@ -12479,7 +13258,7 @@ COPY "public"."richTextBlock_block_header_links_locales" ("link_label", "id", "_
 --
 
 COPY "public"."richTextBlock_locales" ("block_header_badge_label", "block_header_header_text", "content", "id", "_locale", "_parent_id") FROM stdin;
-\N	\N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h4", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "اشتغلت بنفسي في تشغيل المطاعم، وأعرف وش يعني تحاول توازن بين الحملات، الخصومات، والعمولات، خاصة على تطبيقات التوصيل، بدون ما يكون عندك رؤية واضحة عن العائد.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}, {"type": "linebreak", "version": 1}, {"mode": "normal", "text": "ومع تحوّل قطاع التوصيل إلى تجارة إلكترونية مزدحمة، دخلت اللعبة متغيّرات جديدة: مطاعم سحابية جديدة كل شهر، عروض متغيرة، وتكلفة اكتساب عميل تزيد مع كل حملة.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}, {"type": "linebreak", "version": 1}, {"mode": "normal", "text": "عشان كذا انطلقت بلّورة.. مو كأداة تقارير، بل كنظام تشغيل يساعدك تربط الإعلان بالطلب والفاتورة، وتراجع كل ريال يطلع أو يضيع، بوضوح وكفاءة.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}, {"type": "linebreak", "version": 1}, {"mode": "normal", "text": "هدفنا إن كل مطعم يلاقي قدامه نظام واحد يوضّح له كل شيء، يساعده يسترجع التكاليف المهدرة، يضبط أداءه، ويكسب أكثر من نفس القنوات اللي يشتغل عليها كل يوم.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}, {"type": "linebreak", "version": 1}, {"mode": "normal", "text": "نبغى نكون جزء من يومهم، نشتغل معهم، ونكبر سوا.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}, {"type": "linebreak", "version": 1}], "direction": "rtl"}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [], "direction": "rtl", "textStyle": "", "textFormat": 0}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "عبدالوهاب الزايدي", "type": "text", "style": "", "detail": 0, "format": 1, "version": 1}, {"type": "linebreak", "version": 1}, {"mode": "normal", "text": "الشريك المؤسس والمدير التنفيذي", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 1}], "direction": "rtl", "textFormat": 1}}	8	ar	68869cf2f3705a4904040d30
+\N	\N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h4", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "اشتغلت بنفسي في تشغيل المطاعم، وأعرف وش يعني تحاول توازن بين الحملات، الخصومات، والعمولات، خاصة على تطبيقات التوصيل، بدون ما يكون عندك رؤية واضحة عن العائد.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}, {"type": "linebreak", "version": 1}, {"mode": "normal", "text": "ومع تحوّل قطاع التوصيل إلى تجارة إلكترونية مزدحمة، دخلت اللعبة متغيّرات جديدة: مطاعم سحابية جديدة كل شهر، عروض متغيرة، وتكلفة اكتساب عميل تزيد مع كل حملة.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}, {"type": "linebreak", "version": 1}, {"mode": "normal", "text": "عشان كذا انطلقت بلّورة.. مو كأداة تقارير، بل كنظام تشغيل يساعدك تربط الإعلان بالطلب والفاتورة، وتراجع كل ريال يطلع أو يضيع، بوضوح وكفاءة.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}, {"type": "linebreak", "version": 1}, {"mode": "normal", "text": "هدفنا إن كل مطعم يلاقي قدامه نظام واحد يوضّح له كل شيء، يساعده يسترجع التكاليف المهدرة، يضبط أداءه، ويكسب أكثر من نفس القنوات اللي يشتغل عليها كل يوم.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}, {"type": "linebreak", "version": 1}, {"mode": "normal", "text": "نبغى نكون جزء من يومهم، نشتغل معهم، ونكبر سوا.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}, {"type": "linebreak", "version": 1}], "direction": "rtl"}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [], "direction": "rtl", "textStyle": "", "textFormat": 0}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "عبدالوهاب الزايدي", "type": "text", "style": "", "detail": 0, "format": 1, "version": 1}, {"type": "linebreak", "version": 1}, {"mode": "normal", "text": "الشريك المؤسس والمدير التنفيذي", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 1}], "direction": "rtl", "textFormat": 1}}	9	ar	68869cf2f3705a4904040d30
 \.
 
 
@@ -12569,7 +13348,7 @@ COPY "public"."teamBlock_block_header_links_locales" ("link_label", "id", "_loca
 --
 
 COPY "public"."teamBlock_locales" ("block_header_badge_label", "block_header_header_text", "id", "_locale", "_parent_id") FROM stdin;
-\N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h2", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "تعرف على فريقنا", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "فلسفتنا بسيطة - توظيف فريق متنوع ومتحمس وتعزيز ثقافة تمكّنك من تقديم أفضل ما لديك.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}], "direction": "rtl"}}	7	ar	6886aadbdf64ca6dd9ecfe5f
+\N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h2", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "تعرف على فريقنا", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "فلسفتنا بسيطة - توظيف فريق متنوع ومتحمس وتعزيز ثقافة تمكّنك من تقديم أفضل ما لديك.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}], "direction": "rtl"}}	8	ar	6886aadbdf64ca6dd9ecfe5f
 \.
 
 
@@ -12588,8 +13367,8 @@ COPY "public"."teamBlock_team" ("_order", "_parent_id", "id", "image_id", "socia
 --
 
 COPY "public"."teamBlock_team_locales" ("name", "position", "bio", "id", "_locale", "_parent_id") FROM stdin;
-عبدالوهاب الزايدي	مدير تنفيذي، شريك مؤسس	\N	13	ar	6886acb4df64ca6dd9ecfe72
-عبدلله الهوساوي	مدير النمو، شريك مؤسس	\N	14	ar	6886acd8df64ca6dd9ecfe73
+عبدالوهاب الزايدي	مدير تنفيذي، شريك مؤسس	\N	15	ar	6886acb4df64ca6dd9ecfe72
+عبدلله الهوساوي	مدير النمو، شريك مؤسس	\N	16	ar	6886acd8df64ca6dd9ecfe73
 \.
 
 
@@ -12684,14 +13463,14 @@ SELECT pg_catalog.setval('"public"."_blog_posts_v_rels_id_seq"', 1, false);
 -- Name: _callToActionBlock_v_links_locales_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('"public"."_callToActionBlock_v_links_locales_id_seq"', 17, true);
+SELECT pg_catalog.setval('"public"."_callToActionBlock_v_links_locales_id_seq"', 43, true);
 
 
 --
 -- Name: _callToActionBlock_v_locales_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('"public"."_callToActionBlock_v_locales_id_seq"', 23, true);
+SELECT pg_catalog.setval('"public"."_callToActionBlock_v_locales_id_seq"', 49, true);
 
 
 --
@@ -12740,14 +13519,14 @@ SELECT pg_catalog.setval('"public"."_faqBlock_v_block_header_links_locales_id_se
 -- Name: _faqBlock_v_locales_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('"public"."_faqBlock_v_locales_id_seq"', 1, false);
+SELECT pg_catalog.setval('"public"."_faqBlock_v_locales_id_seq"', 15, true);
 
 
 --
 -- Name: _faq_v_locales_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('"public"."_faq_v_locales_id_seq"', 1, false);
+SELECT pg_catalog.setval('"public"."_faq_v_locales_id_seq"', 94, true);
 
 
 --
@@ -12761,14 +13540,14 @@ SELECT pg_catalog.setval('"public"."_featuresBlock_v_block_header_links_locales_
 -- Name: _featuresBlock_v_columns_locales_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('"public"."_featuresBlock_v_columns_locales_id_seq"', 1350, true);
+SELECT pg_catalog.setval('"public"."_featuresBlock_v_columns_locales_id_seq"', 1610, true);
 
 
 --
 -- Name: _featuresBlock_v_locales_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('"public"."_featuresBlock_v_locales_id_seq"', 681, true);
+SELECT pg_catalog.setval('"public"."_featuresBlock_v_locales_id_seq"', 811, true);
 
 
 --
@@ -12803,7 +13582,7 @@ SELECT pg_catalog.setval('"public"."_logosBlock_v_block_header_links_locales_id_
 -- Name: _logosBlock_v_locales_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('"public"."_logosBlock_v_locales_id_seq"', 236, true);
+SELECT pg_catalog.setval('"public"."_logosBlock_v_locales_id_seq"', 288, true);
 
 
 --
@@ -12817,35 +13596,42 @@ SELECT pg_catalog.setval('"public"."_metricsBlock_v_block_header_links_locales_i
 -- Name: _metricsBlock_v_locales_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('"public"."_metricsBlock_v_locales_id_seq"', 130, true);
+SELECT pg_catalog.setval('"public"."_metricsBlock_v_locales_id_seq"', 156, true);
 
 
 --
 -- Name: _metricsBlock_v_stats_locales_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('"public"."_metricsBlock_v_stats_locales_id_seq"', 471, true);
+SELECT pg_catalog.setval('"public"."_metricsBlock_v_stats_locales_id_seq"', 549, true);
 
 
 --
 -- Name: _pages_v_locales_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('"public"."_pages_v_locales_id_seq"', 382, true);
+SELECT pg_catalog.setval('"public"."_pages_v_locales_id_seq"', 434, true);
 
 
 --
 -- Name: _pages_v_rels_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('"public"."_pages_v_rels_id_seq"', 551, true);
+SELECT pg_catalog.setval('"public"."_pages_v_rels_id_seq"', 816, true);
 
 
 --
 -- Name: _pages_v_version_hero_links_locales_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('"public"."_pages_v_version_hero_links_locales_id_seq"', 397, true);
+SELECT pg_catalog.setval('"public"."_pages_v_version_hero_links_locales_id_seq"', 449, true);
+
+
+--
+-- Name: _pages_v_version_hero_list_items_locales_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
+--
+
+SELECT pg_catalog.setval('"public"."_pages_v_version_hero_list_items_locales_id_seq"', 23, true);
 
 
 --
@@ -12859,7 +13645,7 @@ SELECT pg_catalog.setval('"public"."_richTextBlock_v_block_header_links_locales_
 -- Name: _richTextBlock_v_locales_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('"public"."_richTextBlock_v_locales_id_seq"', 144, true);
+SELECT pg_catalog.setval('"public"."_richTextBlock_v_locales_id_seq"', 170, true);
 
 
 --
@@ -12873,14 +13659,14 @@ SELECT pg_catalog.setval('"public"."_teamBlock_v_block_header_links_locales_id_s
 -- Name: _teamBlock_v_locales_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('"public"."_teamBlock_v_locales_id_seq"', 94, true);
+SELECT pg_catalog.setval('"public"."_teamBlock_v_locales_id_seq"', 120, true);
 
 
 --
 -- Name: _teamBlock_v_team_locales_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('"public"."_teamBlock_v_team_locales_id_seq"', 171, true);
+SELECT pg_catalog.setval('"public"."_teamBlock_v_team_locales_id_seq"', 223, true);
 
 
 --
@@ -12936,14 +13722,14 @@ SELECT pg_catalog.setval('"public"."blog_posts_rels_id_seq"', 1, false);
 -- Name: callToActionBlock_links_locales_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('"public"."callToActionBlock_links_locales_id_seq"', 2, true);
+SELECT pg_catalog.setval('"public"."callToActionBlock_links_locales_id_seq"', 7, true);
 
 
 --
 -- Name: callToActionBlock_locales_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('"public"."callToActionBlock_locales_id_seq"', 2, true);
+SELECT pg_catalog.setval('"public"."callToActionBlock_locales_id_seq"', 7, true);
 
 
 --
@@ -12999,14 +13785,14 @@ SELECT pg_catalog.setval('"public"."faqBlock_block_header_links_locales_id_seq"'
 -- Name: faqBlock_locales_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('"public"."faqBlock_locales_id_seq"', 1, false);
+SELECT pg_catalog.setval('"public"."faqBlock_locales_id_seq"', 2, true);
 
 
 --
 -- Name: faq_locales_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('"public"."faq_locales_id_seq"', 1, false);
+SELECT pg_catalog.setval('"public"."faq_locales_id_seq"', 14, true);
 
 
 --
@@ -13020,14 +13806,14 @@ SELECT pg_catalog.setval('"public"."featuresBlock_block_header_links_locales_id_
 -- Name: featuresBlock_columns_locales_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('"public"."featuresBlock_columns_locales_id_seq"', 44, true);
+SELECT pg_catalog.setval('"public"."featuresBlock_columns_locales_id_seq"', 82, true);
 
 
 --
 -- Name: featuresBlock_locales_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('"public"."featuresBlock_locales_id_seq"', 25, true);
+SELECT pg_catalog.setval('"public"."featuresBlock_locales_id_seq"', 42, true);
 
 
 --
@@ -13209,7 +13995,7 @@ SELECT pg_catalog.setval('"public"."logosBlock_block_header_links_locales_id_seq
 -- Name: logosBlock_locales_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('"public"."logosBlock_locales_id_seq"', 10, true);
+SELECT pg_catalog.setval('"public"."logosBlock_locales_id_seq"', 15, true);
 
 
 --
@@ -13230,49 +14016,56 @@ SELECT pg_catalog.setval('"public"."metricsBlock_block_header_links_locales_id_s
 -- Name: metricsBlock_locales_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('"public"."metricsBlock_locales_id_seq"', 8, true);
+SELECT pg_catalog.setval('"public"."metricsBlock_locales_id_seq"', 9, true);
 
 
 --
 -- Name: metricsBlock_stats_locales_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('"public"."metricsBlock_stats_locales_id_seq"', 30, true);
+SELECT pg_catalog.setval('"public"."metricsBlock_stats_locales_id_seq"', 33, true);
 
 
 --
 -- Name: pages_hero_links_locales_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('"public"."pages_hero_links_locales_id_seq"', 10, true);
+SELECT pg_catalog.setval('"public"."pages_hero_links_locales_id_seq"', 18, true);
+
+
+--
+-- Name: pages_hero_list_items_locales_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
+--
+
+SELECT pg_catalog.setval('"public"."pages_hero_list_items_locales_id_seq"', 6, true);
 
 
 --
 -- Name: pages_locales_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('"public"."pages_locales_id_seq"', 18, true);
+SELECT pg_catalog.setval('"public"."pages_locales_id_seq"', 23, true);
 
 
 --
 -- Name: pages_rels_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('"public"."pages_rels_id_seq"', 26, true);
+SELECT pg_catalog.setval('"public"."pages_rels_id_seq"', 56, true);
 
 
 --
 -- Name: payload_locked_documents_rels_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('"public"."payload_locked_documents_rels_id_seq"', 398, true);
+SELECT pg_catalog.setval('"public"."payload_locked_documents_rels_id_seq"', 482, true);
 
 
 --
 -- Name: payload_preferences_rels_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('"public"."payload_preferences_rels_id_seq"', 140, true);
+SELECT pg_catalog.setval('"public"."payload_preferences_rels_id_seq"', 155, true);
 
 
 --
@@ -13293,7 +14086,7 @@ SELECT pg_catalog.setval('"public"."richTextBlock_block_header_links_locales_id_
 -- Name: richTextBlock_locales_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('"public"."richTextBlock_locales_id_seq"', 8, true);
+SELECT pg_catalog.setval('"public"."richTextBlock_locales_id_seq"', 9, true);
 
 
 --
@@ -13335,14 +14128,14 @@ SELECT pg_catalog.setval('"public"."teamBlock_block_header_links_locales_id_seq"
 -- Name: teamBlock_locales_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('"public"."teamBlock_locales_id_seq"', 7, true);
+SELECT pg_catalog.setval('"public"."teamBlock_locales_id_seq"', 8, true);
 
 
 --
 -- Name: teamBlock_team_locales_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('"public"."teamBlock_team_locales_id_seq"', 14, true);
+SELECT pg_catalog.setval('"public"."teamBlock_team_locales_id_seq"', 16, true);
 
 
 --
@@ -13876,6 +14669,22 @@ ALTER TABLE ONLY "public"."_pages_v_version_hero_links_locales"
 
 ALTER TABLE ONLY "public"."_pages_v_version_hero_links"
     ADD CONSTRAINT "_pages_v_version_hero_links_pkey" PRIMARY KEY ("id");
+
+
+--
+-- Name: _pages_v_version_hero_list_items_locales _pages_v_version_hero_list_items_locales_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY "public"."_pages_v_version_hero_list_items_locales"
+    ADD CONSTRAINT "_pages_v_version_hero_list_items_locales_pkey" PRIMARY KEY ("id");
+
+
+--
+-- Name: _pages_v_version_hero_list_items _pages_v_version_hero_list_items_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY "public"."_pages_v_version_hero_list_items"
+    ADD CONSTRAINT "_pages_v_version_hero_list_items_pkey" PRIMARY KEY ("id");
 
 
 --
@@ -14876,6 +15685,22 @@ ALTER TABLE ONLY "public"."pages_hero_links_locales"
 
 ALTER TABLE ONLY "public"."pages_hero_links"
     ADD CONSTRAINT "pages_hero_links_pkey" PRIMARY KEY ("id");
+
+
+--
+-- Name: pages_hero_list_items_locales pages_hero_list_items_locales_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY "public"."pages_hero_list_items_locales"
+    ADD CONSTRAINT "pages_hero_list_items_locales_pkey" PRIMARY KEY ("id");
+
+
+--
+-- Name: pages_hero_list_items pages_hero_list_items_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY "public"."pages_hero_list_items"
+    ADD CONSTRAINT "pages_hero_list_items_pkey" PRIMARY KEY ("id");
 
 
 --
@@ -16445,6 +17270,27 @@ CREATE INDEX "_pages_v_version_hero_links_order_idx" ON "public"."_pages_v_versi
 --
 
 CREATE INDEX "_pages_v_version_hero_links_parent_id_idx" ON "public"."_pages_v_version_hero_links" USING "btree" ("_parent_id");
+
+
+--
+-- Name: _pages_v_version_hero_list_items_locales_locale_parent_id_uniqu; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE UNIQUE INDEX "_pages_v_version_hero_list_items_locales_locale_parent_id_uniqu" ON "public"."_pages_v_version_hero_list_items_locales" USING "btree" ("_locale", "_parent_id");
+
+
+--
+-- Name: _pages_v_version_hero_list_items_order_idx; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX "_pages_v_version_hero_list_items_order_idx" ON "public"."_pages_v_version_hero_list_items" USING "btree" ("_order");
+
+
+--
+-- Name: _pages_v_version_hero_list_items_parent_id_idx; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX "_pages_v_version_hero_list_items_parent_id_idx" ON "public"."_pages_v_version_hero_list_items" USING "btree" ("_parent_id");
 
 
 --
@@ -18457,6 +19303,27 @@ CREATE INDEX "pages_hero_links_parent_id_idx" ON "public"."pages_hero_links" USI
 
 
 --
+-- Name: pages_hero_list_items_locales_locale_parent_id_unique; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE UNIQUE INDEX "pages_hero_list_items_locales_locale_parent_id_unique" ON "public"."pages_hero_list_items_locales" USING "btree" ("_locale", "_parent_id");
+
+
+--
+-- Name: pages_hero_list_items_order_idx; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX "pages_hero_list_items_order_idx" ON "public"."pages_hero_list_items" USING "btree" ("_order");
+
+
+--
+-- Name: pages_hero_list_items_parent_id_idx; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX "pages_hero_list_items_parent_id_idx" ON "public"."pages_hero_list_items" USING "btree" ("_parent_id");
+
+
+--
 -- Name: pages_hero_media_desktop_hero_media_desktop_dark_idx; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -20060,6 +20927,22 @@ ALTER TABLE ONLY "public"."_pages_v_version_hero_links"
 
 
 --
+-- Name: _pages_v_version_hero_list_items_locales _pages_v_version_hero_list_items_locales_parent_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY "public"."_pages_v_version_hero_list_items_locales"
+    ADD CONSTRAINT "_pages_v_version_hero_list_items_locales_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."_pages_v_version_hero_list_items"("id") ON DELETE CASCADE;
+
+
+--
+-- Name: _pages_v_version_hero_list_items _pages_v_version_hero_list_items_parent_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY "public"."_pages_v_version_hero_list_items"
+    ADD CONSTRAINT "_pages_v_version_hero_list_items_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."_pages_v"("id") ON DELETE CASCADE;
+
+
+--
 -- Name: _richTextBlock_v_block_header_links_locales _richTextBlock_v_block_header_links_locales_parent_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -21249,6 +22132,22 @@ ALTER TABLE ONLY "public"."pages_hero_links_locales"
 
 ALTER TABLE ONLY "public"."pages_hero_links"
     ADD CONSTRAINT "pages_hero_links_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."pages"("id") ON DELETE CASCADE;
+
+
+--
+-- Name: pages_hero_list_items_locales pages_hero_list_items_locales_parent_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY "public"."pages_hero_list_items_locales"
+    ADD CONSTRAINT "pages_hero_list_items_locales_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."pages_hero_list_items"("id") ON DELETE CASCADE;
+
+
+--
+-- Name: pages_hero_list_items pages_hero_list_items_parent_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY "public"."pages_hero_list_items"
+    ADD CONSTRAINT "pages_hero_list_items_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."pages"("id") ON DELETE CASCADE;
 
 
 --
