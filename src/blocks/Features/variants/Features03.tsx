@@ -24,7 +24,7 @@ export const Features03: React.FC<FeaturesBlock> = ({ columns }) => {
         const iconName = column.icon as string
         return (
           <motion.div key={index} variants={itemsFling}>
-            <Card className="h-full w-full grow rounded-3xl border-0 bg-card p-6 shadow-none">
+            <Card className="h-full w-full grow rounded-3xl border-0 bg-violet-100 p-6 shadow-none">
               {column.content?.title && (
                 <CardTitle className="mb-2 flex flex-row items-center gap-2">
                   {iconName && (
