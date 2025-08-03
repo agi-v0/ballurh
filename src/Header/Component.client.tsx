@@ -75,7 +75,7 @@ export const HeaderClient: React.FC<HeaderType & AdminBarProps> = ({
         '-md:top-[var(--admin-bar-height,0px)]',
         hideBackground && 'before:opacity-0 after:opacity-0',
         isMobileNavOpen && 'border-none bg-background',
-        y > 20 && 'border-b bg-background',
+        y > 20 && 'border-b bg-background/60 backdrop-blur-sm',
       )}
     >
       <AdminBar adminBarProps={adminBarProps} />
