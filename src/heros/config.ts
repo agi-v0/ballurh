@@ -92,9 +92,10 @@ export const hero: Field = {
               overrides: {
                 admin: {
                   hideGutter: true,
+                  description: 'Default',
                 },
                 name: 'desktop',
-                label: 'Default (Desktop)',
+                label: 'Desktop',
                 // dbName: 'd',
               },
             }),
@@ -110,7 +111,7 @@ export const hero: Field = {
                   description: 'Optional',
                 },
                 name: 'mobile',
-                label: 'Mobile (Optional)',
+                label: 'Mobile',
               },
             }),
           ],
