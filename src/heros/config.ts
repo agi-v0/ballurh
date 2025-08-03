@@ -185,7 +185,7 @@ export const hero: Field = {
             {
               name: 'items',
               type: 'array',
-              required: true,
+
               minRows: 1,
               fields: [
                 {
