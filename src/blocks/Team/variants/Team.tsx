@@ -17,7 +17,7 @@ import X from '@/icons/x'
 export const Team: React.FC<TeamBlock> = ({ team }) => {
   return (
     <motion.div
-      className="container grid grid-cols-1 gap-4 py-space-7 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4"
+      className="container grid grid-cols-1 gap-4 py-space-7 md:grid-cols-2"
       variants={containerVariants}
       initial="hidden"
       whileInView="visible"
@@ -26,15 +26,15 @@ export const Team: React.FC<TeamBlock> = ({ team }) => {
       {team?.map((member, index) => {
         return (
           <motion.div key={index} variants={itemsFling}>
-            <Card className="h-full w-full grow rounded-3xl bg-card p-space-4 pt-(--text-large)">
+            <Card className="h-full w-full grow rounded-3xl bg-teal-950 p-space-4 pt-(--text-large)">
               <CardContent className={cn('gap-md flex flex-col justify-start p-0')}>
                 {member.name && (
-                  <div className="flex flex-col items-center gap-2 text-center">
+                  <div data-theme="dark" className="flex flex-col items-center gap-2 text-center">
                     {member.image && (
                       <Media
                         resource={member.image}
                         fill
-                        className="relative size-12 overflow-hidden rounded-full"
+                        className="relative my-4 size-32 overflow-hidden rounded-full"
                         imgClassName="object-cover"
                       />
                     )}
