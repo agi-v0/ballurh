@@ -41,7 +41,19 @@ export const generatePreviewPath = ({ collection, slug, req, locale }: Props) =>
 
   const protocol = isProduction ? 'https:' : req.protocol
 
-  const url = `${protocol}//${req.host}/next/preview?${encodedParams.toString()}`
+  // Use environment variable for production hostname instead of req.host
+  let hostname = req.host
+  if (isProduction) {
+    if (process.env.VERCEL_PROJECT_PRODUCTION_URL) {
+      hostname = process.env.VERCEL_PROJECT_PRODUCTION_URL
+    } else if (process.env.NEXT_PUBLIC_SERVER_URL) {
+      // Extract hostname from the full URL
+      const url = new URL(process.env.NEXT_PUBLIC_SERVER_URL)
+      hostname = url.host
+    }
+  }
+
+  const url = `${protocol}//${hostname}/next/preview?${encodedParams.toString()}`
 
   return url
 }
