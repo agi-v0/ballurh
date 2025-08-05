@@ -56,10 +56,10 @@ const dirname = path.dirname(filename)
 
 export default buildConfig({
   admin: {
-    autoLogin: {
-      email: 'demo-author@example.com',
-      password: 'password',
-    },
+    // autoLogin: {
+    //   email: 'demo-author@example.com',
+    //   password: 'password',
+    // },
 
     components: {
       beforeLogin: ['@/components/BeforeLogin'],
