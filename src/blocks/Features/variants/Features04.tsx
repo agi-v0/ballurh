@@ -88,7 +88,7 @@ export const Features04: React.FC<FeaturesBlock> = ({ columns, blockHeader }) =>
                 }}
                 transition={{ duration: 0.3, delay: 0.1 }}
                 className={cn(
-                  'gap-sm md:px-xl mt-sm flex w-full flex-col items-start justify-start md:mt-0',
+                  'mt-6 flex w-full flex-col items-start justify-start gap-6 md:mt-0 md:px-space-7',
                   // { 'md:pe-xl': activeColumn.reverseOrder },
                 )}
               >
@@ -96,7 +96,9 @@ export const Features04: React.FC<FeaturesBlock> = ({ columns, blockHeader }) =>
                   <Badge {...activeColumn.badge} />
                 )}
 
-                {activeColumn?.richTextContent && <RichText data={activeColumn.richTextContent} />}
+                {activeColumn?.richTextContent && (
+                  <RichText data={activeColumn.richTextContent} enableGutter={false} />
+                )}
                 {activeColumn?.enableCta && activeColumn?.link?.label && (
                   <CMSLink size="lg" variant="primary" {...activeColumn.link} />
                 )}
