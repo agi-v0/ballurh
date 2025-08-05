@@ -43,8 +43,7 @@ const buttonVariants = cva(
       {
         color: 'brand',
         variant: 'secondary',
-        className:
-          'border-input bg-transparent text-base-secondary hover:bg-background-neutral active:bg-background-neutral-subtle',
+        className: 'border-input bg-transparent text-base-secondary hover:bg-background-neutral',
       },
       {
         color: 'brand',

@@ -51,8 +51,8 @@ const collections: CollectionSlug[] = [
 ]
 const globals: GlobalSlug[] = ['header', 'footer']
 
-const NEXT_PUBLIC_SERVER_URL = process.env.NEXT_PUBLIC_SERVER_URL
-  ? `https://${process.env.NEXT_PUBLIC_SERVER_URL}`
+const NEXT_PUBLIC_SERVER_URL = process.env.VERCEL_PROJECT_PRODUCTION_URL
+  ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
   : process.env.NEXT_PUBLIC_SERVER_URL || 'http://localhost:3000'
 
 console.log('NEXT_PUBLIC_SERVER_URL', NEXT_PUBLIC_SERVER_URL)

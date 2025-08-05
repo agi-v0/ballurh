@@ -37,7 +37,7 @@ export const generatePreviewPath = ({ collection, slug, req, locale }: Props) =>
   const encodedParams = new URLSearchParams(params)
 
   const isProduction =
-    process.env.NODE_ENV === 'production' || Boolean(process.env.NEXT_PUBLIC_SERVER_URL)
+    process.env.NODE_ENV === 'production' || Boolean(process.env.VERCEL_PROJECT_PRODUCTION_URL)
 
   const protocol = isProduction ? 'https:' : req.protocol
 
