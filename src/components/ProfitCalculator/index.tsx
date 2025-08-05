@@ -47,10 +47,10 @@ const stepSchemas = [
 
 const stepFields = stepSchemas.map((schema) => Object.keys(schema.shape)) as (keyof FormData)[][]
 
-const defaultValues = {
+const defaultValues: FormData = {
   activityType: 'hybridRestaurant',
   physicalBranchesCount: 1,
-  hasCloudBrands: 'نعم' as 'نعم' | 'لا',
+  hasCloudBrands: 'نعم',
   cloudBrandsCount: 1,
   annualSales: 'أقل من 500,000',
   monthlyOrders: '',
@@ -120,10 +120,10 @@ const ProfitabilityCalculator: React.FC = () => {
   const [calculatedProfit, setCalculatedProfit] = useState<number | undefined>(undefined)
   const [isSubmitting, setIsSubmitting] = useState(false)
 
-  const methods = useForm<FormData>({
+  const methods = useForm({
     defaultValues,
     // currentSchema resolver resets values of fields when step advances
-    resolver: zodResolver(formSchema, undefined, {}),
+    resolver: zodResolver(formSchema),
     mode: 'onSubmit',
     // shouldUnregister: true, // when true, values are not preserved when step advances but this also avoids premature validation in the last step
   })
@@ -182,7 +182,7 @@ const ProfitabilityCalculator: React.FC = () => {
     setFormStep((prev) => Math.max(prev - 1, 0))
   }
 
-  const onSubmit: SubmitHandler<FormData> = async (data: FormData) => {
+  const onSubmit = async (data: FormData) => {
     setIsSubmitting(true)
     await setTimeout(() => {}, 10000)
     try {
@@ -204,7 +204,7 @@ const ProfitabilityCalculator: React.FC = () => {
     }
   }
 
-  const onError: SubmitErrorHandler<FormData> = async (errors, e) => {
+  const onError = async (errors: any, e: any) => {
     // Object.keys(errors).forEach((key) => {
     //   setError(key as keyof FormData, {
     //     message: errors[key as keyof FormData]?.message,
