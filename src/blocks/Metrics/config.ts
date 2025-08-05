@@ -1,5 +1,6 @@
 import { blockHeader } from '@/components/BlockHeader/config'
 import { logos } from '@/fields/logos'
+import { stats } from '@/fields/stats'
 import { Block } from 'payload'
 
 export const MetricsBlock: Block = {
@@ -42,53 +43,7 @@ export const MetricsBlock: Block = {
       localized: true,
     },
 
-    {
-      name: 'stats',
-      type: 'array',
-      fields: [
-        {
-          type: 'row',
-          fields: [
-            {
-              name: 'label',
-              type: 'text',
-              // required: true,
-              admin: {
-                width: '50%',
-                description: 'Label for the stat',
-              },
-              localized: true,
-            },
-            {
-              name: 'value',
-              type: 'text',
-              // required: true,
-              admin: {
-                width: '50%',
-                description: 'Value for the stat. Example: 85% or 250 SAR',
-              },
-            },
-          ],
-        },
-        {
-          type: 'select',
-          label: 'Indicator',
-          name: 'indicator',
-          options: [
-            { label: 'Increase', value: 'increase' },
-            { label: 'Decrease', value: 'decrease' },
-            { label: 'None', value: 'noChange' },
-          ],
-          defaultValue: 'noChange',
-          admin: {
-            description: 'Whether the value is an increase or decrease',
-          },
-        },
-      ],
-      admin: {
-        condition: (data, siblingData) => ['01', '02'].includes(siblingData.type),
-      },
-    },
+    stats(),
 
     {
       name: 'table',

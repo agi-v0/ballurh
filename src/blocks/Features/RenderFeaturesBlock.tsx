@@ -47,9 +47,9 @@ const featureVariants: Record<string, React.FC<FeaturesBlockWithLocale>> = {
 
 export const RenderFeaturesBlock: React.FC<FeaturesBlockWithLocale> = (props) => {
   const t = useTranslations('General')
-  const { type = '01' } = props
+  const { type = '01', locale } = props
 
   const FeaturesBlockComponent = featureVariants[type]
 
-  return <FeaturesBlockComponent {...props} readMoreLabel={t('readMore')} />
+  return <FeaturesBlockComponent {...props} readMoreLabel={t('readMore')} locale={locale} />
 }

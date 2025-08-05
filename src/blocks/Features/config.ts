@@ -128,6 +128,7 @@ export const FeaturesBlock: Block = {
                 {
                   name: 'value',
                   type: 'text',
+                  localized: true,
                   // required: true,
                   admin: {
                     width: '50%',
@@ -273,6 +274,8 @@ export const FeaturesBlock: Block = {
                     {
                       name: 'value',
                       type: 'text',
+                      localized: true,
+
                       // required: true,
                       admin: {
                         width: '50%',
