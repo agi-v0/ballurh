@@ -115,17 +115,14 @@ export const HeaderClient: React.FC<HeaderType & AdminBarProps> = ({
         {isMobileNavOpen && (
           <motion.div
             key="mobile-nav-content"
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -50 }}
+            initial={{ opacity: 0, x: '100%', filter: 'blur(20px)' }}
+            animate={{ opacity: 1, x: '0%', filter: 'blur(0px)' }}
+            exit={{ opacity: 0, x: '-100%', filter: 'blur(20px)' }}
             transition={{
-              type: 'spring',
-              stiffness: 200,
-              damping: 20,
-              mass: 1,
+              ease: [0.25, 0.46, 0.45, 0.94],
             }}
             className={cn(
-              'px-site pb-site fixed inset-x-0 top-[var(--header-height)] bottom-0 z-50 overflow-y-auto lg:hidden',
+              'fixed inset-x-0 top-[var(--header-height)] bottom-0 z-50 overflow-y-auto bg-background px-(--gutter-h) pb-(--gutter-h) lg:hidden',
               // 'animate-in slide-in-from-top-4 duration-300 ease-out',
             )}
           >

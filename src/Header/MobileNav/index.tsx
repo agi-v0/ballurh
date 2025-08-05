@@ -39,7 +39,7 @@ interface MobileNavProps extends Omit<HeaderType, 'id' | 'updatedAt' | 'createdA
 }
 
 const navigationMenuTriggerStyle = cva(
-  'inline-flex w-full items-center justify-start gap-2 bg-transparent py-4 text-(length:--text-h3) font-medium transition-colors hover:text-base-primary hover:no-underline focus:bg-transparent focus:outline-hidden disabled:pointer-events-none disabled:opacity-50 data-expanded:bg-transparent data-expanded:focus:bg-transparent',
+  'inline-flex w-full items-center justify-start gap-2 bg-transparent py-4 text-large font-medium transition-colors hover:text-base-primary hover:no-underline focus:bg-transparent focus:outline-hidden disabled:pointer-events-none disabled:opacity-50 data-expanded:bg-transparent data-expanded:focus:bg-transparent',
 )
 
 export function MobileNav({ tabs, cta, onLinkClick }: MobileNavProps) {
@@ -62,12 +62,12 @@ export function MobileNav({ tabs, cta, onLinkClick }: MobileNavProps) {
   }
 
   return (
-    <div className="flex h-full w-full flex-col rounded-3xl bg-background-neutral">
+    <div className="flex h-full w-full flex-col">
       {/* Preload all navigation images */}
-      <NavigationImagePreloader tabs={tabs} />
+      {/* <NavigationImagePreloader tabs={tabs} /> */}
 
       {/* NEW: Scrollable wrapper for menu content */}
-      <div className="p-site grow overflow-y-auto pb-20">
+      <div className="grow overflow-y-auto pb-20">
         {/* Added pb-20 for CTA spacing */}
         {/* Main Menu View using Accordion */}
         <Accordion
@@ -119,7 +119,7 @@ export function MobileNav({ tabs, cta, onLinkClick }: MobileNavProps) {
                   variant="inline"
                   className={cn(
                     navigationMenuTriggerStyle(),
-                    'text-(length:--text-h3) text-base-secondary',
+                    'text-large text-base-secondary',
                     expandedValue !== null && expandedValue !== `item-${i}` && 'text-base-tertiary',
                   )}
                 />
