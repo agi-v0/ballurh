@@ -17,12 +17,14 @@ import { PayloadAdminBarProps } from 'payload-admin-bar'
 
 interface AdminBarProps {
   adminBarProps: PayloadAdminBarProps
+  locale?: string
 }
 
 export const HeaderClient: React.FC<HeaderType & AdminBarProps> = ({
   cta,
   tabs,
   adminBarProps,
+  locale,
 }) => {
   const [isMobileNavOpen, setIsMobileNavOpen] = useState(false)
   const [hideBackground, setHideBackground] = useState(true)
@@ -90,13 +92,14 @@ export const HeaderClient: React.FC<HeaderType & AdminBarProps> = ({
             href="/"
             className="flex-shrink-0 text-base-primary transition-colors hover:text-brand"
           >
-            <Logo className="h-6 w-auto" />
+            <Logo className="h-6 w-auto ltr:h-5" locale={locale} />
           </Link>
         </div>
 
         <DesktopNav
           cta={cta}
           tabs={tabs}
+          locale={locale}
           className="hidden lg:relative lg:flex lg:w-full lg:items-center lg:justify-end"
         />
 

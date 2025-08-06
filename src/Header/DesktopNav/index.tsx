@@ -17,10 +17,12 @@ import { CMSLink } from '@/components/Link'
 import type { BlogPost, Header as HeaderType, Page } from '@/payload-types'
 import RichText from '@/components/RichText'
 import { Icon } from '@iconify-icon/react'
+import { LanguageSwitcher } from '@/providers/LanguageSelector/index'
 import BallurhIcon from '@/components/ui/ballurh-icon'
 
 interface DesktopNavProps extends Omit<HeaderType, 'id' | 'updatedAt' | 'createdAt'> {
   className?: string
+  locale?: string
 }
 
 // Define the type for a single nav item directly based on HeaderType structure
@@ -58,7 +60,7 @@ interface ListItemProps {
   [key: string]: any // Allow other props temporarily
 }
 
-export function DesktopNav({ tabs, cta, className }: DesktopNavProps) {
+export function DesktopNav({ tabs, cta, className, locale }: DesktopNavProps) {
   const validTabs = tabs || []
   return (
     <div id="parent" className={cn('', className)}>
@@ -145,7 +147,9 @@ export function DesktopNav({ tabs, cta, className }: DesktopNavProps) {
           </NavigationMenuList>
         </NavigationMenu>
       </div>
-      <div className="pointer-events-none flex w-full max-w-54 flex-row items-center justify-end gap-1">
+      <div className="flex w-full max-w-54 flex-row items-center justify-end gap-1">
+        {locale && <LanguageSwitcher locale={locale} />}
+
         {cta &&
           cta.map((ctaItem, id) => (
             <CMSLink

@@ -2,22 +2,16 @@ import type { Footer } from '@/payload-types'
 import { Button } from '@/components/ui/button'
 import { Link } from '@/i18n/navigation'
 import { ThemeSelector } from '@/providers/Theme/ThemeSelector'
-// import { LanguageSwitcher } from '@/providers/LanguageSelector02/index'
 import { CMSLink } from '@/components/Link'
 import Logo from '@/components/ui/logo'
 
-import Facebook from '@/icons/facebook'
 import Instagram from '@/icons/instagram'
 import X from '@/icons/x'
-import TikTok from '@/icons/tiktok'
 import LinkedIn from '@/icons/linkedin'
-import Youtube from '@/icons/youtube'
-import zatca from '@/components/Graphics/zatca.svg'
-import sama from '@/components/Graphics/sama.svg'
 import { useTranslations } from 'next-intl'
 import { Input, InputWrapper } from '@/components/ui/input'
 import { MailIcon } from 'lucide-react'
-import Image from 'next/image'
+import TikTok from '@/icons/tiktok'
 
 const socialLinks = [
   // {
@@ -35,11 +29,11 @@ const socialLinks = [
     url: 'https://x.com/ballurhapp',
     icon: X,
   },
-  // {
-  //   label: 'TikTok',
-  //   url: 'https://www.tiktok.com/@marnpos',
-  //   icon: TikTok,
-  // },
+  {
+    label: 'TikTok',
+    url: 'https://www.tiktok.com/@ballurhapp',
+    icon: TikTok,
+  },
   {
     label: 'LinkedIn',
     url: 'https://www.linkedin.com/company/ballurhapp',
@@ -97,7 +91,9 @@ export function FooterClient({ columns, currentYear, locale }: Props) {
 
             <div className="flex flex-row items-center justify-between gap-4 py-space-5">
               <div id="social" className="flex w-full flex-row items-center gap-2">
-                <p className="text-sm font-medium text-base-tertiary">{t('followUs')}</p>
+                <p className="text-sm font-medium whitespace-nowrap text-base-tertiary">
+                  {t('followUs')}
+                </p>
                 <div className="flex w-full flex-row items-start justify-between lg:justify-start">
                   {socialLinks.map(({ label, url, icon: Icon }, i) => (
                     <Button
@@ -137,11 +133,18 @@ export function FooterClient({ columns, currentYear, locale }: Props) {
           </div>
         </footer>
 
-        <div className="col-span-full flex w-full flex-row items-start justify-between gap-1 py-4">
-          <p className="text-xs text-base-tertiary md:text-sm">
+        <div className="col-span-full grid w-full grid-cols-3 items-center gap-1 py-space-7">
+          <p className="justify-self-start text-xs text-base-tertiary md:text-sm">
             {t('allRightsReserved', { year: currentYear })}
           </p>
-          <div className="flex gap-4">
+          <Link
+            href="/"
+            className="justify-self-center text-base-tertiary transition-colors hover:text-brand"
+          >
+            <Logo className="h-6 w-auto" locale={locale} />
+          </Link>
+
+          <div className="flex gap-4 justify-self-end">
             <Link
               href="/terms"
               className="text-xs text-base-tertiary hover:text-base-secondary md:text-sm"
