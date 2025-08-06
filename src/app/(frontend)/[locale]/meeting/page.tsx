@@ -47,8 +47,8 @@ export default async function MeetingPage({ params }: Args) {
   const calLink = process.env.NEXT_PUBLIC_CAL_LINK || 'default/username'
 
   return (
-    <div className="container mx-auto mt-header-plus-admin-bar">
-      <h1 className="mb-space-7 text-center text-h2 font-semibold">{t('title')}</h1>
+    <div className="container mx-auto mt-header-plus-admin-bar space-y-space-7">
+      <h1 className="text-center text-h2 font-semibold">{t('title')}</h1>
       <CalEmbed calLink={calLink} locale={locale} />
       <div className="rounded-3xl bg-background-neutral p-6">
         <h2 className="mb-4 text-lg font-semibold">{t('instructions.title')}</h2>
