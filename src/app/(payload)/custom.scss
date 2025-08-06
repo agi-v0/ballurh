@@ -1,0 +1,12 @@
+[data-theme='light'] {
+  .login__brand,
+  .step-nav__home {
+    filter: invert(1);
+    height: 32px;
+    width: auto;
+  }
+}
+.login__brand {
+  height: 32px;
+  width: auto;
+}
