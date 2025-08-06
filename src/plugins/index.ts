@@ -10,6 +10,14 @@ import { GenerateTitle, GenerateURL } from '@payloadcms/plugin-seo/types'
 import { FixedToolbarFeature, HeadingFeature, lexicalEditor } from '@payloadcms/richtext-lexical'
 import { searchFields } from '@/search/fieldOverrides'
 import { beforeSyncWithSearch } from '@/search/beforeSync'
+import {
+  translator,
+  copyResolver,
+  aiSDKResolver,
+  googleResolver,
+  openAIResolver,
+  libreResolver,
+} from './translator/src'
 
 import { Page, BlogPost } from '@/payload-types'
 import { getServerSideURL } from '@/utilities/getURL'
@@ -90,5 +98,20 @@ export const plugins: Plugin[] = [
       },
     },
   }),
+  translator({
+    // collections with the enabled translator in the admin UI
+    collections: ['pages', 'blog-posts', 'categories'],
+    // globals with the enabled translator in the admin UI
+    globals: [],
+    // add resolvers that you want to include, examples on how to write your own in ./plugin/src/resolvers
+    resolvers: [
+      copyResolver(),
+      aiSDKResolver({
+        apiKey: process.env.GEMINI_API_KEY!,
+        provider: 'google',
+      }),
+    ],
+  }),
+
   payloadCloudPlugin(),
 ]
