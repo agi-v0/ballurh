@@ -17,6 +17,8 @@ import { InitTheme } from '@/providers/Theme/InitTheme'
 import { mergeOpenGraph } from '@/utilities/mergeOpenGraph'
 import { draftMode } from 'next/headers'
 
+import { GoogleTagManager } from '@next/third-parties/google'
+
 import './globals.css'
 import { getServerSideURL } from '@/utilities/getURL'
 import { setRequestLocale } from 'next-intl/server'
@@ -56,6 +58,7 @@ export default async function RootLayout({
       dir={locale === 'ar' ? 'rtl' : 'ltr'}
       suppressHydrationWarning
     >
+      <GoogleTagManager gtmId="GTM-M8ZHLQGR" />
       <head>{/* <InitTheme /> */}</head>
       <body>
         <Providers>
