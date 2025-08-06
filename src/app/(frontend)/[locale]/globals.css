@@ -51,6 +51,12 @@
     font-size: unset;
     font-weight: unset;
   }
+
+  /* fix for scroll-lock layout shift cause by select component */
+  body[data-scroll-locked] {
+    margin-right: calc(var(--spacing) * 0) !important;
+    overflow: visible !important;
+  }
 }
 
 :root {
