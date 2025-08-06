@@ -5,6 +5,7 @@ import { tabHasName, groupHasName } from 'payload/shared'
 import { isEmpty } from '../utils/isEmpty'
 import { traverseRichText } from './traverseRichText'
 import type { ValueToTranslate } from './types'
+import type { PayloadRequest } from 'payload'
 
 export const traverseFields = ({
   dataFrom,
@@ -15,6 +16,7 @@ export const traverseFields = ({
   siblingDataTranslated,
   translatedData,
   valuesToTranslate,
+  req,
 }: {
   dataFrom: Record<string, unknown>
   emptyOnly?: boolean
@@ -24,6 +26,7 @@ export const traverseFields = ({
   siblingDataTranslated?: Record<string, unknown>
   translatedData: Record<string, unknown>
   valuesToTranslate: ValueToTranslate[]
+  req?: PayloadRequest
 }) => {
   siblingDataFrom = siblingDataFrom ?? dataFrom
   siblingDataTranslated = siblingDataTranslated ?? translatedData
@@ -53,6 +56,7 @@ export const traverseFields = ({
             siblingDataTranslated: tabDataTranslated,
             translatedData,
             valuesToTranslate,
+            req,
           })
         }
 
@@ -80,6 +84,7 @@ export const traverseFields = ({
           siblingDataTranslated: groupDataTranslated,
           translatedData,
           valuesToTranslate,
+          req,
         })
 
         break
@@ -113,6 +118,7 @@ export const traverseFields = ({
             siblingDataTranslated: item,
             translatedData,
             valuesToTranslate,
+            req,
           })
         })
 
@@ -143,7 +149,11 @@ export const traverseFields = ({
         }
 
         blocksDataTranslated.forEach((item, index) => {
-          const block = field.blocks.find((each) => each.slug === item.blockType)
+          let block = field.blocks.find((each) => each.slug === item.blockType)
+
+          if (!block && req?.payload?.config?.blocks) {
+            block = req.payload.config.blocks.find((each) => each.slug === item.blockType)
+          }
 
           if (!block) return
 
@@ -156,6 +166,7 @@ export const traverseFields = ({
             siblingDataTranslated: item,
             translatedData,
             valuesToTranslate,
+            req,
           })
         })
 
@@ -175,6 +186,7 @@ export const traverseFields = ({
           siblingDataTranslated,
           translatedData,
           valuesToTranslate,
+          req,
         })
         break
 

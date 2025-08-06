@@ -10,14 +10,7 @@ import { GenerateTitle, GenerateURL } from '@payloadcms/plugin-seo/types'
 import { FixedToolbarFeature, HeadingFeature, lexicalEditor } from '@payloadcms/richtext-lexical'
 import { searchFields } from '@/search/fieldOverrides'
 import { beforeSyncWithSearch } from '@/search/beforeSync'
-import {
-  translator,
-  copyResolver,
-  aiSDKResolver,
-  googleResolver,
-  openAIResolver,
-  libreResolver,
-} from './translator/src'
+import { translator, copyResolver, aiSDKResolver } from './translator/src'
 
 import { Page, BlogPost } from '@/payload-types'
 import { getServerSideURL } from '@/utilities/getURL'
@@ -100,9 +93,9 @@ export const plugins: Plugin[] = [
   }),
   translator({
     // collections with the enabled translator in the admin UI
-    collections: ['pages', 'blog-posts', 'categories'],
+    collections: ['pages', 'blog-posts', 'categories', 'faq', 'customers', 'media'],
     // globals with the enabled translator in the admin UI
-    globals: [],
+    globals: ['header', 'footer'],
     // add resolvers that you want to include, examples on how to write your own in ./plugin/src/resolvers
     resolvers: [
       copyResolver(),

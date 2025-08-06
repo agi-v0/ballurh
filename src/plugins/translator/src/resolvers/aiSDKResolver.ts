@@ -26,7 +26,9 @@ const translationSchema = z.object({
 })
 
 const defaultPrompt: OpenAIPrompt = ({ localeFrom, localeTo, texts }) => {
-  return `Translate the following texts from ${localeFrom} to ${localeTo}: ${JSON.stringify(texts)}`
+  return `Provide natural, idiomatic translations for the following texts from ${localeFrom} to ${localeTo}. Adapt phrasing to sound natural in the target language, avoiding literal word-for-word translations where they would be awkward. Note that 'بلّورة' is spelled as 'Ballurh' in English and 'بلّورة' in Arabic. Texts to translate: ${JSON.stringify(texts)}
+
+Output in JSON format: {"translations": ["translated text 1", "translated text 2", ...]}`
 }
 
 export const aiSDKResolver = ({

@@ -64,6 +64,7 @@ export const translateOperation = async (args: TranslateOperationArgs) => {
     fields: config.fields,
     translatedData,
     valuesToTranslate,
+    req,
   })
 
   const resolveResult = await resolver.resolve({
