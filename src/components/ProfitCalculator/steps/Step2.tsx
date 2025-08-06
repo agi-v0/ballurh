@@ -23,7 +23,7 @@ const Step2 = () => {
   return (
     <div className="space-y-6">
       <div className="space-y-2.5">
-        <Label>كم إجمالي مبيعاتك السنوية؟</Label>
+        <Label>كم إجمالي مبيعاتك السنوية؟ (بالريال السعودي)</Label>
         <Controller
           name="annualSales"
           control={control}
