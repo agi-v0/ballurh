@@ -3,11 +3,13 @@ import { getTranslations } from 'next-intl/server'
 import CalEmbed from '@/components/CalEmbed'
 import { Icon } from '@iconify-icon/react/dist/iconify.mjs'
 
-type Props = {
-  params: { locale: string }
+type Args = {
+  params: Promise<{
+    locale: string
+  }>
 }
 
-export async function generateMetadata({ params }: Props) {
+export async function generateMetadata({ params }: Args) {
   const { locale } = await params
   const t = await getTranslations({ locale, namespace: 'bookMeeting' })
 
@@ -39,7 +41,7 @@ export async function generateMetadata({ params }: Props) {
   }
 }
 
-export default async function MeetingPage({ params }: Props) {
+export default async function MeetingPage({ params }: Args) {
   const { locale } = await params
   const t = await getTranslations({ locale, namespace: 'bookMeeting' })
   const calLink = process.env.NEXT_PUBLIC_CAL_LINK || 'default/username'

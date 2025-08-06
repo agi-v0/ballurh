@@ -1,32 +1,49 @@
 import type { Metadata } from 'next/types'
-import type { Page as PageType, BlogPost, Category } from '@/payload-types'
 
-import { CollectionArchive } from '@/components/CollectionArchive'
-import { PageRange } from '@/components/PageRange'
-import { Pagination } from '@/components/Pagination'
-import configPromise from '@payload-config'
-import { getPayload } from 'payload'
-import React, { cache } from 'react'
+import React from 'react'
 
-import { RenderHero } from '@/heros/RenderHero'
-import { RenderBlocks } from '@/blocks/RenderBlocks'
-import { draftMode } from 'next/headers'
-import { generateMeta } from '@/utilities/generateMeta'
-import { Link } from '@/i18n/navigation'
-import RecentBlogPosts from '@/components/RecentBlogPosts'
 import ProfitabilityCalculator from '@/components/ProfitCalculator'
+import { getTranslations } from 'next-intl/server'
 
 type Args = {
   params: Promise<{
-    locale?: 'ar' | 'en' | undefined
+    locale: string
   }>
 }
 
-export default async function Page({ params: paramsPromise }: Args) {
-  const { locale = 'ar' } = await paramsPromise
-  const slug = 'blog'
-  const payload = await getPayload({ config: configPromise })
+export async function generateMetadata({ params }: Args) {
+  const { locale } = await params
+  const t = await getTranslations({ locale, namespace: 'profitCalculator' })
 
+  return {
+    title: t('meta.title'),
+    description: t('meta.description'),
+    keywords: ['profit', 'calculator', 'business', 'profitability', 'calculation'],
+    openGraph: {
+      title: t('meta.title'),
+      description: t('meta.description'),
+      type: 'website',
+      locale: locale,
+    },
+    twitter: {
+      card: 'summary',
+      title: t('meta.title'),
+      description: t('meta.description'),
+    },
+    robots: {
+      index: true,
+      follow: true,
+    },
+    alternates: {
+      languages: {
+        en: '/en/profit-calculator',
+        ar: '/ar/profit-calculator',
+      },
+    },
+  }
+}
+
+export default async function Page({ params: paramsPromise }: Args) {
   //   if (!page) {
   //     page = null
   //   }

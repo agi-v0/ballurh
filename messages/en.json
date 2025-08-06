@@ -62,5 +62,11 @@
         "text": "If you experience any issues or need to reschedule, please contact us directly."
       }
     }
+  },
+  "profitCalculator": {
+    "meta": {
+      "title": "Ballurh's Profit Calculator - Calculate Your Business Profitability",
+      "description": "Use our advanced profit calculator to analyze your business profitability. Calculate revenue, costs, and profit margins with our easy-to-use tool designed for restaurants and businesses."
+    }
   }
 }
