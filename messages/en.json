@@ -45,5 +45,22 @@
   "Pagination": {
     "previous": "Previous",
     "next": "Next"
+  },
+  "bookMeeting": {
+    "title": "Book a Meeting",
+    "meta": {
+      "title": "Schedule a Meeting - Book Your Consultation Today",
+      "description": "Book a personalized meeting with our team. Choose your preferred time and get expert consultation tailored to your business needs. Easy online scheduling available 24/7."
+    },
+    "instructions": {
+      "title": "How to Schedule Your Meeting",
+      "step1": "Choose your preferred date and time from the calendar below",
+      "step3": "Fill in your contact information and any specific details about your request",
+      "step4": "Click 'Confirm' to confirm your appointment",
+      "note": {
+        "title": "Need Help?",
+        "text": "If you experience any issues or need to reschedule, please contact us directly."
+      }
+    }
   }
 }
