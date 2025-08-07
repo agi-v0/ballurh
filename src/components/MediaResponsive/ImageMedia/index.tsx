@@ -175,6 +175,7 @@ export const ImageMedia: React.FC<MediaProps> = (props) => {
         sizes={sizes}
         src={srcToUse}
         width={!fill ? width : undefined}
+        fetchPriority={priority ? 'high' : 'auto'}
       />
     </picture>
   )
