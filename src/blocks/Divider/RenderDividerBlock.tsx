@@ -6,9 +6,9 @@ export const RenderDividerBlock: React.FC<DividerBlock> = (props) => {
   return (
     <div
       data-size={size}
-      className="data-[size=small]:py-space-xl container data-[size=large]:py-[calc(var(--spacing-space-xl)*3)] data-[size=medium]:py-[calc(var(--spacing-space-xl)*2)]"
+      className="container data-[size=large]:py-[calc(var(--spacing-space-7)*3)] data-[size=medium]:py-[calc(var(--spacing-space-7)*2)] data-[size=small]:py-space-7"
     >
-      {enableDivider && <hr className="border-border w-full" />}
+      {enableDivider && <hr className="w-full border-border" />}
     </div>
   )
 }

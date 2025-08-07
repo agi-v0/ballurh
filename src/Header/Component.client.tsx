@@ -74,7 +74,6 @@ export const HeaderClient: React.FC<HeaderType & AdminBarProps> = ({
     <header
       className={cn(
         'fixed top-0 left-0 z-10 w-full max-w-screen border-0 border-border bg-transparent transition-colors duration-300',
-        '-md:top-[var(--admin-bar-height,0px)]',
         hideBackground && 'before:opacity-0 after:opacity-0',
         isMobileNavOpen && 'border-none bg-background',
         y > 20 && 'border-b bg-background/60 backdrop-blur-sm',
@@ -84,17 +83,15 @@ export const HeaderClient: React.FC<HeaderType & AdminBarProps> = ({
       {/* Main container with flex layout */}
       <div
         className={cn(
-          'relative container flex h-(--header-height) flex-row items-center justify-between gap-6 transition-colors',
+          'relative z-[11] container flex h-(--header-height) flex-row items-center justify-between gap-6 transition-colors',
         )}
       >
-        <div className="z-50">
-          <Link
-            href="/"
-            className="flex-shrink-0 text-base-primary transition-colors hover:text-brand"
-          >
-            <Logo className="h-6 w-auto ltr:h-5" locale={locale} />
-          </Link>
-        </div>
+        <Link
+          href="/"
+          className="flex-shrink-0 text-base-primary transition-colors hover:text-brand active:text-brand"
+        >
+          <Logo className="h-6 w-auto ltr:h-5" locale={locale} />
+        </Link>
 
         <DesktopNav
           cta={cta}
@@ -102,7 +99,6 @@ export const HeaderClient: React.FC<HeaderType & AdminBarProps> = ({
           locale={locale}
           className="hidden lg:relative lg:flex lg:w-full lg:items-center lg:justify-end"
         />
-
         <div className="flex flex-shrink-0 justify-end lg:hidden">
           <AnimatedToggle
             isOpen={isMobileNavOpen}
@@ -125,7 +121,7 @@ export const HeaderClient: React.FC<HeaderType & AdminBarProps> = ({
               ease: [0.25, 0.46, 0.45, 0.94],
             }}
             className={cn(
-              'fixed inset-x-0 top-[var(--header-height)] bottom-0 z-50 overflow-y-auto bg-background px-(--gutter-h) pb-(--gutter-h) lg:hidden',
+              'absolute inset-x-0 top-0 bottom-0 h-screen overflow-y-auto bg-background px-(--gutter-h) pt-[var(--header-height)] pb-(--gutter-h) lg:hidden',
               // 'animate-in slide-in-from-top-4 duration-300 ease-out',
             )}
           >
