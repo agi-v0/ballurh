@@ -7,7 +7,7 @@ on:
 
 jobs:
   deploy:
-    runs-on: ballurh-website
+    runs-on: [self-hosted, ballurh-website]
     steps:
       - name: Pull and deploy latest code
         run: |
