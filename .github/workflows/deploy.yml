@@ -1,0 +1,14 @@
+name: Deploy on Self-hosted Runner
+
+on:
+  workflow_dispatch: # Run manually from GitHub
+
+jobs:
+  deploy:
+    runs-on: ballurh-website
+    steps:
+      - name: Pull and deploy latest code
+        run: |
+          cd /home/ec2-user/ballurh-website
+          git pull
+          docker-compose --env-file .env up -d --build
