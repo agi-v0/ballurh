@@ -1,7 +1,9 @@
 name: Deploy on Self-hosted Runner
 
 on:
-  workflow_dispatch: # Run manually from GitHub
+  push:
+    branches:
+      - main   # or your default branch name
 
 jobs:
   deploy:
