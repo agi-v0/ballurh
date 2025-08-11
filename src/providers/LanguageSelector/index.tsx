@@ -16,8 +16,8 @@ export const LanguageSwitcher: React.FC<{ locale: string }> = ({ locale }) => {
   const [value, setValue] = useState(locale) // Set initial value to the current locale
 
   const languages = [
-    { code: 'en', label: 'EN' },
     { code: 'ar', label: 'العربية' },
+    { code: 'en', label: 'EN' },
   ]
 
   const onLanguageChange = (newLocale: string) => {
@@ -35,7 +35,7 @@ export const LanguageSwitcher: React.FC<{ locale: string }> = ({ locale }) => {
     <Select onValueChange={onLanguageChange} value={value}>
       <SelectTrigger
         aria-label="Select a language"
-        className="w-auto gap-1 rounded-full border-none bg-transparent text-sm hover:bg-neutral/10 data-[state=open]:bg-transparent"
+        className="w-auto gap-1 rounded-full border-none bg-transparent text-sm hover:bg-background-neutral-subtle data-[state=open]:bg-transparent"
       >
         {value !== 'en' ? 'EN' : 'العربية'}
         {/* <GlobeIcon className="size-4 text-base-tertiary" /> */}
@@ -43,13 +43,13 @@ export const LanguageSwitcher: React.FC<{ locale: string }> = ({ locale }) => {
       <SelectContent
         position="popper"
         align="center"
-        className="space-y-0.5 rounded-xl border-none bg-neutral/10 shadow-sm backdrop-blur-xs"
+        className="space-y-0.5 rounded-xl border-none bg-white/10 shadow-sm backdrop-blur-xs"
       >
         {languages.map((language) => (
           <SelectItem
             key={language.code}
             value={language.code}
-            className="rounded-[10px] data-[state=checked]:bg-inverted-primary/50"
+            className="rounded-[10px] hover:bg-neutral/5! data-[state=checked]:bg-neutral/10"
           >
             {language.label}
           </SelectItem>

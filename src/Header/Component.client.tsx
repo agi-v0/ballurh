@@ -14,6 +14,7 @@ import { motion, useMotionValueEvent, useScroll } from 'motion/react'
 import { AnimatePresence } from 'motion/react'
 import { AdminBar } from '@/components/AdminBar'
 import { PayloadAdminBarProps } from 'payload-admin-bar'
+import { LanguageSwitcher } from '@/providers/LanguageSelector'
 
 interface AdminBarProps {
   adminBarProps: PayloadAdminBarProps
@@ -100,6 +101,7 @@ export const HeaderClient: React.FC<HeaderType & AdminBarProps> = ({
           className="hidden lg:relative lg:flex lg:w-full lg:items-center lg:justify-end"
         />
         <div className="flex flex-shrink-0 justify-end lg:hidden">
+          {locale && <LanguageSwitcher locale={locale} />}
           <AnimatedToggle
             isOpen={isMobileNavOpen}
             onClick={() => setIsMobileNavOpen((prev) => !prev)}

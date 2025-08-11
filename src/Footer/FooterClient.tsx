@@ -1,7 +1,7 @@
 import type { Footer } from '@/payload-types'
 import { Button } from '@/components/ui/button'
 import { Link } from '@/i18n/navigation'
-import { ThemeSelector } from '@/providers/Theme/ThemeSelector'
+
 import { CMSLink } from '@/components/Link'
 import Logo from '@/components/ui/logo'
 
@@ -133,18 +133,18 @@ export function FooterClient({ columns, currentYear, locale }: Props) {
           </div>
         </footer>
 
-        <div className="col-span-full grid w-full grid-cols-3 items-center gap-1 py-space-7">
-          <p className="justify-self-start text-xs text-base-tertiary md:text-sm">
+        <div className="col-span-full grid w-full grid-cols-1 items-center gap-4 py-space-7 md:grid-cols-3">
+          <p className="order-2 text-xs text-base-tertiary md:order-1 md:justify-self-start md:text-sm">
             {t('allRightsReserved', { year: currentYear })}
           </p>
           <Link
             href="/"
-            className="justify-self-center text-base-tertiary transition-colors hover:text-brand"
+            className="order-1 text-base-tertiary transition-colors hover:text-brand md:order-2 md:justify-self-center"
           >
             <Logo className="h-6 w-auto" locale={locale} />
           </Link>
 
-          <div className="flex gap-4 justify-self-end">
+          <div className="order-3 flex gap-4 md:justify-self-end">
             <Link
               href="/terms"
               className="text-xs text-base-tertiary hover:text-base-secondary md:text-sm"
