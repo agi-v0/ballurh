@@ -8,7 +8,7 @@ const buttonVariants = cva(
   {
     defaultVariants: {
       size: 'default',
-      variant: 'default',
+      variant: 'primary',
       color: 'neutral',
     },
     variants: {
@@ -16,18 +16,16 @@ const buttonVariants = cva(
         clear: '',
         default: 'h-10 px-4 py-2',
         icon: 'h-10 w-10',
-        lg: 'h-12 rounded-xl px-5 text-main',
+        lg: 'h-12 rounded-xl px-5 text-(length:--text-main)',
         sm: 'h-9 px-3',
       },
       variant: {
-        default: '',
-        destructive: '',
-        ghost: '',
-        link: '',
-        outline: '',
         primary: '',
         secondary: '',
         tertiary: '',
+        ghost: '',
+        link: '',
+        destructive: '',
       },
       color: {
         neutral: '',
@@ -38,54 +36,57 @@ const buttonVariants = cva(
       {
         color: 'brand',
         variant: 'primary',
-        className: 'bg-brand text-white hover:bg-brand/90',
+        className:
+          'bg-brand text-base-primary hover:bg-teal-950 hover:text-white active:bg-teal-950 active:text-white',
       },
       {
         color: 'brand',
         variant: 'secondary',
-        className: 'border-input bg-transparent text-base-secondary hover:bg-background-neutral',
+        className:
+          'border border-border bg-transparent text-base-secondary hover:bg-background-neutral',
       },
       {
         color: 'brand',
         variant: 'tertiary',
-        className: 'bg-brand/10 text-brand-secondary hover:bg-brand/30',
+        className: 'bg-teal-500/10 text-teal-600 hover:bg-teal-500/30 active:bg-teal-500/30',
       },
       {
         color: 'brand',
         variant: 'ghost',
-        className: 'text-brand-secondary hover:bg-brand/10',
+        className: 'text-teal-600 hover:bg-teal-500/10 active:bg-teal-500/10',
       },
       {
         color: 'brand',
         variant: 'link',
-        className: 'p-0 text-brand-primary hover:text-brand-primary/90',
+        className: 'p-0 text-teal-600 hover:text-teal-600/90 active:text-teal-600/90',
       },
       {
         color: 'neutral',
         variant: 'primary',
         className:
-          'border bg-teal-950 text-white shadow-xs hover:bg-orange-500 hover:text-base-primary',
+          'border bg-teal-950 text-white shadow-xs hover:bg-brand hover:text-base-primary active:bg-brand',
       },
       {
         color: 'neutral',
         variant: 'secondary',
         className:
-          'border-input bg-transparent text-base-secondary hover:border-neutral/20 hover:bg-background-neutral',
+          'border border-border bg-transparent text-base-secondary hover:bg-background-neutral active:bg-background-neutral',
       },
       {
         color: 'neutral',
         variant: 'tertiary',
-        className: 'bg-neutral/10 text-base-secondary hover:bg-neutral/30',
+        className: 'bg-neutral/10 text-base-secondary hover:bg-neutral/20 active:bg-neutral/20',
       },
       {
         color: 'neutral',
         variant: 'ghost',
-        className: 'text-base-secondary hover:bg-neutral/10',
+        className: 'text-base-secondary hover:bg-neutral/10 active:bg-neutral/10',
       },
       {
         color: 'neutral',
         variant: 'link',
-        className: 'p-0 text-base-secondary hover:text-base-secondary/90',
+        className:
+          'p-0 text-base-secondary hover:text-base-secondary/90 active:text-base-secondary/90',
       },
     ],
   },
@@ -108,7 +109,13 @@ const Button: React.FC<ButtonProps> = ({
   ...props
 }) => {
   const Comp = asChild ? SlotPrimitive.Slot : 'button'
-  return <Comp className={cn(buttonVariants({ className, size, variant }))} ref={ref} {...props} />
+  return (
+    <Comp
+      className={cn(buttonVariants({ className, size, variant, color }))}
+      ref={ref}
+      {...props}
+    />
+  )
 }
 
 export { Button, buttonVariants }

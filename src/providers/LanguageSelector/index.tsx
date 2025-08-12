@@ -35,7 +35,7 @@ export const LanguageSwitcher: React.FC<{ locale: string }> = ({ locale }) => {
     <Select onValueChange={onLanguageChange} value={value}>
       <SelectTrigger
         aria-label="Select a language"
-        className="w-auto gap-1 rounded-full border-none bg-transparent text-sm hover:bg-background-neutral-subtle data-[state=open]:bg-transparent"
+        className="w-auto gap-1 rounded-full border-none bg-transparent px-3 text-sm text-base-secondary hover:bg-neutral/10 data-[state=open]:bg-transparent"
       >
         {value !== 'en' ? 'EN' : 'العربية'}
         {/* <GlobeIcon className="size-4 text-base-tertiary" /> */}

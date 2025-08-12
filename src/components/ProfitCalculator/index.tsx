@@ -13,7 +13,7 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { Icon } from '@iconify-icon/react'
 import { motion, AnimatePresence } from 'motion/react'
 
-import { calculateProfit } from '@/app/actions'
+import { calculateProfit } from '@/components/ProfitCalculator/actions'
 import { Button } from '@/components/ui/button'
 
 import StepperBar from '../stepper/title-bar'
