@@ -47,7 +47,7 @@ export const TestimonialsBlock02: React.FC<Props> = ({ testimonials, bgColor, li
         whileInView="visible"
         viewport={{ once: true, amount: 0.3 }}
         variants={containerVariants}
-        className="container overflow-hidden"
+        className="container overflow-hidden px-space-7"
       >
         <motion.div
           variants={itemsFling} // Animate the main card as one item
