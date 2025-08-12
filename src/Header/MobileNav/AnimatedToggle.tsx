@@ -19,7 +19,7 @@ export const AnimatedToggle: React.FC<AnimatedToggleProps> = ({
   const shift = (5 / 24) * 100
   return (
     <Button
-      variant="secondary"
+      variant="tertiary"
       size="icon"
       color="neutral"
       onClick={onClick}
