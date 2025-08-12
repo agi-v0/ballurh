@@ -66,7 +66,7 @@ export const CallToAction02: React.FC<CallToActionProps> = ({
                   key={i}
                   size="lg"
                   {...(link as CMSLinkType)}
-                  className="outline-2 outline-offset-2 outline-white/5 hover:bg-white hover:text-base-primary hover:outline-white/20 active:text-base-primary active:outline-white/20"
+                  className="outline-2 outline-offset-2 outline-white/5 hover:bg-white hover:text-base-primary hover:outline-white/20 active:bg-white active:text-base-primary active:outline-white/20"
                 />
               )
             })}
