@@ -7,6 +7,9 @@ import { Media } from '@/components/MediaResponsive'
 import RichText from '@/components/RichText'
 import { Icon } from '@iconify-icon/react/dist/iconify.mjs'
 import { cn } from '@/utilities/ui'
+import { getLocale } from 'next-intl/server'
+import { Badge } from '@/components/ui/badge'
+import { getCachedAnnouncement } from '@/utilities/getAnnouncement'
 
 const listClassMap = {
   bullet: 'list-disc ',
@@ -61,7 +64,10 @@ const StyledList: React.FC<{
   }
 }
 
-export const HighImpactHero: React.FC<Page['hero']> = ({ links, media, richText, list }) => {
+export const HighImpactHero: React.FC<Page['hero']> = async ({ links, media, richText, list }) => {
+  const locale = await getLocale()
+  const announcement = await getCachedAnnouncement(locale)()
+
   // const { setHeaderTheme } = useHeaderTheme()
 
   // useEffect(() => {
@@ -70,7 +76,17 @@ export const HighImpactHero: React.FC<Page['hero']> = ({ links, media, richText,
 
   return (
     <div className="xpx-(--gutter-h) container grid min-h-screen w-full grid-cols-8 items-center justify-center py-10 max-lg:mt-header-plus-admin-bar lg:grid-cols-16 lg:py-0">
-      <div className="relative z-1 col-span-8 mb-10 flex flex-col gap-6 md:gap-10 lg:col-span-7 lg:mb-0">
+      <div className="relative z-1 col-span-8 mb-10 flex flex-col items-start gap-6 md:gap-10 lg:col-span-7 lg:mb-0">
+        {announcement && (
+          <CMSLink
+            {...announcement.link}
+            label={null}
+            className="flex flex-row items-center gap-1.5 font-medium text-base-primary"
+          >
+            <Badge color="gray" size="md" label="تحديث" />
+            <div className="text-sm">{announcement.text}</div>
+          </CMSLink>
+        )}
         {richText && <RichText className="[&>p]:text-large" data={richText} enableGutter={false} />}
         {Array.isArray(links) && links.length > 0 && (
           <ul className="flex max-w-full flex-wrap gap-1">

@@ -56,7 +56,7 @@ export interface BadgeProps {
 }
 
 function Badge({
-  type,
+  type = 'label',
   className,
   icon,
   icon_position,
