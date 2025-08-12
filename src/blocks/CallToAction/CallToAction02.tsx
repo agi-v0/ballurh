@@ -39,7 +39,7 @@ export const CallToAction02: React.FC<CallToActionProps> = ({
 }) => {
   return (
     <div
-      data-theme="dark"
+      // data-theme="dark"
       className={cn('relative container overflow-hidden py-space-7', className)}
     >
       <motion.div
@@ -53,7 +53,7 @@ export const CallToAction02: React.FC<CallToActionProps> = ({
           {richText && (
             <motion.div variants={itemsFling}>
               <RichText
-                className="mb-0 max-w-4xl text-center"
+                className="mb-0 max-w-4xl text-center prose-invert"
                 data={richText}
                 enableGutter={false}
               />
@@ -66,7 +66,7 @@ export const CallToAction02: React.FC<CallToActionProps> = ({
                   key={i}
                   size="lg"
                   {...(link as CMSLinkType)}
-                  className="bg-orange-500 text-inverted-primary outline-offset-2 hover:bg-white hover:text-inverted-primary hover:outline-2 hover:outline-white/20"
+                  className="outline-2 outline-offset-2 outline-white/5 hover:bg-white hover:text-base-primary hover:outline-white/20 active:text-base-primary active:outline-white/20"
                 />
               )
             })}
@@ -90,13 +90,13 @@ export const CallToAction02: React.FC<CallToActionProps> = ({
                 >
                   {icon && (
                     <Icon
-                      className="size-4 text-base-tertiary"
+                      className="size-4 text-inverted-tertiary"
                       height="none"
                       icon={`ri:${icon}`}
                       color="currentColor"
                     />
                   )}
-                  {title && <h3 className="text-small text-base-tertiary">{title}</h3>}
+                  {title && <h3 className="text-small text-inverted-tertiary">{title}</h3>}
                 </motion.div>
               )
             })}
