@@ -2858,9 +2858,11 @@ export interface Setting {
     image?: (string | null) | Media;
     description?: string | null;
   };
-  announcementBar: {
+  announcement?: {
+    enableAnnouncement?: boolean | null;
     text?: string | null;
-    link: {
+    badge?: string | null;
+    link?: {
       type?: ('reference' | 'custom') | null;
       newTab?: boolean | null;
       reference?:
@@ -3108,10 +3110,12 @@ export interface SettingsSelect<T extends boolean = true> {
         image?: T;
         description?: T;
       };
-  announcementBar?:
+  announcement?:
     | T
     | {
+        enableAnnouncement?: T;
         text?: T;
+        badge?: T;
         link?:
           | T
           | {

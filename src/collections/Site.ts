@@ -10,7 +10,7 @@ import { link } from '@/fields/link'
 
 const SiteConfig: GlobalConfig = {
   slug: 'settings',
-  label: 'Site Configuration',
+  label: 'Settings',
   fields: [
     {
       type: 'tabs',
@@ -52,21 +52,51 @@ const SiteConfig: GlobalConfig = {
           label: 'Sitewide UI',
           fields: [
             {
-              name: 'announcementBar',
-              label: 'Announcement Bar',
+              name: 'announcement',
+              label: 'Announcement',
               type: 'group',
               fields: [
                 {
-                  name: 'text',
-                  label: 'Text',
-                  type: 'text',
-                  localized: true,
+                  name: 'enableAnnouncement',
+                  type: 'checkbox',
+                  label: 'Show Announcement',
+                  defaultValue: false,
                 },
+                {
+                  type: 'row',
+                  fields: [
+                    {
+                      name: 'text',
+                      label: 'Text',
+                      type: 'text',
+                      localized: true,
+                      admin: {
+                        condition: (_, siblingData) => siblingData.enableAnnouncement,
+                      },
+                    },
+                    {
+                      name: 'badge',
+                      label: 'Badge',
+                      type: 'text',
+                      localized: true,
+                      admin: {
+                        condition: (_, siblingData) => siblingData.enableAnnouncement,
+                      },
+                    },
+                  ],
+                },
+
                 link({
                   colors: false,
                   variants: false,
                   icon: false,
                   description: false,
+                  overrides: {
+                    admin: {
+                      condition: (_: Partial<any>, siblingData: { enableAnnouncement: boolean }) =>
+                        siblingData.enableAnnouncement,
+                    },
+                  },
                 }),
               ],
             },
