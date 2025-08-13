@@ -4,7 +4,7 @@ import { resendAdapter } from '@payloadcms/email-resend'
 
 import sharp from 'sharp' // sharp-import
 import path from 'path'
-import { buildConfig, PayloadRequest } from 'payload'
+import { buildConfig, deepMerge, PayloadRequest } from 'payload'
 import { fileURLToPath } from 'url'
 import { getServerSideURL } from './utilities/getURL'
 
@@ -50,16 +50,17 @@ import { TeamBlock } from './blocks/Team/config'
 
 import { en } from '@payloadcms/translations/languages/en'
 import { ar } from '@payloadcms/translations/languages/ar'
+import { slugTranslations } from './fields/slug/i18n-translations'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
 
 export default buildConfig({
   admin: {
-    // autoLogin: {
-    //   email: 'demo-author@example.com',
-    //   password: 'password',
-    // },
+    autoLogin: {
+      email: 'demo-author@example.com',
+      password: 'password',
+    },
 
     components: {
       beforeLogin: ['@/components/BeforeLogin'],
@@ -188,6 +189,9 @@ export default buildConfig({
   i18n: {
     fallbackLanguage: 'en',
     supportedLanguages: { en, ar },
+    translations: {
+      ...deepMerge(slugTranslations, {}),
+    },
   },
   localization: {
     locales: [
