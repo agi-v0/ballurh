@@ -9,6 +9,7 @@ export default {
   generateRobotsTxt: true,
   exclude: ['/*', '/blog/*'],
   generateIndexSitemap: true,
+  // doesn't do anything
   additionalSitemaps: [
     `${SITE_URL}/sitemap-ar.xml`,
     `${SITE_URL}/sitemap-en.xml`,
