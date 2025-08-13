@@ -5,6 +5,7 @@ import type { StaticImageData } from 'next/image'
 import { cn } from '@/utilities/ui'
 import NextImage from 'next/image'
 import { useTheme } from '@/providers/Theme'
+
 import React from 'react'
 
 import type { Props as MediaProps } from '../types'
