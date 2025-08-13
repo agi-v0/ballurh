@@ -11,7 +11,7 @@ module.exports = {
     '/sitemap-ar.xml',
     '/sitemap-en.xml',
     '/sitemap-ar-pages.xml',
-    '/sitemap-en-pages.xml',
+    // '/sitemap-en-pages.xml', test
     '/sitemap-ar-posts.xml',
     '/sitemap-en-posts.xml',
     '/*',
@@ -24,6 +24,6 @@ module.exports = {
         disallow: '/admin/*',
       },
     ],
-    additionalSitemaps: [`${SITE_URL}/sitemap-ar.xml`, `${SITE_URL}/sitemap-en.xml`],
+    // additionalSitemaps: [`${SITE_URL}/sitemap-ar.xml`, `${SITE_URL}/sitemap-en.xml`],
   },
 }
