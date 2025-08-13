@@ -2,7 +2,16 @@
 import React, { useCallback, useEffect } from 'react'
 import { TextFieldClientProps } from 'payload'
 
-import { useField, Button, TextInput, FieldLabel, useFormFields, useForm } from '@payloadcms/ui'
+import {
+  useField,
+  Button,
+  TextInput,
+  FieldLabel,
+  useFormFields,
+  useForm,
+  FieldDescription,
+  useTranslation,
+} from '@payloadcms/ui'
 
 import { formatSlug } from './formatSlug'
 import './index.scss'
@@ -20,6 +29,7 @@ export const SlugComponent: React.FC<SlugComponentProps> = ({
   readOnly: readOnlyFromProps,
 }) => {
   const { label } = field
+  const { t } = useTranslation()
 
   const checkboxFieldPath = path?.includes('.')
     ? `${path}.${checkboxFieldPathFromProps}`
@@ -73,7 +83,9 @@ export const SlugComponent: React.FC<SlugComponentProps> = ({
         <FieldLabel htmlFor={`field-${path}`} label={label} />
 
         <Button className="lock-button" buttonStyle="none" onClick={handleLock}>
-          {checkboxValue ? 'Unlock' : 'Lock'}
+          {checkboxValue
+            ? t('slug:unlock_button' as Parameters<typeof t>[0])
+            : t('slug:lock_button' as Parameters<typeof t>[0])}
         </Button>
       </div>
 
@@ -82,6 +94,10 @@ export const SlugComponent: React.FC<SlugComponentProps> = ({
         onChange={setValue}
         path={path || field.name}
         readOnly={Boolean(readOnly)}
+      />
+      <FieldDescription
+        path={path || field.name}
+        description={t('slug:slug_description' as Parameters<typeof t>[0])}
       />
     </div>
   )
