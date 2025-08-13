@@ -54,8 +54,8 @@ export const ImageMedia: React.FC<MediaProps> = (props) => {
   let alt = altFromProps
   let src: StaticImageData | string = srcFromProps || ''
   let darkSrc: string = ''
-  let mobileSrc: string = ''
-  let mobileDarkSrc: string = ''
+  const mobileSrc: string = ''
+  const mobileDarkSrc: string = ''
   let blurhash: string = placeholderBlur
 
   const { light: lightFromDesktop, dark: darkFromDesktop } = media?.desktop || {}
