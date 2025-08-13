@@ -36,7 +36,6 @@
     justify-content: center;
     gap: 10px;
     width: 100%;
-
     button {
       margin: 0;
     }
@@ -55,22 +54,17 @@
       opacity: 0.6;
     }
 
-    &:before,
-    &:after {
+    .icon {
       position: absolute;
-      left: 15px;
-      background-color: var(--theme-elevation-800);
-      width: 2px;
-      height: 33px;
-      content: ' ';
-    }
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
 
-    &:before {
-      transform: rotate(45deg);
-    }
-
-    &:after {
-      transform: rotate(-45deg);
+      .stroke {
+        transition-property: stroke;
+        transition-duration: 100ms;
+        transition-timing-function: cubic-bezier(0, 0.2, 0.2, 1);
+      }
     }
   }
 }
