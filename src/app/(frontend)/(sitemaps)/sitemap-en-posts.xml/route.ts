@@ -1,9 +1,8 @@
 import { getServerSideSitemap } from 'next-sitemap'
-import { getPayload, SanitizedConfig } from 'payload'
+import { getPayload } from 'payload'
 import config from '@payload-config'
 import { unstable_cache } from 'next/cache'
 import { ISitemapField, IAlternateRef } from 'next-sitemap'
-import { hasHeroContent } from '@/utilities/hasHeroContent'
 
 const getPagesSitemap = unstable_cache(
   async () => {
@@ -13,30 +12,13 @@ const getPagesSitemap = unstable_cache(
       process.env.VERCEL_PROJECT_PRODUCTION_URL ||
       'https://example.com'
 
-    const locale = 'ar'
-    const otherLocale = 'en'
-
-    // Add default routes
-    const defaultRoutes = [{ path: 'search' }, { path: 'profit-calculator' }, { path: 'meeting' }]
+    const locale = 'en'
+    const otherLocale = 'ar'
 
     const dateFallback = new Date().toISOString()
 
-    const defaultSitemap: ISitemapField[] = defaultRoutes.map(({ path }) => {
-      const loc = `${SITE_URL}/${locale}/${path}`
-      const alternateRefs: IAlternateRef[] = [
-        { href: loc, hreflang: locale },
-        { href: `${SITE_URL}/${otherLocale}/${path}`, hreflang: otherLocale },
-      ]
-      alternateRefs.push({ href: `${SITE_URL}/${locale}/${path}`, hreflang: 'x-default' })
-      return {
-        loc,
-        lastmod: dateFallback,
-        alternateRefs,
-      }
-    })
-
     const results = await payload.find({
-      collection: 'pages',
+      collection: 'blog-posts',
       overrideAccess: false,
       draft: false,
       depth: 0,
@@ -51,12 +33,11 @@ const getPagesSitemap = unstable_cache(
       select: {
         slug: true,
         updatedAt: true,
-        disablePage: true,
       },
     })
 
     const otherLocaleResults = await payload.find({
-      collection: 'pages',
+      collection: 'blog-posts',
       overrideAccess: false,
       draft: false,
       depth: 0,
@@ -71,13 +52,12 @@ const getPagesSitemap = unstable_cache(
       select: {
         slug: true,
         updatedAt: true,
-        disablePage: true,
       },
     })
 
     const sitemap: ISitemapField[] = results.docs
       ? results.docs
-          .filter((page) => Boolean(page?.slug) && !page.disablePage)
+          .filter((page) => Boolean(page?.slug))
           .map((page) => {
             const path = page.slug === 'home' ? '' : `/${page.slug}`
             const loc = `${SITE_URL}/${locale}${path}`
@@ -85,12 +65,13 @@ const getPagesSitemap = unstable_cache(
               { href: loc, hreflang: 'x-default' },
               { href: loc, hreflang: locale },
             ]
-            if (otherLocaleResults.docs.some((doc) => doc.slug === page.slug && !doc.disablePage)) {
+            if (otherLocaleResults.docs.some((doc) => doc.slug === page.slug)) {
               alternateRefs.push({
                 href: `${SITE_URL}/${otherLocale}${path}`,
                 hreflang: otherLocale,
               })
             }
+
             return {
               loc,
               lastmod: page.updatedAt || dateFallback,
@@ -99,11 +80,11 @@ const getPagesSitemap = unstable_cache(
           })
       : []
 
-    return [...defaultSitemap, ...sitemap]
+    return [...sitemap]
   },
-  ['pages-sitemap'],
+  ['posts-sitemap'],
   {
-    tags: ['pages-sitemap'],
+    tags: ['posts-sitemap'],
   },
 )
 
