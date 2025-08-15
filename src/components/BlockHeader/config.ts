@@ -28,6 +28,7 @@ export const blockHeader: Field = {
   name: 'blockHeader',
   type: 'group',
   label: 'Block Header',
+  interfaceName: 'BlockHeader',
   fields: [
     {
       name: 'type',

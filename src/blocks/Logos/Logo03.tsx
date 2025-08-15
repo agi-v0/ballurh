@@ -3,7 +3,7 @@ import type { Media as MediaType } from '@/payload-types'
 import { Media } from '@/components/MediaResponsive'
 import { cn } from '@/utilities/ui'
 import RichText from '@/components/RichText'
-import { BlockHeaderType } from '@/components/BlockHeader/types'
+import { BlockHeader as BlockHeaderType } from '@/payload-types'
 
 interface Logo03Props {
   logos: MediaType[]

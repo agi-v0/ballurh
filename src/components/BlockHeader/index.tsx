@@ -3,10 +3,17 @@ import { CMSLink } from '@/components/Link'
 import RichText from '@/components/RichText'
 import { Badge } from '@/components/ui/badge'
 import { cn } from '@/utilities/ui'
-import { BlockHeaderType } from '@/components/BlockHeader/types'
+import { BlockHeader as BlockHeaderType } from '@/payload-types'
 import { countWords, extractTextFromLexical } from '@/utilities/extractTextFromLexical'
 
-export const BlockHeader: React.FC<BlockHeaderType> = (props) => {
+export const BlockHeader: React.FC<
+  BlockHeaderType & {
+    className?: string
+    badgeClassName?: string
+    richTextClassName?: string
+    linksClassName?: string
+  }
+> = (props) => {
   const {
     headerText,
     links,

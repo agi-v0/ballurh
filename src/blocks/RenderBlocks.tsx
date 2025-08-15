@@ -5,8 +5,9 @@ import { ArchiveBlock } from '@/blocks/ArchiveBlock/Component'
 import { FormBlock } from '@/blocks/Form/Component'
 import { MediaBlock } from '@/blocks/MediaBlock/Component'
 import { RenderFeaturesBlock } from '@/blocks/Features/RenderFeaturesBlock'
+// import { RenderCarouselBlock } from '@/blocks/Carousel/RenderCarouselBlock'
 import { BlockHeader } from '@/components/BlockHeader'
-import { BlockHeaderType } from '@/components/BlockHeader/types'
+import { BlockHeader as BlockHeaderType } from '@/payload-types'
 // import { RenderFeaturedAppsBlock } from './FeaturedApps/RenderFeaturedAppsBlock'
 import { RenderBlogBlock } from './Blog/RenderBlogBlock'
 import { RenderFAQBlock } from './FAQ/RenderFAQBlock'
@@ -27,6 +28,7 @@ const blockComponents = {
   archiveBlock: ArchiveBlock,
   blogBlock: RenderBlogBlock,
   callToActionBlock: RenderCallToActionBlock,
+  // carouselBlock: RenderCarouselBlock,
   customHtmlBlock: RenderCustomHtmlBlock,
   dividerBlock: RenderDividerBlock,
   faqBlock: RenderFAQBlock,
