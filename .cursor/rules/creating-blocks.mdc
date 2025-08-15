@@ -1,0 +1,244 @@
+---
+description: Creating a payload cms schema for a content block, registering it, and linking it to the nextjs frontend.
+globs: 
+alwaysApply: false
+---
+**Guideline: Creating Payload Blocks with Variants**
+
+This guideline assumes you are using Payload CMS with Next.js (App Router) and TypeScript, aiming for a modular structure where blocks can have multiple visual presentations (variants).
+
+**1. Directory Structure:**
+
+Organize each block within its own directory under `src/blocks/`. Include subdirectories for specific variant components.
+
+```
+src/
+├── blocks/
+│   ├── [BlockName]/                 # Example: TestimonialsBlock
+│   │   ├── config.ts                # Payload Block Schema definition
+│   │   ├── Render[BlockName].tsx    # Router/Data Fetching Component (Server Component)
+│   │   ├── VariantName01.tsx         # Example: TestimonialsBlock01 
+│   │   ├── VariantName02.tsx         # Example: TestimonialsBlock02
+│   │   └── ...                      # Other variants
+│   └── BlockHeader/                 # Reusable Block Header components/config
+│       ├── config.ts
+│       └── RenderBlockHeader.tsx
+└── collections/
+    └── Pages/                     # Or wherever the block is used
+        └── index.ts               # Collection config
+```
+
+**2. Block Schema Definition (`config.ts`)**
+
+*   **Imports:** Import `Block`, `Field` from `payload`, and any reusable field definitions.
+*   **`slug`:** A unique, descriptive, camelCase identifier (e.g., `customHtml`). This slug is critical as it will be used to reference the block.
+*   **`interfaceName` (Required):** A PascalCase name used for TypeScript type generation (e.g., `CustomHtmlBlock`). This is crucial for type safety.
+*   **`dbName` (Recommended):** A camelCase name that explicitly sets the database table/collection name for this block's data, if applicable (e.g., `customHtmlBlock`). This helps avoid issues with database identifier length limits (especially in Postgres, often 63 chars for identifiers derived from nested field paths) and provides clarity. It's good practice to set this, especially if the block `slug` is long or if it contains deeply nested fields that might lead to very long auto-generated database column names.
+*   **`labels` (Optional):** An object to define singular and plural labels for the block in the Admin UI.
+    *   `singular`: e.g., `'Featured Apps'`
+    *   `plural`: e.g., `'Featured Apps'`
+*   **`fields` Array:** Define fields specific to this block (e.g., `blockHeader`, `type` for variants, content fields).
+*   **Export:** Export the complete `Block` configuration object.
+
+```typescript
+// src/blocks/ExampleBlock/config.ts
+import type { Block } from 'payload'
+import { blockHeader } from '@/components/BlockHeader/config' // Example import
+
+export const ExampleBlock: Block = {
+  slug: 'exampleBlock',       // Unique identifier
+  interfaceName: 'ExampleBlock', // For TypeScript types
+  dbName: 'exampleBlock',      // Explicit DB name, matches interfaceName in camelCase by convention
+  labels: {                   // Optional: For Admin UI
+    singular: 'Example Block',
+    plural: 'Example Blocks',
+  },
+  fields: [
+    blockHeader, // Recommended first field
+    {
+      name: 'type',
+      type: 'select',
+      options: [ /* ... variant options ... */ ],
+      required: true,
+      defaultValue: 'defaultVariant',
+    },
+    // ... other content fields for this block
+  ],
+}
+```
+
+**3. Router/Data Fetching Component (`Render[BlockName].tsx`)**
+
+*   **Component Type:** MUST be an `async` React Server Component (RSC).
+*   **Imports:**
+    *   `React`, `Fragment`, `lazy` (if using lazy loading, though direct Suspense in RSCs is limited).
+    *   `getPayload` from `'payload'`.
+    *   `config` from `'@payload-config'`.
+    *   `getLocale` from `'next-intl/server'`.
+    *   Generated Payload types (`Page`, `[BlockName]Type`, related collection types like `Testimonial`).
+    *   Variant components (using `lazy` or direct imports).
+    *   `RenderBlockHeader` if used centrally here.
+*   **Type Definition:** Use the generated block type (e.g., `TestimonialsBlockType`).
+*   **Props:** Receive the block data (`props: TestimonialsBlockType`).
+*   **Get Locale:** `const locale = await getLocale()`.
+*   **Get Payload:** `const payload = await getPayload({ config })`.
+*   **Data Fetching Logic:**
+    *   Fetch related data based on relationship fields (e.g., `selectedTestimonials`).
+    *   Handle the relationship data structure correctly (e.g., `props.selectedTestimonials.map(t => t.value)`).
+    *   Use `payload.find` with `locale: locale as 'en' | 'ar'` (or your specific locales) and `fallbackLocale`. Set `depth` appropriately.
+    *   Implement logic for fallback data (e.g., fetch recent items if none are selected).
+    *   Wrap fetching in `try...catch` for error handling.
+*   **Variant Mapping:** Create an object mapping `type` values to the imported variant components.
+*   **Rendering:**
+    *   Check if data exists; return `null` or a placeholder if not.
+    *   Get the correct `BlockComponent` from the map based on `props.type`.
+    *   Render the shared `BlockHeader` if applicable (using `props.blockHeader`).
+    *   Render the selected `BlockComponent`, passing the fetched data as props.
+    *   Use `<Fragment>` if no wrapper element is needed.
+
+```typescript
+// src/blocks/TestimonialsBlock/RenderTestimonialsBlock.tsx
+import React, { Fragment, lazy } from 'react'
+import { getLocale } from 'next-intl/server'
+import { getPayload } from 'payload'
+import config from '@payload-config'
+import type { TestimonialsBlock as TestimonialsBlockType, Testimonial } from '@/payload-types'
+import { RenderBlockHeader } from '@/blocks/BlockHeader/RenderBlockHeader'
+import { TestimonialsGrid } from './TestimonialsGrid' // Or lazy load
+
+const blockComponents = {
+  testimonialsGrid: TestimonialsGrid,
+  // testimonialsSlider: TestimonialsSlider,
+}
+
+export const RenderTestimonialsBlock: React.FC<TestimonialsBlockType> = async (props) => {
+  const { type, blockHeader, selectedTestimonials } = props
+  const locale = await getLocale()
+  const payload = await getPayload({ config })
+  let testimonialsToRender: Testimonial[] = []
+
+  // --- Data fetching logic (try/catch) ---
+  // Fetch based on selectedTestimonials (using .map(t => t.value))
+  // Or fetch recent if none selected
+  // Set testimonialsToRender
+  // --- End Data fetching ---
+
+  if (!testimonialsToRender || testimonialsToRender.length === 0) return null
+
+  const BlockComponent = blockComponents[type as keyof typeof blockComponents]
+  if (!BlockComponent) return null // Or log warning
+
+  return (
+    <Fragment>
+      {blockHeader && <RenderBlockHeader blockHeader={blockHeader} />}
+      <BlockComponent testimonials={testimonialsToRender} />
+    </Fragment>
+  )
+}
+```
+
+**4. Variant Component (`[VariantName]/index.tsx`)**
+
+*   **Component Type:** Can be a Server or Client Component (`'use client'`) depending on whether it needs interactivity (state, effects, event handlers).
+*   **Imports:** Import `React` and necessary types/components (Payload types, UI components like Shadcn/UI, Payload RichText renderer).
+*   **Props:** Define an interface for the props it receives from the Router component (e.g., `testimonials: Testimonial[]`).
+*   **Rendering:**
+    *   Focus *only* on the JSX structure and styling for this specific visual variant.
+    *   Map over the data array (`testimonials`) to render individual items/cards.
+    *   Use UI library components (`Card`, `Carousel`, etc.).
+    *   Use the Payload RichText component to render Rich Text fields correctly.
+    *   Apply Tailwind/CSS classes.
+
+```typescript
+// src/blocks/TestimonialsBlock/TestimonialsGrid/index.tsx
+import React from 'react'
+import { Testimonial } from '@/payload-types'
+// Import Card components, RichText renderer etc.
+
+interface TestimonialsGridProps {
+  testimonials: Testimonial[]
+}
+
+export const TestimonialsGrid: React.FC<TestimonialsGridProps> = ({ testimonials }) => {
+  return (
+    <section className="container py-12">
+      <div className="grid ...">
+        {testimonials.map((testimonial) => (
+          <div key={testimonial.id} className="border p-4">
+            {/* Render testimonial.quote using RichText component */}
+            <p>- {testimonial.authorName}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+  )
+}
+```
+
+**5. Block Registration**
+
+*   Import the block's `config` into the collection config where it will be used (e.g., `src/collections/Pages/index.ts`).
+*   Add the imported block config object to the `blocks` array within the appropriate `blocks` type field (e.g., `layout`).
+
+```typescript
+// src/collections/Pages/index.ts
+import { TestimonialsBlock } from '@/blocks/TestimonialsBlock/config'
+// ... other block imports
+
+export const Pages: CollectionConfig = {
+  // ...
+  fields: [
+    // ... other fields
+    {
+      name: 'layout',
+      type: 'blocks',
+      blocks: [
+        // ... other blocks
+        TestimonialsBlock,
+      ],
+    },
+  ],
+}
+```
+
+**6. Type Generation (CRITICAL STEP)**
+
+*   **AFTER ANY CHANGE** to a block's `config.ts` or related collection fields:
+*   **Run `pnpm generate:types`** (or your project's equivalent command).
+*   This updates `@/payload-types.ts`, ensuring your components use the correct types and avoiding `Property '...' does not exist` errors.
+
+**7. Update Block Renderer (`src/blocks/RenderBlocks.tsx`)**
+
+*   Import the main Router component (e.g., `RenderTestimonialsBlock`).
+*   Add an entry to the `blockComponents` map, mapping the block's `slug` to the imported component.
+
+```typescript
+// src/blocks/RenderBlocks.tsx
+import { RenderTestimonialsBlock } from './TestimonialsBlock/RenderTestimonialsBlock'
+// ... other imports
+
+const blockComponents = {
+  // ... other blocks
+  testimonials: RenderTestimonialsBlock,
+}
+// ... rest of component
+```
+
+By following these steps, you create modular, type-safe, and flexible blocks that can easily accommodate different designs and integrate smoothly with Payload and Next.js. Remember that regenerating types is the most crucial step after schema modifications.
+
+# Animation in Payload CMS Block Variants
+
+To add animation to a Payload CMS block variant (e.g., a Features block), use the new `motion/react` library (Framer Motion v11+). The recommended approach is as follows:
+
+- Mark the file as a client component with `'use client'` at the top.
+- Import `motion` from `motion/react` and animation variants (e.g., `containerVariants`, `itemsFling`) from [`src/utilities/motion.ts`](mdc:src/utilities/motion.ts).
+- Wrap the grid/container in a `motion.div` using `containerVariants` for staggered child animation.
+- Wrap each child/card in a `motion.div` using `itemsFling` (or another suitable variant). Do **not** use the `custom={index}` prop if `staggerChildren` is set on the container.
+- Use the `viewport` prop on the container for scroll-based animation triggers. For example: `viewport={{ once: false, amount: 0.3 }}`.
+- See [`src/blocks/Features/variants/Features05.tsx`](mdc:src/blocks/Features/variants/Features05.tsx) for a complete implementation example.
+
+**Best Practices:**
+- Use animation variants from the shared motion utilities for consistency.
+- Prefer `staggerChildren` on the container for sequencing, and avoid per-item delays unless needed.
+- Use `viewport={{ once: false, amount: 0.3 }}` for repeated animation on scroll, or `once: true` for one-time animation.
+- Keep animation logic declarative and colocated with the block variant component.

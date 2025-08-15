@@ -1,0 +1,72 @@
+---
+description:
+globs:
+alwaysApply: true
+---
+
+{
+"rules": [
+{
+"description": "Project Overview",
+"instructions": [
+"This is a marketing website, built using Next.js 15 (App Router, RSC), Payload CMS, Tailwind CSS v4, and Shadcn/UI.",
+"The frontend code resides primarily in `src/app/(frontend)`.",
+"Payload CMS configuration is in `src/payload.config.ts`, collections in `src/collections`, and related components/blocks in `src/components`, `src/blocks`, etc.",
+"The project uses TypeScript extensively.",
+"Internationalization is handled by `next-intl`, supporting 'en' and 'ar' (default).",
+"Packages are managed by `pnpm`."
+]
+},
+{
+"description": "Code Style and Formatting",
+"instructions": [
+"Follow TypeScript best practices.",
+"Adhere to the formatting rules defined in `.prettierrc.json` (single quotes, trailing commas, 100 print width, no semicolons).",
+"Use the `prettier-plugin-tailwindcss` for class sorting. Utilize the configured `tailwindFunctions` like `cva` and `cn`.",
+"Utilize `clsx` or `tailwind-merge` (likely via a `cn` utility function defined in `@/utilities/ui`) for conditional classes.",
+"Ensure ESLint rules pass (`eslint.config.mjs`).",
+"Use the `@/*` path alias for imports from the `src` directory as defined in `tsconfig.json`."
+]
+},
+
+    {
+      "description": "Component Development (React/Next.js)",
+      "instructions": [
+        "Use React Server Components (RSC) where appropriate (default in App Router).",
+        "Use Shadcn/UI components from `@/components/ui` for UI elements. Refer to `components.json` for configuration.",
+        "Place general reusable components in `src/components`.",
+        "Use Tailwind CSS for styling, leveraging the theme variables defined in `src/app/(frontend)/[locale]/globals.css` and potentially `tailwind.config.mjs`.",
+        "Leverage Material Symbols icons using the Iconify icon component(`@iconify-icon/react`).",
+        "For internationalized text, use the appropriate `next-intl` functions/hooks."
+      ]
+    },
+    {
+      "description": "Payload CMS Development",
+      "instructions": [
+        "Payload collections are defined in `src/collections`.",
+        "Payload globals (like Header, Footer) are configured in their respective directories (`src/Header/config.ts`, etc.).",
+        "Use Payload's built-in field types and Rich Text editor (Lexical).",
+        "Define custom components for the Payload Admin UI in `src/components` or similar directories, referencing them in `payload.config.ts`.",
+        "Define custom blocks for the Payload page builder in `src/blocks`, reference them in `src/collections/pages/index.ts`
+        "Remember that Payload generates types into `src/payload-types.ts`. Regenerate types using `pnpm generate:types` after modifying collections or fields."
+      ]
+    },
+    {
+      "description": "Backend and Data",
+      "instructions": [
+        "The backend is managed by Payload CMS.",
+        "Database interactions are handled via the Payload API and the configured PostgreSQL adapter (`@payloadcms/db-postgres`).",
+        "Media is stored using the S3 adapter (`@payloadcms/storage-s3`) in production."
+      ]
+    },
+    {
+      "description": "Things to Avoid",
+      "instructions": [
+        "Avoid introducing new libraries not already in `package.json` without discussion.",
+        "Do not manually style components that should be handled by Shadcn/UI themes/variants or Tailwind utility classes.",
+        "Do not modify generated files like `payload-types.ts` directly."
+      ]
+    }
+
+]
+}
