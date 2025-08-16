@@ -12,6 +12,7 @@ import { image43 } from './image-4-3'
 import { imageSquare } from './image-square'
 
 import { seedFeaturesShowcasePage } from './features-showcase-page'
+import { seedCarouselShowcasePage } from './carousel-showcase-page'
 import { seedArchiveBlockDemo } from './archive-block-demo'
 import { seedCTABlockDemo } from './cta-block-demo'
 import { seedBlogBlockDemo } from './blog-block-demo'
@@ -1022,6 +1023,14 @@ export const seed = async ({
       data: metricsBlockDemoData,
       key: 'metrics-block-demo',
     },
+    // {
+    //   data: seedCarouselShowcasePage({
+    //     image169: image169Doc,
+    //     image43: image43Doc,
+    //     imageSquare: imageSquareDoc,
+    //   }),
+    //   key: 'carousel-showcase',
+    // },
     // {
     //   data: marketplaceBlockDemoData,
     //   key: 'marketplace-block-demo',
