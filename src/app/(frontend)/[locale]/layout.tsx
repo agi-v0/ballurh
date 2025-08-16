@@ -59,7 +59,24 @@ export default async function RootLayout({
       suppressHydrationWarning
     >
       <GoogleTagManager gtmId="GTM-M8ZHLQGR" />
-      <head>{/* <InitTheme /> */}</head>
+      <head>
+        {/* <InitTheme /> */}
+        <link
+          rel="icon"
+          href="/favicon-dark.svg"
+          type="image/svg+xml"
+          sizes="16x16 32x32 64x64"
+          media="(prefers-color-scheme: light)"
+        />
+        <link
+          rel="icon"
+          href="/favicon-light.svg"
+          type="image/svg+xml"
+          sizes="16x16 32x32 64x64"
+          media="(prefers-color-scheme: dark)"
+        />
+        <link rel="apple-touch-icon" href="/apple-icon.png" type="image/png" sizes="180x180" />
+      </head>
       <body>
         <Providers>
           {/* <AdminBar
