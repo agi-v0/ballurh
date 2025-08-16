@@ -62,12 +62,6 @@ export const seedFeaturesShowcasePage = (media: {
     '06',
     '07',
     '08',
-    '09',
-    '10',
-    '11',
-    '12',
-    // '13',
-    '14',
     // '15',
     // '16',
     // '17',
@@ -144,7 +138,7 @@ export const seedFeaturesShowcasePage = (media: {
       columns: [],
     }
 
-    if (['14', '15', '16', '17'].includes(type)) {
+    if (['08', '15', '16', '17'].includes(type)) {
       block.CTALabel = `اكتشف المزيد عن الميزة ${type}`
       block.link = {
         type: 'custom',
@@ -167,7 +161,7 @@ export const seedFeaturesShowcasePage = (media: {
       numCols = 2
     } else if (['06', '07'].includes(type)) {
       numCols = 4
-    } else if (['14', '15'].includes(type)) {
+    } else if (['08', '15'].includes(type)) {
       numCols = 3
     } else if (['16', '17'].includes(type)) {
       numCols = 4
@@ -218,16 +212,11 @@ export const seedFeaturesShowcasePage = (media: {
 
       // Conditionally add 'image'
       if (
-        ['01', '02', '03', '04', '05', '08', '09', '10', '11', '14', '15', '16', '17'].includes(
+        ['01', '02', '03', '04', '05', '08', '09', '10', '11', '08', '15', '16', '17'].includes(
           type,
         )
       ) {
         columnData.image = media.image43?.id
-      }
-
-      // Conditionally add 'tabLabel'
-      if (type === '08') {
-        columnData.tabLabel = `تبويب ${i + 1}`
       }
 
       // Conditionally add 'icon'

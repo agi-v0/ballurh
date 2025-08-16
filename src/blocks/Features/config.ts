@@ -1,4 +1,4 @@
-import type { Block } from 'payload'
+import { deepMerge, type Block, type Field } from 'payload'
 
 import {
   FixedToolbarFeature,
@@ -26,6 +26,24 @@ const richTextEditor = lexicalEditor({
     ]
   },
 })
+
+const textGroup = (options: Partial<Field>) => {
+  const group: Field = {
+    name: 'content',
+    type: 'group',
+    label: false,
+    fields: [
+      { name: 'title', type: 'text', label: 'Title', required: true, localized: true },
+      {
+        name: 'subtitle',
+        type: 'textarea',
+        label: 'Subtitle',
+        localized: true,
+      },
+    ],
+  }
+  return deepMerge(group, options)
+}
 
 const sizeOptions = [
   { label: 'Half', value: 'half' },
@@ -58,16 +76,7 @@ export const FeaturesBlock: Block = {
         { label: '05 - Basic Image with Text (2-Column) [NOT READY]', value: '05' },
         { label: '06 - Brief (Card)', value: '06' },
         { label: '07 - Brief (Centered)', value: '07' },
-        { label: '08 - Carousel (Tabs) [NOT READY]', value: '08' },
-        { label: '09 - Carousel (Accordion) [NOT READY]', value: '09' },
-        { label: '10 - Carousel (Cards) [NOT READY]', value: '10' },
-        { label: '11 - Carousel [NOT READY]', value: '11' },
-        { label: '12 - Carousel with Modals [NOT READY]', value: '12' },
-        // { label: '13 - Simple Grid (Mini cards)', value: '13' },
-        { label: '14 - 3 Image with Text, Big CTA', value: '14' },
-        // { label: '15 - 3 Image with Text, Big CTA (2)', value: '15' },
-        // { label: '16 - 4 Image with Text, Big CTA ', value: '16' },
-        // { label: '17 - 4 Image with Text, Small CTA', value: '17' },
+        { label: '08 - 3 Images with Text, with CTA', value: '08' },
       ],
       required: true,
     },
@@ -75,6 +84,7 @@ export const FeaturesBlock: Block = {
       name: 'blockImage',
       type: 'upload',
       relationTo: 'media',
+      localized: true,
       label: 'Image',
       admin: {
         condition: (_, siblingData, { blockData }) => ['04', '06', '07'].includes(blockData?.type),
@@ -83,12 +93,12 @@ export const FeaturesBlock: Block = {
     },
     {
       type: 'collapsible',
-      label: 'CTA Link',
+      label: 'Call to Action',
       fields: [
         {
           name: 'CTALabel',
           type: 'text',
-          label: 'CTA Label Text',
+          label: 'CTA Text',
           localized: true,
           admin: {
             description: 'Extra text to display alongside the link',
@@ -100,8 +110,7 @@ export const FeaturesBlock: Block = {
         }),
       ],
       admin: {
-        condition: (_, siblingData, { blockData }) =>
-          ['14', '15', '16', '17'].includes(blockData?.type),
+        condition: (_, siblingData, { blockData }) => ['08'].includes(blockData?.type),
       },
     },
     {
@@ -174,17 +183,7 @@ export const FeaturesBlock: Block = {
             },
           },
         },
-        // {
-        //   name: 'appReference',
-        //   type: 'relationship',
-        //   relationTo: ['solutions', 'integrations'],
-        //   label: 'App Reference',
-        //   admin: {
-        //     condition: (_, siblingData, { blockData }) => {
-        //       return ['01'].includes(blockData?.type)
-        //     },
-        //   },
-        // },
+
         {
           name: 'image',
           type: 'upload',
@@ -193,19 +192,7 @@ export const FeaturesBlock: Block = {
           localized: true,
           admin: {
             condition: (_, siblingData, { blockData }) =>
-              ['01', '02', '04', '05', '08', '09', '10', '11', '14', '15', '16', '17'].includes(
-                blockData?.type,
-              ),
-          },
-        },
-
-        {
-          name: 'tabLabel',
-          type: 'text',
-          label: 'Tab Label',
-          localized: true,
-          admin: {
-            condition: (_, siblingData, { blockData }) => ['08'].includes(blockData?.type),
+              ['01', '02', '04', '05', '08'].includes(blockData?.type),
           },
         },
 
@@ -215,30 +202,17 @@ export const FeaturesBlock: Block = {
           icons: remixIcons,
           admin: {
             condition: (_, siblingData, { blockData }) =>
-              ['03', '06', '07', '09', '11', '12', '03'].includes(blockData?.type),
+              ['03', '06', '07'].includes(blockData?.type),
             description:
               'Select an icon from the Remix icon library. You can preview all available icons at https://remixicon.com/',
           },
         }),
-
-        {
-          type: 'group',
-          label: false,
-          name: 'content',
-          fields: [
-            { name: 'title', type: 'text', label: 'Title', required: true, localized: true },
-            {
-              name: 'subtitle',
-              type: 'textarea',
-              label: 'Subtitle',
-              localized: true,
-            },
-          ],
+        textGroup({
           admin: {
             condition: (_, siblingData, { blockData }) =>
-              !['01', '04', '05', '11'].includes(blockData?.type),
+              !['01', '04', '05'].includes(blockData?.type),
           },
-        },
+        }),
         {
           name: 'richTextContent',
           label: 'Content',
@@ -246,7 +220,7 @@ export const FeaturesBlock: Block = {
           editor: richTextEditor,
           admin: {
             condition: (_, siblingData, { blockData }) =>
-              ['01', '04', '05', '11', '12'].includes(blockData?.type),
+              ['01', '04', '05'].includes(blockData?.type),
           },
           localized: true,
         },
@@ -314,7 +288,7 @@ export const FeaturesBlock: Block = {
               type: 'checkbox',
               admin: {
                 condition: (_, siblingData, { blockData }) =>
-                  ['01', '02', '04', '05', '08'].includes(blockData?.type),
+                  ['01', '02', '04', '05'].includes(blockData?.type),
                 width: '50%',
               },
             },
@@ -324,7 +298,7 @@ export const FeaturesBlock: Block = {
               type: 'checkbox',
               admin: {
                 condition: (_, siblingData, { blockData }) =>
-                  ['02', '04', '05', '08', '09', '10', '11'].includes(blockData?.type),
+                  ['02', '04', '05'].includes(blockData?.type),
                 width: '50%',
               },
             },
@@ -360,6 +334,12 @@ export const FeaturesBlock: Block = {
           },
         },
       ],
+    },
+
+    {
+      type: 'group',
+      label: 'Block Content',
+      fields: [],
     },
   ],
 }
