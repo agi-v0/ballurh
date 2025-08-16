@@ -1,15 +1,15 @@
-import { s3Storage } from '@payloadcms/storage-s3'
-import { postgresAdapter } from '@payloadcms/db-postgres'
-import { resendAdapter } from '@payloadcms/email-resend'
-
-import sharp from 'sharp' // sharp-import
 import path from 'path'
 import { buildConfig, deepMerge, PayloadRequest } from 'payload'
 import { fileURLToPath } from 'url'
 import { getServerSideURL } from './utilities/getURL'
+import sharp from 'sharp' // sharp-import
 
+//plugins
 import { plugins } from './plugins'
 import { defaultLexical } from '@/fields/defaultLexical'
+import { s3Storage } from '@payloadcms/storage-s3'
+import { postgresAdapter } from '@payloadcms/db-postgres'
+import { resendAdapter } from '@payloadcms/email-resend'
 
 //globals
 import { Footer } from './Footer/config'
@@ -141,14 +141,11 @@ export default buildConfig({
     DividerBlock,
     FaqBlock,
     FeaturesBlock,
-    // FeaturedAppsBlock,
     GalleryBlock,
     FormBlock,
     LogosBlock,
     MediaBlock,
-    // Marketplace,
     MetricsBlock,
-    // PricingBlock,
     RichTextBlock,
     StyledList,
     TeamBlock,

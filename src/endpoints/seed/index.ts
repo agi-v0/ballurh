@@ -12,7 +12,6 @@ import { image43 } from './image-4-3'
 import { imageSquare } from './image-square'
 
 import { seedFeaturesShowcasePage } from './features-showcase-page'
-import { seedCarouselShowcasePage } from './carousel-showcase-page'
 import { seedArchiveBlockDemo } from './archive-block-demo'
 import { seedCTABlockDemo } from './cta-block-demo'
 import { seedBlogBlockDemo } from './blog-block-demo'
@@ -770,11 +769,11 @@ export const seed = async ({
   })) as Form
 
   payload.logger.info(`— Seeding pages...`)
-  // const featuresShowcasePageData = seedFeaturesShowcasePage({
-  //   image169: image169Doc,
-  //   image43: image43Doc,
-  //   imageSquare: imageSquareDoc,
-  // })
+  const featuresShowcasePageData = seedFeaturesShowcasePage({
+    image169: image169Doc,
+    image43: image43Doc,
+    imageSquare: imageSquareDoc,
+  })
 
   // Block demo pages
   const blocksDemoIndexData = seedBlocksDemoIndex({
@@ -963,10 +962,10 @@ export const seed = async ({
       data: contactPageData({ contactForm }),
       key: 'contact',
     },
-    // {
-    //   data: featuresShowcasePageData,
-    //   key: 'features',
-    // },
+    {
+      data: featuresShowcasePageData,
+      key: 'features',
+    },
     {
       data: blocksDemoIndexData,
       key: 'blocks-demo-index',
