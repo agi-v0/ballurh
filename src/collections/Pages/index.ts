@@ -130,6 +130,9 @@ export const Pages: CollectionConfig<'pages'> = {
             }),
             MetaImageField({
               relationTo: 'media',
+              overrides: {
+                localized: true,
+              },
             }),
             MetaDescriptionField({}),
             PreviewField({

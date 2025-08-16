@@ -33,6 +33,9 @@ const SiteConfig: GlobalConfig = {
                 }),
                 MetaImageField({
                   relationTo: 'media',
+                  overrides: {
+                    localized: true,
+                  },
                 }),
 
                 MetaDescriptionField({}),

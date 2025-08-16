@@ -13,6 +13,7 @@ export const MediaBlock: Block = {
       name: 'media',
       type: 'upload',
       relationTo: 'media',
+      localized: true,
       required: true,
     },
   ],

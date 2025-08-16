@@ -169,6 +169,7 @@ export const Posts: CollectionConfig<'blog-posts'> = {
             }),
             MetaImageField({
               relationTo: 'media',
+              overrides: { localized: true },
             }),
 
             MetaDescriptionField({}),

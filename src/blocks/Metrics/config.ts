@@ -37,6 +37,7 @@ export const MetricsBlock: Block = {
           name: 'media',
           type: 'upload',
           relationTo: 'media',
+          localized: true,
           label: 'Media',
         },
       ],
