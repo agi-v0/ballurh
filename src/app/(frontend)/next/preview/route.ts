@@ -59,10 +59,6 @@ export async function GET(
   // You can add additional checks here to see if the user is allowed to preview this page
 
   draft.enable()
-  console.log('path', path)
-  console.log('locale', locale)
-
   const localizedPath = locale ? `/${locale}${path}` : path
-  console.log('localizedPath', localizedPath)
   redirect(localizedPath)
 }
