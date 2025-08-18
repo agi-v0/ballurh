@@ -29,6 +29,7 @@ const nextConfig = {
         port: '3000',
       },
     ],
+    minimumCacheTTL: 2678400, // 31 days
   },
   webpack: (webpackConfig) => {
     webpackConfig.resolve.extensionAlias = {
