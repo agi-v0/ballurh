@@ -78,5 +78,12 @@ export const GalleryBlock: Block = {
   slug: 'galleryBlock',
   interfaceName: 'GalleryBlock',
   dbName: 'galleryBlock',
-  fields: [blockHeader, ...fields],
+  fields: [
+    blockHeader,
+    {
+      type: 'group',
+      label: 'Block Content',
+      fields,
+    },
+  ],
 }

@@ -7,7 +7,7 @@ export const Features14: React.FC<FeaturesBlock> = ({ columns, link, CTALabel })
   if (!columns?.length) return null
   const limitedColumns = columns.slice(0, 3)
   return (
-    <div className="container py-section-small">
+    <div className="container py-space-7">
       <div className="mx-auto grid grid-cols-1 gap-4 md:grid-cols-3">
         {limitedColumns.map((column, index) => {
           return (

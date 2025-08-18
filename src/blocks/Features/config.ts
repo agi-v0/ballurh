@@ -64,6 +64,7 @@ export const FeaturesBlock: Block = {
   dbName: 'featuresBlock',
   fields: [
     blockHeader,
+
     {
       type: 'group',
       label: 'Block Content',

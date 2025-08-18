@@ -1,6 +1,8 @@
 'use server'
 
 import { FormData } from '@/components/ProfitCalculator/schema'
+import { getPayload } from 'payload'
+import config from '@payload-config'
 
 const round = (num: number) => Math.round((num + Number.EPSILON) * 100) / 100
 
@@ -56,28 +58,29 @@ export async function calculateProfit(data: FormData) {
     const totalProfitRate = round(1 - totalCommCompMarketingPctOfSales - foodCostPercentage)
     const totalAnnualProfit = round(totalProfitRate * annualSalesNumber)
 
+    const fields = [
+      { name: 'name', value: name },
+      { name: 'email', value: email },
+      { name: 'phone', value: phone },
+      { name: 'company', value: businessName },
+      { name: 'activity_type', value: activityType },
+      { name: 'physical_branches_count', value: String(physicalBranchesCount) },
+      { name: 'has_cloud_brands', value: hasCloudBrands },
+      { name: 'cloud_brands_count', value: String(cloudBrandsCount) },
+      { name: 'annual_sales', value: annualSales },
+      { name: 'monthly_orders', value: monthlyOrders },
+      { name: 'delivery_sales_percentage', value: String(deliverySalesPercentage) },
+      { name: 'avg_commission_rate', value: String(avgCommissionRate) },
+      { name: 'food_cost_percentage', value: String(foodCostPercentage) },
+      { name: 'monthly_ad_budget', value: monthlyAdBudget },
+      { name: 'delivery_fee_borne', value: String(deliveryFeeBorne) },
+    ]
+
     // Submit to HubSpot
     const portalId = process.env.HUBSPOT_PORTAL_ID
     const formId = process.env.HUBSPOT_FORM_ID
 
     if (portalId && formId) {
-      const fields = [
-        { name: 'name', value: name },
-        { name: 'email', value: email },
-        { name: 'phone', value: phone },
-        { name: 'company', value: businessName },
-        { name: 'activity_type', value: activityType },
-        { name: 'physical_branches_count', value: String(physicalBranchesCount) },
-        { name: 'has_cloud_brands', value: hasCloudBrands },
-        { name: 'cloud_brands_count', value: String(cloudBrandsCount) },
-        { name: 'annual_sales', value: annualSales },
-        { name: 'monthly_orders', value: monthlyOrders },
-        { name: 'delivery_sales_percentage', value: String(deliverySalesPercentage) },
-        { name: 'avg_commission_rate', value: String(avgCommissionRate) },
-        { name: 'food_cost_percentage', value: String(foodCostPercentage) },
-        { name: 'monthly_ad_budget', value: monthlyAdBudget },
-        { name: 'delivery_fee_borne', value: String(deliveryFeeBorne) },
-      ]
       // https://forms-eu1.hsforms.com/submissions/v3/public/submit/formsnext/multipart/139527855/ff7deea6-2c30-44ca-b0f3-b00da8a46c07
       try {
         const response = await fetch(
@@ -98,6 +101,19 @@ export async function calculateProfit(data: FormData) {
         console.error('Error submitting to HubSpot:', error)
       }
     }
+
+    const payload = await getPayload({ config })
+
+    // await payload.create({
+    //   collection: 'form-submissions',
+    //   data: {
+    //     form: 'profit-calculator',
+    //     submissionData: data.map((item) => ({
+    //       field: item.field,
+    //       value: item.value,
+    //     })),
+    //   },
+    // })
 
     // console.log('totalAnnualProfit: ', totalAnnualProfit)
 

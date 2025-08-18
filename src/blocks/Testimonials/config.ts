@@ -58,6 +58,13 @@ export const TestimonialsBlock: Block = {
     singular: 'Testimonials',
     plural: 'Testimonials',
   },
-  fields: [blockHeader, ...fields],
+  fields: [
+    blockHeader,
+    {
+      type: 'group',
+      label: 'Block Content',
+      fields,
+    },
+  ],
   dbName: 'testimonialsBlock',
 }

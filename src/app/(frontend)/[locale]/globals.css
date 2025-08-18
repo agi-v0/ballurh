@@ -25,6 +25,10 @@
     border-color: var(--color-gray-200, currentcolor);
     scroll-margin-top: calc(var(--header-plus-admin-bar-height) + 3rem);
   }
+  ::selection {
+    background-color: var(--color-brand);
+    color: var(--color-white);
+  }
   * {
     @apply border-border outline-ring/50;
   }
@@ -337,6 +341,9 @@
   }
   @media (min-width: 1280px) {
     --gutter-h: calc(max(50vw, 50rem) - min(50vw, 50rem));
+  }
+  @media (min-width: 1536px) {
+    --gutter-h: 2rem;
   }
 }
 

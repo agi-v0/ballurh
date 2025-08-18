@@ -12,51 +12,57 @@ export const TeamBlock: Block = {
   fields: [
     blockHeader,
     {
-      name: 'team',
-      type: 'array',
-      label: 'Team members',
+      type: 'group',
+      label: 'Block Content',
       fields: [
         {
-          name: 'name',
-          type: 'text',
-
-          localized: true,
-        },
-        {
-          name: 'position',
-          label: 'Job title',
-          type: 'text',
-          localized: true,
-        },
-        {
-          name: 'bio',
-          type: 'text',
-          localized: true,
-        },
-
-        {
-          name: 'image',
-          type: 'upload',
-          relationTo: 'media',
-          label: 'Image',
-        },
-
-        {
-          label: 'Social media',
-          type: 'collapsible',
+          name: 'team',
+          type: 'array',
+          label: 'Team members',
           fields: [
             {
-              type: 'group',
-              label: false,
-              name: 'social',
+              name: 'name',
+              type: 'text',
+
+              localized: true,
+            },
+            {
+              name: 'position',
+              label: 'Job title',
+              type: 'text',
+              localized: true,
+            },
+            {
+              name: 'bio',
+              type: 'text',
+              localized: true,
+            },
+
+            {
+              name: 'image',
+              type: 'upload',
+              relationTo: 'media',
+              label: 'Image',
+            },
+
+            {
+              label: 'Social media',
+              type: 'collapsible',
               fields: [
                 {
-                  name: 'linkedin',
-                  type: 'text',
-                },
-                {
-                  name: 'x',
-                  type: 'text',
+                  type: 'group',
+                  label: false,
+                  name: 'social',
+                  fields: [
+                    {
+                      name: 'linkedin',
+                      type: 'text',
+                    },
+                    {
+                      name: 'x',
+                      type: 'text',
+                    },
+                  ],
                 },
               ],
             },

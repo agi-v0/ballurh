@@ -14,15 +14,21 @@ export const LogosBlock: Block = {
   fields: [
     blockHeader,
     {
-      name: 'type',
-      type: 'select',
-      required: true,
-      options: [
-        { value: '01', label: '01 - Infinite Slider' },
-        { value: '02', label: '02 - Grid (12 Logos)' },
-        { value: '03', label: '03 - Static (Regulatory & Legal)' },
+      type: 'group',
+      label: 'Block Content',
+      fields: [
+        {
+          name: 'type',
+          type: 'select',
+          required: true,
+          options: [
+            { value: '01', label: '01 - Infinite Slider' },
+            { value: '02', label: '02 - Grid (12 Logos)' },
+            { value: '03', label: '03 - Static (Regulatory & Legal)' },
+          ],
+        },
+        logos(),
       ],
     },
-    logos(),
   ],
 }

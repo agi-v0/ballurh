@@ -12,14 +12,20 @@ export const CustomHtmlBlock: Block = {
   fields: [
     blockHeader,
     {
-      name: 'htmlContent',
-      label: 'HTML Content',
-      type: 'code',
-      required: true,
-      admin: {
-        language: 'html',
-        description: 'Enter the custom HTML code to be rendered on the page.',
-      },
+      type: 'group',
+      label: 'Block Content',
+      fields: [
+        {
+          name: 'htmlContent',
+          label: 'HTML Content',
+          type: 'code',
+          required: true,
+          admin: {
+            language: 'html',
+            description: 'Enter the custom HTML code to be rendered on the page.',
+          },
+        },
+      ],
     },
   ],
 }

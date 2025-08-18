@@ -351,14 +351,10 @@ export interface Page {
     };
   };
   layout: (
-    | ArchiveBlock
-    | BlogBlock
     | CallToActionBlock
-    | CustomHtmlBlock
     | DividerBlock
     | FaqBlock
     | FeaturesBlock
-    | FormBlock
     | GalleryBlock
     | LogoBlock
     | MetricsBlock
@@ -601,48 +597,6 @@ export interface User {
       }[]
     | null;
   password?: string | null;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "BlogBlock".
- */
-export interface BlogBlock {
-  type?: ('featuredPost' | '2-columns') | null;
-  /**
-   * Select the featured post to display in the blog block.
-   */
-  featuredPost?: (string | null) | BlogPost;
-  recentPostsList?: {
-    /**
-     * Title of the recent posts list.
-     */
-    title?: string | null;
-    /**
-     * Description of the recent posts list.
-     */
-    description?: string | null;
-    /**
-     * Select the recent posts to display. Leave empty to dynamically fetch recent posts.
-     */
-    recentPosts?: (string | BlogPost)[] | null;
-  };
-  editorsPicksList?: {
-    /**
-     * Title of the editors picks list.
-     */
-    title?: string | null;
-    /**
-     * Description of the editors picks list.
-     */
-    description?: string | null;
-    /**
-     * Select the editors picks to display. Leave empty to dynamically display random posts.
-     */
-    editorsPicks?: (string | BlogPost)[] | null;
-  };
-  id?: string | null;
-  blockName?: string | null;
-  blockType: 'blogBlock';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -909,20 +863,6 @@ export interface Form {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "CustomHtmlBlock".
- */
-export interface CustomHtmlBlock {
-  blockHeader: BlockHeader;
-  /**
-   * Enter the custom HTML code to be rendered on the page.
-   */
-  htmlContent: string;
-  id?: string | null;
-  blockName?: string | null;
-  blockType: 'customHtmlBlock';
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "DividerBlock".
  */
 export interface DividerBlock {
@@ -1090,32 +1030,6 @@ export interface FeaturesBlock {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "FormBlock".
- */
-export interface FormBlock {
-  form: string | Form;
-  enableIntro?: boolean | null;
-  introContent?: {
-    root: {
-      type: string;
-      children: {
-        type: string;
-        version: number;
-        [k: string]: unknown;
-      }[];
-      direction: ('ltr' | 'rtl') | null;
-      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-      indent: number;
-      version: number;
-    };
-    [k: string]: unknown;
-  } | null;
-  id?: string | null;
-  blockName?: string | null;
-  blockType: 'formBlock';
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "GalleryBlock".
  */
 export interface GalleryBlock {
@@ -1166,7 +1080,7 @@ export interface LogoBlock {
  */
 export interface MetricsBlock {
   blockHeader: BlockHeader;
-  type: '01' | '02' | '03';
+  type: '01' | '02';
   blockImage?: {
     media?: (string | null) | Media;
   };
@@ -1459,6 +1373,88 @@ export interface Customer {
   updatedAt: string;
   createdAt: string;
   _status?: ('draft' | 'published') | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "CustomHtmlBlock".
+ */
+export interface CustomHtmlBlock {
+  blockHeader: BlockHeader;
+  /**
+   * Enter the custom HTML code to be rendered on the page.
+   */
+  htmlContent: string;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'customHtmlBlock';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "FormBlock".
+ */
+export interface FormBlock {
+  form: string | Form;
+  enableIntro?: boolean | null;
+  introContent?: {
+    root: {
+      type: string;
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'formBlock';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "BlogBlock".
+ */
+export interface BlogBlock {
+  type?: ('featuredPost' | '2-columns') | null;
+  /**
+   * Select the featured post to display in the blog block.
+   */
+  featuredPost?: (string | null) | BlogPost;
+  recentPostsList?: {
+    /**
+     * Title of the recent posts list.
+     */
+    title?: string | null;
+    /**
+     * Description of the recent posts list.
+     */
+    description?: string | null;
+    /**
+     * Select the recent posts to display. Leave empty to dynamically fetch recent posts.
+     */
+    recentPosts?: (string | BlogPost)[] | null;
+  };
+  editorsPicksList?: {
+    /**
+     * Title of the editors picks list.
+     */
+    title?: string | null;
+    /**
+     * Description of the editors picks list.
+     */
+    description?: string | null;
+    /**
+     * Select the editors picks to display. Leave empty to dynamically display random posts.
+     */
+    editorsPicks?: (string | BlogPost)[] | null;
+  };
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'blogBlock';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
