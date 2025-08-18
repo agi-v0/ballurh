@@ -20,7 +20,7 @@ export const Features14: React.FC<FeaturesBlock> = ({ columns, link, CTALabel })
                       className="h-auto w-full p-4"
                       imgClassName="aspect-square h-auto w-full rounded-3xl object-cover"
                     />
-                    <div className="absolute inset-0 z-2 bg-teal-600 opacity-0 mix-blend-overlay duration-300 ease-out group-hover:opacity-100" />
+                    <div className="absolute inset-0 z-2 bg-teal-600 opacity-100 mix-blend-overlay duration-300 ease-out group-hover:opacity-100 lg:opacity-0" />
                   </div>
                 )}
                 {column.content && (

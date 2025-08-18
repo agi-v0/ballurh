@@ -54,54 +54,54 @@ export const seedMetricsBlockDemo = (media: {
       ],
     },
     // Variant 03 - Table
-    {
-      blockType: 'metricsBlock',
-      type: '03',
-      blockHeader: {
-        type: 'center',
-        headerText: generateLexicalContent([
-          { type: 'h2', text: 'مقارنة تفصيلية للميزات', direction: 'rtl' },
-        ]),
-      },
-      table: {
-        title: 'مقارنة بين باقات مارن',
-        headers: [
-          { header: 'الميزة', width: 'w-1/2' },
-          { header: 'الباقة الأساسية', width: 'auto' },
-          { header: 'الباقة المتقدمة', width: 'auto' },
-        ],
-        rows: [
-          {
-            cells: [{ content: 'إدارة المنتجات', isHeader: true }],
-            isExpandable: true,
-            children: [
-              {
-                cells: [
-                  { content: 'عدد غير محدود من المنتجات' },
-                  { content: 'close' },
-                  { content: 'check' },
-                ],
-              },
-              {
-                cells: [
-                  { content: 'خيارات متقدمة للمنتجات' },
-                  { content: 'close' },
-                  { content: 'check' },
-                ],
-              },
-            ],
-          },
-          {
-            cells: [
-              { content: 'التقارير' },
-              { content: 'تقارير أساسية' },
-              { content: 'تقارير متقدمة' },
-            ],
-          },
-        ],
-        styling: { striped: true, bordered: false, compact: true },
-      },
-    },
+    // {
+    //   blockType: 'metricsBlock',
+    //   type: '03',
+    //   blockHeader: {
+    //     type: 'center',
+    //     headerText: generateLexicalContent([
+    //       { type: 'h2', text: 'مقارنة تفصيلية للميزات', direction: 'rtl' },
+    //     ]),
+    //   },
+    //   table: {
+    //     title: 'مقارنة بين باقات مارن',
+    //     headers: [
+    //       { header: 'الميزة', width: 'w-1/2' },
+    //       { header: 'الباقة الأساسية', width: 'auto' },
+    //       { header: 'الباقة المتقدمة', width: 'auto' },
+    //     ],
+    //     rows: [
+    //       {
+    //         cells: [{ content: 'إدارة المنتجات', isHeader: true }],
+    //         isExpandable: true,
+    //         children: [
+    //           {
+    //             cells: [
+    //               { content: 'عدد غير محدود من المنتجات' },
+    //               { content: 'close' },
+    //               { content: 'check' },
+    //             ],
+    //           },
+    //           {
+    //             cells: [
+    //               { content: 'خيارات متقدمة للمنتجات' },
+    //               { content: 'close' },
+    //               { content: 'check' },
+    //             ],
+    //           },
+    //         ],
+    //       },
+    //       {
+    //         cells: [
+    //           { content: 'التقارير' },
+    //           { content: 'تقارير أساسية' },
+    //           { content: 'تقارير متقدمة' },
+    //         ],
+    //       },
+    //     ],
+    //     styling: { striped: true, bordered: false, compact: true },
+    //   },
+    // },
   ]
 
   const heroData: Page['hero'] = {
