@@ -1,65 +1,160 @@
 'use client'
-import React, { useRef } from 'react'
+import type { Form as FormType } from '@payloadcms/plugin-form-builder/types'
+
+import { useRouter } from 'next/navigation'
+import React, { useCallback, useState } from 'react'
+import { useForm, FormProvider } from 'react-hook-form'
+import RichText from '@/components/RichText'
+import { Button } from '@/components/ui/button'
+
+import { buildInitialFormState } from '../Form/buildInitialFormState'
+import { getClientSideURL } from '@/utilities/getURL'
+
 import type { CallToActionBlock } from '@/payload-types'
 import type { CMSLinkType } from '@/components/Link'
 
-import RichText from '@/components/RichText'
 import { CMSLink } from '@/components/Link'
-import { Media } from '@/components/MediaResponsive'
-import { motion, useScroll } from 'motion/react'
-import { useTransform } from 'motion/react'
-import { cn } from '@/utilities/ui'
+import { Data } from '../Form/Component'
+import { RenderFields } from '../Form/RenderFields'
 
-type CallToActionProps = CallToActionBlock & {
-  className?: string
+type CTABlockType = CallToActionBlock & {
+  form: FormType
+  locale?: string
 }
 
-export const CallToAction05: React.FC<CallToActionProps> = ({
-  badge,
-  richText,
-  links,
-  caption,
-  list,
-  media,
-  className,
-}) => {
-  const containerRef = useRef<HTMLDivElement>(null)
-  // Parallax: as the container scrolls into view, move the image up slightly
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ['start end', 'end start'],
-  })
-  // Parallax: image moves up to -40px as you scroll through the block
-  const y = useTransform(scrollYProgress, [0, 1], ['-50%', '50%'])
-  const { desktop, mobile } = media || {}
+export const CallToAction05: React.FC<CTABlockType> = (props) => {
+  const {
+    badge,
+    richText,
+    links,
+    caption,
+    list,
+    media,
+    form: formFromProps,
+    form: { id: formID, confirmationMessage, confirmationType, redirect, submitButtonLabel } = {},
+    locale,
+  } = props
 
+  const formMethods = useForm({
+    defaultValues: buildInitialFormState(formFromProps.fields),
+  })
+  const {
+    control,
+    formState: { errors },
+    handleSubmit,
+    register,
+  } = formMethods
+
+  const [isLoading, setIsLoading] = useState(false)
+  const [hasSubmitted, setHasSubmitted] = useState<boolean>()
+  const [error, setError] = useState<{ message: string; status?: string } | undefined>()
+  const router = useRouter()
+
+  const onSubmit = useCallback(
+    (data: Data) => {
+      let loadingTimerID: ReturnType<typeof setTimeout>
+      const submitForm = async () => {
+        setError(undefined)
+
+        const dataToSend = Object.entries(data).map(([name, value]) => ({
+          field: name,
+          value,
+        }))
+
+        // delay loading indicator by 1s
+        loadingTimerID = setTimeout(() => {
+          setIsLoading(true)
+        }, 1000)
+
+        try {
+          const req = await fetch(`${getClientSideURL()}/api/form-submissions`, {
+            body: JSON.stringify({
+              form: formID,
+              submissionData: dataToSend,
+            }),
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            method: 'POST',
+          })
+
+          const res = await req.json()
+
+          clearTimeout(loadingTimerID)
+
+          if (req.status >= 400) {
+            setIsLoading(false)
+
+            setError({
+              message: res.errors?.[0]?.message || 'Internal Server Error',
+              status: res.status,
+            })
+
+            return
+          }
+
+          setIsLoading(false)
+          setHasSubmitted(true)
+
+          if (confirmationType === 'redirect' && redirect) {
+            const { url } = redirect
+
+            const redirectUrl = url
+
+            if (redirectUrl) router.push(redirectUrl)
+          }
+        } catch (err) {
+          console.warn(err)
+          setIsLoading(false)
+          setError({
+            message: 'Something went wrong.',
+          })
+        }
+      }
+
+      void submitForm()
+    },
+    [router, formID, redirect, confirmationType],
+  )
   return (
-    <div data-theme="dark" className="py-xl bg-background-neutral" ref={containerRef}>
-      <div
-        className={cn(
-          'px-md py-xl gap-md container flex flex-col items-center rounded-3xl md:flex-row md:items-center md:justify-between',
-          className,
-        )}
-      >
-        <motion.div
-          style={{ y }}
-          className="gap-sm mx-auto flex flex-col items-start max-md:w-full"
-        >
+    <div className="container py-section-small">
+      <div className="flex flex-col items-center gap-4 rounded-3xl px-6 py-10">
+        <div className="flex flex-col items-center gap-6">
           {richText && (
-            <RichText
-              className="mb-0 text-start max-md:mx-0"
-              data={richText}
-              enableGutter={false}
-            />
+            <RichText className="mb-0 text-center" data={richText} enableGutter={false} />
           )}
-          <div className="flex w-full flex-row justify-start gap-8">
+          <div className="flex flex-col gap-8">
             {(links || []).map(({ link }, i) => {
               return <CMSLink key={i} size="lg" {...(link as CMSLinkType)} />
             })}
           </div>
-        </motion.div>
-        {media && (
-          <Media media={media} className="overflow-hidden rounded-3xl md:max-w-lg md:basis-1/2" />
+        </div>
+        {formID && (
+          <div className="w-full max-w-3xl">
+            <FormProvider {...formMethods}>
+              {/* {!isLoading && hasSubmitted && confirmationType === 'message' && (
+                <RichText data={confirmationMessage as SerializedEditorState} />
+              )} */}
+              {isLoading && !hasSubmitted && <p>Loading, please wait...</p>}
+              {error && <div>{`${error.status || '500'}: ${error.message || ''}`}</div>}
+              {!hasSubmitted && (
+                <form id={formID} onSubmit={handleSubmit(onSubmit)}>
+                  <div className="mb-4">
+                    <RenderFields form={formFromProps} locale={locale} />
+                  </div>
+                  <Button
+                    form={formID}
+                    type="submit"
+                    variant="primary"
+                    color="neutral"
+                    className="w-full"
+                  >
+                    {submitButtonLabel}
+                  </Button>
+                </form>
+              )}
+            </FormProvider>
+          </div>
         )}
       </div>
     </div>

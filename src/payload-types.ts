@@ -603,7 +603,7 @@ export interface User {
  * via the `definition` "CallToActionBlock".
  */
 export interface CallToActionBlock {
-  type: '01' | '02' | '03' | '04' | '05' | '06' | '07';
+  type: '01' | '02' | '03' | '04' | '05';
   badge?: {
     type?: ('label' | 'reference') | null;
     label?: string | null;

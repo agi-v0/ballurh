@@ -32,7 +32,7 @@ export const FAQBlock01: React.FC<FaqBlockProps> = async (props) => {
                     key={idx}
                     className="group relative rounded-3xl bg-background-neutral py-4 ps-4 pe-4"
                   >
-                    <AccordionTrigger className="relative flex flex-row justify-between pe-6 text-start text-(length:--text-main) font-medium text-base-secondary data-[state=open]:text-base-primary [&[data-state=open]_iconify-icon]:rotate-90">
+                    <AccordionTrigger className="relative flex flex-row justify-between pe-6 text-start text-(length:--text-main) font-medium text-base-secondary data-[state=open]:text-base-primary ltr:[&[data-state=open]_iconify-icon]:-rotate-90 rtl:[&[data-state=open]_iconify-icon]:rotate-90">
                       {faq.question}
                       <Icon
                         icon="ri:arrow-down-s-line"

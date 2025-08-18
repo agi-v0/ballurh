@@ -76,7 +76,7 @@ export const HighImpactHero: React.FC<Page['hero']> = async ({ links, media, ric
 
   return (
     <div className="container grid min-h-screen w-full grid-cols-8 items-center justify-center max-lg:mt-header-plus-admin-bar lg:grid-cols-16 lg:py-0">
-      <div className="relative z-1 col-span-8 mb-10 flex flex-col items-start gap-6 md:gap-10 lg:col-span-7 lg:my-16">
+      <div className="relative z-1 col-span-8 my-10 flex flex-col items-start gap-6 md:gap-10 lg:col-span-7 lg:my-16">
         {announcement && (
           <CMSLink
             {...announcement.link}

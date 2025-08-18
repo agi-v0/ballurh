@@ -1,6 +1,4 @@
-'use client'
-import React, { useRef } from 'react'
-import { motion, useScroll, useTransform } from 'motion/react'
+import React from 'react'
 
 import type { CallToActionBlock } from '@/payload-types'
 import type { CMSLinkType } from '@/components/Link'
@@ -8,6 +6,9 @@ import type { CMSLinkType } from '@/components/Link'
 import RichText from '@/components/RichText'
 import { CMSLink } from '@/components/Link'
 import { Media } from '@/components/MediaResponsive'
+
+import * as motion from 'motion/react-client'
+import { containerVariants } from '@/utilities/motion'
 import { cn } from '@/utilities/ui'
 
 type CallToActionProps = CallToActionBlock & {
@@ -23,45 +24,27 @@ export const CallToAction01: React.FC<CallToActionProps> = ({
   media,
   className,
 }) => {
-  const containerRef = useRef<HTMLDivElement>(null)
-
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ['start end', 'end start'],
-  })
-
-  const y = useTransform(scrollYProgress, [0, 1], ['-50%', '50%'])
+  const { desktop, mobile } = media || {}
 
   return (
-    <div className={cn('container py-section-small', className)} ref={containerRef}>
-      <div className="relative overflow-hidden rounded-3xl">
-        <div
-          data-theme="dark"
-          className="p-md gap-sm relative z-1 flex aspect-9/16 h-auto w-full flex-col items-start justify-end overflow-hidden rounded-3xl bg-transparent md:aspect-video md:flex-row md:items-end md:justify-between"
-        >
-          {richText && (
-            <RichText className="mx-0 lg:max-w-lg" data={richText} enableGutter={false} />
-          )}
-          <div className="flex flex-row gap-4">
+    <div className={cn('container py-section-large', className)}>
+      <motion.div
+        variants={containerVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.3 }}
+        className="flex flex-col items-center gap-4 overflow-hidden rounded-3xl bg-background-neutral lg:flex-row"
+      >
+        <div className="flex w-full flex-col gap-6 p-space-6">
+          {richText && <RichText className="px-0" data={richText} enableGutter={false} />}
+          <div className="flex flex-col gap-8">
             {(links || []).map(({ link }, i) => {
-              return <CMSLink key={i} size="lg" {...(link as CMSLinkType)} />
+              return <CMSLink key={i} size="lg" className="w-fit" {...link} />
             })}
           </div>
         </div>
-        {media && (
-          <motion.div
-            style={{ y }}
-            className={cn('absolute inset-0 z-0 h-full w-full overflow-hidden')}
-          >
-            <Media
-              fill
-              className="relative h-full w-full object-cover"
-              imgClassName="overflow-hidden rounded-3xl object-cover"
-              media={media}
-            />
-          </motion.div>
-        )}
-      </div>
+        {media && <Media media={media} className="w-full overflow-hidden" />}
+      </motion.div>
     </div>
   )
 }

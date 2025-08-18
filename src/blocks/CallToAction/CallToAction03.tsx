@@ -27,25 +27,23 @@ export const CallToAction03: React.FC<CallToActionProps> = ({
   const { desktop, mobile } = media || {}
 
   return (
-    <div className={cn('container py-section-small', className)}>
+    <div className={cn('container py-section-large', className)}>
       <motion.div
         variants={containerVariants}
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.3 }}
-        className="gap-sm flex flex-col items-center rounded-3xl bg-background-neutral"
+        className="flex flex-col items-center gap-6 lg:flex-row"
       >
-        <div className="gap-sm px-md pt-space-2xl flex flex-col items-center">
-          {richText && (
-            <RichText className="mb-0 text-center" data={richText} enableGutter={false} />
-          )}
+        <div className="flex w-full flex-col gap-6">
+          {richText && <RichText className="px-0" data={richText} enableGutter={false} />}
           <div className="flex flex-col gap-8">
             {(links || []).map(({ link }, i) => {
-              return <CMSLink key={i} size="lg" {...(link as CMSLinkType)} />
+              return <CMSLink key={i} size="lg" className="w-fit" {...link} />
             })}
           </div>
         </div>
-        {media && <Media media={media} imgClassName="rounded-lg" className="m-4 overflow-hidden" />}
+        {media && <Media media={media} className="w-full overflow-hidden rounded-3xl" />}
       </motion.div>
     </div>
   )

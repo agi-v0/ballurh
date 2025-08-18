@@ -28,13 +28,11 @@ export const CallToActionBlock: Block = {
       type: 'select',
       defaultValue: '01',
       options: [
-        { label: '01 - Card (Split) [NOT READY]', value: '01' },
-        { label: '02 - Card (Centered) [NOT READY]', value: '02' },
-        { label: '03 - Brief (Centered) [NOT READY]', value: '03' },
-        { label: '04 - Banner [NOT READY]', value: '04' },
-        { label: '05 - Brief (Inverted Colors) [NOT READY]', value: '05' },
-        { label: '06 - Form (Centered) [NOT READY]', value: '06' },
-        { label: '07 - Form (Card - Split) [NOT READY]', value: '07' },
+        { label: '01 - Card (Split)', value: '01' },
+        { label: '02 - Card (Centered)', value: '02' },
+        { label: '03 - Brief (Centered) ', value: '03' },
+        { label: '04 - Banner ', value: '04' },
+        { label: '05 - Form (Centered) [NOT READY]', value: '05' },
       ],
       required: true,
     },
@@ -60,6 +58,7 @@ export const CallToActionBlock: Block = {
       label: 'Media',
       admin: {
         initCollapsed: true,
+        condition: (_, { type }) => ['01', '03'].includes(type),
       },
       fields: [
         {
@@ -151,7 +150,7 @@ export const CallToActionBlock: Block = {
       relationTo: 'forms',
       required: false,
       admin: {
-        condition: (_, { type }) => ['06', '07'].includes(type),
+        condition: (_, { type }) => ['05'].includes(type),
       },
     },
   ],
