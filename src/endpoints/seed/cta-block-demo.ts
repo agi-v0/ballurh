@@ -1,4 +1,4 @@
-import type { Page, Media } from '@/payload-types'
+import type { Page, Media, CallToActionBlock } from '@/payload-types'
 import { generateLexicalContent } from '@/utilities/generateLexicalContent'
 
 export const seedCTABlockDemo = (
@@ -9,7 +9,7 @@ export const seedCTABlockDemo = (
   },
   contactForm: any,
 ) => {
-  const ctaBlocks = [
+  const ctaBlocks: CallToActionBlock[] = [
     // CTA 01 - Card (Split)
     {
       blockType: 'callToActionBlock',
@@ -18,7 +18,7 @@ export const seedCTABlockDemo = (
         type: 'label',
         label: 'جديد',
         color: 'blue',
-      } as any,
+      },
       richText: generateLexicalContent([
         {
           type: 'h2',
@@ -31,6 +31,16 @@ export const seedCTABlockDemo = (
           direction: 'rtl',
         },
       ]),
+      media: {
+        desktop: {
+          light: media.image43?.id,
+          dark: media.image43?.id,
+        },
+        mobile: {
+          light: null,
+          dark: null,
+        },
+      },
       links: [
         {
           link: {
@@ -38,7 +48,7 @@ export const seedCTABlockDemo = (
             url: '/contact-us',
             label: 'ابدأ الآن',
             newTab: false,
-          } as any,
+          },
         },
         {
           link: {
@@ -46,15 +56,9 @@ export const seedCTABlockDemo = (
             url: '/pricing',
             label: 'عرض الأسعار',
             newTab: false,
-          } as any,
+          },
         },
       ],
-      media: {
-        desktop: {
-          light: media.image43?.id,
-          dark: media.image43?.id,
-        },
-      },
     },
     // CTA 02 - Card (Centered)
     {
@@ -64,7 +68,7 @@ export const seedCTABlockDemo = (
         type: 'label',
         label: 'مميز',
         color: 'green',
-      } as any,
+      },
       richText: generateLexicalContent([
         {
           type: 'h2',
@@ -101,7 +105,7 @@ export const seedCTABlockDemo = (
             url: '/free-trial',
             label: 'التجربة المجانية',
             newTab: false,
-          } as any,
+          },
         },
       ],
       caption: 'بدون بطاقة ائتمانية',
@@ -127,6 +131,10 @@ export const seedCTABlockDemo = (
           light: media.imageSquare?.id,
           dark: media.imageSquare?.id,
         },
+        mobile: {
+          light: null,
+          dark: null,
+        },
       },
       links: [
         {
@@ -135,7 +143,7 @@ export const seedCTABlockDemo = (
             url: '/support',
             label: 'تواصل معنا',
             newTab: false,
-          } as any,
+          },
         },
       ],
       caption: 'متاح على مدار الساعة',
@@ -148,7 +156,7 @@ export const seedCTABlockDemo = (
         type: 'label',
         label: 'عرض محدود',
         color: 'red',
-      } as any,
+      },
       richText: generateLexicalContent([
         {
           type: 'h2',
@@ -168,54 +176,14 @@ export const seedCTABlockDemo = (
             url: '/pricing',
             label: 'احصل على الخصم',
             newTab: false,
-          } as any,
+          },
         },
       ],
-      media: {
-        desktop: {
-          light: media.image169?.id,
-          dark: media.image169?.id,
-        },
-      },
     },
-    // CTA 05 - Brief (Inverted Colors)
+    // CTA 05 - Form (Centered)
     {
       blockType: 'callToActionBlock',
       type: '05',
-      richText: generateLexicalContent([
-        {
-          type: 'h3',
-          text: 'انضم إلى نشرتنا الإخبارية',
-          direction: 'rtl',
-        },
-        {
-          type: 'p',
-          text: 'احصل على آخر الأخبار والنصائح التجارية مباشرة في بريدك الإلكتروني.',
-          direction: 'rtl',
-        },
-      ]),
-      media: {
-        desktop: {
-          light: media.image43?.id,
-          dark: media.image43?.id,
-        },
-      },
-      links: [
-        {
-          link: {
-            type: 'custom',
-            url: '/newsletter',
-            label: 'اشترك الآن',
-            newTab: false,
-          } as any,
-        },
-      ],
-      caption: 'يمكنك إلغاء الاشتراك في أي وقت',
-    },
-    // CTA 06 - Form (Centered)
-    {
-      blockType: 'callToActionBlock',
-      type: '06',
       richText: generateLexicalContent([
         {
           type: 'h2',
@@ -229,36 +197,6 @@ export const seedCTABlockDemo = (
         },
       ]),
       form: contactForm,
-      links: [],
-    },
-    // CTA 07 - Form (Card - Split)
-    {
-      blockType: 'callToActionBlock',
-      type: '07',
-      badge: {
-        type: 'label',
-        label: 'تواصل معنا',
-        color: 'blue',
-      } as any,
-      richText: generateLexicalContent([
-        {
-          type: 'h2',
-          text: 'تواصل معنا اليوم',
-          direction: 'rtl',
-        },
-        {
-          type: 'p',
-          text: 'فريقنا جاهز لمساعدتك في جميع استفساراتك.',
-          direction: 'rtl',
-        },
-      ]),
-      form: contactForm,
-      media: {
-        desktop: {
-          light: media.image43?.id,
-          dark: media.image43?.id,
-        },
-      },
       links: [],
     },
   ]
@@ -294,7 +232,7 @@ export const seedCTABlockDemo = (
           url: '/blocks-demo',
           label: 'العودة لعرض البلوكات',
           newTab: false,
-        } as any,
+        },
       },
     ],
     list: { items: [] },
@@ -304,7 +242,7 @@ export const seedCTABlockDemo = (
     title: 'Call to Action Block Demo',
     slug: 'blocks-demo/cta-block',
     hero: heroData,
-    layout: ctaBlocks as any,
+    layout: ctaBlocks,
     meta: {
       title: 'Call to Action Block Demo | Marn',
       description:

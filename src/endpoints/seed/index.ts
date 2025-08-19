@@ -609,33 +609,6 @@ export const seed = async ({
   const operateCategory = categoriesMap['operate']
   const manageCategory = categoriesMap['manage']
 
-  // Fetch integration categories
-  const integrationCategories = await payload.find({
-    collection: 'categories',
-    where: {
-      slug: {
-        in: [
-          'payment-gateways',
-          'delivery-platforms',
-          'accounting-software',
-          'inventory-management',
-          'loyalty-programs',
-          'ecommerce-platforms',
-          'marketing-tools',
-          'staff-management',
-        ],
-      },
-    },
-  })
-
-  const integrationCategoriesMap = integrationCategories.docs.reduce(
-    (acc, category) => {
-      acc[category?.slug ?? ''] = category
-      return acc
-    },
-    {} as Record<string, Category>,
-  )
-
   const customerLogosCategory = (
     await payload.find({
       collection: 'categories',
@@ -674,6 +647,8 @@ export const seed = async ({
     fetchFileByURL(`${NEXT_PUBLIC_SERVER_URL}/placeholder-4x3.png`),
     fetchFileByURL(`${NEXT_PUBLIC_SERVER_URL}/placeholder-1x1.png`),
   ])
+
+  console.log('media done')
 
   const [
     // image1Doc,
@@ -958,10 +933,10 @@ export const seed = async ({
       }),
       key: 'home',
     },
-    {
-      data: contactPageData({ contactForm }),
-      key: 'contact',
-    },
+    // {
+    //   data: contactPageData({ contactForm }),
+    //   key: 'contact',
+    // },
     {
       data: featuresShowcasePageData,
       key: 'features',
@@ -970,26 +945,26 @@ export const seed = async ({
       data: blocksDemoIndexData,
       key: 'blocks-demo-index',
     },
-    {
-      data: archiveBlockDemoData,
-      key: 'archive-block-demo',
-    },
+    // {
+    //   data: archiveBlockDemoData,
+    //   key: 'archive-block-demo',
+    // },
     {
       data: ctaBlockDemoData,
       key: 'cta-block-demo',
     },
-    {
-      data: blogBlockDemoData,
-      key: 'blog-block-demo',
-    },
+    // {
+    //   data: blogBlockDemoData,
+    //   key: 'blog-block-demo',
+    // },
     {
       data: dividerBlockDemoData,
       key: 'divider-block-demo',
     },
-    {
-      data: customHtmlDemoData,
-      key: 'custom-html-demo',
-    },
+    // {
+    //   data: customHtmlDemoData,
+    //   key: 'custom-html-demo',
+    // },
     // {
     //   data: mediaBlockDemoData,
     //   key: 'media-block-demo',
@@ -1006,10 +981,10 @@ export const seed = async ({
       data: galleryBlockDemoData,
       key: 'gallery-block-demo',
     },
-    {
-      data: formBlockDemoData,
-      key: 'form-block-demo',
-    },
+    // {
+    //   data: formBlockDemoData,
+    //   key: 'form-block-demo',
+    // },
     {
       data: testimonialsBlockDemoData,
       key: 'testimonials-block-demo',

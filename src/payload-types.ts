@@ -1348,16 +1348,15 @@ export interface Customer {
     } | null;
     layout?:
       | (
-          | ArchiveBlock
           | CallToActionBlock
-          | CustomHtmlBlock
           | DividerBlock
           | FaqBlock
           | FeaturesBlock
-          | FormBlock
           | GalleryBlock
           | LogoBlock
+          | MetricsBlock
           | RichTextBlock
+          | TeamBlock
           | TestimonialsBlock
         )[]
       | null;
@@ -1373,46 +1372,6 @@ export interface Customer {
   updatedAt: string;
   createdAt: string;
   _status?: ('draft' | 'published') | null;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "CustomHtmlBlock".
- */
-export interface CustomHtmlBlock {
-  blockHeader: BlockHeader;
-  /**
-   * Enter the custom HTML code to be rendered on the page.
-   */
-  htmlContent: string;
-  id?: string | null;
-  blockName?: string | null;
-  blockType: 'customHtmlBlock';
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "FormBlock".
- */
-export interface FormBlock {
-  form: string | Form;
-  enableIntro?: boolean | null;
-  introContent?: {
-    root: {
-      type: string;
-      children: {
-        type: string;
-        version: number;
-        [k: string]: unknown;
-      }[];
-      direction: ('ltr' | 'rtl') | null;
-      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-      indent: number;
-      version: number;
-    };
-    [k: string]: unknown;
-  } | null;
-  id?: string | null;
-  blockName?: string | null;
-  blockType: 'formBlock';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -1455,6 +1414,46 @@ export interface BlogBlock {
   id?: string | null;
   blockName?: string | null;
   blockType: 'blogBlock';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "CustomHtmlBlock".
+ */
+export interface CustomHtmlBlock {
+  blockHeader: BlockHeader;
+  /**
+   * Enter the custom HTML code to be rendered on the page.
+   */
+  htmlContent: string;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'customHtmlBlock';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "FormBlock".
+ */
+export interface FormBlock {
+  form: string | Form;
+  enableIntro?: boolean | null;
+  introContent?: {
+    root: {
+      type: string;
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'formBlock';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema

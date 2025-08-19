@@ -138,13 +138,22 @@ export const seedFeaturesShowcasePage = (media: {
       columns: [],
     }
 
-    if (['08', '15', '16', '17'].includes(type)) {
+    if (['08'].includes(type)) {
       block.CTALabel = `اكتشف المزيد عن الميزة ${type}`
       block.link = {
         type: 'custom',
         url: `/learn-more/${type}`,
         label: `تفاصيل الميزة ${type}`,
         newTab: false,
+      }
+    }
+
+    // Add stat for type 06
+    if (type === '06') {
+      block.stat = {
+        label: 'معدل النمو',
+        value: '85%',
+        indicator: 'increase',
       }
     }
 
@@ -204,29 +213,19 @@ export const seedFeaturesShowcasePage = (media: {
         columnData.size = columnSize
       }
 
-      // Conditionally add 'appReference' - Placeholder: No actual data to link yet from seed.
-      // If appReference were to be seeded for type '01', it would be added here:
-      // if (type === '01') {
-      //   columnData.appReference = { relationTo: 'solutions', value: 'some-solution-id' };
-      // }
-
       // Conditionally add 'image'
-      if (
-        ['01', '02', '03', '04', '05', '08', '09', '10', '11', '08', '15', '16', '17'].includes(
-          type,
-        )
-      ) {
+      if (['01', '02', '04', '05', '08'].includes(type)) {
         columnData.image = media.image43?.id
       }
 
       // Conditionally add 'icon'
-      if (['06', '07', '09', '11', '12', '13'].includes(type)) {
+      if (['03', '06', '07'].includes(type)) {
         columnData.icon = getNextIcon()
       }
 
       // Conditionally add 'content' group (with title and subtitle)
-      // This aligns with FeaturesBlock/config.ts: content group is active when NOT types 01, 03, 04, 05,
-      if (!['01', '03', '04', '05'].includes(type)) {
+      // This aligns with FeaturesBlock/config.ts: content group is active when NOT types 01, 04, 05,
+      if (!['01', '04', '05'].includes(type)) {
         columnData.content = {
           title: colTitle,
           subtitle: colSubtitle,
@@ -234,32 +233,42 @@ export const seedFeaturesShowcasePage = (media: {
       }
 
       // Conditionally add 'richTextContent'
-      // This aligns with FeaturesBlock/config.ts: richTextContent is active for types 01, 03, 04, 05, 11
-      if (['01', '03', '04', '05', '11'].includes(type)) {
+      // This aligns with FeaturesBlock/config.ts: richTextContent is active for types 01, 04, 05
+      if (['01', '04', '05'].includes(type)) {
         columnData.richTextContent = generateLexicalContent([
           { type: 'h3', text: colTitle, direction: 'rtl' },
           { type: 'p', text: colSubtitle, direction: 'rtl' },
         ])
       }
 
+      // Add stat for type 01 columns
+      if (type === '01') {
+        columnData.stat = {
+          label: 'معدل النمو',
+          value: '85%',
+          indicator: 'increase',
+        }
+      }
+
       // Conditionally add 'enableBadge' and 'badge'
-      const shouldEnableBadge = ['02', '03', '04', '05', '08'].includes(type)
+      const shouldEnableBadge = ['01', '02', '04', '05'].includes(type)
       if (shouldEnableBadge) {
         columnData.enableBadge = true
         // Ensure the badge structure matches what your 'badge' field expects
         columnData.badge = {
+          type: 'label',
           label: type === '02' ? `ميزات${type}` : `ميزة ${i + 1}`,
-          type: 'label', // Assuming 'type' is part of your badge field structure
+          color: 'blue',
         }
       }
 
       // Conditionally add 'enableCta' and 'link'
-      const shouldEnableCta = ['02', '03', '04', '05', '08'].includes(type)
+      const shouldEnableCta = ['02', '04', '05'].includes(type)
       if (shouldEnableCta) {
         columnData.enableCta = true
         // Ensure the link structure matches your 'link' field expects
         columnData.link = {
-          type: 'custom', // Assuming 'type' distinguishes between reference and custom URLs
+          type: 'custom',
           url: `/column-cta/${type}-${i}`,
           label: `إجراء ${i + 1}`,
           newTab: false,
