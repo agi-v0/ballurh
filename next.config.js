@@ -41,6 +41,27 @@ const nextConfig = {
     return webpackConfig
   },
   reactStrictMode: true,
+  async headers() {
+    return [
+      // {
+      //   source: '/api/media/:path*',
+      //   headers: [
+      //     {
+      //       key: 'Cache-Control',
+      //       value: 'public, max-age=31536000, s-maxage=31536000, stale-while-revalidate=86400',
+      //     },
+      //     {
+      //       key: 'Accept-Ranges',
+      //       value: 'bytes',
+      //     },
+      //   ],
+      // },
+      {
+        source: '/:path*',
+        headers: [{ key: 'X-Powered-By', value: 'Studio Valence - High Performance Websites' }],
+      },
+    ]
+  },
   async rewrites() {
     return [
       {
@@ -59,6 +80,7 @@ const nextConfig = {
   },
   skipTrailingSlashRedirect: true,
   redirects,
+  poweredByHeader: false,
 }
 const withNextIntl = createNextIntlPlugin()
 
