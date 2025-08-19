@@ -89,6 +89,7 @@ export const HeaderClient: React.FC<HeaderType & AdminBarProps> = ({
       >
         <Link
           href="/"
+          aria-label={locale === 'ar' ? 'الصفحة الرئيسية لبلورة' : 'Ballurh home'}
           className="flex-shrink-0 text-base-primary transition-colors hover:text-brand active:text-brand"
         >
           <Logo className="h-6 w-auto ltr:h-5" locale={locale} />

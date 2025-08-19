@@ -104,7 +104,11 @@ export function FooterClient({ columns, currentYear, locale }: Props) {
                       className="hover:bg-transparent"
                       asChild
                     >
-                      <Link href={url} className="text-base-tertiary hover:text-base-primary">
+                      <Link
+                        href={url}
+                        className="text-base-tertiary hover:text-base-primary"
+                        aria-label={label}
+                      >
                         <Icon className="size-5" />
                       </Link>
                     </Button>
@@ -140,6 +144,7 @@ export function FooterClient({ columns, currentYear, locale }: Props) {
           <Link
             href="/"
             className="order-1 text-base-tertiary transition-colors hover:text-brand md:order-2 md:justify-self-center"
+            aria-label={locale === 'ar' ? 'الصفحة الرئيسية لبلورة' : 'Ballurh home'}
           >
             <Logo className="h-6 w-auto" locale={locale} />
           </Link>
