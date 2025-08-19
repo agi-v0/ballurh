@@ -54,16 +54,18 @@ export const Logo02: React.FC<Logo02Props> = ({ logos, className }) => {
           key={`logo-group-${currentIndex}`}
           className="gap-lg grid grid-cols-2 items-center perspective-midrange md:grid-cols-3 lg:grid-cols-6"
         >
-          {currentLogos.map((logo, index) => (
-            <div
-              key={`${currentIndex}-${logo.id || index}`}
-              className="flex items-center justify-center dark:invert"
-            >
-              {typeof logo === 'object' && logo !== null && (
-                <Media resource={logo} imgClassName="h-space-md w-auto object-contain" />
-              )}
-            </div>
-          ))}
+          {currentLogos.map(
+            (logo, index) =>
+              typeof logo === 'object' &&
+              logo !== null && (
+                <Media
+                  key={`${currentIndex}-${logo.id || index}`}
+                  className="flex items-center justify-center dark:invert"
+                  imgClassName="h-space-md w-auto object-contain"
+                  resource={logo}
+                />
+              ),
+          )}
         </AnimatedGroup>
       </AnimatePresence>
     </div>

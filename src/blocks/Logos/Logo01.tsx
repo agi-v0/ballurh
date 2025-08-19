@@ -17,22 +17,22 @@ export const Logo01: React.FC<Logo01Props> = ({ logos, className }) => {
 
   return (
     <div className={cn('container w-full overflow-hidden py-section-small', className)}>
-      <ul
+      <div
         dir="ltr"
         className="flex w-full flex-wrap items-center justify-center mask-x-from-90% mask-x-to-100% md:justify-between"
       >
         <InfiniteSlider gap={48} className="">
-          {logos.map((logo, i) => {
-            return (
-              <li key={i} className="flex items-center justify-center">
-                {logo && typeof logo === 'object' && (
-                  <Media imgClassName="h-space-md w-auto object-contain" resource={logo} />
-                )}
-              </li>
-            )
-          })}
+          {logos.map(
+            (logo, i) =>
+              logo &&
+              typeof logo === 'object' && (
+                <Media imgClassName="h-space-md w-auto object-contain" resource={logo} key={i} />
+                // <li key={i} className="flex items-center justify-center">
+                // </li>
+              ),
+          )}
         </InfiniteSlider>
-      </ul>
+      </div>
     </div>
   )
 }
