@@ -27,11 +27,18 @@ import { setRequestLocale } from 'next-intl/server'
 //   return routing.locales.map((locale) => ({ locale }))
 // }
 
+export async function generateStaticParams() {
+  const locales = ['en', 'ar']
+  return locales.map((locale) => ({
+    locale,
+  }))
+}
+
 const aktivGrotesk = localFont({
-  src: '/fonts/AktivGroteskVF.woff2',
+  src: '../../../../public/AktivGroteskVF.woff2',
   weight: '100 900',
   display: 'swap',
-  variable: '--font-aktive-grotesk',
+  variable: '--font-aktiv-grotesk',
 })
 
 export default async function RootLayout({
