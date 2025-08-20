@@ -2,6 +2,7 @@ import { getTranslations } from 'next-intl/server'
 
 import CalEmbed from '@/components/CalEmbed'
 import { Icon } from '@iconify-icon/react/dist/iconify.mjs'
+import { Suspense } from 'react'
 
 type Args = {
   params: Promise<{
@@ -49,7 +50,9 @@ export default async function MeetingPage({ params }: Args) {
   return (
     <div className="container mx-auto mt-header-plus-admin-bar space-y-space-7">
       <h1 className="text-center text-h2 font-semibold">{t('title')}</h1>
-      <CalEmbed calLink={calLink} locale={locale} />
+      <Suspense>
+        <CalEmbed calLink={calLink} locale={locale} />
+      </Suspense>
       <div className="rounded-3xl bg-background-neutral p-6">
         <h2 className="mb-4 text-lg font-semibold">{t('instructions.title')}</h2>
         <div className="space-y-3 text-base-secondary">

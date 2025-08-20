@@ -63,7 +63,8 @@ export default async function Page({ params: paramsPromise }: Args) {
     locale,
   })
 
-  const { hero, layout } = page
+  const hero = page?.hero ?? { type: 'none' }
+  const layout = page?.layout ?? []
 
   if (!page) {
     page = null
