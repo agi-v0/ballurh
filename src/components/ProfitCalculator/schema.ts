@@ -4,11 +4,11 @@ const step1Schema = z
   .object({
     activityType: z.string({ message: 'يرجى اختيار نوع النشاط' }),
     physicalBranchesCount: z.coerce.number().min(1, 'يجب أن تكون القيمة 1 على الأقل'),
-    hasCloudBrands: z.enum(['نعم', 'لا'], { message: 'يرجى الاختيار' }),
+    hasCloudBrands: z.enum(['Yes', 'No'], { message: 'يرجى الاختيار' }),
     cloudBrandsCount: z.coerce.number().optional(),
   })
   .superRefine((data, ctx) => {
-    if (data.hasCloudBrands === 'نعم' && !data.cloudBrandsCount) {
+    if (data.hasCloudBrands === 'Yes' && !data.cloudBrandsCount) {
       ctx.addIssue({
         path: ['cloudBrandsCount'],
         code: 'custom',

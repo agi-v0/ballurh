@@ -7,11 +7,11 @@ import { Link } from '@/i18n/navigation'
 import { RadioCardsRoot, RadioCardsItem, RadioCardsIndicator } from '@/components/ui/radio-cards'
 
 const annualSalesOptions = [
-  'أقل من 500,000',
-  '500,000 - 750,000',
-  '750,000 - 1,250,000',
-  '1,250,000 - 2,000,000',
-  'أكثر من 2,000,000',
+  { ar: 'أقل من 500,000', en: 'Less than 500,000' },
+  { ar: '500,000 - 750,000', en: '500,000 - 750,000' },
+  { ar: '750,000 - 1,250,000', en: '750,000 - 1,250,000' },
+  { ar: '1,250,000 - 2,000,000', en: '1,250,000 - 2,000,000' },
+  { ar: 'أكثر من 2,000,000', en: 'More than 2,000,000' },
 ]
 
 const Step2 = () => {
@@ -35,12 +35,12 @@ const Step2 = () => {
             >
               {annualSalesOptions.map((option) => (
                 <RadioCardsItem
-                  value={option}
-                  key={option}
+                  value={option.en}
+                  key={option.en}
                   variant="classic"
                   className="rounded-xl text-start"
                 >
-                  <span>{option}</span>
+                  <span>{option.ar}</span>
                   <RadioCardsIndicator />
                 </RadioCardsItem>
               ))}

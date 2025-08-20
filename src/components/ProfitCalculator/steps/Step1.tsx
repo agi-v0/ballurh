@@ -36,7 +36,7 @@ const activityTypeOptions: {
 const step1Schema = z.object({
   activityType: z.string({ error: 'يرجى اختيار نوع النشاط' }),
   physicalBranchesCount: z.string().min(1, 'يجب أن تكون القيمة 1 على الأقل'),
-  hasCloudBrands: z.enum(['نعم', 'لا'], { error: 'يرجى الاختيار' }),
+  hasCloudBrands: z.enum(['Yes', 'No'], { error: 'يرجى الاختيار' }),
   cloudBrandsCount: z.string().optional(),
 })
 
@@ -145,14 +145,14 @@ const Step1 = () => {
                   value={field.value}
                   className="grid-cols-2 gap-2"
                 >
-                  {['نعم', 'لا'].map((option) => (
+                  {['Yes', 'No'].map((option) => (
                     <RadioCardsItem
                       key={option}
                       value={option}
                       variant="classic"
                       className="flex h-12 flex-row rounded-xl py-2 text-sm font-medium data-[state=checked]:bg-background-neutral data-[state=checked]:text-base-primary data-[state=checked]:shadow-xs"
                     >
-                      {option}
+                      {option === 'Yes' ? 'نعم' : 'لا'}
                       <RadioCardsIndicator className="end-2 top-0 bottom-0 [&>iconify-icon]:size-6" />
                     </RadioCardsItem>
                   ))}
@@ -166,7 +166,7 @@ const Step1 = () => {
             )}
           </div>
 
-          {hasCloudBrands === 'نعم' && (
+          {hasCloudBrands === 'Yes' && (
             <div className="space-y-2.5">
               <Label htmlFor="cloudBrandsCount">كم عدد العلامات التجارية السحابية؟</Label>
               <Controller
