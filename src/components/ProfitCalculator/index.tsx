@@ -117,12 +117,10 @@ const formSteps = [
 const ProfitabilityCalculator: React.FC = () => {
   const [formStep, setFormStep] = useState<number>(0)
   const [isSubmitted, setIsSubmitted] = useState(false)
-  const [calculatedProfit, setCalculatedProfit] = useState<number | undefined>(undefined)
   const [isSubmitting, setIsSubmitting] = useState(false)
 
   const methods = useForm({
     defaultValues,
-    // currentSchema resolver resets values of fields when step advances
     resolver: zodResolver(formSchema),
     mode: 'onSubmit',
     // shouldUnregister: true, // when true, values are not preserved when step advances but this also avoids premature validation in the last step
@@ -189,7 +187,6 @@ const ProfitabilityCalculator: React.FC = () => {
       const response = await calculateProfit(data)
 
       if (response.success) {
-        setCalculatedProfit(response.totalAnnualProfit)
         setIsSubmitted(true)
       } else {
         // Handle server errors or invalid responses
