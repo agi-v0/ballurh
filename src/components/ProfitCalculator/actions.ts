@@ -82,6 +82,8 @@ export async function calculateProfit(data: FormData) {
     { name: 'food_cost', value: foodCostPercentage * 100 },
     { name: 'monthly_advertising', value: monthlyAdBudget },
     { name: 'delivery_fees', value: deliveryFeeBorne },
+    { name: 'calculated_profit_rate', value: totalProfitRate * 100 },
+    { name: 'expected_profitability', value: totalAnnualProfit },
   ]
 
   try {
