@@ -1,17 +1,11 @@
 'use client'
 import React, { useState } from 'react'
-import {
-  useForm,
-  Controller,
-  SubmitHandler,
-  SubmitErrorHandler,
-  FormProvider,
-} from 'react-hook-form'
+import { useForm, FormProvider } from 'react-hook-form'
 import { formSchema, type FormData } from './schema'
-import { z } from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { Icon } from '@iconify-icon/react'
 import { motion, AnimatePresence } from 'motion/react'
+import { useStateMachine } from 'little-state-machine'
 
 import { calculateProfit } from '@/components/ProfitCalculator/actions'
 import { Button } from '@/components/ui/button'
@@ -23,6 +17,8 @@ import Step1 from './steps/Step1'
 import Step2 from './steps/Step2'
 import Step3 from './steps/Step3'
 import Step4 from './steps/Step4'
+import './store'
+import type { ContactStore } from './store'
 
 const stepSchemas = [
   formSchema.pick({
@@ -46,24 +42,6 @@ const stepSchemas = [
 ]
 
 const stepFields = stepSchemas.map((schema) => Object.keys(schema.shape)) as (keyof FormData)[][]
-
-const defaultValues: FormData = {
-  activityType: 'hybridRestaurant',
-  physicalBranchesCount: 1,
-  hasCloudBrands: 'Yes',
-  cloudBrandsCount: 1,
-  annualSales: 'Less than 500,000',
-  monthlyOrders: '',
-  deliverySalesPercentage: 25,
-  avgCommissionRate: 25,
-  foodCostPercentage: 30,
-  monthlyAdBudget: '',
-  deliveryFeeBorne: 10,
-  name: '',
-  email: '',
-  phone: '',
-  businessName: '',
-}
 
 interface StepHeaderProps {
   title: string
@@ -118,6 +96,23 @@ const ProfitabilityCalculator: React.FC = () => {
   const [formStep, setFormStep] = useState<number>(0)
   const [isSubmitted, setIsSubmitted] = useState(false)
   const [isSubmitting, setIsSubmitting] = useState(false)
+  const { getState } = useStateMachine()
+  const contactDefaults = (getState() as ContactStore).contactInfo
+
+  const defaultValues: FormData = {
+    activityType: 'hybridRestaurant',
+    physicalBranchesCount: 1,
+    hasCloudBrands: 'Yes',
+    cloudBrandsCount: 1,
+    annualSales: 'Less than 500,000',
+    monthlyOrders: '',
+    deliverySalesPercentage: 25,
+    avgCommissionRate: 25,
+    foodCostPercentage: 30,
+    monthlyAdBudget: '',
+    deliveryFeeBorne: 10,
+    ...contactDefaults,
+  }
 
   const methods = useForm({
     defaultValues,
