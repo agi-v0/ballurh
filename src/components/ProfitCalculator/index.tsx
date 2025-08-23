@@ -177,7 +177,6 @@ const ProfitabilityCalculator: React.FC = () => {
 
   const onSubmit = async (data: FormData) => {
     setIsSubmitting(true)
-    await setTimeout(() => {}, 10000)
     try {
       const response = await calculateProfit(data)
 
