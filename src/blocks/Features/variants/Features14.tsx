@@ -20,12 +20,12 @@ export const Features14: React.FC<FeaturesBlock> = ({ columns, link, CTALabel })
                       className="h-auto w-full p-4"
                       imgClassName="aspect-square h-auto w-full rounded-3xl object-cover"
                     />
-                    <div className="absolute inset-0 z-2 bg-teal-600 opacity-100 mix-blend-overlay duration-300 ease-out group-hover:opacity-100 lg:opacity-0" />
+                    <div className="absolute inset-0 z-2 bg-[oklch(0.728_0.087_173.2)] opacity-100 mix-blend-overlay duration-300 ease-out group-hover:opacity-100 lg:opacity-0" />
                   </div>
                 )}
                 {column.content && (
                   <div className="not-prose flex flex-col items-center gap-2 px-4 pt-2 pb-4 text-start md:text-center">
-                    <h3 className="text-h4 font-semibold text-base-primary group-hover:text-teal-700">
+                    <h3 className="text-h4 font-semibold text-base-primary group-hover:text-base-primary">
                       {column.content?.title}
                     </h3>
                     {column.content.subtitle && (

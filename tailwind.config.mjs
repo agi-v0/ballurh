@@ -64,8 +64,8 @@ const config = {
         DEFAULT: {
           css: [
             {
-              '--tw-prose-body': 'var(--text)',
-              '--tw-prose-headings': 'var(--text)',
+              '--tw-prose-body': 'var(--color-base-secondary)',
+              '--tw-prose-headings': 'var(--color-base-primary)',
               h1: {
                 fontWeight: 600,
                 // marginBottom: '0.5em',
@@ -99,6 +99,14 @@ const config = {
               p: {
                 fontSize: 'var(--text-main)',
               },
+            },
+          ],
+        },
+        slate: {
+          css: [
+            {
+              '--tw-prose-body': 'var(--color-base-secondary)',
+              '--tw-prose-headings': 'var(--color-base-primary)',
             },
           ],
         },

@@ -26,7 +26,7 @@ export const Team: React.FC<TeamBlock> = ({ team }) => {
       {team?.map((member, index) => {
         return (
           <motion.div key={index} variants={itemsFling}>
-            <Card className="h-full w-full grow rounded-3xl bg-teal-950 p-space-4 pt-(--text-large)">
+            <Card className="h-full w-full grow rounded-3xl bg-blr-dark-green p-space-4 pt-(--text-large)">
               <CardContent className={cn('gap-md flex flex-col justify-start p-0')}>
                 {member.name && (
                   <div data-theme="dark" className="flex flex-col items-center gap-2 text-center">

@@ -37,7 +37,7 @@ const buttonVariants = cva(
         color: 'brand',
         variant: 'primary',
         className:
-          'bg-brand text-base-primary hover:bg-teal-950 hover:text-white active:bg-teal-950 active:text-white',
+          'bg-brand text-base-primary hover:bg-blr-dark-green hover:text-white active:bg-blr-dark-green active:text-white',
       },
       {
         color: 'brand',
@@ -64,7 +64,7 @@ const buttonVariants = cva(
         color: 'neutral',
         variant: 'primary',
         className:
-          'border bg-teal-950 text-white shadow-xs hover:bg-brand hover:text-base-primary active:bg-brand',
+          'border bg-blr-dark-green text-white shadow-xs hover:bg-brand hover:text-base-primary active:bg-brand',
       },
       {
         color: 'neutral',

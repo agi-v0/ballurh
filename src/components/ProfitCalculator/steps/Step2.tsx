@@ -5,6 +5,7 @@ import { Label } from '@/components/ui/label'
 import { Slider } from '@/components/ui/slider'
 import { Link } from '@/i18n/navigation'
 import { RadioCardsRoot, RadioCardsItem, RadioCardsIndicator } from '@/components/ui/radio-cards'
+import { Icon } from '@iconify-icon/react/dist/iconify.mjs'
 
 const annualSalesOptions = [
   { ar: 'أقل من 500,000', en: 'Less than 500,000' },
@@ -145,9 +146,10 @@ const Step2 = () => {
             href="/"
             target="_blank"
             rel="noreferrer"
-            className="text-teal-600 transition-colors hover:text-slate-600"
+            className="inline-flex items-center gap-1 text-base-primary transition-colors hover:text-base-tertiary"
           >
-            نساعدك نطلّع الرقم بدقة.
+            نساعدك نطلّع الرقم بدقة
+            <Icon icon="ri:arrow-left-up-line" />
           </Link>
         </p>
         {errors.avgCommissionRate && (

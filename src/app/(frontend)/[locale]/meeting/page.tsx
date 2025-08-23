@@ -57,20 +57,20 @@ export default async function MeetingPage({ params }: Args) {
         <h2 className="mb-4 text-lg font-semibold">{t('instructions.title')}</h2>
         <div className="space-y-3 text-base-secondary">
           <p className="flex items-start">
-            <span className="me-3 flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-teal-100 text-sm font-medium text-teal-800 dark:bg-teal-900 dark:text-teal-200">
+            <span className="me-3 flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-blr-light-green-2 text-sm font-medium text-teal-800 dark:bg-teal-900 dark:text-teal-200">
               1
             </span>
             {t('instructions.step1')}
           </p>
 
           <p className="flex items-start">
-            <span className="me-3 flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-teal-100 text-sm font-medium text-teal-800 dark:bg-teal-900 dark:text-teal-200">
+            <span className="me-3 flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-blr-light-green-2 text-sm font-medium text-teal-800 dark:bg-teal-900 dark:text-teal-200">
               2
             </span>
             {t('instructions.step3')}
           </p>
           <p className="flex items-start">
-            <span className="me-3 flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-teal-100 text-sm font-medium text-teal-800 dark:bg-teal-900 dark:text-teal-200">
+            <span className="me-3 flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-blr-light-green-2 text-sm font-medium text-teal-800 dark:bg-teal-900 dark:text-teal-200">
               3
             </span>
             {t('instructions.step4')}

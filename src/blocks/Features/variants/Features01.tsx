@@ -89,7 +89,7 @@ export const Features01: React.FC<FeaturesBlock> = ({ columns }) => {
                 key={index}
                 variants={itemVariants}
                 className={cn(
-                  'flex w-full flex-col overflow-hidden rounded-3xl border bg-teal-100 shadow-xs',
+                  'flex w-full flex-col overflow-hidden rounded-3xl border bg-blr-light-green-2 shadow-xs',
                   {
                     'lg:flex-row': size === 'full' || row?.length === 1,
                   },
@@ -113,7 +113,7 @@ export const Features01: React.FC<FeaturesBlock> = ({ columns }) => {
                     )}
                   </div>
                   {size === 'full' && stat && (
-                    <p className="flex flex-row items-center gap-6 rounded-full bg-teal-950 px-6 py-4">
+                    <p className="flex flex-row items-center gap-6 rounded-full bg-blr-dark-green px-6 py-4">
                       <span className="text-h3 whitespace-nowrap text-inverted-primary">
                         {stat.value}
                       </span>
@@ -131,7 +131,7 @@ export const Features01: React.FC<FeaturesBlock> = ({ columns }) => {
                   />
                 )}
                 {size !== 'full' && stat && (
-                  <p className="mx-(--text-h3) mb-(--text-h3) flex flex-row items-center gap-6 rounded-full bg-teal-950 px-6 py-4">
+                  <p className="mx-(--text-h3) mb-(--text-h3) flex flex-row items-center gap-6 rounded-full bg-blr-dark-green px-6 py-4">
                     <span className="text-h3 whitespace-nowrap text-inverted-primary">
                       {stat.value}
                     </span>

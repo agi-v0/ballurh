@@ -43,7 +43,7 @@ export const CallToAction02: React.FC<CallToActionProps> = ({
       className={cn('relative container overflow-hidden py-space-7', className)}
     >
       <motion.div
-        className="relative flex flex-col items-center gap-space-7 overflow-hidden rounded-3xl bg-teal-950 px-space-7 py-space-7 shadow-xs"
+        className="relative flex flex-col items-center gap-space-7 overflow-hidden rounded-3xl bg-blr-dark-green px-space-7 py-space-7 shadow-xs"
         variants={containerVariants}
         initial="hidden"
         whileInView="visible"

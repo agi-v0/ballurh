@@ -58,7 +58,7 @@ export const Features06: React.FC<FeaturesBlock> = ({ columns, blockImage, stat,
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.3 }}
-        className="relative flex flex-col overflow-hidden rounded-3xl border bg-violet-100 shadow-xs"
+        className="relative flex flex-col overflow-hidden rounded-3xl border bg-blr-purple-2 shadow-xs"
       >
         <div className="gap-md mt-xs flex w-full flex-col px-space-7 pt-space-8">
           {blockHeader && (
@@ -123,7 +123,7 @@ export const Features06: React.FC<FeaturesBlock> = ({ columns, blockImage, stat,
               style={{
                 transformOrigin: 'bottom',
               }}
-              className="mx-4 mb-4 flex items-center justify-center gap-4 rounded-full bg-teal-950 px-6 py-4 md:absolute md:start-space-7 md:top-0 md:m-0 md:aspect-square md:size-48 md:flex-col md:gap-0 md:px-4 md:text-center lg:size-64 xl:start-32"
+              className="mx-4 mb-4 flex items-center justify-center gap-4 rounded-full bg-blr-dark-green px-6 py-4 md:absolute md:start-space-7 md:top-0 md:m-0 md:aspect-square md:size-48 md:flex-col md:gap-0 md:px-4 md:text-center lg:size-64 xl:start-32"
             >
               <motion.span
                 variants={itemVariants}

@@ -106,10 +106,10 @@
   --background-inverted: var(--color-slate-950);
 
   /*for foreground (text & icons) */
-  --neutral-primary: --alpha(var(--color-slate-950) / 100%);
-  --neutral-secondary: --alpha(var(--color-slate-950) / 60%);
-  --neutral-tertiary: --alpha(var(--color-slate-950) / 40%);
-  --neutral-quaternary: --alpha(var(--color-slate-950) / 25%);
+  --neutral-primary: --alpha(var(--color-blr-dark-green) / 100%);
+  --neutral-secondary: --alpha(var(--color-blr-dark-green) / 60%);
+  --neutral-tertiary: --alpha(var(--color-blr-dark-green) / 40%);
+  --neutral-quaternary: --alpha(var(--color-blr-dark-green) / 25%);
 
   --brand-primary: --alpha(var(--color-brand) / 100%);
   --brand-secondary: --alpha(var(--color-brand) / 60%);
@@ -197,13 +197,23 @@
   --text-main: clamp(1rem, 0.986rem + 0.07vw, 1.05rem);
   --text-small: clamp(0.875rem, 0.875rem + 0vw, 0.875rem);
 
-  --color-brand: var(--brand);
+  --color-blr-dark-green: oklch(0.249 0.039 215.3);
+  --color-blr-muted-green: oklch(0.834 0.026 202.8);
+  --color-blr-orange: oklch(0.686 0.205 34.6);
+  --color-blr-light-green-1: oklch(0.984 0.021 175);
+  --color-blr-light-green-2: oklch(0.951 0.044 173.2);
+  --color-blr-yellow-1: oklch(0.987 0.042 104.2);
+  --color-blr-yellow-2: oklch(0.976 0.079 104.7);
+  --color-blr-purple-1: oklch(0.948 0.029 298.9);
+  --color-blr-purple-2: oklch(0.887 0.052 293.8);
+
+  --color-brand: var(--color-blr-orange);
   --color-neutral: var(--neutral);
 
   /* use for background */
   --color-background: var(--background);
   --color-background-neutral: var(--background-light);
-  --color-background-neutral-subtle: var(--background-medium);
+  --color-background-neutral-subtle: var(--color-blr-muted-green);
   --color-background-inverted: var(--background-inverted);
 
   /*for foreground (text & icons) */

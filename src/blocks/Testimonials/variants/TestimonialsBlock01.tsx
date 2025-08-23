@@ -17,10 +17,10 @@ interface Props {
 }
 
 const bgColors = {
-  lightTeal: 'bg-teal-100',
-  violet: 'bg-violet-100',
+  lightTeal: 'bg-blr-light-green-2',
+  violet: 'bg-blr-purple-2',
   gray: 'bg-background-neutral-subtle',
-  inverted: 'bg-teal-950',
+  inverted: 'bg-blr-dark-green',
 } as const
 
 type BgColor = keyof typeof bgColors
