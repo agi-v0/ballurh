@@ -16,7 +16,7 @@ export const FAQBlock02: React.FC<FaqBlock> = async (props) => {
   return (
     <div className="bg-background">
       <div className="container flex flex-col gap-4 lg:flex-row lg:items-start lg:pt-section-main">
-        <BlockHeader {...blockHeader} type="start" className="lg:pe-md w-full px-0 lg:pt-0" />
+        <BlockHeader {...blockHeader} type="start" className="w-full px-0 lg:pe-space-7 lg:pt-0" />
         {faqs && (
           <div className="mx-auto grid w-full grid-cols-1">
             <Accordion type="single" collapsible className="space-y-2">
