@@ -26,7 +26,12 @@ export const Logo01: React.FC<Logo01Props> = ({ logos, className }) => {
             (logo, i) =>
               logo &&
               typeof logo === 'object' && (
-                <Media imgClassName="h-space-md w-auto object-contain" resource={logo} key={i} />
+                <Media
+                  imgClassName="h-space-md w-auto object-contain"
+                  resource={logo}
+                  key={i}
+                  className="flex items-center justify-center"
+                />
                 // <li key={i} className="flex items-center justify-center">
                 // </li>
               ),
