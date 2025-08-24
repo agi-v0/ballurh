@@ -35,9 +35,9 @@ export const CallToAction01: React.FC<CallToActionProps> = ({
         viewport={{ once: true, amount: 0.3 }}
         className="flex flex-col items-center gap-4 overflow-hidden rounded-3xl bg-background-neutral lg:flex-row"
       >
-        <div className="flex w-full flex-col gap-6 p-space-6">
+        <div className="flex w-full flex-col gap-6 p-space-7">
           {richText && <RichText className="px-0" data={richText} enableGutter={false} />}
-          <div className="flex flex-col gap-8">
+          <div className="flex flex-col gap-1 md:flex-row">
             {(links || []).map(({ link }, i) => {
               return <CMSLink key={i} size="lg" className="w-fit" {...link} />
             })}
