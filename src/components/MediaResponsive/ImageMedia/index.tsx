@@ -58,9 +58,6 @@ export const ImageMedia: React.FC<MediaProps> = (props) => {
   const { light: lightFromDesktop, dark: darkFromDesktop } = media?.desktop || {}
   const { light: lightFromMobile, dark: darkFromMobile } = media?.mobile || {}
 
-  const desktopSizes = '(min-width: 768px) 50vw, 100vw'
-  const mobileSizes = '100vw'
-
   //temporarily switch off compatibility with old resource type
   if (!src && resource && typeof resource === 'object') {
     const {
@@ -102,7 +99,7 @@ export const ImageMedia: React.FC<MediaProps> = (props) => {
   const sizes = sizeFromProps
     ? sizeFromProps
     : Object.entries(breakpoints)
-        .map(([, value]) => `(max-width: ${value}px) ${value * 2}w`)
+        .map(([, value]) => `(max-width: ${value}px) ${value}w`)
         .join(', ')
 
   // Fallback behaviour for explicit `src` passed in props (rare in new code paths)
@@ -114,17 +111,13 @@ export const ImageMedia: React.FC<MediaProps> = (props) => {
         <source
           media="(max-width: 767px) and (prefers-color-scheme: dark)"
           srcSet={buildSrcSet(darkFromMobile)}
-          sizes={mobileSizes}
+          sizes={sizes}
         />
       )}
 
       {/* 2 — mobile, light */}
       {lightFromMobile && (
-        <source
-          media="(max-width: 767px)"
-          srcSet={buildSrcSet(lightFromMobile)}
-          sizes={mobileSizes}
-        />
+        <source media="(max-width: 767px)" srcSet={buildSrcSet(lightFromMobile)} sizes={sizes} />
       )}
 
       {/* 3 — desktop, dark */}
@@ -132,12 +125,12 @@ export const ImageMedia: React.FC<MediaProps> = (props) => {
         <source
           media="(prefers-color-scheme: dark)"
           srcSet={buildSrcSet(darkFromDesktop)}
-          sizes={desktopSizes}
+          sizes={sizes}
         />
       )}
 
       {/* 4 — desktop, light */}
-      {lightFromDesktop && <source srcSet={buildSrcSet(lightFromDesktop)} sizes={desktopSizes} />}
+      {lightFromDesktop && <source srcSet={buildSrcSet(lightFromDesktop)} sizes={sizes} />}
       <NextImage
         alt={alt || altFromProps || ''}
         src={primaryURL}
@@ -148,7 +141,7 @@ export const ImageMedia: React.FC<MediaProps> = (props) => {
         blurDataURL={blurhash || placeholderBlur}
         priority={priority}
         fetchPriority={priority ? 'high' : undefined}
-        quality={100}
+        quality={90}
         loading={loading}
         sizes={sizes}
         className={cn(imgClassName)}
