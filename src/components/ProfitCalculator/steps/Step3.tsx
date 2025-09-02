@@ -118,6 +118,37 @@ const Step3 = () => {
           </p>
         )}
       </div>
+
+      <div className="space-y-2.5">
+        <Label htmlFor="monthlyCompensation">
+          7. كم متوسط مبلغ التعويضات الشهري؟ (مثل: الخصومات على الطلبات المرفوضة أو اعتراضات
+          العملاء)
+        </Label>
+        <Controller
+          name="monthlyCompensation"
+          control={control}
+          render={({ field }) => (
+            <div className="relative">
+              <Input
+                variant="lg"
+                className="rounded-xl"
+                id="monthlyCompensation"
+                type="number"
+                inputMode="numeric"
+                placeholder="مثال: 500"
+                {...field}
+                value={field.value ?? ''}
+              />
+              <span className="absolute end-3 top-2.5 text-slate-500">ريال</span>
+            </div>
+          )}
+        />
+        {errors.monthlyCompensation && (
+          <p className="mt-1 animate-shake-enter text-xs text-orange-600/80">
+            {errors.monthlyCompensation.message as string}
+          </p>
+        )}
+      </div>
     </div>
   )
 }
