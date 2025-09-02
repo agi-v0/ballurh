@@ -24,7 +24,7 @@ LOCAL_DB="ballurh"
 LOCAL_USER="postgres"
 
 # Postgres version to match remote DB
-POSTGRES_VERSION="17.5"
+POSTGRES_VERSION="15"
 
 # Docker network shared by containers (default is 'bridge')
 DOCKER_NETWORK="bridge"
@@ -36,7 +36,11 @@ CONTAINER_DUMP_PATH="/tmp/$DUMP_FILE"
 
 # ===================================
 
-# echo "▶ Dumping remote database using Dockerized pg_dump..."
+echo "▶ Setting up ssh tunnel..."
+
+ssh -fN -L 127.0.0.1:5433:ballurh-website-db-prod.cvljtwx9nyu3.me-south-1.rds.amazonaws.com:5432 ballurh
+
+echo "▶ Dumping remote database using Dockerized pg_dump..."
 
 docker run --rm \
   -e PGPASSWORD=temppassword \
@@ -77,4 +81,16 @@ fi
 # Optional: Uncomment to clean up local dump
 # rm "$LOCAL_DUMP_PATH"
 
+echo "▶ Syncing s3 bucket..."
 
+aws s3 sync s3://$AWS_BUCKET ./public
+
+if [ $? -eq 0 ]; then
+  echo "✅ S3 bucket synced successfully."
+else
+  echo "❌ S3 bucket sync failed."
+  exit 1
+fi
+
+echo "▶ Killing ssh tunnel..."
+kill $(pgrep -f "ssh -fN -L 127.0.0.1:5433:ballurh-website-db-prod.cvljtwx9nyu3.me-south-1.rds.amazonaws.com:5432 ballurh")
