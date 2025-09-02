@@ -3,6 +3,8 @@
 import { FormData } from '@/components/ProfitCalculator/schema'
 import { getPayload } from 'payload'
 import config from '@payload-config'
+import PostHogClient from '@/posthog.js'
+import { ProfitCalculatorEvents } from './events'
 
 const round = (num: number) => Math.round((num + Number.EPSILON) * 100) / 100
 
@@ -22,6 +24,8 @@ const business_type = new Map([
 
 export async function calculateProfit(data: FormData) {
   const payload = await getPayload({ config })
+  const posthog = PostHogClient()
+
   // console.log('Received data:', data)
   const {
     activityType = 'hybridRestaurant',
@@ -41,6 +45,17 @@ export async function calculateProfit(data: FormData) {
     phone = '',
     businessName = '',
   } = data
+
+  await posthog.identify({
+    distinctId: email,
+    properties: { email, name, phone, businessName },
+  })
+  await posthog.capture({
+    event: ProfitCalculatorEvents.SUBMITTED,
+    distinctId: email,
+    properties: { email, name, phone, businessName },
+  })
+  await posthog.shutdown()
 
   // const annualSalesNumber = Number(annualSales)
   const annualSalesNumber = annualSalesOptions.get(annualSales) ?? 250000
@@ -64,6 +79,7 @@ export async function calculateProfit(data: FormData) {
   const priceMarkupToCoverAppFee = round(1 / (1 - totalCommCompMarketingPctOfSales)) - 1
   const totalProfitRate = round(1 - totalCommCompMarketingPctOfSales - foodCostPercentage)
   const totalAnnualProfit = round(totalProfitRate * annualSalesNumber)
+  const savedDisputes = round(monthlyDisputes * 0.7)
 
   // console.log('totalAnnualProfit: ', totalAnnualProfit)
 
@@ -85,7 +101,7 @@ export async function calculateProfit(data: FormData) {
     { name: 'monthly_disputes', value: monthlyDisputes },
     { name: 'delivery_fees', value: deliveryFeeBorne },
     { name: 'calculated_profit_rate', value: totalProfitRate * 100 },
-    { name: 'expected_profitability', value: totalAnnualProfit },
+    { name: 'calculated_profitability', value: totalAnnualProfit },
   ]
 
   try {

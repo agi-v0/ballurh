@@ -1,5 +1,5 @@
 'use client'
-import React, { useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { useForm, FormProvider } from 'react-hook-form'
 import { formSchema, type FormData } from './schema'
 import { zodResolver } from '@hookform/resolvers/zod'
@@ -7,7 +7,6 @@ import { Icon } from '@iconify-icon/react'
 import { motion, AnimatePresence } from 'motion/react'
 import { useStateMachine } from 'little-state-machine'
 
-import { calculateProfit } from '@/components/ProfitCalculator/actions'
 import { Button } from '@/components/ui/button'
 
 import StepperBar from '../stepper/title-bar'
@@ -19,6 +18,11 @@ import Step3 from './steps/Step3'
 import Step4 from './steps/Step4'
 import './store'
 import type { ContactStore } from './store'
+import posthog from 'posthog-js'
+import { ProfitCalculatorEvents } from './events'
+import { calculateProfit } from './actions'
+import { useLocale } from 'next-intl'
+import { useSearchParams } from 'next/navigation'
 
 const stepSchemas = [
   formSchema.pick({
@@ -96,8 +100,27 @@ const ProfitabilityCalculator: React.FC = () => {
   const [formStep, setFormStep] = useState<number>(0)
   const [isSubmitted, setIsSubmitted] = useState(false)
   const [isSubmitting, setIsSubmitting] = useState(false)
+  const latestStateRef = useRef({ isSubmitted: false, formStep: 0 })
+  const abandonSentRef = useRef(false)
+  const startedSentRef = useRef(false)
   const { getState } = useStateMachine()
   const contactDefaults = (getState() as ContactStore).contactInfo
+  const locale = useLocale()
+  const params = useSearchParams()
+
+  const utm_id = params.get('utm_id')
+  const utm_source = params.get('utm_source')
+  const utm_medium = params.get('utm_medium')
+  const utm_campaign = params.get('utm_campaign')
+  const utm_content = params.get('utm_content')
+  const utm_term = params.get('utm_term')
+
+  const fbclid = params.get('fbclid')
+  const gclid = params.get('gclid')
+  const twclid = params.get('twclid')
+  const ScCid = params.get('ScCid')
+  const li_fat_id = params.get('li_fat_id')
+  const ttclid = params.get('ttclid')
 
   const defaultValues: FormData = {
     activityType: 'hybridRestaurant',
@@ -133,44 +156,130 @@ const ProfitabilityCalculator: React.FC = () => {
     formState: { errors },
   } = methods
 
-  // monitor errors per form step
-  // useEffect(() => {
-  //   console.log('formStep: ', formStep, 'errors: ', errors)
-  // }, [formStep, errors])
-
   const hasCloudBrands = watch('hasCloudBrands')
 
   const totalFormSteps = 4
 
-  const pick = <T extends object, K extends keyof T>(obj: T, keys: K[]) =>
-    keys.reduce((a, k) => ((a[k] = obj[k]), a), {} as Pick<T, K>)
-
   const nextStep = async () => {
+    // If user proceeds without changing any field, still count as started
+    if (!startedSentRef.current) {
+      startedSentRef.current = true
+      const { formStep: step } = latestStateRef.current
+      posthog.capture(ProfitCalculatorEvents.STARTED, {
+        step_number: step + 1,
+        locale,
+        referrer: document.referrer,
+        utm_id,
+        utm_source,
+        utm_medium,
+        utm_campaign,
+        utm_content,
+        utm_term,
+        fbclid,
+        gclid,
+        twclid,
+        ScCid,
+        li_fat_id,
+        ttclid,
+      })
+    }
     const isValid = await trigger(stepFields[formStep])
     if (isValid) {
       setFormStep((s) => Math.min(s + 1, totalFormSteps - 1))
+      posthog.capture(ProfitCalculatorEvents.STEP_COMPLETED, { step_number: formStep + 1 })
     }
-    // alternative validation logic
-    // const names = stepFields[formStep]
-    // const values = pick(getValues(), names)
-    // const parsed = stepSchemas[formStep].safeParse(values)
-
-    // // clear any stale errors for this step
-    // clearErrors(names)
-
-    // if (!parsed.success) {
-    //   parsed.error.issues.forEach((i) => {
-    //     const name = i.path[0] as keyof FormData
-    //     setError(name, { type: 'zod', message: i.message }, { shouldFocus: true })
-    //   })
-    //   const el = document.getElementById(parsed.error.issues[0].path[0] as string)
-    //   if (el) {
-    //     el.scrollIntoView({ behavior: 'smooth' })
-    //     el.focus()
-    //   }
-    //   return
-    // }
   }
+
+  useEffect(() => {
+    posthog.capture(ProfitCalculatorEvents.VIEWED, {
+      locale,
+      referrer: document.referrer,
+      utm_id,
+      utm_source,
+      utm_medium,
+      utm_campaign,
+      utm_content,
+      utm_term,
+      fbclid,
+      gclid,
+      twclid,
+      ScCid,
+      li_fat_id,
+      ttclid,
+    })
+  }, [])
+
+  // Keep latest state in refs for event handlers
+  useEffect(() => {
+    latestStateRef.current = { isSubmitted, formStep }
+  }, [isSubmitted, formStep])
+
+  // Capture started event on first user interaction (field change)
+  useEffect(() => {
+    const subscription = watch((_value, { name, type }) => {
+      if (startedSentRef.current) return
+      if (type === 'change') {
+        startedSentRef.current = true
+        const { formStep: step } = latestStateRef.current
+        posthog.capture(ProfitCalculatorEvents.STARTED, {
+          step_number: step + 1,
+          first_field: name,
+          locale,
+          referrer: document.referrer,
+          utm_id,
+          utm_source,
+          utm_medium,
+          utm_campaign,
+          utm_content,
+          utm_term,
+          fbclid,
+          gclid,
+          twclid,
+          ScCid,
+          li_fat_id,
+          ttclid,
+        })
+      }
+    })
+    return () => subscription.unsubscribe()
+  }, [watch])
+
+  // Capture abandoned event on unload/unmount if not submitted
+  useEffect(() => {
+    const sendAbandoned = () => {
+      if (abandonSentRef.current) return
+      const { isSubmitted: submitted, formStep: step } = latestStateRef.current
+      if (!submitted) {
+        abandonSentRef.current = true
+        posthog.capture(ProfitCalculatorEvents.ABANDONED, {
+          step_number: step + 1,
+          locale,
+          referrer: document.referrer,
+          utm_id,
+          utm_source,
+          utm_medium,
+          utm_campaign,
+          utm_content,
+          utm_term,
+          fbclid,
+          gclid,
+          twclid,
+          ScCid,
+          li_fat_id,
+          ttclid,
+        })
+      }
+    }
+
+    window.addEventListener('beforeunload', sendAbandoned)
+    return () => {
+      // Fire on component unmount (e.g., route change) as well
+      sendAbandoned()
+      window.removeEventListener('beforeunload', sendAbandoned)
+    }
+  }, [])
+
+  // todo: capture calculator started event: On first interaction (e.g., selecting an option in Step 1, like activityType).
 
   const prevStep = () => {
     setFormStep((prev) => Math.max(prev - 1, 0))
@@ -178,6 +287,7 @@ const ProfitabilityCalculator: React.FC = () => {
 
   const onSubmit = async (data: FormData) => {
     setIsSubmitting(true)
+
     try {
       const response = await calculateProfit(data)
 
