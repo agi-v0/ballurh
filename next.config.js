@@ -29,7 +29,7 @@ const nextConfig = {
         port: '3000',
       },
     ],
-    minimumCacheTTL: 2678400, // 31 days
+    // minimumCacheTTL: 2678400, // 31 days
   },
   webpack: (webpackConfig) => {
     webpackConfig.resolve.extensionAlias = {
@@ -43,19 +43,19 @@ const nextConfig = {
   reactStrictMode: true,
   async headers() {
     return [
-      // {
-      //   source: '/api/media/:path*',
-      //   headers: [
-      //     {
-      //       key: 'Cache-Control',
-      //       value: 'public, max-age=31536000, s-maxage=31536000, stale-while-revalidate=86400',
-      //     },
-      //     {
-      //       key: 'Accept-Ranges',
-      //       value: 'bytes',
-      //     },
-      //   ],
-      // },
+      {
+        source: '/api/media/:path*',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=31536000, s-maxage=31536000, stale-while-revalidate=86400',
+          },
+          {
+            key: 'Accept-Ranges',
+            value: 'bytes',
+          },
+        ],
+      },
       {
         source: '/:path*',
         headers: [{ key: 'X-Powered-By', value: 'Studio Valence - High Performance Websites' }],

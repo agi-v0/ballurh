@@ -22,7 +22,6 @@ export const config = {
   // - All /api/ paths EXCEPT those starting with /api/media/
   // Removed .*\\..*: This allows the middleware to process URLs with file extensions (like /media/image.png)
   // matcher: '/((?!admin|next|ingest|trpc|_next|_vercel|api(?!/media/)).*)',
-
   // Match all pathnames except for
   // - … if they start with `/admin`, `/api`, `/next`, `/_next` or `/_vercel`
   // - … the ones containing a dot (e.g. `favicon.ico`)
