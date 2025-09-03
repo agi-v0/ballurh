@@ -20,10 +20,6 @@ import './globals.css'
 import { getServerSideURL } from '@/utilities/getURL'
 import { setRequestLocale } from 'next-intl/server'
 
-export function generateStaticParams() {
-  return routing.locales.map((locale) => ({ locale }))
-}
-
 const aktivGrotesk = localFont({
   src: '../../../../public/AktivGroteskVF.woff2',
   weight: '100 900',

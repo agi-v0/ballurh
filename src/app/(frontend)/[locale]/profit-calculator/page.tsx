@@ -1,6 +1,6 @@
 import type { Metadata } from 'next/types'
 
-import React from 'react'
+import React, { Suspense } from 'react'
 
 import ProfitabilityCalculator from '@/components/ProfitCalculator'
 import { getTranslations } from 'next-intl/server'
@@ -10,6 +10,7 @@ type Args = {
     locale: string
   }>
 }
+export const dynamic = 'force-static'
 
 export async function generateMetadata({ params }: Args) {
   const { locale } = await params
@@ -55,7 +56,9 @@ export default async function Page({ params: paramsPromise }: Args) {
   return (
     <article className="overflow-x-clip bg-background">
       <div className="container flex min-h-screen w-full flex-col pt-header-plus-admin-bar pb-4">
-        <ProfitabilityCalculator />
+        <Suspense fallback={null}>
+          <ProfitabilityCalculator />
+        </Suspense>
       </div>
     </article>
   )

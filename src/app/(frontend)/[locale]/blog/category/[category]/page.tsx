@@ -14,7 +14,6 @@ import { draftMode } from 'next/headers'
 import { generateMeta } from '@/utilities/generateMeta'
 
 export const dynamic = 'force-static'
-export const revalidate = 600
 
 type Args = {
   params: Promise<{

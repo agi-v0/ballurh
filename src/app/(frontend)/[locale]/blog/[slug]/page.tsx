@@ -16,7 +16,6 @@ import { LivePreviewListener } from '@/components/LivePreviewListener'
 import { blogConverters } from '@/components/RichText/blogConverters'
 import { BlogSidebar } from '@/components/BlogSidebar'
 
-// export const dynamicParams = true
 export const dynamic = 'force-static'
 
 export async function generateStaticParams() {

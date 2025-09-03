@@ -16,7 +16,6 @@ import { Link } from '@/i18n/navigation'
 import RecentBlogPosts from '@/components/RecentBlogPosts'
 
 export const dynamic = 'force-static'
-export const revalidate = 600
 
 type Args = {
   params: Promise<{

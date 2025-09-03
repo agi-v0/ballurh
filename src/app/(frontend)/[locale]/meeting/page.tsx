@@ -10,6 +10,8 @@ type Args = {
   }>
 }
 
+export const dynamic = 'force-static'
+
 export async function generateMetadata({ params }: Args) {
   const { locale } = await params
   const t = await getTranslations({ locale, namespace: 'bookMeeting' })

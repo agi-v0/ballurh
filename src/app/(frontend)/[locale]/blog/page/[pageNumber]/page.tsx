@@ -15,6 +15,7 @@ import { RenderBlocks } from '@/blocks/RenderBlocks'
 import { generateMeta } from '@/utilities/generateMeta'
 
 export const revalidate = 600
+export const dynamic = 'force-static'
 
 type Args = {
   params: Promise<{

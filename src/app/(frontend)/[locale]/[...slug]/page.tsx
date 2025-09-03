@@ -14,6 +14,8 @@ import { generateMeta } from '@/utilities/generateMeta'
 import PageClient from './page.client'
 import { LivePreviewListener } from '@/components/LivePreviewListener'
 
+export const dynamic = 'force-static'
+
 export async function generateStaticParams({ params: paramsPromise }: Args) {
   const payload = await getPayload({ config: configPromise })
   const locales = ['en', 'ar']
