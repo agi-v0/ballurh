@@ -1,5 +1,6 @@
 'use client'
 import { useEffect } from 'react'
+import { usePostHog } from 'posthog-js/react'
 import Cal from '@calcom/embed-react'
 import { useSearchParams } from 'next/navigation'
 import { useStateMachine } from 'little-state-machine'
@@ -19,8 +20,11 @@ const CalEmbed: React.FC<CalEmbedProps> = ({ calLink, locale }) => {
   const utm_campaign = urlParams.get('utm_campaign')
   const utm_content = urlParams.get('utm_content')
   const utm_term = urlParams.get('utm_term')
+
+  // Register actions so we can update the contact info from this page
   const { actions, getState } = useStateMachine({ actions: { updateContactInfo } })
-  const contactInfo = (getState() as ContactStore).contactInfo
+  const contactInfo = getState().contactInfo
+  const posthog = usePostHog()
 
   useEffect(() => {
     const onMessage = (e: MessageEvent) => {
@@ -35,6 +39,7 @@ const CalEmbed: React.FC<CalEmbedProps> = ({ calLink, locale }) => {
 
       // Persist attendee details when a booking completes
       if (type === 'bookingSuccessful') {
+        console.log('bookingSuccessful', data)
         const responses = data?.booking?.responses || {}
         const name = responses?.name ?? data?.name ?? ''
         const email = responses?.email ?? data?.email ?? ''
@@ -47,11 +52,49 @@ const CalEmbed: React.FC<CalEmbedProps> = ({ calLink, locale }) => {
           phone,
           businessName,
         })
+
+        // Track meeting booked event in PostHog
+        const booking = data?.booking || {}
+        const eventType = booking?.eventType || data?.eventType
+        const startTime = booking?.startTime || data?.startTime
+        const endTime = booking?.endTime || data?.endTime
+        const bookingId = booking?.uid || booking?.id || data?.bookingId
+
+        console.log('data', {
+          cal_link: calLink,
+          Name: `${name?.firstName ?? ''} ${name?.lastName ?? ''}`.trim(),
+          Email: email,
+          Mobile: phone,
+          'Business Name': businessName,
+          'Booking ID': bookingId,
+          'Event Type': eventType,
+          'Start Time': startTime,
+          'End Time': endTime,
+          Locale: locale,
+        })
+
+        // Optionally identify by email when available
+        if (email) {
+          posthog.identify(email, { Email: email })
+        }
+
+        posthog.capture('meeting_booked', {
+          cal_link: calLink,
+          Name: `${name?.firstName ?? ''} ${name?.lastName ?? ''}`.trim(),
+          Email: email,
+          Mobile: phone,
+          'Business Name': businessName,
+          'Booking ID': bookingId,
+          'Event Type': eventType,
+          'Start Time': startTime,
+          'End Time': endTime,
+          Locale: locale,
+        })
       }
     }
     window.addEventListener('message', onMessage)
     return () => window.removeEventListener('message', onMessage)
-  }, [actions])
+  }, [actions, posthog, calLink, locale])
 
   return (
     <Cal
