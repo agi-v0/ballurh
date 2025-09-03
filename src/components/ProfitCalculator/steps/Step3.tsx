@@ -120,10 +120,7 @@ const Step3 = () => {
       </div>
 
       <div className="space-y-2.5">
-        <Label htmlFor="monthlyCompensation">
-          7. كم متوسط مبلغ التعويضات الشهري؟ (مثل: الخصومات على الطلبات المرفوضة أو اعتراضات
-          العملاء)
-        </Label>
+        <Label htmlFor="monthlyCompensation">كم متوسط مبلغ التعويضات الشهري؟</Label>
         <Controller
           name="monthlyCompensation"
           control={control}
@@ -143,6 +140,9 @@ const Step3 = () => {
             </div>
           )}
         />
+        <p className="text-sm text-slate-500">
+          مثل: الخصومات على الطلبات المرفوضة أو اعتراضات العملاء
+        </p>
         {errors.monthlyCompensation && (
           <p className="mt-1 animate-shake-enter text-xs text-orange-600/80">
             {errors.monthlyCompensation.message as string}

@@ -79,6 +79,8 @@ export async function calculateProfit(data: FormData) {
   const priceMarkupToCoverAppFee = round(1 / (1 - totalCommCompMarketingPctOfSales)) - 1
   const totalProfitRate = round(1 - totalCommCompMarketingPctOfSales - foodCostPercentage)
   const totalAnnualProfit = round(totalProfitRate * annualSalesNumber)
+  const profitPlus15 = round(totalAnnualProfit * 1.15)
+  const profitPlus30 = round(totalAnnualProfit * 1.3)
   const savedDisputes = round(monthlyDisputes * 0.7)
 
   // console.log('totalAnnualProfit: ', totalAnnualProfit)
@@ -94,14 +96,17 @@ export async function calculateProfit(data: FormData) {
     { name: 'number_of_cloud_brands', value: cloudBrandsCount },
     { name: 'annual_sales_revenue', value: annualSales },
     { name: 'monthly_orders', value: monthlyOrders },
-    { name: 'estimated_percentage_of_sales', value: deliverySalesPercentage * 100 },
-    { name: 'average_percentage_pay_to_delivery_apps', value: avgCommissionRate * 100 },
+    { name: 'delivery_app_sales_percentage', value: deliverySalesPercentage * 100 },
+    { name: 'delivery_app_commission_percentage', value: avgCommissionRate * 100 },
     { name: 'food_cost', value: foodCostPercentage * 100 },
     { name: 'monthly_advertising', value: monthlyAdBudget },
     { name: 'monthly_disputes', value: monthlyDisputes },
     { name: 'delivery_fees', value: deliveryFeeBorne },
+    { name: 'calculated_profit', value: totalAnnualProfit },
     { name: 'calculated_profit_rate', value: totalProfitRate * 100 },
-    { name: 'calculated_profitability', value: totalAnnualProfit },
+    { name: 'calculated_profit_plus_15', value: profitPlus15 },
+    { name: 'calculated_profit_plus_30', value: profitPlus30 },
+    { name: 'disputes_minus_70', value: savedDisputes },
   ]
 
   try {
