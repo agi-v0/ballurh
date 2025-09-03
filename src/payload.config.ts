@@ -61,7 +61,7 @@ export default buildConfig({
       email: 'demo-author@example.com',
       password: 'password',
     },
-
+    avatar: 'default',
     components: {
       beforeLogin: ['@/components/BeforeLogin'],
       beforeDashboard: ['@/components/BeforeDashboard'],
