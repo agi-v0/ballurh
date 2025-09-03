@@ -1,6 +1,6 @@
 import type { Metadata } from 'next/types'
 
-import React, { Suspense } from 'react'
+import React from 'react'
 
 import ProfitabilityCalculator from '@/components/ProfitCalculator'
 import { getTranslations } from 'next-intl/server'
@@ -56,9 +56,7 @@ export default async function Page({ params: paramsPromise }: Args) {
   return (
     <article className="overflow-x-clip bg-background">
       <div className="container flex min-h-screen w-full flex-col pt-header-plus-admin-bar pb-4">
-        <Suspense fallback={null}>
-          <ProfitabilityCalculator />
-        </Suspense>
+        <ProfitabilityCalculator />
       </div>
     </article>
   )

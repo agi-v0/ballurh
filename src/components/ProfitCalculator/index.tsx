@@ -17,12 +17,11 @@ import Step2 from './steps/Step2'
 import Step3 from './steps/Step3'
 import Step4 from './steps/Step4'
 import './store'
-import type { ContactStore } from './store'
+import { updateContactInfo, type ContactStore } from './store'
 import posthog from 'posthog-js'
 import { ProfitCalculatorEvents } from './events'
 import { calculateProfit } from './actions'
 import { useLocale } from 'next-intl'
-import { useSearchParams } from 'next/navigation'
 
 const stepSchemas = [
   formSchema.pick({
@@ -103,24 +102,9 @@ const ProfitabilityCalculator: React.FC = () => {
   const latestStateRef = useRef({ isSubmitted: false, formStep: 0 })
   const abandonSentRef = useRef(false)
   const startedSentRef = useRef(false)
-  const { getState } = useStateMachine()
-  const contactDefaults = (getState() as ContactStore).contactInfo
+  const { getState, actions } = useStateMachine({ actions: { updateContactInfo } })
+  const contactDefaults = getState().contactInfo
   const locale = useLocale()
-  const params = useSearchParams()
-
-  const utm_id = params.get('utm_id')
-  const utm_source = params.get('utm_source')
-  const utm_medium = params.get('utm_medium')
-  const utm_campaign = params.get('utm_campaign')
-  const utm_content = params.get('utm_content')
-  const utm_term = params.get('utm_term')
-
-  const fbclid = params.get('fbclid')
-  const gclid = params.get('gclid')
-  const twclid = params.get('twclid')
-  const ScCid = params.get('ScCid')
-  const li_fat_id = params.get('li_fat_id')
-  const ttclid = params.get('ttclid')
 
   const defaultValues: FormData = {
     activityType: 'hybridRestaurant',
@@ -160,6 +144,11 @@ const ProfitabilityCalculator: React.FC = () => {
 
   const totalFormSteps = 4
 
+  // Keep latest state in refs for event handlers
+  useEffect(() => {
+    latestStateRef.current = { isSubmitted, formStep }
+  }, [isSubmitted, formStep])
+
   const nextStep = async () => {
     // If user proceeds without changing any field, still count as started
     if (!startedSentRef.current) {
@@ -167,20 +156,7 @@ const ProfitabilityCalculator: React.FC = () => {
       const { formStep: step } = latestStateRef.current
       posthog.capture(ProfitCalculatorEvents.STARTED, {
         step_number: step + 1,
-        locale,
-        referrer: document.referrer,
-        utm_id,
-        utm_source,
-        utm_medium,
-        utm_campaign,
-        utm_content,
-        utm_term,
-        fbclid,
-        gclid,
-        twclid,
-        ScCid,
-        li_fat_id,
-        ttclid,
+        Locale: locale,
       })
     }
     const isValid = await trigger(stepFields[formStep])
@@ -193,26 +169,8 @@ const ProfitabilityCalculator: React.FC = () => {
   useEffect(() => {
     posthog.capture(ProfitCalculatorEvents.VIEWED, {
       locale,
-      referrer: document.referrer,
-      utm_id,
-      utm_source,
-      utm_medium,
-      utm_campaign,
-      utm_content,
-      utm_term,
-      fbclid,
-      gclid,
-      twclid,
-      ScCid,
-      li_fat_id,
-      ttclid,
     })
   }, [])
-
-  // Keep latest state in refs for event handlers
-  useEffect(() => {
-    latestStateRef.current = { isSubmitted, formStep }
-  }, [isSubmitted, formStep])
 
   // Capture started event on first user interaction (field change)
   useEffect(() => {
@@ -225,19 +183,6 @@ const ProfitabilityCalculator: React.FC = () => {
           step_number: step + 1,
           first_field: name,
           locale,
-          referrer: document.referrer,
-          utm_id,
-          utm_source,
-          utm_medium,
-          utm_campaign,
-          utm_content,
-          utm_term,
-          fbclid,
-          gclid,
-          twclid,
-          ScCid,
-          li_fat_id,
-          ttclid,
         })
       }
     })
@@ -254,23 +199,9 @@ const ProfitabilityCalculator: React.FC = () => {
         posthog.capture(ProfitCalculatorEvents.ABANDONED, {
           step_number: step + 1,
           locale,
-          referrer: document.referrer,
-          utm_id,
-          utm_source,
-          utm_medium,
-          utm_campaign,
-          utm_content,
-          utm_term,
-          fbclid,
-          gclid,
-          twclid,
-          ScCid,
-          li_fat_id,
-          ttclid,
         })
       }
     }
-
     window.addEventListener('beforeunload', sendAbandoned)
     return () => {
       // Fire on component unmount (e.g., route change) as well
@@ -278,8 +209,6 @@ const ProfitabilityCalculator: React.FC = () => {
       window.removeEventListener('beforeunload', sendAbandoned)
     }
   }, [])
-
-  // todo: capture calculator started event: On first interaction (e.g., selecting an option in Step 1, like activityType).
 
   const prevStep = () => {
     setFormStep((prev) => Math.max(prev - 1, 0))
@@ -290,7 +219,12 @@ const ProfitabilityCalculator: React.FC = () => {
 
     try {
       const response = await calculateProfit(data)
-
+      actions.updateContactInfo({
+        name: data.name,
+        email: data.email,
+        phone: data.phone,
+        businessName: data.businessName || '',
+      })
       if (response.success) {
         setIsSubmitted(true)
       } else {
@@ -307,11 +241,7 @@ const ProfitabilityCalculator: React.FC = () => {
   }
 
   const onError = async (errors: any, e: any) => {
-    // Object.keys(errors).forEach((key) => {
-    //   setError(key as keyof FormData, {
-    //     message: errors[key as keyof FormData]?.message,
-    //   })
-    // })
+    console.error('An error occurred during submission:', errors)
   }
 
   if (isSubmitted) {
@@ -322,15 +252,6 @@ const ProfitabilityCalculator: React.FC = () => {
             <h2 className="text-2xl font-semibold">
               ✅ تم استلام بياناتك، التقرير في الطريق لبريدك الإلكتروني أو واتساب.
             </h2>
-            {/* {calculatedProfit && (
-              <p className="mt-4 text-lg">
-                الربح السنوي المتوقع:{' '}
-                {new Intl.NumberFormat('en-US', {
-                  style: 'currency',
-                  currency: 'SAR',
-                }).format(calculatedProfit)}
-              </p>
-            )} */}
           </div>
         </AnimatedStepWrapper>
       </div>

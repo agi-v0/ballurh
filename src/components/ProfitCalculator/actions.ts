@@ -48,12 +48,11 @@ export async function calculateProfit(data: FormData) {
 
   await posthog.identify({
     distinctId: email,
-    properties: { email, name, phone, businessName },
+    properties: { Email: email, Name: name, Mobile: phone, 'Business Name': businessName },
   })
   await posthog.capture({
     event: ProfitCalculatorEvents.SUBMITTED,
     distinctId: email,
-    properties: { email, name, phone, businessName },
   })
   await posthog.shutdown()
 
