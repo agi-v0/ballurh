@@ -9,4 +9,5 @@ posthog.init(process.env.NEXT_PUBLIC_POSTHOG_KEY!, {
   autocapture: {
     url_ignorelist: ['ballurh.io/admin/.*'], // strings or RegExps
   },
+  opt_in_site_apps: true,
 })
