@@ -60,35 +60,23 @@ const CalEmbed: React.FC<CalEmbedProps> = ({ calLink, locale }) => {
         const endTime = booking?.endTime || data?.endTime
         const bookingId = booking?.uid || booking?.id || data?.bookingId
 
-        console.log('data', {
-          cal_link: calLink,
-          Name: `${name?.firstName ?? ''} ${name?.lastName ?? ''}`.trim(),
-          Email: email,
-          Mobile: phone,
-          'Business Name': businessName,
-          'Booking ID': bookingId,
-          'Event Type': eventType,
-          'Start Time': startTime,
-          'End Time': endTime,
-          Locale: locale,
-        })
-
         // Optionally identify by email when available
         if (email) {
-          posthog.identify(email, { Email: email })
+          posthog.identify(email, { email })
         }
 
         posthog.capture('meeting_booked', {
           cal_link: calLink,
-          Name: `${name?.firstName ?? ''} ${name?.lastName ?? ''}`.trim(),
-          Email: email,
-          Mobile: phone,
-          'Business Name': businessName,
-          'Booking ID': bookingId,
-          'Event Type': eventType,
-          'Start Time': startTime,
-          'End Time': endTime,
-          Locale: locale,
+          first_name: `${name?.firstName ?? ''} ${name?.lastName ?? ''}`.trim(),
+          last_name: `${name?.lastName ?? ''}`.trim(),
+          email: email,
+          phone: phone,
+          business_name: businessName,
+          booking_id: bookingId,
+          event_type: eventType,
+          start_time: startTime,
+          end_time: endTime,
+          locale: locale,
         })
       }
     }

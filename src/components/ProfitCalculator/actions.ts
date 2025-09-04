@@ -46,9 +46,18 @@ export async function calculateProfit(data: FormData) {
     businessName = '',
   } = data
 
+  const first_name = name.split(' ')[0]
+  const last_name = name.split(' ').toSpliced(0, 1).join(' ')
+
   await posthog.identify({
     distinctId: email,
-    properties: { Email: email, Name: name, Mobile: phone, 'Business Name': businessName },
+    properties: {
+      email,
+      first_name,
+      last_name,
+      phone,
+      business_name: businessName,
+    },
   })
   await posthog.capture({
     event: ProfitCalculatorEvents.SUBMITTED,
