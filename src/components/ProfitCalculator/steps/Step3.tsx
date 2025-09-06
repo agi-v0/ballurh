@@ -120,16 +120,16 @@ const Step3 = () => {
       </div>
 
       <div className="space-y-2.5">
-        <Label htmlFor="monthlyCompensation">كم متوسط مبلغ التعويضات الشهري؟</Label>
+        <Label htmlFor="monthlyDisputes">كم متوسط مبلغ التعويضات الشهري؟</Label>
         <Controller
-          name="monthlyCompensation"
+          name="monthlyDisputes"
           control={control}
           render={({ field }) => (
             <div className="relative">
               <Input
                 variant="lg"
                 className="rounded-xl"
-                id="monthlyCompensation"
+                id="monthlyDisputes"
                 type="number"
                 inputMode="numeric"
                 placeholder="مثال: 500"
@@ -143,9 +143,9 @@ const Step3 = () => {
         <p className="text-sm text-slate-500">
           مثل: الخصومات على الطلبات المرفوضة أو اعتراضات العملاء
         </p>
-        {errors.monthlyCompensation && (
+        {errors.monthlyDisputes && (
           <p className="mt-1 animate-shake-enter text-xs text-orange-600/80">
-            {errors.monthlyCompensation.message as string}
+            {errors.monthlyDisputes.message as string}
           </p>
         )}
       </div>
