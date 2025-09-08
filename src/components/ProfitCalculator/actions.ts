@@ -39,7 +39,7 @@ export async function calculateProfit(data: FormData) {
     foodCostPercentage = 0.3,
     monthlyAdBudget = '',
     deliveryFeeBorne = 10,
-    monthlyDisputes = 0,
+    // monthlyDisputes = 0,
     name = '',
     email = '',
     phone = '',
@@ -66,15 +66,16 @@ export async function calculateProfit(data: FormData) {
   await posthog.shutdown()
 
   // const annualSalesNumber = Number(annualSales)
-  const annualSalesNumber = annualSalesOptions.get(annualSales) ?? 250000
   const onlinePaymentRate = 0.025
-  const annualOnlinePaymentAmount = onlinePaymentRate * annualSalesNumber
+  const disputesRate = 0.05
+
+  const annualSalesNumber = annualSalesOptions.get(annualSales) ?? 250000
+  const annualOnlinePaymentAmount = annualSalesNumber * onlinePaymentRate
   const annualSalesCommissionsAmount = annualSalesNumber * avgCommissionRate
-  const compensationRate = 0.02
-  const annualCompensationAmount = compensationRate * annualSalesNumber
-  const totalPerOrderRates = avgCommissionRate + onlinePaymentRate + compensationRate
+  const annualDisputesAmount = annualSalesNumber * disputesRate
+  const totalPerOrderRates = avgCommissionRate + onlinePaymentRate + disputesRate
   const totalAnnualPerOrderAmounts =
-    annualOnlinePaymentAmount + annualSalesCommissionsAmount + annualCompensationAmount
+    annualOnlinePaymentAmount + annualSalesCommissionsAmount + annualDisputesAmount
   const monthlyOrdersNumber = Number(monthlyOrders)
   const monthlyDeliverySurchargeAmount = monthlyOrdersNumber * deliveryFeeBorne
   const totalMonthlyMarketingAmount = monthlyDeliverySurchargeAmount + Number(monthlyAdBudget)
@@ -85,11 +86,12 @@ export async function calculateProfit(data: FormData) {
 
   const annualNetSalesNumber = annualSalesNumber - totalAnnualExpenseAmounts
   const priceMarkupToCoverAppFee = round(1 / (1 - totalCommCompMarketingPctOfSales)) - 1
+
   const totalProfitRate = round(1 - totalCommCompMarketingPctOfSales - foodCostPercentage)
   const totalAnnualProfit = round(totalProfitRate * annualSalesNumber)
   const profitPlus15 = round(totalAnnualProfit * 1.15)
   const profitPlus30 = round(totalAnnualProfit * 1.3)
-  const savedDisputes = round(monthlyDisputes * 0.7)
+  const savedDisputes = round(annualDisputesAmount * 0.7)
 
   // console.log('totalAnnualProfit: ', totalAnnualProfit)
 
@@ -108,10 +110,13 @@ export async function calculateProfit(data: FormData) {
     { name: 'delivery_app_commission_percentage', value: avgCommissionRate * 100 },
     { name: 'food_cost', value: foodCostPercentage * 100 },
     { name: 'monthly_advertising', value: monthlyAdBudget },
-    { name: 'monthly_disputes', value: monthlyDisputes },
+    { name: 'monthly_disputes', value: round(annualDisputesAmount / 12) },
+    { name: 'annual_disputes', value: annualDisputesAmount },
     { name: 'delivery_fees', value: deliveryFeeBorne },
     { name: 'calculated_profit', value: totalAnnualProfit },
     { name: 'calculated_profit_rate', value: totalProfitRate * 100 },
+    { name: 'calculated_profit_15_percent', value: round(totalAnnualProfit * 0.15) },
+    { name: 'calculated_profit_30_percent', value: round(totalAnnualProfit * 0.3) },
     { name: 'calculated_profit_plus_15', value: profitPlus15 },
     { name: 'calculated_profit_plus_30', value: profitPlus30 },
     { name: 'disputes_minus_70', value: savedDisputes },

@@ -118,7 +118,7 @@ const ProfitabilityCalculator: React.FC = () => {
     foodCostPercentage: 30,
     monthlyAdBudget: '',
     deliveryFeeBorne: 10,
-    monthlyDisputes: 0,
+    // monthlyDisputes: 0,
     ...contactDefaults,
   }
 

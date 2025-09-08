@@ -119,7 +119,7 @@ const Step3 = () => {
         )}
       </div>
 
-      <div className="space-y-2.5">
+      {/* <div className="space-y-2.5">
         <Label htmlFor="monthlyDisputes">كم متوسط مبلغ التعويضات الشهري؟</Label>
         <Controller
           name="monthlyDisputes"
@@ -148,7 +148,7 @@ const Step3 = () => {
             {errors.monthlyDisputes.message as string}
           </p>
         )}
-      </div>
+      </div> */}
     </div>
   )
 }

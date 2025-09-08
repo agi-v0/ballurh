@@ -37,7 +37,7 @@ const step3Schema = z.object({
     .transform((val) => val / 100),
   monthlyAdBudget: z.string().min(1, { message: 'هذا الحقل مطلوب' }),
   deliveryFeeBorne: z.coerce.number().min(0, { message: 'هذا الحقل مطلوب' }),
-  monthlyDisputes: z.coerce.number().nonnegative().optional().default(0),
+  // monthlyDisputes: z.coerce.number().nonnegative().optional().default(0),
 })
 
 const step4Schema = z.object({
