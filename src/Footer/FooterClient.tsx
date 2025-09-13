@@ -75,11 +75,12 @@ export function FooterClient({ columns, currentYear, locale }: Props) {
                   <MailIcon size={16} aria-hidden="true" />
                   <Input
                     placeholder={t('newsletterPlaceholder')}
+                    className="text-base placeholder:text-sm"
                     type="email"
                     autoComplete="email"
                   />
                 </InputWrapper>
-                <Button variant="primary" type="submit">
+                <Button variant="primary" type="submit" className="text-base">
                   {t('newsletterButton')}
                 </Button>
               </div>
