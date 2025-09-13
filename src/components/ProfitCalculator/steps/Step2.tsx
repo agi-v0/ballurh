@@ -24,33 +24,25 @@ const Step2 = () => {
   return (
     <div className="space-y-6">
       <div className="space-y-2.5">
-        <Label>كم إجمالي مبيعاتك السنوية؟ (بالريال السعودي)</Label>
+        <Label>كم إجمالي مبيعاتك الشهرية؟ (بالريال السعودي)</Label>
         <Controller
-          name="annualSales"
+          name="monthlySales"
           control={control}
           render={({ field }) => (
-            <RadioCardsRoot
-              onValueChange={field.onChange}
-              defaultValue={field.value}
-              className="grid-cols-2 gap-2 md:grid-cols-3"
-            >
-              {annualSalesOptions.map((option) => (
-                <RadioCardsItem
-                  value={option.en}
-                  key={option.en}
-                  variant="classic"
-                  className="rounded-xl text-start"
-                >
-                  <span>{option.ar}</span>
-                  <RadioCardsIndicator />
-                </RadioCardsItem>
-              ))}
-            </RadioCardsRoot>
+            <Input
+              variant="lg"
+              className="rounded-xl"
+              id="monthlySales"
+              type="number"
+              inputMode="numeric"
+              placeholder="مثال: 100000 شهرياً"
+              {...field}
+            />
           )}
         />
-        {errors.annualSales && (
+        {errors.monthlySales && (
           <p className="mt-1 animate-shake-enter text-xs text-orange-600/80">
-            {errors.annualSales.message as string}
+            {errors.monthlySales.message as string}
           </p>
         )}
       </div>
@@ -81,37 +73,8 @@ const Step2 = () => {
       </div>
 
       <div className="space-y-2.5">
-        <Label htmlFor="deliverySalesPercentage">
-          ما النسبة التقديرية لمبيعاتك اللي تجي من تطبيقات التوصيل (هنقرستيشن، جاهز، كيتا، ... إلخ)؟
-        </Label>
-        <Controller
-          name="deliverySalesPercentage"
-          control={control}
-          render={({ field }) => (
-            <div className="relative">
-              <Input
-                variant="lg"
-                className="rounded-xl"
-                id="deliverySalesPercentage"
-                type="number"
-                inputMode="numeric"
-                placeholder="أدخل النسبة"
-                {...field}
-              />
-              <span className="absolute end-3 top-2.5 text-slate-500">%</span>
-            </div>
-          )}
-        />
-        {errors.deliverySalesPercentage && (
-          <p className="mt-1 animate-shake-enter text-xs text-orange-600/80">
-            {errors.deliverySalesPercentage.message as string}
-          </p>
-        )}
-      </div>
-
-      <div className="space-y-2.5">
         <Label htmlFor="avgCommissionRate">كم متوسط النسبة اللي تدفعها كتطبيقات توصيل؟</Label>
-        <p className="text-sm text-slate-500">(تشمل عمولة التطبيق + الدفع الإلكتروني + التسويق)</p>
+        <p className="text-sm text-slate-500">(تشمل عمولة التطبيق + الدفع الإلكتروني)</p>
         <Controller
           name="avgCommissionRate"
           control={control}

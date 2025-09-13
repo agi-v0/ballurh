@@ -18,12 +18,9 @@ const step1Schema = z
   })
 
 const step2Schema = z.object({
-  annualSales: z.string().min(1, { message: 'هذا الحقل مطلوب' }),
+  monthlySales: z.string().min(1, { message: 'هذا الحقل مطلوب' }),
   monthlyOrders: z.string().min(1, { message: 'هذا الحقل مطلوب' }),
-  deliverySalesPercentage: z.coerce
-    .number()
-    .min(1, { message: 'هذا الحقل مطلوب' })
-    .transform((val) => val / 100),
+  // العمولات من المبيعات %
   avgCommissionRate: z.coerce
     .number()
     .min(1, { message: 'هذا الحقل مطلوب' })

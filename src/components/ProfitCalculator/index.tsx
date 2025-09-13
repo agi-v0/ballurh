@@ -31,9 +31,9 @@ const stepSchemas = [
     cloudBrandsCount: true,
   }),
   formSchema.pick({
-    annualSales: true,
+    monthlySales: true,
     monthlyOrders: true,
-    deliverySalesPercentage: true,
+    // deliverySalesPercentage: true,
     avgCommissionRate: true,
   }),
   formSchema.pick({
@@ -111,9 +111,9 @@ const ProfitabilityCalculator: React.FC = () => {
     physicalBranchesCount: 1,
     hasCloudBrands: 'Yes',
     cloudBrandsCount: 1,
-    annualSales: 'Less than 500,000',
+    monthlySales: '',
     monthlyOrders: '',
-    deliverySalesPercentage: 25,
+    // deliverySalesPercentage: 25,
     avgCommissionRate: 25,
     foodCostPercentage: 30,
     monthlyAdBudget: '',
@@ -216,15 +216,15 @@ const ProfitabilityCalculator: React.FC = () => {
 
   const onSubmit = async (data: FormData) => {
     setIsSubmitting(true)
-
+    posthog.identify(data.email)
+    actions.updateContactInfo({
+      name: data.name,
+      email: data.email,
+      phone: data.phone,
+      businessName: data.businessName || '',
+    })
     try {
       const response = await calculateProfit(data)
-      actions.updateContactInfo({
-        name: data.name,
-        email: data.email,
-        phone: data.phone,
-        businessName: data.businessName || '',
-      })
       if (response.success) {
         setIsSubmitted(true)
       } else {
