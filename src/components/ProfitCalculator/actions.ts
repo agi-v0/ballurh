@@ -2,19 +2,27 @@
 
 import { FormData } from '@/components/ProfitCalculator/schema'
 import { getPayload } from 'payload'
+import type { ProfitabilityReportEmailProps } from 'react-email-playground/emails/profitability-report'
 import config from '@payload-config'
 import PostHogClient from '@/posthog.js'
 import { ProfitCalculatorEvents } from './events'
 
 const round = (num: number) => Math.round((num + Number.EPSILON) * 100) / 100
 
-const annualSalesOptions = new Map([
-  ['Less than 500,000', 250000],
-  ['500,000 - 750,000', 625000],
-  ['750,000 - 1,250,000', 1000000],
-  ['1,250,000 - 2,000,000', 1625000],
-  ['More than 2,000,000', 2000000],
-])
+const formatCurrency = (amount: number, currency = 'USD') =>
+  new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: 'SAR',
+    maximumFractionDigits: 0,
+  }).format(amount)
+
+const formatPercent = (value: number) => {
+  const normalized = value > 1 ? value / 100 : value
+  return new Intl.NumberFormat('en', {
+    style: 'percent',
+    maximumFractionDigits: 1,
+  }).format(normalized)
+}
 
 const business_type = new Map([
   ['restaurant', 'Restaurant / Café'],
@@ -32,12 +40,12 @@ export async function calculateProfit(data: FormData) {
     physicalBranchesCount = 1,
     hasCloudBrands = 'لا',
     cloudBrandsCount = 1,
-    annualSales = 'أقل من 500,000',
+    monthlySales = '0',
     monthlyOrders = '',
-    deliverySalesPercentage = 0.25,
+    // deliverySalesPercentage = 0.25,
     avgCommissionRate = 0.25,
     foodCostPercentage = 0.3,
-    monthlyAdBudget = '',
+    monthlyAdBudget = 0,
     deliveryFeeBorne = 10,
     // monthlyDisputes = 0,
     name = '',
@@ -65,35 +73,37 @@ export async function calculateProfit(data: FormData) {
   })
   await posthog.shutdown()
 
-  // const annualSalesNumber = Number(annualSales)
+  // const monthlySalesNumber = Number(monthlySales)
   const onlinePaymentRate = 0.025
   const disputesRate = 0.05
 
-  const annualSalesNumber = annualSalesOptions.get(annualSales) ?? 250000
-  const annualOnlinePaymentAmount = annualSalesNumber * onlinePaymentRate
-  const annualSalesCommissionsAmount = annualSalesNumber * avgCommissionRate
-  const annualDisputesAmount = annualSalesNumber * disputesRate
-  const totalPerOrderRates = avgCommissionRate + onlinePaymentRate + disputesRate
-  const totalAnnualPerOrderAmounts =
-    annualOnlinePaymentAmount + annualSalesCommissionsAmount + annualDisputesAmount
+  const monthlySalesNumber = Number(monthlySales)
+  const monthlyOnlinePaymentAmount = monthlySalesNumber * onlinePaymentRate
+  const monthlySalesCommissionsAmount = monthlySalesNumber * avgCommissionRate
+  const monthlyDisputesAmount = monthlySalesNumber * disputesRate
+  const transactionCommissions = avgCommissionRate + onlinePaymentRate + disputesRate
+  const totalMonthlyTransactionExpenses =
+    monthlyOnlinePaymentAmount + monthlySalesCommissionsAmount + monthlyDisputesAmount
+
   const monthlyOrdersNumber = Number(monthlyOrders)
   const monthlyDeliverySurchargeAmount = monthlyOrdersNumber * deliveryFeeBorne
+
   const totalMonthlyMarketingAmount = monthlyDeliverySurchargeAmount + Number(monthlyAdBudget)
-  const totalAnnualMarketingAmount = totalMonthlyMarketingAmount
-  const marketingSalesPercentage = round(totalAnnualMarketingAmount / annualSalesNumber)
-  const totalAnnualExpenseAmounts = totalAnnualPerOrderAmounts + totalAnnualMarketingAmount
-  const totalCommCompMarketingPctOfSales = round(totalAnnualExpenseAmounts / annualSalesNumber)
+  const marketingSalesPercentage = round(totalMonthlyMarketingAmount / monthlySalesNumber)
+  const totalMonthlyExpenseAmounts = totalMonthlyTransactionExpenses + totalMonthlyMarketingAmount
 
-  const annualNetSalesNumber = annualSalesNumber - totalAnnualExpenseAmounts
-  const priceMarkupToCoverAppFee = round(1 / (1 - totalCommCompMarketingPctOfSales)) - 1
+  const totalExpensesPctOfSales = round(totalMonthlyExpenseAmounts / monthlySalesNumber)
 
-  const totalProfitRate = round(1 - totalCommCompMarketingPctOfSales - foodCostPercentage)
-  const totalAnnualProfit = round(totalProfitRate * annualSalesNumber)
-  const profitPlus15 = round(totalAnnualProfit * 1.15)
-  const profitPlus30 = round(totalAnnualProfit * 1.3)
-  const savedDisputes = round(annualDisputesAmount * 0.7)
+  const monthlyNetSalesNumber = monthlySalesNumber - totalMonthlyExpenseAmounts
+  const priceMarkupToCoverAppFee = round(1 / (1 - totalExpensesPctOfSales)) - 1
 
-  // console.log('totalAnnualProfit: ', totalAnnualProfit)
+  const netProfitRate = round(1 - totalExpensesPctOfSales - foodCostPercentage)
+  const netProfitNumber = round(netProfitRate * monthlySalesNumber)
+  const profitPlus15 = round(netProfitNumber * 1.15)
+  const profitPlus30 = round(netProfitNumber * 1.3)
+  const savedDisputes = round(monthlyDisputesAmount * 0.7)
+
+  // console.log('netProfitNumber: ', netProfitNumber)
 
   const fields = [
     { name: 'firstname', value: name },
@@ -104,24 +114,25 @@ export async function calculateProfit(data: FormData) {
     { name: 'number_of_locations', value: physicalBranchesCount },
     { name: 'has_cloud_brands', value: hasCloudBrands },
     { name: 'number_of_cloud_brands', value: cloudBrandsCount },
-    { name: 'annual_sales_revenue', value: annualSales },
+    { name: 'annual_sales_revenue', value: monthlySales },
     { name: 'monthly_orders', value: monthlyOrders },
-    { name: 'delivery_app_sales_percentage', value: deliverySalesPercentage * 100 },
+    // { name: 'delivery_app_sales_percentage', value: deliverySalesPercentage * 100 },
     { name: 'delivery_app_commission_percentage', value: avgCommissionRate * 100 },
     { name: 'food_cost', value: foodCostPercentage * 100 },
     { name: 'monthly_advertising', value: monthlyAdBudget },
-    { name: 'monthly_disputes', value: round(annualDisputesAmount / 12) },
-    { name: 'annual_disputes', value: annualDisputesAmount },
+    { name: 'monthly_disputes', value: monthlyDisputesAmount },
+    { name: 'annual_disputes', value: monthlyDisputesAmount * 12 },
     { name: 'delivery_fees', value: deliveryFeeBorne },
-    { name: 'calculated_profit', value: totalAnnualProfit },
-    { name: 'calculated_profit_rate', value: totalProfitRate * 100 },
-    { name: 'calculated_profit_15_percent', value: round(totalAnnualProfit * 0.15) },
-    { name: 'calculated_profit_30_percent', value: round(totalAnnualProfit * 0.3) },
+    { name: 'calculated_profit', value: netProfitNumber },
+    { name: 'calculated_profit_rate', value: netProfitRate * 100 },
+    { name: 'calculated_profit_15_percent', value: round(netProfitNumber * 0.15) },
+    { name: 'calculated_profit_30_percent', value: round(netProfitNumber * 0.3) },
     { name: 'calculated_profit_plus_15', value: profitPlus15 },
     { name: 'calculated_profit_plus_30', value: profitPlus30 },
     { name: 'disputes_minus_70', value: savedDisputes },
   ]
 
+  let savedOk = false
   try {
     // Submit to HubSpot
     const portalId = process.env.HUBSPOT_PORTAL_ID
@@ -167,10 +178,178 @@ export async function calculateProfit(data: FormData) {
         })),
       },
     })
-
-    return { success: true, message: 'Data saved successfully' }
+    savedOk = true
   } catch (error) {
     console.error('Error processing request:', error)
-    return { success: false, message: 'Error processing request' }
+  }
+
+  // Send profitability report email to the lead
+  try {
+    const apiKey = process.env.RESEND_API_KEY
+    const from = process.env.RESEND_EMAIL
+    if (!apiKey) {
+      console.warn('Skipping email: Missing RESEND_API_KEY')
+      return { success: savedOk, message: 'Data saved, email skipped (missing API key)' }
+    }
+
+    const pnl: {
+      label: string
+      amount: string // positive numbers; expenses will be shown with minus styling
+      type: 'revenue' | 'expense'
+    }[] = [
+      { label: 'المبيعات الشهريية', amount: formatCurrency(monthlySalesNumber), type: 'revenue' },
+      {
+        label: 'عدد الطلبات الشهرية من تطبيقات التوصيل ',
+        amount: monthlyOrdersNumber.toString(),
+        type: 'revenue',
+      },
+
+      {
+        label: 'مبلغ المدفوعات الالكترونية',
+        amount: formatCurrency(monthlyOnlinePaymentAmount),
+        type: 'expense',
+      },
+      {
+        label: 'مبلغ العمولات على المبيعات',
+        amount: formatCurrency(monthlySalesCommissionsAmount),
+        type: 'expense',
+      },
+      {
+        label: 'منازعات واستردادات (مبلغ التعويضات)',
+        amount: formatCurrency(round(monthlyDisputesAmount)),
+        type: 'expense',
+      },
+
+      // {
+      //   label: 'أجمالى العمولات - التعويضات - نسبة البنك',
+      //   amount: formatCurrency(totalMonthlyTransactionExpenses),
+      //   type: 'expense',
+      // },
+
+      // {
+      //   label: 'متوسط مبلغ التحمل في التوصيل',
+      //   amount: formatCurrency(monthlyDeliverySurchargeAmount),
+      //   type: 'expense',
+      // },
+      // {
+      //   label: ' مبلغTop List-CPC',
+      //   amount: formatCurrency(Number(monthlyAdBudget)),
+      //   type: 'expense',
+      // },
+      {
+        label: 'اجمالى م التسويق',
+        amount: formatCurrency(totalMonthlyMarketingAmount),
+        type: 'expense',
+      },
+      // {
+      //   label: '% م التسويق من المبيعات',
+      //   amount: formatPercent(marketingSalesPercentage),
+      //   type: 'expense',
+      // },
+      {
+        label: 'اجمالى  العمولات & التعويضات & التسويق',
+        amount: formatCurrency(totalMonthlyExpenseAmounts),
+        type: 'expense',
+      },
+      {
+        label: '% اجمالى العمولات & التعويضات & التسويق  من المبيعات',
+        amount: formatPercent(totalExpensesPctOfSales),
+        type: 'expense',
+      },
+      {
+        label: 'صافى المبيعات المحققة',
+        amount: formatCurrency(monthlyNetSalesNumber),
+        type: 'revenue',
+      },
+      {
+        label: 'كم لازم ترفع اسعارك عشان تغطي كامل تكلفة نسبة التطبيق',
+        amount: formatPercent(priceMarkupToCoverAppFee),
+        type: 'revenue',
+      },
+      {
+        label: 'نسبة صافي الربح',
+        amount: formatPercent(netProfitRate),
+        type: 'revenue',
+      },
+      {
+        label: 'صافي الربح',
+        amount: formatCurrency(netProfitNumber),
+        type: 'revenue',
+      },
+    ]
+    console.log(pnl)
+    const recs: ProfitabilityReportEmailProps['recommendations'] = []
+    const markupPct = Math.round(priceMarkupToCoverAppFee * 100)
+    if (avgCommissionRate > 0.25) {
+      recs.push({
+        title: 'تغطية عمولة التطبيقات بالتسعير',
+        description: `استخدم إستراتيجية تسعير تدرّجية لتغطية الرسوم. الزيادة الموصى بها لتغطية الرسوم الحالية: حوالي ${markupPct}% على العناصر المناسبة دون التأثير على الطلب.`,
+        impact: 'high',
+      })
+    }
+    if (foodCostPercentage > 0.3) {
+      recs.push({
+        title: 'خفض تكلفة المواد الغذائية',
+        description:
+          'راجع حصص الوصفات واتفاقيات المورّدين، وراقب نسبة الهدر أسبوعيًا. استهدف نسبة تكلفة بين 25% و28% للأطباق الأساسية.',
+        impact: 'medium',
+      })
+    }
+    if (marketingSalesPercentage > 0.1) {
+      recs.push({
+        title: 'تحسين إنفاق التسويق',
+        description:
+          'حوّل الميزانية نحو القنوات الأعلى مردودًا، واربِط الحملات بمؤشرات واضحة مثل CAC وROAS. اختبر عروضًا تعتمد على هامش الربح لا على الخصم العام.',
+        impact: 'medium',
+      })
+    }
+
+    const SITE_URL =
+      process.env.NEXT_PUBLIC_SERVER_URL ||
+      process.env.VERCEL_PROJECT_PRODUCTION_URL ||
+      'https://example.com'
+
+    const emailProps: ProfitabilityReportEmailProps = {
+      restaurantName: businessName || 'مطعمك',
+      periodLabel: 'هذا الشهر',
+      profit: netProfitNumber,
+      profitRate: netProfitRate, // 0–1
+      expenseRate: totalExpensesPctOfSales,
+      ctaUrl: `${SITE_URL}/ar/meeting`,
+      ctaLabel: 'احجز مكالمة',
+      pnl,
+      recommendations: recs.length ? recs : undefined,
+    }
+
+    const subject = `تقرير الربحية — ${businessName || 'مطعمك'}`
+
+    // Prefer sending via our Next route for consistency
+
+    const baseEnv = process.env.NEXT_PUBLIC_SERVER_URL || process.env.VERCEL_PROJECT_PRODUCTION_URL
+    const baseUrl = baseEnv
+      ? baseEnv.startsWith('http')
+        ? baseEnv
+        : `https://${baseEnv}`
+      : 'http://localhost:3000'
+
+    const resp = await fetch(`${baseUrl}/next/send-email`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        to: email,
+        subject,
+        template: 'profitability-report',
+        templateProps: emailProps,
+        from,
+      }),
+    })
+    if (!resp.ok) {
+      throw new Error('send-email route failed:')
+    }
+    console.log(pnl)
+    return { success: savedOk, message: 'Data saved and email sent' }
+  } catch (error) {
+    console.error('Error sending profitability email:', error)
+    return { success: savedOk, message: 'Data saved, email sending failed' }
   }
 }
