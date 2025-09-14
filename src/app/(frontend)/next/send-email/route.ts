@@ -3,8 +3,7 @@ import { Resend } from 'resend'
 import { z } from 'zod'
 import ProfitabilityReportEmail, {
   type ProfitabilityReportEmailProps,
-} from 'react-email-playground/emails/profitability-report'
-import { render } from '@react-email/render'
+} from '@/components/ProfitCalculator/profitabilityReportEmail'
 
 export const runtime = 'nodejs'
 
@@ -12,13 +11,10 @@ const bodySchema = z
   .object({
     to: z.union([z.string(), z.array(z.string()).nonempty()]),
     subject: z.string().min(1, 'Subject is required'),
-
     html: z.string().optional(),
     text: z.string().optional(),
-
     template: z.literal('profitability-report').optional(),
     templateProps: z.record(z.string(), z.unknown()).optional(),
-    // Mail headers
     from: z.string().optional(),
     replyTo: z.union([z.string(), z.array(z.string()).nonempty()]).optional(),
     cc: z.union([z.string(), z.array(z.string()).nonempty()]).optional(),
