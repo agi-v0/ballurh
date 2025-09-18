@@ -164,8 +164,9 @@ export function ProfitabilityReportEmail(props: ProfitabilityReportEmailProps) {
               "
               alt="logo"
               height="32"
-              style={{ marginBlockEnd: '1.5em' }}
+              style={{ marginBlockEnd: '1em' }}
             />
+            <Hr style={hr} />
             {/* <Text style={eyebrow}>{restaurantName}</Text> */}
             <Heading as="h1" style={{ marginBlockStart: 0 }}>
               تقرير الربحية
