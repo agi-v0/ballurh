@@ -7,6 +7,7 @@ import {
   Heading,
   Hr,
   Html,
+  Img,
   Preview,
   Row,
   Section,
@@ -107,7 +108,7 @@ const defaultRecommendations: Recommendation[] = [
 ]
 
 export function ProfitabilityReportEmail(props: ProfitabilityReportEmailProps) {
-  const restaurantName = props.restaurantName ?? 'مطعمك'
+  const restaurantName = props.restaurantName ?? 'اسم المطعم'
   const periodLabel = props.periodLabel ?? 'هذا الشهر'
   const pnl = props.pnl ?? defaultPnl
   const pnlFooter = props.pnlFooter ?? defaultPnlFooter
@@ -144,7 +145,7 @@ export function ProfitabilityReportEmail(props: ProfitabilityReportEmailProps) {
 
   const expenseRate = `${parsedExpenseRate * 100}%`
 
-  const profitRateWithBallurh = `${Math.round(parsedProfitRate * 1.3 * 100)}% - ${Math.round(parsedProfitRate * 1.15 * 100)}%`
+  const profitRateWithBallurh = `${Math.round(parsedProfitRate * 1.15 * 100)}% - ${Math.round(parsedProfitRate * 1.3 * 100)}%`
   const profitWithBallurh = `${Math.round(parsedProfit * 1.3).toLocaleString('en', { style: 'currency', maximumFractionDigits: 0, currency: 'sar' })} - ${Math.round(parsedProfit * 1.15).toLocaleString('en', { style: 'currency', maximumFractionDigits: 0, currency: 'sar' })}`
   console.log('parsed profit: ', profit)
 
@@ -158,14 +159,32 @@ export function ProfitabilityReportEmail(props: ProfitabilityReportEmailProps) {
       <Body style={main} dir="rtl">
         <Container style={container}>
           <Section style={box}>
-            <Text style={eyebrow}>{restaurantName}</Text>
-            <Heading as="h1">تقرير الربحية</Heading>
-            <Text style={subTitle}>{periodLabel}</Text>
-            <Text style={subTitle}> نتائج الربح والخسارة بناءا على مدخلاتك بشكل وسطي هي:</Text>
-            <Text style={{ ...subTitle, color: '#b42318' }}>
+            <Img
+              src="https://ballurh.io/logo.png
+              "
+              alt="logo"
+              height="32"
+              style={{ marginBlockEnd: '1.5em' }}
+            />
+            {/* <Text style={eyebrow}>{restaurantName}</Text> */}
+            <Heading as="h1" style={{ marginBlockStart: 0 }}>
+              تقرير الربحية
+            </Heading>
+            <Text style={subTitle}>{`${restaurantName} • ${periodLabel}`}</Text>
+            <Text
+              style={{
+                ...subTitle,
+                color: '#a16207',
+                padding: '8px',
+                // border: '1px solid red',
+                borderRadius: '8px',
+                backgroundColor: '#fef9c3',
+              }}
+            >
               تنبيه: الأرقام التالية مبنية على مدخلاتك في نموذج حاسبة الربحية فقط، وهي تقديرات
               تقريبية ولم يتم التحقق منها كمخرجات مالية رسمية.
             </Text>
+            <Text style={subTitle}> نتائج الربح والخسارة بناءا على مدخلاتك بشكل وسطي هي:</Text>
             {/* <div style={kpiCard}>
               <Text style={kpiLabel}>الربح المُقدّر</Text>
               <Text
@@ -239,7 +258,7 @@ export function ProfitabilityReportEmail(props: ProfitabilityReportEmailProps) {
               </tbody>
             </table>
             <br />
-            <Heading as="h3">مع بلّورة، صافي ربحك ممكن يكون </Heading>
+            <Heading as="h3">مع بلّورة، تقدر تزيد دخلك بشكل كبير </Heading>
             <div
               style={{
                 backgroundColor: '#ecfff9',
@@ -272,7 +291,7 @@ export function ProfitabilityReportEmail(props: ProfitabilityReportEmailProps) {
               >
                 {profitRateWithBallurh}
               </Text>
-              <Text style={kpiLabel}>التعويضات المستردة</Text>
+              <Text style={kpiLabel}>تعويضات مستردة</Text>
               <Text
                 dir="ltr"
                 style={{
@@ -283,10 +302,6 @@ export function ProfitabilityReportEmail(props: ProfitabilityReportEmailProps) {
                 }}
               >
                 {savedDisputes}
-              </Text>
-              <Text style={{ ...kpiLabel, marginTop: '8px' }}>
-                تقدير افتراضي يعتمد على نفس بيانات نموذج حاسبة الربحية؛ نتائجك الفعلية قد تختلف
-                وتتطلب مراجعة مالية مختصة.
               </Text>
             </div>
             {hasRecommendations && (
@@ -303,11 +318,11 @@ export function ProfitabilityReportEmail(props: ProfitabilityReportEmailProps) {
                           : undefined
                   const impactColors =
                     rec.impact === 'high'
-                      ? { backgroundColor: '#ecfdf5', color: '#065f46' } // green
+                      ? { backgroundColor: '#ccfbf1', color: '#0f766e' } // green
                       : rec.impact === 'medium'
-                        ? { backgroundColor: '#fffbeb', color: '#92400e' } // amber
+                        ? { backgroundColor: '#fef9c3', color: '#a16207' } // amber
                         : rec.impact === 'low'
-                          ? { backgroundColor: '#f3f4f6', color: '#374151' } // gray
+                          ? { backgroundColor: '#f1f5f9', color: '#334155' } // gray
                           : undefined
                   return (
                     <div key={`rec-${idx}`} style={recCard}>
@@ -321,9 +336,9 @@ export function ProfitabilityReportEmail(props: ProfitabilityReportEmailProps) {
                     </div>
                   )
                 })}
-                <Hr style={hr} />
               </>
             )}
+
             <Text style={paragraph}>
               هل تريد خطة مخصّصة لزيادة هامش الربح بناءً على بيانات مطعمك؟ احجز مكالمة مجانية لمدة
               30 دقيقة لنراجع التقرير معك ونقترح خطوات عملية قابلة للتنفيذ.
@@ -346,7 +361,7 @@ export function ProfitabilityReportEmail(props: ProfitabilityReportEmailProps) {
 export default ProfitabilityReportEmail
 
 const main = {
-  backgroundColor: '#f1f5f9',
+  backgroundColor: '#ffffff',
   fontFamily:
     '-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Ubuntu,sans-serif',
 }
@@ -378,7 +393,7 @@ const title = {
 const subTitle = {
   color: '#5b6b7a',
   fontSize: '14px',
-  margin: '4px 0 16px 0',
+  margin: '0 0 16px 0',
 }
 
 const sectionTitle = {
@@ -488,7 +503,8 @@ const footer = {
 }
 
 const recCard = {
-  backgroundColor: '#f1f5f9',
+  // backgroundColor: '#f1f5f9',
+  border: '1px solid #e2e8f0',
   borderRadius: '8px',
   padding: '12px',
   margin: '8px 0',
@@ -512,8 +528,8 @@ const recBodyText = {
 const chip = {
   display: 'inline-block',
   borderRadius: '9999px',
-  padding: '2px 8px',
+  padding: '4px 8px',
   fontSize: '12px',
-  fontWeight: 700,
+  fontWeight: 600,
   marginTop: '6px',
 }
