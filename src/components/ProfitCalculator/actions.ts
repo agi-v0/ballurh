@@ -2,7 +2,7 @@
 
 import { FormData } from '@/components/ProfitCalculator/schema'
 import { getPayload } from 'payload'
-import type { ProfitabilityReportEmailProps } from 'react-email-playground/emails/profitability-report'
+import type { ProfitabilityReportEmailProps } from 'react-email/emails/profitability-report'
 import config from '@payload-config'
 import PostHogClient from '@/posthog.js'
 import { ProfitCalculatorEvents } from './events'

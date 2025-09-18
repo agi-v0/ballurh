@@ -3,7 +3,7 @@ import { Resend } from 'resend'
 import { z } from 'zod'
 import ProfitabilityReportEmail, {
   type ProfitabilityReportEmailProps,
-} from 'react-email-playground/emails/profitability-report'
+} from 'react-email/emails/profitability-report'
 
 export const runtime = 'nodejs'
 
