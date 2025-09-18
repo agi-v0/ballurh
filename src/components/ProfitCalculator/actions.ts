@@ -197,13 +197,12 @@ export async function calculateProfit(data: FormData) {
       amount: string // positive numbers; expenses will be shown with minus styling
       type: 'revenue' | 'expense'
     }[] = [
-      { label: 'المبيعات الشهريية', amount: formatCurrency(monthlySalesNumber), type: 'revenue' },
+      { label: 'المبيعات الشهرية', amount: formatCurrency(monthlySalesNumber), type: 'revenue' },
       {
         label: 'عدد الطلبات الشهرية من تطبيقات التوصيل ',
         amount: monthlyOrdersNumber.toString(),
         type: 'revenue',
       },
-
       {
         label: 'مبلغ المدفوعات الالكترونية',
         amount: formatCurrency(monthlyOnlinePaymentAmount),
@@ -219,61 +218,48 @@ export async function calculateProfit(data: FormData) {
         amount: formatCurrency(round(monthlyDisputesAmount)),
         type: 'expense',
       },
-
-      // {
-      //   label: 'أجمالى العمولات - التعويضات - نسبة البنك',
-      //   amount: formatCurrency(totalMonthlyTransactionExpenses),
-      //   type: 'expense',
-      // },
-
-      // {
-      //   label: 'متوسط مبلغ التحمل في التوصيل',
-      //   amount: formatCurrency(monthlyDeliverySurchargeAmount),
-      //   type: 'expense',
-      // },
-      // {
-      //   label: ' مبلغTop List-CPC',
-      //   amount: formatCurrency(Number(monthlyAdBudget)),
-      //   type: 'expense',
-      // },
       {
-        label: 'اجمالى م التسويق',
+        label: 'اجمالى التسويق',
         amount: formatCurrency(totalMonthlyMarketingAmount),
         type: 'expense',
       },
+
       // {
-      //   label: '% م التسويق من المبيعات',
-      //   amount: formatPercent(marketingSalesPercentage),
-      //   type: 'expense',
+      //   label: 'صافى المبيعات المحققة',
+      //   amount: formatCurrency(monthlyNetSalesNumber),
+      //   type: 'revenue',
       // },
+      // {
+      //   label: 'كم لازم ترفع اسعارك عشان تغطي كامل تكلفة نسبة التطبيق',
+      //   amount: formatPercent(priceMarkupToCoverAppFee),
+      //   type: 'revenue',
+      // },
+    ]
+
+    const pnlFooter: {
+      label: string
+      amount: string // positive numbers; expenses will be shown with minus styling
+      type: 'revenue' | 'expense'
+    }[] = [
       {
-        label: 'اجمالى  العمولات & التعويضات & التسويق',
+        label: 'اجمالى العمولات & التعويضات & التسويق',
         amount: formatCurrency(totalMonthlyExpenseAmounts),
         type: 'expense',
       },
       {
-        label: '% اجمالى العمولات & التعويضات & التسويق  من المبيعات',
+        label: 'نسبة النفقات من المبيعات',
         amount: formatPercent(totalExpensesPctOfSales),
         type: 'expense',
       },
+      // {
+      //   label: 'صافى المبيعات المحققة',
+      //   amount: formatCurrency(monthlyNetSalesNumber),
+      //   type: 'revenue',
+      // },
+      { label: 'صافي الربح', amount: formatCurrency(netProfitNumber), type: 'revenue' },
       {
-        label: 'صافى المبيعات المحققة',
-        amount: formatCurrency(monthlyNetSalesNumber),
-        type: 'revenue',
-      },
-      {
-        label: 'كم لازم ترفع اسعارك عشان تغطي كامل تكلفة نسبة التطبيق',
-        amount: formatPercent(priceMarkupToCoverAppFee),
-        type: 'revenue',
-      },
-      {
-        label: 'نسبة صافي الربح',
+        label: 'نسبة صافي الربح من المبيعات',
         amount: formatPercent(netProfitRate),
-        type: 'revenue',
-      },
-      {
-        label: 'صافي الربح',
-        amount: formatCurrency(netProfitNumber),
         type: 'revenue',
       },
     ]
@@ -315,9 +301,11 @@ export async function calculateProfit(data: FormData) {
       profit: netProfitNumber,
       profitRate: netProfitRate, // 0–1
       expenseRate: totalExpensesPctOfSales,
+      savedDisputes,
       ctaUrl: `${SITE_URL}/ar/meeting`,
       ctaLabel: 'احجز مكالمة',
       pnl,
+      pnlFooter,
       recommendations: recs.length ? recs : undefined,
     }
 

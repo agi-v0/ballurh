@@ -4,6 +4,7 @@ import {
   Column,
   Container,
   Head,
+  Heading,
   Hr,
   Html,
   Preview,
@@ -24,9 +25,11 @@ export type ProfitabilityReportEmailProps = {
   profit?: number // net profit amount
   profitRate?: number // e.g. 0.18 (18%) or 18 (18%)
   expenseRate?: number // e.g. 0.18 (18%) or 18 (18%)
+  savedDisputes?: number
   ctaUrl?: string
   ctaLabel?: string
   pnl?: PnlItem[]
+  pnlFooter?: PnlItem[]
   recommendations?: Recommendation[]
 }
 
@@ -37,62 +40,49 @@ type Recommendation = {
 }
 
 const defaultPnl: PnlItem[] = [
-  {
-    label: 'المبيعات الشهريية',
-    amount: 'SAR 150,000',
-    type: 'revenue',
-  },
+  { label: 'المبيعات الشهرية', amount: 'SAR 100,000', type: 'revenue' },
   {
     label: 'عدد الطلبات الشهرية من تطبيقات التوصيل ',
-    amount: 'SAR 850',
+    amount: '850',
     type: 'revenue',
   },
   {
     label: 'مبلغ المدفوعات الالكترونية',
-    amount: 'SAR 3,750',
+    amount: 'SAR 2,500',
     type: 'expense',
   },
-  { label: 'مبلغ العمولات', amount: 'SAR 37,500', type: 'expense' },
+  {
+    label: 'مبلغ العمولات على المبيعات',
+    amount: 'SAR 25,000',
+    type: 'expense',
+  },
   {
     label: 'منازعات واستردادات (مبلغ التعويضات)',
-    amount: 'SAR 7,500',
+    amount: 'SAR 5,000',
     type: 'expense',
   },
+  { label: 'اجمالى التسويق', amount: 'SAR 10,500', type: 'expense' },
   {
-    label: 'أجمالى العمولات - التعويضات - نسبة البنك',
-    amount: 'SAR 48,750',
+    label: 'اجمالى العمولات & التعويضات & التسويق',
+    amount: 'SAR 43,000',
     type: 'expense',
   },
-  {
-    label: 'متوسط مبلغ التحمل في التوصيل',
-    amount: 'SAR 8,500',
-    type: 'expense',
-  },
-  { label: ' مبلغTop List-CPC', amount: 'SAR 2,000', type: 'expense' },
-  { label: 'اجمالى م التسويق', amount: 'SAR 10,500', type: 'expense' },
-  { label: '% م التسويق من المبيعات', amount: '7%', type: 'expense' },
-  {
-    label: 'اجمالى  العمولات & التعويضات & التسويق',
-    amount: 'SAR 59,250',
-    type: 'expense',
-  },
-  {
-    label: '% اجمالى العمولات & التعويضات & التسويق  من المبيعات',
-    amount: '40%',
-    type: 'expense',
-  },
-  {
-    label: 'صافى المبيعات المحققة',
-    amount: 'SAR 90,750',
-    type: 'revenue',
-  },
-  {
-    label: 'كم لازم ترفع اسعارك عشان تغطي كامل تكلفة نسبة التطبيق',
-    amount: '67%',
-    type: 'revenue',
-  },
-  { label: 'نسبة صافي الربح', amount: '30%', type: 'revenue' },
-  { label: 'صافي الربح', amount: 'SAR 45,000', type: 'revenue' },
+]
+
+const defaultPnlFooter: PnlItem[] = [
+  // {
+  //   label: 'صافى المبيعات المحققة',
+  //   amount: 'SAR 57,000',
+  //   type: 'revenue',
+  // },
+  // {
+  //   label: 'كم لازم ترفع اسعارك عشان تغطي كامل تكلفة نسبة التطبيق',
+  //   amount: '75%',
+  //   type: 'revenue',
+  // },
+  { label: 'صافي الربح', amount: 'SAR 27,000', type: 'revenue' },
+  { label: 'نسبة صافي الربح من المبيعات', amount: '27%', type: 'revenue' },
+  { label: 'نسبة النفقات من المبيعات', amount: '27%', type: 'expense' },
 ]
 
 const defaultRecommendations: Recommendation[] = [
@@ -120,6 +110,7 @@ export function ProfitabilityReportEmail(props: ProfitabilityReportEmailProps) {
   const restaurantName = props.restaurantName ?? 'مطعمك'
   const periodLabel = props.periodLabel ?? 'هذا الشهر'
   const pnl = props.pnl ?? defaultPnl
+  const pnlFooter = props.pnlFooter ?? defaultPnlFooter
   const recommendations = props.recommendations ?? defaultRecommendations
   const hasRecommendations = recommendations.length > 0
 
@@ -132,9 +123,10 @@ export function ProfitabilityReportEmail(props: ProfitabilityReportEmailProps) {
   const computedProfit = totalRevenue - totalExpenses
 
   const parsedProfit = props.profit ?? 45000
-  const parsedProfitRate = props.profitRate ?? 30
+  const parsedProfitRate = props.profitRate ?? 0.3
+  const parsedSavedDisputes = props.savedDisputes ?? 4500
 
-  const parsedExpenseRate = props.expenseRate ?? 30
+  const parsedExpenseRate = props.expenseRate ?? 0.3
 
   const profit = parsedProfit.toLocaleString('en-US', {
     style: 'currency',
@@ -142,12 +134,18 @@ export function ProfitabilityReportEmail(props: ProfitabilityReportEmailProps) {
     maximumFractionDigits: 0,
   })
 
-  const profitRate = `${parsedProfitRate}%`
+  const savedDisputes = parsedSavedDisputes.toLocaleString('en-US', {
+    style: 'currency',
+    currency: 'SAR',
+    maximumFractionDigits: 0,
+  })
 
-  const expenseRate = `${parsedExpenseRate}%`
+  const profitRate = `${parsedProfitRate * 100}%`
 
-  const profitRateWithBallurh = `${parsedProfitRate * 1.15} - ${parsedProfitRate * 1.3}`
-  const profitWithBallurh = `${Math.round(parsedProfit * 1.15).toLocaleString('en', { style: 'currency', maximumFractionDigits: 0, currency: 'sar' })} - ${Math.round(parsedProfit * 1.3).toLocaleString('en', { style: 'currency', maximumFractionDigits: 0, currency: 'sar' })}`
+  const expenseRate = `${parsedExpenseRate * 100}%`
+
+  const profitRateWithBallurh = `${Math.round(parsedProfitRate * 1.3 * 100)}% - ${Math.round(parsedProfitRate * 1.15 * 100)}%`
+  const profitWithBallurh = `${Math.round(parsedProfit * 1.3).toLocaleString('en', { style: 'currency', maximumFractionDigits: 0, currency: 'sar' })} - ${Math.round(parsedProfit * 1.15).toLocaleString('en', { style: 'currency', maximumFractionDigits: 0, currency: 'sar' })}`
   console.log('parsed profit: ', profit)
 
   const ctaUrl = props.ctaUrl ?? 'https://example.com/dashboard/reports'
@@ -161,11 +159,14 @@ export function ProfitabilityReportEmail(props: ProfitabilityReportEmailProps) {
         <Container style={container}>
           <Section style={box}>
             <Text style={eyebrow}>{restaurantName}</Text>
-            <Text style={title}>تقرير الربحية</Text>
+            <Heading as="h1">تقرير الربحية</Heading>
             <Text style={subTitle}>{periodLabel}</Text>
-
             <Text style={subTitle}> نتائج الربح والخسارة بناءا على مدخلاتك بشكل وسطي هي:</Text>
-            <div style={kpiCard}>
+            <Text style={{ ...subTitle, color: '#b42318' }}>
+              تنبيه: الأرقام التالية مبنية على مدخلاتك في نموذج حاسبة الربحية فقط، وهي تقديرات
+              تقريبية ولم يتم التحقق منها كمخرجات مالية رسمية.
+            </Text>
+            {/* <div style={kpiCard}>
               <Text style={kpiLabel}>الربح المُقدّر</Text>
               <Text
                 style={{
@@ -180,10 +181,9 @@ export function ProfitabilityReportEmail(props: ProfitabilityReportEmailProps) {
             <div style={kpiCard}>
               <Text style={kpiLabel}>نسبة الربح</Text>
               <Text style={kpiValue}>{profitRate}</Text>
-            </div>
-
-            <Hr style={hr} />
-            <Text style={sectionTitle}>بيان الأرباح والخسائر</Text>
+            </div> */}
+            {/* <Hr style={hr} /> */}
+            <Heading as="h2">بيان الأرباح والخسائر</Heading>
             <table style={table} cellPadding={0} cellSpacing={0}>
               <thead>
                 <tr>
@@ -222,61 +222,73 @@ export function ProfitabilityReportEmail(props: ProfitabilityReportEmailProps) {
                 <tr>
                   <td colSpan={2} style={spacerRow}></td>
                 </tr>
-                <tr>
-                  <td style={{ ...tdLeft, fontWeight: 700 }}>صافي الربح</td>
-                  <td
-                    style={{
-                      ...tdRight,
-                      fontWeight: 700,
-                      color: parsedProfit >= 0 ? '#0a7c4a' : '#b42318',
-                    }}
-                  >
-                    {profit}
-                  </td>
-                </tr>
-                <tr>
-                  <td style={{ ...tdLeft, fontWeight: 700 }}>نسبة صافي الربح</td>
-                  <td
-                    style={{
-                      ...tdRight,
-                      fontWeight: 700,
-                      color: parsedProfit >= 0 ? '#0a7c4a' : '#b42318',
-                    }}
-                  >
-                    {profitRate}
-                  </td>
-                </tr>
-                <tr>
-                  <td style={{ ...tdLeft, fontWeight: 700 }}>نسبة صافي النفقات</td>
-                  <td
-                    style={{
-                      ...tdRight,
-                      fontWeight: 700,
-                      color: '#b42318',
-                    }}
-                  >
-                    {expenseRate}
-                  </td>
-                </tr>
+                {pnlFooter.map((item, idx) => (
+                  <tr key={`footer-${idx}`}>
+                    <td style={{ ...tdLeft, fontWeight: 700 }}>{item.label}</td>
+                    <td
+                      style={{
+                        ...tdRight,
+                        fontWeight: 700,
+                        color: item.type === 'revenue' ? '#0a7c4a' : '#b42318',
+                      }}
+                    >
+                      {`${item.amount}${item.type === 'expense' ? '-' : ''}`}
+                    </td>
+                  </tr>
+                ))}
               </tbody>
             </table>
-
-            <Hr style={hr} />
-
-            <Section
+            <br />
+            <Heading as="h3">مع بلّورة، صافي ربحك ممكن يكون </Heading>
+            <div
               style={{
+                backgroundColor: '#ecfff9',
+                borderRadius: '8px',
                 margin: '20px 0',
+                padding: '16px',
               }}
             >
-              <div style={{ backgroundColor: '#ecfff9', borderRadius: '8px', padding: '16px' }}>
-                <Text style={kpiLabel}>مع بلّورة، صافي ربحك ممكن يصير </Text>
-                <Text
-                  dir="ltr"
-                  style={{ ...kpiValue, textAlign: 'right', fontSize: '24px', margin: '4px 0 0 0' }}
-                >{`${profitWithBallurh}`}</Text>
-              </div>
-            </Section>
-
+              <Text style={kpiLabel}>صافي الربح</Text>
+              <Text
+                dir="ltr"
+                style={{
+                  ...kpiValue,
+                  textAlign: 'right',
+                  fontSize: '24px',
+                  margin: '4px 0 16px 0',
+                }}
+              >
+                {profitWithBallurh}
+              </Text>
+              <Text style={kpiLabel}>نسبة الربح</Text>
+              <Text
+                dir="ltr"
+                style={{
+                  ...kpiValue,
+                  textAlign: 'right',
+                  fontSize: '24px',
+                  margin: '4px 0 16px 0',
+                }}
+              >
+                {profitRateWithBallurh}
+              </Text>
+              <Text style={kpiLabel}>التعويضات المستردة</Text>
+              <Text
+                dir="ltr"
+                style={{
+                  ...kpiValue,
+                  textAlign: 'right',
+                  fontSize: '24px',
+                  margin: '4px 0 16px 0',
+                }}
+              >
+                {savedDisputes}
+              </Text>
+              <Text style={{ ...kpiLabel, marginTop: '8px' }}>
+                تقدير افتراضي يعتمد على نفس بيانات نموذج حاسبة الربحية؛ نتائجك الفعلية قد تختلف
+                وتتطلب مراجعة مالية مختصة.
+              </Text>
+            </div>
             {hasRecommendations && (
               <>
                 <Text style={sectionTitle}>توصيات لتحسين الربحية</Text>
@@ -312,16 +324,13 @@ export function ProfitabilityReportEmail(props: ProfitabilityReportEmailProps) {
                 <Hr style={hr} />
               </>
             )}
-
             <Text style={paragraph}>
               هل تريد خطة مخصّصة لزيادة هامش الربح بناءً على بيانات مطعمك؟ احجز مكالمة مجانية لمدة
-              15 دقيقة لنراجع التقرير معك ونقترح خطوات عملية قابلة للتنفيذ.
+              30 دقيقة لنراجع التقرير معك ونقترح خطوات عملية قابلة للتنفيذ.
             </Text>
-
             <Button style={button} href={ctaUrl}>
               {ctaLabel}
             </Button>
-
             <Hr style={hr} />
             <Text style={footer}>
               وصلتك هذه الرسالة لأنك قدّمت نموذج «حاسبة الربحية» لـ {restaurantName}. إذا لم تطلب
