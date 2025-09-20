@@ -55,6 +55,7 @@
     "@radix-ui/react-slot": "^1.2.3",
     "@react-email/components": "^0.5.3",
     "@react-email/render": "1.2.3",
+    "@sendgrid/mail": "^8.1.6",
     "ai": "^5.0.15",
     "bson-objectid": "^2.0.4",
     "class-variance-authority": "^0.7.1",

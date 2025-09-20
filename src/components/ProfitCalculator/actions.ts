@@ -30,6 +30,9 @@ const business_type = new Map([
   ['hybridRestaurant', 'Hybrid Model'],
 ])
 
+const isRecord = (value: unknown): value is Record<string, unknown> =>
+  typeof value === 'object' && value !== null
+
 export async function calculateProfit(data: FormData) {
   const payload = await getPayload({ config })
   const posthog = PostHogClient()
@@ -185,10 +188,10 @@ export async function calculateProfit(data: FormData) {
 
   // Send profitability report email to the lead
   try {
-    const apiKey = process.env.RESEND_API_KEY
-    const from = process.env.RESEND_EMAIL
+    const apiKey = process.env.SENDGRID_API_KEY
+    const from = process.env.SENDGRID_EMAIL
     if (!apiKey) {
-      console.warn('Skipping email: Missing RESEND_API_KEY')
+      console.warn('Skipping email: Missing SENDGRID_API_KEY')
       return { success: savedOk, message: 'Data saved, email skipped (missing API key)' }
     }
 
@@ -331,8 +334,34 @@ export async function calculateProfit(data: FormData) {
         from,
       }),
     })
+    const responseText = await resp.text()
+    const parsedBody = (() => {
+      if (!responseText) return null
+      try {
+        return JSON.parse(responseText) as unknown
+      } catch {
+        return responseText
+      }
+    })()
+
     if (!resp.ok) {
-      throw new Error('send-email route failed:')
+      console.error('send-email route failed', {
+        status: resp.status,
+        statusText: resp.statusText,
+        body: parsedBody,
+      })
+
+      throw new Error(`send-email route failed (${resp.status} ${resp.statusText})`)
+    }
+
+    if (isRecord(parsedBody) && 'error' in parsedBody) {
+      console.error('send-email route reported application error', parsedBody)
+
+      const details = 'details' in parsedBody ? parsedBody.details : undefined
+      const errorMessage = String(parsedBody.error ?? 'Unknown error')
+      throw new Error(
+        details ? `send-email route error: ${errorMessage} — ${JSON.stringify(details)}` : `send-email route error: ${errorMessage}`,
+      )
     }
     console.log(pnl)
     return { success: savedOk, message: 'Data saved and email sent' }
