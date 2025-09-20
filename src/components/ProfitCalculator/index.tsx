@@ -250,7 +250,7 @@ const ProfitabilityCalculator: React.FC = () => {
         <AnimatedStepWrapper>
           <div className="text-center">
             <h2 className="text-2xl font-semibold">
-              ✅ تم استلام بياناتك، التقرير في الطريق لبريدك الإلكتروني أو واتساب.
+              ✅ تم استلام بياناتك، تقريرك في الطريق لبريدك الإلكتروني و الواتساب.
             </h2>
           </div>
         </AnimatedStepWrapper>
