@@ -77,6 +77,12 @@ const CalEmbed: React.FC<CalEmbedProps> = ({ calLink, locale }) => {
           start_time: startTime,
           end_time: endTime,
           locale: locale,
+          utm_campaign,
+          utm_content,
+          utm_id,
+          utm_medium,
+          utm_source,
+          utm_term,
         })
       }
     }
