@@ -147,7 +147,7 @@ export function ProfitabilityReportEmail(props: ProfitabilityReportEmailProps) {
 
   const profitRateWithBallurh = `${Math.round(parsedProfitRate * 1.15 * 100)}% - ${Math.round(parsedProfitRate * 1.3 * 100)}%`
   const profitWithBallurh = `${Math.round(parsedProfit * 1.3).toLocaleString('en', { style: 'currency', maximumFractionDigits: 0, currency: 'sar' })} - ${Math.round(parsedProfit * 1.15).toLocaleString('en', { style: 'currency', maximumFractionDigits: 0, currency: 'sar' })}`
-  console.log('parsed profit: ', profit)
+  // console.log('parsed profit: ', profit)
 
   const ctaUrl = props.ctaUrl ?? 'https://example.com/dashboard/reports'
   const ctaLabel = props.ctaLabel ?? 'عرض التقرير الكامل'
