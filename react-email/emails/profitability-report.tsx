@@ -21,6 +21,7 @@ type PnlItem = {
 }
 
 export type ProfitabilityReportEmailProps = {
+  username?: string
   restaurantName?: string
   periodLabel?: string // e.g. "September 2025"
   profit?: number // net profit amount
@@ -63,11 +64,6 @@ const defaultPnl: PnlItem[] = [
     type: 'expense',
   },
   { label: 'اجمالى التسويق', amount: 'SAR 10,500', type: 'expense' },
-  {
-    label: 'اجمالى العمولات & التعويضات & التسويق',
-    amount: 'SAR 43,000',
-    type: 'expense',
-  },
 ]
 
 const defaultPnlFooter: PnlItem[] = [
@@ -108,8 +104,9 @@ const defaultRecommendations: Recommendation[] = [
 ]
 
 export function ProfitabilityReportEmail(props: ProfitabilityReportEmailProps) {
+  const username = props.username ?? 'أحمد أحمد'
   const restaurantName = props.restaurantName ?? 'اسم المطعم'
-  const periodLabel = props.periodLabel ?? 'هذا الشهر'
+  const periodLabel = props.periodLabel ?? 'September 2025'
   const pnl = props.pnl ?? defaultPnl
   const pnlFooter = props.pnlFooter ?? defaultPnlFooter
   const recommendations = props.recommendations ?? defaultRecommendations
@@ -120,8 +117,9 @@ export function ProfitabilityReportEmail(props: ProfitabilityReportEmailProps) {
     .reduce((sum, i) => sum + parseInt(i.amount), 0)
   const totalExpenses = pnl
     .filter((i) => i.type === 'expense')
-    .reduce((sum, i) => sum + parseInt(i.amount), 0)
-  const computedProfit = totalRevenue - totalExpenses
+    .reduce((sum, i) => sum + Number(i.amount.replace(/[^\d.]/g, '')), 0)
+    .toLocaleString('en', { style: 'currency', currency: 'SAR', maximumFractionDigits: 0 })
+  // const computedProfit = totalRevenue - totalExpenses
 
   const parsedProfit = props.profit ?? 45000
   const parsedProfitRate = props.profitRate ?? 0.3
@@ -168,6 +166,7 @@ export function ProfitabilityReportEmail(props: ProfitabilityReportEmailProps) {
             />
             <Hr style={hr} />
             {/* <Text style={eyebrow}>{restaurantName}</Text> */}
+            <Text>{`مرحباً ${username}،`}</Text>
             <Heading as="h1" style={{ marginBlockStart: 0 }}>
               تقرير الربحية
             </Heading>
@@ -235,10 +234,12 @@ export function ProfitabilityReportEmail(props: ProfitabilityReportEmailProps) {
                       <td style={{ ...tdRight, color: '#b42318' }}>{item.amount}-</td>
                     </tr>
                   ))}
-                {/* <tr>
+                <tr>
                   <td style={{ ...tdLeft, fontWeight: 600 }}>إجمالي المصروفات</td>
-                  <td style={{ ...tdRight, fontWeight: 600 }}>-{totalExpenses}</td>
-                </tr> */}
+                  <td style={{ ...tdRight, color: '#b42318', fontWeight: 600 }}>
+                    {totalExpenses}-
+                  </td>
+                </tr>
                 <tr>
                   <td colSpan={2} style={spacerRow}></td>
                 </tr>
@@ -304,6 +305,10 @@ export function ProfitabilityReportEmail(props: ProfitabilityReportEmailProps) {
               >
                 {savedDisputes}
               </Text>
+              <Text style={kpiLabel}>
+                تقدير افتراضي يعتمد على نفس بيانات نموذج حاسبة الربحية؛ نتائجك الفعلية قد تختلف
+                وتتطلب مراجعة مالية مختصة.
+              </Text>
             </div>
             {hasRecommendations && (
               <>
@@ -348,6 +353,10 @@ export function ProfitabilityReportEmail(props: ProfitabilityReportEmailProps) {
               {ctaLabel}
             </Button>
             <Hr style={hr} />
+            <Text>
+              تحياتنا، <br />
+              <span style={{ fontWeight: 700 }}>فريق بلّورة</span>
+            </Text>
             <Text style={footer}>
               وصلتك هذه الرسالة لأنك قدّمت نموذج «حاسبة الربحية» لـ {restaurantName}. إذا لم تطلب
               هذا التقرير فتجاهل الرسالة، ولأي استفسار يُمكنك الرد على هذه الرسالة.

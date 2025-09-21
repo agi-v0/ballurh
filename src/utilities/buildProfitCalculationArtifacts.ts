@@ -186,13 +186,13 @@ export function buildProfitCalculationArtifacts(data: FormData): ProfitCalculati
   ]
 
   const pnlFooter: ProfitabilityReportEmailProps['pnlFooter'] = [
+    // {
+    //   label: 'اجمالى العمولات & التعويضات & التسويق',
+    //   amount: formatCurrency(totalMonthlyExpenseAmounts),
+    //   type: 'expense',
+    // },
     {
-      label: 'اجمالى العمولات & التعويضات & التسويق',
-      amount: formatCurrency(totalMonthlyExpenseAmounts),
-      type: 'expense',
-    },
-    {
-      label: 'نسبة النفقات من المبيعات',
+      label: 'نسبة المصروفات من المبيعات',
       amount: formatPercent(totalExpensesPctOfSales),
       type: 'expense',
     },
@@ -238,9 +238,12 @@ export function buildProfitCalculationArtifacts(data: FormData): ProfitCalculati
     process.env.VERCEL_PROJECT_PRODUCTION_URL ||
     'https://example.com'
 
+  const date = new Date()
+
   const emailProps: ProfitabilityReportEmailProps = {
+    username: name,
     restaurantName: businessName || 'مطعمك',
-    periodLabel: 'هذا الشهر',
+    periodLabel: `${date.getMonth} ${date.getFullYear}`,
     profit: metrics.netProfitNumber,
     profitRate: metrics.netProfitRate,
     expenseRate: metrics.totalExpensesPctOfSales,
