@@ -243,7 +243,7 @@ export function buildProfitCalculationArtifacts(data: FormData): ProfitCalculati
   const emailProps: ProfitabilityReportEmailProps = {
     username: name,
     restaurantName: businessName || 'مطعمك',
-    periodLabel: `${date.getMonth} ${date.getFullYear}`,
+    periodLabel: new Intl.DateTimeFormat('ar', { month: 'long', year: 'numeric' }).format(date),
     profit: metrics.netProfitNumber,
     profitRate: metrics.netProfitRate,
     expenseRate: metrics.totalExpensesPctOfSales,
