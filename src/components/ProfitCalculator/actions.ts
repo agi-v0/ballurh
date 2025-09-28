@@ -51,7 +51,7 @@ export async function calculateProfit(data: FormData) {
     return { success: savedOk, message: 'Data saved, email skipped (missing API key)' }
   }
 
-  const subject = `تقرير الربحية — ${businessName || 'مطعمك'}`
+  const subject = `${first_name}، هذا تقرير حاسبة الربحية من بلورة`
 
   try {
     await sendEmail({
