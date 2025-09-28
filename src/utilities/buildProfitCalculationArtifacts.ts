@@ -105,8 +105,19 @@ export function buildProfitCalculationArtifacts(data: FormData): ProfitCalculati
   const netProfitNumber = round(netProfitRate * monthlySalesNumber)
   const profitPlus15 = round(netProfitNumber * 1.15)
   const profitPlus30 = round(netProfitNumber * 1.3)
+  const profitRatePlus15 = round(netProfitRate * 1.15 * 100)
+  const profitRatePlus30 = round(netProfitRate * 1.3 * 100)
   const savedDisputes = round(monthlyDisputesAmount * 0.7)
 
+  const profitCalculatorMessage = `
+  صافي الربح
+  ${profitPlus30.toLocaleString('en', { style: 'currency', maximumFractionDigits: 0, currency: 'sar' })} - ${profitPlus15.toLocaleString('en', { style: 'currency', maximumFractionDigits: 0, currency: 'sar' })}
+  نسبة الربح
+  ${profitRatePlus30}% - ${profitRatePlus15}%
+  تعويضات مستردة
+  SAR ${savedDisputes}
+  `
+  console.log(profitCalculatorMessage)
   const metrics: ProfitMetrics = {
     monthlySalesNumber,
     monthlyOrdersNumber,
@@ -154,6 +165,7 @@ export function buildProfitCalculationArtifacts(data: FormData): ProfitCalculati
     { name: 'calculated_profit_plus_15', value: profitPlus15 },
     { name: 'calculated_profit_plus_30', value: profitPlus30 },
     { name: 'disputes_minus_70', value: savedDisputes },
+    { name: 'profit_calculator_message', value: profitCalculatorMessage },
   ]
 
   const pnl: ProfitabilityReportEmailProps['pnl'] = [
