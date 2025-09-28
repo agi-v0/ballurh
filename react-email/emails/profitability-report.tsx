@@ -153,7 +153,7 @@ export function ProfitabilityReportEmail(props: ProfitabilityReportEmailProps) {
   return (
     <Html dir="rtl">
       <Head />
-      <Preview> — تقرير الربحية لـ{restaurantName} صار جاهز!</Preview>
+      <Preview>{`${username.split(' ')[0]}، هذا تقرير حاسبة الربحية من بلورة`}</Preview>
       <Body style={main} dir="rtl">
         <Container style={container}>
           <Section style={box}>
