@@ -18,6 +18,7 @@ import Site from './collections/Site'
 
 //collections
 import { Categories } from './collections/Categories'
+import { News } from './collections/News'
 import { Media } from './collections/Media'
 import { Pages } from './collections/Pages'
 import { Posts } from './collections/Posts'
@@ -154,6 +155,7 @@ export default buildConfig({
   collections: [
     Pages,
     Posts,
+    News,
     // Solutions,
     // Integrations,
     Media,

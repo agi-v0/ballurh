@@ -86,6 +86,7 @@ export interface Config {
   collections: {
     pages: Page;
     'blog-posts': BlogPost;
+    news: News;
     media: Media;
     customers: Customer;
     categories: Category;
@@ -109,6 +110,7 @@ export interface Config {
   collectionsSelect: {
     pages: PagesSelect<false> | PagesSelect<true>;
     'blog-posts': BlogPostsSelect<false> | BlogPostsSelect<true>;
+    news: NewsSelect<false> | NewsSelect<true>;
     media: MediaSelect<false> | MediaSelect<true>;
     customers: CustomersSelect<false> | CustomersSelect<true>;
     categories: CategoriesSelect<false> | CategoriesSelect<true>;
@@ -210,7 +212,7 @@ export interface BlockHeader {
     root: {
       type: string;
       children: {
-        type: string;
+        type: any;
         version: number;
         [k: string]: unknown;
       }[];
@@ -276,7 +278,7 @@ export interface Page {
       root: {
         type: string;
         children: {
-          type: string;
+          type: any;
           version: number;
           [k: string]: unknown;
         }[];
@@ -393,7 +395,7 @@ export interface BlogPost {
     root: {
       type: string;
       children: {
-        type: string;
+        type: any;
         version: number;
         [k: string]: unknown;
       }[];
@@ -440,7 +442,7 @@ export interface Media {
     root: {
       type: string;
       children: {
-        type: string;
+        type: any;
         version: number;
         [k: string]: unknown;
       }[];
@@ -618,7 +620,7 @@ export interface CallToActionBlock {
     root: {
       type: string;
       children: {
-        type: string;
+        type: any;
         version: number;
         [k: string]: unknown;
       }[];
@@ -729,7 +731,7 @@ export interface Form {
               root: {
                 type: string;
                 children: {
-                  type: string;
+                  type: any;
                   version: number;
                   [k: string]: unknown;
                 }[];
@@ -812,7 +814,7 @@ export interface Form {
     root: {
       type: string;
       children: {
-        type: string;
+        type: any;
         version: number;
         [k: string]: unknown;
       }[];
@@ -844,7 +846,7 @@ export interface Form {
           root: {
             type: string;
             children: {
-              type: string;
+              type: any;
               version: number;
               [k: string]: unknown;
             }[];
@@ -895,7 +897,7 @@ export interface Faq {
     root: {
       type: string;
       children: {
-        type: string;
+        type: any;
         version: number;
         [k: string]: unknown;
       }[];
@@ -968,7 +970,7 @@ export interface FeaturesBlock {
           root: {
             type: string;
             children: {
-              type: string;
+              type: any;
               version: number;
               [k: string]: unknown;
             }[];
@@ -1192,7 +1194,7 @@ export interface RichTextBlock {
     root: {
       type: string;
       children: {
-        type: string;
+        type: any;
         version: number;
         [k: string]: unknown;
       }[];
@@ -1261,7 +1263,7 @@ export interface Customer {
       root: {
         type: string;
         children: {
-          type: string;
+          type: any;
           version: number;
           [k: string]: unknown;
         }[];
@@ -1335,7 +1337,7 @@ export interface Customer {
       root: {
         type: string;
         children: {
-          type: string;
+          type: any;
           version: number;
           [k: string]: unknown;
         }[];
@@ -1440,7 +1442,7 @@ export interface FormBlock {
     root: {
       type: string;
       children: {
-        type: string;
+        type: any;
         version: number;
         [k: string]: unknown;
       }[];
@@ -1482,6 +1484,53 @@ export interface StyledListBlock {
   id?: string | null;
   blockName?: string | null;
   blockType: 'styledListBlock';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "news".
+ */
+export interface News {
+  id: string;
+  title: string;
+  heroImage?: (string | null) | Media;
+  content: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  };
+  relatedPosts?: (string | News)[] | null;
+  categories?: (string | Category)[] | null;
+  meta?: {
+    title?: string | null;
+    /**
+     * Maximum upload file size: 12MB. Recommended file size for images is <500KB.
+     */
+    image?: (string | null) | Media;
+    description?: string | null;
+  };
+  publishedAt?: string | null;
+  authors?: (string | User)[] | null;
+  populatedAuthors?:
+    | {
+        id?: string | null;
+        name?: string | null;
+      }[]
+    | null;
+  slug?: string | null;
+  slugLock?: boolean | null;
+  updatedAt: string;
+  createdAt: string;
+  _status?: ('draft' | 'published') | null;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -1665,6 +1714,10 @@ export interface PayloadLockedDocument {
         value: string | BlogPost;
       } | null)
     | ({
+        relationTo: 'news';
+        value: string | News;
+      } | null)
+    | ({
         relationTo: 'media';
         value: string | Media;
       } | null)
@@ -1843,6 +1896,37 @@ export interface PagesSelect<T extends boolean = true> {
  * via the `definition` "blog-posts_select".
  */
 export interface BlogPostsSelect<T extends boolean = true> {
+  title?: T;
+  heroImage?: T;
+  content?: T;
+  relatedPosts?: T;
+  categories?: T;
+  meta?:
+    | T
+    | {
+        title?: T;
+        image?: T;
+        description?: T;
+      };
+  publishedAt?: T;
+  authors?: T;
+  populatedAuthors?:
+    | T
+    | {
+        id?: T;
+        name?: T;
+      };
+  slug?: T;
+  slugLock?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  _status?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "news_select".
+ */
+export interface NewsSelect<T extends boolean = true> {
   title?: T;
   heroImage?: T;
   content?: T;
@@ -2471,7 +2555,7 @@ export interface Header {
                   root: {
                     type: string;
                     children: {
-                      type: string;
+                      type: any;
                       version: number;
                       [k: string]: unknown;
                     }[];
@@ -2809,6 +2893,10 @@ export interface TaskSchedulePublish {
           value: string | BlogPost;
         } | null)
       | ({
+          relationTo: 'news';
+          value: string | News;
+        } | null)
+      | ({
           relationTo: 'faq';
           value: string | Faq;
         } | null);
@@ -2827,7 +2915,7 @@ export interface BannerBlock {
     root: {
       type: string;
       children: {
-        type: string;
+        type: any;
         version: number;
         [k: string]: unknown;
       }[];
