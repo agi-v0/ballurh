@@ -22,6 +22,7 @@ import type {
 import { BannerBlock } from '@/blocks/Banner/Component'
 // import { CallToActionBlock } from '@/blocks/CallToAction/Component'
 import { cn } from '@/utilities/ui'
+import { SerializedEditorState } from '@payloadcms/richtext-lexical/lexical'
 
 type NodeTypes =
   | DefaultNodeTypes
@@ -57,7 +58,7 @@ const jsxConverters: JSXConvertersFunction<NodeTypes> = ({ defaultConverters }) 
 })
 
 type Props = {
-  data: DefaultTypedEditorState
+  data: SerializedEditorState
   enableGutter?: boolean
   enableProse?: boolean
   converters?: JSXConvertersFunction<NodeTypes>
