@@ -2,7 +2,7 @@
 -- PostgreSQL database dump
 --
 
-\restrict gLLetygeNfozZVAnUHBmeCLutvj3giYUPcFyjAfcJjgtSwnnFASWwPQaHgYeXu2
+\restrict yhndk6L2AkUOmJO5aiJnMsuggg9R55hDlYWZSYrNSkwOpbfhU85kiK7X7Yafc73
 
 -- Dumped from database version 15.12
 -- Dumped by pg_dump version 15.14 (Debian 15.14-1.pgdg13+1)
@@ -58,6 +58,7 @@ ALTER TABLE IF EXISTS ONLY "public"."payload_locked_documents_rels" DROP CONSTRA
 ALTER TABLE IF EXISTS ONLY "public"."payload_locked_documents_rels" DROP CONSTRAINT IF EXISTS "payload_locked_documents_rels_payload_folders_fk";
 ALTER TABLE IF EXISTS ONLY "public"."payload_locked_documents_rels" DROP CONSTRAINT IF EXISTS "payload_locked_documents_rels_parent_fk";
 ALTER TABLE IF EXISTS ONLY "public"."payload_locked_documents_rels" DROP CONSTRAINT IF EXISTS "payload_locked_documents_rels_pages_fk";
+ALTER TABLE IF EXISTS ONLY "public"."payload_locked_documents_rels" DROP CONSTRAINT IF EXISTS "payload_locked_documents_rels_news_fk";
 ALTER TABLE IF EXISTS ONLY "public"."payload_locked_documents_rels" DROP CONSTRAINT IF EXISTS "payload_locked_documents_rels_media_fk";
 ALTER TABLE IF EXISTS ONLY "public"."payload_locked_documents_rels" DROP CONSTRAINT IF EXISTS "payload_locked_documents_rels_forms_fk";
 ALTER TABLE IF EXISTS ONLY "public"."payload_locked_documents_rels" DROP CONSTRAINT IF EXISTS "payload_locked_documents_rels_form_submissions_fk";
@@ -84,6 +85,14 @@ ALTER TABLE IF EXISTS ONLY "public"."pages_hero_list_items" DROP CONSTRAINT IF E
 ALTER TABLE IF EXISTS ONLY "public"."pages_hero_list_items_locales" DROP CONSTRAINT IF EXISTS "pages_hero_list_items_locales_parent_id_fk";
 ALTER TABLE IF EXISTS ONLY "public"."pages_hero_links" DROP CONSTRAINT IF EXISTS "pages_hero_links_parent_id_fk";
 ALTER TABLE IF EXISTS ONLY "public"."pages_hero_links_locales" DROP CONSTRAINT IF EXISTS "pages_hero_links_locales_parent_id_fk";
+ALTER TABLE IF EXISTS ONLY "public"."news_rels" DROP CONSTRAINT IF EXISTS "news_rels_users_fk";
+ALTER TABLE IF EXISTS ONLY "public"."news_rels" DROP CONSTRAINT IF EXISTS "news_rels_parent_fk";
+ALTER TABLE IF EXISTS ONLY "public"."news_rels" DROP CONSTRAINT IF EXISTS "news_rels_news_fk";
+ALTER TABLE IF EXISTS ONLY "public"."news_rels" DROP CONSTRAINT IF EXISTS "news_rels_categories_fk";
+ALTER TABLE IF EXISTS ONLY "public"."news_populated_authors" DROP CONSTRAINT IF EXISTS "news_populated_authors_parent_id_fk";
+ALTER TABLE IF EXISTS ONLY "public"."news_locales" DROP CONSTRAINT IF EXISTS "news_locales_parent_id_fk";
+ALTER TABLE IF EXISTS ONLY "public"."news_locales" DROP CONSTRAINT IF EXISTS "news_locales_meta_image_id_media_id_fk";
+ALTER TABLE IF EXISTS ONLY "public"."news_locales" DROP CONSTRAINT IF EXISTS "news_locales_hero_image_id_media_id_fk";
 ALTER TABLE IF EXISTS ONLY "public"."metricsBlock_table_rows" DROP CONSTRAINT IF EXISTS "metricsBlock_table_rows_parent_id_fk";
 ALTER TABLE IF EXISTS ONLY "public"."metricsBlock_table_rows_children" DROP CONSTRAINT IF EXISTS "metricsBlock_table_rows_children_parent_id_fk";
 ALTER TABLE IF EXISTS ONLY "public"."metricsBlock_table_rows_children_cells" DROP CONSTRAINT IF EXISTS "metricsBlock_table_rows_children_cells_parent_id_fk";
@@ -150,8 +159,6 @@ ALTER TABLE IF EXISTS ONLY "public"."forms_blocks_checkbox" DROP CONSTRAINT IF E
 ALTER TABLE IF EXISTS ONLY "public"."forms_blocks_checkbox_locales" DROP CONSTRAINT IF EXISTS "forms_blocks_checkbox_locales_parent_id_fk";
 ALTER TABLE IF EXISTS ONLY "public"."form_submissions_submission_data" DROP CONSTRAINT IF EXISTS "form_submissions_submission_data_parent_id_fk";
 ALTER TABLE IF EXISTS ONLY "public"."form_submissions" DROP CONSTRAINT IF EXISTS "form_submissions_form_id_forms_id_fk";
-ALTER TABLE IF EXISTS ONLY "public"."formBlock" DROP CONSTRAINT IF EXISTS "formBlock_parent_id_fk";
-ALTER TABLE IF EXISTS ONLY "public"."formBlock" DROP CONSTRAINT IF EXISTS "formBlock_form_id_forms_id_fk";
 ALTER TABLE IF EXISTS ONLY "public"."footer_rels" DROP CONSTRAINT IF EXISTS "footer_rels_parent_fk";
 ALTER TABLE IF EXISTS ONLY "public"."footer_rels" DROP CONSTRAINT IF EXISTS "footer_rels_pages_fk";
 ALTER TABLE IF EXISTS ONLY "public"."footer_rels" DROP CONSTRAINT IF EXISTS "footer_rels_blog_posts_fk";
@@ -183,10 +190,6 @@ ALTER TABLE IF EXISTS ONLY "public"."customers_rels" DROP CONSTRAINT IF EXISTS "
 ALTER TABLE IF EXISTS ONLY "public"."customers_rels" DROP CONSTRAINT IF EXISTS "customers_rels_categories_fk";
 ALTER TABLE IF EXISTS ONLY "public"."customers_rels" DROP CONSTRAINT IF EXISTS "customers_rels_blog_posts_fk";
 ALTER TABLE IF EXISTS ONLY "public"."customers_locales" DROP CONSTRAINT IF EXISTS "customers_locales_parent_id_fk";
-ALTER TABLE IF EXISTS ONLY "public"."customHtmlBlock" DROP CONSTRAINT IF EXISTS "customHtmlBlock_parent_id_fk";
-ALTER TABLE IF EXISTS ONLY "public"."customHtmlBlock_locales" DROP CONSTRAINT IF EXISTS "customHtmlBlock_locales_parent_id_fk";
-ALTER TABLE IF EXISTS ONLY "public"."customHtmlBlock_block_header_links" DROP CONSTRAINT IF EXISTS "customHtmlBlock_block_header_links_parent_id_fk";
-ALTER TABLE IF EXISTS ONLY "public"."customHtmlBlock_block_header_links_locales" DROP CONSTRAINT IF EXISTS "customHtmlBlock_block_header_links_locales_parent_id_fk";
 ALTER TABLE IF EXISTS ONLY "public"."categories" DROP CONSTRAINT IF EXISTS "categories_parent_id_categories_id_fk";
 ALTER TABLE IF EXISTS ONLY "public"."categories_locales" DROP CONSTRAINT IF EXISTS "categories_locales_parent_id_fk";
 ALTER TABLE IF EXISTS ONLY "public"."categories_breadcrumbs" DROP CONSTRAINT IF EXISTS "categories_breadcrumbs_parent_id_fk";
@@ -209,10 +212,6 @@ ALTER TABLE IF EXISTS ONLY "public"."blog_posts_populated_authors" DROP CONSTRAI
 ALTER TABLE IF EXISTS ONLY "public"."blog_posts_locales" DROP CONSTRAINT IF EXISTS "blog_posts_locales_parent_id_fk";
 ALTER TABLE IF EXISTS ONLY "public"."blog_posts_locales" DROP CONSTRAINT IF EXISTS "blog_posts_locales_meta_image_id_media_id_fk";
 ALTER TABLE IF EXISTS ONLY "public"."blog_posts_locales" DROP CONSTRAINT IF EXISTS "blog_posts_locales_hero_image_id_media_id_fk";
-ALTER TABLE IF EXISTS ONLY "public"."archiveBlock" DROP CONSTRAINT IF EXISTS "archiveBlock_parent_id_fk";
-ALTER TABLE IF EXISTS ONLY "public"."archiveBlock_locales" DROP CONSTRAINT IF EXISTS "archiveBlock_locales_parent_id_fk";
-ALTER TABLE IF EXISTS ONLY "public"."archiveBlock_block_header_links" DROP CONSTRAINT IF EXISTS "archiveBlock_block_header_links_parent_id_fk";
-ALTER TABLE IF EXISTS ONLY "public"."archiveBlock_block_header_links_locales" DROP CONSTRAINT IF EXISTS "archiveBlock_block_header_links_locales_parent_id_fk";
 ALTER TABLE IF EXISTS ONLY "public"."_testimonialsBlock_v" DROP CONSTRAINT IF EXISTS "_testimonialsBlock_v_parent_id_fk";
 ALTER TABLE IF EXISTS ONLY "public"."_testimonialsBlock_v_locales" DROP CONSTRAINT IF EXISTS "_testimonialsBlock_v_locales_parent_id_fk";
 ALTER TABLE IF EXISTS ONLY "public"."_testimonialsBlock_v_block_header_links" DROP CONSTRAINT IF EXISTS "_testimonialsBlock_v_block_header_links_parent_id_fk";
@@ -245,6 +244,15 @@ ALTER TABLE IF EXISTS ONLY "public"."_pages_v_locales" DROP CONSTRAINT IF EXISTS
 ALTER TABLE IF EXISTS ONLY "public"."_pages_v_locales" DROP CONSTRAINT IF EXISTS "_pages_v_locales_version_hero_media_desktop_light_id_media_id_f";
 ALTER TABLE IF EXISTS ONLY "public"."_pages_v_locales" DROP CONSTRAINT IF EXISTS "_pages_v_locales_version_hero_media_desktop_dark_id_media_id_fk";
 ALTER TABLE IF EXISTS ONLY "public"."_pages_v_locales" DROP CONSTRAINT IF EXISTS "_pages_v_locales_parent_id_fk";
+ALTER TABLE IF EXISTS ONLY "public"."_news_v_version_populated_authors" DROP CONSTRAINT IF EXISTS "_news_v_version_populated_authors_parent_id_fk";
+ALTER TABLE IF EXISTS ONLY "public"."_news_v_rels" DROP CONSTRAINT IF EXISTS "_news_v_rels_users_fk";
+ALTER TABLE IF EXISTS ONLY "public"."_news_v_rels" DROP CONSTRAINT IF EXISTS "_news_v_rels_parent_fk";
+ALTER TABLE IF EXISTS ONLY "public"."_news_v_rels" DROP CONSTRAINT IF EXISTS "_news_v_rels_news_fk";
+ALTER TABLE IF EXISTS ONLY "public"."_news_v_rels" DROP CONSTRAINT IF EXISTS "_news_v_rels_categories_fk";
+ALTER TABLE IF EXISTS ONLY "public"."_news_v" DROP CONSTRAINT IF EXISTS "_news_v_parent_id_news_id_fk";
+ALTER TABLE IF EXISTS ONLY "public"."_news_v_locales" DROP CONSTRAINT IF EXISTS "_news_v_locales_version_meta_image_id_media_id_fk";
+ALTER TABLE IF EXISTS ONLY "public"."_news_v_locales" DROP CONSTRAINT IF EXISTS "_news_v_locales_version_hero_image_id_media_id_fk";
+ALTER TABLE IF EXISTS ONLY "public"."_news_v_locales" DROP CONSTRAINT IF EXISTS "_news_v_locales_parent_id_fk";
 ALTER TABLE IF EXISTS ONLY "public"."_metricsBlock_v_table_rows" DROP CONSTRAINT IF EXISTS "_metricsBlock_v_table_rows_parent_id_fk";
 ALTER TABLE IF EXISTS ONLY "public"."_metricsBlock_v_table_rows_children" DROP CONSTRAINT IF EXISTS "_metricsBlock_v_table_rows_children_parent_id_fk";
 ALTER TABLE IF EXISTS ONLY "public"."_metricsBlock_v_table_rows_children_cells" DROP CONSTRAINT IF EXISTS "_metricsBlock_v_table_rows_children_cells_parent_id_fk";
@@ -268,8 +276,6 @@ ALTER TABLE IF EXISTS ONLY "public"."_galleryBlock_v_interactive_gallery_locales
 ALTER TABLE IF EXISTS ONLY "public"."_galleryBlock_v_interactive_gallery_locales" DROP CONSTRAINT IF EXISTS "_galleryBlock_v_interactive_gallery_locales_image_id_media_id_f";
 ALTER TABLE IF EXISTS ONLY "public"."_galleryBlock_v_block_header_links" DROP CONSTRAINT IF EXISTS "_galleryBlock_v_block_header_links_parent_id_fk";
 ALTER TABLE IF EXISTS ONLY "public"."_galleryBlock_v_block_header_links_locales" DROP CONSTRAINT IF EXISTS "_galleryBlock_v_block_header_links_locales_parent_id_fk";
-ALTER TABLE IF EXISTS ONLY "public"."_formBlock_v" DROP CONSTRAINT IF EXISTS "_formBlock_v_parent_id_fk";
-ALTER TABLE IF EXISTS ONLY "public"."_formBlock_v" DROP CONSTRAINT IF EXISTS "_formBlock_v_form_id_forms_id_fk";
 ALTER TABLE IF EXISTS ONLY "public"."_featuresBlock_v" DROP CONSTRAINT IF EXISTS "_featuresBlock_v_parent_id_fk";
 ALTER TABLE IF EXISTS ONLY "public"."_featuresBlock_v_locales" DROP CONSTRAINT IF EXISTS "_featuresBlock_v_locales_parent_id_fk";
 ALTER TABLE IF EXISTS ONLY "public"."_featuresBlock_v_locales" DROP CONSTRAINT IF EXISTS "_featuresBlock_v_locales_block_image_id_media_id_fk";
@@ -297,10 +303,6 @@ ALTER TABLE IF EXISTS ONLY "public"."_customers_v_rels" DROP CONSTRAINT IF EXIST
 ALTER TABLE IF EXISTS ONLY "public"."_customers_v_rels" DROP CONSTRAINT IF EXISTS "_customers_v_rels_blog_posts_fk";
 ALTER TABLE IF EXISTS ONLY "public"."_customers_v" DROP CONSTRAINT IF EXISTS "_customers_v_parent_id_customers_id_fk";
 ALTER TABLE IF EXISTS ONLY "public"."_customers_v_locales" DROP CONSTRAINT IF EXISTS "_customers_v_locales_parent_id_fk";
-ALTER TABLE IF EXISTS ONLY "public"."_customHtmlBlock_v" DROP CONSTRAINT IF EXISTS "_customHtmlBlock_v_parent_id_fk";
-ALTER TABLE IF EXISTS ONLY "public"."_customHtmlBlock_v_locales" DROP CONSTRAINT IF EXISTS "_customHtmlBlock_v_locales_parent_id_fk";
-ALTER TABLE IF EXISTS ONLY "public"."_customHtmlBlock_v_block_header_links" DROP CONSTRAINT IF EXISTS "_customHtmlBlock_v_block_header_links_parent_id_fk";
-ALTER TABLE IF EXISTS ONLY "public"."_customHtmlBlock_v_block_header_links_locales" DROP CONSTRAINT IF EXISTS "_customHtmlBlock_v_block_header_links_locales_parent_id_fk";
 ALTER TABLE IF EXISTS ONLY "public"."_callToActionBlock_v" DROP CONSTRAINT IF EXISTS "_callToActionBlock_v_parent_id_fk";
 ALTER TABLE IF EXISTS ONLY "public"."_callToActionBlock_v_locales" DROP CONSTRAINT IF EXISTS "_callToActionBlock_v_locales_parent_id_fk";
 ALTER TABLE IF EXISTS ONLY "public"."_callToActionBlock_v_locales" DROP CONSTRAINT IF EXISTS "_callToActionBlock_v_locales_media_mobile_light_id_media_id_fk";
@@ -320,10 +322,6 @@ ALTER TABLE IF EXISTS ONLY "public"."_blog_posts_v" DROP CONSTRAINT IF EXISTS "_
 ALTER TABLE IF EXISTS ONLY "public"."_blog_posts_v_locales" DROP CONSTRAINT IF EXISTS "_blog_posts_v_locales_version_meta_image_id_media_id_fk";
 ALTER TABLE IF EXISTS ONLY "public"."_blog_posts_v_locales" DROP CONSTRAINT IF EXISTS "_blog_posts_v_locales_version_hero_image_id_media_id_fk";
 ALTER TABLE IF EXISTS ONLY "public"."_blog_posts_v_locales" DROP CONSTRAINT IF EXISTS "_blog_posts_v_locales_parent_id_fk";
-ALTER TABLE IF EXISTS ONLY "public"."_archiveBlock_v" DROP CONSTRAINT IF EXISTS "_archiveBlock_v_parent_id_fk";
-ALTER TABLE IF EXISTS ONLY "public"."_archiveBlock_v_locales" DROP CONSTRAINT IF EXISTS "_archiveBlock_v_locales_parent_id_fk";
-ALTER TABLE IF EXISTS ONLY "public"."_archiveBlock_v_block_header_links" DROP CONSTRAINT IF EXISTS "_archiveBlock_v_block_header_links_parent_id_fk";
-ALTER TABLE IF EXISTS ONLY "public"."_archiveBlock_v_block_header_links_locales" DROP CONSTRAINT IF EXISTS "_archiveBlock_v_block_header_links_locales_parent_id_fk";
 DROP INDEX IF EXISTS "public"."users_updated_at_idx";
 DROP INDEX IF EXISTS "public"."users_sessions_parent_id_idx";
 DROP INDEX IF EXISTS "public"."users_sessions_order_idx";
@@ -401,6 +399,7 @@ DROP INDEX IF EXISTS "public"."payload_locked_documents_rels_path_idx";
 DROP INDEX IF EXISTS "public"."payload_locked_documents_rels_parent_idx";
 DROP INDEX IF EXISTS "public"."payload_locked_documents_rels_pages_id_idx";
 DROP INDEX IF EXISTS "public"."payload_locked_documents_rels_order_idx";
+DROP INDEX IF EXISTS "public"."payload_locked_documents_rels_news_id_idx";
 DROP INDEX IF EXISTS "public"."payload_locked_documents_rels_media_id_idx";
 DROP INDEX IF EXISTS "public"."payload_locked_documents_rels_forms_id_idx";
 DROP INDEX IF EXISTS "public"."payload_locked_documents_rels_form_submissions_id_idx";
@@ -452,6 +451,22 @@ DROP INDEX IF EXISTS "public"."pages_hero_links_order_idx";
 DROP INDEX IF EXISTS "public"."pages_hero_links_locales_locale_parent_id_unique";
 DROP INDEX IF EXISTS "public"."pages_created_at_idx";
 DROP INDEX IF EXISTS "public"."pages__status_idx";
+DROP INDEX IF EXISTS "public"."news_updated_at_idx";
+DROP INDEX IF EXISTS "public"."news_slug_idx";
+DROP INDEX IF EXISTS "public"."news_rels_users_id_idx";
+DROP INDEX IF EXISTS "public"."news_rels_path_idx";
+DROP INDEX IF EXISTS "public"."news_rels_parent_idx";
+DROP INDEX IF EXISTS "public"."news_rels_order_idx";
+DROP INDEX IF EXISTS "public"."news_rels_news_id_idx";
+DROP INDEX IF EXISTS "public"."news_rels_locale_idx";
+DROP INDEX IF EXISTS "public"."news_rels_categories_id_idx";
+DROP INDEX IF EXISTS "public"."news_populated_authors_parent_id_idx";
+DROP INDEX IF EXISTS "public"."news_populated_authors_order_idx";
+DROP INDEX IF EXISTS "public"."news_meta_meta_image_idx";
+DROP INDEX IF EXISTS "public"."news_locales_locale_parent_id_unique";
+DROP INDEX IF EXISTS "public"."news_hero_image_idx";
+DROP INDEX IF EXISTS "public"."news_created_at_idx";
+DROP INDEX IF EXISTS "public"."news__status_idx";
 DROP INDEX IF EXISTS "public"."metricsBlock_table_rows_parent_id_idx";
 DROP INDEX IF EXISTS "public"."metricsBlock_table_rows_order_idx";
 DROP INDEX IF EXISTS "public"."metricsBlock_table_rows_locale_idx";
@@ -584,10 +599,6 @@ DROP INDEX IF EXISTS "public"."form_submissions_submission_data_parent_id_idx";
 DROP INDEX IF EXISTS "public"."form_submissions_submission_data_order_idx";
 DROP INDEX IF EXISTS "public"."form_submissions_form_idx";
 DROP INDEX IF EXISTS "public"."form_submissions_created_at_idx";
-DROP INDEX IF EXISTS "public"."formBlock_path_idx";
-DROP INDEX IF EXISTS "public"."formBlock_parent_id_idx";
-DROP INDEX IF EXISTS "public"."formBlock_order_idx";
-DROP INDEX IF EXISTS "public"."formBlock_form_idx";
 DROP INDEX IF EXISTS "public"."footer_rels_path_idx";
 DROP INDEX IF EXISTS "public"."footer_rels_parent_idx";
 DROP INDEX IF EXISTS "public"."footer_rels_pages_id_idx";
@@ -642,13 +653,6 @@ DROP INDEX IF EXISTS "public"."customers_rels_blog_posts_id_idx";
 DROP INDEX IF EXISTS "public"."customers_locales_locale_parent_id_unique";
 DROP INDEX IF EXISTS "public"."customers_created_at_idx";
 DROP INDEX IF EXISTS "public"."customers__status_idx";
-DROP INDEX IF EXISTS "public"."customHtmlBlock_path_idx";
-DROP INDEX IF EXISTS "public"."customHtmlBlock_parent_id_idx";
-DROP INDEX IF EXISTS "public"."customHtmlBlock_order_idx";
-DROP INDEX IF EXISTS "public"."customHtmlBlock_locales_locale_parent_id_unique";
-DROP INDEX IF EXISTS "public"."customHtmlBlock_block_header_links_parent_id_idx";
-DROP INDEX IF EXISTS "public"."customHtmlBlock_block_header_links_order_idx";
-DROP INDEX IF EXISTS "public"."customHtmlBlock_block_header_links_locales_locale_parent_id_uni";
 DROP INDEX IF EXISTS "public"."categories_updated_at_idx";
 DROP INDEX IF EXISTS "public"."categories_slug_idx";
 DROP INDEX IF EXISTS "public"."categories_parent_idx";
@@ -689,13 +693,6 @@ DROP INDEX IF EXISTS "public"."blog_posts_locales_locale_parent_id_unique";
 DROP INDEX IF EXISTS "public"."blog_posts_hero_image_idx";
 DROP INDEX IF EXISTS "public"."blog_posts_created_at_idx";
 DROP INDEX IF EXISTS "public"."blog_posts__status_idx";
-DROP INDEX IF EXISTS "public"."archiveBlock_path_idx";
-DROP INDEX IF EXISTS "public"."archiveBlock_parent_id_idx";
-DROP INDEX IF EXISTS "public"."archiveBlock_order_idx";
-DROP INDEX IF EXISTS "public"."archiveBlock_locales_locale_parent_id_unique";
-DROP INDEX IF EXISTS "public"."archiveBlock_block_header_links_parent_id_idx";
-DROP INDEX IF EXISTS "public"."archiveBlock_block_header_links_order_idx";
-DROP INDEX IF EXISTS "public"."archiveBlock_block_header_links_locales_locale_parent_id_unique";
 DROP INDEX IF EXISTS "public"."_testimonialsBlock_v_path_idx";
 DROP INDEX IF EXISTS "public"."_testimonialsBlock_v_parent_id_idx";
 DROP INDEX IF EXISTS "public"."_testimonialsBlock_v_order_idx";
@@ -753,6 +750,28 @@ DROP INDEX IF EXISTS "public"."_pages_v_locales_locale_parent_id_unique";
 DROP INDEX IF EXISTS "public"."_pages_v_latest_idx";
 DROP INDEX IF EXISTS "public"."_pages_v_created_at_idx";
 DROP INDEX IF EXISTS "public"."_pages_v_autosave_idx";
+DROP INDEX IF EXISTS "public"."_news_v_version_version_updated_at_idx";
+DROP INDEX IF EXISTS "public"."_news_v_version_version_slug_idx";
+DROP INDEX IF EXISTS "public"."_news_v_version_version_hero_image_idx";
+DROP INDEX IF EXISTS "public"."_news_v_version_version_created_at_idx";
+DROP INDEX IF EXISTS "public"."_news_v_version_version__status_idx";
+DROP INDEX IF EXISTS "public"."_news_v_version_populated_authors_parent_id_idx";
+DROP INDEX IF EXISTS "public"."_news_v_version_populated_authors_order_idx";
+DROP INDEX IF EXISTS "public"."_news_v_version_meta_version_meta_image_idx";
+DROP INDEX IF EXISTS "public"."_news_v_updated_at_idx";
+DROP INDEX IF EXISTS "public"."_news_v_snapshot_idx";
+DROP INDEX IF EXISTS "public"."_news_v_rels_users_id_idx";
+DROP INDEX IF EXISTS "public"."_news_v_rels_path_idx";
+DROP INDEX IF EXISTS "public"."_news_v_rels_parent_idx";
+DROP INDEX IF EXISTS "public"."_news_v_rels_order_idx";
+DROP INDEX IF EXISTS "public"."_news_v_rels_news_id_idx";
+DROP INDEX IF EXISTS "public"."_news_v_rels_locale_idx";
+DROP INDEX IF EXISTS "public"."_news_v_rels_categories_id_idx";
+DROP INDEX IF EXISTS "public"."_news_v_published_locale_idx";
+DROP INDEX IF EXISTS "public"."_news_v_parent_idx";
+DROP INDEX IF EXISTS "public"."_news_v_locales_locale_parent_id_unique";
+DROP INDEX IF EXISTS "public"."_news_v_latest_idx";
+DROP INDEX IF EXISTS "public"."_news_v_created_at_idx";
 DROP INDEX IF EXISTS "public"."_metricsBlock_v_table_rows_parent_id_idx";
 DROP INDEX IF EXISTS "public"."_metricsBlock_v_table_rows_order_idx";
 DROP INDEX IF EXISTS "public"."_metricsBlock_v_table_rows_locale_idx";
@@ -797,10 +816,6 @@ DROP INDEX IF EXISTS "public"."_galleryBlock_v_interactive_gallery_image_idx";
 DROP INDEX IF EXISTS "public"."_galleryBlock_v_block_header_links_parent_id_idx";
 DROP INDEX IF EXISTS "public"."_galleryBlock_v_block_header_links_order_idx";
 DROP INDEX IF EXISTS "public"."_galleryBlock_v_block_header_links_locales_locale_parent_id_uni";
-DROP INDEX IF EXISTS "public"."_formBlock_v_path_idx";
-DROP INDEX IF EXISTS "public"."_formBlock_v_parent_id_idx";
-DROP INDEX IF EXISTS "public"."_formBlock_v_order_idx";
-DROP INDEX IF EXISTS "public"."_formBlock_v_form_idx";
 DROP INDEX IF EXISTS "public"."_featuresBlock_v_path_idx";
 DROP INDEX IF EXISTS "public"."_featuresBlock_v_parent_id_idx";
 DROP INDEX IF EXISTS "public"."_featuresBlock_v_order_idx";
@@ -859,13 +874,6 @@ DROP INDEX IF EXISTS "public"."_customers_v_locales_locale_parent_id_unique";
 DROP INDEX IF EXISTS "public"."_customers_v_latest_idx";
 DROP INDEX IF EXISTS "public"."_customers_v_created_at_idx";
 DROP INDEX IF EXISTS "public"."_customers_v_autosave_idx";
-DROP INDEX IF EXISTS "public"."_customHtmlBlock_v_path_idx";
-DROP INDEX IF EXISTS "public"."_customHtmlBlock_v_parent_id_idx";
-DROP INDEX IF EXISTS "public"."_customHtmlBlock_v_order_idx";
-DROP INDEX IF EXISTS "public"."_customHtmlBlock_v_locales_locale_parent_id_unique";
-DROP INDEX IF EXISTS "public"."_customHtmlBlock_v_block_header_links_parent_id_idx";
-DROP INDEX IF EXISTS "public"."_customHtmlBlock_v_block_header_links_order_idx";
-DROP INDEX IF EXISTS "public"."_customHtmlBlock_v_block_header_links_locales_locale_parent_id_";
 DROP INDEX IF EXISTS "public"."_callToActionBlock_v_path_idx";
 DROP INDEX IF EXISTS "public"."_callToActionBlock_v_parent_id_idx";
 DROP INDEX IF EXISTS "public"."_callToActionBlock_v_order_idx";
@@ -903,13 +911,6 @@ DROP INDEX IF EXISTS "public"."_blog_posts_v_parent_idx";
 DROP INDEX IF EXISTS "public"."_blog_posts_v_locales_locale_parent_id_unique";
 DROP INDEX IF EXISTS "public"."_blog_posts_v_latest_idx";
 DROP INDEX IF EXISTS "public"."_blog_posts_v_created_at_idx";
-DROP INDEX IF EXISTS "public"."_archiveBlock_v_path_idx";
-DROP INDEX IF EXISTS "public"."_archiveBlock_v_parent_id_idx";
-DROP INDEX IF EXISTS "public"."_archiveBlock_v_order_idx";
-DROP INDEX IF EXISTS "public"."_archiveBlock_v_locales_locale_parent_id_unique";
-DROP INDEX IF EXISTS "public"."_archiveBlock_v_block_header_links_parent_id_idx";
-DROP INDEX IF EXISTS "public"."_archiveBlock_v_block_header_links_order_idx";
-DROP INDEX IF EXISTS "public"."_archiveBlock_v_block_header_links_locales_locale_parent_id_uni";
 ALTER TABLE IF EXISTS ONLY "public"."users_sessions" DROP CONSTRAINT IF EXISTS "users_sessions_pkey";
 ALTER TABLE IF EXISTS ONLY "public"."users" DROP CONSTRAINT IF EXISTS "users_pkey";
 ALTER TABLE IF EXISTS ONLY "public"."users_locales" DROP CONSTRAINT IF EXISTS "users_locales_pkey";
@@ -952,6 +953,10 @@ ALTER TABLE IF EXISTS ONLY "public"."pages_hero_list_items" DROP CONSTRAINT IF E
 ALTER TABLE IF EXISTS ONLY "public"."pages_hero_list_items_locales" DROP CONSTRAINT IF EXISTS "pages_hero_list_items_locales_pkey";
 ALTER TABLE IF EXISTS ONLY "public"."pages_hero_links" DROP CONSTRAINT IF EXISTS "pages_hero_links_pkey";
 ALTER TABLE IF EXISTS ONLY "public"."pages_hero_links_locales" DROP CONSTRAINT IF EXISTS "pages_hero_links_locales_pkey";
+ALTER TABLE IF EXISTS ONLY "public"."news_rels" DROP CONSTRAINT IF EXISTS "news_rels_pkey";
+ALTER TABLE IF EXISTS ONLY "public"."news_populated_authors" DROP CONSTRAINT IF EXISTS "news_populated_authors_pkey";
+ALTER TABLE IF EXISTS ONLY "public"."news" DROP CONSTRAINT IF EXISTS "news_pkey";
+ALTER TABLE IF EXISTS ONLY "public"."news_locales" DROP CONSTRAINT IF EXISTS "news_locales_pkey";
 ALTER TABLE IF EXISTS ONLY "public"."metricsBlock_table_rows" DROP CONSTRAINT IF EXISTS "metricsBlock_table_rows_pkey";
 ALTER TABLE IF EXISTS ONLY "public"."metricsBlock_table_rows_children" DROP CONSTRAINT IF EXISTS "metricsBlock_table_rows_children_pkey";
 ALTER TABLE IF EXISTS ONLY "public"."metricsBlock_table_rows_children_cells" DROP CONSTRAINT IF EXISTS "metricsBlock_table_rows_children_cells_pkey";
@@ -1015,7 +1020,6 @@ ALTER TABLE IF EXISTS ONLY "public"."forms_blocks_checkbox" DROP CONSTRAINT IF E
 ALTER TABLE IF EXISTS ONLY "public"."forms_blocks_checkbox_locales" DROP CONSTRAINT IF EXISTS "forms_blocks_checkbox_locales_pkey";
 ALTER TABLE IF EXISTS ONLY "public"."form_submissions_submission_data" DROP CONSTRAINT IF EXISTS "form_submissions_submission_data_pkey";
 ALTER TABLE IF EXISTS ONLY "public"."form_submissions" DROP CONSTRAINT IF EXISTS "form_submissions_pkey";
-ALTER TABLE IF EXISTS ONLY "public"."formBlock" DROP CONSTRAINT IF EXISTS "formBlock_pkey";
 ALTER TABLE IF EXISTS ONLY "public"."footer_rels" DROP CONSTRAINT IF EXISTS "footer_rels_pkey";
 ALTER TABLE IF EXISTS ONLY "public"."footer" DROP CONSTRAINT IF EXISTS "footer_pkey";
 ALTER TABLE IF EXISTS ONLY "public"."footer_columns" DROP CONSTRAINT IF EXISTS "footer_columns_pkey";
@@ -1039,10 +1043,6 @@ ALTER TABLE IF EXISTS ONLY "public"."customers_testimonial_stats_locales" DROP C
 ALTER TABLE IF EXISTS ONLY "public"."customers_rels" DROP CONSTRAINT IF EXISTS "customers_rels_pkey";
 ALTER TABLE IF EXISTS ONLY "public"."customers" DROP CONSTRAINT IF EXISTS "customers_pkey";
 ALTER TABLE IF EXISTS ONLY "public"."customers_locales" DROP CONSTRAINT IF EXISTS "customers_locales_pkey";
-ALTER TABLE IF EXISTS ONLY "public"."customHtmlBlock" DROP CONSTRAINT IF EXISTS "customHtmlBlock_pkey";
-ALTER TABLE IF EXISTS ONLY "public"."customHtmlBlock_locales" DROP CONSTRAINT IF EXISTS "customHtmlBlock_locales_pkey";
-ALTER TABLE IF EXISTS ONLY "public"."customHtmlBlock_block_header_links" DROP CONSTRAINT IF EXISTS "customHtmlBlock_block_header_links_pkey";
-ALTER TABLE IF EXISTS ONLY "public"."customHtmlBlock_block_header_links_locales" DROP CONSTRAINT IF EXISTS "customHtmlBlock_block_header_links_locales_pkey";
 ALTER TABLE IF EXISTS ONLY "public"."categories" DROP CONSTRAINT IF EXISTS "categories_pkey";
 ALTER TABLE IF EXISTS ONLY "public"."categories_locales" DROP CONSTRAINT IF EXISTS "categories_locales_pkey";
 ALTER TABLE IF EXISTS ONLY "public"."categories_breadcrumbs" DROP CONSTRAINT IF EXISTS "categories_breadcrumbs_pkey";
@@ -1055,10 +1055,6 @@ ALTER TABLE IF EXISTS ONLY "public"."blog_posts_rels" DROP CONSTRAINT IF EXISTS 
 ALTER TABLE IF EXISTS ONLY "public"."blog_posts_populated_authors" DROP CONSTRAINT IF EXISTS "blog_posts_populated_authors_pkey";
 ALTER TABLE IF EXISTS ONLY "public"."blog_posts" DROP CONSTRAINT IF EXISTS "blog_posts_pkey";
 ALTER TABLE IF EXISTS ONLY "public"."blog_posts_locales" DROP CONSTRAINT IF EXISTS "blog_posts_locales_pkey";
-ALTER TABLE IF EXISTS ONLY "public"."archiveBlock" DROP CONSTRAINT IF EXISTS "archiveBlock_pkey";
-ALTER TABLE IF EXISTS ONLY "public"."archiveBlock_locales" DROP CONSTRAINT IF EXISTS "archiveBlock_locales_pkey";
-ALTER TABLE IF EXISTS ONLY "public"."archiveBlock_block_header_links" DROP CONSTRAINT IF EXISTS "archiveBlock_block_header_links_pkey";
-ALTER TABLE IF EXISTS ONLY "public"."archiveBlock_block_header_links_locales" DROP CONSTRAINT IF EXISTS "archiveBlock_block_header_links_locales_pkey";
 ALTER TABLE IF EXISTS ONLY "public"."_testimonialsBlock_v" DROP CONSTRAINT IF EXISTS "_testimonialsBlock_v_pkey";
 ALTER TABLE IF EXISTS ONLY "public"."_testimonialsBlock_v_locales" DROP CONSTRAINT IF EXISTS "_testimonialsBlock_v_locales_pkey";
 ALTER TABLE IF EXISTS ONLY "public"."_testimonialsBlock_v_block_header_links" DROP CONSTRAINT IF EXISTS "_testimonialsBlock_v_block_header_links_pkey";
@@ -1080,6 +1076,10 @@ ALTER TABLE IF EXISTS ONLY "public"."_pages_v_version_hero_links_locales" DROP C
 ALTER TABLE IF EXISTS ONLY "public"."_pages_v_rels" DROP CONSTRAINT IF EXISTS "_pages_v_rels_pkey";
 ALTER TABLE IF EXISTS ONLY "public"."_pages_v" DROP CONSTRAINT IF EXISTS "_pages_v_pkey";
 ALTER TABLE IF EXISTS ONLY "public"."_pages_v_locales" DROP CONSTRAINT IF EXISTS "_pages_v_locales_pkey";
+ALTER TABLE IF EXISTS ONLY "public"."_news_v_version_populated_authors" DROP CONSTRAINT IF EXISTS "_news_v_version_populated_authors_pkey";
+ALTER TABLE IF EXISTS ONLY "public"."_news_v_rels" DROP CONSTRAINT IF EXISTS "_news_v_rels_pkey";
+ALTER TABLE IF EXISTS ONLY "public"."_news_v" DROP CONSTRAINT IF EXISTS "_news_v_pkey";
+ALTER TABLE IF EXISTS ONLY "public"."_news_v_locales" DROP CONSTRAINT IF EXISTS "_news_v_locales_pkey";
 ALTER TABLE IF EXISTS ONLY "public"."_metricsBlock_v_table_rows" DROP CONSTRAINT IF EXISTS "_metricsBlock_v_table_rows_pkey";
 ALTER TABLE IF EXISTS ONLY "public"."_metricsBlock_v_table_rows_children" DROP CONSTRAINT IF EXISTS "_metricsBlock_v_table_rows_children_pkey";
 ALTER TABLE IF EXISTS ONLY "public"."_metricsBlock_v_table_rows_children_cells" DROP CONSTRAINT IF EXISTS "_metricsBlock_v_table_rows_children_cells_pkey";
@@ -1101,7 +1101,6 @@ ALTER TABLE IF EXISTS ONLY "public"."_galleryBlock_v_interactive_gallery" DROP C
 ALTER TABLE IF EXISTS ONLY "public"."_galleryBlock_v_interactive_gallery_locales" DROP CONSTRAINT IF EXISTS "_galleryBlock_v_interactive_gallery_locales_pkey";
 ALTER TABLE IF EXISTS ONLY "public"."_galleryBlock_v_block_header_links" DROP CONSTRAINT IF EXISTS "_galleryBlock_v_block_header_links_pkey";
 ALTER TABLE IF EXISTS ONLY "public"."_galleryBlock_v_block_header_links_locales" DROP CONSTRAINT IF EXISTS "_galleryBlock_v_block_header_links_locales_pkey";
-ALTER TABLE IF EXISTS ONLY "public"."_formBlock_v" DROP CONSTRAINT IF EXISTS "_formBlock_v_pkey";
 ALTER TABLE IF EXISTS ONLY "public"."_featuresBlock_v" DROP CONSTRAINT IF EXISTS "_featuresBlock_v_pkey";
 ALTER TABLE IF EXISTS ONLY "public"."_featuresBlock_v_locales" DROP CONSTRAINT IF EXISTS "_featuresBlock_v_locales_pkey";
 ALTER TABLE IF EXISTS ONLY "public"."_featuresBlock_v_columns" DROP CONSTRAINT IF EXISTS "_featuresBlock_v_columns_pkey";
@@ -1120,10 +1119,6 @@ ALTER TABLE IF EXISTS ONLY "public"."_customers_v_version_testimonial_stats_loca
 ALTER TABLE IF EXISTS ONLY "public"."_customers_v_rels" DROP CONSTRAINT IF EXISTS "_customers_v_rels_pkey";
 ALTER TABLE IF EXISTS ONLY "public"."_customers_v" DROP CONSTRAINT IF EXISTS "_customers_v_pkey";
 ALTER TABLE IF EXISTS ONLY "public"."_customers_v_locales" DROP CONSTRAINT IF EXISTS "_customers_v_locales_pkey";
-ALTER TABLE IF EXISTS ONLY "public"."_customHtmlBlock_v" DROP CONSTRAINT IF EXISTS "_customHtmlBlock_v_pkey";
-ALTER TABLE IF EXISTS ONLY "public"."_customHtmlBlock_v_locales" DROP CONSTRAINT IF EXISTS "_customHtmlBlock_v_locales_pkey";
-ALTER TABLE IF EXISTS ONLY "public"."_customHtmlBlock_v_block_header_links" DROP CONSTRAINT IF EXISTS "_customHtmlBlock_v_block_header_links_pkey";
-ALTER TABLE IF EXISTS ONLY "public"."_customHtmlBlock_v_block_header_links_locales" DROP CONSTRAINT IF EXISTS "_customHtmlBlock_v_block_header_links_locales_pkey";
 ALTER TABLE IF EXISTS ONLY "public"."_callToActionBlock_v" DROP CONSTRAINT IF EXISTS "_callToActionBlock_v_pkey";
 ALTER TABLE IF EXISTS ONLY "public"."_callToActionBlock_v_locales" DROP CONSTRAINT IF EXISTS "_callToActionBlock_v_locales_pkey";
 ALTER TABLE IF EXISTS ONLY "public"."_callToActionBlock_v_list" DROP CONSTRAINT IF EXISTS "_callToActionBlock_v_list_pkey";
@@ -1133,10 +1128,6 @@ ALTER TABLE IF EXISTS ONLY "public"."_blog_posts_v_version_populated_authors" DR
 ALTER TABLE IF EXISTS ONLY "public"."_blog_posts_v_rels" DROP CONSTRAINT IF EXISTS "_blog_posts_v_rels_pkey";
 ALTER TABLE IF EXISTS ONLY "public"."_blog_posts_v" DROP CONSTRAINT IF EXISTS "_blog_posts_v_pkey";
 ALTER TABLE IF EXISTS ONLY "public"."_blog_posts_v_locales" DROP CONSTRAINT IF EXISTS "_blog_posts_v_locales_pkey";
-ALTER TABLE IF EXISTS ONLY "public"."_archiveBlock_v" DROP CONSTRAINT IF EXISTS "_archiveBlock_v_pkey";
-ALTER TABLE IF EXISTS ONLY "public"."_archiveBlock_v_locales" DROP CONSTRAINT IF EXISTS "_archiveBlock_v_locales_pkey";
-ALTER TABLE IF EXISTS ONLY "public"."_archiveBlock_v_block_header_links" DROP CONSTRAINT IF EXISTS "_archiveBlock_v_block_header_links_pkey";
-ALTER TABLE IF EXISTS ONLY "public"."_archiveBlock_v_block_header_links_locales" DROP CONSTRAINT IF EXISTS "_archiveBlock_v_block_header_links_locales_pkey";
 ALTER TABLE IF EXISTS "public"."users_locales" ALTER COLUMN "id" DROP DEFAULT;
 ALTER TABLE IF EXISTS "public"."testimonialsBlock_locales" ALTER COLUMN "id" DROP DEFAULT;
 ALTER TABLE IF EXISTS "public"."testimonialsBlock_block_header_links_locales" ALTER COLUMN "id" DROP DEFAULT;
@@ -1156,6 +1147,8 @@ ALTER TABLE IF EXISTS "public"."pages_rels" ALTER COLUMN "id" DROP DEFAULT;
 ALTER TABLE IF EXISTS "public"."pages_locales" ALTER COLUMN "id" DROP DEFAULT;
 ALTER TABLE IF EXISTS "public"."pages_hero_list_items_locales" ALTER COLUMN "id" DROP DEFAULT;
 ALTER TABLE IF EXISTS "public"."pages_hero_links_locales" ALTER COLUMN "id" DROP DEFAULT;
+ALTER TABLE IF EXISTS "public"."news_rels" ALTER COLUMN "id" DROP DEFAULT;
+ALTER TABLE IF EXISTS "public"."news_locales" ALTER COLUMN "id" DROP DEFAULT;
 ALTER TABLE IF EXISTS "public"."metricsBlock_stats_locales" ALTER COLUMN "id" DROP DEFAULT;
 ALTER TABLE IF EXISTS "public"."metricsBlock_locales" ALTER COLUMN "id" DROP DEFAULT;
 ALTER TABLE IF EXISTS "public"."metricsBlock_block_header_links_locales" ALTER COLUMN "id" DROP DEFAULT;
@@ -1195,15 +1188,11 @@ ALTER TABLE IF EXISTS "public"."faqBlock_block_header_links_locales" ALTER COLUM
 ALTER TABLE IF EXISTS "public"."customers_testimonial_stats_locales" ALTER COLUMN "id" DROP DEFAULT;
 ALTER TABLE IF EXISTS "public"."customers_rels" ALTER COLUMN "id" DROP DEFAULT;
 ALTER TABLE IF EXISTS "public"."customers_locales" ALTER COLUMN "id" DROP DEFAULT;
-ALTER TABLE IF EXISTS "public"."customHtmlBlock_locales" ALTER COLUMN "id" DROP DEFAULT;
-ALTER TABLE IF EXISTS "public"."customHtmlBlock_block_header_links_locales" ALTER COLUMN "id" DROP DEFAULT;
 ALTER TABLE IF EXISTS "public"."categories_locales" ALTER COLUMN "id" DROP DEFAULT;
 ALTER TABLE IF EXISTS "public"."callToActionBlock_locales" ALTER COLUMN "id" DROP DEFAULT;
 ALTER TABLE IF EXISTS "public"."callToActionBlock_links_locales" ALTER COLUMN "id" DROP DEFAULT;
 ALTER TABLE IF EXISTS "public"."blog_posts_rels" ALTER COLUMN "id" DROP DEFAULT;
 ALTER TABLE IF EXISTS "public"."blog_posts_locales" ALTER COLUMN "id" DROP DEFAULT;
-ALTER TABLE IF EXISTS "public"."archiveBlock_locales" ALTER COLUMN "id" DROP DEFAULT;
-ALTER TABLE IF EXISTS "public"."archiveBlock_block_header_links_locales" ALTER COLUMN "id" DROP DEFAULT;
 ALTER TABLE IF EXISTS "public"."_testimonialsBlock_v_locales" ALTER COLUMN "id" DROP DEFAULT;
 ALTER TABLE IF EXISTS "public"."_testimonialsBlock_v_block_header_links_locales" ALTER COLUMN "id" DROP DEFAULT;
 ALTER TABLE IF EXISTS "public"."_teamBlock_v_team_locales" ALTER COLUMN "id" DROP DEFAULT;
@@ -1215,6 +1204,8 @@ ALTER TABLE IF EXISTS "public"."_pages_v_version_hero_list_items_locales" ALTER 
 ALTER TABLE IF EXISTS "public"."_pages_v_version_hero_links_locales" ALTER COLUMN "id" DROP DEFAULT;
 ALTER TABLE IF EXISTS "public"."_pages_v_rels" ALTER COLUMN "id" DROP DEFAULT;
 ALTER TABLE IF EXISTS "public"."_pages_v_locales" ALTER COLUMN "id" DROP DEFAULT;
+ALTER TABLE IF EXISTS "public"."_news_v_rels" ALTER COLUMN "id" DROP DEFAULT;
+ALTER TABLE IF EXISTS "public"."_news_v_locales" ALTER COLUMN "id" DROP DEFAULT;
 ALTER TABLE IF EXISTS "public"."_metricsBlock_v_stats_locales" ALTER COLUMN "id" DROP DEFAULT;
 ALTER TABLE IF EXISTS "public"."_metricsBlock_v_locales" ALTER COLUMN "id" DROP DEFAULT;
 ALTER TABLE IF EXISTS "public"."_metricsBlock_v_block_header_links_locales" ALTER COLUMN "id" DROP DEFAULT;
@@ -1232,14 +1223,10 @@ ALTER TABLE IF EXISTS "public"."_faqBlock_v_block_header_links_locales" ALTER CO
 ALTER TABLE IF EXISTS "public"."_customers_v_version_testimonial_stats_locales" ALTER COLUMN "id" DROP DEFAULT;
 ALTER TABLE IF EXISTS "public"."_customers_v_rels" ALTER COLUMN "id" DROP DEFAULT;
 ALTER TABLE IF EXISTS "public"."_customers_v_locales" ALTER COLUMN "id" DROP DEFAULT;
-ALTER TABLE IF EXISTS "public"."_customHtmlBlock_v_locales" ALTER COLUMN "id" DROP DEFAULT;
-ALTER TABLE IF EXISTS "public"."_customHtmlBlock_v_block_header_links_locales" ALTER COLUMN "id" DROP DEFAULT;
 ALTER TABLE IF EXISTS "public"."_callToActionBlock_v_locales" ALTER COLUMN "id" DROP DEFAULT;
 ALTER TABLE IF EXISTS "public"."_callToActionBlock_v_links_locales" ALTER COLUMN "id" DROP DEFAULT;
 ALTER TABLE IF EXISTS "public"."_blog_posts_v_rels" ALTER COLUMN "id" DROP DEFAULT;
 ALTER TABLE IF EXISTS "public"."_blog_posts_v_locales" ALTER COLUMN "id" DROP DEFAULT;
-ALTER TABLE IF EXISTS "public"."_archiveBlock_v_locales" ALTER COLUMN "id" DROP DEFAULT;
-ALTER TABLE IF EXISTS "public"."_archiveBlock_v_block_header_links_locales" ALTER COLUMN "id" DROP DEFAULT;
 DROP TABLE IF EXISTS "public"."users_sessions";
 DROP SEQUENCE IF EXISTS "public"."users_locales_id_seq";
 DROP TABLE IF EXISTS "public"."users_locales";
@@ -1301,6 +1288,12 @@ DROP SEQUENCE IF EXISTS "public"."pages_hero_links_locales_id_seq";
 DROP TABLE IF EXISTS "public"."pages_hero_links_locales";
 DROP TABLE IF EXISTS "public"."pages_hero_links";
 DROP TABLE IF EXISTS "public"."pages";
+DROP SEQUENCE IF EXISTS "public"."news_rels_id_seq";
+DROP TABLE IF EXISTS "public"."news_rels";
+DROP TABLE IF EXISTS "public"."news_populated_authors";
+DROP SEQUENCE IF EXISTS "public"."news_locales_id_seq";
+DROP TABLE IF EXISTS "public"."news_locales";
+DROP TABLE IF EXISTS "public"."news";
 DROP TABLE IF EXISTS "public"."metricsBlock_table_rows_children_cells";
 DROP TABLE IF EXISTS "public"."metricsBlock_table_rows_children";
 DROP TABLE IF EXISTS "public"."metricsBlock_table_rows_cells";
@@ -1392,7 +1385,6 @@ DROP TABLE IF EXISTS "public"."forms_blocks_checkbox";
 DROP TABLE IF EXISTS "public"."forms";
 DROP TABLE IF EXISTS "public"."form_submissions_submission_data";
 DROP TABLE IF EXISTS "public"."form_submissions";
-DROP TABLE IF EXISTS "public"."formBlock";
 DROP SEQUENCE IF EXISTS "public"."footer_rels_id_seq";
 DROP TABLE IF EXISTS "public"."footer_rels";
 DROP SEQUENCE IF EXISTS "public"."footer_columns_nav_items_locales_id_seq";
@@ -1427,12 +1419,6 @@ DROP TABLE IF EXISTS "public"."customers_rels";
 DROP SEQUENCE IF EXISTS "public"."customers_locales_id_seq";
 DROP TABLE IF EXISTS "public"."customers_locales";
 DROP TABLE IF EXISTS "public"."customers";
-DROP SEQUENCE IF EXISTS "public"."customHtmlBlock_locales_id_seq";
-DROP TABLE IF EXISTS "public"."customHtmlBlock_locales";
-DROP SEQUENCE IF EXISTS "public"."customHtmlBlock_block_header_links_locales_id_seq";
-DROP TABLE IF EXISTS "public"."customHtmlBlock_block_header_links_locales";
-DROP TABLE IF EXISTS "public"."customHtmlBlock_block_header_links";
-DROP TABLE IF EXISTS "public"."customHtmlBlock";
 DROP SEQUENCE IF EXISTS "public"."categories_locales_id_seq";
 DROP TABLE IF EXISTS "public"."categories_locales";
 DROP TABLE IF EXISTS "public"."categories_breadcrumbs";
@@ -1450,12 +1436,6 @@ DROP TABLE IF EXISTS "public"."blog_posts_populated_authors";
 DROP SEQUENCE IF EXISTS "public"."blog_posts_locales_id_seq";
 DROP TABLE IF EXISTS "public"."blog_posts_locales";
 DROP TABLE IF EXISTS "public"."blog_posts";
-DROP SEQUENCE IF EXISTS "public"."archiveBlock_locales_id_seq";
-DROP TABLE IF EXISTS "public"."archiveBlock_locales";
-DROP SEQUENCE IF EXISTS "public"."archiveBlock_block_header_links_locales_id_seq";
-DROP TABLE IF EXISTS "public"."archiveBlock_block_header_links_locales";
-DROP TABLE IF EXISTS "public"."archiveBlock_block_header_links";
-DROP TABLE IF EXISTS "public"."archiveBlock";
 DROP SEQUENCE IF EXISTS "public"."_testimonialsBlock_v_locales_id_seq";
 DROP TABLE IF EXISTS "public"."_testimonialsBlock_v_locales";
 DROP SEQUENCE IF EXISTS "public"."_testimonialsBlock_v_block_header_links_locales_id_seq";
@@ -1488,6 +1468,12 @@ DROP TABLE IF EXISTS "public"."_pages_v_rels";
 DROP SEQUENCE IF EXISTS "public"."_pages_v_locales_id_seq";
 DROP TABLE IF EXISTS "public"."_pages_v_locales";
 DROP TABLE IF EXISTS "public"."_pages_v";
+DROP TABLE IF EXISTS "public"."_news_v_version_populated_authors";
+DROP SEQUENCE IF EXISTS "public"."_news_v_rels_id_seq";
+DROP TABLE IF EXISTS "public"."_news_v_rels";
+DROP SEQUENCE IF EXISTS "public"."_news_v_locales_id_seq";
+DROP TABLE IF EXISTS "public"."_news_v_locales";
+DROP TABLE IF EXISTS "public"."_news_v";
 DROP TABLE IF EXISTS "public"."_metricsBlock_v_table_rows_children_cells";
 DROP TABLE IF EXISTS "public"."_metricsBlock_v_table_rows_children";
 DROP TABLE IF EXISTS "public"."_metricsBlock_v_table_rows_cells";
@@ -1517,7 +1503,6 @@ DROP SEQUENCE IF EXISTS "public"."_galleryBlock_v_block_header_links_locales_id_
 DROP TABLE IF EXISTS "public"."_galleryBlock_v_block_header_links_locales";
 DROP TABLE IF EXISTS "public"."_galleryBlock_v_block_header_links";
 DROP TABLE IF EXISTS "public"."_galleryBlock_v";
-DROP TABLE IF EXISTS "public"."_formBlock_v";
 DROP SEQUENCE IF EXISTS "public"."_featuresBlock_v_locales_id_seq";
 DROP TABLE IF EXISTS "public"."_featuresBlock_v_locales";
 DROP SEQUENCE IF EXISTS "public"."_featuresBlock_v_columns_locales_id_seq";
@@ -1545,12 +1530,6 @@ DROP TABLE IF EXISTS "public"."_customers_v_rels";
 DROP SEQUENCE IF EXISTS "public"."_customers_v_locales_id_seq";
 DROP TABLE IF EXISTS "public"."_customers_v_locales";
 DROP TABLE IF EXISTS "public"."_customers_v";
-DROP SEQUENCE IF EXISTS "public"."_customHtmlBlock_v_locales_id_seq";
-DROP TABLE IF EXISTS "public"."_customHtmlBlock_v_locales";
-DROP SEQUENCE IF EXISTS "public"."_customHtmlBlock_v_block_header_links_locales_id_seq";
-DROP TABLE IF EXISTS "public"."_customHtmlBlock_v_block_header_links_locales";
-DROP TABLE IF EXISTS "public"."_customHtmlBlock_v_block_header_links";
-DROP TABLE IF EXISTS "public"."_customHtmlBlock_v";
 DROP SEQUENCE IF EXISTS "public"."_callToActionBlock_v_locales_id_seq";
 DROP TABLE IF EXISTS "public"."_callToActionBlock_v_locales";
 DROP TABLE IF EXISTS "public"."_callToActionBlock_v_list";
@@ -1564,12 +1543,6 @@ DROP TABLE IF EXISTS "public"."_blog_posts_v_rels";
 DROP SEQUENCE IF EXISTS "public"."_blog_posts_v_locales_id_seq";
 DROP TABLE IF EXISTS "public"."_blog_posts_v_locales";
 DROP TABLE IF EXISTS "public"."_blog_posts_v";
-DROP SEQUENCE IF EXISTS "public"."_archiveBlock_v_locales_id_seq";
-DROP TABLE IF EXISTS "public"."_archiveBlock_v_locales";
-DROP SEQUENCE IF EXISTS "public"."_archiveBlock_v_block_header_links_locales_id_seq";
-DROP TABLE IF EXISTS "public"."_archiveBlock_v_block_header_links_locales";
-DROP TABLE IF EXISTS "public"."_archiveBlock_v_block_header_links";
-DROP TABLE IF EXISTS "public"."_archiveBlock_v";
 DROP TYPE IF EXISTS "public"."link_variant";
 DROP TYPE IF EXISTS "public"."link_type";
 DROP TYPE IF EXISTS "public"."link_color";
@@ -1592,6 +1565,7 @@ DROP TYPE IF EXISTS "public"."enum_pages_status";
 DROP TYPE IF EXISTS "public"."enum_pages_hero_type";
 DROP TYPE IF EXISTS "public"."enum_pages_hero_list_style";
 DROP TYPE IF EXISTS "public"."enum_pages_hero_badge_type";
+DROP TYPE IF EXISTS "public"."enum_news_status";
 DROP TYPE IF EXISTS "public"."enum_metricsBlock_type";
 DROP TYPE IF EXISTS "public"."enum_metricsBlock_table_headers_width";
 DROP TYPE IF EXISTS "public"."enum_metricsBlock_stats_indicator";
@@ -1621,15 +1595,9 @@ DROP TYPE IF EXISTS "public"."enum_dividerBlock_size";
 DROP TYPE IF EXISTS "public"."enum_customers_testimonial_stats_indicator";
 DROP TYPE IF EXISTS "public"."enum_customers_testimonial_company_industry";
 DROP TYPE IF EXISTS "public"."enum_customers_status";
-DROP TYPE IF EXISTS "public"."enum_customHtmlBlock_block_header_type";
-DROP TYPE IF EXISTS "public"."enum_customHtmlBlock_block_header_badge_type";
 DROP TYPE IF EXISTS "public"."enum_callToActionBlock_type";
 DROP TYPE IF EXISTS "public"."enum_callToActionBlock_badge_type";
 DROP TYPE IF EXISTS "public"."enum_blog_posts_status";
-DROP TYPE IF EXISTS "public"."enum_archiveBlock_relation_to";
-DROP TYPE IF EXISTS "public"."enum_archiveBlock_populate_by";
-DROP TYPE IF EXISTS "public"."enum_archiveBlock_block_header_type";
-DROP TYPE IF EXISTS "public"."enum_archiveBlock_block_header_badge_type";
 DROP TYPE IF EXISTS "public"."enum__testimonialsBlock_v_type";
 DROP TYPE IF EXISTS "public"."enum__testimonialsBlock_v_block_header_type";
 DROP TYPE IF EXISTS "public"."enum__testimonialsBlock_v_block_header_badge_type";
@@ -1645,6 +1613,8 @@ DROP TYPE IF EXISTS "public"."enum__pages_v_version_hero_type";
 DROP TYPE IF EXISTS "public"."enum__pages_v_version_hero_list_style";
 DROP TYPE IF EXISTS "public"."enum__pages_v_version_hero_badge_type";
 DROP TYPE IF EXISTS "public"."enum__pages_v_published_locale";
+DROP TYPE IF EXISTS "public"."enum__news_v_version_status";
+DROP TYPE IF EXISTS "public"."enum__news_v_published_locale";
 DROP TYPE IF EXISTS "public"."enum__metricsBlock_v_type";
 DROP TYPE IF EXISTS "public"."enum__metricsBlock_v_table_headers_width";
 DROP TYPE IF EXISTS "public"."enum__metricsBlock_v_stats_indicator";
@@ -1673,16 +1643,10 @@ DROP TYPE IF EXISTS "public"."enum__customers_v_version_testimonial_stats_indica
 DROP TYPE IF EXISTS "public"."enum__customers_v_version_testimonial_company_industry";
 DROP TYPE IF EXISTS "public"."enum__customers_v_version_status";
 DROP TYPE IF EXISTS "public"."enum__customers_v_published_locale";
-DROP TYPE IF EXISTS "public"."enum__customHtmlBlock_v_block_header_type";
-DROP TYPE IF EXISTS "public"."enum__customHtmlBlock_v_block_header_badge_type";
 DROP TYPE IF EXISTS "public"."enum__callToActionBlock_v_type";
 DROP TYPE IF EXISTS "public"."enum__callToActionBlock_v_badge_type";
 DROP TYPE IF EXISTS "public"."enum__blog_posts_v_version_status";
 DROP TYPE IF EXISTS "public"."enum__blog_posts_v_published_locale";
-DROP TYPE IF EXISTS "public"."enum__archiveBlock_v_relation_to";
-DROP TYPE IF EXISTS "public"."enum__archiveBlock_v_populate_by";
-DROP TYPE IF EXISTS "public"."enum__archiveBlock_v_block_header_type";
-DROP TYPE IF EXISTS "public"."enum__archiveBlock_v_block_header_badge_type";
 DROP TYPE IF EXISTS "public"."badge_icon_position";
 DROP TYPE IF EXISTS "public"."badge_color";
 DROP TYPE IF EXISTS "public"."_locales";
@@ -1729,46 +1693,6 @@ CREATE TYPE "public"."badge_icon_position" AS ENUM (
 
 
 --
--- Name: enum__archiveBlock_v_block_header_badge_type; Type: TYPE; Schema: public; Owner: -
---
-
-CREATE TYPE "public"."enum__archiveBlock_v_block_header_badge_type" AS ENUM (
-    'label',
-    'reference'
-);
-
-
---
--- Name: enum__archiveBlock_v_block_header_type; Type: TYPE; Schema: public; Owner: -
---
-
-CREATE TYPE "public"."enum__archiveBlock_v_block_header_type" AS ENUM (
-    'center',
-    'split',
-    'start'
-);
-
-
---
--- Name: enum__archiveBlock_v_populate_by; Type: TYPE; Schema: public; Owner: -
---
-
-CREATE TYPE "public"."enum__archiveBlock_v_populate_by" AS ENUM (
-    'collection',
-    'selection'
-);
-
-
---
--- Name: enum__archiveBlock_v_relation_to; Type: TYPE; Schema: public; Owner: -
---
-
-CREATE TYPE "public"."enum__archiveBlock_v_relation_to" AS ENUM (
-    'blog-posts'
-);
-
-
---
 -- Name: enum__blog_posts_v_published_locale; Type: TYPE; Schema: public; Owner: -
 --
 
@@ -1808,27 +1732,6 @@ CREATE TYPE "public"."enum__callToActionBlock_v_type" AS ENUM (
     '03',
     '04',
     '05'
-);
-
-
---
--- Name: enum__customHtmlBlock_v_block_header_badge_type; Type: TYPE; Schema: public; Owner: -
---
-
-CREATE TYPE "public"."enum__customHtmlBlock_v_block_header_badge_type" AS ENUM (
-    'label',
-    'reference'
-);
-
-
---
--- Name: enum__customHtmlBlock_v_block_header_type; Type: TYPE; Schema: public; Owner: -
---
-
-CREATE TYPE "public"."enum__customHtmlBlock_v_block_header_type" AS ENUM (
-    'center',
-    'split',
-    'start'
 );
 
 
@@ -2140,6 +2043,26 @@ CREATE TYPE "public"."enum__metricsBlock_v_type" AS ENUM (
 
 
 --
+-- Name: enum__news_v_published_locale; Type: TYPE; Schema: public; Owner: -
+--
+
+CREATE TYPE "public"."enum__news_v_published_locale" AS ENUM (
+    'en',
+    'ar'
+);
+
+
+--
+-- Name: enum__news_v_version_status; Type: TYPE; Schema: public; Owner: -
+--
+
+CREATE TYPE "public"."enum__news_v_version_status" AS ENUM (
+    'draft',
+    'published'
+);
+
+
+--
 -- Name: enum__pages_v_published_locale; Type: TYPE; Schema: public; Owner: -
 --
 
@@ -2301,46 +2224,6 @@ CREATE TYPE "public"."enum__testimonialsBlock_v_type" AS ENUM (
 
 
 --
--- Name: enum_archiveBlock_block_header_badge_type; Type: TYPE; Schema: public; Owner: -
---
-
-CREATE TYPE "public"."enum_archiveBlock_block_header_badge_type" AS ENUM (
-    'label',
-    'reference'
-);
-
-
---
--- Name: enum_archiveBlock_block_header_type; Type: TYPE; Schema: public; Owner: -
---
-
-CREATE TYPE "public"."enum_archiveBlock_block_header_type" AS ENUM (
-    'center',
-    'split',
-    'start'
-);
-
-
---
--- Name: enum_archiveBlock_populate_by; Type: TYPE; Schema: public; Owner: -
---
-
-CREATE TYPE "public"."enum_archiveBlock_populate_by" AS ENUM (
-    'collection',
-    'selection'
-);
-
-
---
--- Name: enum_archiveBlock_relation_to; Type: TYPE; Schema: public; Owner: -
---
-
-CREATE TYPE "public"."enum_archiveBlock_relation_to" AS ENUM (
-    'blog-posts'
-);
-
-
---
 -- Name: enum_blog_posts_status; Type: TYPE; Schema: public; Owner: -
 --
 
@@ -2370,27 +2253,6 @@ CREATE TYPE "public"."enum_callToActionBlock_type" AS ENUM (
     '03',
     '04',
     '05'
-);
-
-
---
--- Name: enum_customHtmlBlock_block_header_badge_type; Type: TYPE; Schema: public; Owner: -
---
-
-CREATE TYPE "public"."enum_customHtmlBlock_block_header_badge_type" AS ENUM (
-    'label',
-    'reference'
-);
-
-
---
--- Name: enum_customHtmlBlock_block_header_type; Type: TYPE; Schema: public; Owner: -
---
-
-CREATE TYPE "public"."enum_customHtmlBlock_block_header_type" AS ENUM (
-    'center',
-    'split',
-    'start'
 );
 
 
@@ -2713,6 +2575,16 @@ CREATE TYPE "public"."enum_metricsBlock_type" AS ENUM (
 
 
 --
+-- Name: enum_news_status; Type: TYPE; Schema: public; Owner: -
+--
+
+CREATE TYPE "public"."enum_news_status" AS ENUM (
+    'draft',
+    'published'
+);
+
+
+--
 -- Name: enum_pages_hero_badge_type; Type: TYPE; Schema: public; Owner: -
 --
 
@@ -2950,110 +2822,6 @@ SET default_tablespace = '';
 SET default_table_access_method = "heap";
 
 --
--- Name: _archiveBlock_v; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE "public"."_archiveBlock_v" (
-    "_order" integer NOT NULL,
-    "_parent_id" "uuid" NOT NULL,
-    "_path" "text" NOT NULL,
-    "id" "uuid" DEFAULT "gen_random_uuid"() NOT NULL,
-    "block_header_type" "public"."enum__archiveBlock_v_block_header_type" DEFAULT 'center'::"public"."enum__archiveBlock_v_block_header_type",
-    "block_header_badge_type" "public"."enum__archiveBlock_v_block_header_badge_type",
-    "block_header_badge_color" "public"."badge_color" DEFAULT 'blue'::"public"."badge_color",
-    "block_header_badge_icon" character varying,
-    "block_header_badge_icon_position" "public"."badge_icon_position" DEFAULT 'flex-row'::"public"."badge_icon_position",
-    "populate_by" "public"."enum__archiveBlock_v_populate_by" DEFAULT 'collection'::"public"."enum__archiveBlock_v_populate_by",
-    "relation_to" "public"."enum__archiveBlock_v_relation_to" DEFAULT 'blog-posts'::"public"."enum__archiveBlock_v_relation_to",
-    "limit" numeric DEFAULT 10,
-    "_uuid" character varying,
-    "block_name" character varying
-);
-
-
---
--- Name: _archiveBlock_v_block_header_links; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE "public"."_archiveBlock_v_block_header_links" (
-    "_order" integer NOT NULL,
-    "_parent_id" "uuid" NOT NULL,
-    "id" "uuid" DEFAULT "gen_random_uuid"() NOT NULL,
-    "link_type" "public"."link_type" DEFAULT 'reference'::"public"."link_type",
-    "link_new_tab" boolean,
-    "link_url" character varying,
-    "link_color" "public"."link_color" DEFAULT 'neutral'::"public"."link_color",
-    "link_variant" "public"."link_variant" DEFAULT 'primary'::"public"."link_variant",
-    "_uuid" character varying
-);
-
-
---
--- Name: _archiveBlock_v_block_header_links_locales; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE "public"."_archiveBlock_v_block_header_links_locales" (
-    "link_label" character varying,
-    "id" integer NOT NULL,
-    "_locale" "public"."_locales" NOT NULL,
-    "_parent_id" "uuid" NOT NULL
-);
-
-
---
--- Name: _archiveBlock_v_block_header_links_locales_id_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
-CREATE SEQUENCE "public"."_archiveBlock_v_block_header_links_locales_id_seq"
-    AS integer
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: _archiveBlock_v_block_header_links_locales_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
---
-
-ALTER SEQUENCE "public"."_archiveBlock_v_block_header_links_locales_id_seq" OWNED BY "public"."_archiveBlock_v_block_header_links_locales"."id";
-
-
---
--- Name: _archiveBlock_v_locales; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE "public"."_archiveBlock_v_locales" (
-    "block_header_badge_label" character varying,
-    "block_header_header_text" "jsonb",
-    "id" integer NOT NULL,
-    "_locale" "public"."_locales" NOT NULL,
-    "_parent_id" "uuid" NOT NULL
-);
-
-
---
--- Name: _archiveBlock_v_locales_id_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
-CREATE SEQUENCE "public"."_archiveBlock_v_locales_id_seq"
-    AS integer
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: _archiveBlock_v_locales_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
---
-
-ALTER SEQUENCE "public"."_archiveBlock_v_locales_id_seq" OWNED BY "public"."_archiveBlock_v_locales"."id";
-
-
---
 -- Name: _blog_posts_v; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -3281,108 +3049,6 @@ CREATE SEQUENCE "public"."_callToActionBlock_v_locales_id_seq"
 --
 
 ALTER SEQUENCE "public"."_callToActionBlock_v_locales_id_seq" OWNED BY "public"."_callToActionBlock_v_locales"."id";
-
-
---
--- Name: _customHtmlBlock_v; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE "public"."_customHtmlBlock_v" (
-    "_order" integer NOT NULL,
-    "_parent_id" "uuid" NOT NULL,
-    "_path" "text" NOT NULL,
-    "id" "uuid" DEFAULT "gen_random_uuid"() NOT NULL,
-    "block_header_type" "public"."enum__customHtmlBlock_v_block_header_type" DEFAULT 'center'::"public"."enum__customHtmlBlock_v_block_header_type",
-    "block_header_badge_type" "public"."enum__customHtmlBlock_v_block_header_badge_type",
-    "block_header_badge_color" "public"."badge_color" DEFAULT 'blue'::"public"."badge_color",
-    "block_header_badge_icon" character varying,
-    "block_header_badge_icon_position" "public"."badge_icon_position" DEFAULT 'flex-row'::"public"."badge_icon_position",
-    "html_content" character varying,
-    "_uuid" character varying,
-    "block_name" character varying
-);
-
-
---
--- Name: _customHtmlBlock_v_block_header_links; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE "public"."_customHtmlBlock_v_block_header_links" (
-    "_order" integer NOT NULL,
-    "_parent_id" "uuid" NOT NULL,
-    "id" "uuid" DEFAULT "gen_random_uuid"() NOT NULL,
-    "link_type" "public"."link_type" DEFAULT 'reference'::"public"."link_type",
-    "link_new_tab" boolean,
-    "link_url" character varying,
-    "link_color" "public"."link_color" DEFAULT 'neutral'::"public"."link_color",
-    "link_variant" "public"."link_variant" DEFAULT 'primary'::"public"."link_variant",
-    "_uuid" character varying
-);
-
-
---
--- Name: _customHtmlBlock_v_block_header_links_locales; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE "public"."_customHtmlBlock_v_block_header_links_locales" (
-    "link_label" character varying,
-    "id" integer NOT NULL,
-    "_locale" "public"."_locales" NOT NULL,
-    "_parent_id" "uuid" NOT NULL
-);
-
-
---
--- Name: _customHtmlBlock_v_block_header_links_locales_id_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
-CREATE SEQUENCE "public"."_customHtmlBlock_v_block_header_links_locales_id_seq"
-    AS integer
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: _customHtmlBlock_v_block_header_links_locales_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
---
-
-ALTER SEQUENCE "public"."_customHtmlBlock_v_block_header_links_locales_id_seq" OWNED BY "public"."_customHtmlBlock_v_block_header_links_locales"."id";
-
-
---
--- Name: _customHtmlBlock_v_locales; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE "public"."_customHtmlBlock_v_locales" (
-    "block_header_badge_label" character varying,
-    "block_header_header_text" "jsonb",
-    "id" integer NOT NULL,
-    "_locale" "public"."_locales" NOT NULL,
-    "_parent_id" "uuid" NOT NULL
-);
-
-
---
--- Name: _customHtmlBlock_v_locales_id_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
-CREATE SEQUENCE "public"."_customHtmlBlock_v_locales_id_seq"
-    AS integer
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: _customHtmlBlock_v_locales_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
---
-
-ALTER SEQUENCE "public"."_customHtmlBlock_v_locales_id_seq" OWNED BY "public"."_customHtmlBlock_v_locales"."id";
 
 
 --
@@ -3886,23 +3552,6 @@ ALTER SEQUENCE "public"."_featuresBlock_v_locales_id_seq" OWNED BY "public"."_fe
 
 
 --
--- Name: _formBlock_v; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE "public"."_formBlock_v" (
-    "_order" integer NOT NULL,
-    "_parent_id" "uuid" NOT NULL,
-    "_path" "text" NOT NULL,
-    "id" "uuid" DEFAULT "gen_random_uuid"() NOT NULL,
-    "form_id" "uuid",
-    "enable_intro" boolean,
-    "intro_content" "jsonb",
-    "_uuid" character varying,
-    "block_name" character varying
-);
-
-
---
 -- Name: _galleryBlock_v; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -4375,6 +4024,113 @@ CREATE TABLE "public"."_metricsBlock_v_table_rows_children_cells" (
     "id" "uuid" DEFAULT "gen_random_uuid"() NOT NULL,
     "content" character varying,
     "_uuid" character varying
+);
+
+
+--
+-- Name: _news_v; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE "public"."_news_v" (
+    "id" "uuid" DEFAULT "gen_random_uuid"() NOT NULL,
+    "parent_id" "uuid",
+    "version_updated_at" timestamp(3) with time zone,
+    "version_created_at" timestamp(3) with time zone,
+    "version__status" "public"."enum__news_v_version_status" DEFAULT 'draft'::"public"."enum__news_v_version_status",
+    "created_at" timestamp(3) with time zone DEFAULT "now"() NOT NULL,
+    "updated_at" timestamp(3) with time zone DEFAULT "now"() NOT NULL,
+    "snapshot" boolean,
+    "published_locale" "public"."enum__news_v_published_locale",
+    "latest" boolean
+);
+
+
+--
+-- Name: _news_v_locales; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE "public"."_news_v_locales" (
+    "version_title" character varying,
+    "version_hero_image_id" "uuid",
+    "version_content" "jsonb",
+    "version_meta_title" character varying,
+    "version_meta_image_id" "uuid",
+    "version_meta_description" character varying,
+    "version_published_at" timestamp(3) with time zone,
+    "version_slug" character varying,
+    "version_slug_lock" boolean DEFAULT true,
+    "id" integer NOT NULL,
+    "_locale" "public"."_locales" NOT NULL,
+    "_parent_id" "uuid" NOT NULL
+);
+
+
+--
+-- Name: _news_v_locales_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE "public"."_news_v_locales_id_seq"
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: _news_v_locales_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE "public"."_news_v_locales_id_seq" OWNED BY "public"."_news_v_locales"."id";
+
+
+--
+-- Name: _news_v_rels; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE "public"."_news_v_rels" (
+    "id" integer NOT NULL,
+    "order" integer,
+    "parent_id" "uuid" NOT NULL,
+    "path" character varying NOT NULL,
+    "locale" "public"."_locales",
+    "news_id" "uuid",
+    "categories_id" "uuid",
+    "users_id" "uuid"
+);
+
+
+--
+-- Name: _news_v_rels_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE "public"."_news_v_rels_id_seq"
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: _news_v_rels_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE "public"."_news_v_rels_id_seq" OWNED BY "public"."_news_v_rels"."id";
+
+
+--
+-- Name: _news_v_version_populated_authors; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE "public"."_news_v_version_populated_authors" (
+    "_order" integer NOT NULL,
+    "_parent_id" "uuid" NOT NULL,
+    "id" "uuid" DEFAULT "gen_random_uuid"() NOT NULL,
+    "_uuid" character varying,
+    "name" character varying
 );
 
 
@@ -4941,108 +4697,6 @@ ALTER SEQUENCE "public"."_testimonialsBlock_v_locales_id_seq" OWNED BY "public".
 
 
 --
--- Name: archiveBlock; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE "public"."archiveBlock" (
-    "_order" integer NOT NULL,
-    "_parent_id" "uuid" NOT NULL,
-    "_path" "text" NOT NULL,
-    "id" character varying NOT NULL,
-    "block_header_type" "public"."enum_archiveBlock_block_header_type" DEFAULT 'center'::"public"."enum_archiveBlock_block_header_type",
-    "block_header_badge_type" "public"."enum_archiveBlock_block_header_badge_type",
-    "block_header_badge_color" "public"."badge_color" DEFAULT 'blue'::"public"."badge_color",
-    "block_header_badge_icon" character varying,
-    "block_header_badge_icon_position" "public"."badge_icon_position" DEFAULT 'flex-row'::"public"."badge_icon_position",
-    "populate_by" "public"."enum_archiveBlock_populate_by" DEFAULT 'collection'::"public"."enum_archiveBlock_populate_by",
-    "relation_to" "public"."enum_archiveBlock_relation_to" DEFAULT 'blog-posts'::"public"."enum_archiveBlock_relation_to",
-    "limit" numeric DEFAULT 10,
-    "block_name" character varying
-);
-
-
---
--- Name: archiveBlock_block_header_links; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE "public"."archiveBlock_block_header_links" (
-    "_order" integer NOT NULL,
-    "_parent_id" character varying NOT NULL,
-    "id" character varying NOT NULL,
-    "link_type" "public"."link_type" DEFAULT 'reference'::"public"."link_type",
-    "link_new_tab" boolean,
-    "link_url" character varying,
-    "link_color" "public"."link_color" DEFAULT 'neutral'::"public"."link_color",
-    "link_variant" "public"."link_variant" DEFAULT 'primary'::"public"."link_variant"
-);
-
-
---
--- Name: archiveBlock_block_header_links_locales; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE "public"."archiveBlock_block_header_links_locales" (
-    "link_label" character varying,
-    "id" integer NOT NULL,
-    "_locale" "public"."_locales" NOT NULL,
-    "_parent_id" character varying NOT NULL
-);
-
-
---
--- Name: archiveBlock_block_header_links_locales_id_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
-CREATE SEQUENCE "public"."archiveBlock_block_header_links_locales_id_seq"
-    AS integer
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: archiveBlock_block_header_links_locales_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
---
-
-ALTER SEQUENCE "public"."archiveBlock_block_header_links_locales_id_seq" OWNED BY "public"."archiveBlock_block_header_links_locales"."id";
-
-
---
--- Name: archiveBlock_locales; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE "public"."archiveBlock_locales" (
-    "block_header_badge_label" character varying,
-    "block_header_header_text" "jsonb",
-    "id" integer NOT NULL,
-    "_locale" "public"."_locales" NOT NULL,
-    "_parent_id" character varying NOT NULL
-);
-
-
---
--- Name: archiveBlock_locales_id_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
-CREATE SEQUENCE "public"."archiveBlock_locales_id_seq"
-    AS integer
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: archiveBlock_locales_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
---
-
-ALTER SEQUENCE "public"."archiveBlock_locales_id_seq" OWNED BY "public"."archiveBlock_locales"."id";
-
-
---
 -- Name: blog_posts; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -5321,106 +4975,6 @@ CREATE SEQUENCE "public"."categories_locales_id_seq"
 --
 
 ALTER SEQUENCE "public"."categories_locales_id_seq" OWNED BY "public"."categories_locales"."id";
-
-
---
--- Name: customHtmlBlock; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE "public"."customHtmlBlock" (
-    "_order" integer NOT NULL,
-    "_parent_id" "uuid" NOT NULL,
-    "_path" "text" NOT NULL,
-    "id" character varying NOT NULL,
-    "block_header_type" "public"."enum_customHtmlBlock_block_header_type" DEFAULT 'center'::"public"."enum_customHtmlBlock_block_header_type",
-    "block_header_badge_type" "public"."enum_customHtmlBlock_block_header_badge_type",
-    "block_header_badge_color" "public"."badge_color" DEFAULT 'blue'::"public"."badge_color",
-    "block_header_badge_icon" character varying,
-    "block_header_badge_icon_position" "public"."badge_icon_position" DEFAULT 'flex-row'::"public"."badge_icon_position",
-    "html_content" character varying,
-    "block_name" character varying
-);
-
-
---
--- Name: customHtmlBlock_block_header_links; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE "public"."customHtmlBlock_block_header_links" (
-    "_order" integer NOT NULL,
-    "_parent_id" character varying NOT NULL,
-    "id" character varying NOT NULL,
-    "link_type" "public"."link_type" DEFAULT 'reference'::"public"."link_type",
-    "link_new_tab" boolean,
-    "link_url" character varying,
-    "link_color" "public"."link_color" DEFAULT 'neutral'::"public"."link_color",
-    "link_variant" "public"."link_variant" DEFAULT 'primary'::"public"."link_variant"
-);
-
-
---
--- Name: customHtmlBlock_block_header_links_locales; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE "public"."customHtmlBlock_block_header_links_locales" (
-    "link_label" character varying,
-    "id" integer NOT NULL,
-    "_locale" "public"."_locales" NOT NULL,
-    "_parent_id" character varying NOT NULL
-);
-
-
---
--- Name: customHtmlBlock_block_header_links_locales_id_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
-CREATE SEQUENCE "public"."customHtmlBlock_block_header_links_locales_id_seq"
-    AS integer
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: customHtmlBlock_block_header_links_locales_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
---
-
-ALTER SEQUENCE "public"."customHtmlBlock_block_header_links_locales_id_seq" OWNED BY "public"."customHtmlBlock_block_header_links_locales"."id";
-
-
---
--- Name: customHtmlBlock_locales; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE "public"."customHtmlBlock_locales" (
-    "block_header_badge_label" character varying,
-    "block_header_header_text" "jsonb",
-    "id" integer NOT NULL,
-    "_locale" "public"."_locales" NOT NULL,
-    "_parent_id" character varying NOT NULL
-);
-
-
---
--- Name: customHtmlBlock_locales_id_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
-CREATE SEQUENCE "public"."customHtmlBlock_locales_id_seq"
-    AS integer
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: customHtmlBlock_locales_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
---
-
-ALTER SEQUENCE "public"."customHtmlBlock_locales_id_seq" OWNED BY "public"."customHtmlBlock_locales"."id";
 
 
 --
@@ -6003,22 +5557,6 @@ CREATE SEQUENCE "public"."footer_rels_id_seq"
 --
 
 ALTER SEQUENCE "public"."footer_rels_id_seq" OWNED BY "public"."footer_rels"."id";
-
-
---
--- Name: formBlock; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE "public"."formBlock" (
-    "_order" integer NOT NULL,
-    "_parent_id" "uuid" NOT NULL,
-    "_path" "text" NOT NULL,
-    "id" character varying NOT NULL,
-    "form_id" "uuid",
-    "enable_intro" boolean,
-    "intro_content" "jsonb",
-    "block_name" character varying
-);
 
 
 --
@@ -7521,6 +7059,106 @@ CREATE TABLE "public"."metricsBlock_table_rows_children_cells" (
 
 
 --
+-- Name: news; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE "public"."news" (
+    "id" "uuid" DEFAULT "gen_random_uuid"() NOT NULL,
+    "updated_at" timestamp(3) with time zone DEFAULT "now"() NOT NULL,
+    "created_at" timestamp(3) with time zone DEFAULT "now"() NOT NULL,
+    "_status" "public"."enum_news_status" DEFAULT 'draft'::"public"."enum_news_status"
+);
+
+
+--
+-- Name: news_locales; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE "public"."news_locales" (
+    "title" character varying,
+    "hero_image_id" "uuid",
+    "content" "jsonb",
+    "meta_title" character varying,
+    "meta_image_id" "uuid",
+    "meta_description" character varying,
+    "published_at" timestamp(3) with time zone,
+    "slug" character varying,
+    "slug_lock" boolean DEFAULT true,
+    "id" integer NOT NULL,
+    "_locale" "public"."_locales" NOT NULL,
+    "_parent_id" "uuid" NOT NULL
+);
+
+
+--
+-- Name: news_locales_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE "public"."news_locales_id_seq"
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: news_locales_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE "public"."news_locales_id_seq" OWNED BY "public"."news_locales"."id";
+
+
+--
+-- Name: news_populated_authors; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE "public"."news_populated_authors" (
+    "_order" integer NOT NULL,
+    "_parent_id" "uuid" NOT NULL,
+    "id" character varying NOT NULL,
+    "name" character varying
+);
+
+
+--
+-- Name: news_rels; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE "public"."news_rels" (
+    "id" integer NOT NULL,
+    "order" integer,
+    "parent_id" "uuid" NOT NULL,
+    "path" character varying NOT NULL,
+    "locale" "public"."_locales",
+    "news_id" "uuid",
+    "categories_id" "uuid",
+    "users_id" "uuid"
+);
+
+
+--
+-- Name: news_rels_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE "public"."news_rels_id_seq"
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: news_rels_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE "public"."news_rels_id_seq" OWNED BY "public"."news_rels"."id";
+
+
+--
 -- Name: pages; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -7812,7 +7450,8 @@ CREATE TABLE "public"."payload_locked_documents_rels" (
     "form_submissions_id" "uuid",
     "search_id" "uuid",
     "payload_folders_id" "uuid",
-    "payload_jobs_id" "uuid"
+    "payload_jobs_id" "uuid",
+    "news_id" "uuid"
 );
 
 
@@ -8544,20 +8183,6 @@ CREATE TABLE "public"."users_sessions" (
 
 
 --
--- Name: _archiveBlock_v_block_header_links_locales id; Type: DEFAULT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY "public"."_archiveBlock_v_block_header_links_locales" ALTER COLUMN "id" SET DEFAULT "nextval"('"public"."_archiveBlock_v_block_header_links_locales_id_seq"'::"regclass");
-
-
---
--- Name: _archiveBlock_v_locales id; Type: DEFAULT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY "public"."_archiveBlock_v_locales" ALTER COLUMN "id" SET DEFAULT "nextval"('"public"."_archiveBlock_v_locales_id_seq"'::"regclass");
-
-
---
 -- Name: _blog_posts_v_locales id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -8583,20 +8208,6 @@ ALTER TABLE ONLY "public"."_callToActionBlock_v_links_locales" ALTER COLUMN "id"
 --
 
 ALTER TABLE ONLY "public"."_callToActionBlock_v_locales" ALTER COLUMN "id" SET DEFAULT "nextval"('"public"."_callToActionBlock_v_locales_id_seq"'::"regclass");
-
-
---
--- Name: _customHtmlBlock_v_block_header_links_locales id; Type: DEFAULT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY "public"."_customHtmlBlock_v_block_header_links_locales" ALTER COLUMN "id" SET DEFAULT "nextval"('"public"."_customHtmlBlock_v_block_header_links_locales_id_seq"'::"regclass");
-
-
---
--- Name: _customHtmlBlock_v_locales id; Type: DEFAULT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY "public"."_customHtmlBlock_v_locales" ALTER COLUMN "id" SET DEFAULT "nextval"('"public"."_customHtmlBlock_v_locales_id_seq"'::"regclass");
 
 
 --
@@ -8719,6 +8330,20 @@ ALTER TABLE ONLY "public"."_metricsBlock_v_stats_locales" ALTER COLUMN "id" SET 
 
 
 --
+-- Name: _news_v_locales id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY "public"."_news_v_locales" ALTER COLUMN "id" SET DEFAULT "nextval"('"public"."_news_v_locales_id_seq"'::"regclass");
+
+
+--
+-- Name: _news_v_rels id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY "public"."_news_v_rels" ALTER COLUMN "id" SET DEFAULT "nextval"('"public"."_news_v_rels_id_seq"'::"regclass");
+
+
+--
 -- Name: _pages_v_locales id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -8796,20 +8421,6 @@ ALTER TABLE ONLY "public"."_testimonialsBlock_v_locales" ALTER COLUMN "id" SET D
 
 
 --
--- Name: archiveBlock_block_header_links_locales id; Type: DEFAULT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY "public"."archiveBlock_block_header_links_locales" ALTER COLUMN "id" SET DEFAULT "nextval"('"public"."archiveBlock_block_header_links_locales_id_seq"'::"regclass");
-
-
---
--- Name: archiveBlock_locales id; Type: DEFAULT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY "public"."archiveBlock_locales" ALTER COLUMN "id" SET DEFAULT "nextval"('"public"."archiveBlock_locales_id_seq"'::"regclass");
-
-
---
 -- Name: blog_posts_locales id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -8842,20 +8453,6 @@ ALTER TABLE ONLY "public"."callToActionBlock_locales" ALTER COLUMN "id" SET DEFA
 --
 
 ALTER TABLE ONLY "public"."categories_locales" ALTER COLUMN "id" SET DEFAULT "nextval"('"public"."categories_locales_id_seq"'::"regclass");
-
-
---
--- Name: customHtmlBlock_block_header_links_locales id; Type: DEFAULT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY "public"."customHtmlBlock_block_header_links_locales" ALTER COLUMN "id" SET DEFAULT "nextval"('"public"."customHtmlBlock_block_header_links_locales_id_seq"'::"regclass");
-
-
---
--- Name: customHtmlBlock_locales id; Type: DEFAULT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY "public"."customHtmlBlock_locales" ALTER COLUMN "id" SET DEFAULT "nextval"('"public"."customHtmlBlock_locales_id_seq"'::"regclass");
 
 
 --
@@ -9132,6 +8729,20 @@ ALTER TABLE ONLY "public"."metricsBlock_stats_locales" ALTER COLUMN "id" SET DEF
 
 
 --
+-- Name: news_locales id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY "public"."news_locales" ALTER COLUMN "id" SET DEFAULT "nextval"('"public"."news_locales_id_seq"'::"regclass");
+
+
+--
+-- Name: news_rels id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY "public"."news_rels" ALTER COLUMN "id" SET DEFAULT "nextval"('"public"."news_rels_id_seq"'::"regclass");
+
+
+--
 -- Name: pages_hero_links_locales id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -9265,38 +8876,6 @@ ALTER TABLE ONLY "public"."users_locales" ALTER COLUMN "id" SET DEFAULT "nextval
 
 
 --
--- Data for Name: _archiveBlock_v; Type: TABLE DATA; Schema: public; Owner: -
---
-
-COPY "public"."_archiveBlock_v" ("_order", "_parent_id", "_path", "id", "block_header_type", "block_header_badge_type", "block_header_badge_color", "block_header_badge_icon", "block_header_badge_icon_position", "populate_by", "relation_to", "limit", "_uuid", "block_name") FROM stdin;
-\.
-
-
---
--- Data for Name: _archiveBlock_v_block_header_links; Type: TABLE DATA; Schema: public; Owner: -
---
-
-COPY "public"."_archiveBlock_v_block_header_links" ("_order", "_parent_id", "id", "link_type", "link_new_tab", "link_url", "link_color", "link_variant", "_uuid") FROM stdin;
-\.
-
-
---
--- Data for Name: _archiveBlock_v_block_header_links_locales; Type: TABLE DATA; Schema: public; Owner: -
---
-
-COPY "public"."_archiveBlock_v_block_header_links_locales" ("link_label", "id", "_locale", "_parent_id") FROM stdin;
-\.
-
-
---
--- Data for Name: _archiveBlock_v_locales; Type: TABLE DATA; Schema: public; Owner: -
---
-
-COPY "public"."_archiveBlock_v_locales" ("block_header_badge_label", "block_header_header_text", "id", "_locale", "_parent_id") FROM stdin;
-\.
-
-
---
 -- Data for Name: _blog_posts_v; Type: TABLE DATA; Schema: public; Owner: -
 --
 
@@ -9405,7 +8984,7 @@ COPY "public"."_callToActionBlock_v" ("_order", "_parent_id", "_path", "id", "ty
 9	b607d175-e9e4-4f24-9088-f7c06375a6d5	version.layout	26f0220b-9e71-42ee-a0d2-9f8a90802ef9	02	\N	blue	\N	flex-row	\N	\N	6886a1475a3935fab3feb21f	\N
 7	9c74e1c0-9a5d-413b-8da8-b2b138a7907f	version.layout	5cb377bf-8e19-4d1e-ba4b-4ab41572c208	01	label	blue	\N	flex-row	\N	\N	68aaa8059ce857dc34b99afa	\N
 9	9c74e1c0-9a5d-413b-8da8-b2b138a7907f	version.layout	3ee02bbb-6f89-470e-9d1a-94902a9e56cb	02	\N	blue	\N	flex-row	\N	\N	6886a1475a3935fab3feb21f	\N
-1	7a4c98df-91cc-4835-aad2-89626c479ee4	version.layout	4685509b-d8a1-4b2d-a726-22089fe432d1	05	\N	blue	\N	flex-row	\N	08229b0a-bc40-4ed9-a1e7-0cc51c63ef0e	68b587df834178316c1a477b	\N
+1	7a4c98df-91cc-4835-aad2-89626c479ee4	version.layout	4685509b-d8a1-4b2d-a726-22089fe432d1	05	\N	blue	\N	flex-row	\N	\N	68b587df834178316c1a477b	\N
 \.
 
 
@@ -10095,38 +9674,6 @@ Profit Calculator	{"root": {"type": "root", "format": "", "indent": 0, "version"
 \N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h3", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "جاهز تزيد ارباحك؟", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "بنعرّفك على كل أدوات بلّورة، ونطلع لك بأفكار سهلة ترفع أرباح مطعمك.. عشان تبدأ تشوف الفرق من بكرة", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}], "direction": "rtl"}}	\N	\N	\N	\N	702	ar	8285b9e7-dba9-4e0b-930f-e2678e1a7c06
 \N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h3", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "Ready to increase your profits?", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "We'll introduce you to all of Ballurh's tools and come up with easy ideas to increase your restaurant's profits... so you can start seeing the difference starting tomorrow", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}], "direction": "rtl"}}	\N	\N	\N	\N	745	en	3ee02bbb-6f89-470e-9d1a-94902a9e56cb
 \N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h3", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "جاهز تزيد ارباحك؟", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "بنعرّفك على كل أدوات بلّورة، ونطلع لك بأفكار سهلة ترفع أرباح مطعمك.. عشان تبدأ تشوف الفرق من بكرة", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}], "direction": "rtl"}}	\N	\N	\N	\N	746	ar	3ee02bbb-6f89-470e-9d1a-94902a9e56cb
-\.
-
-
---
--- Data for Name: _customHtmlBlock_v; Type: TABLE DATA; Schema: public; Owner: -
---
-
-COPY "public"."_customHtmlBlock_v" ("_order", "_parent_id", "_path", "id", "block_header_type", "block_header_badge_type", "block_header_badge_color", "block_header_badge_icon", "block_header_badge_icon_position", "html_content", "_uuid", "block_name") FROM stdin;
-\.
-
-
---
--- Data for Name: _customHtmlBlock_v_block_header_links; Type: TABLE DATA; Schema: public; Owner: -
---
-
-COPY "public"."_customHtmlBlock_v_block_header_links" ("_order", "_parent_id", "id", "link_type", "link_new_tab", "link_url", "link_color", "link_variant", "_uuid") FROM stdin;
-\.
-
-
---
--- Data for Name: _customHtmlBlock_v_block_header_links_locales; Type: TABLE DATA; Schema: public; Owner: -
---
-
-COPY "public"."_customHtmlBlock_v_block_header_links_locales" ("link_label", "id", "_locale", "_parent_id") FROM stdin;
-\.
-
-
---
--- Data for Name: _customHtmlBlock_v_locales; Type: TABLE DATA; Schema: public; Owner: -
---
-
-COPY "public"."_customHtmlBlock_v_locales" ("block_header_badge_label", "block_header_header_text", "id", "_locale", "_parent_id") FROM stdin;
 \.
 
 
@@ -12914,14 +12461,6 @@ Automatic recovery of funds	{"root": {"type": "root", "format": "", "indent": 0,
 
 
 --
--- Data for Name: _formBlock_v; Type: TABLE DATA; Schema: public; Owner: -
---
-
-COPY "public"."_formBlock_v" ("_order", "_parent_id", "_path", "id", "form_id", "enable_intro", "intro_content", "_uuid", "block_name") FROM stdin;
-\.
-
-
---
 -- Data for Name: _galleryBlock_v; Type: TABLE DATA; Schema: public; Owner: -
 --
 
@@ -13613,6 +13152,7 @@ COPY "public"."_metricsBlock_v" ("_order", "_parent_id", "_path", "id", "block_h
 3	f714fe7f-ab61-4cf9-927c-9bcf97ccf1b6	version.layout	0494b997-6c13-4ec0-ab32-a806394fe0a3	center	label	blue	\N	flex-row	02	t	t	f	\N	6886aaccdf64ca6dd9ecfe5d	\N
 3	a7d8fbd8-d73b-49bb-a69a-51c10ce9f17c	version.layout	5673b417-513d-45f2-bd03-8829d28cd1a7	center	label	blue	\N	flex-row	02	t	t	f	\N	6886aaccdf64ca6dd9ecfe5d	\N
 3	1e917311-a2dc-43d9-9cf3-9222e6db43c0	version.layout	d18e6bc1-bb3c-40bb-b75d-336919c1531c	center	label	blue	\N	flex-row	02	t	t	f	\N	6886aaccdf64ca6dd9ecfe5d	\N
+1	bbb9ee54-89a2-49d1-9c73-aca4a0502136	version.layout	b3bfa10f-d7a0-47af-af5f-b4bfa1e4cb23	center	\N	blue	\N	flex-row	01	t	t	f	\N	68dcf3a7c7ca9324f9b2dcab	تعلن بلّورة عن الشراكة الاستراتيجية مع أودو
 3	776bee6e-d93a-475f-aa30-53d23438faa4	version.layout	5b680b4c-c022-437a-91b9-e008f6aa1237	center	label	blue	\N	flex-row	02	t	t	f	\N	6886aaccdf64ca6dd9ecfe5d	\N
 3	5dc29ddf-a604-4102-bcda-6868180ad4bb	version.layout	dae8dbd8-0388-4954-9e50-56795348ac31	center	label	blue	\N	flex-row	02	t	t	f	\N	6886aaccdf64ca6dd9ecfe5d	\N
 3	af8faec0-f970-4457-b247-da532bf3f7a8	version.layout	bcdc4eb9-61e8-4b2d-af9f-e86be57a0599	center	label	blue	\N	flex-row	02	t	t	f	\N	6886aaccdf64ca6dd9ecfe5d	\N
@@ -14164,6 +13704,38 @@ COPY "public"."_metricsBlock_v_table_rows_children_cells" ("_order", "_parent_id
 
 
 --
+-- Data for Name: _news_v; Type: TABLE DATA; Schema: public; Owner: -
+--
+
+COPY "public"."_news_v" ("id", "parent_id", "version_updated_at", "version_created_at", "version__status", "created_at", "updated_at", "snapshot", "published_locale", "latest") FROM stdin;
+\.
+
+
+--
+-- Data for Name: _news_v_locales; Type: TABLE DATA; Schema: public; Owner: -
+--
+
+COPY "public"."_news_v_locales" ("version_title", "version_hero_image_id", "version_content", "version_meta_title", "version_meta_image_id", "version_meta_description", "version_published_at", "version_slug", "version_slug_lock", "id", "_locale", "_parent_id") FROM stdin;
+\.
+
+
+--
+-- Data for Name: _news_v_rels; Type: TABLE DATA; Schema: public; Owner: -
+--
+
+COPY "public"."_news_v_rels" ("id", "order", "parent_id", "path", "locale", "news_id", "categories_id", "users_id") FROM stdin;
+\.
+
+
+--
+-- Data for Name: _news_v_version_populated_authors; Type: TABLE DATA; Schema: public; Owner: -
+--
+
+COPY "public"."_news_v_version_populated_authors" ("_order", "_parent_id", "id", "_uuid", "name") FROM stdin;
+\.
+
+
+--
 -- Data for Name: _pages_v; Type: TABLE DATA; Schema: public; Owner: -
 --
 
@@ -14230,6 +13802,7 @@ ef5c6a38-e9a0-4159-84b2-e47e23e98868	a14442b0-9282-4efc-9df0-51d6374608d8	home	h
 e971bceb-3387-49e0-890e-ad8e79c52c35	a14442b0-9282-4efc-9df0-51d6374608d8	home	highImpact	\N	blue	\N	flex-row	\N	2025-07-27 20:53:08.677+00	home	t	2025-08-24 06:10:30.515+00	2025-07-27 20:48:06.623+00	draft	2025-08-24 06:10:22.745+00	2025-08-24 06:10:30.554+00	\N	\N	f	t	icons
 3c55e0be-bf8b-49a3-b786-331f07012f5f	a14442b0-9282-4efc-9df0-51d6374608d8	home	highImpact	\N	blue	\N	flex-row	\N	2025-07-27 20:53:08.677+00	home	t	2025-08-15 15:07:12.575+00	2025-07-27 20:48:06.623+00	draft	2025-08-15 15:07:12.575+00	2025-08-15 15:07:12.629+00	\N	\N	f	t	icons
 1ee329f1-1129-42dd-a064-650b4964fb9f	742d2308-808d-4f0e-91f2-03d18be57d5c	about	mediumImpact	label	gray	\N	flex-row	\N	2025-07-27 21:55:39.98+00	about	t	2025-08-25 23:06:36.937+00	2025-07-27 21:36:21.924+00	draft	2025-08-25 23:06:02.986+00	2025-08-25 23:06:36.962+00	\N	\N	f	t	bullet
+d2b28a6b-d512-4097-99b1-c2b39707a1db	fc20b1cb-072c-43c5-b73b-75dcd6e01dcd	\N	mediumImpact	\N	blue	\N	flex-row	\N	\N	\N	t	2025-10-01 09:22:40.752+00	2025-10-01 09:22:40.738+00	draft	2025-10-01 09:22:40.802+00	2025-10-01 09:22:40.805+00	\N	\N	f	f	bullet
 9c74e1c0-9a5d-413b-8da8-b2b138a7907f	a14442b0-9282-4efc-9df0-51d6374608d8	home	highImpact	\N	blue	\N	flex-row	\N	2025-07-27 20:53:08.677+00	home	t	2025-08-31 15:36:33.755+00	2025-07-27 20:48:06.623+00	published	2025-08-31 15:36:33.856+00	2025-08-31 15:36:33.862+00	\N	\N	t	f	icons
 e6890100-eaeb-429b-8577-30fe440dc964	a14442b0-9282-4efc-9df0-51d6374608d8	home	highImpact	\N	blue	\N	flex-row	\N	2025-07-27 20:53:08.677+00	home	t	2025-08-23 17:07:09.343+00	2025-07-27 20:48:06.623+00	draft	2025-08-23 17:06:58.873+00	2025-08-23 17:07:09.37+00	\N	\N	f	t	icons
 b988988c-b274-4303-baca-3c185b34e80f	a14442b0-9282-4efc-9df0-51d6374608d8	home	highImpact	\N	blue	\N	flex-row	\N	2025-07-27 20:53:08.677+00	home	t	2025-08-29 13:57:28.113+00	2025-07-27 20:48:06.623+00	published	2025-08-29 13:57:28.317+00	2025-08-29 13:57:28.321+00	\N	\N	f	f	icons
@@ -14267,6 +13840,7 @@ c75b3602-1177-46a4-8980-b2e7b8525952	742d2308-808d-4f0e-91f2-03d18be57d5c	about	
 6f525e3d-e3d3-48ee-a833-7300891659a4	a14442b0-9282-4efc-9df0-51d6374608d8	home	highImpact	\N	blue	\N	flex-row	\N	2025-07-27 20:53:08.677+00	home	t	2025-08-24 05:57:39.24+00	2025-07-27 20:48:06.623+00	published	2025-08-24 05:57:39.459+00	2025-08-24 05:57:39.473+00	\N	\N	f	f	icons
 d5349b2d-7284-47ef-96ec-ca806928b051	742d2308-808d-4f0e-91f2-03d18be57d5c	about	mediumImpact	label	gray	\N	flex-row	\N	2025-07-27 21:55:39.98+00	about	t	2025-08-05 17:34:41.9+00	2025-07-27 21:36:21.924+00	draft	2025-08-05 17:34:41.9+00	2025-08-05 17:34:41.952+00	\N	\N	f	t	bullet
 a97e39c7-1ff9-4ab6-8ff7-a5a7fe85b1ca	742d2308-808d-4f0e-91f2-03d18be57d5c	about	mediumImpact	label	gray	\N	flex-row	\N	2025-07-27 21:55:39.98+00	about	t	2025-07-28 13:14:28.168+00	2025-07-27 21:36:21.924+00	published	2025-07-28 13:14:31.825+00	2025-07-28 13:14:31.827+00	\N	\N	f	f	bullet
+bbb9ee54-89a2-49d1-9c73-aca4a0502136	fc20b1cb-072c-43c5-b73b-75dcd6e01dcd	News	mediumImpact	\N	blue	\N	flex-row	\N	2025-10-01 09:22:45.428+00	news	t	2025-10-01 09:27:19.933+00	2025-10-01 09:22:40.738+00	draft	2025-10-01 09:22:44.568+00	2025-10-01 09:27:19.956+00	\N	\N	t	t	bullet
 c3e0ac67-68ff-45a0-a95f-0bae5b004b85	742d2308-808d-4f0e-91f2-03d18be57d5c	about	mediumImpact	label	gray	\N	flex-row	\N	2025-07-27 21:55:39.98+00	about	t	2025-08-01 21:38:37.044+00	2025-07-27 21:36:21.924+00	draft	2025-08-01 21:38:26.096+00	2025-08-01 21:38:37.181+00	\N	\N	f	t	bullet
 9907622f-51f6-4107-b865-5f8fa357f96c	742d2308-808d-4f0e-91f2-03d18be57d5c	about	mediumImpact	label	gray	\N	flex-row	\N	2025-07-27 21:55:39.98+00	about	t	2025-08-01 21:41:09.512+00	2025-07-27 21:36:21.924+00	draft	2025-08-01 21:38:44.481+00	2025-08-01 21:41:09.658+00	\N	\N	f	t	bullet
 66191476-6739-46e9-832b-99f58a05dcee	742d2308-808d-4f0e-91f2-03d18be57d5c	about	mediumImpact	label	gray	\N	flex-row	\N	2025-07-27 21:55:39.98+00	about	t	2025-07-28 13:14:22.07+00	2025-07-27 21:36:21.924+00	draft	2025-07-28 13:14:22.07+00	2025-07-28 13:14:22.208+00	\N	\N	f	t	bullet
@@ -14309,6 +13883,7 @@ COPY "public"."_pages_v_locales" ("version_hero_badge_label", "version_hero_rich
 \N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h1", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "عزز نموك على تطبيقات التوصيل", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "بلّورة تبسّط إدارة التسويق وتحسّن أداء المطاعم على تطبيقات التوصيل من خلال منصة واحدة لإدارة الحملات، تحسين الإنفاق الإعلاني، وزيادة الربحية.. بدون تعقيد", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}], "direction": "rtl"}}	5afde42d-6a3f-4d34-a6ba-6eca5caea614	\N	\N	برنامج نمو المطاعم على تطبيقات التوصيل	a402cbba-b2b5-4b39-98d4-72d2fd9fba1d	هل أرباحك تتآكل بسبب خصومات تطبيقات التوصيل؟ مع بلّورة، فعّل حملاتك، راقب أداءك، واسترجع التكاليف المفقودة من مكان واحد.	1086	ar	1384226b-240a-4adc-ab9c-f0d2f30ca2ed	\N	\N	f
 \N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "fomr", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "ltr", "textStyle": "", "textFormat": 0}], "direction": "ltr"}}	\N	\N	\N	\N	\N	\N	1344	en	7a4c98df-91cc-4835-aad2-89626c479ee4	\N	\N	f
 عن بلّورة	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h1", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "نظام التشغيل الجديد لتحسين ربحية المطاعم على تطبيقات التوصيل", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "سوق تطبيقات التوصيل غيّر طريقة عمل المطاعم. الطلبات صارت رقمية، المنافسة صارت يومية، والربحية صارت مرتبطة بقرارات تسويقية وتشغيلية معقّدة، كل ريال ينصرف على خصم أو إعلان أو عمولة يحتاج يشتغل بكفاءة.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "بلّورة منصة سعودية تساعد المطاعم على تحسين ربحيتها من تطبيقات التوصيل.. نربط بين الإعلانات، الفواتير، والطلبات في لوحة تحكم واحدة، ونوفّر أدوات عملية وتحليلات قابلة للتنفيذ، مبنية على بيانات فعلية، وتخاطب الواقع اليومي للمشغّل.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "أصحاب المطاعم يستخدمون بلّورة لاسترجاع التكاليف المهدرة، ضبط التسويق، واتخاذ قرارات تشغيلية أوضح.. ", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "المستثمرون يشوفون فرصة في بناء بنية تشغيلية جديدة لقطاع الأغذية الرقمي.. والمواهب تنضم لفريق يشتغل على منتج له أثر واضح في سوق مليان فرص، وبمنهجية واقعية", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}], "direction": "rtl"}}	\N	\N	\N	بلّورة – منصة ذكاء أعمال لقطاع التجزئة والمطاعم والمقاهي	\N	‏زد مبيعاتك، تنبأ بسلوكيات الطلب وقم بتحسين مؤشرات الأداء من خلال إتخاذ قرارات نمو تعتمد على البيانات باستخدام قوة تقنيات ذكاء الأعمال.	350	ar	c20c2c0b-4fa6-45f3-acb3-34e06f115342	\N	\N	f
+\N	\N	\N	\N	\N	\N	\N	\N	1345	ar	d2b28a6b-d512-4097-99b1-c2b39707a1db	\N	\N	f
 \N	\N	\N	\N	\N	\N	\N	\N	311	ar	bf44ecdc-b752-4d40-98af-9a8196b52040	\N	\N	f
 عن بلّورة	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h1", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "منصة تحسين الإيرادات الشاملة للمطاعم.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "بلّورة تجمع بياناتك من تطبيقات التوصيل ونقاط البيع، و تساعدك تطلق حملات فعّالة، تسترجع مبالغ التعويضات المفقودة، وتطوّر استراتيجية تشغيلية وإعلانية واضحة – من مكان واحد، وبدون أي تعقيد", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}], "direction": "rtl"}}	\N	\N	\N	بلّورة – منصة ذكاء أعمال لقطاع التجزئة والمطاعم والمقاهي	\N	‏زد مبيعاتك، تنبأ بسلوكيات الطلب وقم بتحسين مؤشرات الأداء من خلال إتخاذ قرارات نمو تعتمد على البيانات باستخدام قوة تقنيات ذكاء الأعمال.	306	ar	f223e689-6799-47bf-8a55-75f2d2a07e4b	\N	\N	f
 \N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h1", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "تحت المجهر: الاتجاهات والرؤى في قطاع المأكولات والمطاعم", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "أدلة قابلة للتنفيذ، ونصائح مدعومة بالبيانات، وقصص من العالم الحقيقي لمساعدتك في إدارة عملك الغذائي بشكل أكثر سلاسة وربحية - من عمليات المطبخ إلى تطبيقات التوصيل.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}], "direction": "rtl"}}	\N	\N	\N	\N	\N	\N	567	ar	169622da-b1a2-4e00-8830-bb4b26ed5298	\N	\N	f
@@ -14365,6 +13940,7 @@ About Ballurh	{"root": {"type": "root", "format": "", "indent": 0, "version": 1,
 عن بلّورة	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h1", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "نظام التشغيل الجديد لتحسين ربحية المطاعم على تطبيقات التوصيل", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "سوق تطبيقات التوصيل غيّر طريقة عمل المطاعم. الطلبات صارت رقمية، المنافسة صارت يومية، والربحية صارت مرتبطة بقرارات تسويقية وتشغيلية معقّدة، كل ريال ينصرف على خصم أو إعلان أو عمولة يحتاج يشتغل بكفاءة.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "بلّورة منصة سعودية تساعد المطاعم على تحسين ربحيتها من تطبيقات التوصيل.. نربط بين الإعلانات، الفواتير، والطلبات في لوحة تحكم واحدة، ونوفّر أدوات عملية وتحليلات قابلة للتنفيذ، مبنية على بيانات فعلية، وتخاطب الواقع اليومي للمشغّل.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "أصحاب المطاعم يستخدمون بلّورة لاسترجاع التكاليف المهدرة، ضبط التسويق، واتخاذ قرارات تشغيلية أوضح.. ", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "المستثمرون يشوفون فرصة في بناء بنية تشغيلية جديدة لقطاع الأغذية الرقمي.. والمواهب تنضم لفريق يشتغل على منتج له أثر واضح في سوق مليان فرص، وبمنهجية واقعية", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}], "direction": "rtl"}}	\N	\N	\N	بلّورة – منصة ذكاء أعمال لقطاع التجزئة والمطاعم والمقاهي	\N	‏زد مبيعاتك، تنبأ بسلوكيات الطلب وقم بتحسين مؤشرات الأداء من خلال إتخاذ قرارات نمو تعتمد على البيانات باستخدام قوة تقنيات ذكاء الأعمال.	1260	ar	1ee329f1-1129-42dd-a064-650b4964fb9f	\N	\N	f
 \N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h1", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "Boost your growth on delivery apps", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "Ballurh simplifies marketing management and improves restaurant performance on delivery apps through a single platform to manage campaigns, optimize ad spend, and increase profitability... without complexity.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}], "direction": "rtl"}}	546f5f03-400f-4043-b548-bc3a0684491a	\N	\N	Restaurant Growth System on Delivery Apps	a402cbba-b2b5-4b39-98d4-72d2fd9fba1d	Are your profits being eroded by delivery app discounts? With Ballurh, activate your campaigns, monitor your performance, and recover lost costs from one place.	1175	en	c8d59231-e7a0-463e-8fd1-e6763da8be9d	\N	\N	f
 \N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h1", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "عزز نموك على تطبيقات التوصيل", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "بلّورة تبسّط إدارة التسويق وتحسّن أداء المطاعم على تطبيقات التوصيل من خلال منصة واحدة لإدارة الحملات، تحسين الإنفاق الإعلاني، وزيادة الربحية.. بدون تعقيد", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}], "direction": "rtl"}}	5afde42d-6a3f-4d34-a6ba-6eca5caea614	\N	\N	برنامج نمو المطاعم على تطبيقات التوصيل	a402cbba-b2b5-4b39-98d4-72d2fd9fba1d	هل أرباحك تتآكل بسبب خصومات تطبيقات التوصيل؟ مع بلّورة، فعّل حملاتك، راقب أداءك، واسترجع التكاليف المفقودة من مكان واحد.	1176	ar	c8d59231-e7a0-463e-8fd1-e6763da8be9d	\N	\N	f
+\N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h2", "type": "heading", "format": "right", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "أخبار بلورة", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}], "direction": "rtl"}}	\N	\N	تعلن بلّورة عن الشراكة الاستراتيجية مع أودو	\N	\N	\N	1358	ar	bbb9ee54-89a2-49d1-9c73-aca4a0502136	\N	\N	t
 \N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h1", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "Boost your growth on delivery apps", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "Ballurh simplifies marketing management and improves restaurant performance on delivery apps through a single platform to manage campaigns, optimize ad spend, and increase profitability... without complexity.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}], "direction": "rtl"}}	546f5f03-400f-4043-b548-bc3a0684491a	\N	\N	Restaurant Growth System on Delivery Apps	a402cbba-b2b5-4b39-98d4-72d2fd9fba1d	Are your profits being eroded by delivery app discounts? With Ballurh, activate your campaigns, monitor your performance, and recover lost costs from one place.	865	en	3c55e0be-bf8b-49a3-b786-331f07012f5f	\N	\N	f
 \N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h1", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "عزز نموك على تطبيقات التوصيل", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "بلّورة تبسّط إدارة التسويق وتحسّن أداء المطاعم على تطبيقات التوصيل من خلال منصة واحدة لإدارة الحملات، تحسين الإنفاق الإعلاني، وزيادة الربحية.. بدون تعقيد", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}], "direction": "rtl"}}	5afde42d-6a3f-4d34-a6ba-6eca5caea614	\N	\N	برنامج نمو المطاعم على تطبيقات التوصيل	a402cbba-b2b5-4b39-98d4-72d2fd9fba1d	هل أرباحك تتآكل بسبب خصومات تطبيقات التوصيل؟ مع بلّورة، فعّل حملاتك، راقب أداءك، واسترجع التكاليف المفقودة من مكان واحد.	866	ar	3c55e0be-bf8b-49a3-b786-331f07012f5f	\N	\N	f
 \N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h1", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "عزز نموك على تطبيقات التوصيل", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "بلّورة تبسّط إدارة التسويق وتحسّن أداء المطاعم على تطبيقات التوصيل من خلال منصة واحدة لإدارة الحملات، تحسين الإنفاق الإعلاني، وزيادة الربحية.. بدون تعقيد", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}], "direction": "rtl"}}	5afde42d-6a3f-4d34-a6ba-6eca5caea614	\N	\N	برنامج نمو المطاعم على تطبيقات التوصيل	a402cbba-b2b5-4b39-98d4-72d2fd9fba1d	هل أرباحك تتآكل بسبب خصومات تطبيقات التوصيل؟ مع بلّورة، فعّل حملاتك، راقب أداءك، واسترجع التكاليف المفقودة من مكان واحد.	867	ar	45abc8e4-6e61-47dd-991c-44eb6332b11a	\N	\N	f
@@ -17108,38 +16684,6 @@ COPY "public"."_testimonialsBlock_v_locales" ("block_header_badge_label", "block
 
 
 --
--- Data for Name: archiveBlock; Type: TABLE DATA; Schema: public; Owner: -
---
-
-COPY "public"."archiveBlock" ("_order", "_parent_id", "_path", "id", "block_header_type", "block_header_badge_type", "block_header_badge_color", "block_header_badge_icon", "block_header_badge_icon_position", "populate_by", "relation_to", "limit", "block_name") FROM stdin;
-\.
-
-
---
--- Data for Name: archiveBlock_block_header_links; Type: TABLE DATA; Schema: public; Owner: -
---
-
-COPY "public"."archiveBlock_block_header_links" ("_order", "_parent_id", "id", "link_type", "link_new_tab", "link_url", "link_color", "link_variant") FROM stdin;
-\.
-
-
---
--- Data for Name: archiveBlock_block_header_links_locales; Type: TABLE DATA; Schema: public; Owner: -
---
-
-COPY "public"."archiveBlock_block_header_links_locales" ("link_label", "id", "_locale", "_parent_id") FROM stdin;
-\.
-
-
---
--- Data for Name: archiveBlock_locales; Type: TABLE DATA; Schema: public; Owner: -
---
-
-COPY "public"."archiveBlock_locales" ("block_header_badge_label", "block_header_header_text", "id", "_locale", "_parent_id") FROM stdin;
-\.
-
-
---
 -- Data for Name: blog_posts; Type: TABLE DATA; Schema: public; Owner: -
 --
 
@@ -17250,38 +16794,6 @@ COPY "public"."categories_breadcrumbs" ("_order", "_parent_id", "_locale", "id",
 --
 
 COPY "public"."categories_locales" ("title", "id", "_locale", "_parent_id") FROM stdin;
-\.
-
-
---
--- Data for Name: customHtmlBlock; Type: TABLE DATA; Schema: public; Owner: -
---
-
-COPY "public"."customHtmlBlock" ("_order", "_parent_id", "_path", "id", "block_header_type", "block_header_badge_type", "block_header_badge_color", "block_header_badge_icon", "block_header_badge_icon_position", "html_content", "block_name") FROM stdin;
-\.
-
-
---
--- Data for Name: customHtmlBlock_block_header_links; Type: TABLE DATA; Schema: public; Owner: -
---
-
-COPY "public"."customHtmlBlock_block_header_links" ("_order", "_parent_id", "id", "link_type", "link_new_tab", "link_url", "link_color", "link_variant") FROM stdin;
-\.
-
-
---
--- Data for Name: customHtmlBlock_block_header_links_locales; Type: TABLE DATA; Schema: public; Owner: -
---
-
-COPY "public"."customHtmlBlock_block_header_links_locales" ("link_label", "id", "_locale", "_parent_id") FROM stdin;
-\.
-
-
---
--- Data for Name: customHtmlBlock_locales; Type: TABLE DATA; Schema: public; Owner: -
---
-
-COPY "public"."customHtmlBlock_locales" ("block_header_badge_label", "block_header_header_text", "id", "_locale", "_parent_id") FROM stdin;
 \.
 
 
@@ -17540,20 +17052,42 @@ COPY "public"."footer_rels" ("id", "order", "parent_id", "path", "pages_id", "bl
 
 
 --
--- Data for Name: formBlock; Type: TABLE DATA; Schema: public; Owner: -
---
-
-COPY "public"."formBlock" ("_order", "_parent_id", "_path", "id", "form_id", "enable_intro", "intro_content", "block_name") FROM stdin;
-\.
-
-
---
 -- Data for Name: form_submissions; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY "public"."form_submissions" ("id", "form_id", "updated_at", "created_at") FROM stdin;
 a4053c87-3731-4c76-a53f-d3cfa6a06143	5fbec645-effa-40d1-8ef0-436c01504e32	2025-08-24 03:33:05.877+00	2025-08-24 03:33:05.823+00
 be8b9a63-fabd-4852-a115-2ad86103f2ce	5fbec645-effa-40d1-8ef0-436c01504e32	2025-08-28 13:30:29.339+00	2025-08-28 13:30:29.314+00
+495f5e72-b404-4ea5-b163-f573f9b30eab	5fbec645-effa-40d1-8ef0-436c01504e32	2025-09-06 14:09:37.784+00	2025-09-06 14:09:37.744+00
+01f5025b-c4ed-4da0-8254-077c346d95b9	5fbec645-effa-40d1-8ef0-436c01504e32	2025-09-06 14:12:08.866+00	2025-09-06 14:12:08.827+00
+2c61bf41-8747-4f2f-ae36-32a839b38985	5fbec645-effa-40d1-8ef0-436c01504e32	2025-09-06 14:13:05.026+00	2025-09-06 14:13:04.965+00
+7f1f9e65-edf2-4e97-a9ef-e404feadfa77	5fbec645-effa-40d1-8ef0-436c01504e32	2025-09-06 14:41:17.641+00	2025-09-06 14:41:17.565+00
+c81c11cf-4697-4224-a6b3-67795ce6e352	5fbec645-effa-40d1-8ef0-436c01504e32	2025-09-06 16:24:23.261+00	2025-09-06 16:24:23.201+00
+8f686301-8304-4231-96c4-9f6664b665fb	5fbec645-effa-40d1-8ef0-436c01504e32	2025-09-06 16:37:12.612+00	2025-09-06 16:37:12.571+00
+c51cba3e-14ef-4529-9376-952274c34b8e	5fbec645-effa-40d1-8ef0-436c01504e32	2025-09-06 16:43:25.062+00	2025-09-06 16:43:25.029+00
+dd7c8766-4754-44fb-b902-8cd3c698a373	5fbec645-effa-40d1-8ef0-436c01504e32	2025-09-06 16:49:38.701+00	2025-09-06 16:49:38.678+00
+c648bfe0-40d0-46a9-a8d7-4854553ce188	5fbec645-effa-40d1-8ef0-436c01504e32	2025-09-07 06:58:02.645+00	2025-09-07 06:58:02.599+00
+eb1d922e-74b7-4fdc-ae1c-75247e2cab07	5fbec645-effa-40d1-8ef0-436c01504e32	2025-09-07 07:13:28.506+00	2025-09-07 07:13:28.475+00
+ee5a6501-1376-4362-8162-4eab4c7c7efc	5fbec645-effa-40d1-8ef0-436c01504e32	2025-09-07 14:19:38.353+00	2025-09-07 14:19:38.325+00
+58d5d4a4-0eb7-4131-a0fa-2e5c968d5a97	5fbec645-effa-40d1-8ef0-436c01504e32	2025-09-08 07:58:52.463+00	2025-09-08 07:58:52.405+00
+9fecdb2a-b451-467b-93b9-ed8ab30f96f2	5fbec645-effa-40d1-8ef0-436c01504e32	2025-09-08 15:03:54.888+00	2025-09-08 15:03:54.836+00
+112d9fdf-08d5-4f72-899e-8ffe51e72ab9	5fbec645-effa-40d1-8ef0-436c01504e32	2025-09-10 15:29:07.743+00	2025-09-10 15:29:07.681+00
+fb4b7113-74fd-47df-9353-c043ee59d8a1	5fbec645-effa-40d1-8ef0-436c01504e32	2025-09-14 08:57:45.033+00	2025-09-14 08:57:44.982+00
+9e5cd383-4aec-4cb7-8322-ca208f4abad0	5fbec645-effa-40d1-8ef0-436c01504e32	2025-09-16 04:05:52.692+00	2025-09-16 04:05:52.642+00
+a78df845-5895-4807-bbb3-e7d83b7509a2	5fbec645-effa-40d1-8ef0-436c01504e32	2025-09-17 23:05:10.695+00	2025-09-17 23:05:10.664+00
+2bea3091-6eda-4e5b-b5a2-395db950178a	5fbec645-effa-40d1-8ef0-436c01504e32	2025-09-21 13:58:22.947+00	2025-09-21 13:58:22.908+00
+07b584c9-44c5-4ea6-87cd-ab10de139d23	5fbec645-effa-40d1-8ef0-436c01504e32	2025-09-21 18:43:51.771+00	2025-09-21 18:43:51.74+00
+35b39a04-080a-4be3-a0a0-bc31fb965a58	5fbec645-effa-40d1-8ef0-436c01504e32	2025-09-22 09:17:57.184+00	2025-09-22 09:17:57.097+00
+a3c3be7d-a2cb-4691-b799-634f24cb79de	5fbec645-effa-40d1-8ef0-436c01504e32	2025-09-22 09:23:11.661+00	2025-09-22 09:23:11.619+00
+ac573510-28ad-49b0-acde-39ef162eb18e	5fbec645-effa-40d1-8ef0-436c01504e32	2025-09-22 09:24:27.914+00	2025-09-22 09:24:27.87+00
+238775f4-8d1d-4355-adf0-36fc9db814ff	5fbec645-effa-40d1-8ef0-436c01504e32	2025-09-22 09:40:46.198+00	2025-09-22 09:40:46.142+00
+a9fb9052-9917-4bb4-bde9-53c6d5e7225a	5fbec645-effa-40d1-8ef0-436c01504e32	2025-09-22 09:44:03.676+00	2025-09-22 09:44:03.634+00
+4fb79dfd-cc4f-4887-b894-90795b50c3cc	5fbec645-effa-40d1-8ef0-436c01504e32	2025-09-26 06:56:00.118+00	2025-09-26 06:56:00.071+00
+07a2240a-7e57-4606-a38d-8038bdd33eef	5fbec645-effa-40d1-8ef0-436c01504e32	2025-09-28 15:49:41.784+00	2025-09-28 15:49:41.725+00
+991ad9ab-99d0-4728-b0ad-7d023d85903b	5fbec645-effa-40d1-8ef0-436c01504e32	2025-09-28 17:43:40.24+00	2025-09-28 17:43:40.183+00
+66ea971b-a70f-4f04-af73-351a27cf163f	5fbec645-effa-40d1-8ef0-436c01504e32	2025-09-28 17:49:32.336+00	2025-09-28 17:49:32.261+00
+d8d71a0a-b87e-4a5f-89aa-d5408f636921	5fbec645-effa-40d1-8ef0-436c01504e32	2025-09-28 18:03:31.894+00	2025-09-28 18:03:31.849+00
+fdef5422-4bea-4d32-aa49-863915b5e7fc	5fbec645-effa-40d1-8ef0-436c01504e32	2025-10-01 08:34:02.102+00	2025-10-01 08:34:02.044+00
 \.
 
 
@@ -17596,6 +17130,676 @@ COPY "public"."form_submissions_submission_data" ("_order", "_parent_id", "id", 
 15	be8b9a63-fabd-4852-a115-2ad86103f2ce	68b059f5be57e100013b487e	delivery_fees	9
 16	be8b9a63-fabd-4852-a115-2ad86103f2ce	68b059f5be57e100013b487f	calculated_profit_rate	36
 17	be8b9a63-fabd-4852-a115-2ad86103f2ce	68b059f5be57e100013b4880	expected_profitability	90000
+1	495f5e72-b404-4ea5-b163-f573f9b30eab	68bc40a138c51d0001e61cdd	firstname	Omar Oubari
+2	495f5e72-b404-4ea5-b163-f573f9b30eab	68bc40a138c51d0001e61cde	email	omar@byvalence.com
+3	495f5e72-b404-4ea5-b163-f573f9b30eab	68bc40a138c51d0001e61cdf	mobilephone	+966123456789
+4	495f5e72-b404-4ea5-b163-f573f9b30eab	68bc40a138c51d0001e61ce0	brand_name	Studio Valence
+5	495f5e72-b404-4ea5-b163-f573f9b30eab	68bc40a138c51d0001e61ce1	business_type	Hybrid Model
+6	495f5e72-b404-4ea5-b163-f573f9b30eab	68bc40a138c51d0001e61ce2	number_of_locations	1
+7	495f5e72-b404-4ea5-b163-f573f9b30eab	68bc40a138c51d0001e61ce3	has_cloud_brands	Yes
+8	495f5e72-b404-4ea5-b163-f573f9b30eab	68bc40a138c51d0001e61ce4	number_of_cloud_brands	1
+9	495f5e72-b404-4ea5-b163-f573f9b30eab	68bc40a138c51d0001e61ce5	annual_sales_revenue	Less than 500,000
+10	495f5e72-b404-4ea5-b163-f573f9b30eab	68bc40a138c51d0001e61ce6	monthly_orders	844
+11	495f5e72-b404-4ea5-b163-f573f9b30eab	68bc40a138c51d0001e61ce7	delivery_app_sales_percentage	25
+12	495f5e72-b404-4ea5-b163-f573f9b30eab	68bc40a138c51d0001e61ce8	delivery_app_commission_percentage	25
+13	495f5e72-b404-4ea5-b163-f573f9b30eab	68bc40a138c51d0001e61ce9	food_cost	30
+14	495f5e72-b404-4ea5-b163-f573f9b30eab	68bc40a138c51d0001e61cea	monthly_advertising	1000
+15	495f5e72-b404-4ea5-b163-f573f9b30eab	68bc40a138c51d0001e61ceb	monthly_disputes	0
+16	495f5e72-b404-4ea5-b163-f573f9b30eab	68bc40a138c51d0001e61cec	delivery_fees	10
+17	495f5e72-b404-4ea5-b163-f573f9b30eab	68bc40a138c51d0001e61ced	calculated_profit	92500
+18	495f5e72-b404-4ea5-b163-f573f9b30eab	68bc40a138c51d0001e61cee	calculated_profit_rate	37
+19	495f5e72-b404-4ea5-b163-f573f9b30eab	68bc40a138c51d0001e61cef	calculated_profit_plus_15	106375
+20	495f5e72-b404-4ea5-b163-f573f9b30eab	68bc40a138c51d0001e61cf0	calculated_profit_plus_30	120250
+21	495f5e72-b404-4ea5-b163-f573f9b30eab	68bc40a138c51d0001e61cf1	disputes_minus_70	0
+1	01f5025b-c4ed-4da0-8254-077c346d95b9	68bc413838c51d0001e61cf2	firstname	Omar Oubari
+2	01f5025b-c4ed-4da0-8254-077c346d95b9	68bc413838c51d0001e61cf3	email	omar@byvalence.com
+3	01f5025b-c4ed-4da0-8254-077c346d95b9	68bc413838c51d0001e61cf4	mobilephone	+966123456789
+4	01f5025b-c4ed-4da0-8254-077c346d95b9	68bc413838c51d0001e61cf5	brand_name	Studio Valence
+5	01f5025b-c4ed-4da0-8254-077c346d95b9	68bc413838c51d0001e61cf6	business_type	Hybrid Model
+6	01f5025b-c4ed-4da0-8254-077c346d95b9	68bc413838c51d0001e61cf7	number_of_locations	1
+7	01f5025b-c4ed-4da0-8254-077c346d95b9	68bc413838c51d0001e61cf8	has_cloud_brands	Yes
+8	01f5025b-c4ed-4da0-8254-077c346d95b9	68bc413838c51d0001e61cf9	number_of_cloud_brands	1
+9	01f5025b-c4ed-4da0-8254-077c346d95b9	68bc413838c51d0001e61cfa	annual_sales_revenue	Less than 500,000
+10	01f5025b-c4ed-4da0-8254-077c346d95b9	68bc413838c51d0001e61cfb	monthly_orders	850
+11	01f5025b-c4ed-4da0-8254-077c346d95b9	68bc413838c51d0001e61cfc	delivery_app_sales_percentage	25
+12	01f5025b-c4ed-4da0-8254-077c346d95b9	68bc413838c51d0001e61cfd	delivery_app_commission_percentage	25
+13	01f5025b-c4ed-4da0-8254-077c346d95b9	68bc413838c51d0001e61cfe	food_cost	30
+14	01f5025b-c4ed-4da0-8254-077c346d95b9	68bc413838c51d0001e61cff	monthly_advertising	1000
+15	01f5025b-c4ed-4da0-8254-077c346d95b9	68bc413838c51d0001e61d00	monthly_disputes	0
+16	01f5025b-c4ed-4da0-8254-077c346d95b9	68bc413838c51d0001e61d01	delivery_fees	10
+17	01f5025b-c4ed-4da0-8254-077c346d95b9	68bc413838c51d0001e61d02	calculated_profit	92500
+18	01f5025b-c4ed-4da0-8254-077c346d95b9	68bc413838c51d0001e61d03	calculated_profit_rate	37
+19	01f5025b-c4ed-4da0-8254-077c346d95b9	68bc413838c51d0001e61d04	calculated_profit_plus_15	106375
+20	01f5025b-c4ed-4da0-8254-077c346d95b9	68bc413838c51d0001e61d05	calculated_profit_plus_30	120250
+21	01f5025b-c4ed-4da0-8254-077c346d95b9	68bc413838c51d0001e61d06	disputes_minus_70	0
+1	2c61bf41-8747-4f2f-ae36-32a839b38985	68bc417038c51d0001e61d07	firstname	Omar Oubari
+2	2c61bf41-8747-4f2f-ae36-32a839b38985	68bc417038c51d0001e61d08	email	omar@byvalence.com
+3	2c61bf41-8747-4f2f-ae36-32a839b38985	68bc417038c51d0001e61d09	mobilephone	+966123456789
+4	2c61bf41-8747-4f2f-ae36-32a839b38985	68bc417038c51d0001e61d0a	brand_name	Studio Valence
+5	2c61bf41-8747-4f2f-ae36-32a839b38985	68bc417038c51d0001e61d0b	business_type	Hybrid Model
+6	2c61bf41-8747-4f2f-ae36-32a839b38985	68bc417038c51d0001e61d0c	number_of_locations	1
+7	2c61bf41-8747-4f2f-ae36-32a839b38985	68bc417038c51d0001e61d0d	has_cloud_brands	Yes
+8	2c61bf41-8747-4f2f-ae36-32a839b38985	68bc417038c51d0001e61d0e	number_of_cloud_brands	1
+9	2c61bf41-8747-4f2f-ae36-32a839b38985	68bc417038c51d0001e61d0f	annual_sales_revenue	Less than 500,000
+10	2c61bf41-8747-4f2f-ae36-32a839b38985	68bc417038c51d0001e61d10	monthly_orders	850
+11	2c61bf41-8747-4f2f-ae36-32a839b38985	68bc417038c51d0001e61d11	delivery_app_sales_percentage	25
+12	2c61bf41-8747-4f2f-ae36-32a839b38985	68bc417038c51d0001e61d12	delivery_app_commission_percentage	25
+13	2c61bf41-8747-4f2f-ae36-32a839b38985	68bc417038c51d0001e61d13	food_cost	30
+14	2c61bf41-8747-4f2f-ae36-32a839b38985	68bc417038c51d0001e61d14	monthly_advertising	1000
+15	2c61bf41-8747-4f2f-ae36-32a839b38985	68bc417038c51d0001e61d15	monthly_disputes	0
+16	2c61bf41-8747-4f2f-ae36-32a839b38985	68bc417038c51d0001e61d16	delivery_fees	10
+17	2c61bf41-8747-4f2f-ae36-32a839b38985	68bc417038c51d0001e61d17	calculated_profit	92500
+18	2c61bf41-8747-4f2f-ae36-32a839b38985	68bc417038c51d0001e61d18	calculated_profit_rate	37
+19	2c61bf41-8747-4f2f-ae36-32a839b38985	68bc417038c51d0001e61d19	calculated_profit_plus_15	106375
+20	2c61bf41-8747-4f2f-ae36-32a839b38985	68bc417038c51d0001e61d1a	calculated_profit_plus_30	120250
+21	2c61bf41-8747-4f2f-ae36-32a839b38985	68bc417038c51d0001e61d1b	disputes_minus_70	0
+1	7f1f9e65-edf2-4e97-a9ef-e404feadfa77	68bc480d02bcd700012f45b1	firstname	Omar Oubari
+2	7f1f9e65-edf2-4e97-a9ef-e404feadfa77	68bc480d02bcd700012f45b2	email	omar@byvalence.com
+3	7f1f9e65-edf2-4e97-a9ef-e404feadfa77	68bc480d02bcd700012f45b3	mobilephone	+966123456789
+4	7f1f9e65-edf2-4e97-a9ef-e404feadfa77	68bc480d02bcd700012f45b4	brand_name	Studio Valence
+5	7f1f9e65-edf2-4e97-a9ef-e404feadfa77	68bc480d02bcd700012f45b5	business_type	Hybrid Model
+6	7f1f9e65-edf2-4e97-a9ef-e404feadfa77	68bc480d02bcd700012f45b6	number_of_locations	1
+7	7f1f9e65-edf2-4e97-a9ef-e404feadfa77	68bc480d02bcd700012f45b7	has_cloud_brands	Yes
+8	7f1f9e65-edf2-4e97-a9ef-e404feadfa77	68bc480d02bcd700012f45b8	number_of_cloud_brands	1
+9	7f1f9e65-edf2-4e97-a9ef-e404feadfa77	68bc480d02bcd700012f45b9	annual_sales_revenue	Less than 500,000
+10	7f1f9e65-edf2-4e97-a9ef-e404feadfa77	68bc480d02bcd700012f45ba	monthly_orders	846
+11	7f1f9e65-edf2-4e97-a9ef-e404feadfa77	68bc480d02bcd700012f45bb	delivery_app_sales_percentage	25
+12	7f1f9e65-edf2-4e97-a9ef-e404feadfa77	68bc480d02bcd700012f45bc	delivery_app_commission_percentage	25
+13	7f1f9e65-edf2-4e97-a9ef-e404feadfa77	68bc480d02bcd700012f45bd	food_cost	30
+14	7f1f9e65-edf2-4e97-a9ef-e404feadfa77	68bc480d02bcd700012f45be	monthly_advertising	1000
+15	7f1f9e65-edf2-4e97-a9ef-e404feadfa77	68bc480d02bcd700012f45bf	monthly_disputes	500
+16	7f1f9e65-edf2-4e97-a9ef-e404feadfa77	68bc480d02bcd700012f45c0	delivery_fees	10
+17	7f1f9e65-edf2-4e97-a9ef-e404feadfa77	68bc480d02bcd700012f45c1	calculated_profit	92500
+18	7f1f9e65-edf2-4e97-a9ef-e404feadfa77	68bc480d02bcd700012f45c2	calculated_profit_rate	37
+19	7f1f9e65-edf2-4e97-a9ef-e404feadfa77	68bc480d02bcd700012f45c3	calculated_profit_plus_15	106375
+20	7f1f9e65-edf2-4e97-a9ef-e404feadfa77	68bc480d02bcd700012f45c4	calculated_profit_plus_30	120250
+21	7f1f9e65-edf2-4e97-a9ef-e404feadfa77	68bc480d02bcd700012f45c5	disputes_minus_70	350
+1	c81c11cf-4697-4224-a6b3-67795ce6e352	68bc603702bcd700012f45c6	firstname	Hanan Al Radwan
+2	c81c11cf-4697-4224-a6b3-67795ce6e352	68bc603702bcd700012f45c7	email	hananalradwan77@gmail.com
+3	c81c11cf-4697-4224-a6b3-67795ce6e352	68bc603702bcd700012f45c8	mobilephone	+964937713352
+4	c81c11cf-4697-4224-a6b3-67795ce6e352	68bc603702bcd700012f45c9	brand_name	h5
+5	c81c11cf-4697-4224-a6b3-67795ce6e352	68bc603702bcd700012f45ca	business_type	Hybrid Model
+6	c81c11cf-4697-4224-a6b3-67795ce6e352	68bc603702bcd700012f45cb	number_of_locations	1
+7	c81c11cf-4697-4224-a6b3-67795ce6e352	68bc603702bcd700012f45cc	has_cloud_brands	Yes
+8	c81c11cf-4697-4224-a6b3-67795ce6e352	68bc603702bcd700012f45cd	number_of_cloud_brands	1
+9	c81c11cf-4697-4224-a6b3-67795ce6e352	68bc603702bcd700012f45ce	annual_sales_revenue	More than 2,000,000
+10	c81c11cf-4697-4224-a6b3-67795ce6e352	68bc603702bcd700012f45cf	monthly_orders	987
+11	c81c11cf-4697-4224-a6b3-67795ce6e352	68bc603702bcd700012f45d0	delivery_app_sales_percentage	25
+12	c81c11cf-4697-4224-a6b3-67795ce6e352	68bc603702bcd700012f45d1	delivery_app_commission_percentage	25
+13	c81c11cf-4697-4224-a6b3-67795ce6e352	68bc603702bcd700012f45d2	food_cost	30
+14	c81c11cf-4697-4224-a6b3-67795ce6e352	68bc603702bcd700012f45d3	monthly_advertising	988
+15	c81c11cf-4697-4224-a6b3-67795ce6e352	68bc603702bcd700012f45d4	monthly_disputes	8
+16	c81c11cf-4697-4224-a6b3-67795ce6e352	68bc603702bcd700012f45d5	delivery_fees	10
+17	c81c11cf-4697-4224-a6b3-67795ce6e352	68bc603702bcd700012f45d6	calculated_profit	800000
+18	c81c11cf-4697-4224-a6b3-67795ce6e352	68bc603702bcd700012f45d7	calculated_profit_rate	40
+19	c81c11cf-4697-4224-a6b3-67795ce6e352	68bc603702bcd700012f45d8	calculated_profit_plus_15	920000
+20	c81c11cf-4697-4224-a6b3-67795ce6e352	68bc603702bcd700012f45d9	calculated_profit_plus_30	1040000
+21	c81c11cf-4697-4224-a6b3-67795ce6e352	68bc603702bcd700012f45da	disputes_minus_70	5.6
+1	8f686301-8304-4231-96c4-9f6664b665fb	68bc633802bcd700012f45db	firstname	Hanan Al Radwan
+2	8f686301-8304-4231-96c4-9f6664b665fb	68bc633802bcd700012f45dc	email	hananalradwan77@gmail.com
+3	8f686301-8304-4231-96c4-9f6664b665fb	68bc633802bcd700012f45dd	mobilephone	+964937713352
+4	8f686301-8304-4231-96c4-9f6664b665fb	68bc633802bcd700012f45de	brand_name	h90
+5	8f686301-8304-4231-96c4-9f6664b665fb	68bc633802bcd700012f45df	business_type	Hybrid Model
+6	8f686301-8304-4231-96c4-9f6664b665fb	68bc633802bcd700012f45e0	number_of_locations	1
+7	8f686301-8304-4231-96c4-9f6664b665fb	68bc633802bcd700012f45e1	has_cloud_brands	Yes
+8	8f686301-8304-4231-96c4-9f6664b665fb	68bc633802bcd700012f45e2	number_of_cloud_brands	1
+9	8f686301-8304-4231-96c4-9f6664b665fb	68bc633802bcd700012f45e3	annual_sales_revenue	Less than 500,000
+10	8f686301-8304-4231-96c4-9f6664b665fb	68bc633802bcd700012f45e4	monthly_orders	345
+11	8f686301-8304-4231-96c4-9f6664b665fb	68bc633802bcd700012f45e5	delivery_app_sales_percentage	25
+12	8f686301-8304-4231-96c4-9f6664b665fb	68bc633802bcd700012f45e6	delivery_app_commission_percentage	25
+13	8f686301-8304-4231-96c4-9f6664b665fb	68bc633802bcd700012f45e7	food_cost	30
+14	8f686301-8304-4231-96c4-9f6664b665fb	68bc633802bcd700012f45e8	monthly_advertising	23456
+15	8f686301-8304-4231-96c4-9f6664b665fb	68bc633802bcd700012f45e9	monthly_disputes	0
+16	8f686301-8304-4231-96c4-9f6664b665fb	68bc633802bcd700012f45ea	delivery_fees	10
+17	8f686301-8304-4231-96c4-9f6664b665fb	68bc633802bcd700012f45eb	calculated_profit	75000
+18	8f686301-8304-4231-96c4-9f6664b665fb	68bc633802bcd700012f45ec	calculated_profit_rate	30
+19	8f686301-8304-4231-96c4-9f6664b665fb	68bc633802bcd700012f45ed	calculated_profit_plus_15	86250
+20	8f686301-8304-4231-96c4-9f6664b665fb	68bc633802bcd700012f45ee	calculated_profit_plus_30	97500
+21	8f686301-8304-4231-96c4-9f6664b665fb	68bc633802bcd700012f45ef	disputes_minus_70	0
+1	c51cba3e-14ef-4529-9376-952274c34b8e	68bc64ad02bcd700012f45f0	firstname	Hanan Al Radwan
+2	c51cba3e-14ef-4529-9376-952274c34b8e	68bc64ad02bcd700012f45f1	email	hananalradwan77@gmail.com
+3	c51cba3e-14ef-4529-9376-952274c34b8e	68bc64ad02bcd700012f45f2	mobilephone	+964937713352
+4	c51cba3e-14ef-4529-9376-952274c34b8e	68bc64ad02bcd700012f45f3	brand_name	h905
+5	c51cba3e-14ef-4529-9376-952274c34b8e	68bc64ad02bcd700012f45f4	business_type	Hybrid Model
+6	c51cba3e-14ef-4529-9376-952274c34b8e	68bc64ad02bcd700012f45f5	number_of_locations	1
+7	c51cba3e-14ef-4529-9376-952274c34b8e	68bc64ad02bcd700012f45f6	has_cloud_brands	Yes
+8	c51cba3e-14ef-4529-9376-952274c34b8e	68bc64ad02bcd700012f45f7	number_of_cloud_brands	1
+9	c51cba3e-14ef-4529-9376-952274c34b8e	68bc64ad02bcd700012f45f8	annual_sales_revenue	Less than 500,000
+10	c51cba3e-14ef-4529-9376-952274c34b8e	68bc64ad02bcd700012f45f9	monthly_orders	345
+11	c51cba3e-14ef-4529-9376-952274c34b8e	68bc64ad02bcd700012f45fa	delivery_app_sales_percentage	25
+12	c51cba3e-14ef-4529-9376-952274c34b8e	68bc64ad02bcd700012f45fb	delivery_app_commission_percentage	25
+13	c51cba3e-14ef-4529-9376-952274c34b8e	68bc64ad02bcd700012f45fc	food_cost	30
+14	c51cba3e-14ef-4529-9376-952274c34b8e	68bc64ad02bcd700012f45fd	monthly_advertising	345
+15	c51cba3e-14ef-4529-9376-952274c34b8e	68bc64ad02bcd700012f45fe	monthly_disputes	0
+16	c51cba3e-14ef-4529-9376-952274c34b8e	68bc64ad02bcd700012f45ff	delivery_fees	10
+17	c51cba3e-14ef-4529-9376-952274c34b8e	68bc64ad02bcd700012f4600	calculated_profit	97500
+18	c51cba3e-14ef-4529-9376-952274c34b8e	68bc64ad02bcd700012f4601	calculated_profit_rate	39
+19	c51cba3e-14ef-4529-9376-952274c34b8e	68bc64ad02bcd700012f4602	calculated_profit_plus_15	112125
+20	c51cba3e-14ef-4529-9376-952274c34b8e	68bc64ad02bcd700012f4603	calculated_profit_plus_30	126750
+21	c51cba3e-14ef-4529-9376-952274c34b8e	68bc64ad02bcd700012f4604	disputes_minus_70	0
+1	dd7c8766-4754-44fb-b902-8cd3c698a373	68bc662202bcd700012f4605	firstname	Hanan Al Radwan
+2	dd7c8766-4754-44fb-b902-8cd3c698a373	68bc662202bcd700012f4606	email	hananalradwan77@gmail.com
+3	dd7c8766-4754-44fb-b902-8cd3c698a373	68bc662202bcd700012f4607	mobilephone	+964937713352
+4	dd7c8766-4754-44fb-b902-8cd3c698a373	68bc662202bcd700012f4608	brand_name	23
+5	dd7c8766-4754-44fb-b902-8cd3c698a373	68bc662202bcd700012f4609	business_type	Hybrid Model
+6	dd7c8766-4754-44fb-b902-8cd3c698a373	68bc662202bcd700012f460a	number_of_locations	1
+7	dd7c8766-4754-44fb-b902-8cd3c698a373	68bc662202bcd700012f460b	has_cloud_brands	Yes
+8	dd7c8766-4754-44fb-b902-8cd3c698a373	68bc662202bcd700012f460c	number_of_cloud_brands	1
+9	dd7c8766-4754-44fb-b902-8cd3c698a373	68bc662202bcd700012f460d	annual_sales_revenue	Less than 500,000
+10	dd7c8766-4754-44fb-b902-8cd3c698a373	68bc662202bcd700012f460e	monthly_orders	234
+11	dd7c8766-4754-44fb-b902-8cd3c698a373	68bc662202bcd700012f460f	delivery_app_sales_percentage	25
+12	dd7c8766-4754-44fb-b902-8cd3c698a373	68bc662202bcd700012f4610	delivery_app_commission_percentage	25
+13	dd7c8766-4754-44fb-b902-8cd3c698a373	68bc662202bcd700012f4611	food_cost	30
+14	dd7c8766-4754-44fb-b902-8cd3c698a373	68bc662202bcd700012f4612	monthly_advertising	3456
+15	dd7c8766-4754-44fb-b902-8cd3c698a373	68bc662202bcd700012f4613	monthly_disputes	0
+16	dd7c8766-4754-44fb-b902-8cd3c698a373	68bc662202bcd700012f4614	delivery_fees	10
+17	dd7c8766-4754-44fb-b902-8cd3c698a373	68bc662202bcd700012f4615	calculated_profit	95000
+18	dd7c8766-4754-44fb-b902-8cd3c698a373	68bc662202bcd700012f4616	calculated_profit_rate	38
+19	dd7c8766-4754-44fb-b902-8cd3c698a373	68bc662202bcd700012f4617	calculated_profit_plus_15	109250
+20	dd7c8766-4754-44fb-b902-8cd3c698a373	68bc662202bcd700012f4618	calculated_profit_plus_30	123500
+21	dd7c8766-4754-44fb-b902-8cd3c698a373	68bc662202bcd700012f4619	disputes_minus_70	0
+1	c648bfe0-40d0-46a9-a8d7-4854553ce188	68bd2cfa02bcd700012f461a	firstname	Omar Oubari
+2	c648bfe0-40d0-46a9-a8d7-4854553ce188	68bd2cfa02bcd700012f461b	email	omar@byvalence.com
+3	c648bfe0-40d0-46a9-a8d7-4854553ce188	68bd2cfa02bcd700012f461c	mobilephone	+966123456789
+4	c648bfe0-40d0-46a9-a8d7-4854553ce188	68bd2cfa02bcd700012f461d	brand_name	Studio Valence
+5	c648bfe0-40d0-46a9-a8d7-4854553ce188	68bd2cfa02bcd700012f461e	business_type	Hybrid Model
+6	c648bfe0-40d0-46a9-a8d7-4854553ce188	68bd2cfa02bcd700012f461f	number_of_locations	1
+7	c648bfe0-40d0-46a9-a8d7-4854553ce188	68bd2cfa02bcd700012f4620	has_cloud_brands	Yes
+8	c648bfe0-40d0-46a9-a8d7-4854553ce188	68bd2cfa02bcd700012f4621	number_of_cloud_brands	1
+9	c648bfe0-40d0-46a9-a8d7-4854553ce188	68bd2cfa02bcd700012f4622	annual_sales_revenue	Less than 500,000
+10	c648bfe0-40d0-46a9-a8d7-4854553ce188	68bd2cfa02bcd700012f4623	monthly_orders	850
+11	c648bfe0-40d0-46a9-a8d7-4854553ce188	68bd2cfa02bcd700012f4624	delivery_app_sales_percentage	25
+12	c648bfe0-40d0-46a9-a8d7-4854553ce188	68bd2cfa02bcd700012f4625	delivery_app_commission_percentage	25
+13	c648bfe0-40d0-46a9-a8d7-4854553ce188	68bd2cfa02bcd700012f4626	food_cost	30
+14	c648bfe0-40d0-46a9-a8d7-4854553ce188	68bd2cfa02bcd700012f4627	monthly_advertising	1000
+15	c648bfe0-40d0-46a9-a8d7-4854553ce188	68bd2cfa02bcd700012f4628	monthly_disputes	500
+16	c648bfe0-40d0-46a9-a8d7-4854553ce188	68bd2cfa02bcd700012f4629	delivery_fees	10
+17	c648bfe0-40d0-46a9-a8d7-4854553ce188	68bd2cfa02bcd700012f462a	calculated_profit	92500
+18	c648bfe0-40d0-46a9-a8d7-4854553ce188	68bd2cfa02bcd700012f462b	calculated_profit_rate	37
+19	c648bfe0-40d0-46a9-a8d7-4854553ce188	68bd2cfa02bcd700012f462c	calculated_profit_plus_15	106375
+20	c648bfe0-40d0-46a9-a8d7-4854553ce188	68bd2cfa02bcd700012f462d	calculated_profit_plus_30	120250
+21	c648bfe0-40d0-46a9-a8d7-4854553ce188	68bd2cfa02bcd700012f462e	disputes_minus_70	350
+1	eb1d922e-74b7-4fdc-ae1c-75247e2cab07	68bd309802bcd700012f462f	firstname	Hanan Al Radwan
+2	eb1d922e-74b7-4fdc-ae1c-75247e2cab07	68bd309802bcd700012f4630	email	hananalradwan77@gmail.com
+3	eb1d922e-74b7-4fdc-ae1c-75247e2cab07	68bd309802bcd700012f4631	mobilephone	+964937713352
+4	eb1d922e-74b7-4fdc-ae1c-75247e2cab07	68bd309802bcd700012f4632	brand_name	3423
+5	eb1d922e-74b7-4fdc-ae1c-75247e2cab07	68bd309802bcd700012f4633	business_type	Hybrid Model
+6	eb1d922e-74b7-4fdc-ae1c-75247e2cab07	68bd309802bcd700012f4634	number_of_locations	2
+7	eb1d922e-74b7-4fdc-ae1c-75247e2cab07	68bd309802bcd700012f4635	has_cloud_brands	Yes
+8	eb1d922e-74b7-4fdc-ae1c-75247e2cab07	68bd309802bcd700012f4636	number_of_cloud_brands	2
+9	eb1d922e-74b7-4fdc-ae1c-75247e2cab07	68bd309802bcd700012f4637	annual_sales_revenue	More than 2,000,000
+10	eb1d922e-74b7-4fdc-ae1c-75247e2cab07	68bd309802bcd700012f4638	monthly_orders	732
+11	eb1d922e-74b7-4fdc-ae1c-75247e2cab07	68bd309802bcd700012f4639	delivery_app_sales_percentage	28.000000000000004
+12	eb1d922e-74b7-4fdc-ae1c-75247e2cab07	68bd309802bcd700012f463a	delivery_app_commission_percentage	28.000000000000004
+13	eb1d922e-74b7-4fdc-ae1c-75247e2cab07	68bd309802bcd700012f463b	food_cost	33
+14	eb1d922e-74b7-4fdc-ae1c-75247e2cab07	68bd309802bcd700012f463c	monthly_advertising	1299
+15	eb1d922e-74b7-4fdc-ae1c-75247e2cab07	68bd309802bcd700012f463d	monthly_disputes	23
+16	eb1d922e-74b7-4fdc-ae1c-75247e2cab07	68bd309802bcd700012f463e	delivery_fees	8
+17	eb1d922e-74b7-4fdc-ae1c-75247e2cab07	68bd309802bcd700012f463f	calculated_profit	680000
+18	eb1d922e-74b7-4fdc-ae1c-75247e2cab07	68bd309802bcd700012f4640	calculated_profit_rate	34
+19	eb1d922e-74b7-4fdc-ae1c-75247e2cab07	68bd309802bcd700012f4641	calculated_profit_plus_15	782000
+20	eb1d922e-74b7-4fdc-ae1c-75247e2cab07	68bd309802bcd700012f4642	calculated_profit_plus_30	884000
+21	eb1d922e-74b7-4fdc-ae1c-75247e2cab07	68bd309802bcd700012f4643	disputes_minus_70	16.1
+1	ee5a6501-1376-4362-8162-4eab4c7c7efc	68bd947a02bcd700012f4644	firstname	Abdullah Alhawsawi
+2	ee5a6501-1376-4362-8162-4eab4c7c7efc	68bd947a02bcd700012f4645	email	abdullah@ballurh.io
+3	ee5a6501-1376-4362-8162-4eab4c7c7efc	68bd947a02bcd700012f4646	mobilephone	+966534378032
+4	ee5a6501-1376-4362-8162-4eab4c7c7efc	68bd947a02bcd700012f4647	brand_name	ahawsawib
+5	ee5a6501-1376-4362-8162-4eab4c7c7efc	68bd947a02bcd700012f4648	business_type	Hybrid Model
+6	ee5a6501-1376-4362-8162-4eab4c7c7efc	68bd947a02bcd700012f4649	number_of_locations	1
+7	ee5a6501-1376-4362-8162-4eab4c7c7efc	68bd947a02bcd700012f464a	has_cloud_brands	Yes
+8	ee5a6501-1376-4362-8162-4eab4c7c7efc	68bd947a02bcd700012f464b	number_of_cloud_brands	1
+9	ee5a6501-1376-4362-8162-4eab4c7c7efc	68bd947a02bcd700012f464c	annual_sales_revenue	Less than 500,000
+10	ee5a6501-1376-4362-8162-4eab4c7c7efc	68bd947a02bcd700012f464d	monthly_orders	500
+11	ee5a6501-1376-4362-8162-4eab4c7c7efc	68bd947a02bcd700012f464e	delivery_app_sales_percentage	25
+12	ee5a6501-1376-4362-8162-4eab4c7c7efc	68bd947a02bcd700012f464f	delivery_app_commission_percentage	25
+13	ee5a6501-1376-4362-8162-4eab4c7c7efc	68bd947a02bcd700012f4650	food_cost	30
+14	ee5a6501-1376-4362-8162-4eab4c7c7efc	68bd947a02bcd700012f4651	monthly_advertising	3000
+15	ee5a6501-1376-4362-8162-4eab4c7c7efc	68bd947a02bcd700012f4652	monthly_disputes	1000
+16	ee5a6501-1376-4362-8162-4eab4c7c7efc	68bd947a02bcd700012f4653	delivery_fees	10
+17	ee5a6501-1376-4362-8162-4eab4c7c7efc	68bd947a02bcd700012f4654	calculated_profit	92500
+18	ee5a6501-1376-4362-8162-4eab4c7c7efc	68bd947a02bcd700012f4655	calculated_profit_rate	37
+19	ee5a6501-1376-4362-8162-4eab4c7c7efc	68bd947a02bcd700012f4656	calculated_profit_plus_15	106375
+20	ee5a6501-1376-4362-8162-4eab4c7c7efc	68bd947a02bcd700012f4657	calculated_profit_plus_30	120250
+21	ee5a6501-1376-4362-8162-4eab4c7c7efc	68bd947a02bcd700012f4658	disputes_minus_70	700
+1	58d5d4a4-0eb7-4131-a0fa-2e5c968d5a97	68be8cbc02bcd700012f4659	firstname	Hanan Al Radwan
+2	58d5d4a4-0eb7-4131-a0fa-2e5c968d5a97	68be8cbc02bcd700012f465a	email	hananalradwan77@gmail.com
+3	58d5d4a4-0eb7-4131-a0fa-2e5c968d5a97	68be8cbc02bcd700012f465b	mobilephone	+964937713352
+4	58d5d4a4-0eb7-4131-a0fa-2e5c968d5a97	68be8cbc02bcd700012f465c	brand_name	han
+5	58d5d4a4-0eb7-4131-a0fa-2e5c968d5a97	68be8cbc02bcd700012f465d	business_type	Hybrid Model
+6	58d5d4a4-0eb7-4131-a0fa-2e5c968d5a97	68be8cbc02bcd700012f465e	number_of_locations	1
+7	58d5d4a4-0eb7-4131-a0fa-2e5c968d5a97	68be8cbc02bcd700012f465f	has_cloud_brands	Yes
+8	58d5d4a4-0eb7-4131-a0fa-2e5c968d5a97	68be8cbc02bcd700012f4660	number_of_cloud_brands	1
+9	58d5d4a4-0eb7-4131-a0fa-2e5c968d5a97	68be8cbc02bcd700012f4661	annual_sales_revenue	750,000 - 1,250,000
+10	58d5d4a4-0eb7-4131-a0fa-2e5c968d5a97	68be8cbc02bcd700012f4662	monthly_orders	12348
+11	58d5d4a4-0eb7-4131-a0fa-2e5c968d5a97	68be8cbc02bcd700012f4663	delivery_app_sales_percentage	25
+12	58d5d4a4-0eb7-4131-a0fa-2e5c968d5a97	68be8cbc02bcd700012f4664	delivery_app_commission_percentage	28.000000000000004
+13	58d5d4a4-0eb7-4131-a0fa-2e5c968d5a97	68be8cbc02bcd700012f4665	food_cost	30
+14	58d5d4a4-0eb7-4131-a0fa-2e5c968d5a97	68be8cbc02bcd700012f4666	monthly_advertising	1234
+15	58d5d4a4-0eb7-4131-a0fa-2e5c968d5a97	68be8cbc02bcd700012f4667	monthly_disputes	3
+16	58d5d4a4-0eb7-4131-a0fa-2e5c968d5a97	68be8cbc02bcd700012f4668	delivery_fees	10
+17	58d5d4a4-0eb7-4131-a0fa-2e5c968d5a97	68be8cbc02bcd700012f4669	calculated_profit	250000
+18	58d5d4a4-0eb7-4131-a0fa-2e5c968d5a97	68be8cbc02bcd700012f466a	calculated_profit_rate	25
+19	58d5d4a4-0eb7-4131-a0fa-2e5c968d5a97	68be8cbc02bcd700012f466b	calculated_profit_plus_15	287500
+20	58d5d4a4-0eb7-4131-a0fa-2e5c968d5a97	68be8cbc02bcd700012f466c	calculated_profit_plus_30	325000
+21	58d5d4a4-0eb7-4131-a0fa-2e5c968d5a97	68be8cbc02bcd700012f466d	disputes_minus_70	2.1
+1	9fecdb2a-b451-467b-93b9-ed8ab30f96f2	68bef05a96aacd0001480f61	firstname	ناصر السعيد
+2	9fecdb2a-b451-467b-93b9-ed8ab30f96f2	68bef05a96aacd0001480f62	email	naser14171417@gmail.com
+3	9fecdb2a-b451-467b-93b9-ed8ab30f96f2	68bef05a96aacd0001480f63	mobilephone	0598170522
+4	9fecdb2a-b451-467b-93b9-ed8ab30f96f2	68bef05a96aacd0001480f64	brand_name	ليفت لتقديم الطعام
+5	9fecdb2a-b451-467b-93b9-ed8ab30f96f2	68bef05a96aacd0001480f65	business_type	Hybrid Model
+6	9fecdb2a-b451-467b-93b9-ed8ab30f96f2	68bef05a96aacd0001480f66	number_of_locations	7
+7	9fecdb2a-b451-467b-93b9-ed8ab30f96f2	68bef05a96aacd0001480f67	has_cloud_brands	No
+8	9fecdb2a-b451-467b-93b9-ed8ab30f96f2	68bef05a96aacd0001480f68	number_of_cloud_brands	1
+9	9fecdb2a-b451-467b-93b9-ed8ab30f96f2	68bef05a96aacd0001480f69	annual_sales_revenue	750,000 - 1,250,000
+10	9fecdb2a-b451-467b-93b9-ed8ab30f96f2	68bef05a96aacd0001480f6a	monthly_orders	999
+11	9fecdb2a-b451-467b-93b9-ed8ab30f96f2	68bef05a96aacd0001480f6b	delivery_app_sales_percentage	50
+12	9fecdb2a-b451-467b-93b9-ed8ab30f96f2	68bef05a96aacd0001480f6c	delivery_app_commission_percentage	30
+13	9fecdb2a-b451-467b-93b9-ed8ab30f96f2	68bef05a96aacd0001480f6d	food_cost	35
+14	9fecdb2a-b451-467b-93b9-ed8ab30f96f2	68bef05a96aacd0001480f6e	monthly_advertising	15000
+15	9fecdb2a-b451-467b-93b9-ed8ab30f96f2	68bef05a96aacd0001480f6f	monthly_disputes	4166.67
+16	9fecdb2a-b451-467b-93b9-ed8ab30f96f2	68bef05a96aacd0001480f70	annual_disputes	50000
+17	9fecdb2a-b451-467b-93b9-ed8ab30f96f2	68bef05a96aacd0001480f71	delivery_fees	11
+18	9fecdb2a-b451-467b-93b9-ed8ab30f96f2	68bef05a96aacd0001480f72	calculated_profit	250000
+19	9fecdb2a-b451-467b-93b9-ed8ab30f96f2	68bef05a96aacd0001480f73	calculated_profit_rate	25
+20	9fecdb2a-b451-467b-93b9-ed8ab30f96f2	68bef05a96aacd0001480f74	calculated_profit_15_percent	37500
+21	9fecdb2a-b451-467b-93b9-ed8ab30f96f2	68bef05a96aacd0001480f75	calculated_profit_30_percent	75000
+22	9fecdb2a-b451-467b-93b9-ed8ab30f96f2	68bef05a96aacd0001480f76	calculated_profit_plus_15	287500
+23	9fecdb2a-b451-467b-93b9-ed8ab30f96f2	68bef05a96aacd0001480f77	calculated_profit_plus_30	325000
+24	9fecdb2a-b451-467b-93b9-ed8ab30f96f2	68bef05a96aacd0001480f78	disputes_minus_70	35000
+1	112d9fdf-08d5-4f72-899e-8ffe51e72ab9	68c1994396aacd0001480f79	firstname	Mohammed
+2	112d9fdf-08d5-4f72-899e-8ffe51e72ab9	68c1994396aacd0001480f7a	email	Mjuwaee@gmail.com
+3	112d9fdf-08d5-4f72-899e-8ffe51e72ab9	68c1994396aacd0001480f7b	mobilephone	541420220
+4	112d9fdf-08d5-4f72-899e-8ffe51e72ab9	68c1994396aacd0001480f7c	brand_name	
+5	112d9fdf-08d5-4f72-899e-8ffe51e72ab9	68c1994396aacd0001480f7d	business_type	Restaurant / Café
+6	112d9fdf-08d5-4f72-899e-8ffe51e72ab9	68c1994396aacd0001480f7e	number_of_locations	1
+7	112d9fdf-08d5-4f72-899e-8ffe51e72ab9	68c1994396aacd0001480f7f	has_cloud_brands	Yes
+8	112d9fdf-08d5-4f72-899e-8ffe51e72ab9	68c1994396aacd0001480f80	number_of_cloud_brands	1
+9	112d9fdf-08d5-4f72-899e-8ffe51e72ab9	68c1994396aacd0001480f81	annual_sales_revenue	750,000 - 1,250,000
+10	112d9fdf-08d5-4f72-899e-8ffe51e72ab9	68c1994396aacd0001480f82	monthly_orders	3145
+11	112d9fdf-08d5-4f72-899e-8ffe51e72ab9	68c1994396aacd0001480f83	delivery_app_sales_percentage	25
+12	112d9fdf-08d5-4f72-899e-8ffe51e72ab9	68c1994396aacd0001480f84	delivery_app_commission_percentage	35
+13	112d9fdf-08d5-4f72-899e-8ffe51e72ab9	68c1994396aacd0001480f85	food_cost	40
+14	112d9fdf-08d5-4f72-899e-8ffe51e72ab9	68c1994396aacd0001480f86	monthly_advertising	5000
+15	112d9fdf-08d5-4f72-899e-8ffe51e72ab9	68c1994396aacd0001480f87	monthly_disputes	4166.67
+16	112d9fdf-08d5-4f72-899e-8ffe51e72ab9	68c1994396aacd0001480f88	annual_disputes	50000
+17	112d9fdf-08d5-4f72-899e-8ffe51e72ab9	68c1994396aacd0001480f89	delivery_fees	9
+18	112d9fdf-08d5-4f72-899e-8ffe51e72ab9	68c1994396aacd0001480f8a	calculated_profit	140000
+19	112d9fdf-08d5-4f72-899e-8ffe51e72ab9	68c1994396aacd0001480f8b	calculated_profit_rate	14.000000000000002
+20	112d9fdf-08d5-4f72-899e-8ffe51e72ab9	68c1994396aacd0001480f8c	calculated_profit_15_percent	21000
+21	112d9fdf-08d5-4f72-899e-8ffe51e72ab9	68c1994396aacd0001480f8d	calculated_profit_30_percent	42000
+22	112d9fdf-08d5-4f72-899e-8ffe51e72ab9	68c1994396aacd0001480f8e	calculated_profit_plus_15	161000
+23	112d9fdf-08d5-4f72-899e-8ffe51e72ab9	68c1994396aacd0001480f8f	calculated_profit_plus_30	182000
+24	112d9fdf-08d5-4f72-899e-8ffe51e72ab9	68c1994396aacd0001480f90	disputes_minus_70	35000
+1	fb4b7113-74fd-47df-9353-c043ee59d8a1	68c6838896aacd0001480f91	firstname	naif alboqami
+2	fb4b7113-74fd-47df-9353-c043ee59d8a1	68c6838896aacd0001480f92	email	n.almrzogi@gmail.com
+3	fb4b7113-74fd-47df-9353-c043ee59d8a1	68c6838896aacd0001480f93	mobilephone	+966554433849
+4	fb4b7113-74fd-47df-9353-c043ee59d8a1	68c6838896aacd0001480f94	brand_name	COCK
+5	fb4b7113-74fd-47df-9353-c043ee59d8a1	68c6838896aacd0001480f95	business_type	Hybrid Model
+6	fb4b7113-74fd-47df-9353-c043ee59d8a1	68c6838896aacd0001480f96	number_of_locations	1
+7	fb4b7113-74fd-47df-9353-c043ee59d8a1	68c6838896aacd0001480f97	has_cloud_brands	No
+8	fb4b7113-74fd-47df-9353-c043ee59d8a1	68c6838896aacd0001480f98	number_of_cloud_brands	1
+9	fb4b7113-74fd-47df-9353-c043ee59d8a1	68c6838896aacd0001480f99	annual_sales_revenue	750,000 - 1,250,000
+10	fb4b7113-74fd-47df-9353-c043ee59d8a1	68c6838896aacd0001480f9a	monthly_orders	3500
+11	fb4b7113-74fd-47df-9353-c043ee59d8a1	68c6838896aacd0001480f9b	delivery_app_sales_percentage	1
+12	fb4b7113-74fd-47df-9353-c043ee59d8a1	68c6838896aacd0001480f9c	delivery_app_commission_percentage	1
+13	fb4b7113-74fd-47df-9353-c043ee59d8a1	68c6838896aacd0001480f9d	food_cost	30
+14	fb4b7113-74fd-47df-9353-c043ee59d8a1	68c6838896aacd0001480f9e	monthly_advertising	0
+15	fb4b7113-74fd-47df-9353-c043ee59d8a1	68c6838896aacd0001480f9f	monthly_disputes	4166.67
+16	fb4b7113-74fd-47df-9353-c043ee59d8a1	68c6838896aacd0001480fa0	annual_disputes	50000
+17	fb4b7113-74fd-47df-9353-c043ee59d8a1	68c6838896aacd0001480fa1	delivery_fees	10
+18	fb4b7113-74fd-47df-9353-c043ee59d8a1	68c6838896aacd0001480fa2	calculated_profit	580000
+19	fb4b7113-74fd-47df-9353-c043ee59d8a1	68c6838896aacd0001480fa3	calculated_profit_rate	57.99999999999999
+20	fb4b7113-74fd-47df-9353-c043ee59d8a1	68c6838896aacd0001480fa4	calculated_profit_15_percent	87000
+21	fb4b7113-74fd-47df-9353-c043ee59d8a1	68c6838896aacd0001480fa5	calculated_profit_30_percent	174000
+22	fb4b7113-74fd-47df-9353-c043ee59d8a1	68c6838896aacd0001480fa6	calculated_profit_plus_15	667000
+23	fb4b7113-74fd-47df-9353-c043ee59d8a1	68c6838896aacd0001480fa7	calculated_profit_plus_30	754000
+24	fb4b7113-74fd-47df-9353-c043ee59d8a1	68c6838896aacd0001480fa8	disputes_minus_70	35000
+1	9e5cd383-4aec-4cb7-8322-ca208f4abad0	68c8e220ea12ac000129ad56	firstname	عبدالاله
+2	9e5cd383-4aec-4cb7-8322-ca208f4abad0	68c8e220ea12ac000129ad57	email	d7drjy@gmail.com
+3	9e5cd383-4aec-4cb7-8322-ca208f4abad0	68c8e220ea12ac000129ad58	mobilephone	+966 50 481 3564
+4	9e5cd383-4aec-4cb7-8322-ca208f4abad0	68c8e220ea12ac000129ad59	brand_name	Babsil
+5	9e5cd383-4aec-4cb7-8322-ca208f4abad0	68c8e220ea12ac000129ad5a	business_type	Hybrid Model
+6	9e5cd383-4aec-4cb7-8322-ca208f4abad0	68c8e220ea12ac000129ad5b	number_of_locations	2
+7	9e5cd383-4aec-4cb7-8322-ca208f4abad0	68c8e220ea12ac000129ad5c	has_cloud_brands	Yes
+8	9e5cd383-4aec-4cb7-8322-ca208f4abad0	68c8e220ea12ac000129ad5d	number_of_cloud_brands	2
+9	9e5cd383-4aec-4cb7-8322-ca208f4abad0	68c8e220ea12ac000129ad5e	annual_sales_revenue	150000
+10	9e5cd383-4aec-4cb7-8322-ca208f4abad0	68c8e220ea12ac000129ad5f	monthly_orders	10000
+11	9e5cd383-4aec-4cb7-8322-ca208f4abad0	68c8e220ea12ac000129ad60	delivery_app_commission_percentage	30
+12	9e5cd383-4aec-4cb7-8322-ca208f4abad0	68c8e220ea12ac000129ad61	food_cost	30
+13	9e5cd383-4aec-4cb7-8322-ca208f4abad0	68c8e220ea12ac000129ad62	monthly_advertising	6000
+14	9e5cd383-4aec-4cb7-8322-ca208f4abad0	68c8e220ea12ac000129ad63	monthly_disputes	7500
+15	9e5cd383-4aec-4cb7-8322-ca208f4abad0	68c8e220ea12ac000129ad64	annual_disputes	90000
+16	9e5cd383-4aec-4cb7-8322-ca208f4abad0	68c8e220ea12ac000129ad65	delivery_fees	10
+17	9e5cd383-4aec-4cb7-8322-ca208f4abad0	68c8e220ea12ac000129ad66	calculated_profit	-57000
+18	9e5cd383-4aec-4cb7-8322-ca208f4abad0	68c8e220ea12ac000129ad67	calculated_profit_rate	-38
+19	9e5cd383-4aec-4cb7-8322-ca208f4abad0	68c8e220ea12ac000129ad68	calculated_profit_15_percent	-8550
+20	9e5cd383-4aec-4cb7-8322-ca208f4abad0	68c8e220ea12ac000129ad69	calculated_profit_30_percent	-17100
+21	9e5cd383-4aec-4cb7-8322-ca208f4abad0	68c8e220ea12ac000129ad6a	calculated_profit_plus_15	-65550
+22	9e5cd383-4aec-4cb7-8322-ca208f4abad0	68c8e220ea12ac000129ad6b	calculated_profit_plus_30	-74100
+23	9e5cd383-4aec-4cb7-8322-ca208f4abad0	68c8e220ea12ac000129ad6c	disputes_minus_70	5250
+1	a78df845-5895-4807-bbb3-e7d83b7509a2	68cb3ea6ea12ac000129ad6d	firstname	Ahmed
+2	a78df845-5895-4807-bbb3-e7d83b7509a2	68cb3ea6ea12ac000129ad6e	email	Dpt.ahmed@hotmail.com
+3	a78df845-5895-4807-bbb3-e7d83b7509a2	68cb3ea6ea12ac000129ad6f	mobilephone	+966562252341
+4	a78df845-5895-4807-bbb3-e7d83b7509a2	68cb3ea6ea12ac000129ad70	brand_name	
+5	a78df845-5895-4807-bbb3-e7d83b7509a2	68cb3ea6ea12ac000129ad71	business_type	Restaurant / Café
+6	a78df845-5895-4807-bbb3-e7d83b7509a2	68cb3ea6ea12ac000129ad72	number_of_locations	1
+7	a78df845-5895-4807-bbb3-e7d83b7509a2	68cb3ea6ea12ac000129ad73	has_cloud_brands	Yes
+8	a78df845-5895-4807-bbb3-e7d83b7509a2	68cb3ea6ea12ac000129ad74	number_of_cloud_brands	1
+9	a78df845-5895-4807-bbb3-e7d83b7509a2	68cb3ea6ea12ac000129ad75	annual_sales_revenue	30000
+10	a78df845-5895-4807-bbb3-e7d83b7509a2	68cb3ea6ea12ac000129ad76	monthly_orders	1500
+11	a78df845-5895-4807-bbb3-e7d83b7509a2	68cb3ea6ea12ac000129ad77	delivery_app_commission_percentage	25
+12	a78df845-5895-4807-bbb3-e7d83b7509a2	68cb3ea6ea12ac000129ad78	food_cost	30
+13	a78df845-5895-4807-bbb3-e7d83b7509a2	68cb3ea6ea12ac000129ad79	monthly_advertising	3000
+14	a78df845-5895-4807-bbb3-e7d83b7509a2	68cb3ea6ea12ac000129ad7a	monthly_disputes	1500
+15	a78df845-5895-4807-bbb3-e7d83b7509a2	68cb3ea6ea12ac000129ad7b	annual_disputes	18000
+16	a78df845-5895-4807-bbb3-e7d83b7509a2	68cb3ea6ea12ac000129ad7c	delivery_fees	10
+17	a78df845-5895-4807-bbb3-e7d83b7509a2	68cb3ea6ea12ac000129ad7d	calculated_profit	-6900
+18	a78df845-5895-4807-bbb3-e7d83b7509a2	68cb3ea6ea12ac000129ad7e	calculated_profit_rate	-23
+19	a78df845-5895-4807-bbb3-e7d83b7509a2	68cb3ea6ea12ac000129ad7f	calculated_profit_15_percent	-1035
+20	a78df845-5895-4807-bbb3-e7d83b7509a2	68cb3ea6ea12ac000129ad80	calculated_profit_30_percent	-2070
+21	a78df845-5895-4807-bbb3-e7d83b7509a2	68cb3ea6ea12ac000129ad81	calculated_profit_plus_15	-7935
+22	a78df845-5895-4807-bbb3-e7d83b7509a2	68cb3ea6ea12ac000129ad82	calculated_profit_plus_30	-8970
+23	a78df845-5895-4807-bbb3-e7d83b7509a2	68cb3ea6ea12ac000129ad83	disputes_minus_70	1050
+1	2bea3091-6eda-4e5b-b5a2-395db950178a	68d0047e3a9c8c00017cfed1	firstname	محمد 
+2	2bea3091-6eda-4e5b-b5a2-395db950178a	68d0047e3a9c8c00017cfed2	email	mf.atmi19@gmail.com
+3	2bea3091-6eda-4e5b-b5a2-395db950178a	68d0047e3a9c8c00017cfed3	mobilephone	0538250252
+4	2bea3091-6eda-4e5b-b5a2-395db950178a	68d0047e3a9c8c00017cfed4	brand_name	
+5	2bea3091-6eda-4e5b-b5a2-395db950178a	68d0047e3a9c8c00017cfed5	business_type	Hybrid Model
+6	2bea3091-6eda-4e5b-b5a2-395db950178a	68d0047e3a9c8c00017cfed6	number_of_locations	1
+7	2bea3091-6eda-4e5b-b5a2-395db950178a	68d0047e3a9c8c00017cfed7	has_cloud_brands	Yes
+8	2bea3091-6eda-4e5b-b5a2-395db950178a	68d0047e3a9c8c00017cfed8	number_of_cloud_brands	1
+9	2bea3091-6eda-4e5b-b5a2-395db950178a	68d0047e3a9c8c00017cfed9	annual_sales_revenue	420000
+10	2bea3091-6eda-4e5b-b5a2-395db950178a	68d0047e3a9c8c00017cfeda	monthly_orders	347
+11	2bea3091-6eda-4e5b-b5a2-395db950178a	68d0047e3a9c8c00017cfedb	delivery_app_commission_percentage	25
+12	2bea3091-6eda-4e5b-b5a2-395db950178a	68d0047e3a9c8c00017cfedc	food_cost	30
+13	2bea3091-6eda-4e5b-b5a2-395db950178a	68d0047e3a9c8c00017cfedd	monthly_advertising	450
+14	2bea3091-6eda-4e5b-b5a2-395db950178a	68d0047e3a9c8c00017cfede	monthly_disputes	21000
+15	2bea3091-6eda-4e5b-b5a2-395db950178a	68d0047e3a9c8c00017cfedf	annual_disputes	252000
+16	2bea3091-6eda-4e5b-b5a2-395db950178a	68d0047e3a9c8c00017cfee0	delivery_fees	10
+17	2bea3091-6eda-4e5b-b5a2-395db950178a	68d0047e3a9c8c00017cfee1	calculated_profit	155400
+18	2bea3091-6eda-4e5b-b5a2-395db950178a	68d0047e3a9c8c00017cfee2	calculated_profit_rate	37
+19	2bea3091-6eda-4e5b-b5a2-395db950178a	68d0047e3a9c8c00017cfee3	calculated_profit_15_percent	23310
+20	2bea3091-6eda-4e5b-b5a2-395db950178a	68d0047e3a9c8c00017cfee4	calculated_profit_30_percent	46620
+21	2bea3091-6eda-4e5b-b5a2-395db950178a	68d0047e3a9c8c00017cfee5	calculated_profit_plus_15	178710
+22	2bea3091-6eda-4e5b-b5a2-395db950178a	68d0047e3a9c8c00017cfee6	calculated_profit_plus_30	202020
+23	2bea3091-6eda-4e5b-b5a2-395db950178a	68d0047e3a9c8c00017cfee7	disputes_minus_70	14700
+1	07b584c9-44c5-4ea6-87cd-ab10de139d23	68d047673a9c8c00017cfee8	firstname	تركي 
+2	07b584c9-44c5-4ea6-87cd-ab10de139d23	68d047673a9c8c00017cfee9	email	Turkeyroot12@gmail.com
+3	07b584c9-44c5-4ea6-87cd-ab10de139d23	68d047673a9c8c00017cfeea	mobilephone	966/570503966
+4	07b584c9-44c5-4ea6-87cd-ab10de139d23	68d047673a9c8c00017cfeeb	brand_name	
+5	07b584c9-44c5-4ea6-87cd-ab10de139d23	68d047673a9c8c00017cfeec	business_type	Hybrid Model
+6	07b584c9-44c5-4ea6-87cd-ab10de139d23	68d047673a9c8c00017cfeed	number_of_locations	1
+7	07b584c9-44c5-4ea6-87cd-ab10de139d23	68d047673a9c8c00017cfeee	has_cloud_brands	Yes
+8	07b584c9-44c5-4ea6-87cd-ab10de139d23	68d047673a9c8c00017cfeef	number_of_cloud_brands	1
+9	07b584c9-44c5-4ea6-87cd-ab10de139d23	68d047673a9c8c00017cfef0	annual_sales_revenue	466
+10	07b584c9-44c5-4ea6-87cd-ab10de139d23	68d047673a9c8c00017cfef1	monthly_orders	6
+11	07b584c9-44c5-4ea6-87cd-ab10de139d23	68d047673a9c8c00017cfef2	delivery_app_commission_percentage	17
+12	07b584c9-44c5-4ea6-87cd-ab10de139d23	68d047673a9c8c00017cfef3	food_cost	30
+13	07b584c9-44c5-4ea6-87cd-ab10de139d23	68d047673a9c8c00017cfef4	monthly_advertising	0
+14	07b584c9-44c5-4ea6-87cd-ab10de139d23	68d047673a9c8c00017cfef5	monthly_disputes	23.3
+15	07b584c9-44c5-4ea6-87cd-ab10de139d23	68d047673a9c8c00017cfef6	annual_disputes	279.6
+16	07b584c9-44c5-4ea6-87cd-ab10de139d23	68d047673a9c8c00017cfef7	delivery_fees	10
+17	07b584c9-44c5-4ea6-87cd-ab10de139d23	68d047673a9c8c00017cfef8	calculated_profit	153.78
+18	07b584c9-44c5-4ea6-87cd-ab10de139d23	68d047673a9c8c00017cfef9	calculated_profit_rate	33
+19	07b584c9-44c5-4ea6-87cd-ab10de139d23	68d047673a9c8c00017cfefa	calculated_profit_15_percent	23.07
+20	07b584c9-44c5-4ea6-87cd-ab10de139d23	68d047673a9c8c00017cfefb	calculated_profit_30_percent	46.13
+21	07b584c9-44c5-4ea6-87cd-ab10de139d23	68d047673a9c8c00017cfefc	calculated_profit_plus_15	176.85
+22	07b584c9-44c5-4ea6-87cd-ab10de139d23	68d047673a9c8c00017cfefd	calculated_profit_plus_30	199.91
+23	07b584c9-44c5-4ea6-87cd-ab10de139d23	68d047673a9c8c00017cfefe	disputes_minus_70	16.31
+1	35b39a04-080a-4be3-a0a0-bc31fb965a58	68d114455b2bcd0001b111c9	firstname	Omar Oubari
+2	35b39a04-080a-4be3-a0a0-bc31fb965a58	68d114455b2bcd0001b111ca	email	omar@byvalence.com
+3	35b39a04-080a-4be3-a0a0-bc31fb965a58	68d114455b2bcd0001b111cb	mobilephone	+963941793588
+4	35b39a04-080a-4be3-a0a0-bc31fb965a58	68d114455b2bcd0001b111cc	brand_name	عنوان القهوة
+5	35b39a04-080a-4be3-a0a0-bc31fb965a58	68d114455b2bcd0001b111cd	business_type	Hybrid Model
+6	35b39a04-080a-4be3-a0a0-bc31fb965a58	68d114455b2bcd0001b111ce	number_of_locations	1
+7	35b39a04-080a-4be3-a0a0-bc31fb965a58	68d114455b2bcd0001b111cf	has_cloud_brands	Yes
+8	35b39a04-080a-4be3-a0a0-bc31fb965a58	68d114455b2bcd0001b111d0	number_of_cloud_brands	1
+9	35b39a04-080a-4be3-a0a0-bc31fb965a58	68d114455b2bcd0001b111d1	annual_sales_revenue	100000
+10	35b39a04-080a-4be3-a0a0-bc31fb965a58	68d114455b2bcd0001b111d2	monthly_orders	850
+11	35b39a04-080a-4be3-a0a0-bc31fb965a58	68d114455b2bcd0001b111d3	delivery_app_commission_percentage	25
+12	35b39a04-080a-4be3-a0a0-bc31fb965a58	68d114455b2bcd0001b111d4	food_cost	30
+13	35b39a04-080a-4be3-a0a0-bc31fb965a58	68d114455b2bcd0001b111d5	monthly_advertising	2000
+14	35b39a04-080a-4be3-a0a0-bc31fb965a58	68d114455b2bcd0001b111d6	monthly_disputes	5000
+15	35b39a04-080a-4be3-a0a0-bc31fb965a58	68d114455b2bcd0001b111d7	annual_disputes	60000
+16	35b39a04-080a-4be3-a0a0-bc31fb965a58	68d114455b2bcd0001b111d8	delivery_fees	10
+17	35b39a04-080a-4be3-a0a0-bc31fb965a58	68d114455b2bcd0001b111d9	calculated_profit	27000
+18	35b39a04-080a-4be3-a0a0-bc31fb965a58	68d114455b2bcd0001b111da	calculated_profit_rate	27
+19	35b39a04-080a-4be3-a0a0-bc31fb965a58	68d114455b2bcd0001b111db	calculated_profit_15_percent	4050
+20	35b39a04-080a-4be3-a0a0-bc31fb965a58	68d114455b2bcd0001b111dc	calculated_profit_30_percent	8100
+21	35b39a04-080a-4be3-a0a0-bc31fb965a58	68d114455b2bcd0001b111dd	calculated_profit_plus_15	31050
+22	35b39a04-080a-4be3-a0a0-bc31fb965a58	68d114455b2bcd0001b111de	calculated_profit_plus_30	35100
+23	35b39a04-080a-4be3-a0a0-bc31fb965a58	68d114455b2bcd0001b111df	disputes_minus_70	3500
+1	a3c3be7d-a2cb-4691-b799-634f24cb79de	68d1157f5b2bcd0001b111e0	firstname	Omar Oubari
+2	a3c3be7d-a2cb-4691-b799-634f24cb79de	68d1157f5b2bcd0001b111e1	email	omar@byvalence.com
+3	a3c3be7d-a2cb-4691-b799-634f24cb79de	68d1157f5b2bcd0001b111e2	mobilephone	+966123456789
+4	a3c3be7d-a2cb-4691-b799-634f24cb79de	68d1157f5b2bcd0001b111e3	brand_name	Studio Valence
+5	a3c3be7d-a2cb-4691-b799-634f24cb79de	68d1157f5b2bcd0001b111e4	business_type	Hybrid Model
+6	a3c3be7d-a2cb-4691-b799-634f24cb79de	68d1157f5b2bcd0001b111e5	number_of_locations	1
+7	a3c3be7d-a2cb-4691-b799-634f24cb79de	68d1157f5b2bcd0001b111e6	has_cloud_brands	Yes
+8	a3c3be7d-a2cb-4691-b799-634f24cb79de	68d1157f5b2bcd0001b111e7	number_of_cloud_brands	1
+9	a3c3be7d-a2cb-4691-b799-634f24cb79de	68d1157f5b2bcd0001b111e8	annual_sales_revenue	100000
+10	a3c3be7d-a2cb-4691-b799-634f24cb79de	68d1157f5b2bcd0001b111e9	monthly_orders	850
+11	a3c3be7d-a2cb-4691-b799-634f24cb79de	68d1157f5b2bcd0001b111ea	delivery_app_commission_percentage	25
+12	a3c3be7d-a2cb-4691-b799-634f24cb79de	68d1157f5b2bcd0001b111eb	food_cost	30
+13	a3c3be7d-a2cb-4691-b799-634f24cb79de	68d1157f5b2bcd0001b111ec	monthly_advertising	2000
+14	a3c3be7d-a2cb-4691-b799-634f24cb79de	68d1157f5b2bcd0001b111ed	monthly_disputes	5000
+15	a3c3be7d-a2cb-4691-b799-634f24cb79de	68d1157f5b2bcd0001b111ee	annual_disputes	60000
+16	a3c3be7d-a2cb-4691-b799-634f24cb79de	68d1157f5b2bcd0001b111ef	delivery_fees	10
+17	a3c3be7d-a2cb-4691-b799-634f24cb79de	68d1157f5b2bcd0001b111f0	calculated_profit	27000
+18	a3c3be7d-a2cb-4691-b799-634f24cb79de	68d1157f5b2bcd0001b111f1	calculated_profit_rate	27
+19	a3c3be7d-a2cb-4691-b799-634f24cb79de	68d1157f5b2bcd0001b111f2	calculated_profit_15_percent	4050
+20	a3c3be7d-a2cb-4691-b799-634f24cb79de	68d1157f5b2bcd0001b111f3	calculated_profit_30_percent	8100
+21	a3c3be7d-a2cb-4691-b799-634f24cb79de	68d1157f5b2bcd0001b111f4	calculated_profit_plus_15	31050
+22	a3c3be7d-a2cb-4691-b799-634f24cb79de	68d1157f5b2bcd0001b111f5	calculated_profit_plus_30	35100
+23	a3c3be7d-a2cb-4691-b799-634f24cb79de	68d1157f5b2bcd0001b111f6	disputes_minus_70	3500
+1	ac573510-28ad-49b0-acde-39ef162eb18e	68d115cb5b2bcd0001b111f7	firstname	Omar Oubari
+2	ac573510-28ad-49b0-acde-39ef162eb18e	68d115cb5b2bcd0001b111f8	email	omar@byvalence.com
+3	ac573510-28ad-49b0-acde-39ef162eb18e	68d115cb5b2bcd0001b111f9	mobilephone	+966123456789
+4	ac573510-28ad-49b0-acde-39ef162eb18e	68d115cb5b2bcd0001b111fa	brand_name	Studio Valence
+5	ac573510-28ad-49b0-acde-39ef162eb18e	68d115cb5b2bcd0001b111fb	business_type	Hybrid Model
+6	ac573510-28ad-49b0-acde-39ef162eb18e	68d115cb5b2bcd0001b111fc	number_of_locations	1
+7	ac573510-28ad-49b0-acde-39ef162eb18e	68d115cb5b2bcd0001b111fd	has_cloud_brands	Yes
+8	ac573510-28ad-49b0-acde-39ef162eb18e	68d115cb5b2bcd0001b111fe	number_of_cloud_brands	1
+9	ac573510-28ad-49b0-acde-39ef162eb18e	68d115cb5b2bcd0001b111ff	annual_sales_revenue	100000
+10	ac573510-28ad-49b0-acde-39ef162eb18e	68d115cb5b2bcd0001b11200	monthly_orders	850
+11	ac573510-28ad-49b0-acde-39ef162eb18e	68d115cb5b2bcd0001b11201	delivery_app_commission_percentage	25
+12	ac573510-28ad-49b0-acde-39ef162eb18e	68d115cb5b2bcd0001b11202	food_cost	30
+13	ac573510-28ad-49b0-acde-39ef162eb18e	68d115cb5b2bcd0001b11203	monthly_advertising	2000
+14	ac573510-28ad-49b0-acde-39ef162eb18e	68d115cb5b2bcd0001b11204	monthly_disputes	5000
+15	ac573510-28ad-49b0-acde-39ef162eb18e	68d115cb5b2bcd0001b11205	annual_disputes	60000
+16	ac573510-28ad-49b0-acde-39ef162eb18e	68d115cb5b2bcd0001b11206	delivery_fees	10
+17	ac573510-28ad-49b0-acde-39ef162eb18e	68d115cb5b2bcd0001b11207	calculated_profit	27000
+18	ac573510-28ad-49b0-acde-39ef162eb18e	68d115cb5b2bcd0001b11208	calculated_profit_rate	27
+19	ac573510-28ad-49b0-acde-39ef162eb18e	68d115cb5b2bcd0001b11209	calculated_profit_15_percent	4050
+20	ac573510-28ad-49b0-acde-39ef162eb18e	68d115cb5b2bcd0001b1120a	calculated_profit_30_percent	8100
+21	ac573510-28ad-49b0-acde-39ef162eb18e	68d115cb5b2bcd0001b1120b	calculated_profit_plus_15	31050
+22	ac573510-28ad-49b0-acde-39ef162eb18e	68d115cb5b2bcd0001b1120c	calculated_profit_plus_30	35100
+23	ac573510-28ad-49b0-acde-39ef162eb18e	68d115cb5b2bcd0001b1120d	disputes_minus_70	3500
+1	238775f4-8d1d-4355-adf0-36fc9db814ff	68d1199e3827d900015181d6	firstname	Omar Oubari
+2	238775f4-8d1d-4355-adf0-36fc9db814ff	68d1199e3827d900015181d7	email	omar@byvalence.com
+3	238775f4-8d1d-4355-adf0-36fc9db814ff	68d1199e3827d900015181d8	mobilephone	+963941793588
+4	238775f4-8d1d-4355-adf0-36fc9db814ff	68d1199e3827d900015181d9	brand_name	عنوان القهوة
+5	238775f4-8d1d-4355-adf0-36fc9db814ff	68d1199e3827d900015181da	business_type	Hybrid Model
+6	238775f4-8d1d-4355-adf0-36fc9db814ff	68d1199e3827d900015181db	number_of_locations	1
+7	238775f4-8d1d-4355-adf0-36fc9db814ff	68d1199e3827d900015181dc	has_cloud_brands	Yes
+8	238775f4-8d1d-4355-adf0-36fc9db814ff	68d1199e3827d900015181dd	number_of_cloud_brands	1
+9	238775f4-8d1d-4355-adf0-36fc9db814ff	68d1199e3827d900015181de	annual_sales_revenue	100000
+10	238775f4-8d1d-4355-adf0-36fc9db814ff	68d1199e3827d900015181df	monthly_orders	850
+11	238775f4-8d1d-4355-adf0-36fc9db814ff	68d1199e3827d900015181e0	delivery_app_commission_percentage	25
+12	238775f4-8d1d-4355-adf0-36fc9db814ff	68d1199e3827d900015181e1	food_cost	30
+13	238775f4-8d1d-4355-adf0-36fc9db814ff	68d1199e3827d900015181e2	monthly_advertising	2000
+14	238775f4-8d1d-4355-adf0-36fc9db814ff	68d1199e3827d900015181e3	monthly_disputes	5000
+15	238775f4-8d1d-4355-adf0-36fc9db814ff	68d1199e3827d900015181e4	annual_disputes	60000
+16	238775f4-8d1d-4355-adf0-36fc9db814ff	68d1199e3827d900015181e5	delivery_fees	10
+17	238775f4-8d1d-4355-adf0-36fc9db814ff	68d1199e3827d900015181e6	calculated_profit	27000
+18	238775f4-8d1d-4355-adf0-36fc9db814ff	68d1199e3827d900015181e7	calculated_profit_rate	27
+19	238775f4-8d1d-4355-adf0-36fc9db814ff	68d1199e3827d900015181e8	calculated_profit_15_percent	4050
+20	238775f4-8d1d-4355-adf0-36fc9db814ff	68d1199e3827d900015181e9	calculated_profit_30_percent	8100
+21	238775f4-8d1d-4355-adf0-36fc9db814ff	68d1199e3827d900015181ea	calculated_profit_plus_15	31050
+22	238775f4-8d1d-4355-adf0-36fc9db814ff	68d1199e3827d900015181eb	calculated_profit_plus_30	35100
+23	238775f4-8d1d-4355-adf0-36fc9db814ff	68d1199e3827d900015181ec	disputes_minus_70	3500
+1	a9fb9052-9917-4bb4-bde9-53c6d5e7225a	68d11a633827d900015181ed	firstname	Abdullah AlHawsawi
+2	a9fb9052-9917-4bb4-bde9-53c6d5e7225a	68d11a633827d900015181ee	email	abdullah@ballurh.io
+3	a9fb9052-9917-4bb4-bde9-53c6d5e7225a	68d11a633827d900015181ef	mobilephone	0534378032
+4	a9fb9052-9917-4bb4-bde9-53c6d5e7225a	68d11a633827d900015181f0	brand_name	Ballurh
+5	a9fb9052-9917-4bb4-bde9-53c6d5e7225a	68d11a633827d900015181f1	business_type	Hybrid Model
+6	a9fb9052-9917-4bb4-bde9-53c6d5e7225a	68d11a633827d900015181f2	number_of_locations	1
+7	a9fb9052-9917-4bb4-bde9-53c6d5e7225a	68d11a633827d900015181f3	has_cloud_brands	Yes
+8	a9fb9052-9917-4bb4-bde9-53c6d5e7225a	68d11a633827d900015181f4	number_of_cloud_brands	1
+9	a9fb9052-9917-4bb4-bde9-53c6d5e7225a	68d11a633827d900015181f5	annual_sales_revenue	1000
+10	a9fb9052-9917-4bb4-bde9-53c6d5e7225a	68d11a633827d900015181f6	monthly_orders	950
+11	a9fb9052-9917-4bb4-bde9-53c6d5e7225a	68d11a633827d900015181f7	delivery_app_commission_percentage	25
+12	a9fb9052-9917-4bb4-bde9-53c6d5e7225a	68d11a633827d900015181f8	food_cost	30
+13	a9fb9052-9917-4bb4-bde9-53c6d5e7225a	68d11a633827d900015181f9	monthly_advertising	6500
+14	a9fb9052-9917-4bb4-bde9-53c6d5e7225a	68d11a633827d900015181fa	monthly_disputes	50
+15	a9fb9052-9917-4bb4-bde9-53c6d5e7225a	68d11a633827d900015181fb	annual_disputes	600
+16	a9fb9052-9917-4bb4-bde9-53c6d5e7225a	68d11a633827d900015181fc	delivery_fees	10
+17	a9fb9052-9917-4bb4-bde9-53c6d5e7225a	68d11a633827d900015181fd	calculated_profit	-15630
+18	a9fb9052-9917-4bb4-bde9-53c6d5e7225a	68d11a633827d900015181fe	calculated_profit_rate	-1563
+19	a9fb9052-9917-4bb4-bde9-53c6d5e7225a	68d11a633827d900015181ff	calculated_profit_15_percent	-2344.5
+20	a9fb9052-9917-4bb4-bde9-53c6d5e7225a	68d11a633827d90001518200	calculated_profit_30_percent	-4689
+21	a9fb9052-9917-4bb4-bde9-53c6d5e7225a	68d11a633827d90001518201	calculated_profit_plus_15	-17974.5
+22	a9fb9052-9917-4bb4-bde9-53c6d5e7225a	68d11a633827d90001518202	calculated_profit_plus_30	-20319
+23	a9fb9052-9917-4bb4-bde9-53c6d5e7225a	68d11a633827d90001518203	disputes_minus_70	35
+1	4fb79dfd-cc4f-4887-b894-90795b50c3cc	68d63900ff23c000014c0533	firstname	محمد
+2	4fb79dfd-cc4f-4887-b894-90795b50c3cc	68d63900ff23c000014c0534	email	Mohammed@DotBakery.sa
+3	4fb79dfd-cc4f-4887-b894-90795b50c3cc	68d63900ff23c000014c0535	mobilephone	0559588856
+4	4fb79dfd-cc4f-4887-b894-90795b50c3cc	68d63900ff23c000014c0536	brand_name	
+5	4fb79dfd-cc4f-4887-b894-90795b50c3cc	68d63900ff23c000014c0537	business_type	Restaurant / Café
+6	4fb79dfd-cc4f-4887-b894-90795b50c3cc	68d63900ff23c000014c0538	number_of_locations	3
+7	4fb79dfd-cc4f-4887-b894-90795b50c3cc	68d63900ff23c000014c0539	has_cloud_brands	Yes
+8	4fb79dfd-cc4f-4887-b894-90795b50c3cc	68d63900ff23c000014c053a	number_of_cloud_brands	1
+9	4fb79dfd-cc4f-4887-b894-90795b50c3cc	68d63900ff23c000014c053b	annual_sales_revenue	1000000
+10	4fb79dfd-cc4f-4887-b894-90795b50c3cc	68d63900ff23c000014c053c	monthly_orders	25000
+11	4fb79dfd-cc4f-4887-b894-90795b50c3cc	68d63900ff23c000014c053d	delivery_app_commission_percentage	20
+12	4fb79dfd-cc4f-4887-b894-90795b50c3cc	68d63900ff23c000014c053e	food_cost	30
+13	4fb79dfd-cc4f-4887-b894-90795b50c3cc	68d63900ff23c000014c053f	monthly_advertising	15000
+14	4fb79dfd-cc4f-4887-b894-90795b50c3cc	68d63900ff23c000014c0540	monthly_disputes	50000
+15	4fb79dfd-cc4f-4887-b894-90795b50c3cc	68d63900ff23c000014c0541	annual_disputes	600000
+16	4fb79dfd-cc4f-4887-b894-90795b50c3cc	68d63900ff23c000014c0542	delivery_fees	10
+17	4fb79dfd-cc4f-4887-b894-90795b50c3cc	68d63900ff23c000014c0543	calculated_profit	160000
+18	4fb79dfd-cc4f-4887-b894-90795b50c3cc	68d63900ff23c000014c0544	calculated_profit_rate	16
+19	4fb79dfd-cc4f-4887-b894-90795b50c3cc	68d63900ff23c000014c0545	calculated_profit_15_percent	24000
+20	4fb79dfd-cc4f-4887-b894-90795b50c3cc	68d63900ff23c000014c0546	calculated_profit_30_percent	48000
+21	4fb79dfd-cc4f-4887-b894-90795b50c3cc	68d63900ff23c000014c0547	calculated_profit_plus_15	184000
+22	4fb79dfd-cc4f-4887-b894-90795b50c3cc	68d63900ff23c000014c0548	calculated_profit_plus_30	208000
+23	4fb79dfd-cc4f-4887-b894-90795b50c3cc	68d63900ff23c000014c0549	disputes_minus_70	35000
+1	07a2240a-7e57-4606-a38d-8038bdd33eef	68d95915ff23c000014c054a	firstname	عبدالوهاب Test
+2	07a2240a-7e57-4606-a38d-8038bdd33eef	68d95915ff23c000014c054b	email	whbzaidi@gmail.com
+3	07a2240a-7e57-4606-a38d-8038bdd33eef	68d95915ff23c000014c054c	mobilephone	0558815952
+4	07a2240a-7e57-4606-a38d-8038bdd33eef	68d95915ff23c000014c054d	brand_name	
+5	07a2240a-7e57-4606-a38d-8038bdd33eef	68d95915ff23c000014c054e	business_type	Restaurant / Café
+6	07a2240a-7e57-4606-a38d-8038bdd33eef	68d95915ff23c000014c054f	number_of_locations	2
+7	07a2240a-7e57-4606-a38d-8038bdd33eef	68d95915ff23c000014c0550	has_cloud_brands	Yes
+8	07a2240a-7e57-4606-a38d-8038bdd33eef	68d95915ff23c000014c0551	number_of_cloud_brands	1
+9	07a2240a-7e57-4606-a38d-8038bdd33eef	68d95915ff23c000014c0552	annual_sales_revenue	80000
+10	07a2240a-7e57-4606-a38d-8038bdd33eef	68d95915ff23c000014c0553	monthly_orders	500
+11	07a2240a-7e57-4606-a38d-8038bdd33eef	68d95915ff23c000014c0554	delivery_app_commission_percentage	25
+12	07a2240a-7e57-4606-a38d-8038bdd33eef	68d95915ff23c000014c0555	food_cost	30
+13	07a2240a-7e57-4606-a38d-8038bdd33eef	68d95915ff23c000014c0556	monthly_advertising	1000
+14	07a2240a-7e57-4606-a38d-8038bdd33eef	68d95915ff23c000014c0557	monthly_disputes	4000
+15	07a2240a-7e57-4606-a38d-8038bdd33eef	68d95915ff23c000014c0558	annual_disputes	48000
+16	07a2240a-7e57-4606-a38d-8038bdd33eef	68d95915ff23c000014c0559	delivery_fees	9
+17	07a2240a-7e57-4606-a38d-8038bdd33eef	68d95915ff23c000014c055a	calculated_profit	24800
+18	07a2240a-7e57-4606-a38d-8038bdd33eef	68d95915ff23c000014c055b	calculated_profit_rate	31
+19	07a2240a-7e57-4606-a38d-8038bdd33eef	68d95915ff23c000014c055c	calculated_profit_15_percent	3720
+20	07a2240a-7e57-4606-a38d-8038bdd33eef	68d95915ff23c000014c055d	calculated_profit_30_percent	7440
+21	07a2240a-7e57-4606-a38d-8038bdd33eef	68d95915ff23c000014c055e	calculated_profit_plus_15	28520
+22	07a2240a-7e57-4606-a38d-8038bdd33eef	68d95915ff23c000014c055f	calculated_profit_plus_30	32240
+23	07a2240a-7e57-4606-a38d-8038bdd33eef	68d95915ff23c000014c0560	disputes_minus_70	2800
+1	991ad9ab-99d0-4728-b0ad-7d023d85903b	68d973cc1343ea00016adaa0	firstname	Omar Oubari
+2	991ad9ab-99d0-4728-b0ad-7d023d85903b	68d973cc1343ea00016adaa1	email	omar@byvalence.com
+3	991ad9ab-99d0-4728-b0ad-7d023d85903b	68d973cc1343ea00016adaa2	mobilephone	+966123456789
+4	991ad9ab-99d0-4728-b0ad-7d023d85903b	68d973cc1343ea00016adaa3	brand_name	عنوان القهوة
+5	991ad9ab-99d0-4728-b0ad-7d023d85903b	68d973cc1343ea00016adaa4	business_type	Hybrid Model
+6	991ad9ab-99d0-4728-b0ad-7d023d85903b	68d973cc1343ea00016adaa5	number_of_locations	1
+7	991ad9ab-99d0-4728-b0ad-7d023d85903b	68d973cc1343ea00016adaa6	has_cloud_brands	Yes
+8	991ad9ab-99d0-4728-b0ad-7d023d85903b	68d973cc1343ea00016adaa7	number_of_cloud_brands	1
+9	991ad9ab-99d0-4728-b0ad-7d023d85903b	68d973cc1343ea00016adaa8	annual_sales_revenue	100000
+10	991ad9ab-99d0-4728-b0ad-7d023d85903b	68d973cc1343ea00016adaa9	monthly_orders	850
+11	991ad9ab-99d0-4728-b0ad-7d023d85903b	68d973cc1343ea00016adaaa	delivery_app_commission_percentage	25
+12	991ad9ab-99d0-4728-b0ad-7d023d85903b	68d973cc1343ea00016adaab	food_cost	30
+13	991ad9ab-99d0-4728-b0ad-7d023d85903b	68d973cc1343ea00016adaac	monthly_advertising	2000
+14	991ad9ab-99d0-4728-b0ad-7d023d85903b	68d973cc1343ea00016adaad	monthly_disputes	5000
+15	991ad9ab-99d0-4728-b0ad-7d023d85903b	68d973cc1343ea00016adaae	annual_disputes	60000
+16	991ad9ab-99d0-4728-b0ad-7d023d85903b	68d973cc1343ea00016adaaf	delivery_fees	10
+17	991ad9ab-99d0-4728-b0ad-7d023d85903b	68d973cc1343ea00016adab0	calculated_profit	27000
+18	991ad9ab-99d0-4728-b0ad-7d023d85903b	68d973cc1343ea00016adab1	calculated_profit_rate	27
+19	991ad9ab-99d0-4728-b0ad-7d023d85903b	68d973cc1343ea00016adab2	calculated_profit_15_percent	4050
+20	991ad9ab-99d0-4728-b0ad-7d023d85903b	68d973cc1343ea00016adab3	calculated_profit_30_percent	8100
+21	991ad9ab-99d0-4728-b0ad-7d023d85903b	68d973cc1343ea00016adab4	calculated_profit_plus_15	31050
+22	991ad9ab-99d0-4728-b0ad-7d023d85903b	68d973cc1343ea00016adab5	calculated_profit_plus_30	35100
+23	991ad9ab-99d0-4728-b0ad-7d023d85903b	68d973cc1343ea00016adab6	disputes_minus_70	3500
+1	66ea971b-a70f-4f04-af73-351a27cf163f	68d9752c1343ea00016adab7	firstname	Hanan Al Radwan
+2	66ea971b-a70f-4f04-af73-351a27cf163f	68d9752c1343ea00016adab8	email	hananalradwan77@gmail.com
+3	66ea971b-a70f-4f04-af73-351a27cf163f	68d9752c1343ea00016adab9	mobilephone	+964937713352
+4	66ea971b-a70f-4f04-af73-351a27cf163f	68d9752c1343ea00016adaba	brand_name	han
+5	66ea971b-a70f-4f04-af73-351a27cf163f	68d9752c1343ea00016adabb	business_type	Hybrid Model
+6	66ea971b-a70f-4f04-af73-351a27cf163f	68d9752c1343ea00016adabc	number_of_locations	1
+7	66ea971b-a70f-4f04-af73-351a27cf163f	68d9752c1343ea00016adabd	has_cloud_brands	Yes
+8	66ea971b-a70f-4f04-af73-351a27cf163f	68d9752c1343ea00016adabe	number_of_cloud_brands	1
+9	66ea971b-a70f-4f04-af73-351a27cf163f	68d9752c1343ea00016adabf	annual_sales_revenue	1000
+10	66ea971b-a70f-4f04-af73-351a27cf163f	68d9752c1343ea00016adac0	monthly_orders	890
+11	66ea971b-a70f-4f04-af73-351a27cf163f	68d9752c1343ea00016adac1	delivery_app_commission_percentage	25
+12	66ea971b-a70f-4f04-af73-351a27cf163f	68d9752c1343ea00016adac2	food_cost	30
+13	66ea971b-a70f-4f04-af73-351a27cf163f	68d9752c1343ea00016adac3	monthly_advertising	100
+14	66ea971b-a70f-4f04-af73-351a27cf163f	68d9752c1343ea00016adac4	monthly_disputes	50
+15	66ea971b-a70f-4f04-af73-351a27cf163f	68d9752c1343ea00016adac5	annual_disputes	600
+16	66ea971b-a70f-4f04-af73-351a27cf163f	68d9752c1343ea00016adac6	delivery_fees	10
+17	66ea971b-a70f-4f04-af73-351a27cf163f	68d9752c1343ea00016adac7	calculated_profit	-8620
+18	66ea971b-a70f-4f04-af73-351a27cf163f	68d9752c1343ea00016adac8	calculated_profit_rate	-861.9999999999999
+19	66ea971b-a70f-4f04-af73-351a27cf163f	68d9752c1343ea00016adac9	calculated_profit_15_percent	-1293
+20	66ea971b-a70f-4f04-af73-351a27cf163f	68d9752c1343ea00016adaca	calculated_profit_30_percent	-2586
+21	66ea971b-a70f-4f04-af73-351a27cf163f	68d9752c1343ea00016adacb	calculated_profit_plus_15	-9913
+22	66ea971b-a70f-4f04-af73-351a27cf163f	68d9752c1343ea00016adacc	calculated_profit_plus_30	-11206
+23	66ea971b-a70f-4f04-af73-351a27cf163f	68d9752c1343ea00016adacd	disputes_minus_70	35
+1	d8d71a0a-b87e-4a5f-89aa-d5408f636921	68d978732eeed400011abefc	firstname	Omar Oubari
+2	d8d71a0a-b87e-4a5f-89aa-d5408f636921	68d978732eeed400011abefd	email	omar@byvalence.com
+3	d8d71a0a-b87e-4a5f-89aa-d5408f636921	68d978732eeed400011abefe	mobilephone	+966123456789
+4	d8d71a0a-b87e-4a5f-89aa-d5408f636921	68d978732eeed400011abeff	brand_name	عنوان القهوة
+5	d8d71a0a-b87e-4a5f-89aa-d5408f636921	68d978732eeed400011abf00	business_type	Hybrid Model
+6	d8d71a0a-b87e-4a5f-89aa-d5408f636921	68d978732eeed400011abf01	number_of_locations	1
+7	d8d71a0a-b87e-4a5f-89aa-d5408f636921	68d978732eeed400011abf02	has_cloud_brands	Yes
+8	d8d71a0a-b87e-4a5f-89aa-d5408f636921	68d978732eeed400011abf03	number_of_cloud_brands	1
+9	d8d71a0a-b87e-4a5f-89aa-d5408f636921	68d978732eeed400011abf04	annual_sales_revenue	100000
+10	d8d71a0a-b87e-4a5f-89aa-d5408f636921	68d978732eeed400011abf05	monthly_orders	850
+11	d8d71a0a-b87e-4a5f-89aa-d5408f636921	68d978732eeed400011abf06	delivery_app_commission_percentage	25
+12	d8d71a0a-b87e-4a5f-89aa-d5408f636921	68d978732eeed400011abf07	food_cost	30
+13	d8d71a0a-b87e-4a5f-89aa-d5408f636921	68d978732eeed400011abf08	monthly_advertising	1000
+14	d8d71a0a-b87e-4a5f-89aa-d5408f636921	68d978732eeed400011abf09	monthly_disputes	5000
+15	d8d71a0a-b87e-4a5f-89aa-d5408f636921	68d978732eeed400011abf0a	annual_disputes	60000
+16	d8d71a0a-b87e-4a5f-89aa-d5408f636921	68d978732eeed400011abf0b	delivery_fees	10
+17	d8d71a0a-b87e-4a5f-89aa-d5408f636921	68d978732eeed400011abf0c	calculated_profit	28000
+18	d8d71a0a-b87e-4a5f-89aa-d5408f636921	68d978732eeed400011abf0d	calculated_profit_rate	28.000000000000004
+19	d8d71a0a-b87e-4a5f-89aa-d5408f636921	68d978732eeed400011abf0e	calculated_profit_15_percent	4200
+20	d8d71a0a-b87e-4a5f-89aa-d5408f636921	68d978732eeed400011abf0f	calculated_profit_30_percent	8400
+21	d8d71a0a-b87e-4a5f-89aa-d5408f636921	68d978732eeed400011abf10	calculated_profit_plus_15	32200
+22	d8d71a0a-b87e-4a5f-89aa-d5408f636921	68d978732eeed400011abf11	calculated_profit_plus_30	36400
+23	d8d71a0a-b87e-4a5f-89aa-d5408f636921	68d978732eeed400011abf12	disputes_minus_70	3500
+1	fdef5422-4bea-4d32-aa49-863915b5e7fc	68dce77a58811d00010bf004	firstname	ناصر السعيد
+2	fdef5422-4bea-4d32-aa49-863915b5e7fc	68dce77a58811d00010bf005	email	naser14171417@gmail.com
+3	fdef5422-4bea-4d32-aa49-863915b5e7fc	68dce77a58811d00010bf006	mobilephone	0598170522
+4	fdef5422-4bea-4d32-aa49-863915b5e7fc	68dce77a58811d00010bf007	brand_name	ليفت لتقديم الطعام
+5	fdef5422-4bea-4d32-aa49-863915b5e7fc	68dce77a58811d00010bf008	business_type	Hybrid Model
+6	fdef5422-4bea-4d32-aa49-863915b5e7fc	68dce77a58811d00010bf009	number_of_locations	1
+7	fdef5422-4bea-4d32-aa49-863915b5e7fc	68dce77a58811d00010bf00a	has_cloud_brands	No
+8	fdef5422-4bea-4d32-aa49-863915b5e7fc	68dce77a58811d00010bf00b	number_of_cloud_brands	-1
+9	fdef5422-4bea-4d32-aa49-863915b5e7fc	68dce77a58811d00010bf00c	annual_sales_revenue	200000
+10	fdef5422-4bea-4d32-aa49-863915b5e7fc	68dce77a58811d00010bf00d	monthly_orders	1950
+11	fdef5422-4bea-4d32-aa49-863915b5e7fc	68dce77a58811d00010bf00e	delivery_app_commission_percentage	28.000000000000004
+12	fdef5422-4bea-4d32-aa49-863915b5e7fc	68dce77a58811d00010bf00f	food_cost	28.999999999999996
+13	fdef5422-4bea-4d32-aa49-863915b5e7fc	68dce77a58811d00010bf010	monthly_advertising	5000
+14	fdef5422-4bea-4d32-aa49-863915b5e7fc	68dce77a58811d00010bf011	monthly_disputes	10000
+15	fdef5422-4bea-4d32-aa49-863915b5e7fc	68dce77a58811d00010bf012	annual_disputes	120000
+16	fdef5422-4bea-4d32-aa49-863915b5e7fc	68dce77a58811d00010bf013	delivery_fees	10
+17	fdef5422-4bea-4d32-aa49-863915b5e7fc	68dce77a58811d00010bf014	calculated_profit	46000
+18	fdef5422-4bea-4d32-aa49-863915b5e7fc	68dce77a58811d00010bf015	calculated_profit_rate	23
+19	fdef5422-4bea-4d32-aa49-863915b5e7fc	68dce77a58811d00010bf016	calculated_profit_15_percent	6900
+20	fdef5422-4bea-4d32-aa49-863915b5e7fc	68dce77a58811d00010bf017	calculated_profit_30_percent	13800
+21	fdef5422-4bea-4d32-aa49-863915b5e7fc	68dce77a58811d00010bf018	calculated_profit_plus_15	52900
+22	fdef5422-4bea-4d32-aa49-863915b5e7fc	68dce77a58811d00010bf019	calculated_profit_plus_30	59800
+23	fdef5422-4bea-4d32-aa49-863915b5e7fc	68dce77a58811d00010bf01a	disputes_minus_70	7000
+24	fdef5422-4bea-4d32-aa49-863915b5e7fc	68dce77a58811d00010bf01b	profit_calculator_message	\n  صافي الربح\n  SAR 59,800 - SAR 52,900\n  نسبة الربح\n  29.9% - 26.45%\n  تعويضات مستردة\n  SAR 7000\n  
 \.
 
 
@@ -17605,7 +17809,6 @@ COPY "public"."form_submissions_submission_data" ("_order", "_parent_id", "id", 
 
 COPY "public"."forms" ("id", "title", "confirmation_type", "redirect_url", "updated_at", "created_at") FROM stdin;
 5fbec645-effa-40d1-8ef0-436c01504e32	Profit calculator	message	\N	2025-08-17 06:23:49.215+00	2025-08-17 06:23:49.19+00
-08229b0a-bc40-4ed9-a1e7-0cc51c63ef0e	test	message	\N	2025-09-01 11:47:04.677+00	2025-09-01 11:47:04.675+00
 \.
 
 
@@ -17757,7 +17960,6 @@ COPY "public"."forms_blocks_text" ("_order", "_parent_id", "_path", "id", "name"
 13	5fbec645-effa-40d1-8ef0-436c01504e32	fields	68a1753177c2cb311bb16e12	food_cost_percentage	\N	\N	food_cost_percentage
 14	5fbec645-effa-40d1-8ef0-436c01504e32	fields	68a1753d77c2cb311bb16e14	monthly_ad_budget	\N	\N	monthly_ad_budget
 15	5fbec645-effa-40d1-8ef0-436c01504e32	fields	68a1754777c2cb311bb16e15	delivery_fee_borne	\N	\N	delivery_fee_borne
-1	08229b0a-bc40-4ed9-a1e7-0cc51c63ef0e	fields	68b587c6834178316c1a477a	name	\N	\N	\N
 \.
 
 
@@ -17807,7 +18009,6 @@ COPY "public"."forms_emails_locales" ("subject", "message", "id", "_locale", "_p
 
 COPY "public"."forms_locales" ("submit_button_label", "confirmation_message", "id", "_locale", "_parent_id") FROM stdin;
 \N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "---", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": null, "textStyle": "", "textFormat": 0}], "direction": null}}	1	en	5fbec645-effa-40d1-8ef0-436c01504e32
-\N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "/", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": null, "textStyle": "", "textFormat": 0}], "direction": null}}	2	en	08229b0a-bc40-4ed9-a1e7-0cc51c63ef0e
 \.
 
 
@@ -18172,6 +18373,38 @@ COPY "public"."metricsBlock_table_rows_children_cells" ("_order", "_parent_id", 
 
 
 --
+-- Data for Name: news; Type: TABLE DATA; Schema: public; Owner: -
+--
+
+COPY "public"."news" ("id", "updated_at", "created_at", "_status") FROM stdin;
+\.
+
+
+--
+-- Data for Name: news_locales; Type: TABLE DATA; Schema: public; Owner: -
+--
+
+COPY "public"."news_locales" ("title", "hero_image_id", "content", "meta_title", "meta_image_id", "meta_description", "published_at", "slug", "slug_lock", "id", "_locale", "_parent_id") FROM stdin;
+\.
+
+
+--
+-- Data for Name: news_populated_authors; Type: TABLE DATA; Schema: public; Owner: -
+--
+
+COPY "public"."news_populated_authors" ("_order", "_parent_id", "id", "name") FROM stdin;
+\.
+
+
+--
+-- Data for Name: news_rels; Type: TABLE DATA; Schema: public; Owner: -
+--
+
+COPY "public"."news_rels" ("id", "order", "parent_id", "path", "locale", "news_id", "categories_id", "users_id") FROM stdin;
+\.
+
+
+--
 -- Data for Name: pages; Type: TABLE DATA; Schema: public; Owner: -
 --
 
@@ -18180,6 +18413,7 @@ e2c88328-cc74-46c9-aabd-7e7c2f92d013	blog	mediumImpact	\N	blue	\N	flex-row	\N	20
 742d2308-808d-4f0e-91f2-03d18be57d5c	about	mediumImpact	label	gray	\N	flex-row	\N	2025-07-27 21:55:39.98+00	about	t	2025-08-25 23:09:33.219+00	2025-07-27 21:36:21.924+00	published	bullet
 a14442b0-9282-4efc-9df0-51d6374608d8	home	highImpact	\N	blue	\N	flex-row	\N	2025-07-27 20:53:08.677+00	home	t	2025-08-31 15:36:33.755+00	2025-07-27 20:48:06.623+00	published	icons
 2d66d5ed-4f40-4d8b-8e4f-b5a60d261b20	\N	mediumImpact	\N	blue	\N	flex-row	\N	\N	\N	t	2025-09-01 11:47:09.131+00	2025-09-01 11:47:09.123+00	draft	bullet
+fc20b1cb-072c-43c5-b73b-75dcd6e01dcd	\N	mediumImpact	\N	blue	\N	flex-row	\N	\N	\N	t	2025-10-01 09:22:40.752+00	2025-10-01 09:22:40.738+00	draft	bullet
 \.
 
 
@@ -18239,6 +18473,7 @@ COPY "public"."pages_locales" ("hero_badge_label", "hero_rich_text", "hero_media
 \N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h1", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "عزز نموك على تطبيقات التوصيل", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "بلّورة تبسّط إدارة التسويق وتحسّن أداء المطاعم على تطبيقات التوصيل من خلال منصة واحدة لإدارة الحملات، تحسين الإنفاق الإعلاني، وزيادة الربحية.. بدون تعقيد", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}], "direction": "rtl"}}	5afde42d-6a3f-4d34-a6ba-6eca5caea614	\N	\N	برنامج نمو المطاعم على تطبيقات التوصيل	a402cbba-b2b5-4b39-98d4-72d2fd9fba1d	هل أرباحك تتآكل بسبب خصومات تطبيقات التوصيل؟ مع بلّورة، فعّل حملاتك، راقب أداءك، واسترجع التكاليف المفقودة من مكان واحد.	187	ar	a14442b0-9282-4efc-9df0-51d6374608d8	\N	\N	f
 About Ballurh	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h1", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "The new operating system to increase restaurant profitability on delivery apps", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "The delivery app market has changed the way restaurants operate. Orders are now digital, competition is daily, and profitability is linked to complex marketing and operational decisions. Every riyal spent on a discount, advertisement, or commission needs to work efficiently.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "Ballurh is a Saudi platform that helps restaurants improve their profitability from delivery apps. We connect advertising, invoices, and orders in a single dashboard, and provide practical tools and actionable analytics, built on real data, that address the daily reality of the operator.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "Restaurant owners use Ballurh to recover wasted costs, optimize marketing, and make clearer operational decisions.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "Investors see an opportunity to build a new operational infrastructure for the digital food sector, and talents are joining a team that works on a product with a clear impact in a market full of opportunities, and with a realistic approach.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}], "direction": "rtl"}}	\N	\N	\N	Ballurh - a business intelligence platform for the retail, restaurant, and cafe sectors.	\N	Increase your sales, predict demand behaviors, and improve performance indicators by making data-driven growth decisions using the power of business intelligence technologies.	176	en	742d2308-808d-4f0e-91f2-03d18be57d5c	\N	\N	f
 \N	\N	\N	\N	\N	\N	\N	\N	188	en	2d66d5ed-4f40-4d8b-8e4f-b5a60d261b20	\N	\N	f
+\N	\N	\N	\N	\N	\N	\N	\N	189	ar	fc20b1cb-072c-43c5-b73b-75dcd6e01dcd	\N	\N	f
 \N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h1", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "Under the Lens", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "Discover the latest market trends, tips, and strategies for restaurant management and growth.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}], "direction": "rtl"}}	\N	\N	\N	\N	\N	\N	140	en	e2c88328-cc74-46c9-aabd-7e7c2f92d013	\N	\N	f
 \N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h1", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "تحت المجهر", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "اكتشف أحدث اتجاهات السوق، والنصائح، والاستراتيجيات لإدارة المطاعم ونموها.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}], "direction": "rtl"}}	\N	\N	\N	\N	\N	\N	141	ar	e2c88328-cc74-46c9-aabd-7e7c2f92d013	\N	\N	f
 عن بلّورة	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h1", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "نظام التشغيل الجديد لتحسين ربحية المطاعم على تطبيقات التوصيل", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "سوق تطبيقات التوصيل غيّر طريقة عمل المطاعم. الطلبات صارت رقمية، المنافسة صارت يومية، والربحية صارت مرتبطة بقرارات تسويقية وتشغيلية معقّدة، كل ريال ينصرف على خصم أو إعلان أو عمولة يحتاج يشتغل بكفاءة.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "بلّورة منصة سعودية تساعد المطاعم على تحسين ربحيتها من تطبيقات التوصيل.. نربط بين الإعلانات، الفواتير، والطلبات في لوحة تحكم واحدة، ونوفّر أدوات عملية وتحليلات قابلة للتنفيذ، مبنية على بيانات فعلية، وتخاطب الواقع اليومي للمشغّل.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "أصحاب المطاعم يستخدمون بلّورة لاسترجاع التكاليف المهدرة، ضبط التسويق، واتخاذ قرارات تشغيلية أوضح.. ", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "المستثمرون يشوفون فرصة في بناء بنية تشغيلية جديدة لقطاع الأغذية الرقمي.. والمواهب تنضم لفريق يشتغل على منتج له أثر واضح في سوق مليان فرص، وبمنهجية واقعية", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}], "direction": "rtl"}}	\N	\N	\N	بلّورة – منصة ذكاء أعمال لقطاع التجزئة والمطاعم والمقاهي	\N	‏زد مبيعاتك، تنبأ بسلوكيات الطلب وقم بتحسين مؤشرات الأداء من خلال إتخاذ قرارات نمو تعتمد على البيانات باستخدام قوة تقنيات ذكاء الأعمال.	177	ar	742d2308-808d-4f0e-91f2-03d18be57d5c	\N	\N	f
@@ -18356,7 +18591,7 @@ dc6dc024-c792-480d-95fa-ebaf62bdb20c	\N	2025-08-01 21:32:36.844+00	2025-08-01 21
 b9f18e76-e175-40b3-a36a-522f8c181b0f	\N	2025-07-27 21:50:28.987+00	2025-07-27 21:50:29.035+00
 704f41bc-7058-4c4a-bb0a-5ae50b20d879	\N	2025-07-27 22:47:54.224+00	2025-07-27 22:47:54.273+00
 43352ddc-82ea-4358-8ac5-94ea9807a892	\N	2025-08-01 21:35:08.656+00	2025-08-01 21:35:08.704+00
-123646af-bedd-4f1f-b7a5-555b17cfdf5d	\N	2025-09-01 11:47:46.404+00	2025-09-01 11:47:46.405+00
+5f1195f0-ee7c-4bf0-8630-d4c663f04892	\N	2025-10-01 09:27:20.056+00	2025-10-01 09:27:20.054+00
 \.
 
 
@@ -18364,9 +18599,9 @@ b9f18e76-e175-40b3-a36a-522f8c181b0f	\N	2025-07-27 21:50:28.987+00	2025-07-27 21
 -- Data for Name: payload_locked_documents_rels; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-COPY "public"."payload_locked_documents_rels" ("id", "order", "parent_id", "path", "pages_id", "blog_posts_id", "media_id", "customers_id", "categories_id", "faq_id", "users_id", "redirects_id", "forms_id", "form_submissions_id", "search_id", "payload_folders_id", "payload_jobs_id") FROM stdin;
-1169	\N	123646af-bedd-4f1f-b7a5-555b17cfdf5d	document	2d66d5ed-4f40-4d8b-8e4f-b5a60d261b20	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
-1170	\N	123646af-bedd-4f1f-b7a5-555b17cfdf5d	user	\N	\N	\N	\N	\N	\N	9bedf5d0-2a99-427f-b0e1-967bbc2487cb	\N	\N	\N	\N	\N	\N
+COPY "public"."payload_locked_documents_rels" ("id", "order", "parent_id", "path", "pages_id", "blog_posts_id", "media_id", "customers_id", "categories_id", "faq_id", "users_id", "redirects_id", "forms_id", "form_submissions_id", "search_id", "payload_folders_id", "payload_jobs_id", "news_id") FROM stdin;
+1185	\N	5f1195f0-ee7c-4bf0-8630-d4c663f04892	document	fc20b1cb-072c-43c5-b73b-75dcd6e01dcd	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+1186	\N	5f1195f0-ee7c-4bf0-8630-d4c663f04892	user	\N	\N	\N	\N	\N	\N	a970b2d8-1ba1-4dfc-bb01-2bb7f15c9c0a	\N	\N	\N	\N	\N	\N	\N
 \.
 
 
@@ -18396,6 +18631,7 @@ a99b8a97-84f0-407a-b806-b09a5f1444ce	20250816_005000	10	2025-08-17 02:41:19.647+
 be5eca61-e011-4b7a-93a9-ec13df324019	20250818_061039	11	2025-08-18 07:57:01.627+00	2025-08-18 07:57:01.607+00
 2c330f3f-2d1a-4913-91d5-67974ba01ad4	20250818_070716	11	2025-08-18 07:57:01.687+00	2025-08-18 07:57:01.676+00
 c8f9c81b-c2ec-409f-bfbb-869e80770d76	20250818_072714	11	2025-08-18 07:57:01.721+00	2025-08-18 07:57:01.714+00
+a5e714f1-4b65-4f0d-a781-49891fe0a8e3	20251001_210420	12	2025-10-01 22:43:01.436+00	2025-10-01 22:43:01.434+00
 \.
 
 
@@ -18424,11 +18660,11 @@ f460cc40-80c9-4258-846c-0cd699c988f0	collection-categories	{}	2025-08-23 01:58:2
 17ef76db-1471-4a90-ab9b-384d96eb5f49	collection-forms	{}	2025-08-23 01:58:32.996+00	2025-08-23 01:58:32.998+00
 b17dde60-1a86-4c7f-9674-af8df368f33f	collection-search	{}	2025-08-23 01:58:39.066+00	2025-08-23 01:58:39.068+00
 dce60398-9c4c-4e25-ab4f-1b47ae6ba3ec	collection-forms-5fbec645-effa-40d1-8ef0-436c01504e32	{"fields": {"fields": {"collapsed": ["68a1741777c2cb311bb16dfb", "68a1745477c2cb311bb16dfd", "68a1745c77c2cb311bb16dfe", "68a1747377c2cb311bb16dff", "68a174c277c2cb311bb16e00", "68a174ee77c2cb311bb16e04", "68a1750677c2cb311bb16e09", "68a1750d77c2cb311bb16e0a", "68a1757077c2cb311bb16e16", "68a1758377c2cb311bb16e18", "68a1751877c2cb311bb16e0c", "68a1752577c2cb311bb16e0f", "68a1753177c2cb311bb16e12", "68a1753d77c2cb311bb16e14", "68a1754777c2cb311bb16e15"]}}}	2025-08-17 06:23:52.778+00	2025-08-17 06:23:52.158+00
+d98fe44d-1b10-4beb-99b4-8c696e7a41d6	collection-pages-fc20b1cb-072c-43c5-b73b-75dcd6e01dcd	{"fields": {"layout": {"collapsed": ["68dcf3a7c7ca9324f9b2dcab"]}, "_index-1": {"tabIndex": 1}}}	2025-10-01 10:36:35.656+00	2025-10-01 10:34:37.543+00
 0e783cdb-d8e7-4083-a0f9-ce1a3e71f8fb	global-header	{"fields": {"cta": {"collapsed": ["688692cf73e9e43a4a6e3c00", "6886930673e9e43a4a6e3c01"]}, "tabs": {"collapsed": ["6886fef960d738a9e3c612cb"]}}}	2025-08-07 10:35:23.275+00	2025-07-27 20:58:17.258+00
 2118d83a-7d94-4229-8ae1-1340720fdc45	collection-users	{}	2025-08-07 10:36:12.217+00	2025-08-07 10:36:12.218+00
 9bad41f4-a50d-43d7-ba97-4a7c4654d247	collection-faq	{}	2025-08-06 03:35:47.019+00	2025-08-06 03:35:47.031+00
 e830f01f-a4c7-4c4a-b196-acc46bdd7bcb	collection-pages-e2c88328-cc74-46c9-aabd-7e7c2f92d013	{"fields": {"layout": {"collapsed": []}, "_index-1": {"tabIndex": 0}}}	2025-08-07 00:12:37.671+00	2025-07-28 04:38:08.902+00
-b5674a51-3af3-40da-aa41-3ad3f3239dfb	locale	"en"	2025-08-24 09:54:14.135+00	2025-08-06 23:12:47.247+00
 3892c9c8-3d98-4052-a54a-8b56b5d7d89d	collection-customers	{}	2025-08-15 22:31:14.902+00	2025-08-15 22:31:14.903+00
 482724d5-bbc1-4d74-9993-f5b0419e1d37	collection-media	{"limit": 10}	2025-08-23 01:58:16.041+00	2025-08-23 01:58:10.72+00
 38a0b955-4f72-4e3f-b6e6-a46a94378bf2	collection-faq	{}	2025-08-23 01:58:25.012+00	2025-08-23 01:58:25.014+00
@@ -18442,11 +18678,14 @@ bce021d5-a126-41da-ab4b-930029b5ffd5	collection-media	{"limit": 100}	2025-08-19 
 217416cf-df83-4eae-8035-54329713c642	collection-customers	{}	2025-08-06 23:20:54.7+00	2025-08-06 23:20:54.701+00
 7ddf0e3f-dbb4-4bd8-b12c-88246be6c1e9	collection-blog-posts	{}	2025-08-06 23:21:10.556+00	2025-08-06 23:21:10.557+00
 22fc7abb-d6c3-4967-996d-d56d821f893a	collection-pages-742d2308-808d-4f0e-91f2-03d18be57d5c	{"fields": {"layout": {"collapsed": ["6886ac02df64ca6dd9ecfe6a", "6886ad3cdf64ca6dd9ecfe74"]}, "_index-1": {"tabIndex": 1}, "hero._index-3": {"collapsed": false}, "hero._index-4": {"collapsed": false}, "hero._index-5": {"collapsed": false}}}	2025-08-23 01:59:08.367+00	2025-08-23 01:57:59.177+00
-11b7a9fb-d56d-4364-bc77-867c5a4a0403	collection-forms	{}	2025-08-07 10:34:07.589+00	2025-08-07 10:34:07.591+00
 974f1685-12c3-409f-b5a2-00e77551a633	collection-pages-a14442b0-9282-4efc-9df0-51d6374608d8	{"fields": {"layout": {"collapsed": ["68950278ed5ebd7e302149dd", "688694d473e9e43a4a6e3c05", "6886953573e9e43a4a6e3c09", "6886a0cc5a3935fab3feb21d", "688695d673e9e43a4a6e3c0a", "68869a4d5a3935fab3feb217", "68aaa8059ce857dc34b99afa", "6886a0695a3935fab3feb21b", "6886a1475a3935fab3feb21f", "689502c5ed5ebd7e302149e0", "688f13dcdb5b5b92cc7fdde8"]}, "_index-1": {"tabIndex": 0}, "hero.links": {"collapsed": ["688693af73e9e43a4a6e3c03"]}, "hero._index-3": {"collapsed": true}, "hero._index-4": {"collapsed": true}, "hero._index-6": {"collapsed": true}, "layout.7.list": {"collapsed": ["6886a19a5a3935fab3feb221", "6886a1c05a3935fab3feb222", "6886a2575a3935fab3feb225"]}, "layout.7.links": {"collapsed": []}, "layout.0.columns": {"collapsed": ["688694f973e9e43a4a6e3c07", "6886950873e9e43a4a6e3c08"]}, "layout.2.columns": {"collapsed": []}, "layout.5.columns": {"collapsed": []}, "layout.6.columns": {"collapsed": []}, "layout.0._index-3": {"collapsed": true}, "layout.5._index-4": {"collapsed": false}, "layout.6._index-1": {"collapsed": false}, "layout.6._index-3": {"collapsed": false}, "layout.6._index-4": {"collapsed": false}, "layout.7._index-1": {"collapsed": false}, "layout.7._index-4": {"collapsed": false}, "layout.8._index-4": {"collapsed": false}, "layout.11._index-3": {"collapsed": false}, "layout.11._index-4": {"collapsed": false}, "layout.5._index-1-3": {"collapsed": true}, "layout.2.columns.0._index-6": {"collapsed": true}, "layout.2.columns.0._index-8": {"collapsed": false}, "layout.2.columns.1._index-6": {"collapsed": true}, "layout.2.columns.1._index-8": {"collapsed": false}, "layout.2.columns.2._index-8": {"collapsed": false}, "layout.6.columns.0._index-9": {"collapsed": true}, "layout.2.blockHeader._index-1": {"collapsed": true}, "layout.3.blockHeader._index-1": {"collapsed": false}, "layout.4.blockHeader._index-3": {"collapsed": false}, "layout.5.blockHeader._index-1": {"collapsed": true}}}	2025-08-31 15:29:34.05+00	2025-07-27 21:00:42.514+00
+11b7a9fb-d56d-4364-bc77-867c5a4a0403	collection-forms	{"limit": 10}	2025-09-06 14:14:45.496+00	2025-08-07 10:34:07.591+00
+ae21cbc9-538b-40e0-acfc-515011f88994	collection-pages	{"editViewType": "default"}	2025-10-01 09:26:45.048+00	2025-10-01 09:22:35.432+00
+b5674a51-3af3-40da-aa41-3ad3f3239dfb	locale	"ar"	2025-10-01 10:34:28.67+00	2025-08-06 23:12:47.247+00
 20d3f1fd-60cb-422b-baed-f01fcc37dd93	collection-blog-posts	{}	2025-08-23 01:58:09.375+00	2025-08-23 01:58:09.378+00
 5a129868-2b55-4cad-bac5-8a3262b18630	collection-pages	{"limit": 10}	2025-08-15 22:25:51.707+00	2025-08-15 22:06:41.744+00
 e8f53515-0e68-4f82-b948-fe02bc0316f9	media-collection-folder	{}	2025-08-19 07:23:26.57+00	2025-08-19 07:23:26.571+00
+864c10ef-0fc2-44b5-83a3-b7a6d6749e51	collection-pages-fc20b1cb-072c-43c5-b73b-75dcd6e01dcd	{"fields": {"_index-1": {"tabIndex": 0}, "hero._index-1": {"collapsed": false}, "hero._index-3": {"collapsed": true}, "hero._index-4": {"collapsed": false}, "hero._index-5": {"collapsed": false}}}	2025-10-01 09:27:16.522+00	2025-10-01 09:22:54.987+00
 \.
 
 
@@ -18457,7 +18696,6 @@ e8f53515-0e68-4f82-b948-fe02bc0316f9	media-collection-folder	{}	2025-08-19 07:23
 COPY "public"."payload_preferences_rels" ("id", "order", "parent_id", "path", "users_id") FROM stdin;
 3	\N	e30eecd2-135f-419c-bf8d-2475e6d28e37	user	9bedf5d0-2a99-427f-b0e1-967bbc2487cb
 61	\N	d2f31f20-3c88-4314-b573-102ed2c12d6f	user	9bedf5d0-2a99-427f-b0e1-967bbc2487cb
-460	\N	b5674a51-3af3-40da-aa41-3ad3f3239dfb	user	9bedf5d0-2a99-427f-b0e1-967bbc2487cb
 6	\N	fef32b12-3d42-4fdd-933c-9bdee6b42f95	user	9bedf5d0-2a99-427f-b0e1-967bbc2487cb
 7	\N	0d5fde47-87f3-4c1c-90c5-bca704a2c00e	user	9bedf5d0-2a99-427f-b0e1-967bbc2487cb
 62	\N	9c1f8ab2-ecb8-4f9f-b278-3bc207f25826	user	9bedf5d0-2a99-427f-b0e1-967bbc2487cb
@@ -18488,16 +18726,20 @@ COPY "public"."payload_preferences_rels" ("id", "order", "parent_id", "path", "u
 479	\N	974f1685-12c3-409f-b5a2-00e77551a633	user	9bedf5d0-2a99-427f-b0e1-967bbc2487cb
 369	\N	e8f53515-0e68-4f82-b948-fe02bc0316f9	user	9bedf5d0-2a99-427f-b0e1-967bbc2487cb
 370	\N	bce021d5-a126-41da-ab4b-930029b5ffd5	user	9bedf5d0-2a99-427f-b0e1-967bbc2487cb
-266	\N	11b7a9fb-d56d-4364-bc77-867c5a4a0403	user	9bedf5d0-2a99-427f-b0e1-967bbc2487cb
 427	\N	22fc7abb-d6c3-4967-996d-d56d821f893a	user	103d28be-f604-464d-8ecb-2b1b3308b003
 270	\N	0e783cdb-d8e7-4083-a0f9-ce1a3e71f8fb	user	9bedf5d0-2a99-427f-b0e1-967bbc2487cb
 271	\N	2118d83a-7d94-4229-8ae1-1340720fdc45	user	9bedf5d0-2a99-427f-b0e1-967bbc2487cb
 376	\N	26217ef5-6a83-4b63-90c1-15861bde9853	user	103d28be-f604-464d-8ecb-2b1b3308b003
 485	\N	58225e69-7cba-4716-8654-615bdafcc32f	user	9bedf5d0-2a99-427f-b0e1-967bbc2487cb
+486	\N	11b7a9fb-d56d-4364-bc77-867c5a4a0403	user	9bedf5d0-2a99-427f-b0e1-967bbc2487cb
 215	\N	2eb84b45-df53-4e61-b6a3-90b5f5fccec3	user	9bedf5d0-2a99-427f-b0e1-967bbc2487cb
 216	\N	217416cf-df83-4eae-8035-54329713c642	user	9bedf5d0-2a99-427f-b0e1-967bbc2487cb
 217	\N	7ddf0e3f-dbb4-4bd8-b12c-88246be6c1e9	user	9bedf5d0-2a99-427f-b0e1-967bbc2487cb
 220	\N	e830f01f-a4c7-4c4a-b196-acc46bdd7bcb	user	9bedf5d0-2a99-427f-b0e1-967bbc2487cb
+494	\N	ae21cbc9-538b-40e0-acfc-515011f88994	user	a970b2d8-1ba1-4dfc-bb01-2bb7f15c9c0a
+496	\N	864c10ef-0fc2-44b5-83a3-b7a6d6749e51	user	a970b2d8-1ba1-4dfc-bb01-2bb7f15c9c0a
+497	\N	b5674a51-3af3-40da-aa41-3ad3f3239dfb	user	9bedf5d0-2a99-427f-b0e1-967bbc2487cb
+500	\N	d98fe44d-1b10-4beb-99b4-8c696e7a41d6	user	9bedf5d0-2a99-427f-b0e1-967bbc2487cb
 \.
 
 
@@ -18704,8 +18946,8 @@ COPY "public"."testimonialsBlock_locales" ("block_header_badge_label", "block_he
 --
 
 COPY "public"."users" ("id", "updated_at", "created_at", "email", "reset_password_token", "reset_password_expiration", "salt", "hash", "login_attempts", "lock_until", "avatar_id") FROM stdin;
-9bedf5d0-2a99-427f-b0e1-967bbc2487cb	2025-09-01 11:45:45.594+00	2025-07-27 20:47:39.813+00	omar@byvalence.com	\N	\N	b4c89ca178e7a779fc0ed0062ab45fe846fac61e84b17911d447936e4df4914c	fe1429067a966942526bba0da003b3a857e3ed239f9a8952f392f10e7dd151e9ab38cb0e8fa8721f8d4d931bdd2126ddf49deffa26866cf6757c00420f8deabf2c24420cb8a8e803d0c84e34759821432ff790defaaca8888aa5e4c1f1ec78457f9dc8866a3ec6c1493951d67b221d43640d56c8d42920bbb57d972d546abe56149a0957f1880a768cd0d81428ebf1d253e583d25bb321722eac71a7ab49fbeba6315da4d4380658696d4fe3ada50a7acc884c1b033c00de8e23fa2379a6d1db479b8bfcac736bbab43e0458eb53011fe2e1bff1ba9c4bcc02410062b7b2c80a594cf6c234c3eb8667bd9da64b0a503ba5d6ffeb0b4630c480051179aa3e651812297ac90ae26786089b8ea660c2ff51b960208fc76827bdf657122513d3c2ad6f531aad6976e6db77e1ac3ab0dea6835a44a53145a50f07caa66cf1a57860d3848b59e96ac662e34034fcb96599f8845b18c040f86d6bbc3c36f75eb6a72e7c1ae1923b404b54cefc67c3a2813b0e2b07ad43ca21d0e318e0cc85e1773101c06b3ebf3e0c356c87ea31a9f1741af1bcf7cf01cb4091e90cb66fb9178072b45c8d9fb2b974f44aeb30db7ba4ab496ecc8d597d657fc6e37445a2e896157a28057ce6b2d1bcb2c342a7a466d6dc0cb5fa9d39f7790a305b458bd9fe6b8cc6b1acc5eb104b85da2678e38c055ec82da524d739b21eaec3b5185ff00470cf30f2c3	0	\N	\N
-a970b2d8-1ba1-4dfc-bb01-2bb7f15c9c0a	2025-08-07 10:38:16.117+00	2025-08-07 10:37:56.104+00	halradwan@ballurh.io	\N	\N	e794ebff42bc077e08c9e33830bae0cf174bfee719c447b40db6e421f77de531	65b8ca3c7ee64110b9ee1aa7d92e6a5400bc31f1df888d749c1c0b3c78e8974b03118b5784cbf6211a6a9dcf1d9a8afd0e4096b3b8dbcd202de21b6dc5eef81715c68d046c7f21bf53ae5ca75c54334e2158acc7221bddf350f7635165887aee7ecd6467babbe6caa9efa52eecc39f3b7486913982d7dced5fe4f3666f97ce2e846c6f89cc8022f97dd520491b9a971cab347f7d01d24c47fc4f43f72ad81be8c7723acb9b98c4865de3ec52f20729d70836ba9dd944c641b8f86128f10ceea0a054ba23bf08b01ecbb5079e4175c51d910825876db576d9eacf7657e88409b9ff71209243310da5692f27c6913edf7fc8d02e76130f1299fd1bb7d59ff2ec93e391455a8990f9904e19488040f7b23ea5b74434bdb6819707d66a61f49d5d49cf13ed8f5f9a184a2769d3fa0216210580a94f9eb24b7f7bebacaead2d8f9e0228ec8efb17ac71548df74269e106b1105f56a2db4f4947304cce049d95046d1f493184f7df52913f754b675db49980b0bd44505e5d7d5ed2a9af231e66b852b36e967d734b4e1d6492fa8a08bb0bbf4dd8f63a1a690363d1a650653c8661632996a66552511c3261104b87b5d57edd60a45b0747e2c555a3d7476da16a44e1c2db58dfe12cd753b2b0cae075decf9e28d9972232de6b7998393c14965777f886f3e754777d80e0c19c98322edfe597eee1e4e1d89913ba32fd66d2e5a0591992	0	\N	\N
+9bedf5d0-2a99-427f-b0e1-967bbc2487cb	2025-10-01 10:34:15.143+00	2025-07-27 20:47:39.813+00	omar@byvalence.com	\N	\N	b4c89ca178e7a779fc0ed0062ab45fe846fac61e84b17911d447936e4df4914c	fe1429067a966942526bba0da003b3a857e3ed239f9a8952f392f10e7dd151e9ab38cb0e8fa8721f8d4d931bdd2126ddf49deffa26866cf6757c00420f8deabf2c24420cb8a8e803d0c84e34759821432ff790defaaca8888aa5e4c1f1ec78457f9dc8866a3ec6c1493951d67b221d43640d56c8d42920bbb57d972d546abe56149a0957f1880a768cd0d81428ebf1d253e583d25bb321722eac71a7ab49fbeba6315da4d4380658696d4fe3ada50a7acc884c1b033c00de8e23fa2379a6d1db479b8bfcac736bbab43e0458eb53011fe2e1bff1ba9c4bcc02410062b7b2c80a594cf6c234c3eb8667bd9da64b0a503ba5d6ffeb0b4630c480051179aa3e651812297ac90ae26786089b8ea660c2ff51b960208fc76827bdf657122513d3c2ad6f531aad6976e6db77e1ac3ab0dea6835a44a53145a50f07caa66cf1a57860d3848b59e96ac662e34034fcb96599f8845b18c040f86d6bbc3c36f75eb6a72e7c1ae1923b404b54cefc67c3a2813b0e2b07ad43ca21d0e318e0cc85e1773101c06b3ebf3e0c356c87ea31a9f1741af1bcf7cf01cb4091e90cb66fb9178072b45c8d9fb2b974f44aeb30db7ba4ab496ecc8d597d657fc6e37445a2e896157a28057ce6b2d1bcb2c342a7a466d6dc0cb5fa9d39f7790a305b458bd9fe6b8cc6b1acc5eb104b85da2678e38c055ec82da524d739b21eaec3b5185ff00470cf30f2c3	0	\N	\N
+a970b2d8-1ba1-4dfc-bb01-2bb7f15c9c0a	2025-10-01 09:22:29.711+00	2025-08-07 10:37:56.104+00	halradwan@ballurh.io	\N	\N	e794ebff42bc077e08c9e33830bae0cf174bfee719c447b40db6e421f77de531	65b8ca3c7ee64110b9ee1aa7d92e6a5400bc31f1df888d749c1c0b3c78e8974b03118b5784cbf6211a6a9dcf1d9a8afd0e4096b3b8dbcd202de21b6dc5eef81715c68d046c7f21bf53ae5ca75c54334e2158acc7221bddf350f7635165887aee7ecd6467babbe6caa9efa52eecc39f3b7486913982d7dced5fe4f3666f97ce2e846c6f89cc8022f97dd520491b9a971cab347f7d01d24c47fc4f43f72ad81be8c7723acb9b98c4865de3ec52f20729d70836ba9dd944c641b8f86128f10ceea0a054ba23bf08b01ecbb5079e4175c51d910825876db576d9eacf7657e88409b9ff71209243310da5692f27c6913edf7fc8d02e76130f1299fd1bb7d59ff2ec93e391455a8990f9904e19488040f7b23ea5b74434bdb6819707d66a61f49d5d49cf13ed8f5f9a184a2769d3fa0216210580a94f9eb24b7f7bebacaead2d8f9e0228ec8efb17ac71548df74269e106b1105f56a2db4f4947304cce049d95046d1f493184f7df52913f754b675db49980b0bd44505e5d7d5ed2a9af231e66b852b36e967d734b4e1d6492fa8a08bb0bbf4dd8f63a1a690363d1a650653c8661632996a66552511c3261104b87b5d57edd60a45b0747e2c555a3d7476da16a44e1c2db58dfe12cd753b2b0cae075decf9e28d9972232de6b7998393c14965777f886f3e754777d80e0c19c98322edfe597eee1e4e1d89913ba32fd66d2e5a0591992	0	\N	\N
 103d28be-f604-464d-8ecb-2b1b3308b003	2025-08-31 15:57:23.781+00	2025-08-07 11:27:08.902+00	abdulwahab@ballurh.io	\N	\N	3bb66ff284689b7cc795d4e7ac8235f03952af87dcde125cf1a41e6b4e3dc621	be7ab849d66b38051b5db266c75fa6db6dcb683a38b665d128e533e8ae98c60194ed05f212fdd3b7af1375097df8dc01c5feb4431d723aed08d45d50de308fc21101d741a22bbefa4927d186ab2c049aae11b06d6b34845de7bf8515f3b3dac0345fc7f8f642ff5f1df1edd7e076214c37fdb05dd054e0f27c70136f82d198f77be3ca9843d8252230b228d5fdb54b27d85939f4de25b497e2525c2239e783d705b1942fb8b81e9e18dd86143f30b33bcda9c5f46f4eb8cbe0ced54e6f45a2aced7f1b4d613b0985f5144b07aa40647e49c79f6e855e40e0618e7c7af2a6a2f967fa948faa572e012da46281d09b32c8935e24ec078f73e9e32c775ddcd77d14f7f5a39b55968471818bf89659a917c5d641c5026ba5317889f185dd7b58d5259cf16deef2462aa98c9f408b5bd8b0dfd976f9283cbca7a45dd23ec45d28d636afceedad35d683222d6d2ff04af6152653d170a56ec13c911ff3fb407ff569c6af7fd8ba9254f737e4ca1ea4821c59075f03b59236a2ad87db1f31b076cbd6ca1792cd68ba3a3c5f27823370c29a45f4d62054f8f9384333fcaba0d87cbe5e02c7cf57e98d91f8844c58f97fe8cb935a8f9b72563dc6676d6dc495c823de1a173b0b2009b7fa25bd125bb6326e8a84fd72591d17421e72ebec62a26b6c97c573b761ba3db74d3aded91b815930f1e54fd1da0db61c6644adaba1021ba4f1bd69	0	\N	\N
 \.
 
@@ -18715,12 +18957,12 @@ a970b2d8-1ba1-4dfc-bb01-2bb7f15c9c0a	2025-08-07 10:38:16.117+00	2025-08-07 10:37
 --
 
 COPY "public"."users_locales" ("name", "id", "_locale", "_parent_id") FROM stdin;
-Hanan Alradwan	16	en	a970b2d8-1ba1-4dfc-bb01-2bb7f15c9c0a
-حنان الرضوان	17	ar	a970b2d8-1ba1-4dfc-bb01-2bb7f15c9c0a
+Hanan Alradwan	115	en	a970b2d8-1ba1-4dfc-bb01-2bb7f15c9c0a
+حنان الرضوان	116	ar	a970b2d8-1ba1-4dfc-bb01-2bb7f15c9c0a
+Omar Oubari	117	en	9bedf5d0-2a99-427f-b0e1-967bbc2487cb
+عمر	118	ar	9bedf5d0-2a99-427f-b0e1-967bbc2487cb
 Abdulwahab AlZaidi	103	en	103d28be-f604-464d-8ecb-2b1b3308b003
 عبدالوهاب الزايدي	104	ar	103d28be-f604-464d-8ecb-2b1b3308b003
-Omar Oubari	105	en	9bedf5d0-2a99-427f-b0e1-967bbc2487cb
-عمر	106	ar	9bedf5d0-2a99-427f-b0e1-967bbc2487cb
 \.
 
 
@@ -18730,29 +18972,16 @@ Omar Oubari	105	en	9bedf5d0-2a99-427f-b0e1-967bbc2487cb
 
 COPY "public"."users_sessions" ("_order", "_parent_id", "id", "created_at", "expires_at") FROM stdin;
 1	103d28be-f604-464d-8ecb-2b1b3308b003	c7b59c8c-6128-4a93-81e0-a5eeb7c6d610	2025-08-31 15:57:23.781+00	2025-08-31 17:57:23.781+00
-1	9bedf5d0-2a99-427f-b0e1-967bbc2487cb	de0379c3-5912-4cd9-aebb-4d9fd8c73ed8	2025-09-01 11:45:45.584+00	2025-09-01 13:45:45.584+00
+1	a970b2d8-1ba1-4dfc-bb01-2bb7f15c9c0a	26627632-6181-451d-8242-f243db0d5b83	2025-10-01 09:22:29.699+00	2025-10-01 11:22:29.699+00
+1	9bedf5d0-2a99-427f-b0e1-967bbc2487cb	5bec074c-96e1-4895-8655-263304c29b33	2025-10-01 10:34:15.143+00	2025-10-01 12:34:15.143+00
 \.
-
-
---
--- Name: _archiveBlock_v_block_header_links_locales_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
---
-
-SELECT pg_catalog.setval('"public"."_archiveBlock_v_block_header_links_locales_id_seq"', 1, false);
-
-
---
--- Name: _archiveBlock_v_locales_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
---
-
-SELECT pg_catalog.setval('"public"."_archiveBlock_v_locales_id_seq"', 1, false);
 
 
 --
 -- Name: _blog_posts_v_locales_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('"public"."_blog_posts_v_locales_id_seq"', 1, false);
+SELECT pg_catalog.setval('"public"."_blog_posts_v_locales_id_seq"', 1, true);
 
 
 --
@@ -18774,20 +19003,6 @@ SELECT pg_catalog.setval('"public"."_callToActionBlock_v_links_locales_id_seq"',
 --
 
 SELECT pg_catalog.setval('"public"."_callToActionBlock_v_locales_id_seq"', 752, true);
-
-
---
--- Name: _customHtmlBlock_v_block_header_links_locales_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
---
-
-SELECT pg_catalog.setval('"public"."_customHtmlBlock_v_block_header_links_locales_id_seq"', 1, false);
-
-
---
--- Name: _customHtmlBlock_v_locales_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
---
-
-SELECT pg_catalog.setval('"public"."_customHtmlBlock_v_locales_id_seq"', 1, false);
 
 
 --
@@ -18910,10 +19125,24 @@ SELECT pg_catalog.setval('"public"."_metricsBlock_v_stats_locales_id_seq"', 1119
 
 
 --
+-- Name: _news_v_locales_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
+--
+
+SELECT pg_catalog.setval('"public"."_news_v_locales_id_seq"', 1, false);
+
+
+--
+-- Name: _news_v_rels_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
+--
+
+SELECT pg_catalog.setval('"public"."_news_v_rels_id_seq"', 1, false);
+
+
+--
 -- Name: _pages_v_locales_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('"public"."_pages_v_locales_id_seq"', 1344, true);
+SELECT pg_catalog.setval('"public"."_pages_v_locales_id_seq"', 1358, true);
 
 
 --
@@ -18987,24 +19216,10 @@ SELECT pg_catalog.setval('"public"."_testimonialsBlock_v_locales_id_seq"', 1, fa
 
 
 --
--- Name: archiveBlock_block_header_links_locales_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
---
-
-SELECT pg_catalog.setval('"public"."archiveBlock_block_header_links_locales_id_seq"', 1, false);
-
-
---
--- Name: archiveBlock_locales_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
---
-
-SELECT pg_catalog.setval('"public"."archiveBlock_locales_id_seq"', 1, false);
-
-
---
 -- Name: blog_posts_locales_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('"public"."blog_posts_locales_id_seq"', 1, false);
+SELECT pg_catalog.setval('"public"."blog_posts_locales_id_seq"', 1, true);
 
 
 --
@@ -19033,20 +19248,6 @@ SELECT pg_catalog.setval('"public"."callToActionBlock_locales_id_seq"', 149, tru
 --
 
 SELECT pg_catalog.setval('"public"."categories_locales_id_seq"', 1, false);
-
-
---
--- Name: customHtmlBlock_block_header_links_locales_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
---
-
-SELECT pg_catalog.setval('"public"."customHtmlBlock_block_header_links_locales_id_seq"', 1, false);
-
-
---
--- Name: customHtmlBlock_locales_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
---
-
-SELECT pg_catalog.setval('"public"."customHtmlBlock_locales_id_seq"', 1, false);
 
 
 --
@@ -19323,6 +19524,20 @@ SELECT pg_catalog.setval('"public"."metricsBlock_stats_locales_id_seq"', 108, tr
 
 
 --
+-- Name: news_locales_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
+--
+
+SELECT pg_catalog.setval('"public"."news_locales_id_seq"', 1, false);
+
+
+--
+-- Name: news_rels_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
+--
+
+SELECT pg_catalog.setval('"public"."news_rels_id_seq"', 1, false);
+
+
+--
 -- Name: pages_hero_links_locales_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
@@ -19340,7 +19555,7 @@ SELECT pg_catalog.setval('"public"."pages_hero_list_items_locales_id_seq"', 369,
 -- Name: pages_locales_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('"public"."pages_locales_id_seq"', 188, true);
+SELECT pg_catalog.setval('"public"."pages_locales_id_seq"', 189, true);
 
 
 --
@@ -19354,14 +19569,14 @@ SELECT pg_catalog.setval('"public"."pages_rels_id_seq"', 1201, true);
 -- Name: payload_locked_documents_rels_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('"public"."payload_locked_documents_rels_id_seq"', 1170, true);
+SELECT pg_catalog.setval('"public"."payload_locked_documents_rels_id_seq"', 1186, true);
 
 
 --
 -- Name: payload_preferences_rels_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('"public"."payload_preferences_rels_id_seq"', 485, true);
+SELECT pg_catalog.setval('"public"."payload_preferences_rels_id_seq"', 500, true);
 
 
 --
@@ -19389,14 +19604,14 @@ SELECT pg_catalog.setval('"public"."richTextBlock_locales_id_seq"', 34, true);
 -- Name: search_locales_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('"public"."search_locales_id_seq"', 1, false);
+SELECT pg_catalog.setval('"public"."search_locales_id_seq"', 1, true);
 
 
 --
 -- Name: search_rels_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('"public"."search_rels_id_seq"', 1, false);
+SELECT pg_catalog.setval('"public"."search_rels_id_seq"', 1, true);
 
 
 --
@@ -19452,39 +19667,7 @@ SELECT pg_catalog.setval('"public"."testimonialsBlock_locales_id_seq"', 1, false
 -- Name: users_locales_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('"public"."users_locales_id_seq"', 106, true);
-
-
---
--- Name: _archiveBlock_v_block_header_links_locales _archiveBlock_v_block_header_links_locales_pkey; Type: CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY "public"."_archiveBlock_v_block_header_links_locales"
-    ADD CONSTRAINT "_archiveBlock_v_block_header_links_locales_pkey" PRIMARY KEY ("id");
-
-
---
--- Name: _archiveBlock_v_block_header_links _archiveBlock_v_block_header_links_pkey; Type: CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY "public"."_archiveBlock_v_block_header_links"
-    ADD CONSTRAINT "_archiveBlock_v_block_header_links_pkey" PRIMARY KEY ("id");
-
-
---
--- Name: _archiveBlock_v_locales _archiveBlock_v_locales_pkey; Type: CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY "public"."_archiveBlock_v_locales"
-    ADD CONSTRAINT "_archiveBlock_v_locales_pkey" PRIMARY KEY ("id");
-
-
---
--- Name: _archiveBlock_v _archiveBlock_v_pkey; Type: CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY "public"."_archiveBlock_v"
-    ADD CONSTRAINT "_archiveBlock_v_pkey" PRIMARY KEY ("id");
+SELECT pg_catalog.setval('"public"."users_locales_id_seq"', 118, true);
 
 
 --
@@ -19557,38 +19740,6 @@ ALTER TABLE ONLY "public"."_callToActionBlock_v_locales"
 
 ALTER TABLE ONLY "public"."_callToActionBlock_v"
     ADD CONSTRAINT "_callToActionBlock_v_pkey" PRIMARY KEY ("id");
-
-
---
--- Name: _customHtmlBlock_v_block_header_links_locales _customHtmlBlock_v_block_header_links_locales_pkey; Type: CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY "public"."_customHtmlBlock_v_block_header_links_locales"
-    ADD CONSTRAINT "_customHtmlBlock_v_block_header_links_locales_pkey" PRIMARY KEY ("id");
-
-
---
--- Name: _customHtmlBlock_v_block_header_links _customHtmlBlock_v_block_header_links_pkey; Type: CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY "public"."_customHtmlBlock_v_block_header_links"
-    ADD CONSTRAINT "_customHtmlBlock_v_block_header_links_pkey" PRIMARY KEY ("id");
-
-
---
--- Name: _customHtmlBlock_v_locales _customHtmlBlock_v_locales_pkey; Type: CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY "public"."_customHtmlBlock_v_locales"
-    ADD CONSTRAINT "_customHtmlBlock_v_locales_pkey" PRIMARY KEY ("id");
-
-
---
--- Name: _customHtmlBlock_v _customHtmlBlock_v_pkey; Type: CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY "public"."_customHtmlBlock_v"
-    ADD CONSTRAINT "_customHtmlBlock_v_pkey" PRIMARY KEY ("id");
 
 
 --
@@ -19733,14 +19884,6 @@ ALTER TABLE ONLY "public"."_featuresBlock_v_locales"
 
 ALTER TABLE ONLY "public"."_featuresBlock_v"
     ADD CONSTRAINT "_featuresBlock_v_pkey" PRIMARY KEY ("id");
-
-
---
--- Name: _formBlock_v _formBlock_v_pkey; Type: CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY "public"."_formBlock_v"
-    ADD CONSTRAINT "_formBlock_v_pkey" PRIMARY KEY ("id");
 
 
 --
@@ -19912,6 +20055,38 @@ ALTER TABLE ONLY "public"."_metricsBlock_v_table_rows"
 
 
 --
+-- Name: _news_v_locales _news_v_locales_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY "public"."_news_v_locales"
+    ADD CONSTRAINT "_news_v_locales_pkey" PRIMARY KEY ("id");
+
+
+--
+-- Name: _news_v _news_v_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY "public"."_news_v"
+    ADD CONSTRAINT "_news_v_pkey" PRIMARY KEY ("id");
+
+
+--
+-- Name: _news_v_rels _news_v_rels_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY "public"."_news_v_rels"
+    ADD CONSTRAINT "_news_v_rels_pkey" PRIMARY KEY ("id");
+
+
+--
+-- Name: _news_v_version_populated_authors _news_v_version_populated_authors_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY "public"."_news_v_version_populated_authors"
+    ADD CONSTRAINT "_news_v_version_populated_authors_pkey" PRIMARY KEY ("id");
+
+
+--
 -- Name: _pages_v_locales _pages_v_locales_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -20080,38 +20255,6 @@ ALTER TABLE ONLY "public"."_testimonialsBlock_v"
 
 
 --
--- Name: archiveBlock_block_header_links_locales archiveBlock_block_header_links_locales_pkey; Type: CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY "public"."archiveBlock_block_header_links_locales"
-    ADD CONSTRAINT "archiveBlock_block_header_links_locales_pkey" PRIMARY KEY ("id");
-
-
---
--- Name: archiveBlock_block_header_links archiveBlock_block_header_links_pkey; Type: CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY "public"."archiveBlock_block_header_links"
-    ADD CONSTRAINT "archiveBlock_block_header_links_pkey" PRIMARY KEY ("id");
-
-
---
--- Name: archiveBlock_locales archiveBlock_locales_pkey; Type: CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY "public"."archiveBlock_locales"
-    ADD CONSTRAINT "archiveBlock_locales_pkey" PRIMARY KEY ("id");
-
-
---
--- Name: archiveBlock archiveBlock_pkey; Type: CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY "public"."archiveBlock"
-    ADD CONSTRAINT "archiveBlock_pkey" PRIMARY KEY ("id");
-
-
---
 -- Name: blog_posts_locales blog_posts_locales_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -20205,38 +20348,6 @@ ALTER TABLE ONLY "public"."categories_locales"
 
 ALTER TABLE ONLY "public"."categories"
     ADD CONSTRAINT "categories_pkey" PRIMARY KEY ("id");
-
-
---
--- Name: customHtmlBlock_block_header_links_locales customHtmlBlock_block_header_links_locales_pkey; Type: CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY "public"."customHtmlBlock_block_header_links_locales"
-    ADD CONSTRAINT "customHtmlBlock_block_header_links_locales_pkey" PRIMARY KEY ("id");
-
-
---
--- Name: customHtmlBlock_block_header_links customHtmlBlock_block_header_links_pkey; Type: CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY "public"."customHtmlBlock_block_header_links"
-    ADD CONSTRAINT "customHtmlBlock_block_header_links_pkey" PRIMARY KEY ("id");
-
-
---
--- Name: customHtmlBlock_locales customHtmlBlock_locales_pkey; Type: CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY "public"."customHtmlBlock_locales"
-    ADD CONSTRAINT "customHtmlBlock_locales_pkey" PRIMARY KEY ("id");
-
-
---
--- Name: customHtmlBlock customHtmlBlock_pkey; Type: CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY "public"."customHtmlBlock"
-    ADD CONSTRAINT "customHtmlBlock_pkey" PRIMARY KEY ("id");
 
 
 --
@@ -20421,14 +20532,6 @@ ALTER TABLE ONLY "public"."footer"
 
 ALTER TABLE ONLY "public"."footer_rels"
     ADD CONSTRAINT "footer_rels_pkey" PRIMARY KEY ("id");
-
-
---
--- Name: formBlock formBlock_pkey; Type: CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY "public"."formBlock"
-    ADD CONSTRAINT "formBlock_pkey" PRIMARY KEY ("id");
 
 
 --
@@ -20936,6 +21039,38 @@ ALTER TABLE ONLY "public"."metricsBlock_table_rows"
 
 
 --
+-- Name: news_locales news_locales_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY "public"."news_locales"
+    ADD CONSTRAINT "news_locales_pkey" PRIMARY KEY ("id");
+
+
+--
+-- Name: news news_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY "public"."news"
+    ADD CONSTRAINT "news_pkey" PRIMARY KEY ("id");
+
+
+--
+-- Name: news_populated_authors news_populated_authors_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY "public"."news_populated_authors"
+    ADD CONSTRAINT "news_populated_authors_pkey" PRIMARY KEY ("id");
+
+
+--
+-- Name: news_rels news_rels_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY "public"."news_rels"
+    ADD CONSTRAINT "news_rels_pkey" PRIMARY KEY ("id");
+
+
+--
 -- Name: pages_hero_links_locales pages_hero_links_locales_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -21272,55 +21407,6 @@ ALTER TABLE ONLY "public"."users_sessions"
 
 
 --
--- Name: _archiveBlock_v_block_header_links_locales_locale_parent_id_uni; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE UNIQUE INDEX "_archiveBlock_v_block_header_links_locales_locale_parent_id_uni" ON "public"."_archiveBlock_v_block_header_links_locales" USING "btree" ("_locale", "_parent_id");
-
-
---
--- Name: _archiveBlock_v_block_header_links_order_idx; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE INDEX "_archiveBlock_v_block_header_links_order_idx" ON "public"."_archiveBlock_v_block_header_links" USING "btree" ("_order");
-
-
---
--- Name: _archiveBlock_v_block_header_links_parent_id_idx; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE INDEX "_archiveBlock_v_block_header_links_parent_id_idx" ON "public"."_archiveBlock_v_block_header_links" USING "btree" ("_parent_id");
-
-
---
--- Name: _archiveBlock_v_locales_locale_parent_id_unique; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE UNIQUE INDEX "_archiveBlock_v_locales_locale_parent_id_unique" ON "public"."_archiveBlock_v_locales" USING "btree" ("_locale", "_parent_id");
-
-
---
--- Name: _archiveBlock_v_order_idx; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE INDEX "_archiveBlock_v_order_idx" ON "public"."_archiveBlock_v" USING "btree" ("_order");
-
-
---
--- Name: _archiveBlock_v_parent_id_idx; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE INDEX "_archiveBlock_v_parent_id_idx" ON "public"."_archiveBlock_v" USING "btree" ("_parent_id");
-
-
---
--- Name: _archiveBlock_v_path_idx; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE INDEX "_archiveBlock_v_path_idx" ON "public"."_archiveBlock_v" USING "btree" ("_path");
-
-
---
 -- Name: _blog_posts_v_created_at_idx; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -21577,55 +21663,6 @@ CREATE INDEX "_callToActionBlock_v_parent_id_idx" ON "public"."_callToActionBloc
 --
 
 CREATE INDEX "_callToActionBlock_v_path_idx" ON "public"."_callToActionBlock_v" USING "btree" ("_path");
-
-
---
--- Name: _customHtmlBlock_v_block_header_links_locales_locale_parent_id_; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE UNIQUE INDEX "_customHtmlBlock_v_block_header_links_locales_locale_parent_id_" ON "public"."_customHtmlBlock_v_block_header_links_locales" USING "btree" ("_locale", "_parent_id");
-
-
---
--- Name: _customHtmlBlock_v_block_header_links_order_idx; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE INDEX "_customHtmlBlock_v_block_header_links_order_idx" ON "public"."_customHtmlBlock_v_block_header_links" USING "btree" ("_order");
-
-
---
--- Name: _customHtmlBlock_v_block_header_links_parent_id_idx; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE INDEX "_customHtmlBlock_v_block_header_links_parent_id_idx" ON "public"."_customHtmlBlock_v_block_header_links" USING "btree" ("_parent_id");
-
-
---
--- Name: _customHtmlBlock_v_locales_locale_parent_id_unique; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE UNIQUE INDEX "_customHtmlBlock_v_locales_locale_parent_id_unique" ON "public"."_customHtmlBlock_v_locales" USING "btree" ("_locale", "_parent_id");
-
-
---
--- Name: _customHtmlBlock_v_order_idx; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE INDEX "_customHtmlBlock_v_order_idx" ON "public"."_customHtmlBlock_v" USING "btree" ("_order");
-
-
---
--- Name: _customHtmlBlock_v_parent_id_idx; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE INDEX "_customHtmlBlock_v_parent_id_idx" ON "public"."_customHtmlBlock_v" USING "btree" ("_parent_id");
-
-
---
--- Name: _customHtmlBlock_v_path_idx; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE INDEX "_customHtmlBlock_v_path_idx" ON "public"."_customHtmlBlock_v" USING "btree" ("_path");
 
 
 --
@@ -22035,34 +22072,6 @@ CREATE INDEX "_featuresBlock_v_path_idx" ON "public"."_featuresBlock_v" USING "b
 
 
 --
--- Name: _formBlock_v_form_idx; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE INDEX "_formBlock_v_form_idx" ON "public"."_formBlock_v" USING "btree" ("form_id");
-
-
---
--- Name: _formBlock_v_order_idx; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE INDEX "_formBlock_v_order_idx" ON "public"."_formBlock_v" USING "btree" ("_order");
-
-
---
--- Name: _formBlock_v_parent_id_idx; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE INDEX "_formBlock_v_parent_id_idx" ON "public"."_formBlock_v" USING "btree" ("_parent_id");
-
-
---
--- Name: _formBlock_v_path_idx; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE INDEX "_formBlock_v_path_idx" ON "public"."_formBlock_v" USING "btree" ("_path");
-
-
---
 -- Name: _galleryBlock_v_block_header_links_locales_locale_parent_id_uni; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -22368,6 +22377,160 @@ CREATE INDEX "_metricsBlock_v_table_rows_order_idx" ON "public"."_metricsBlock_v
 --
 
 CREATE INDEX "_metricsBlock_v_table_rows_parent_id_idx" ON "public"."_metricsBlock_v_table_rows" USING "btree" ("_parent_id");
+
+
+--
+-- Name: _news_v_created_at_idx; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX "_news_v_created_at_idx" ON "public"."_news_v" USING "btree" ("created_at");
+
+
+--
+-- Name: _news_v_latest_idx; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX "_news_v_latest_idx" ON "public"."_news_v" USING "btree" ("latest");
+
+
+--
+-- Name: _news_v_locales_locale_parent_id_unique; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE UNIQUE INDEX "_news_v_locales_locale_parent_id_unique" ON "public"."_news_v_locales" USING "btree" ("_locale", "_parent_id");
+
+
+--
+-- Name: _news_v_parent_idx; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX "_news_v_parent_idx" ON "public"."_news_v" USING "btree" ("parent_id");
+
+
+--
+-- Name: _news_v_published_locale_idx; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX "_news_v_published_locale_idx" ON "public"."_news_v" USING "btree" ("published_locale");
+
+
+--
+-- Name: _news_v_rels_categories_id_idx; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX "_news_v_rels_categories_id_idx" ON "public"."_news_v_rels" USING "btree" ("categories_id", "locale");
+
+
+--
+-- Name: _news_v_rels_locale_idx; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX "_news_v_rels_locale_idx" ON "public"."_news_v_rels" USING "btree" ("locale");
+
+
+--
+-- Name: _news_v_rels_news_id_idx; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX "_news_v_rels_news_id_idx" ON "public"."_news_v_rels" USING "btree" ("news_id", "locale");
+
+
+--
+-- Name: _news_v_rels_order_idx; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX "_news_v_rels_order_idx" ON "public"."_news_v_rels" USING "btree" ("order");
+
+
+--
+-- Name: _news_v_rels_parent_idx; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX "_news_v_rels_parent_idx" ON "public"."_news_v_rels" USING "btree" ("parent_id");
+
+
+--
+-- Name: _news_v_rels_path_idx; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX "_news_v_rels_path_idx" ON "public"."_news_v_rels" USING "btree" ("path");
+
+
+--
+-- Name: _news_v_rels_users_id_idx; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX "_news_v_rels_users_id_idx" ON "public"."_news_v_rels" USING "btree" ("users_id", "locale");
+
+
+--
+-- Name: _news_v_snapshot_idx; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX "_news_v_snapshot_idx" ON "public"."_news_v" USING "btree" ("snapshot");
+
+
+--
+-- Name: _news_v_updated_at_idx; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX "_news_v_updated_at_idx" ON "public"."_news_v" USING "btree" ("updated_at");
+
+
+--
+-- Name: _news_v_version_meta_version_meta_image_idx; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX "_news_v_version_meta_version_meta_image_idx" ON "public"."_news_v_locales" USING "btree" ("version_meta_image_id");
+
+
+--
+-- Name: _news_v_version_populated_authors_order_idx; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX "_news_v_version_populated_authors_order_idx" ON "public"."_news_v_version_populated_authors" USING "btree" ("_order");
+
+
+--
+-- Name: _news_v_version_populated_authors_parent_id_idx; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX "_news_v_version_populated_authors_parent_id_idx" ON "public"."_news_v_version_populated_authors" USING "btree" ("_parent_id");
+
+
+--
+-- Name: _news_v_version_version__status_idx; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX "_news_v_version_version__status_idx" ON "public"."_news_v" USING "btree" ("version__status");
+
+
+--
+-- Name: _news_v_version_version_created_at_idx; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX "_news_v_version_version_created_at_idx" ON "public"."_news_v" USING "btree" ("version_created_at");
+
+
+--
+-- Name: _news_v_version_version_hero_image_idx; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX "_news_v_version_version_hero_image_idx" ON "public"."_news_v_locales" USING "btree" ("version_hero_image_id", "_locale");
+
+
+--
+-- Name: _news_v_version_version_slug_idx; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX "_news_v_version_version_slug_idx" ON "public"."_news_v_locales" USING "btree" ("version_slug", "_locale");
+
+
+--
+-- Name: _news_v_version_version_updated_at_idx; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX "_news_v_version_version_updated_at_idx" ON "public"."_news_v" USING "btree" ("version_updated_at");
 
 
 --
@@ -22770,55 +22933,6 @@ CREATE INDEX "_testimonialsBlock_v_path_idx" ON "public"."_testimonialsBlock_v" 
 
 
 --
--- Name: archiveBlock_block_header_links_locales_locale_parent_id_unique; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE UNIQUE INDEX "archiveBlock_block_header_links_locales_locale_parent_id_unique" ON "public"."archiveBlock_block_header_links_locales" USING "btree" ("_locale", "_parent_id");
-
-
---
--- Name: archiveBlock_block_header_links_order_idx; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE INDEX "archiveBlock_block_header_links_order_idx" ON "public"."archiveBlock_block_header_links" USING "btree" ("_order");
-
-
---
--- Name: archiveBlock_block_header_links_parent_id_idx; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE INDEX "archiveBlock_block_header_links_parent_id_idx" ON "public"."archiveBlock_block_header_links" USING "btree" ("_parent_id");
-
-
---
--- Name: archiveBlock_locales_locale_parent_id_unique; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE UNIQUE INDEX "archiveBlock_locales_locale_parent_id_unique" ON "public"."archiveBlock_locales" USING "btree" ("_locale", "_parent_id");
-
-
---
--- Name: archiveBlock_order_idx; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE INDEX "archiveBlock_order_idx" ON "public"."archiveBlock" USING "btree" ("_order");
-
-
---
--- Name: archiveBlock_parent_id_idx; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE INDEX "archiveBlock_parent_id_idx" ON "public"."archiveBlock" USING "btree" ("_parent_id");
-
-
---
--- Name: archiveBlock_path_idx; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE INDEX "archiveBlock_path_idx" ON "public"."archiveBlock" USING "btree" ("_path");
-
-
---
 -- Name: blog_posts__status_idx; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -23096,55 +23210,6 @@ CREATE INDEX "categories_slug_idx" ON "public"."categories" USING "btree" ("slug
 --
 
 CREATE INDEX "categories_updated_at_idx" ON "public"."categories" USING "btree" ("updated_at");
-
-
---
--- Name: customHtmlBlock_block_header_links_locales_locale_parent_id_uni; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE UNIQUE INDEX "customHtmlBlock_block_header_links_locales_locale_parent_id_uni" ON "public"."customHtmlBlock_block_header_links_locales" USING "btree" ("_locale", "_parent_id");
-
-
---
--- Name: customHtmlBlock_block_header_links_order_idx; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE INDEX "customHtmlBlock_block_header_links_order_idx" ON "public"."customHtmlBlock_block_header_links" USING "btree" ("_order");
-
-
---
--- Name: customHtmlBlock_block_header_links_parent_id_idx; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE INDEX "customHtmlBlock_block_header_links_parent_id_idx" ON "public"."customHtmlBlock_block_header_links" USING "btree" ("_parent_id");
-
-
---
--- Name: customHtmlBlock_locales_locale_parent_id_unique; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE UNIQUE INDEX "customHtmlBlock_locales_locale_parent_id_unique" ON "public"."customHtmlBlock_locales" USING "btree" ("_locale", "_parent_id");
-
-
---
--- Name: customHtmlBlock_order_idx; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE INDEX "customHtmlBlock_order_idx" ON "public"."customHtmlBlock" USING "btree" ("_order");
-
-
---
--- Name: customHtmlBlock_parent_id_idx; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE INDEX "customHtmlBlock_parent_id_idx" ON "public"."customHtmlBlock" USING "btree" ("_parent_id");
-
-
---
--- Name: customHtmlBlock_path_idx; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE INDEX "customHtmlBlock_path_idx" ON "public"."customHtmlBlock" USING "btree" ("_path");
 
 
 --
@@ -23523,34 +23588,6 @@ CREATE INDEX "footer_rels_parent_idx" ON "public"."footer_rels" USING "btree" ("
 --
 
 CREATE INDEX "footer_rels_path_idx" ON "public"."footer_rels" USING "btree" ("path");
-
-
---
--- Name: formBlock_form_idx; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE INDEX "formBlock_form_idx" ON "public"."formBlock" USING "btree" ("form_id");
-
-
---
--- Name: formBlock_order_idx; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE INDEX "formBlock_order_idx" ON "public"."formBlock" USING "btree" ("_order");
-
-
---
--- Name: formBlock_parent_id_idx; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE INDEX "formBlock_parent_id_idx" ON "public"."formBlock" USING "btree" ("_parent_id");
-
-
---
--- Name: formBlock_path_idx; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE INDEX "formBlock_path_idx" ON "public"."formBlock" USING "btree" ("_path");
 
 
 --
@@ -24478,6 +24515,118 @@ CREATE INDEX "metricsBlock_table_rows_parent_id_idx" ON "public"."metricsBlock_t
 
 
 --
+-- Name: news__status_idx; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX "news__status_idx" ON "public"."news" USING "btree" ("_status");
+
+
+--
+-- Name: news_created_at_idx; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX "news_created_at_idx" ON "public"."news" USING "btree" ("created_at");
+
+
+--
+-- Name: news_hero_image_idx; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX "news_hero_image_idx" ON "public"."news_locales" USING "btree" ("hero_image_id", "_locale");
+
+
+--
+-- Name: news_locales_locale_parent_id_unique; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE UNIQUE INDEX "news_locales_locale_parent_id_unique" ON "public"."news_locales" USING "btree" ("_locale", "_parent_id");
+
+
+--
+-- Name: news_meta_meta_image_idx; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX "news_meta_meta_image_idx" ON "public"."news_locales" USING "btree" ("meta_image_id");
+
+
+--
+-- Name: news_populated_authors_order_idx; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX "news_populated_authors_order_idx" ON "public"."news_populated_authors" USING "btree" ("_order");
+
+
+--
+-- Name: news_populated_authors_parent_id_idx; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX "news_populated_authors_parent_id_idx" ON "public"."news_populated_authors" USING "btree" ("_parent_id");
+
+
+--
+-- Name: news_rels_categories_id_idx; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX "news_rels_categories_id_idx" ON "public"."news_rels" USING "btree" ("categories_id", "locale");
+
+
+--
+-- Name: news_rels_locale_idx; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX "news_rels_locale_idx" ON "public"."news_rels" USING "btree" ("locale");
+
+
+--
+-- Name: news_rels_news_id_idx; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX "news_rels_news_id_idx" ON "public"."news_rels" USING "btree" ("news_id", "locale");
+
+
+--
+-- Name: news_rels_order_idx; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX "news_rels_order_idx" ON "public"."news_rels" USING "btree" ("order");
+
+
+--
+-- Name: news_rels_parent_idx; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX "news_rels_parent_idx" ON "public"."news_rels" USING "btree" ("parent_id");
+
+
+--
+-- Name: news_rels_path_idx; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX "news_rels_path_idx" ON "public"."news_rels" USING "btree" ("path");
+
+
+--
+-- Name: news_rels_users_id_idx; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX "news_rels_users_id_idx" ON "public"."news_rels" USING "btree" ("users_id", "locale");
+
+
+--
+-- Name: news_slug_idx; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX "news_slug_idx" ON "public"."news_locales" USING "btree" ("slug", "_locale");
+
+
+--
+-- Name: news_updated_at_idx; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX "news_updated_at_idx" ON "public"."news" USING "btree" ("updated_at");
+
+
+--
 -- Name: pages__status_idx; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -24832,6 +24981,13 @@ CREATE INDEX "payload_locked_documents_rels_forms_id_idx" ON "public"."payload_l
 --
 
 CREATE INDEX "payload_locked_documents_rels_media_id_idx" ON "public"."payload_locked_documents_rels" USING "btree" ("media_id");
+
+
+--
+-- Name: payload_locked_documents_rels_news_id_idx; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX "payload_locked_documents_rels_news_id_idx" ON "public"."payload_locked_documents_rels" USING "btree" ("news_id");
 
 
 --
@@ -25374,38 +25530,6 @@ CREATE INDEX "users_updated_at_idx" ON "public"."users" USING "btree" ("updated_
 
 
 --
--- Name: _archiveBlock_v_block_header_links_locales _archiveBlock_v_block_header_links_locales_parent_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY "public"."_archiveBlock_v_block_header_links_locales"
-    ADD CONSTRAINT "_archiveBlock_v_block_header_links_locales_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."_archiveBlock_v_block_header_links"("id") ON DELETE CASCADE;
-
-
---
--- Name: _archiveBlock_v_block_header_links _archiveBlock_v_block_header_links_parent_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY "public"."_archiveBlock_v_block_header_links"
-    ADD CONSTRAINT "_archiveBlock_v_block_header_links_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."_archiveBlock_v"("id") ON DELETE CASCADE;
-
-
---
--- Name: _archiveBlock_v_locales _archiveBlock_v_locales_parent_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY "public"."_archiveBlock_v_locales"
-    ADD CONSTRAINT "_archiveBlock_v_locales_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."_archiveBlock_v"("id") ON DELETE CASCADE;
-
-
---
--- Name: _archiveBlock_v _archiveBlock_v_parent_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY "public"."_archiveBlock_v"
-    ADD CONSTRAINT "_archiveBlock_v_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."_customers_v"("id") ON DELETE CASCADE;
-
-
---
 -- Name: _blog_posts_v_locales _blog_posts_v_locales_parent_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -25555,38 +25679,6 @@ ALTER TABLE ONLY "public"."_callToActionBlock_v_locales"
 
 ALTER TABLE ONLY "public"."_callToActionBlock_v"
     ADD CONSTRAINT "_callToActionBlock_v_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."_pages_v"("id") ON DELETE CASCADE;
-
-
---
--- Name: _customHtmlBlock_v_block_header_links_locales _customHtmlBlock_v_block_header_links_locales_parent_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY "public"."_customHtmlBlock_v_block_header_links_locales"
-    ADD CONSTRAINT "_customHtmlBlock_v_block_header_links_locales_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."_customHtmlBlock_v_block_header_links"("id") ON DELETE CASCADE;
-
-
---
--- Name: _customHtmlBlock_v_block_header_links _customHtmlBlock_v_block_header_links_parent_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY "public"."_customHtmlBlock_v_block_header_links"
-    ADD CONSTRAINT "_customHtmlBlock_v_block_header_links_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."_customHtmlBlock_v"("id") ON DELETE CASCADE;
-
-
---
--- Name: _customHtmlBlock_v_locales _customHtmlBlock_v_locales_parent_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY "public"."_customHtmlBlock_v_locales"
-    ADD CONSTRAINT "_customHtmlBlock_v_locales_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."_customHtmlBlock_v"("id") ON DELETE CASCADE;
-
-
---
--- Name: _customHtmlBlock_v _customHtmlBlock_v_parent_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY "public"."_customHtmlBlock_v"
-    ADD CONSTRAINT "_customHtmlBlock_v_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."_customers_v"("id") ON DELETE CASCADE;
 
 
 --
@@ -25806,22 +25898,6 @@ ALTER TABLE ONLY "public"."_featuresBlock_v"
 
 
 --
--- Name: _formBlock_v _formBlock_v_form_id_forms_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY "public"."_formBlock_v"
-    ADD CONSTRAINT "_formBlock_v_form_id_forms_id_fk" FOREIGN KEY ("form_id") REFERENCES "public"."forms"("id") ON DELETE SET NULL;
-
-
---
--- Name: _formBlock_v _formBlock_v_parent_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY "public"."_formBlock_v"
-    ADD CONSTRAINT "_formBlock_v_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."_customers_v"("id") ON DELETE CASCADE;
-
-
---
 -- Name: _galleryBlock_v_block_header_links_locales _galleryBlock_v_block_header_links_locales_parent_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -26003,6 +26079,78 @@ ALTER TABLE ONLY "public"."_metricsBlock_v_table_rows_children"
 
 ALTER TABLE ONLY "public"."_metricsBlock_v_table_rows"
     ADD CONSTRAINT "_metricsBlock_v_table_rows_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."_metricsBlock_v"("id") ON DELETE CASCADE;
+
+
+--
+-- Name: _news_v_locales _news_v_locales_parent_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY "public"."_news_v_locales"
+    ADD CONSTRAINT "_news_v_locales_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."_news_v"("id") ON DELETE CASCADE;
+
+
+--
+-- Name: _news_v_locales _news_v_locales_version_hero_image_id_media_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY "public"."_news_v_locales"
+    ADD CONSTRAINT "_news_v_locales_version_hero_image_id_media_id_fk" FOREIGN KEY ("version_hero_image_id") REFERENCES "public"."media"("id") ON DELETE SET NULL;
+
+
+--
+-- Name: _news_v_locales _news_v_locales_version_meta_image_id_media_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY "public"."_news_v_locales"
+    ADD CONSTRAINT "_news_v_locales_version_meta_image_id_media_id_fk" FOREIGN KEY ("version_meta_image_id") REFERENCES "public"."media"("id") ON DELETE SET NULL;
+
+
+--
+-- Name: _news_v _news_v_parent_id_news_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY "public"."_news_v"
+    ADD CONSTRAINT "_news_v_parent_id_news_id_fk" FOREIGN KEY ("parent_id") REFERENCES "public"."news"("id") ON DELETE SET NULL;
+
+
+--
+-- Name: _news_v_rels _news_v_rels_categories_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY "public"."_news_v_rels"
+    ADD CONSTRAINT "_news_v_rels_categories_fk" FOREIGN KEY ("categories_id") REFERENCES "public"."categories"("id") ON DELETE CASCADE;
+
+
+--
+-- Name: _news_v_rels _news_v_rels_news_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY "public"."_news_v_rels"
+    ADD CONSTRAINT "_news_v_rels_news_fk" FOREIGN KEY ("news_id") REFERENCES "public"."news"("id") ON DELETE CASCADE;
+
+
+--
+-- Name: _news_v_rels _news_v_rels_parent_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY "public"."_news_v_rels"
+    ADD CONSTRAINT "_news_v_rels_parent_fk" FOREIGN KEY ("parent_id") REFERENCES "public"."_news_v"("id") ON DELETE CASCADE;
+
+
+--
+-- Name: _news_v_rels _news_v_rels_users_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY "public"."_news_v_rels"
+    ADD CONSTRAINT "_news_v_rels_users_fk" FOREIGN KEY ("users_id") REFERENCES "public"."users"("id") ON DELETE CASCADE;
+
+
+--
+-- Name: _news_v_version_populated_authors _news_v_version_populated_authors_parent_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY "public"."_news_v_version_populated_authors"
+    ADD CONSTRAINT "_news_v_version_populated_authors_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."_news_v"("id") ON DELETE CASCADE;
 
 
 --
@@ -26262,38 +26410,6 @@ ALTER TABLE ONLY "public"."_testimonialsBlock_v"
 
 
 --
--- Name: archiveBlock_block_header_links_locales archiveBlock_block_header_links_locales_parent_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY "public"."archiveBlock_block_header_links_locales"
-    ADD CONSTRAINT "archiveBlock_block_header_links_locales_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."archiveBlock_block_header_links"("id") ON DELETE CASCADE;
-
-
---
--- Name: archiveBlock_block_header_links archiveBlock_block_header_links_parent_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY "public"."archiveBlock_block_header_links"
-    ADD CONSTRAINT "archiveBlock_block_header_links_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."archiveBlock"("id") ON DELETE CASCADE;
-
-
---
--- Name: archiveBlock_locales archiveBlock_locales_parent_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY "public"."archiveBlock_locales"
-    ADD CONSTRAINT "archiveBlock_locales_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."archiveBlock"("id") ON DELETE CASCADE;
-
-
---
--- Name: archiveBlock archiveBlock_parent_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY "public"."archiveBlock"
-    ADD CONSTRAINT "archiveBlock_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."customers"("id") ON DELETE CASCADE;
-
-
---
 -- Name: blog_posts_locales blog_posts_locales_hero_image_id_media_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -26467,38 +26583,6 @@ ALTER TABLE ONLY "public"."categories_locales"
 
 ALTER TABLE ONLY "public"."categories"
     ADD CONSTRAINT "categories_parent_id_categories_id_fk" FOREIGN KEY ("parent_id") REFERENCES "public"."categories"("id") ON DELETE SET NULL;
-
-
---
--- Name: customHtmlBlock_block_header_links_locales customHtmlBlock_block_header_links_locales_parent_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY "public"."customHtmlBlock_block_header_links_locales"
-    ADD CONSTRAINT "customHtmlBlock_block_header_links_locales_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."customHtmlBlock_block_header_links"("id") ON DELETE CASCADE;
-
-
---
--- Name: customHtmlBlock_block_header_links customHtmlBlock_block_header_links_parent_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY "public"."customHtmlBlock_block_header_links"
-    ADD CONSTRAINT "customHtmlBlock_block_header_links_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."customHtmlBlock"("id") ON DELETE CASCADE;
-
-
---
--- Name: customHtmlBlock_locales customHtmlBlock_locales_parent_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY "public"."customHtmlBlock_locales"
-    ADD CONSTRAINT "customHtmlBlock_locales_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."customHtmlBlock"("id") ON DELETE CASCADE;
-
-
---
--- Name: customHtmlBlock customHtmlBlock_parent_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY "public"."customHtmlBlock"
-    ADD CONSTRAINT "customHtmlBlock_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."customers"("id") ON DELETE CASCADE;
 
 
 --
@@ -26747,22 +26831,6 @@ ALTER TABLE ONLY "public"."footer_rels"
 
 ALTER TABLE ONLY "public"."footer_rels"
     ADD CONSTRAINT "footer_rels_parent_fk" FOREIGN KEY ("parent_id") REFERENCES "public"."footer"("id") ON DELETE CASCADE;
-
-
---
--- Name: formBlock formBlock_form_id_forms_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY "public"."formBlock"
-    ADD CONSTRAINT "formBlock_form_id_forms_id_fk" FOREIGN KEY ("form_id") REFERENCES "public"."forms"("id") ON DELETE SET NULL;
-
-
---
--- Name: formBlock formBlock_parent_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY "public"."formBlock"
-    ADD CONSTRAINT "formBlock_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."customers"("id") ON DELETE CASCADE;
 
 
 --
@@ -27294,6 +27362,70 @@ ALTER TABLE ONLY "public"."metricsBlock_table_rows"
 
 
 --
+-- Name: news_locales news_locales_hero_image_id_media_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY "public"."news_locales"
+    ADD CONSTRAINT "news_locales_hero_image_id_media_id_fk" FOREIGN KEY ("hero_image_id") REFERENCES "public"."media"("id") ON DELETE SET NULL;
+
+
+--
+-- Name: news_locales news_locales_meta_image_id_media_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY "public"."news_locales"
+    ADD CONSTRAINT "news_locales_meta_image_id_media_id_fk" FOREIGN KEY ("meta_image_id") REFERENCES "public"."media"("id") ON DELETE SET NULL;
+
+
+--
+-- Name: news_locales news_locales_parent_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY "public"."news_locales"
+    ADD CONSTRAINT "news_locales_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."news"("id") ON DELETE CASCADE;
+
+
+--
+-- Name: news_populated_authors news_populated_authors_parent_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY "public"."news_populated_authors"
+    ADD CONSTRAINT "news_populated_authors_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."news"("id") ON DELETE CASCADE;
+
+
+--
+-- Name: news_rels news_rels_categories_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY "public"."news_rels"
+    ADD CONSTRAINT "news_rels_categories_fk" FOREIGN KEY ("categories_id") REFERENCES "public"."categories"("id") ON DELETE CASCADE;
+
+
+--
+-- Name: news_rels news_rels_news_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY "public"."news_rels"
+    ADD CONSTRAINT "news_rels_news_fk" FOREIGN KEY ("news_id") REFERENCES "public"."news"("id") ON DELETE CASCADE;
+
+
+--
+-- Name: news_rels news_rels_parent_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY "public"."news_rels"
+    ADD CONSTRAINT "news_rels_parent_fk" FOREIGN KEY ("parent_id") REFERENCES "public"."news"("id") ON DELETE CASCADE;
+
+
+--
+-- Name: news_rels news_rels_users_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY "public"."news_rels"
+    ADD CONSTRAINT "news_rels_users_fk" FOREIGN KEY ("users_id") REFERENCES "public"."users"("id") ON DELETE CASCADE;
+
+
+--
 -- Name: pages_hero_links_locales pages_hero_links_locales_parent_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -27499,6 +27631,14 @@ ALTER TABLE ONLY "public"."payload_locked_documents_rels"
 
 ALTER TABLE ONLY "public"."payload_locked_documents_rels"
     ADD CONSTRAINT "payload_locked_documents_rels_media_fk" FOREIGN KEY ("media_id") REFERENCES "public"."media"("id") ON DELETE CASCADE;
+
+
+--
+-- Name: payload_locked_documents_rels payload_locked_documents_rels_news_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY "public"."payload_locked_documents_rels"
+    ADD CONSTRAINT "payload_locked_documents_rels_news_fk" FOREIGN KEY ("news_id") REFERENCES "public"."news"("id") ON DELETE CASCADE;
 
 
 --
@@ -27825,5 +27965,5 @@ ALTER TABLE ONLY "public"."users_sessions"
 -- PostgreSQL database dump complete
 --
 
-\unrestrict gLLetygeNfozZVAnUHBmeCLutvj3giYUPcFyjAfcJjgtSwnnFASWwPQaHgYeXu2
+\unrestrict yhndk6L2AkUOmJO5aiJnMsuggg9R55hDlYWZSYrNSkwOpbfhU85kiK7X7Yafc73
 

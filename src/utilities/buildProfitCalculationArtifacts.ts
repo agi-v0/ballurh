@@ -117,7 +117,7 @@ export function buildProfitCalculationArtifacts(data: FormData): ProfitCalculati
   تعويضات مستردة
   SAR ${savedDisputes}
   `
-  console.log(profitCalculatorMessage)
+
   const metrics: ProfitMetrics = {
     monthlySalesNumber,
     monthlyOrdersNumber,

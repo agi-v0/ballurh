@@ -10,13 +10,6 @@ fi
 
 export $(grep -v '^#' "$ENV_FILE" | xargs)
 
-# ========== CONFIGURATION ==========
-# Remote DB connection
-# REMOTE_HOST=""
-# REMOTE_PORT=""
-# REMOTE_DB=""
-# REMOTE_USER=""
-# REMOTE_PASSWORD=""
 
 # Local Docker Postgres container
 LOCAL_CONTAINER="postgres17.5"

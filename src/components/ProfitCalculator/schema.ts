@@ -48,8 +48,8 @@ const step4Schema = z.object({
 })
 
 export const formSchema = step1Schema
-  .extend(step2Schema.shape)
-  .extend(step3Schema.shape)
-  .extend(step4Schema.shape)
+  .safeExtend(step2Schema.shape)
+  .safeExtend(step3Schema.shape)
+  .safeExtend(step4Schema.shape)
 
 export type FormData = z.infer<typeof formSchema>
