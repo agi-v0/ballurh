@@ -9,7 +9,7 @@ export interface Announcement {
     type?: 'reference' | 'custom' | null
     newTab?: boolean | null
     reference?: {
-      relationTo: 'pages' | 'blog-posts'
+      relationTo: 'pages' | 'blog-posts' | 'news'
       value: string | any
     } | null
     url?: string | null
