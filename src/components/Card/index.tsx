@@ -15,7 +15,7 @@ export const Card: React.FC<{
   alignItems?: 'center'
   className?: string
   doc?: CardPostData
-  relationTo?: 'blog-posts'
+  relationTo?: 'blog' | 'news'
   showCategories?: boolean
   title?: string
 }> = (props) => {

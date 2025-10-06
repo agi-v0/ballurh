@@ -1,5 +1,5 @@
 import type { Metadata } from 'next/types'
-import type { Page as PageType, BlogPost, Category } from '@/payload-types'
+import type { Page as PageType, BlogPost, Category, News } from '@/payload-types'
 
 import { CollectionArchive } from '@/components/CollectionArchive'
 import { PageRange } from '@/components/PageRange'
@@ -107,7 +107,7 @@ export default async function Page({ params: paramsPromise }: Args) {
       </div>
       <RecentBlogPosts posts={posts.docs.slice(0, 5) as any} />
 
-      <CollectionArchive posts={posts.docs as BlogPost[]} />
+      <CollectionArchive posts={posts.docs as News[]} relationTo="news" />
 
       <div className="container my-space-8 flex flex-col items-center justify-between gap-4 md:flex-row">
         {posts.totalPages > 1 && posts.page && (
