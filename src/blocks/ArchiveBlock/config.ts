@@ -37,12 +37,16 @@ export const ArchiveBlock: Block = {
           admin: {
             condition: (_, siblingData) => siblingData.populateBy === 'collection',
           },
-          defaultValue: 'blog-posts',
+          defaultValue: 'blog',
           label: 'Collections To Show',
           options: [
             {
               label: 'Posts',
-              value: 'blog-posts',
+              value: 'blog',
+            },
+            {
+              label: 'News',
+              value: 'news',
             },
           ],
         },

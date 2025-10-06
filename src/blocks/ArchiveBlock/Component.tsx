@@ -11,7 +11,7 @@ export const ArchiveBlock: React.FC<
     id?: string
   }
 > = async (props) => {
-  const { id, categories, limit: limitFromProps, populateBy, selectedDocs } = props
+  const { id, categories, limit: limitFromProps, populateBy, selectedDocs, relationTo } = props
 
   const limit = limitFromProps || 3
 
@@ -26,7 +26,7 @@ export const ArchiveBlock: React.FC<
     })
 
     const fetchedPosts = await payload.find({
-      collection: 'blog-posts',
+      collection: relationTo === 'blog' ? 'blog-posts' : 'news',
       depth: 1,
       limit,
       ...(flattenedCategories && flattenedCategories.length > 0
@@ -53,7 +53,7 @@ export const ArchiveBlock: React.FC<
 
   return (
     <div className="my-16" id={`block-${id}`}>
-      <CollectionArchive posts={posts} relationTo="blog" />
+      <CollectionArchive posts={posts} relationTo={relationTo ?? 'blog'} />
     </div>
   )
 }

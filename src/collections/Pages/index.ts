@@ -89,7 +89,7 @@ export const Pages: CollectionConfig<'pages'> = {
               type: 'blocks',
               blocks: [],
               blockReferences: [
-                // 'archiveBlock',
+                'archiveBlock',
                 // 'blogBlock',
                 'callToActionBlock',
                 // 'customHtmlBlock',

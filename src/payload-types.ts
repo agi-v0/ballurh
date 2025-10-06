@@ -179,7 +179,7 @@ export interface UserAuthOperations {
 export interface ArchiveBlock {
   blockHeader: BlockHeader;
   populateBy?: ('collection' | 'selection') | null;
-  relationTo?: 'blog-posts' | null;
+  relationTo?: ('blog' | 'news') | null;
   categories?: (string | Category)[] | null;
   limit?: number | null;
   selectedDocs?:
@@ -353,6 +353,7 @@ export interface Page {
     };
   };
   layout: (
+    | ArchiveBlock
     | CallToActionBlock
     | DividerBlock
     | FaqBlock
