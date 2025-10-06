@@ -16,6 +16,7 @@ export const revalidatePost: CollectionAfterChangeHook<BlogPost> = ({
       payload.logger.info(`Revalidating post at path: ${path}`)
 
       revalidatePath(path)
+      revalidatePath('/news')
       revalidateTag('news-sitemap')
     }
 
@@ -26,6 +27,7 @@ export const revalidatePost: CollectionAfterChangeHook<BlogPost> = ({
       payload.logger.info(`Revalidating old post at path: ${oldPath}`)
 
       revalidatePath(oldPath)
+      revalidatePath('/news')
       revalidateTag('news-sitemap')
     }
   }
