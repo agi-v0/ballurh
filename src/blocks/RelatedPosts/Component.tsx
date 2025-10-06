@@ -10,10 +10,11 @@ export type RelatedPostsProps = {
   className?: string
   docs?: BlogPost[]
   introContent?: any
+  relationTo: 'blog' | 'news'
 }
 
 export const RelatedPosts: React.FC<RelatedPostsProps> = (props) => {
-  const { className, docs, introContent } = props
+  const { className, docs, introContent, relationTo } = props
 
   return (
     <div className={clsx('lg:container', className)}>
@@ -23,7 +24,7 @@ export const RelatedPosts: React.FC<RelatedPostsProps> = (props) => {
         {docs?.map((doc, index) => {
           if (typeof doc === 'string') return null
 
-          return <Card key={index} doc={doc} relationTo="blog-posts" showCategories />
+          return <Card key={index} doc={doc} relationTo={relationTo} showCategories />
         })}
       </div>
     </div>

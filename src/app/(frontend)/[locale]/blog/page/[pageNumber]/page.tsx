@@ -64,7 +64,7 @@ export default async function Page({ params: paramsPromise }: Args) {
 
       {/* {sanitizedPageNumber === 1 && <RenderBlocks blocks={layout as any} locale={locale} />} */}
 
-      <CollectionArchive posts={posts.docs} />
+      <CollectionArchive posts={posts.docs} relationTo="blog" />
 
       <div className="container my-space-8 flex flex-col items-center justify-between gap-4 md:flex-row">
         {posts.totalPages > 1 && posts.page && (

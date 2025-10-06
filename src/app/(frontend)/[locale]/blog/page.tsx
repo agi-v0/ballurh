@@ -107,7 +107,7 @@ export default async function Page({ params: paramsPromise }: Args) {
       </div>
       <RecentBlogPosts posts={posts.docs.slice(0, 5) as any} />
 
-      <CollectionArchive posts={posts.docs as BlogPost[]} />
+      <CollectionArchive posts={posts.docs as BlogPost[]} relationTo="blog" />
 
       <div className="container my-space-8 flex flex-col items-center justify-between gap-4 md:flex-row">
         {posts.totalPages > 1 && posts.page && (

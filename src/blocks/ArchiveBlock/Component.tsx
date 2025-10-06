@@ -53,7 +53,7 @@ export const ArchiveBlock: React.FC<
 
   return (
     <div className="my-16" id={`block-${id}`}>
-      <CollectionArchive posts={posts} />
+      <CollectionArchive posts={posts} relationTo="blog" />
     </div>
   )
 }
