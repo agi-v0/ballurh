@@ -5,6 +5,7 @@ import { cn } from '@/utilities/ui'
 
 export type RecentBlogPostsProps = {
   posts: BlogPost[]
+  relationTo: 'blog' | 'news'
 }
 
 function formatDate(dateString?: string | null) {
@@ -20,7 +21,7 @@ function formatDate(dateString?: string | null) {
     .toUpperCase()
 }
 
-export const RecentBlogPosts: React.FC<RecentBlogPostsProps> = ({ posts }) => {
+export const RecentBlogPosts: React.FC<RecentBlogPostsProps> = ({ posts, relationTo }) => {
   if (!posts || posts.length === 0) return null
   const [featured, ...rest] = posts
   return (
@@ -76,7 +77,7 @@ export const RecentBlogPosts: React.FC<RecentBlogPostsProps> = ({ posts }) => {
                   )}
               </div>
               <Link
-                href={`/blog/${post.slug || ''}`}
+                href={relationTo + '/' + (post.slug || '')}
                 className="block text-start text-main font-medium text-base-primary transition-colors hover:text-base-secondary"
               >
                 {post.title}

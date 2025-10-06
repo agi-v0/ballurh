@@ -105,7 +105,7 @@ export default async function Page({ params: paramsPromise }: Args) {
           </div>
         )}
       </div>
-      <RecentBlogPosts posts={posts.docs.slice(0, 5) as any} />
+      <RecentBlogPosts posts={posts.docs.slice(0, 5) as any} relationTo="blog" />
 
       <CollectionArchive posts={posts.docs as BlogPost[]} relationTo="blog" />
 
