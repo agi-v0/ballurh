@@ -3,6 +3,7 @@ import { Locale } from 'payload'
 
 const collectionPrefixMap: Partial<Record<CollectionSlug, string>> = {
   'blog-posts': '/blog',
+  news: '/news',
   pages: '',
   customers: '/customers',
   // integrations: '/marketplace',

@@ -184,8 +184,15 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   CREATE INDEX "_news_v_rels_news_id_idx" ON "_news_v_rels" USING btree ("news_id","locale");
   CREATE INDEX "_news_v_rels_categories_id_idx" ON "_news_v_rels" USING btree ("categories_id","locale");
   CREATE INDEX "_news_v_rels_users_id_idx" ON "_news_v_rels" USING btree ("users_id","locale");
-  ALTER TABLE "payload_locked_documents_rels" ADD CONSTRAINT "payload_locked_documents_rels_news_fk" FOREIGN KEY ("news_id") REFERENCES "public"."news"("id") ON DELETE cascade ON UPDATE no action;
+  
+  DO $$ BEGIN
+   ALTER TABLE "payload_locked_documents_rels" ADD CONSTRAINT "payload_locked_documents_rels_news_fk" FOREIGN KEY ("news_id") REFERENCES "public"."news"("id") ON DELETE cascade ON UPDATE no action;
+  EXCEPTION
+   WHEN duplicate_object THEN null;
+  END $$;
+
   CREATE INDEX "payload_locked_documents_rels_news_id_idx" ON "payload_locked_documents_rels" USING btree ("news_id");
+
   DROP TYPE "public"."enum_archiveBlock_block_header_type";
   DROP TYPE "public"."enum_archiveBlock_block_header_badge_type";
   DROP TYPE "public"."enum_archiveBlock_populate_by";
@@ -421,7 +428,7 @@ export async function down({ db, payload, req }: MigrateDownArgs): Promise<void>
   DROP TABLE "_news_v" CASCADE;
   DROP TABLE "_news_v_locales" CASCADE;
   DROP TABLE "_news_v_rels" CASCADE;
-  ALTER TABLE "payload_locked_documents_rels" DROP CONSTRAINT "payload_locked_documents_rels_news_fk";
+  ALTER TABLE "payload_locked_documents_rels" DROP CONSTRAINT IF EXISTS "payload_locked_documents_rels_news_fk";
   
   DROP INDEX "payload_locked_documents_rels_news_id_idx";
   ALTER TABLE "archiveBlock_block_header_links" ADD CONSTRAINT "archiveBlock_block_header_links_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."archiveBlock"("id") ON DELETE cascade ON UPDATE no action;

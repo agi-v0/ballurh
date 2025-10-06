@@ -16,7 +16,7 @@ export type CMSLinkType = {
   label?: string | null
   newTab?: boolean | null
   reference?: {
-    relationTo: 'pages' | 'blog-posts'
+    relationTo: 'pages' | 'blog-posts' | 'news'
     value: Page | BlogPost | string | number
   } | null
   size?: ButtonProps['size'] | null

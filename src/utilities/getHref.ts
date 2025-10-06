@@ -23,8 +23,8 @@ export function getHref(link: CMSLinkType) {
         return `/${slug || ''}`
       case 'blog-posts':
         return `/blog/${slug || ''}`
-      // case 'solutions':
-      //   return `/solutions/${slug || ''}`
+      case 'news':
+        return `/news/${slug || ''}`
       // case 'integrations':
       //   return `/marketplace/${slug || ''}`
       default:

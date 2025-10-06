@@ -236,6 +236,10 @@ export interface BlockHeader {
             | ({
                 relationTo: 'blog-posts';
                 value: string | BlogPost;
+              } | null)
+            | ({
+                relationTo: 'news';
+                value: string | News;
               } | null);
           url?: string | null;
           label: string;
@@ -302,6 +306,10 @@ export interface Page {
               | ({
                   relationTo: 'blog-posts';
                   value: string | BlogPost;
+                } | null)
+              | ({
+                  relationTo: 'news';
+                  value: string | News;
                 } | null);
             url?: string | null;
             label: string;
@@ -603,6 +611,53 @@ export interface User {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "news".
+ */
+export interface News {
+  id: string;
+  title: string;
+  heroImage?: (string | null) | Media;
+  content: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  };
+  relatedPosts?: (string | News)[] | null;
+  categories?: (string | Category)[] | null;
+  meta?: {
+    title?: string | null;
+    /**
+     * Maximum upload file size: 12MB. Recommended file size for images is <500KB.
+     */
+    image?: (string | null) | Media;
+    description?: string | null;
+  };
+  publishedAt?: string | null;
+  authors?: (string | User)[] | null;
+  populatedAuthors?:
+    | {
+        id?: string | null;
+        name?: string | null;
+      }[]
+    | null;
+  slug?: string | null;
+  slugLock?: boolean | null;
+  updatedAt: string;
+  createdAt: string;
+  _status?: ('draft' | 'published') | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "CallToActionBlock".
  */
 export interface CallToActionBlock {
@@ -658,6 +713,10 @@ export interface CallToActionBlock {
             | ({
                 relationTo: 'blog-posts';
                 value: string | BlogPost;
+              } | null)
+            | ({
+                relationTo: 'news';
+                value: string | News;
               } | null);
           url?: string | null;
           label: string;
@@ -937,6 +996,10 @@ export interface FeaturesBlock {
       | ({
           relationTo: 'blog-posts';
           value: string | BlogPost;
+        } | null)
+      | ({
+          relationTo: 'news';
+          value: string | News;
         } | null);
     url?: string | null;
     label: string;
@@ -1020,6 +1083,10 @@ export interface FeaturesBlock {
             | ({
                 relationTo: 'blog-posts';
                 value: string | BlogPost;
+              } | null)
+            | ({
+                relationTo: 'news';
+                value: string | News;
               } | null);
           url?: string | null;
           label: string;
@@ -1310,6 +1377,10 @@ export interface Customer {
           | ({
               relationTo: 'blog-posts';
               value: string | BlogPost;
+            } | null)
+          | ({
+              relationTo: 'news';
+              value: string | News;
             } | null);
         url?: string | null;
         label: string;
@@ -1488,53 +1559,6 @@ export interface StyledListBlock {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "news".
- */
-export interface News {
-  id: string;
-  title: string;
-  heroImage?: (string | null) | Media;
-  content: {
-    root: {
-      type: string;
-      children: {
-        type: any;
-        version: number;
-        [k: string]: unknown;
-      }[];
-      direction: ('ltr' | 'rtl') | null;
-      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-      indent: number;
-      version: number;
-    };
-    [k: string]: unknown;
-  };
-  relatedPosts?: (string | News)[] | null;
-  categories?: (string | Category)[] | null;
-  meta?: {
-    title?: string | null;
-    /**
-     * Maximum upload file size: 12MB. Recommended file size for images is <500KB.
-     */
-    image?: (string | null) | Media;
-    description?: string | null;
-  };
-  publishedAt?: string | null;
-  authors?: (string | User)[] | null;
-  populatedAuthors?:
-    | {
-        id?: string | null;
-        name?: string | null;
-      }[]
-    | null;
-  slug?: string | null;
-  slugLock?: boolean | null;
-  updatedAt: string;
-  createdAt: string;
-  _status?: ('draft' | 'published') | null;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "redirects".
  */
 export interface Redirect {
@@ -1553,6 +1577,10 @@ export interface Redirect {
       | ({
           relationTo: 'blog-posts';
           value: string | BlogPost;
+        } | null)
+      | ({
+          relationTo: 'news';
+          value: string | News;
         } | null);
     url?: string | null;
   };
@@ -2467,6 +2495,10 @@ export interface Setting {
         | ({
             relationTo: 'blog-posts';
             value: string | BlogPost;
+          } | null)
+        | ({
+            relationTo: 'news';
+            value: string | News;
           } | null);
       url?: string | null;
       label: string;
@@ -2501,6 +2533,10 @@ export interface Header {
             | ({
                 relationTo: 'blog-posts';
                 value: string | BlogPost;
+              } | null)
+            | ({
+                relationTo: 'news';
+                value: string | News;
               } | null);
           url?: string | null;
         };
@@ -2518,6 +2554,10 @@ export interface Header {
                   | ({
                       relationTo: 'blog-posts';
                       value: string | BlogPost;
+                    } | null)
+                  | ({
+                      relationTo: 'news';
+                      value: string | News;
                     } | null);
                 url?: string | null;
                 label: string;
@@ -2540,6 +2580,10 @@ export interface Header {
                     | ({
                         relationTo: 'blog-posts';
                         value: string | BlogPost;
+                      } | null)
+                    | ({
+                        relationTo: 'news';
+                        value: string | News;
                       } | null);
                   url?: string | null;
                   label: string;
@@ -2580,6 +2624,10 @@ export interface Header {
                           | ({
                               relationTo: 'blog-posts';
                               value: string | BlogPost;
+                            } | null)
+                          | ({
+                              relationTo: 'news';
+                              value: string | News;
                             } | null);
                         url?: string | null;
                         label: string;
@@ -2607,6 +2655,10 @@ export interface Header {
                           | ({
                               relationTo: 'blog-posts';
                               value: string | BlogPost;
+                            } | null)
+                          | ({
+                              relationTo: 'news';
+                              value: string | News;
                             } | null);
                         url?: string | null;
                         label: string;
@@ -2639,6 +2691,10 @@ export interface Header {
             | ({
                 relationTo: 'blog-posts';
                 value: string | BlogPost;
+              } | null)
+            | ({
+                relationTo: 'news';
+                value: string | News;
               } | null);
           url?: string | null;
           label: string;
@@ -2679,6 +2735,10 @@ export interface Footer {
                   | ({
                       relationTo: 'blog-posts';
                       value: string | BlogPost;
+                    } | null)
+                  | ({
+                      relationTo: 'news';
+                      value: string | News;
                     } | null);
                 url?: string | null;
                 label: string;

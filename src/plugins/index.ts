@@ -27,7 +27,7 @@ const generateURL: GenerateURL<BlogPost | Page> = ({ doc }) => {
 
 export const plugins: Plugin[] = [
   redirectsPlugin({
-    collections: ['pages', 'blog-posts'],
+    collections: ['pages', 'blog-posts', 'news'],
     overrides: {
       // @ts-expect-error - This is a valid override, mapped fields don't resolve to the same type
       fields: ({ defaultFields }) => {
@@ -93,7 +93,7 @@ export const plugins: Plugin[] = [
   }),
   translator({
     // collections with the enabled translator in the admin UI
-    collections: ['pages', 'blog-posts', 'categories', 'faq', 'customers', 'media'],
+    collections: ['pages', 'blog-posts', 'news', 'categories', 'faq', 'customers', 'media'],
     // globals with the enabled translator in the admin UI
     globals: ['header', 'footer'],
     // add resolvers that you want to include, examples on how to write your own in ./plugin/src/resolvers
