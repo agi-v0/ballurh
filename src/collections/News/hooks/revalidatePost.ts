@@ -11,12 +11,12 @@ export const revalidatePost: CollectionAfterChangeHook<BlogPost> = ({
 }) => {
   if (!context.disableRevalidate) {
     if (doc._status === 'published') {
-      const path = `/news/${doc.slug}`
+      const path = `/ar/news/${doc.slug}`
 
       payload.logger.info(`Revalidating post at path: ${path}`)
 
       revalidatePath(path)
-      revalidatePath('/news')
+      revalidatePath('/ar/news')
       revalidateTag('news-sitemap')
     }
 
