@@ -101,7 +101,7 @@ export const HeaderClient: React.FC<HeaderType & AdminBarProps> = ({
           locale={locale}
           className="hidden lg:relative lg:flex lg:w-full lg:items-center lg:justify-end"
         />
-        <div className="flex flex-shrink-0 justify-end lg:hidden">
+        <div className="flex flex-shrink-0 justify-end gap-1 lg:hidden">
           {locale && <LanguageSwitcher locale={locale} />}
           <AnimatedToggle
             isOpen={isMobileNavOpen}
