@@ -37,12 +37,12 @@ export const RecentBlogPosts: React.FC<RecentBlogPostsProps> = ({ posts, relatio
       <div className="grid grid-cols-4 gap-space-7 lg:grid-cols-16">
         {/* Featured post */}
         <div className="col-span-4 flex flex-1 flex-col gap-4 overflow-hidden rounded-3xl lg:col-span-12">
-          {featured.meta?.image &&
-            typeof featured.meta.image !== 'string' &&
-            featured.meta.image.url && (
+          {featured.heroImage &&
+            typeof featured.heroImage !== 'string' &&
+            featured.heroImage.url && (
               <div
                 className="aspect-video h-auto w-full rounded-3xl bg-cover bg-center"
-                style={{ backgroundImage: `url('${featured.meta.image.url}')` }}
+                style={{ backgroundImage: `url('${featured.heroImage.url}')` }}
               />
             )}
           <div className="flex flex-col gap-2">
