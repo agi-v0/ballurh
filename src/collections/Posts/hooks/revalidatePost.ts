@@ -7,25 +7,27 @@ import type { BlogPost } from '../../../payload-types'
 export const revalidatePost: CollectionAfterChangeHook<BlogPost> = ({
   doc,
   previousDoc,
-  req: { payload, context },
+  req: { payload, context, locale },
 }) => {
   if (!context.disableRevalidate) {
     if (doc._status === 'published') {
-      const path = `/blog/${doc.slug}`
+      const path = `/${locale}/blog/${doc.slug}`
 
       payload.logger.info(`Revalidating post at path: ${path}`)
 
       revalidatePath(path)
+      revalidatePath(`/${locale}/blog`)
       revalidateTag('posts-sitemap')
     }
 
     // If the post was previously published, we need to revalidate the old path
     if (previousDoc._status === 'published' && doc._status !== 'published') {
-      const oldPath = `/blog/${previousDoc.slug}`
+      const oldPath = `/${locale}/blog/${previousDoc.slug}`
 
       payload.logger.info(`Revalidating old post at path: ${oldPath}`)
 
       revalidatePath(oldPath)
+      revalidatePath(`/${locale}/blog`)
       revalidateTag('posts-sitemap')
     }
   }
@@ -34,10 +36,10 @@ export const revalidatePost: CollectionAfterChangeHook<BlogPost> = ({
 
 export const revalidateDelete: CollectionAfterDeleteHook<BlogPost> = ({
   doc,
-  req: { context },
+  req: { context, locale },
 }) => {
   if (!context.disableRevalidate) {
-    const path = `/blog/${doc?.slug}`
+    const path = `/${locale}/blog/${doc.slug}`
 
     revalidatePath(path)
     revalidateTag('posts-sitemap')
