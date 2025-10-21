@@ -72,7 +72,6 @@ export const TestimonialsBlock02: React.FC<Props> = ({ testimonials, bgColor, li
                 {authorInfo.avatar && (
                   <Media
                     resource={authorInfo.avatar}
-                    fill
                     className="relative size-12 overflow-hidden rounded-full"
                     imgClassName="object-cover"
                   />

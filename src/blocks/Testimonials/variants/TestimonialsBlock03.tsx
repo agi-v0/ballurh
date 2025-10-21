@@ -52,7 +52,7 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({ testimonial, linkLabe
 
         {stats && stats.length > 0 && (
           <div
-            className="border-neutral/10 gap-xs pt-xs grid w-full grid-cols-2 border-t lg:grid-cols-[repeat(var(--cols),minmax(0,1fr))]"
+            className="gap-xs pt-xs grid w-full grid-cols-2 border-t border-neutral/10 lg:grid-cols-[repeat(var(--cols),minmax(0,1fr))]"
             style={
               {
                 '--cols': stats?.length || 0,
@@ -70,7 +70,6 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({ testimonial, linkLabe
               {authorInfo.avatar && (
                 <Media
                   resource={authorInfo.avatar}
-                  fill
                   className="size-lg relative overflow-hidden rounded-full"
                   imgClassName="object-cover"
                 />
