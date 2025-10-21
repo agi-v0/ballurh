@@ -11,6 +11,7 @@ import {
 import { linkGroup } from '@/fields/linkGroup'
 import { badge } from '@/fields/badge'
 import { StyledList } from '@/blocks/StyledList/config'
+import { EMPTY_CONTENT } from '@/utilities/defaultRichTextContent'
 
 const editorWithStyledList = lexicalEditor({
   features: ({ rootFeatures }) => {
@@ -59,6 +60,7 @@ export const blockHeader: Field = {
       editor: editorWithStyledList,
       label: false,
       localized: true,
+      defaultValue: EMPTY_CONTENT,
     },
     linkGroup({
       overrides: {

@@ -13,6 +13,7 @@ import { mediaGroup } from '@/fields/media'
 import { logos } from '@/fields/logos'
 import remixIcons from '@/fields/iconPickerField/remix-icons.json'
 import { iconPickerField } from '@/fields/iconPickerField'
+import { EMPTY_CONTENT } from '@/utilities/defaultRichTextContent'
 
 export const hero: Field = {
   name: 'hero',
@@ -60,6 +61,7 @@ export const hero: Field = {
       }),
       label: false,
       localized: true,
+      defaultValue: EMPTY_CONTENT,
     },
     linkGroup({
       overrides: {

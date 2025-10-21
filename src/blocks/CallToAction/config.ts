@@ -13,6 +13,8 @@ import remixIcons from '@/fields/iconPickerField/remix-icons.json'
 import { badge } from '@/fields/badge'
 import { linkGroup } from '@/fields/linkGroup'
 import { mediaGroup } from '@/fields/media'
+import { getDefaultAutoSelectFamily } from 'node:net'
+import { EMPTY_CONTENT } from '@/utilities/defaultRichTextContent'
 
 export const CallToActionBlock: Block = {
   slug: 'callToActionBlock',
@@ -52,6 +54,7 @@ export const CallToActionBlock: Block = {
         },
       }),
       label: false,
+      defaultValue: EMPTY_CONTENT,
     },
     {
       type: 'collapsible',

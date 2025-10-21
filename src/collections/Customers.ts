@@ -14,6 +14,7 @@ import { link } from '@/fields/link'
 
 import { generatePreviewPath } from '@/utilities/generatePreviewPath'
 import { stats } from '@/fields/stats'
+import { EMPTY_CONTENT } from '@/utilities/defaultRichTextContent'
 
 export const Customers: CollectionConfig = {
   slug: 'customers',
@@ -84,6 +85,8 @@ export const Customers: CollectionConfig = {
                 },
               }),
               localized: true,
+              defaultValue: EMPTY_CONTENT,
+
               required: true,
               admin: {
                 description: '',
@@ -260,6 +263,7 @@ export const Customers: CollectionConfig = {
               label: 'Content',
               type: 'richText',
               localized: true,
+              defaultValue: EMPTY_CONTENT,
               editor: lexicalEditor({
                 features: ({ rootFeatures }) => {
                   return [

@@ -26,6 +26,7 @@ import {
   PreviewField,
 } from '@payloadcms/plugin-seo/fields'
 import { slugField } from '@/fields/slug'
+import { EMPTY_CONTENT } from '@/utilities/defaultRichTextContent'
 // import { CallToActionBlock } from '@/blocks/CallToAction/config'
 // import { FaqBlock } from '@/blocks/FAQ/config'
 // import { GalleryBlock } from '@/blocks/Gallery/config'
@@ -118,6 +119,7 @@ export const Posts: CollectionConfig<'blog-posts'> = {
               }),
               label: false,
               required: true,
+              defaultValue: EMPTY_CONTENT,
             },
           ],
           label: 'Content',

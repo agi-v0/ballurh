@@ -14,6 +14,7 @@ import { badge } from '@/fields/badge'
 import { iconPickerField } from '@/fields/iconPickerField'
 import remixIcons from '@/fields/iconPickerField/remix-icons.json'
 import { StyledList } from '@/blocks/StyledList/config'
+import { EMPTY_CONTENT } from '@/utilities/defaultRichTextContent'
 
 const richTextEditor = lexicalEditor({
   features: ({ rootFeatures }) => {
@@ -228,6 +229,7 @@ export const FeaturesBlock: Block = {
                   ['01', '04', '05'].includes(blockData?.type),
               },
               localized: true,
+              defaultValue: EMPTY_CONTENT,
             },
             {
               label: 'Featured stat',

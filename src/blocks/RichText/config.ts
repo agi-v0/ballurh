@@ -8,6 +8,7 @@ import {
 } from '@payloadcms/richtext-lexical'
 import { blockHeader } from '@/components/BlockHeader/config'
 import { StyledList } from '@/blocks/StyledList/config'
+import { EMPTY_CONTENT } from '@/utilities/defaultRichTextContent'
 
 const richTextEditor = lexicalEditor({
   features: ({ rootFeatures }) => {
@@ -76,6 +77,7 @@ export const RichTextBlock: Block = {
           editor: richTextEditor,
           required: true,
           localized: true,
+          defaultValue: EMPTY_CONTENT,
         },
       ],
     },
