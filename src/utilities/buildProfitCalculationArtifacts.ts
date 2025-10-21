@@ -89,10 +89,10 @@ export function buildProfitCalculationArtifacts(data: FormData): ProfitCalculati
   const totalMonthlyTransactionExpenses =
     monthlyOnlinePaymentAmount + monthlySalesCommissionsAmount + monthlyDisputesAmount
 
-  const monthlyDeliverySurchargeAmount = monthlyOrdersNumber * deliveryFeeBorne
+  const monthlyDeliverySurchargeAmount = monthlyOrdersNumber * deliveryFeeBorne // مبلغ التحمل بالتوصيل
 
-  const totalMonthlyMarketingAmount = monthlyDeliverySurchargeAmount + monthlyAdBudgetNumber
-  const marketingSalesPercentage = round(totalMonthlyMarketingAmount / monthlySalesNumber)
+  const totalMonthlyMarketingAmount = monthlyDeliverySurchargeAmount + monthlyAdBudgetNumber // اجمالى م التسويق
+  const marketingSalesPercentage = round(totalMonthlyMarketingAmount / monthlySalesNumber) // % م التسويق من المبيعات
   const totalMonthlyExpenseAmounts = totalMonthlyTransactionExpenses + totalMonthlyMarketingAmount
 
   const totalExpensesPctOfSales = round(totalMonthlyExpenseAmounts / monthlySalesNumber)
@@ -219,6 +219,25 @@ export function buildProfitCalculationArtifacts(data: FormData): ProfitCalculati
   const recommendations: ProfitabilityReportEmailProps['recommendations'] = []
   const markupPct = Math.round(metrics.priceMarkupToCoverAppFee * 100)
 
+  recommendations.push({
+    title: 'زيادة المبيعات',
+    description:
+      'تاكد من توفر اهم المنتجات متاحة على للبيع على منصات التوصيل - اجعل اهم المنتجات والأكثر ربحية في الأعلى ',
+  })
+
+  recommendations.push({
+    title: 'توفير من مبلغ التعويضات',
+    description: 'كل تعويض = خسارة قابلة للتفادي',
+  })
+
+  if (monthlyAdBudgetNumber > monthlySalesNumber * 0.05) {
+    recommendations.push({
+      title: 'تحقيق الكفاءة في التسويق',
+      description:
+        'إذا جربت إعلانات  - Top List CPC، راقب الأداء جيدًا (التحويلات، عدد الطلبات). لا تصرف عشوائيًا، بل حدد مناطق مستهدفة وأوقات فعالة (مثل الظهر والمساء).',
+    })
+  }
+
   if (avgCommissionRate > 0.25) {
     recommendations.push({
       title: 'تغطية عمولة التطبيقات بالتسعير',
@@ -231,7 +250,7 @@ export function buildProfitCalculationArtifacts(data: FormData): ProfitCalculati
     recommendations.push({
       title: 'خفض تكلفة المواد الغذائية',
       description:
-        'راجع حصص الوصفات واتفاقيات المورّدين، وراقب نسبة الهدر أسبوعيًا. استهدف نسبة تكلفة بين 25% و28% للأطباق الأساسية.',
+        'راجع حصص الوصفات واتفاقيات المورّدين، وراقب نسبة الهدر أسبوعيًا. استهدف نسبة تكلفة بين 25% و28% بالنسبة للمطاعم و15% - 25% للكافيهات.',
       impact: 'medium',
     })
   }
@@ -242,6 +261,13 @@ export function buildProfitCalculationArtifacts(data: FormData): ProfitCalculati
       description:
         'حوّل الميزانية نحو القنوات الأعلى مردودًا، واربِط الحملات بمؤشرات واضحة مثل CAC وROAS. اختبر عروضًا تعتمد على هامش الربح لا على الخصم العام.',
       impact: 'medium',
+    })
+  }
+
+  if (metrics.netProfitRate < 0.45) {
+    recommendations.push({
+      title: 'تحسين الربحية',
+      description: 'صافي الربح الصحي بعد تكاليف التطبيقات + تكاليف الطعام 45% - 55%',
     })
   }
 

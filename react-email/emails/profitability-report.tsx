@@ -310,7 +310,7 @@ export function ProfitabilityReportEmail(props: ProfitabilityReportEmailProps) {
                 وتتطلب مراجعة مالية مختصة.
               </Text>
             </div>
-            {/* {hasRecommendations && (
+            {hasRecommendations && (
               <>
                 <Text style={sectionTitle}>توصيات لتحسين الربحية</Text>
                 {recommendations.map((rec, idx) => {
@@ -334,16 +334,16 @@ export function ProfitabilityReportEmail(props: ProfitabilityReportEmailProps) {
                     <div key={`rec-${idx}`} style={recCard}>
                       {rec.title && <Text style={recTitleText}>{rec.title}</Text>}
                       <Text style={recBodyText}>{rec.description}</Text>
-                      {impactLabel && (
+                      {/*{impactLabel && (
                         <span style={{ ...chip, ...(impactColors || {}) }}>
                           تأثير: {impactLabel}
                         </span>
-                      )}
+                      )}*/}
                     </div>
                   )
                 })}
               </>
-            )} */}
+            )}
 
             <Text style={paragraph}>
               هل تريد خطة مخصّصة لزيادة هامش الربح بناءً على بيانات مطعمك؟ احجز مكالمة مجانية لمدة

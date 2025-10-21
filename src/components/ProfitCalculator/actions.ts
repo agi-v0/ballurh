@@ -18,7 +18,7 @@ export async function calculateProfit(data: FormData) {
   const first_name = name.split(' ')[0]
   const last_name = name.split(' ').toSpliced(0, 1).join(' ')
 
-  await posthog.identify({
+  posthog.identify({
     distinctId: email,
     properties: {
       email,
@@ -28,10 +28,11 @@ export async function calculateProfit(data: FormData) {
       business_name: businessName,
     },
   })
-  await posthog.capture({
+  posthog.capture({
     event: ProfitCalculatorEvents.SUBMITTED,
     distinctId: email,
   })
+
   await posthog.shutdown()
 
   const { hubspotFields, emailProps } = buildProfitCalculationArtifacts(data)
