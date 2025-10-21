@@ -17,8 +17,8 @@ import { CMSLink } from '@/components/Link'
 import type { BlogPost, Header as HeaderType, Page } from '@/payload-types'
 import RichText from '@/components/RichText'
 import { Icon } from '@iconify-icon/react'
-import { LanguageSwitcher } from '@/providers/LanguageSelector/index'
 import BallurhIcon from '@/components/ui/ballurh-icon'
+import { LanguageToggleButton } from '../LanguageToggleButton'
 
 interface DesktopNavProps extends Omit<HeaderType, 'id' | 'updatedAt' | 'createdAt'> {
   className?: string
@@ -148,7 +148,7 @@ export function DesktopNav({ tabs, cta, className, locale }: DesktopNavProps) {
         </NavigationMenu>
       </div>
       <div className="flex w-full max-w-54 flex-row items-center justify-end gap-1">
-        {locale && <LanguageSwitcher locale={locale} />}
+        <LanguageToggleButton locale={locale} className="px-3" />
 
         {cta &&
           cta.map((ctaItem, id) => (
