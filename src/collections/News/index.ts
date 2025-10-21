@@ -59,9 +59,8 @@ export const News: CollectionConfig<'news'> = {
           slug: typeof data?.slug === 'string' ? data.slug : '',
           collection: 'news',
           req,
-          locale,
+          locale: locale.code,
         })
-
         return path
       },
     },

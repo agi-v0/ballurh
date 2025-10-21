@@ -59,9 +59,8 @@ export const Posts: CollectionConfig<'blog-posts'> = {
           slug: typeof data?.slug === 'string' ? data.slug : '',
           collection: 'blog-posts',
           req,
-          locale,
+          locale: locale.code,
         })
-
         return path
       },
     },
