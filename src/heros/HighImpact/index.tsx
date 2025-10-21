@@ -106,7 +106,6 @@ export const HighImpactHero: React.FC<Page['hero']> = async ({ links, media, ric
       <div className="relative z-0 col-span-8 block select-none lg:col-start-10">
         {media && typeof media === 'object' && (
           <Media
-            fill
             className="relative aspect-1728/1117 h-[350px] w-auto md:h-auto md:w-full lg:h-[70vh] lg:w-auto"
             imgClassName="rounded-2xl object-cover object-right outline-4 outline-ring/50"
             priority
