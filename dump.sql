@@ -2,7 +2,7 @@
 -- PostgreSQL database dump
 --
 
-\restrict P2KiuQJb1dbhj9c4dgvAwypfYNUPsnndDnjoVQcZairXtU7K9ndiOSsgba6GEMv
+\restrict j6eaqZqSHhvJvmkbHk1aQfiodAreIMf7KcPghzqSahdOMzz0xqcTRpEhs14CzWc
 
 -- Dumped from database version 15.12
 -- Dumped by pg_dump version 15.14 (Debian 15.14-1.pgdg13+1)
@@ -34,6 +34,7 @@ ALTER TABLE IF EXISTS ONLY "public"."teamBlock_block_header_links" DROP CONSTRAI
 ALTER TABLE IF EXISTS ONLY "public"."teamBlock_block_header_links_locales" DROP CONSTRAINT IF EXISTS "teamBlock_block_header_links_locales_parent_id_fk";
 ALTER TABLE IF EXISTS ONLY "public"."settings_rels" DROP CONSTRAINT IF EXISTS "settings_rels_parent_fk";
 ALTER TABLE IF EXISTS ONLY "public"."settings_rels" DROP CONSTRAINT IF EXISTS "settings_rels_pages_fk";
+ALTER TABLE IF EXISTS ONLY "public"."settings_rels" DROP CONSTRAINT IF EXISTS "settings_rels_news_fk";
 ALTER TABLE IF EXISTS ONLY "public"."settings_rels" DROP CONSTRAINT IF EXISTS "settings_rels_blog_posts_fk";
 ALTER TABLE IF EXISTS ONLY "public"."settings_locales" DROP CONSTRAINT IF EXISTS "settings_locales_parent_id_fk";
 ALTER TABLE IF EXISTS ONLY "public"."settings_locales" DROP CONSTRAINT IF EXISTS "settings_locales_meta_image_id_media_id_fk";
@@ -48,6 +49,7 @@ ALTER TABLE IF EXISTS ONLY "public"."richTextBlock_block_header_links" DROP CONS
 ALTER TABLE IF EXISTS ONLY "public"."richTextBlock_block_header_links_locales" DROP CONSTRAINT IF EXISTS "richTextBlock_block_header_links_locales_parent_id_fk";
 ALTER TABLE IF EXISTS ONLY "public"."redirects_rels" DROP CONSTRAINT IF EXISTS "redirects_rels_parent_fk";
 ALTER TABLE IF EXISTS ONLY "public"."redirects_rels" DROP CONSTRAINT IF EXISTS "redirects_rels_pages_fk";
+ALTER TABLE IF EXISTS ONLY "public"."redirects_rels" DROP CONSTRAINT IF EXISTS "redirects_rels_news_fk";
 ALTER TABLE IF EXISTS ONLY "public"."redirects_rels" DROP CONSTRAINT IF EXISTS "redirects_rels_blog_posts_fk";
 ALTER TABLE IF EXISTS ONLY "public"."payload_preferences_rels" DROP CONSTRAINT IF EXISTS "payload_preferences_rels_users_fk";
 ALTER TABLE IF EXISTS ONLY "public"."payload_preferences_rels" DROP CONSTRAINT IF EXISTS "payload_preferences_rels_parent_fk";
@@ -71,6 +73,7 @@ ALTER TABLE IF EXISTS ONLY "public"."payload_folders_folder_type" DROP CONSTRAIN
 ALTER TABLE IF EXISTS ONLY "public"."payload_folders" DROP CONSTRAINT IF EXISTS "payload_folders_folder_id_payload_folders_id_fk";
 ALTER TABLE IF EXISTS ONLY "public"."pages_rels" DROP CONSTRAINT IF EXISTS "pages_rels_parent_fk";
 ALTER TABLE IF EXISTS ONLY "public"."pages_rels" DROP CONSTRAINT IF EXISTS "pages_rels_pages_fk";
+ALTER TABLE IF EXISTS ONLY "public"."pages_rels" DROP CONSTRAINT IF EXISTS "pages_rels_news_fk";
 ALTER TABLE IF EXISTS ONLY "public"."pages_rels" DROP CONSTRAINT IF EXISTS "pages_rels_media_fk";
 ALTER TABLE IF EXISTS ONLY "public"."pages_rels" DROP CONSTRAINT IF EXISTS "pages_rels_faq_fk";
 ALTER TABLE IF EXISTS ONLY "public"."pages_rels" DROP CONSTRAINT IF EXISTS "pages_rels_customers_fk";
@@ -125,6 +128,7 @@ ALTER TABLE IF EXISTS ONLY "public"."header_tabs_description_links" DROP CONSTRA
 ALTER TABLE IF EXISTS ONLY "public"."header_tabs_description_links_locales" DROP CONSTRAINT IF EXISTS "header_tabs_description_links_locales_parent_id_fk";
 ALTER TABLE IF EXISTS ONLY "public"."header_rels" DROP CONSTRAINT IF EXISTS "header_rels_parent_fk";
 ALTER TABLE IF EXISTS ONLY "public"."header_rels" DROP CONSTRAINT IF EXISTS "header_rels_pages_fk";
+ALTER TABLE IF EXISTS ONLY "public"."header_rels" DROP CONSTRAINT IF EXISTS "header_rels_news_fk";
 ALTER TABLE IF EXISTS ONLY "public"."header_rels" DROP CONSTRAINT IF EXISTS "header_rels_blog_posts_fk";
 ALTER TABLE IF EXISTS ONLY "public"."header_cta" DROP CONSTRAINT IF EXISTS "header_cta_parent_id_fk";
 ALTER TABLE IF EXISTS ONLY "public"."header_cta_locales" DROP CONSTRAINT IF EXISTS "header_cta_locales_parent_id_fk";
@@ -162,6 +166,7 @@ ALTER TABLE IF EXISTS ONLY "public"."form_submissions_submission_data" DROP CONS
 ALTER TABLE IF EXISTS ONLY "public"."form_submissions" DROP CONSTRAINT IF EXISTS "form_submissions_form_id_forms_id_fk";
 ALTER TABLE IF EXISTS ONLY "public"."footer_rels" DROP CONSTRAINT IF EXISTS "footer_rels_parent_fk";
 ALTER TABLE IF EXISTS ONLY "public"."footer_rels" DROP CONSTRAINT IF EXISTS "footer_rels_pages_fk";
+ALTER TABLE IF EXISTS ONLY "public"."footer_rels" DROP CONSTRAINT IF EXISTS "footer_rels_news_fk";
 ALTER TABLE IF EXISTS ONLY "public"."footer_rels" DROP CONSTRAINT IF EXISTS "footer_rels_blog_posts_fk";
 ALTER TABLE IF EXISTS ONLY "public"."footer_columns" DROP CONSTRAINT IF EXISTS "footer_columns_parent_id_fk";
 ALTER TABLE IF EXISTS ONLY "public"."footer_columns_nav_items" DROP CONSTRAINT IF EXISTS "footer_columns_nav_items_parent_id_fk";
@@ -188,6 +193,7 @@ ALTER TABLE IF EXISTS ONLY "public"."customers" DROP CONSTRAINT IF EXISTS "custo
 ALTER TABLE IF EXISTS ONLY "public"."customers" DROP CONSTRAINT IF EXISTS "customers_testimonial_author_info_avatar_id_media_id_fk";
 ALTER TABLE IF EXISTS ONLY "public"."customers_rels" DROP CONSTRAINT IF EXISTS "customers_rels_parent_fk";
 ALTER TABLE IF EXISTS ONLY "public"."customers_rels" DROP CONSTRAINT IF EXISTS "customers_rels_pages_fk";
+ALTER TABLE IF EXISTS ONLY "public"."customers_rels" DROP CONSTRAINT IF EXISTS "customers_rels_news_fk";
 ALTER TABLE IF EXISTS ONLY "public"."customers_rels" DROP CONSTRAINT IF EXISTS "customers_rels_categories_fk";
 ALTER TABLE IF EXISTS ONLY "public"."customers_rels" DROP CONSTRAINT IF EXISTS "customers_rels_blog_posts_fk";
 ALTER TABLE IF EXISTS ONLY "public"."customers_locales" DROP CONSTRAINT IF EXISTS "customers_locales_parent_id_fk";
@@ -238,6 +244,7 @@ ALTER TABLE IF EXISTS ONLY "public"."_pages_v_version_hero_links" DROP CONSTRAIN
 ALTER TABLE IF EXISTS ONLY "public"."_pages_v_version_hero_links_locales" DROP CONSTRAINT IF EXISTS "_pages_v_version_hero_links_locales_parent_id_fk";
 ALTER TABLE IF EXISTS ONLY "public"."_pages_v_rels" DROP CONSTRAINT IF EXISTS "_pages_v_rels_parent_fk";
 ALTER TABLE IF EXISTS ONLY "public"."_pages_v_rels" DROP CONSTRAINT IF EXISTS "_pages_v_rels_pages_fk";
+ALTER TABLE IF EXISTS ONLY "public"."_pages_v_rels" DROP CONSTRAINT IF EXISTS "_pages_v_rels_news_fk";
 ALTER TABLE IF EXISTS ONLY "public"."_pages_v_rels" DROP CONSTRAINT IF EXISTS "_pages_v_rels_media_fk";
 ALTER TABLE IF EXISTS ONLY "public"."_pages_v_rels" DROP CONSTRAINT IF EXISTS "_pages_v_rels_faq_fk";
 ALTER TABLE IF EXISTS ONLY "public"."_pages_v_rels" DROP CONSTRAINT IF EXISTS "_pages_v_rels_customers_fk";
@@ -305,6 +312,7 @@ ALTER TABLE IF EXISTS ONLY "public"."_customers_v" DROP CONSTRAINT IF EXISTS "_c
 ALTER TABLE IF EXISTS ONLY "public"."_customers_v" DROP CONSTRAINT IF EXISTS "_customers_v_version_testimonial_author_info_avatar_id_media_id";
 ALTER TABLE IF EXISTS ONLY "public"."_customers_v_rels" DROP CONSTRAINT IF EXISTS "_customers_v_rels_parent_fk";
 ALTER TABLE IF EXISTS ONLY "public"."_customers_v_rels" DROP CONSTRAINT IF EXISTS "_customers_v_rels_pages_fk";
+ALTER TABLE IF EXISTS ONLY "public"."_customers_v_rels" DROP CONSTRAINT IF EXISTS "_customers_v_rels_news_fk";
 ALTER TABLE IF EXISTS ONLY "public"."_customers_v_rels" DROP CONSTRAINT IF EXISTS "_customers_v_rels_categories_fk";
 ALTER TABLE IF EXISTS ONLY "public"."_customers_v_rels" DROP CONSTRAINT IF EXISTS "_customers_v_rels_blog_posts_fk";
 ALTER TABLE IF EXISTS ONLY "public"."_customers_v" DROP CONSTRAINT IF EXISTS "_customers_v_parent_id_customers_id_fk";
@@ -361,6 +369,7 @@ DROP INDEX IF EXISTS "public"."settings_rels_path_idx";
 DROP INDEX IF EXISTS "public"."settings_rels_parent_idx";
 DROP INDEX IF EXISTS "public"."settings_rels_pages_id_idx";
 DROP INDEX IF EXISTS "public"."settings_rels_order_idx";
+DROP INDEX IF EXISTS "public"."settings_rels_news_id_idx";
 DROP INDEX IF EXISTS "public"."settings_rels_blog_posts_id_idx";
 DROP INDEX IF EXISTS "public"."settings_meta_meta_image_idx";
 DROP INDEX IF EXISTS "public"."settings_locales_locale_parent_id_unique";
@@ -387,6 +396,7 @@ DROP INDEX IF EXISTS "public"."redirects_rels_path_idx";
 DROP INDEX IF EXISTS "public"."redirects_rels_parent_idx";
 DROP INDEX IF EXISTS "public"."redirects_rels_pages_id_idx";
 DROP INDEX IF EXISTS "public"."redirects_rels_order_idx";
+DROP INDEX IF EXISTS "public"."redirects_rels_news_id_idx";
 DROP INDEX IF EXISTS "public"."redirects_rels_blog_posts_id_idx";
 DROP INDEX IF EXISTS "public"."redirects_from_idx";
 DROP INDEX IF EXISTS "public"."redirects_created_at_idx";
@@ -442,6 +452,7 @@ DROP INDEX IF EXISTS "public"."pages_rels_path_idx";
 DROP INDEX IF EXISTS "public"."pages_rels_parent_idx";
 DROP INDEX IF EXISTS "public"."pages_rels_pages_id_idx";
 DROP INDEX IF EXISTS "public"."pages_rels_order_idx";
+DROP INDEX IF EXISTS "public"."pages_rels_news_id_idx";
 DROP INDEX IF EXISTS "public"."pages_rels_media_id_idx";
 DROP INDEX IF EXISTS "public"."pages_rels_locale_idx";
 DROP INDEX IF EXISTS "public"."pages_rels_faq_id_idx";
@@ -545,6 +556,7 @@ DROP INDEX IF EXISTS "public"."header_rels_path_idx";
 DROP INDEX IF EXISTS "public"."header_rels_parent_idx";
 DROP INDEX IF EXISTS "public"."header_rels_pages_id_idx";
 DROP INDEX IF EXISTS "public"."header_rels_order_idx";
+DROP INDEX IF EXISTS "public"."header_rels_news_id_idx";
 DROP INDEX IF EXISTS "public"."header_rels_blog_posts_id_idx";
 DROP INDEX IF EXISTS "public"."header_cta_parent_id_idx";
 DROP INDEX IF EXISTS "public"."header_cta_order_idx";
@@ -614,6 +626,7 @@ DROP INDEX IF EXISTS "public"."footer_rels_path_idx";
 DROP INDEX IF EXISTS "public"."footer_rels_parent_idx";
 DROP INDEX IF EXISTS "public"."footer_rels_pages_id_idx";
 DROP INDEX IF EXISTS "public"."footer_rels_order_idx";
+DROP INDEX IF EXISTS "public"."footer_rels_news_id_idx";
 DROP INDEX IF EXISTS "public"."footer_rels_blog_posts_id_idx";
 DROP INDEX IF EXISTS "public"."footer_columns_parent_id_idx";
 DROP INDEX IF EXISTS "public"."footer_columns_order_idx";
@@ -659,6 +672,7 @@ DROP INDEX IF EXISTS "public"."customers_rels_path_idx";
 DROP INDEX IF EXISTS "public"."customers_rels_parent_idx";
 DROP INDEX IF EXISTS "public"."customers_rels_pages_id_idx";
 DROP INDEX IF EXISTS "public"."customers_rels_order_idx";
+DROP INDEX IF EXISTS "public"."customers_rels_news_id_idx";
 DROP INDEX IF EXISTS "public"."customers_rels_categories_id_idx";
 DROP INDEX IF EXISTS "public"."customers_rels_blog_posts_id_idx";
 DROP INDEX IF EXISTS "public"."customers_locales_locale_parent_id_unique";
@@ -757,6 +771,7 @@ DROP INDEX IF EXISTS "public"."_pages_v_rels_path_idx";
 DROP INDEX IF EXISTS "public"."_pages_v_rels_parent_idx";
 DROP INDEX IF EXISTS "public"."_pages_v_rels_pages_id_idx";
 DROP INDEX IF EXISTS "public"."_pages_v_rels_order_idx";
+DROP INDEX IF EXISTS "public"."_pages_v_rels_news_id_idx";
 DROP INDEX IF EXISTS "public"."_pages_v_rels_media_id_idx";
 DROP INDEX IF EXISTS "public"."_pages_v_rels_locale_idx";
 DROP INDEX IF EXISTS "public"."_pages_v_rels_faq_id_idx";
@@ -885,6 +900,7 @@ DROP INDEX IF EXISTS "public"."_customers_v_rels_path_idx";
 DROP INDEX IF EXISTS "public"."_customers_v_rels_parent_idx";
 DROP INDEX IF EXISTS "public"."_customers_v_rels_pages_id_idx";
 DROP INDEX IF EXISTS "public"."_customers_v_rels_order_idx";
+DROP INDEX IF EXISTS "public"."_customers_v_rels_news_id_idx";
 DROP INDEX IF EXISTS "public"."_customers_v_rels_categories_id_idx";
 DROP INDEX IF EXISTS "public"."_customers_v_rels_blog_posts_id_idx";
 DROP INDEX IF EXISTS "public"."_customers_v_published_locale_idx";
@@ -3038,7 +3054,7 @@ ALTER SEQUENCE "public"."_archiveBlock_v_block_header_links_locales_id_seq" OWNE
 
 CREATE TABLE "public"."_archiveBlock_v_locales" (
     "block_header_badge_label" character varying,
-    "block_header_header_text" "jsonb",
+    "block_header_header_text" "jsonb" DEFAULT '{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [], "direction": null}], "direction": null}}'::"jsonb",
     "id" integer NOT NULL,
     "_locale" "public"."_locales" NOT NULL,
     "_parent_id" "uuid" NOT NULL
@@ -3090,7 +3106,7 @@ CREATE TABLE "public"."_blog_posts_v" (
 CREATE TABLE "public"."_blog_posts_v_locales" (
     "version_title" character varying,
     "version_hero_image_id" "uuid",
-    "version_content" "jsonb",
+    "version_content" "jsonb" DEFAULT '{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [], "direction": null}], "direction": null}}'::"jsonb",
     "version_meta_title" character varying,
     "version_meta_image_id" "uuid",
     "version_meta_description" character varying,
@@ -3264,7 +3280,7 @@ CREATE TABLE "public"."_callToActionBlock_v_list" (
 
 CREATE TABLE "public"."_callToActionBlock_v_locales" (
     "badge_label" character varying,
-    "rich_text" "jsonb",
+    "rich_text" "jsonb" DEFAULT '{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [], "direction": null}], "direction": null}}'::"jsonb",
     "media_desktop_light_id" "uuid",
     "media_desktop_dark_id" "uuid",
     "media_mobile_light_id" "uuid",
@@ -3333,7 +3349,7 @@ CREATE TABLE "public"."_customers_v" (
 --
 
 CREATE TABLE "public"."_customers_v_locales" (
-    "version_testimonial_quote" "jsonb",
+    "version_testimonial_quote" "jsonb" DEFAULT '{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [], "direction": null}], "direction": null}}'::"jsonb",
     "version_testimonial_company_company_name" character varying,
     "version_testimonial_company_link_label" character varying,
     "version_testimonial_company_location" character varying,
@@ -3341,7 +3357,7 @@ CREATE TABLE "public"."_customers_v_locales" (
     "version_testimonial_author_info_title" character varying,
     "version_case_study_case_studytitle" character varying,
     "version_case_study_summary" character varying,
-    "version_case_study_content" "jsonb",
+    "version_case_study_content" "jsonb" DEFAULT '{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [], "direction": null}], "direction": null}}'::"jsonb",
     "id" integer NOT NULL,
     "_locale" "public"."_locales" NOT NULL,
     "_parent_id" "uuid" NOT NULL
@@ -3379,7 +3395,8 @@ CREATE TABLE "public"."_customers_v_rels" (
     "path" character varying NOT NULL,
     "pages_id" "uuid",
     "blog_posts_id" "uuid",
-    "categories_id" "uuid"
+    "categories_id" "uuid",
+    "news_id" "uuid"
 );
 
 
@@ -3540,7 +3557,7 @@ ALTER SEQUENCE "public"."_faqBlock_v_block_header_links_locales_id_seq" OWNED BY
 
 CREATE TABLE "public"."_faqBlock_v_locales" (
     "block_header_badge_label" character varying,
-    "block_header_header_text" "jsonb",
+    "block_header_header_text" "jsonb" DEFAULT '{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [], "direction": null}], "direction": null}}'::"jsonb",
     "id" integer NOT NULL,
     "_locale" "public"."_locales" NOT NULL,
     "_parent_id" "uuid" NOT NULL
@@ -3726,7 +3743,7 @@ CREATE TABLE "public"."_featuresBlock_v_columns_locales" (
     "image_id" "uuid",
     "content_title" character varying,
     "content_subtitle" character varying,
-    "rich_text_content" "jsonb",
+    "rich_text_content" "jsonb" DEFAULT '{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [], "direction": null}], "direction": null}}'::"jsonb",
     "badge_label" character varying,
     "link_label" character varying,
     "id" integer NOT NULL,
@@ -3763,7 +3780,7 @@ ALTER SEQUENCE "public"."_featuresBlock_v_columns_locales_id_seq" OWNED BY "publ
 
 CREATE TABLE "public"."_featuresBlock_v_locales" (
     "block_header_badge_label" character varying,
-    "block_header_header_text" "jsonb",
+    "block_header_header_text" "jsonb" DEFAULT '{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [], "direction": null}], "direction": null}}'::"jsonb",
     "c_t_a_label" character varying,
     "link_label" character varying,
     "id" integer NOT NULL,
@@ -3916,7 +3933,7 @@ ALTER SEQUENCE "public"."_galleryBlock_v_interactive_gallery_locales_id_seq" OWN
 
 CREATE TABLE "public"."_galleryBlock_v_locales" (
     "block_header_badge_label" character varying,
-    "block_header_header_text" "jsonb",
+    "block_header_header_text" "jsonb" DEFAULT '{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [], "direction": null}], "direction": null}}'::"jsonb",
     "id" integer NOT NULL,
     "_locale" "public"."_locales" NOT NULL,
     "_parent_id" "uuid" NOT NULL
@@ -4018,7 +4035,7 @@ ALTER SEQUENCE "public"."_logosBlock_v_block_header_links_locales_id_seq" OWNED 
 
 CREATE TABLE "public"."_logosBlock_v_locales" (
     "block_header_badge_label" character varying,
-    "block_header_header_text" "jsonb",
+    "block_header_header_text" "jsonb" DEFAULT '{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [], "direction": null}], "direction": null}}'::"jsonb",
     "id" integer NOT NULL,
     "_locale" "public"."_locales" NOT NULL,
     "_parent_id" "uuid" NOT NULL
@@ -4124,7 +4141,7 @@ ALTER SEQUENCE "public"."_metricsBlock_v_block_header_links_locales_id_seq" OWNE
 
 CREATE TABLE "public"."_metricsBlock_v_locales" (
     "block_header_badge_label" character varying,
-    "block_header_header_text" "jsonb",
+    "block_header_header_text" "jsonb" DEFAULT '{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [], "direction": null}], "direction": null}}'::"jsonb",
     "block_image_media_id" "uuid",
     "table_title" character varying,
     "logos_headline" character varying,
@@ -4296,7 +4313,7 @@ CREATE TABLE "public"."_news_v" (
 CREATE TABLE "public"."_news_v_locales" (
     "version_title" character varying,
     "version_hero_image_id" "uuid",
-    "version_content" "jsonb",
+    "version_content" "jsonb" DEFAULT '{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [], "direction": null}], "direction": null}}'::"jsonb",
     "version_meta_title" character varying,
     "version_meta_image_id" "uuid",
     "version_meta_description" character varying,
@@ -4414,7 +4431,7 @@ CREATE TABLE "public"."_pages_v" (
 
 CREATE TABLE "public"."_pages_v_locales" (
     "version_hero_badge_label" character varying,
-    "version_hero_rich_text" "jsonb",
+    "version_hero_rich_text" "jsonb" DEFAULT '{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [], "direction": null}], "direction": null}}'::"jsonb",
     "version_hero_media_desktop_light_id" "uuid",
     "version_hero_media_desktop_dark_id" "uuid",
     "version_hero_logos_headline" character varying,
@@ -4465,7 +4482,8 @@ CREATE TABLE "public"."_pages_v_rels" (
     "media_id" "uuid",
     "faq_id" "uuid",
     "customers_id" "uuid",
-    "categories_id" "uuid"
+    "categories_id" "uuid",
+    "news_id" "uuid"
 );
 
 
@@ -4660,8 +4678,8 @@ ALTER SEQUENCE "public"."_richTextBlock_v_block_header_links_locales_id_seq" OWN
 
 CREATE TABLE "public"."_richTextBlock_v_locales" (
     "block_header_badge_label" character varying,
-    "block_header_header_text" "jsonb",
-    "content" "jsonb",
+    "block_header_header_text" "jsonb" DEFAULT '{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [], "direction": null}], "direction": null}}'::"jsonb",
+    "content" "jsonb" DEFAULT '{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [], "direction": null}], "direction": null}}'::"jsonb",
     "id" integer NOT NULL,
     "_locale" "public"."_locales" NOT NULL,
     "_parent_id" "uuid" NOT NULL
@@ -4762,7 +4780,7 @@ ALTER SEQUENCE "public"."_teamBlock_v_block_header_links_locales_id_seq" OWNED B
 
 CREATE TABLE "public"."_teamBlock_v_locales" (
     "block_header_badge_label" character varying,
-    "block_header_header_text" "jsonb",
+    "block_header_header_text" "jsonb" DEFAULT '{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [], "direction": null}], "direction": null}}'::"jsonb",
     "id" integer NOT NULL,
     "_locale" "public"."_locales" NOT NULL,
     "_parent_id" "uuid" NOT NULL
@@ -4914,7 +4932,7 @@ ALTER SEQUENCE "public"."_testimonialsBlock_v_block_header_links_locales_id_seq"
 
 CREATE TABLE "public"."_testimonialsBlock_v_locales" (
     "block_header_badge_label" character varying,
-    "block_header_header_text" "jsonb",
+    "block_header_header_text" "jsonb" DEFAULT '{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [], "direction": null}], "direction": null}}'::"jsonb",
     "id" integer NOT NULL,
     "_locale" "public"."_locales" NOT NULL,
     "_parent_id" "uuid" NOT NULL
@@ -5016,7 +5034,7 @@ ALTER SEQUENCE "public"."archiveBlock_block_header_links_locales_id_seq" OWNED B
 
 CREATE TABLE "public"."archiveBlock_locales" (
     "block_header_badge_label" character varying,
-    "block_header_header_text" "jsonb",
+    "block_header_header_text" "jsonb" DEFAULT '{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [], "direction": null}], "direction": null}}'::"jsonb",
     "id" integer NOT NULL,
     "_locale" "public"."_locales" NOT NULL,
     "_parent_id" character varying NOT NULL
@@ -5062,7 +5080,7 @@ CREATE TABLE "public"."blog_posts" (
 CREATE TABLE "public"."blog_posts_locales" (
     "title" character varying,
     "hero_image_id" "uuid",
-    "content" "jsonb",
+    "content" "jsonb" DEFAULT '{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [], "direction": null}], "direction": null}}'::"jsonb",
     "meta_title" character varying,
     "meta_image_id" "uuid",
     "meta_description" character varying,
@@ -5232,7 +5250,7 @@ CREATE TABLE "public"."callToActionBlock_list" (
 
 CREATE TABLE "public"."callToActionBlock_locales" (
     "badge_label" character varying,
-    "rich_text" "jsonb",
+    "rich_text" "jsonb" DEFAULT '{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [], "direction": null}], "direction": null}}'::"jsonb",
     "media_desktop_light_id" "uuid",
     "media_desktop_dark_id" "uuid",
     "media_mobile_light_id" "uuid",
@@ -5355,7 +5373,7 @@ CREATE TABLE "public"."customers" (
 --
 
 CREATE TABLE "public"."customers_locales" (
-    "testimonial_quote" "jsonb",
+    "testimonial_quote" "jsonb" DEFAULT '{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [], "direction": null}], "direction": null}}'::"jsonb",
     "testimonial_company_company_name" character varying,
     "testimonial_company_link_label" character varying,
     "testimonial_company_location" character varying,
@@ -5363,7 +5381,7 @@ CREATE TABLE "public"."customers_locales" (
     "testimonial_author_info_title" character varying,
     "case_study_case_studytitle" character varying,
     "case_study_summary" character varying,
-    "case_study_content" "jsonb",
+    "case_study_content" "jsonb" DEFAULT '{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [], "direction": null}], "direction": null}}'::"jsonb",
     "id" integer NOT NULL,
     "_locale" "public"."_locales" NOT NULL,
     "_parent_id" "uuid" NOT NULL
@@ -5401,7 +5419,8 @@ CREATE TABLE "public"."customers_rels" (
     "path" character varying NOT NULL,
     "pages_id" "uuid",
     "blog_posts_id" "uuid",
-    "categories_id" "uuid"
+    "categories_id" "uuid",
+    "news_id" "uuid"
 );
 
 
@@ -5571,7 +5590,7 @@ ALTER SEQUENCE "public"."faqBlock_block_header_links_locales_id_seq" OWNED BY "p
 
 CREATE TABLE "public"."faqBlock_locales" (
     "block_header_badge_label" character varying,
-    "block_header_header_text" "jsonb",
+    "block_header_header_text" "jsonb" DEFAULT '{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [], "direction": null}], "direction": null}}'::"jsonb",
     "id" integer NOT NULL,
     "_locale" "public"."_locales" NOT NULL,
     "_parent_id" character varying NOT NULL
@@ -5734,7 +5753,7 @@ CREATE TABLE "public"."featuresBlock_columns_locales" (
     "image_id" "uuid",
     "content_title" character varying,
     "content_subtitle" character varying,
-    "rich_text_content" "jsonb",
+    "rich_text_content" "jsonb" DEFAULT '{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [], "direction": null}], "direction": null}}'::"jsonb",
     "badge_label" character varying,
     "link_label" character varying,
     "id" integer NOT NULL,
@@ -5771,7 +5790,7 @@ ALTER SEQUENCE "public"."featuresBlock_columns_locales_id_seq" OWNED BY "public"
 
 CREATE TABLE "public"."featuresBlock_locales" (
     "block_header_badge_label" character varying,
-    "block_header_header_text" "jsonb",
+    "block_header_header_text" "jsonb" DEFAULT '{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [], "direction": null}], "direction": null}}'::"jsonb",
     "c_t_a_label" character varying,
     "link_label" character varying,
     "id" integer NOT NULL,
@@ -5882,7 +5901,8 @@ CREATE TABLE "public"."footer_rels" (
     "parent_id" "uuid" NOT NULL,
     "path" character varying NOT NULL,
     "pages_id" "uuid",
-    "blog_posts_id" "uuid"
+    "blog_posts_id" "uuid",
+    "news_id" "uuid"
 );
 
 
@@ -6624,7 +6644,7 @@ ALTER SEQUENCE "public"."galleryBlock_interactive_gallery_locales_id_seq" OWNED 
 
 CREATE TABLE "public"."galleryBlock_locales" (
     "block_header_badge_label" character varying,
-    "block_header_header_text" "jsonb",
+    "block_header_header_text" "jsonb" DEFAULT '{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [], "direction": null}], "direction": null}}'::"jsonb",
     "id" integer NOT NULL,
     "_locale" "public"."_locales" NOT NULL,
     "_parent_id" character varying NOT NULL
@@ -6720,7 +6740,8 @@ CREATE TABLE "public"."header_rels" (
     "parent_id" "uuid" NOT NULL,
     "path" character varying NOT NULL,
     "pages_id" "uuid",
-    "blog_posts_id" "uuid"
+    "blog_posts_id" "uuid",
+    "news_id" "uuid"
 );
 
 
@@ -7059,7 +7080,7 @@ ALTER SEQUENCE "public"."logosBlock_block_header_links_locales_id_seq" OWNED BY 
 
 CREATE TABLE "public"."logosBlock_locales" (
     "block_header_badge_label" character varying,
-    "block_header_header_text" "jsonb",
+    "block_header_header_text" "jsonb" DEFAULT '{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [], "direction": null}], "direction": null}}'::"jsonb",
     "id" integer NOT NULL,
     "_locale" "public"."_locales" NOT NULL,
     "_parent_id" character varying NOT NULL
@@ -7264,7 +7285,7 @@ ALTER SEQUENCE "public"."metricsBlock_block_header_links_locales_id_seq" OWNED B
 
 CREATE TABLE "public"."metricsBlock_locales" (
     "block_header_badge_label" character varying,
-    "block_header_header_text" "jsonb",
+    "block_header_header_text" "jsonb" DEFAULT '{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [], "direction": null}], "direction": null}}'::"jsonb",
     "block_image_media_id" "uuid",
     "table_title" character varying,
     "logos_headline" character varying,
@@ -7424,7 +7445,7 @@ CREATE TABLE "public"."news" (
 CREATE TABLE "public"."news_locales" (
     "title" character varying,
     "hero_image_id" "uuid",
-    "content" "jsonb",
+    "content" "jsonb" DEFAULT '{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [], "direction": null}], "direction": null}}'::"jsonb",
     "meta_title" character varying,
     "meta_image_id" "uuid",
     "meta_description" character varying,
@@ -7626,7 +7647,7 @@ ALTER SEQUENCE "public"."pages_hero_list_items_locales_id_seq" OWNED BY "public"
 
 CREATE TABLE "public"."pages_locales" (
     "hero_badge_label" character varying,
-    "hero_rich_text" "jsonb",
+    "hero_rich_text" "jsonb" DEFAULT '{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [], "direction": null}], "direction": null}}'::"jsonb",
     "hero_media_desktop_light_id" "uuid",
     "hero_media_desktop_dark_id" "uuid",
     "hero_logos_headline" character varying,
@@ -7677,7 +7698,8 @@ CREATE TABLE "public"."pages_rels" (
     "media_id" "uuid",
     "faq_id" "uuid",
     "customers_id" "uuid",
-    "categories_id" "uuid"
+    "categories_id" "uuid",
+    "news_id" "uuid"
 );
 
 
@@ -7906,7 +7928,8 @@ CREATE TABLE "public"."redirects_rels" (
     "parent_id" "uuid" NOT NULL,
     "path" character varying NOT NULL,
     "pages_id" "uuid",
-    "blog_posts_id" "uuid"
+    "blog_posts_id" "uuid",
+    "news_id" "uuid"
 );
 
 
@@ -8005,8 +8028,8 @@ ALTER SEQUENCE "public"."richTextBlock_block_header_links_locales_id_seq" OWNED 
 
 CREATE TABLE "public"."richTextBlock_locales" (
     "block_header_badge_label" character varying,
-    "block_header_header_text" "jsonb",
-    "content" "jsonb",
+    "block_header_header_text" "jsonb" DEFAULT '{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [], "direction": null}], "direction": null}}'::"jsonb",
+    "content" "jsonb" DEFAULT '{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [], "direction": null}], "direction": null}}'::"jsonb",
     "id" integer NOT NULL,
     "_locale" "public"."_locales" NOT NULL,
     "_parent_id" character varying NOT NULL
@@ -8194,7 +8217,8 @@ CREATE TABLE "public"."settings_rels" (
     "parent_id" "uuid" NOT NULL,
     "path" character varying NOT NULL,
     "pages_id" "uuid",
-    "blog_posts_id" "uuid"
+    "blog_posts_id" "uuid",
+    "news_id" "uuid"
 );
 
 
@@ -8290,7 +8314,7 @@ ALTER SEQUENCE "public"."teamBlock_block_header_links_locales_id_seq" OWNED BY "
 
 CREATE TABLE "public"."teamBlock_locales" (
     "block_header_badge_label" character varying,
-    "block_header_header_text" "jsonb",
+    "block_header_header_text" "jsonb" DEFAULT '{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [], "direction": null}], "direction": null}}'::"jsonb",
     "id" integer NOT NULL,
     "_locale" "public"."_locales" NOT NULL,
     "_parent_id" character varying NOT NULL
@@ -8439,7 +8463,7 @@ ALTER SEQUENCE "public"."testimonialsBlock_block_header_links_locales_id_seq" OW
 
 CREATE TABLE "public"."testimonialsBlock_locales" (
     "block_header_badge_label" character varying,
-    "block_header_header_text" "jsonb",
+    "block_header_header_text" "jsonb" DEFAULT '{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [], "direction": null}], "direction": null}}'::"jsonb",
     "id" integer NOT NULL,
     "_locale" "public"."_locales" NOT NULL,
     "_parent_id" character varying NOT NULL
@@ -10180,7 +10204,7 @@ COPY "public"."_customers_v_locales" ("version_testimonial_quote", "version_test
 -- Data for Name: _customers_v_rels; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-COPY "public"."_customers_v_rels" ("id", "order", "parent_id", "path", "pages_id", "blog_posts_id", "categories_id") FROM stdin;
+COPY "public"."_customers_v_rels" ("id", "order", "parent_id", "path", "pages_id", "blog_posts_id", "categories_id", "news_id") FROM stdin;
 \.
 
 
@@ -14127,8 +14151,16 @@ COPY "public"."_metricsBlock_v_table_rows_children_cells" ("_order", "_parent_id
 --
 
 COPY "public"."_news_v" ("id", "parent_id", "version_updated_at", "version_created_at", "version__status", "created_at", "updated_at", "snapshot", "published_locale", "latest") FROM stdin;
-65e25b50-a3b1-443f-bc2b-109eea8ec3ee	90126b34-62e0-4c0f-826a-e8ffbe2f8d66	2025-10-05 19:00:03.198+00	2025-10-05 18:58:41.597+00	published	2025-10-05 19:00:03.211+00	2025-10-05 19:00:03.211+00	\N	\N	t
+06fb1b4f-812c-47ae-bfdd-0a759fc75e69	90126b34-62e0-4c0f-826a-e8ffbe2f8d66	2025-10-20 05:44:10.423+00	2025-10-05 18:58:41.597+00	published	2025-10-20 05:44:10.436+00	2025-10-20 05:44:10.436+00	\N	\N	t
 a5c41479-99dc-4dde-ad22-950e70e3afa9	90126b34-62e0-4c0f-826a-e8ffbe2f8d66	2025-10-05 18:58:41.598+00	2025-10-05 18:58:41.597+00	published	2025-10-05 18:58:41.618+00	2025-10-05 18:58:41.618+00	\N	\N	f
+65e25b50-a3b1-443f-bc2b-109eea8ec3ee	90126b34-62e0-4c0f-826a-e8ffbe2f8d66	2025-10-05 19:00:03.198+00	2025-10-05 18:58:41.597+00	published	2025-10-05 19:00:03.211+00	2025-10-05 19:00:03.211+00	\N	\N	f
+b80d6551-5246-461f-837c-e04bd3402526	90126b34-62e0-4c0f-826a-e8ffbe2f8d66	2025-10-06 22:38:03.288+00	2025-10-05 18:58:41.597+00	published	2025-10-06 22:38:03.316+00	2025-10-06 22:38:03.316+00	\N	\N	f
+a5524524-03ec-4e95-b2e2-d156ef13e359	90126b34-62e0-4c0f-826a-e8ffbe2f8d66	2025-10-20 05:43:54.893+00	2025-10-05 18:58:41.597+00	published	2025-10-20 05:43:54.909+00	2025-10-20 05:43:54.909+00	\N	\N	f
+100b9396-c6bc-462f-aac2-fca95b256694	90126b34-62e0-4c0f-826a-e8ffbe2f8d66	2025-10-07 08:37:14.394+00	2025-10-05 18:58:41.597+00	published	2025-10-07 08:37:14.413+00	2025-10-07 08:37:14.413+00	\N	\N	f
+13eb0843-a009-42ff-a275-5e3e4a45132d	741a248c-77e4-4bc5-b563-d5a71f076b14	2025-10-21 14:13:33.35+00	2025-10-20 05:46:40.473+00	published	2025-10-21 14:13:33.368+00	2025-10-21 14:13:33.368+00	\N	\N	t
+2f349295-1111-441e-a5d6-153025ac4c86	741a248c-77e4-4bc5-b563-d5a71f076b14	2025-10-20 05:46:40.474+00	2025-10-20 05:46:40.473+00	published	2025-10-20 05:46:40.49+00	2025-10-20 05:46:40.49+00	\N	\N	f
+ae1af15e-803f-4920-9819-ac4c257845ec	741a248c-77e4-4bc5-b563-d5a71f076b14	2025-10-20 05:46:40.474+00	2025-10-20 05:46:40.473+00	draft	2025-10-20 05:46:49.691+00	2025-10-20 05:46:49.691+00	t	ar	f
+44d8e837-4568-4749-b36f-4a6298070c61	741a248c-77e4-4bc5-b563-d5a71f076b14	2025-10-20 05:46:49.668+00	2025-10-20 05:46:40.473+00	published	2025-10-20 05:46:49.682+00	2025-10-20 05:46:49.682+00	\N	ar	f
 \.
 
 
@@ -14139,6 +14171,15 @@ a5c41479-99dc-4dde-ad22-950e70e3afa9	90126b34-62e0-4c0f-826a-e8ffbe2f8d66	2025-1
 COPY "public"."_news_v_locales" ("version_title", "version_hero_image_id", "version_content", "version_meta_title", "version_meta_image_id", "version_meta_description", "version_published_at", "version_slug", "version_slug_lock", "id", "_locale", "_parent_id") FROM stdin;
 عنوان الخبر	\N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "تفاصيل عن الخبر", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": null, "textStyle": "", "textFormat": 0}], "direction": null}}	\N	\N	\N	2025-10-05 18:58:41.587+00	عنوان-الخبر	t	1	ar	a5c41479-99dc-4dde-ad22-950e70e3afa9
 عنوان الخبر	9bff3146-918d-43bd-a8bd-0eaf54839bfc	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "تفاصيل عن الخبر", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": null, "textStyle": "", "textFormat": 0}], "direction": null}}	\N	\N	\N	2025-10-05 18:58:41.587+00	عنوان-الخبر	t	2	ar	65e25b50-a3b1-443f-bc2b-109eea8ec3ee
+عنوان الخبر	9bff3146-918d-43bd-a8bd-0eaf54839bfc	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "تفاصيل عن الخبر", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": null, "textStyle": "", "textFormat": 0}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [], "direction": null, "textStyle": "", "textFormat": 0}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [], "direction": null, "textStyle": "", "textFormat": 0}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [], "direction": null, "textStyle": "", "textFormat": 0}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [], "direction": null, "textStyle": "", "textFormat": 0}], "direction": null}}	\N	\N	\N	2025-10-05 18:58:41.587+00	عنوان-الخبر	t	3	ar	b80d6551-5246-461f-837c-e04bd3402526
+عنوان الخبر	9bff3146-918d-43bd-a8bd-0eaf54839bfc	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "تفاصيل عن الخبر", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": null, "textStyle": "", "textFormat": 0}], "direction": null}}	\N	\N	\N	2025-10-05 18:58:41.587+00	عنوان-الخبر	t	4	ar	100b9396-c6bc-462f-aac2-fca95b256694
+بلّورة في ملتقى بيبان 24	467c7dff-f127-49db-b919-3771878028d1	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "ul", "type": "list", "start": 1, "format": "start", "indent": 0, "version": 1, "children": [{"type": "listitem", "value": 1, "format": "", "indent": 0, "version": 1, "children": [{"id": "68f5cbd4b699a9bab5ce3876", "type": "link", "fields": {"url": "https://ballurh.ertaqi.net/2024/11/03/", "newTab": false, "linkType": "custom"}, "format": "", "indent": 0, "version": 3, "children": [{"mode": "normal", "text": "3 نوفمبر, 2024", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": null}], "direction": null}], "listType": "bullet", "direction": null}, {"tag": "h2", "type": "heading", "format": "right", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "بلّورة في ملتقى بيبان 24", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": null}, {"type": "paragraph", "format": "justify", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "تستعد بلّورة للمشاركة في ملتقى بيبان 24، بتاريخ 5 إلى 9 نوفمبر في مركز واجهة", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": null, "textStyle": "", "textFormat": 0}], "direction": null}}	بلورة	\N	\N	2025-10-21 18:58:41+00	بلّورة-في-ملتقى-بيبان-24	t	9	ar	a5524524-03ec-4e95-b2e2-d156ef13e359
+بلّورة في ملتقى بيبان 24	467c7dff-f127-49db-b919-3771878028d1	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "ul", "type": "list", "start": 1, "format": "start", "indent": 0, "version": 1, "children": [{"type": "listitem", "value": 1, "format": "", "indent": 0, "version": 1, "children": [{"id": "68f5cbd4b699a9bab5ce3876", "type": "link", "fields": {"url": "https://ballurh.ertaqi.net/2024/11/03/", "newTab": false, "linkType": "custom"}, "format": "", "indent": 0, "version": 3, "children": [{"mode": "normal", "text": "3 نوفمبر, 2024", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": null}], "direction": null}], "listType": "bullet", "direction": null}, {"tag": "h2", "type": "heading", "format": "right", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "بلّورة في ملتقى بيبان 24", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": null}, {"type": "paragraph", "format": "justify", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "تستعد بلّورة للمشاركة في ملتقى بيبان 24، بتاريخ 5 إلى 9 نوفمبر في مركز واجهة", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": null, "textStyle": "", "textFormat": 0}], "direction": null}}	بلورة	\N	\N	2025-10-19 18:58:41+00	بلّورة-في-ملتقى-بيبان-24	t	10	ar	06fb1b4f-812c-47ae-bfdd-0a759fc75e69
+بلّورة في ملتقى بيبان 24	467c7dff-f127-49db-b919-3771878028d1	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": " تستعد بلّورة للمشاركة في ملتقى بيبان 24، بتاريخ 5 إلى 9 نوفمبر في مركز واجهة", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": null, "textStyle": "", "textFormat": 0}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [], "direction": null, "textStyle": "", "textFormat": 0}], "direction": null}}	\N	\N	\N	2025-10-18 21:00:00+00	بلّورة-في-ملتقى-بيبان-24	t	11	ar	2f349295-1111-441e-a5d6-153025ac4c86
+بلّورة في ملتقى بيبان 24	467c7dff-f127-49db-b919-3771878028d1	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": " تستعد بلّورة للمشاركة في ملتقى بيبان 24، بتاريخ 5 إلى 9 نوفمبر في مركز واجهة", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": null, "textStyle": "", "textFormat": 0}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [], "direction": null, "textStyle": "", "textFormat": 0}], "direction": null}}	\N	\N	\N	2025-10-18 21:00:00+00	بلّورة-في-ملتقى-بيبان-24	t	12	ar	44d8e837-4568-4749-b36f-4a6298070c61
+بلّورة في ملتقى بيبان 24	467c7dff-f127-49db-b919-3771878028d1	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": " تستعد بلّورة للمشاركة في ملتقى بيبان 24، بتاريخ 5 إلى 9 نوفمبر في مركز واجهة", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": null, "textStyle": "", "textFormat": 0}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [], "direction": null, "textStyle": "", "textFormat": 0}], "direction": null}}	\N	\N	\N	2025-10-18 21:00:00+00	بلّورة-في-ملتقى-بيبان-24	t	13	ar	ae1af15e-803f-4920-9819-ac4c257845ec
+Beban	\N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [], "direction": null, "textStyle": "", "textFormat": 0}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "BebanBeban", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": null, "textStyle": "", "textFormat": 0}], "direction": null}}	\N	\N	\N	2025-10-21 14:13:33.349+00	beban	t	14	en	13eb0843-a009-42ff-a275-5e3e4a45132d
+بلّورة في ملتقى بيبان 24	467c7dff-f127-49db-b919-3771878028d1	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": " تستعد بلّورة للمشاركة في ملتقى بيبان 24، بتاريخ 5 إلى 9 نوفمبر في مركز واجهة", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": null, "textStyle": "", "textFormat": 0}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [], "direction": null, "textStyle": "", "textFormat": 0}], "direction": null}}	\N	\N	\N	2025-10-18 21:00:00+00	بلّورة-في-ملتقى-بيبان-24	t	15	ar	13eb0843-a009-42ff-a275-5e3e4a45132d
 \.
 
 
@@ -14148,6 +14189,14 @@ COPY "public"."_news_v_locales" ("version_title", "version_hero_image_id", "vers
 
 COPY "public"."_news_v_rels" ("id", "order", "parent_id", "path", "locale", "news_id", "categories_id", "users_id") FROM stdin;
 1	1	65e25b50-a3b1-443f-bc2b-109eea8ec3ee	version.authors	\N	\N	\N	a970b2d8-1ba1-4dfc-bb01-2bb7f15c9c0a
+2	1	b80d6551-5246-461f-837c-e04bd3402526	version.authors	\N	\N	\N	a970b2d8-1ba1-4dfc-bb01-2bb7f15c9c0a
+3	1	100b9396-c6bc-462f-aac2-fca95b256694	version.authors	\N	\N	\N	a970b2d8-1ba1-4dfc-bb01-2bb7f15c9c0a
+7	1	a5524524-03ec-4e95-b2e2-d156ef13e359	version.authors	\N	\N	\N	a970b2d8-1ba1-4dfc-bb01-2bb7f15c9c0a
+8	1	06fb1b4f-812c-47ae-bfdd-0a759fc75e69	version.authors	\N	\N	\N	a970b2d8-1ba1-4dfc-bb01-2bb7f15c9c0a
+9	1	2f349295-1111-441e-a5d6-153025ac4c86	version.authors	\N	\N	\N	a970b2d8-1ba1-4dfc-bb01-2bb7f15c9c0a
+10	1	44d8e837-4568-4749-b36f-4a6298070c61	version.authors	\N	\N	\N	a970b2d8-1ba1-4dfc-bb01-2bb7f15c9c0a
+11	1	ae1af15e-803f-4920-9819-ac4c257845ec	version.authors	\N	\N	\N	a970b2d8-1ba1-4dfc-bb01-2bb7f15c9c0a
+12	1	13eb0843-a009-42ff-a275-5e3e4a45132d	version.authors	\N	\N	\N	a970b2d8-1ba1-4dfc-bb01-2bb7f15c9c0a
 \.
 
 
@@ -14173,6 +14222,10 @@ e4d04395-b8a7-439a-98fb-a81567f5061b	742d2308-808d-4f0e-91f2-03d18be57d5c	about	
 f5795b7d-5690-4e22-8a02-5e40c4dfe615	a14442b0-9282-4efc-9df0-51d6374608d8	home	highImpact	\N	blue	\N	flex-row	\N	2025-07-27 20:53:08.677+00	home	t	2025-08-28 17:57:30.984+00	2025-07-27 20:48:06.623+00	draft	2025-08-28 17:57:30.984+00	2025-08-28 17:57:31.058+00	\N	\N	f	t	icons
 5ddf4b7a-819b-4141-9c29-6963ead1e5ef	a14442b0-9282-4efc-9df0-51d6374608d8	home	highImpact	\N	blue	\N	flex-row	\N	2025-07-27 20:53:08.677+00	home	t	2025-08-24 06:12:50.972+00	2025-07-27 20:48:06.623+00	published	2025-08-24 06:12:51.051+00	2025-08-24 06:12:51.053+00	\N	\N	f	f	icons
 df666d5b-7cf3-48c2-b3b2-991ae525fede	2d66d5ed-4f40-4d8b-8e4f-b5a60d261b20	\N	mediumImpact	\N	blue	\N	flex-row	\N	\N	\N	t	2025-09-01 11:47:09.131+00	2025-09-01 11:47:09.123+00	draft	2025-09-01 11:47:09.173+00	2025-09-01 11:47:09.173+00	\N	\N	f	f	bullet
+e202df17-3e48-4b23-a29b-ebad8a6393ec	735a9da5-598e-4290-8091-0f9990d4d6f5	Privacy	mediumImpact	\N	blue	\N	flex-row	\N	2025-10-21 14:31:41.675+00	privacy	t	2025-10-21 18:41:39.626+00	2025-10-21 14:31:37.683+00	published	2025-10-21 18:41:39.703+00	2025-10-21 18:41:39.703+00	\N	\N	t	f	bullet
+f4dc7f37-4b3e-4272-a877-af01623af114	735a9da5-598e-4290-8091-0f9990d4d6f5	Privacy	mediumImpact	\N	blue	\N	flex-row	\N	2025-10-21 14:31:41.675+00	privacy	t	2025-10-21 18:41:00.727+00	2025-10-21 14:31:37.683+00	draft	2025-10-21 18:40:51.238+00	2025-10-21 18:41:00.727+00	\N	\N	f	t	bullet
+f06583f3-7395-4f76-88bf-72272a0cc793	735a9da5-598e-4290-8091-0f9990d4d6f5	Privacy	mediumImpact	\N	blue	\N	flex-row	\N	2025-10-21 14:31:41.675+00	privacy	t	2025-10-21 14:36:34.646+00	2025-10-21 14:31:37.683+00	published	2025-10-21 14:36:34.682+00	2025-10-21 14:36:34.682+00	\N	\N	f	f	bullet
+04916c68-26be-4395-b3b1-d697c5bd8cac	735a9da5-598e-4290-8091-0f9990d4d6f5	Privacy	mediumImpact	\N	blue	\N	flex-row	\N	2025-10-21 14:31:41.675+00	privacy	t	2025-10-21 14:36:32.571+00	2025-10-21 14:31:37.683+00	draft	2025-10-21 14:36:32.571+00	2025-10-21 14:36:32.571+00	\N	\N	f	t	bullet
 e22fcfd8-81bf-4e11-82b8-4b3ccb62fd08	e2c88328-cc74-46c9-aabd-7e7c2f92d013	blog	mediumImpact	\N	blue	\N	flex-row	\N	2025-07-28 04:38:21.68+00	blog	t	2025-08-20 23:43:54.935+00	2025-07-28 04:37:29.274+00	published	2025-08-20 23:43:54.989+00	2025-08-20 23:43:54.99+00	\N	\N	f	f	bullet
 cda3467e-5f8b-4c9f-a1c2-9db22639c0d2	e2c88328-cc74-46c9-aabd-7e7c2f92d013	blog	mediumImpact	\N	blue	\N	flex-row	\N	2025-07-28 04:38:21.68+00	blog	t	2025-08-20 23:36:01.034+00	2025-07-28 04:37:29.274+00	published	2025-08-20 23:36:01.075+00	2025-08-20 23:36:01.075+00	\N	\N	f	f	bullet
 923c4aee-4cb8-4ae5-bd61-2d937cc0fa3f	e2c88328-cc74-46c9-aabd-7e7c2f92d013	blog	mediumImpact	\N	blue	\N	flex-row	\N	2025-07-28 04:38:21.68+00	blog	t	2025-08-20 23:35:24.163+00	2025-07-28 04:37:29.274+00	draft	2025-08-20 23:35:31.557+00	2025-08-20 23:35:31.557+00	t	ar	f	f	bullet
@@ -14195,6 +14248,7 @@ ee61372e-21b1-4e1d-ac2f-a39d22106ed9	a14442b0-9282-4efc-9df0-51d6374608d8	home	h
 b5dd6e1e-8913-4ada-b039-861fea98b16b	a14442b0-9282-4efc-9df0-51d6374608d8	home	highImpact	\N	blue	\N	flex-row	\N	2025-07-27 20:53:08.677+00	home	t	2025-08-17 05:52:17.358+00	2025-07-27 20:48:06.623+00	published	2025-08-17 05:52:17.478+00	2025-08-17 05:52:17.48+00	\N	\N	f	f	icons
 bc901bdf-35dc-43e0-a5e4-0032a4803301	fc20b1cb-072c-43c5-b73b-75dcd6e01dcd	News	mediumImpact	\N	blue	\N	flex-row	\N	2025-10-01 09:22:45.428+00	news	t	2025-10-06 11:17:08.227+00	2025-10-01 09:22:40.738+00	draft	2025-10-06 11:17:08.227+00	2025-10-06 11:17:08.227+00	\N	\N	f	t	bullet
 29274ffc-93fd-4c2e-beb4-423d925b3ffe	fc20b1cb-072c-43c5-b73b-75dcd6e01dcd	News	mediumImpact	\N	blue	\N	flex-row	\N	2025-10-01 09:22:45.428+00	news	t	2025-10-06 10:50:56.204+00	2025-10-01 09:22:40.738+00	draft	2025-10-06 10:50:56.204+00	2025-10-06 10:50:56.204+00	\N	\N	f	t	bullet
+3dd8c78b-5eec-4e75-9321-7fa42e51bc63	735a9da5-598e-4290-8091-0f9990d4d6f5	privacy	mediumImpact	\N	blue	\N	flex-row	\N	2025-10-21 14:31:41.675+00	privacy	t	2025-10-21 14:34:15.465+00	2025-10-21 14:31:37.683+00	published	2025-10-21 14:34:15.513+00	2025-10-21 14:34:15.513+00	\N	\N	f	f	bullet
 bf44ecdc-b752-4d40-98af-9a8196b52040	e2c88328-cc74-46c9-aabd-7e7c2f92d013	\N	lowImpact	\N	blue	\N	flex-row	\N	\N	\N	t	2025-07-28 04:37:29.424+00	2025-07-28 04:37:29.274+00	draft	2025-07-28 04:37:29.946+00	2025-07-28 04:37:29.946+00	\N	\N	f	f	bullet
 3940efdc-d964-4ee0-bc99-81ac8abfa0d7	a14442b0-9282-4efc-9df0-51d6374608d8	home	highImpact	\N	blue	\N	flex-row	\N	2025-07-27 20:53:08.677+00	home	t	2025-08-17 05:52:11.445+00	2025-07-27 20:48:06.623+00	draft	2025-08-17 05:52:11.445+00	2025-08-17 05:52:11.536+00	\N	\N	f	t	icons
 3701e4af-e4a1-44b0-9353-78765e183a93	a14442b0-9282-4efc-9df0-51d6374608d8	home	highImpact	\N	blue	\N	flex-row	\N	2025-07-27 20:53:08.677+00	home	t	2025-08-23 17:08:33.782+00	2025-07-27 20:48:06.623+00	published	2025-08-23 17:08:33.868+00	2025-08-23 17:08:33.87+00	\N	\N	f	f	icons
@@ -14203,6 +14257,7 @@ bf44ecdc-b752-4d40-98af-9a8196b52040	e2c88328-cc74-46c9-aabd-7e7c2f92d013	\N	low
 57ff426a-9250-4471-94f7-2ce9173606fa	742d2308-808d-4f0e-91f2-03d18be57d5c	about	mediumImpact	label	gray	\N	flex-row	\N	2025-07-27 21:55:39.98+00	about	t	2025-08-01 21:37:50.056+00	2025-07-27 21:36:21.924+00	draft	2025-08-01 21:37:50.056+00	2025-08-01 21:37:50.193+00	\N	\N	f	t	bullet
 af8faec0-f970-4457-b247-da532bf3f7a8	742d2308-808d-4f0e-91f2-03d18be57d5c	about	mediumImpact	label	gray	\N	flex-row	\N	2025-07-27 21:55:39.98+00	about	t	2025-08-25 22:45:54.182+00	2025-07-27 21:36:21.924+00	draft	2025-08-25 22:45:49.662+00	2025-08-25 22:45:54.213+00	\N	\N	f	t	bullet
 94653181-14e8-4c89-b775-45eb55a457ac	742d2308-808d-4f0e-91f2-03d18be57d5c	about	mediumImpact	label	gray	\N	flex-row	\N	2025-07-27 21:55:39.98+00	about	t	2025-08-25 22:46:20.28+00	2025-07-27 21:36:21.924+00	draft	2025-08-25 22:46:17.482+00	2025-08-25 22:46:20.304+00	\N	\N	f	t	bullet
+c880bf86-4e6a-4f45-8af1-822beb735beb	735a9da5-598e-4290-8091-0f9990d4d6f5	Privacy	mediumImpact	\N	blue	\N	flex-row	\N	2025-10-21 14:31:41.675+00	privacy	t	2025-10-21 14:34:45.193+00	2025-10-21 14:31:37.683+00	draft	2025-10-21 14:34:37.303+00	2025-10-21 14:34:45.193+00	\N	\N	f	t	bullet
 f37e9001-8bef-435e-a004-3c77d6259ba8	fc20b1cb-072c-43c5-b73b-75dcd6e01dcd	News	mediumImpact	\N	blue	\N	flex-row	\N	2025-10-01 09:22:45.428+00	news	t	2025-10-06 12:21:02.048+00	2025-10-01 09:22:40.738+00	published	2025-10-06 12:21:02.123+00	2025-10-06 12:21:02.123+00	\N	\N	f	f	bullet
 d654eb13-9b6e-4003-8d81-225d8390d100	e2c88328-cc74-46c9-aabd-7e7c2f92d013	blog	mediumImpact	\N	blue	\N	flex-row	\N	2025-07-28 04:38:21.68+00	blog	t	2025-08-20 23:44:05.891+00	2025-07-28 04:37:29.274+00	published	2025-08-20 23:44:05.932+00	2025-08-20 23:44:05.932+00	\N	\N	t	f	bullet
 9b42cdb6-4e33-40c0-8f0a-d3cea003c945	fc20b1cb-072c-43c5-b73b-75dcd6e01dcd	News	mediumImpact	\N	blue	\N	flex-row	\N	2025-10-01 09:22:45.428+00	news	t	2025-10-06 10:51:05.501+00	2025-10-01 09:22:40.738+00	published	2025-10-06 10:51:05.559+00	2025-10-06 10:51:05.559+00	\N	\N	f	f	bullet
@@ -14219,6 +14274,7 @@ fc6d071b-e02b-4a9b-8d2d-34439e8299f9	e2c88328-cc74-46c9-aabd-7e7c2f92d013	blog	m
 49a0209c-b18c-4487-a8f6-8e681af9ef9b	742d2308-808d-4f0e-91f2-03d18be57d5c	about	mediumImpact	label	gray	\N	flex-row	\N	2025-07-27 21:55:39.98+00	about	t	2025-08-25 22:45:57.897+00	2025-07-27 21:36:21.924+00	published	2025-08-25 22:45:57.967+00	2025-08-25 22:45:57.968+00	\N	\N	f	f	bullet
 c21624fa-2468-4a75-81c3-2e915c43ea04	742d2308-808d-4f0e-91f2-03d18be57d5c	about	mediumImpact	label	gray	\N	flex-row	\N	2025-07-27 21:55:39.98+00	about	t	2025-07-28 04:41:44.925+00	2025-07-27 21:36:21.924+00	published	2025-07-28 04:41:48.532+00	2025-07-28 04:41:48.533+00	\N	\N	f	f	bullet
 62a42c83-e7ff-454b-8946-e264891b6a83	742d2308-808d-4f0e-91f2-03d18be57d5c	about	mediumImpact	label	gray	\N	flex-row	\N	2025-07-27 21:55:39.98+00	about	t	2025-08-06 03:15:09.896+00	2025-07-27 21:36:21.924+00	draft	2025-08-06 03:14:49.131+00	2025-08-06 03:15:09.923+00	\N	\N	f	t	bullet
+4916d3fb-8b43-4a0a-83fa-ddb02eac1e6f	7f925134-f2cc-47ed-b4f9-91e1dbcbe97e	Terms	mediumImpact	\N	blue	\N	flex-row	\N	2025-10-21 14:35:30.511+00	terms	t	2025-10-21 18:36:30.903+00	2025-10-21 14:35:21.32+00	draft	2025-10-21 18:36:10.643+00	2025-10-21 18:36:30.903+00	\N	\N	f	t	bullet
 f3366135-d679-461a-9160-86eda5cdd969	a14442b0-9282-4efc-9df0-51d6374608d8	home	highImpact	\N	blue	\N	flex-row	\N	2025-07-27 20:53:08.677+00	home	t	2025-08-15 22:25:34.795+00	2025-07-27 20:48:06.623+00	draft	2025-08-15 22:27:12.239+00	2025-08-15 22:27:12.241+00	t	ar	f	f	icons
 77e301a5-e288-4e46-ad7a-5ce25d4e0af0	a14442b0-9282-4efc-9df0-51d6374608d8	home	highImpact	\N	blue	\N	flex-row	\N	2025-07-27 20:53:08.677+00	home	t	2025-08-17 05:53:55.329+00	2025-07-27 20:48:06.623+00	draft	2025-08-17 05:53:47.374+00	2025-08-17 05:53:55.357+00	\N	\N	f	t	icons
 332494df-8482-49a0-aedd-17be4e6346c8	a14442b0-9282-4efc-9df0-51d6374608d8	home	highImpact	\N	blue	\N	flex-row	\N	2025-07-27 20:53:08.677+00	home	t	2025-08-28 17:58:34.142+00	2025-07-27 20:48:06.623+00	published	2025-08-28 17:58:34.233+00	2025-08-28 17:58:34.235+00	\N	\N	f	f	icons
@@ -14230,9 +14286,11 @@ ef5c6a38-e9a0-4159-84b2-e47e23e98868	a14442b0-9282-4efc-9df0-51d6374608d8	home	h
 e971bceb-3387-49e0-890e-ad8e79c52c35	a14442b0-9282-4efc-9df0-51d6374608d8	home	highImpact	\N	blue	\N	flex-row	\N	2025-07-27 20:53:08.677+00	home	t	2025-08-24 06:10:30.515+00	2025-07-27 20:48:06.623+00	draft	2025-08-24 06:10:22.745+00	2025-08-24 06:10:30.554+00	\N	\N	f	t	icons
 3c55e0be-bf8b-49a3-b786-331f07012f5f	a14442b0-9282-4efc-9df0-51d6374608d8	home	highImpact	\N	blue	\N	flex-row	\N	2025-07-27 20:53:08.677+00	home	t	2025-08-15 15:07:12.575+00	2025-07-27 20:48:06.623+00	draft	2025-08-15 15:07:12.575+00	2025-08-15 15:07:12.629+00	\N	\N	f	t	icons
 1ee329f1-1129-42dd-a064-650b4964fb9f	742d2308-808d-4f0e-91f2-03d18be57d5c	about	mediumImpact	label	gray	\N	flex-row	\N	2025-07-27 21:55:39.98+00	about	t	2025-08-25 23:06:36.937+00	2025-07-27 21:36:21.924+00	draft	2025-08-25 23:06:02.986+00	2025-08-25 23:06:36.962+00	\N	\N	f	t	bullet
+d4f20a0c-29eb-4449-be1a-43f04494f46e	735a9da5-598e-4290-8091-0f9990d4d6f5	Privacy	mediumImpact	\N	blue	\N	flex-row	\N	2025-10-21 14:31:41.675+00	privacy	t	2025-10-21 14:35:11.54+00	2025-10-21 14:31:37.683+00	published	2025-10-21 14:35:11.596+00	2025-10-21 14:35:11.596+00	\N	\N	f	f	bullet
 9c74e1c0-9a5d-413b-8da8-b2b138a7907f	a14442b0-9282-4efc-9df0-51d6374608d8	home	highImpact	\N	blue	\N	flex-row	\N	2025-07-27 20:53:08.677+00	home	t	2025-08-31 15:36:33.755+00	2025-07-27 20:48:06.623+00	published	2025-08-31 15:36:33.856+00	2025-08-31 15:36:33.862+00	\N	\N	t	f	icons
 e6890100-eaeb-429b-8577-30fe440dc964	a14442b0-9282-4efc-9df0-51d6374608d8	home	highImpact	\N	blue	\N	flex-row	\N	2025-07-27 20:53:08.677+00	home	t	2025-08-23 17:07:09.343+00	2025-07-27 20:48:06.623+00	draft	2025-08-23 17:06:58.873+00	2025-08-23 17:07:09.37+00	\N	\N	f	t	icons
 b988988c-b274-4303-baca-3c185b34e80f	a14442b0-9282-4efc-9df0-51d6374608d8	home	highImpact	\N	blue	\N	flex-row	\N	2025-07-27 20:53:08.677+00	home	t	2025-08-29 13:57:28.113+00	2025-07-27 20:48:06.623+00	published	2025-08-29 13:57:28.317+00	2025-08-29 13:57:28.321+00	\N	\N	f	f	icons
+7efd1f75-f585-4037-adc5-e36235ec6435	7f925134-f2cc-47ed-b4f9-91e1dbcbe97e	Terms	mediumImpact	\N	blue	\N	flex-row	\N	2025-10-21 14:35:30.511+00	terms	t	2025-10-21 18:36:36.081+00	2025-10-21 14:35:21.32+00	published	2025-10-21 18:36:36.153+00	2025-10-21 18:36:36.153+00	\N	\N	t	f	bullet
 d499de0a-6aa2-44ee-a6b3-4d11c1a81fba	a14442b0-9282-4efc-9df0-51d6374608d8	home	highImpact	\N	blue	\N	flex-row	\N	2025-07-27 20:53:08.677+00	home	t	2025-08-28 17:57:46.472+00	2025-07-27 20:48:06.623+00	published	2025-08-28 17:57:46.566+00	2025-08-28 17:57:46.572+00	\N	\N	f	f	icons
 4ecf9d84-fac6-4c7b-8528-bec6d72beb0d	742d2308-808d-4f0e-91f2-03d18be57d5c	about	mediumImpact	label	gray	\N	flex-row	\N	2025-07-27 21:55:39.98+00	about	t	2025-08-25 23:02:53.672+00	2025-07-27 21:36:21.924+00	draft	2025-08-25 23:02:39.143+00	2025-08-25 23:02:53.708+00	\N	\N	f	t	bullet
 94248fa7-c7f2-494d-ab96-5db4f8cf8a09	a14442b0-9282-4efc-9df0-51d6374608d8	home	highImpact	\N	blue	\N	flex-row	\N	2025-07-27 20:53:08.677+00	home	t	2025-08-17 05:48:29.289+00	2025-07-27 20:48:06.623+00	draft	2025-08-17 05:47:55.456+00	2025-08-17 05:48:29.323+00	\N	\N	f	t	icons
@@ -14248,6 +14306,7 @@ a7d8fbd8-d73b-49bb-a69a-51c10ce9f17c	742d2308-808d-4f0e-91f2-03d18be57d5c	about	
 90cf9707-369c-4799-8aa5-8c6eeab55ba2	742d2308-808d-4f0e-91f2-03d18be57d5c	about	mediumImpact	label	gray	\N	flex-row	\N	2025-07-27 21:55:39.98+00	about	t	2025-08-01 21:37:42.49+00	2025-07-27 21:36:21.924+00	draft	2025-08-01 21:37:42.49+00	2025-08-01 21:37:42.492+00	\N	\N	f	f	bullet
 c20c2c0b-4fa6-45f3-acb3-34e06f115342	742d2308-808d-4f0e-91f2-03d18be57d5c	about	mediumImpact	label	gray	\N	flex-row	\N	2025-07-27 21:55:39.98+00	about	t	2025-08-01 21:37:36.073+00	2025-07-27 21:36:21.924+00	draft	2025-08-01 21:32:11.769+00	2025-08-01 21:37:36.208+00	\N	\N	f	t	bullet
 121949fd-6c23-47b2-a9f6-4316de5d07cc	a14442b0-9282-4efc-9df0-51d6374608d8	home	highImpact	\N	blue	\N	flex-row	\N	2025-07-27 20:53:08.677+00	home	t	2025-08-15 16:10:32.607+00	2025-07-27 20:48:06.623+00	published	2025-08-15 16:10:32.819+00	2025-08-15 16:10:32.831+00	\N	\N	f	f	icons
+3d788509-0d02-4dda-a925-88ed4f866123	7f925134-f2cc-47ed-b4f9-91e1dbcbe97e	\N	mediumImpact	\N	blue	\N	flex-row	\N	\N	\N	t	2025-10-21 14:35:21.32+00	2025-10-21 14:35:21.32+00	draft	2025-10-21 14:35:21.342+00	2025-10-21 14:35:21.342+00	\N	\N	f	f	bullet
 835cd5e3-4146-4e9c-a8cc-2f2c200c14fc	fc20b1cb-072c-43c5-b73b-75dcd6e01dcd	News	mediumImpact	\N	blue	\N	flex-row	\N	2025-10-01 09:22:45.428+00	news	t	2025-10-06 12:38:13.626+00	2025-10-01 09:22:40.738+00	published	2025-10-06 12:38:13.705+00	2025-10-06 12:38:13.705+00	\N	\N	t	f	bullet
 b78d1cad-4610-4317-89a9-a0ac87bc2a58	fc20b1cb-072c-43c5-b73b-75dcd6e01dcd	News	mediumImpact	\N	blue	\N	flex-row	\N	2025-10-01 09:22:45.428+00	news	t	2025-10-06 12:38:09.51+00	2025-10-01 09:22:40.738+00	draft	2025-10-06 12:38:09.51+00	2025-10-06 12:38:09.51+00	\N	\N	f	t	bullet
 41152a81-f730-44c7-9dce-ecfe1a6bb43d	fc20b1cb-072c-43c5-b73b-75dcd6e01dcd	News	mediumImpact	\N	blue	\N	flex-row	\N	2025-10-01 09:22:45.428+00	news	t	2025-10-06 10:54:02.833+00	2025-10-01 09:22:40.738+00	published	2025-10-06 10:54:02.92+00	2025-10-06 10:54:02.92+00	\N	\N	f	f	bullet
@@ -14261,6 +14320,8 @@ d2b28a6b-d512-4097-99b1-c2b39707a1db	fc20b1cb-072c-43c5-b73b-75dcd6e01dcd	\N	med
 bba0b5b7-03f8-43d5-9bae-91f4ffdabb9a	a14442b0-9282-4efc-9df0-51d6374608d8	home	highImpact	\N	blue	\N	flex-row	\N	2025-07-27 20:53:08.677+00	home	t	2025-08-24 05:52:27.141+00	2025-07-27 20:48:06.623+00	draft	2025-08-24 05:49:31.969+00	2025-08-24 05:52:27.171+00	\N	\N	f	t	icons
 cb057bf7-d3b7-4a13-9d3f-46872336859f	a14442b0-9282-4efc-9df0-51d6374608d8	home	highImpact	\N	blue	\N	flex-row	\N	2025-07-27 20:53:08.677+00	home	t	2025-08-20 23:40:03.871+00	2025-07-27 20:48:06.623+00	draft	2025-08-20 23:40:03.871+00	2025-08-20 23:40:03.898+00	\N	\N	f	t	icons
 8c0a9435-014f-4434-b79a-d1865d02dcb2	a14442b0-9282-4efc-9df0-51d6374608d8	home	highImpact	\N	blue	\N	flex-row	\N	2025-07-27 20:53:08.677+00	home	t	2025-08-24 09:55:12.208+00	2025-07-27 20:48:06.623+00	published	2025-08-24 09:55:12.309+00	2025-08-24 09:55:12.312+00	\N	\N	f	f	icons
+41a1b66d-4407-4e16-b820-f732aa6b2a09	735a9da5-598e-4290-8091-0f9990d4d6f5	\N	mediumImpact	\N	blue	\N	flex-row	\N	\N	\N	t	2025-10-21 14:31:37.684+00	2025-10-21 14:31:37.683+00	draft	2025-10-21 14:31:37.73+00	2025-10-21 14:31:37.73+00	\N	\N	f	f	bullet
+3f8802e0-a7a5-462f-9fc2-b1e282d7e194	735a9da5-598e-4290-8091-0f9990d4d6f5	Privacy	mediumImpact	\N	blue	\N	flex-row	\N	2025-10-21 14:31:41.675+00	privacy	t	2025-10-21 18:38:47.679+00	2025-10-21 14:31:37.683+00	draft	2025-10-21 18:37:46.724+00	2025-10-21 18:38:47.679+00	\N	\N	f	t	bullet
 97c1530a-5a52-4e22-acb2-7f12b13580a8	e2c88328-cc74-46c9-aabd-7e7c2f92d013	blog	mediumImpact	\N	blue	\N	flex-row	\N	2025-07-28 04:38:21.68+00	blog	t	2025-08-07 00:12:22.15+00	2025-07-28 04:37:29.274+00	published	2025-08-07 00:12:22.195+00	2025-08-07 00:12:22.195+00	\N	\N	f	f	bullet
 c6179f9d-b0c1-41c3-9997-6e6aabec88cd	a14442b0-9282-4efc-9df0-51d6374608d8	home	highImpact	\N	blue	\N	flex-row	\N	2025-07-27 20:53:08.677+00	home	t	2025-08-28 17:49:09.679+00	2025-07-27 20:48:06.623+00	published	2025-08-28 17:49:09.799+00	2025-08-28 17:49:09.804+00	\N	\N	f	f	icons
 d9fa5923-2953-4e02-ae4e-e82e35e2b515	fc20b1cb-072c-43c5-b73b-75dcd6e01dcd	News	mediumImpact	\N	blue	\N	flex-row	\N	2025-10-01 09:22:45.428+00	news	t	2025-10-06 11:16:40.03+00	2025-10-01 09:22:40.738+00	published	2025-10-06 11:16:40.088+00	2025-10-06 11:16:40.088+00	\N	\N	f	f	bullet
@@ -14285,7 +14346,10 @@ b9bfdcc5-4500-4b24-827a-bdb5cd5f47d6	a14442b0-9282-4efc-9df0-51d6374608d8	home	h
 444fb6f2-0056-4c49-83e5-882d57ef0da3	a14442b0-9282-4efc-9df0-51d6374608d8	home	highImpact	\N	blue	\N	flex-row	\N	2025-07-27 20:53:08.677+00	home	t	2025-08-24 05:56:14.585+00	2025-07-27 20:48:06.623+00	draft	2025-08-24 05:53:19.09+00	2025-08-24 05:56:14.628+00	\N	\N	f	t	icons
 d33aa7ed-6c4a-4c19-ab8c-6ffe2b067097	a14442b0-9282-4efc-9df0-51d6374608d8	home	highImpact	\N	blue	\N	flex-row	\N	2025-07-27 20:53:08.677+00	home	t	2025-08-17 05:48:32.169+00	2025-07-27 20:48:06.623+00	published	2025-08-17 05:48:32.317+00	2025-08-17 05:48:32.319+00	\N	\N	f	f	icons
 bd74169e-d529-441c-8b27-84658dee558d	a14442b0-9282-4efc-9df0-51d6374608d8	home	highImpact	\N	blue	\N	flex-row	\N	2025-07-27 20:53:08.677+00	home	t	2025-08-16 08:28:06.82+00	2025-07-27 20:48:06.623+00	draft	2025-08-16 08:28:06.82+00	2025-08-16 08:28:06.867+00	\N	\N	f	t	icons
+02002e08-e14f-4d65-9edf-e5d6216399f3	7f925134-f2cc-47ed-b4f9-91e1dbcbe97e	Terms	mediumImpact	\N	blue	\N	flex-row	\N	2025-10-21 14:35:30.511+00	terms	t	2025-10-21 14:35:55.859+00	2025-10-21 14:35:21.32+00	draft	2025-10-21 14:35:29.485+00	2025-10-21 14:35:55.859+00	\N	\N	f	t	bullet
+63c7408a-6ac3-4b43-9ce3-dabd8ec493d8	735a9da5-598e-4290-8091-0f9990d4d6f5	Privacy	mediumImpact	\N	blue	\N	flex-row	\N	2025-10-21 14:31:41.675+00	privacy	t	2025-10-21 18:38:56.89+00	2025-10-21 14:31:37.683+00	published	2025-10-21 18:38:56.976+00	2025-10-21 18:38:56.976+00	\N	\N	f	f	bullet
 a96b50f5-f1d8-47b5-92f9-9831037df4be	e2c88328-cc74-46c9-aabd-7e7c2f92d013	blog	mediumImpact	\N	blue	\N	flex-row	\N	2025-07-28 04:38:21.68+00	blog	t	2025-08-20 23:35:13.532+00	2025-07-28 04:37:29.274+00	draft	2025-08-20 23:26:02.898+00	2025-08-20 23:35:13.554+00	\N	\N	f	t	bullet
+bc71c353-8f39-446c-a109-c4ab58c012b0	735a9da5-598e-4290-8091-0f9990d4d6f5	privacy	mediumImpact	\N	blue	\N	flex-row	\N	2025-10-21 14:31:41.675+00	privacy	t	2025-10-21 14:34:14.199+00	2025-10-21 14:31:37.683+00	draft	2025-10-21 14:31:41.676+00	2025-10-21 14:34:14.199+00	\N	\N	f	t	bullet
 8b405ee6-6086-4158-ae74-bc9764c55267	fc20b1cb-072c-43c5-b73b-75dcd6e01dcd	News	mediumImpact	\N	blue	\N	flex-row	\N	2025-10-01 09:22:45.428+00	news	t	2025-10-02 12:03:24.306+00	2025-10-01 09:22:40.738+00	published	2025-10-02 12:03:24.356+00	2025-10-02 12:03:24.356+00	\N	\N	f	f	bullet
 5dc29ddf-a604-4102-bcda-6868180ad4bb	742d2308-808d-4f0e-91f2-03d18be57d5c	about	mediumImpact	label	gray	\N	flex-row	\N	2025-07-27 21:55:39.98+00	about	t	2025-08-25 22:44:06.257+00	2025-07-27 21:36:21.924+00	published	2025-08-25 22:44:06.369+00	2025-08-25 22:44:06.371+00	\N	\N	f	f	bullet
 fb216ed8-a9eb-4f6f-adfa-bc16f638b14a	742d2308-808d-4f0e-91f2-03d18be57d5c	about	mediumImpact	label	gray	\N	flex-row	\N	2025-07-27 21:55:39.98+00	about	t	2025-08-06 03:15:12.108+00	2025-07-27 21:36:21.924+00	published	2025-08-06 03:15:12.218+00	2025-08-06 03:15:12.22+00	\N	\N	f	f	bullet
@@ -14300,6 +14364,7 @@ fab894a9-a99c-498f-9196-b98496719cb9	742d2308-808d-4f0e-91f2-03d18be57d5c	about	
 c9a6ebc4-f4a5-490d-814c-fb1f4608c68f	a14442b0-9282-4efc-9df0-51d6374608d8	home	highImpact	\N	blue	\N	flex-row	\N	2025-07-27 20:53:08.677+00	home	t	2025-08-15 22:29:12.519+00	2025-07-27 20:48:06.623+00	draft	2025-08-15 22:28:56.694+00	2025-08-15 22:29:12.554+00	\N	\N	f	t	icons
 c215530b-9bca-4fab-95b4-59994f19f57e	a14442b0-9282-4efc-9df0-51d6374608d8	home	highImpact	\N	blue	\N	flex-row	\N	2025-07-27 20:53:08.677+00	home	t	2025-08-15 22:27:02.397+00	2025-07-27 20:48:06.623+00	draft	2025-08-15 16:10:41.763+00	2025-08-15 22:27:02.438+00	\N	\N	f	t	icons
 7b10acb8-518f-4fb4-8bbf-75ef9b57460f	a14442b0-9282-4efc-9df0-51d6374608d8	home	highImpact	\N	blue	\N	flex-row	\N	2025-07-27 20:53:08.677+00	home	t	2025-08-24 06:12:04.894+00	2025-07-27 20:48:06.623+00	draft	2025-08-24 06:11:26.597+00	2025-08-24 06:12:04.923+00	\N	\N	f	t	icons
+52527650-47c2-4ce7-bee3-6ab0baf1e780	7f925134-f2cc-47ed-b4f9-91e1dbcbe97e	Terms	mediumImpact	\N	blue	\N	flex-row	\N	2025-10-21 14:35:30.511+00	terms	t	2025-10-21 14:36:06.216+00	2025-10-21 14:35:21.32+00	published	2025-10-21 14:36:06.263+00	2025-10-21 14:36:06.263+00	\N	\N	f	f	bullet
 \.
 
 
@@ -14311,8 +14376,14 @@ COPY "public"."_pages_v_locales" ("version_hero_badge_label", "version_hero_rich
 \N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h1", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "Boost your growth on delivery apps", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "Ballurh simplifies marketing management and improves restaurant performance on delivery apps through a single platform to manage campaigns, optimize ad spend, and increase profitability... without complexity..", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}], "direction": "rtl"}}	546f5f03-400f-4043-b548-bc3a0684491a	\N	\N	Restaurant Growth System on Delivery Apps	a402cbba-b2b5-4b39-98d4-72d2fd9fba1d	Are your profits being eroded by delivery app discounts? With Ballurh, activate your campaigns, monitor your performance, and recover lost costs from one place.	1333	en	9c74e1c0-9a5d-413b-8da8-b2b138a7907f	\N	\N	f
 عن بلّورة	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h1", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "نظام التشغيل الجديد لتحسين ربحية المطاعم على تطبيقات التوصيل", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "سوق تطبيقات التوصيل غيّر طريقة عمل المطاعم. الطلبات صارت رقمية، المنافسة صارت يومية، والربحية صارت مرتبطة بقرارات تسويقية وتشغيلية معقّدة، كل ريال ينصرف على خصم أو إعلان أو عمولة يحتاج يشتغل بكفاءة.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "بلّورة منصة سعودية تساعد المطاعم على تحسين ربحيتها من تطبيقات التوصيل.. نربط بين الإعلانات، الفواتير، والطلبات في لوحة تحكم واحدة، ونوفّر أدوات عملية وتحليلات قابلة للتنفيذ، مبنية على بيانات فعلية، وتخاطب الواقع اليومي للمشغّل.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "أصحاب المطاعم يستخدمون بلّورة لاسترجاع التكاليف المهدرة، ضبط التسويق، واتخاذ قرارات تشغيلية أوضح.. ", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "المستثمرون يشوفون فرصة في بناء بنية تشغيلية جديدة لقطاع الأغذية الرقمي.. والمواهب تنضم لفريق يشتغل على منتج له أثر واضح في سوق مليان فرص، وبمنهجية واقعية", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}], "direction": "rtl"}}	\N	\N	\N	بلّورة – منصة ذكاء أعمال لقطاع التجزئة والمطاعم والمقاهي	\N	‏زد مبيعاتك، تنبأ بسلوكيات الطلب وقم بتحسين مؤشرات الأداء من خلال إتخاذ قرارات نمو تعتمد على البيانات باستخدام قوة تقنيات ذكاء الأعمال.	381	ar	39ed86c1-7622-472a-a921-06def66d1ca6	\N	\N	f
 \N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h1", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "عزز نموك على تطبيقات التوصيل", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "بلّورة تبسّط إدارة التسويق وتحسّن أداء المطاعم على تطبيقات التوصيل من خلال منصة واحدة لإدارة الحملات، تحسين الإنفاق الإعلاني، وزيادة الربحية.. بدون تعقيد", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}], "direction": "rtl"}}	5afde42d-6a3f-4d34-a6ba-6eca5caea614	\N	\N	برنامج نمو المطاعم على تطبيقات التوصيل	a402cbba-b2b5-4b39-98d4-72d2fd9fba1d	هل أرباحك تتآكل بسبب خصومات تطبيقات التوصيل؟ مع بلّورة، فعّل حملاتك، راقب أداءك، واسترجع التكاليف المفقودة من مكان واحد.	1334	ar	9c74e1c0-9a5d-413b-8da8-b2b138a7907f	\N	\N	f
+\N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h1", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "Privacy Policy", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": null}], "direction": null}}	\N	\N	\N	\N	\N	\N	1439	en	63c7408a-6ac3-4b43-9ce3-dabd8ec493d8	\N	\N	f
 \N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h1", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "Boost your growth on delivery apps", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "Ballurh simplifies marketing management and improves restaurant performance on delivery apps through a single platform to manage campaigns, optimize ad spend, and increase profitability... without complexity.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}], "direction": "rtl"}}	546f5f03-400f-4043-b548-bc3a0684491a	\N	\N	Restaurant Growth System on Delivery Apps	a402cbba-b2b5-4b39-98d4-72d2fd9fba1d	Are your profits being eroded by delivery app discounts? With Ballurh, activate your campaigns, monitor your performance, and recover lost costs from one place.	895	en	b9bfdcc5-4500-4b24-827a-bdb5cd5f47d6	\N	\N	f
+\N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [], "direction": null}], "direction": null}}	\N	\N	\N	\N	\N	\N	1440	ar	63c7408a-6ac3-4b43-9ce3-dabd8ec493d8	\N	\N	f
 \N	\N	\N	\N	\N	\N	\N	\N	1335	en	df666d5b-7cf3-48c2-b3b2-991ae525fede	\N	\N	f
+\N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h1", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "Privacy Policy", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": null}], "direction": null}}	\N	\N	\N	\N	\N	\N	1443	en	f4dc7f37-4b3e-4272-a877-af01623af114	\N	\N	f
+\N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h1", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "سياسة الخصوصية", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": null}], "direction": null}}	\N	\N	\N	\N	\N	\N	1444	ar	f4dc7f37-4b3e-4272-a877-af01623af114	\N	\N	f
+\N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h1", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "Privacy Policy", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": null}], "direction": null}}	\N	\N	\N	\N	\N	\N	1445	en	e202df17-3e48-4b23-a29b-ebad8a6393ec	\N	\N	f
+\N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h1", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "سياسة الخصوصية", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": null}], "direction": null}}	\N	\N	\N	\N	\N	\N	1446	ar	e202df17-3e48-4b23-a29b-ebad8a6393ec	\N	\N	f
 \N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h1", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "عزز نموك على تطبيقات التوصيل", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "بلّورة تبسّط إدارة التسويق وتحسّن أداء المطاعم على تطبيقات التوصيل من خلال منصة واحدة لإدارة الحملات، تحسين الإنفاق الإعلاني، وزيادة الربحية.. بدون تعقيد", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}], "direction": "rtl"}}	5afde42d-6a3f-4d34-a6ba-6eca5caea614	\N	\N	برنامج نمو المطاعم على تطبيقات التوصيل	a402cbba-b2b5-4b39-98d4-72d2fd9fba1d	هل أرباحك تتآكل بسبب خصومات تطبيقات التوصيل؟ مع بلّورة، فعّل حملاتك، راقب أداءك، واسترجع التكاليف المفقودة من مكان واحد.	1082	ar	1d24c50c-85c9-4f22-9f26-736826283f5e	\N	\N	f
 عن بلّورة	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h1", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "نظام التشغيل الجديد لتحسين ربحية المطاعم على تطبيقات التوصيل", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "سوق تطبيقات التوصيل غيّر طريقة عمل المطاعم. الطلبات صارت رقمية، المنافسة صارت يومية، والربحية صارت مرتبطة بقرارات تسويقية وتشغيلية معقّدة، كل ريال ينصرف على خصم أو إعلان أو عمولة يحتاج يشتغل بكفاءة.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "بلّورة منصة سعودية تساعد المطاعم على تحسين ربحيتها من تطبيقات التوصيل.. نربط بين الإعلانات، الفواتير، والطلبات في لوحة تحكم واحدة، ونوفّر أدوات عملية وتحليلات قابلة للتنفيذ، مبنية على بيانات فعلية، وتخاطب الواقع اليومي للمشغّل.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "أصحاب المطاعم يستخدمون بلّورة لاسترجاع التكاليف المهدرة، ضبط التسويق، واتخاذ قرارات تشغيلية أوضح.. ", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "المستثمرون يشوفون فرصة في بناء بنية تشغيلية جديدة لقطاع الأغذية الرقمي.. والمواهب تنضم لفريق يشتغل على منتج له أثر واضح في سوق مليان فرص، وبمنهجية واقعية", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}], "direction": "rtl"}}	\N	\N	\N	بلّورة – منصة ذكاء أعمال لقطاع التجزئة والمطاعم والمقاهي	\N	‏زد مبيعاتك، تنبأ بسلوكيات الطلب وقم بتحسين مؤشرات الأداء من خلال إتخاذ قرارات نمو تعتمد على البيانات باستخدام قوة تقنيات ذكاء الأعمال.	382	ar	7cb3435f-1591-4a85-9538-1a329412829b	\N	\N	f
 \N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h1", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "عزز نموك على تطبيقات التوصيل", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "بلّورة تبسّط إدارة التسويق وتحسّن أداء المطاعم على تطبيقات التوصيل من خلال منصة واحدة لإدارة الحملات، تحسين الإنفاق الإعلاني، وزيادة الربحية.. بدون تعقيد", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}], "direction": "rtl"}}	5afde42d-6a3f-4d34-a6ba-6eca5caea614	\N	\N	برنامج نمو المطاعم على تطبيقات التوصيل	a402cbba-b2b5-4b39-98d4-72d2fd9fba1d	هل أرباحك تتآكل بسبب خصومات تطبيقات التوصيل؟ مع بلّورة، فعّل حملاتك، راقب أداءك، واسترجع التكاليف المفقودة من مكان واحد.	1086	ar	1384226b-240a-4adc-ab9c-f0d2f30ca2ed	\N	\N	f
@@ -14456,6 +14527,7 @@ About Ballurh	{"root": {"type": "root", "format": "", "indent": 0, "version": 1,
 \N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h1", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "Boost your growth on delivery apps", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "Ballurh simplifies marketing management and improves restaurant performance on delivery apps through a single platform to manage campaigns, optimize ad spend, and increase profitability... without complexity.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}], "direction": "rtl"}}	546f5f03-400f-4043-b548-bc3a0684491a	\N	\N	Restaurant Growth System on Delivery Apps	a402cbba-b2b5-4b39-98d4-72d2fd9fba1d	Are your profits being eroded by delivery app discounts? With Ballurh, activate your campaigns, monitor your performance, and recover lost costs from one place.	957	en	77e301a5-e288-4e46-ad7a-5ce25d4e0af0	\N	\N	f
 \N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h1", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "عزز نموك على تطبيقات التوصيل", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "بلّورة تبسّط إدارة التسويق وتحسّن أداء المطاعم على تطبيقات التوصيل من خلال منصة واحدة لإدارة الحملات، تحسين الإنفاق الإعلاني، وزيادة الربحية.. بدون تعقيد", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}], "direction": "rtl"}}	5afde42d-6a3f-4d34-a6ba-6eca5caea614	\N	\N	برنامج نمو المطاعم على تطبيقات التوصيل	a402cbba-b2b5-4b39-98d4-72d2fd9fba1d	هل أرباحك تتآكل بسبب خصومات تطبيقات التوصيل؟ مع بلّورة، فعّل حملاتك، راقب أداءك، واسترجع التكاليف المفقودة من مكان واحد.	958	ar	77e301a5-e288-4e46-ad7a-5ce25d4e0af0	\N	\N	f
 \N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h1", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "عزز نموك على تطبيقات التوصيل", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "بلّورة تبسّط إدارة التسويق وتحسّن أداء المطاعم على تطبيقات التوصيل من خلال منصة واحدة لإدارة الحملات، تحسين الإنفاق الإعلاني، وزيادة الربحية.. بدون تعقيد", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}], "direction": "rtl"}}	5afde42d-6a3f-4d34-a6ba-6eca5caea614	\N	\N	برنامج نمو المطاعم على تطبيقات التوصيل	a402cbba-b2b5-4b39-98d4-72d2fd9fba1d	هل أرباحك تتآكل بسبب خصومات تطبيقات التوصيل؟ مع بلّورة، فعّل حملاتك، راقب أداءك، واسترجع التكاليف المفقودة من مكان واحد.	960	ar	8fd47bf9-f046-4a6d-b023-f3ec85d06825	\N	\N	f
+\N	\N	\N	\N	\N	\N	\N	\N	1372	en	41a1b66d-4407-4e16-b820-f732aa6b2a09	\N	\N	f
 \N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h1", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "Under the Lens: Trends and Insights in the Food and Restaurant Industry", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "Actionable guides, data-backed advice, and real-world stories to help you run your food business more smoothly and profitably—from kitchen operations to delivery apps.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}], "direction": "rtl"}}	\N	\N	\N	\N	\N	\N	581	en	e2acdb34-8df4-433d-8e58-23364a6b9fc3	\N	\N	f
 \N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h1", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "تحت المجهر: الاتجاهات والرؤى في قطاع المأكولات والمطاعم", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "أدلة قابلة للتنفيذ، ونصائح مدعومة بالبيانات، وقصص من العالم الحقيقي لمساعدتك في إدارة عملك الغذائي بشكل أكثر سلاسة وربحية - من عمليات المطبخ إلى تطبيقات التوصيل.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}], "direction": "rtl"}}	\N	\N	\N	\N	\N	\N	582	ar	e2acdb34-8df4-433d-8e58-23364a6b9fc3	\N	\N	f
 \N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h1", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "Under the Lens: Trends and Insights in the Food and Restaurant Industry", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "Actionable guides, data-backed advice, and real-world stories to help you run your food business more smoothly and profitably—from kitchen operations to delivery apps.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}], "direction": "rtl"}}	\N	\N	\N	\N	\N	\N	583	en	d2829f34-8130-4aba-b601-a88d66108610	\N	\N	f
@@ -14495,6 +14567,7 @@ About Ballurh	{"root": {"type": "root", "format": "", "indent": 0, "version": 1,
 \N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h1", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "عزز نموك على تطبيقات التوصيل", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "بلّورة تبسّط إدارة التسويق وتحسّن أداء المطاعم على تطبيقات التوصيل من خلال منصة واحدة لإدارة الحملات، تحسين الإنفاق الإعلاني، وزيادة الربحية.. بدون تعقيد", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}], "direction": "rtl"}}	5afde42d-6a3f-4d34-a6ba-6eca5caea614	\N	\N	برنامج نمو المطاعم على تطبيقات التوصيل	a402cbba-b2b5-4b39-98d4-72d2fd9fba1d	هل أرباحك تتآكل بسبب خصومات تطبيقات التوصيل؟ مع بلّورة، فعّل حملاتك، راقب أداءك، واسترجع التكاليف المفقودة من مكان واحد.	892	ar	ecbe3c3f-2b09-4776-8f23-53c91e136a32	\N	\N	f
 \N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h1", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "Boost your growth on delivery apps", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "Ballurh simplifies marketing management and improves restaurant performance on delivery apps through a single platform to manage campaigns, optimize ad spend, and increase profitability... without complexity.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}], "direction": "rtl"}}	546f5f03-400f-4043-b548-bc3a0684491a	\N	\N	Restaurant Growth System on Delivery Apps	a402cbba-b2b5-4b39-98d4-72d2fd9fba1d	Are your profits being eroded by delivery app discounts? With Ballurh, activate your campaigns, monitor your performance, and recover lost costs from one place.	893	en	f3366135-d679-461a-9160-86eda5cdd969	\N	\N	f
 \N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h1", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "عزز نموك على تطبيقات التوصيل", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "بلّورة تبسّط إدارة التسويق وتحسّن أداء المطاعم على تطبيقات التوصيل من خلال منصة واحدة لإدارة الحملات، تحسين الإنفاق الإعلاني، وزيادة الربحية.. بدون تعقيد", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}], "direction": "rtl"}}	5afde42d-6a3f-4d34-a6ba-6eca5caea614	\N	\N	برنامج نمو المطاعم على تطبيقات التوصيل	a402cbba-b2b5-4b39-98d4-72d2fd9fba1d	هل أرباحك تتآكل بسبب خصومات تطبيقات التوصيل؟ مع بلّورة، فعّل حملاتك، راقب أداءك، واسترجع التكاليف المفقودة من مكان واحد.	894	ar	f3366135-d679-461a-9160-86eda5cdd969	\N	\N	f
+\N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "سياسة الخصوصية", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": null, "textStyle": "", "textFormat": 0}], "direction": null}}	\N	\N	\N	\N	\N	\N	1400	en	bc71c353-8f39-446c-a109-c4ab58c012b0	\N	\N	f
 \N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h1", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "Boost your growth on delivery apps", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "Ballurh simplifies marketing management and improves restaurant performance on delivery apps through a single platform to manage campaigns, optimize ad spend, and increase profitability... without complexity.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}], "direction": "rtl"}}	546f5f03-400f-4043-b548-bc3a0684491a	\N	\N	Restaurant Growth System on Delivery Apps	a402cbba-b2b5-4b39-98d4-72d2fd9fba1d	Are your profits being eroded by delivery app discounts? With Ballurh, activate your campaigns, monitor your performance, and recover lost costs from one place.	1081	en	1d24c50c-85c9-4f22-9f26-736826283f5e	\N	\N	f
 \N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h1", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "عزز نموك على تطبيقات التوصيل", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "بلّورة تبسّط إدارة التسويق وتحسّن أداء المطاعم على تطبيقات التوصيل من خلال منصة واحدة لإدارة الحملات، تحسين الإنفاق الإعلاني، وزيادة الربحية.. بدون تعقيد", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}], "direction": "rtl"}}	5afde42d-6a3f-4d34-a6ba-6eca5caea614	\N	\N	برنامج نمو المطاعم على تطبيقات التوصيل	a402cbba-b2b5-4b39-98d4-72d2fd9fba1d	هل أرباحك تتآكل بسبب خصومات تطبيقات التوصيل؟ مع بلّورة، فعّل حملاتك، راقب أداءك، واسترجع التكاليف المفقودة من مكان واحد.	1152	ar	e971bceb-3387-49e0-890e-ad8e79c52c35	\N	\N	f
 \N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h1", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "Boost your growth on delivery apps", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "Ballurh simplifies marketing management and improves restaurant performance on delivery apps through a single platform to manage campaigns, optimize ad spend, and increase profitability... without complexity.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}], "direction": "rtl"}}	546f5f03-400f-4043-b548-bc3a0684491a	\N	\N	Restaurant Growth System on Delivery Apps	a402cbba-b2b5-4b39-98d4-72d2fd9fba1d	Are your profits being eroded by delivery app discounts? With Ballurh, activate your campaigns, monitor your performance, and recover lost costs from one place.	1153	en	b4abd354-ca2f-4b0c-ba58-0077b70dee46	\N	\N	f
@@ -14502,34 +14575,48 @@ About Ballurh	{"root": {"type": "root", "format": "", "indent": 0, "version": 1,
 About Ballurh	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h1", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "The new operating system to increase restaurant profitability on delivery apps", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "The delivery app market has changed the way restaurants operate. Orders are now digital, competition is daily, and profitability is linked to complex marketing and operational decisions. Every riyal spent on a discount, advertisement, or commission needs to work efficiently.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "Ballurh is a Saudi platform that helps restaurants improve their profitability from delivery apps. We connect advertising, invoices, and orders in a single dashboard, and provide practical tools and actionable analytics, built on real data, that address the daily reality of the operator.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "Restaurant owners use Ballurh to recover wasted costs, optimize marketing, and make clearer operational decisions.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "Investors see an opportunity to build a new operational infrastructure for the digital food sector, and talents are joining a team that works on a product with a clear impact in a market full of opportunities, and with a realistic approach.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}], "direction": "rtl"}}	\N	\N	\N	Ballurh - a business intelligence platform for the retail, restaurant, and cafe sectors.	\N	Increase your sales, predict demand behaviors, and improve performance indicators by making data-driven growth decisions using the power of business intelligence technologies.	1197	en	776bee6e-d93a-475f-aa30-53d23438faa4	\N	\N	f
 عن بلّورة	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h1", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "نظام التشغيل الجديد لتحسين ربحية المطاعم على تطبيقات التوصيل", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "سوق تطبيقات التوصيل غيّر طريقة عمل المطاعم. الطلبات صارت رقمية، المنافسة صارت يومية، والربحية صارت مرتبطة بقرارات تسويقية وتشغيلية معقّدة، كل ريال ينصرف على خصم أو إعلان أو عمولة يحتاج يشتغل بكفاءة.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "بلّورة منصة سعودية تساعد المطاعم على تحسين ربحيتها من تطبيقات التوصيل.. نربط بين الإعلانات، الفواتير، والطلبات في لوحة تحكم واحدة، ونوفّر أدوات عملية وتحليلات قابلة للتنفيذ، مبنية على بيانات فعلية، وتخاطب الواقع اليومي للمشغّل.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "أصحاب المطاعم يستخدمون بلّورة لاسترجاع التكاليف المهدرة، ضبط التسويق، واتخاذ قرارات تشغيلية أوضح.. ", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "المستثمرون يشوفون فرصة في بناء بنية تشغيلية جديدة لقطاع الأغذية الرقمي.. والمواهب تنضم لفريق يشتغل على منتج له أثر واضح في سوق مليان فرص، وبمنهجية واقعية", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}], "direction": "rtl"}}	\N	\N	\N	بلّورة – منصة ذكاء أعمال لقطاع التجزئة والمطاعم والمقاهي	\N	‏زد مبيعاتك، تنبأ بسلوكيات الطلب وقم بتحسين مؤشرات الأداء من خلال إتخاذ قرارات نمو تعتمد على البيانات باستخدام قوة تقنيات ذكاء الأعمال.	1198	ar	776bee6e-d93a-475f-aa30-53d23438faa4	\N	\N	f
 About Ballurh	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h1", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "The new operating system to increase restaurant profitability on delivery apps", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "The delivery app market has changed the way restaurants operate. Orders are now digital, competition is daily, and profitability is linked to complex marketing and operational decisions. Every riyal spent on a discount, advertisement, or commission needs to work efficiently.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "Ballurh is a Saudi platform that helps restaurants improve their profitability from delivery apps. We connect advertising, invoices, and orders in a single dashboard, and provide practical tools and actionable analytics, built on real data, that address the daily reality of the operator.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "Restaurant owners use Ballurh to recover wasted costs, optimize marketing, and make clearer operational decisions.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "Investors see an opportunity to build a new operational infrastructure for the digital food sector, and talents are joining a team that works on a product with a clear impact in a market full of opportunities, and with a realistic approach.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}], "direction": "rtl"}}	\N	\N	\N	Ballurh - a business intelligence platform for the retail, restaurant, and cafe sectors.	\N	Increase your sales, predict demand behaviors, and improve performance indicators by making data-driven growth decisions using the power of business intelligence technologies.	1199	en	5dc29ddf-a604-4102-bcda-6868180ad4bb	\N	\N	f
+\N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "سياسة الخصوصية", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": null, "textStyle": "", "textFormat": 0}], "direction": null}}	\N	\N	\N	\N	\N	\N	1401	en	3dd8c78b-5eec-4e75-9321-7fa42e51bc63	\N	\N	f
 عن بلّورة	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h1", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "نظام التشغيل الجديد لتحسين ربحية المطاعم على تطبيقات التوصيل", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "سوق تطبيقات التوصيل غيّر طريقة عمل المطاعم. الطلبات صارت رقمية، المنافسة صارت يومية، والربحية صارت مرتبطة بقرارات تسويقية وتشغيلية معقّدة، كل ريال ينصرف على خصم أو إعلان أو عمولة يحتاج يشتغل بكفاءة.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "بلّورة منصة سعودية تساعد المطاعم على تحسين ربحيتها من تطبيقات التوصيل.. نربط بين الإعلانات، الفواتير، والطلبات في لوحة تحكم واحدة، ونوفّر أدوات عملية وتحليلات قابلة للتنفيذ، مبنية على بيانات فعلية، وتخاطب الواقع اليومي للمشغّل.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "أصحاب المطاعم يستخدمون بلّورة لاسترجاع التكاليف المهدرة، ضبط التسويق، واتخاذ قرارات تشغيلية أوضح.. ", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "المستثمرون يشوفون فرصة في بناء بنية تشغيلية جديدة لقطاع الأغذية الرقمي.. والمواهب تنضم لفريق يشتغل على منتج له أثر واضح في سوق مليان فرص، وبمنهجية واقعية", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}], "direction": "rtl"}}	\N	\N	\N	بلّورة – منصة ذكاء أعمال لقطاع التجزئة والمطاعم والمقاهي	\N	‏زد مبيعاتك، تنبأ بسلوكيات الطلب وقم بتحسين مؤشرات الأداء من خلال إتخاذ قرارات نمو تعتمد على البيانات باستخدام قوة تقنيات ذكاء الأعمال.	1200	ar	5dc29ddf-a604-4102-bcda-6868180ad4bb	\N	\N	f
 عن بلّورة	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h1", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "نظام التشغيل الجديد لتحسين ربحية المطاعم على تطبيقات التوصيل", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "سوق تطبيقات التوصيل غيّر طريقة عمل المطاعم. الطلبات صارت رقمية، المنافسة صارت يومية، والربحية صارت مرتبطة بقرارات تسويقية وتشغيلية معقّدة، كل ريال ينصرف على خصم أو إعلان أو عمولة يحتاج يشتغل بكفاءة.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "بلّورة منصة سعودية تساعد المطاعم على تحسين ربحيتها من تطبيقات التوصيل.. نربط بين الإعلانات، الفواتير، والطلبات في لوحة تحكم واحدة، ونوفّر أدوات عملية وتحليلات قابلة للتنفيذ، مبنية على بيانات فعلية، وتخاطب الواقع اليومي للمشغّل.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "أصحاب المطاعم يستخدمون بلّورة لاسترجاع التكاليف المهدرة، ضبط التسويق، واتخاذ قرارات تشغيلية أوضح.. ", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "المستثمرون يشوفون فرصة في بناء بنية تشغيلية جديدة لقطاع الأغذية الرقمي.. والمواهب تنضم لفريق يشتغل على منتج له أثر واضح في سوق مليان فرص، وبمنهجية واقعية", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}], "direction": "rtl"}}	\N	\N	\N	بلّورة – منصة ذكاء أعمال لقطاع التجزئة والمطاعم والمقاهي	\N	‏زد مبيعاتك، تنبأ بسلوكيات الطلب وقم بتحسين مؤشرات الأداء من خلال إتخاذ قرارات نمو تعتمد على البيانات باستخدام قوة تقنيات ذكاء الأعمال.	1206	ar	af8faec0-f970-4457-b247-da532bf3f7a8	\N	\N	f
 About Ballurh	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h1", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "The new operating system to increase restaurant profitability on delivery apps", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "The delivery app market has changed the way restaurants operate. Orders are now digital, competition is daily, and profitability is linked to complex marketing and operational decisions. Every riyal spent on a discount, advertisement, or commission needs to work efficiently.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "Ballurh is a Saudi platform that helps restaurants improve their profitability from delivery apps. We connect advertising, invoices, and orders in a single dashboard, and provide practical tools and actionable analytics, built on real data, that address the daily reality of the operator.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "Restaurant owners use Ballurh to recover wasted costs, optimize marketing, and make clearer operational decisions.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "Investors see an opportunity to build a new operational infrastructure for the digital food sector, and talents are joining a team that works on a product with a clear impact in a market full of opportunities, and with a realistic approach.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}], "direction": "rtl"}}	\N	\N	\N	Ballurh - a business intelligence platform for the retail, restaurant, and cafe sectors.	\N	Increase your sales, predict demand behaviors, and improve performance indicators by making data-driven growth decisions using the power of business intelligence technologies.	1207	en	49a0209c-b18c-4487-a8f6-8e681af9ef9b	\N	\N	f
 عن بلّورة	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h1", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "نظام التشغيل الجديد لتحسين ربحية المطاعم على تطبيقات التوصيل", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "سوق تطبيقات التوصيل غيّر طريقة عمل المطاعم. الطلبات صارت رقمية، المنافسة صارت يومية، والربحية صارت مرتبطة بقرارات تسويقية وتشغيلية معقّدة، كل ريال ينصرف على خصم أو إعلان أو عمولة يحتاج يشتغل بكفاءة.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "بلّورة منصة سعودية تساعد المطاعم على تحسين ربحيتها من تطبيقات التوصيل.. نربط بين الإعلانات، الفواتير، والطلبات في لوحة تحكم واحدة، ونوفّر أدوات عملية وتحليلات قابلة للتنفيذ، مبنية على بيانات فعلية، وتخاطب الواقع اليومي للمشغّل.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "أصحاب المطاعم يستخدمون بلّورة لاسترجاع التكاليف المهدرة، ضبط التسويق، واتخاذ قرارات تشغيلية أوضح.. ", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "المستثمرون يشوفون فرصة في بناء بنية تشغيلية جديدة لقطاع الأغذية الرقمي.. والمواهب تنضم لفريق يشتغل على منتج له أثر واضح في سوق مليان فرص، وبمنهجية واقعية", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}], "direction": "rtl"}}	\N	\N	\N	بلّورة – منصة ذكاء أعمال لقطاع التجزئة والمطاعم والمقاهي	\N	‏زد مبيعاتك، تنبأ بسلوكيات الطلب وقم بتحسين مؤشرات الأداء من خلال إتخاذ قرارات نمو تعتمد على البيانات باستخدام قوة تقنيات ذكاء الأعمال.	1208	ar	49a0209c-b18c-4487-a8f6-8e681af9ef9b	\N	\N	f
+\N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "سياسة الخصوصية", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": null, "textStyle": "", "textFormat": 0}], "direction": null}}	\N	\N	\N	\N	\N	\N	1404	en	c880bf86-4e6a-4f45-8af1-822beb735beb	\N	\N	f
 About Ballurh	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h1", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "The new operating system to increase restaurant profitability on delivery apps", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "The delivery app market has changed the way restaurants operate. Orders are now digital, competition is daily, and profitability is linked to complex marketing and operational decisions. Every riyal spent on a discount, advertisement, or commission needs to work efficiently.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "Ballurh is a Saudi platform that helps restaurants improve their profitability from delivery apps. We connect advertising, invoices, and orders in a single dashboard, and provide practical tools and actionable analytics, built on real data, that address the daily reality of the operator.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "Restaurant owners use Ballurh to recover wasted costs, optimize marketing, and make clearer operational decisions.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "Investors see an opportunity to build a new operational infrastructure for the digital food sector, and talents are joining a team that works on a product with a clear impact in a market full of opportunities, and with a realistic approach.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}], "direction": "rtl"}}	\N	\N	\N	Ballurh - a business intelligence platform for the retail, restaurant, and cafe sectors.	\N	Increase your sales, predict demand behaviors, and improve performance indicators by making data-driven growth decisions using the power of business intelligence technologies.	1213	en	94653181-14e8-4c89-b775-45eb55a457ac	\N	\N	f
 عن بلّورة	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h1", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "نظام التشغيل الجديد لتحسين ربحية المطاعم على تطبيقات التوصيل", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "سوق تطبيقات التوصيل غيّر طريقة عمل المطاعم. الطلبات صارت رقمية، المنافسة صارت يومية، والربحية صارت مرتبطة بقرارات تسويقية وتشغيلية معقّدة، كل ريال ينصرف على خصم أو إعلان أو عمولة يحتاج يشتغل بكفاءة.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "بلّورة منصة سعودية تساعد المطاعم على تحسين ربحيتها من تطبيقات التوصيل.. نربط بين الإعلانات، الفواتير، والطلبات في لوحة تحكم واحدة، ونوفّر أدوات عملية وتحليلات قابلة للتنفيذ، مبنية على بيانات فعلية، وتخاطب الواقع اليومي للمشغّل.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "أصحاب المطاعم يستخدمون بلّورة لاسترجاع التكاليف المهدرة، ضبط التسويق، واتخاذ قرارات تشغيلية أوضح.. ", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "المستثمرون يشوفون فرصة في بناء بنية تشغيلية جديدة لقطاع الأغذية الرقمي.. والمواهب تنضم لفريق يشتغل على منتج له أثر واضح في سوق مليان فرص، وبمنهجية واقعية", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}], "direction": "rtl"}}	\N	\N	\N	بلّورة – منصة ذكاء أعمال لقطاع التجزئة والمطاعم والمقاهي	\N	‏زد مبيعاتك، تنبأ بسلوكيات الطلب وقم بتحسين مؤشرات الأداء من خلال إتخاذ قرارات نمو تعتمد على البيانات باستخدام قوة تقنيات ذكاء الأعمال.	1214	ar	94653181-14e8-4c89-b775-45eb55a457ac	\N	\N	f
 About Ballurh	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h1", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "The new operating system to increase restaurant profitability on delivery apps", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "The delivery app market has changed the way restaurants operate. Orders are now digital, competition is daily, and profitability is linked to complex marketing and operational decisions. Every riyal spent on a discount, advertisement, or commission needs to work efficiently.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "Ballurh is a Saudi platform that helps restaurants improve their profitability from delivery apps. We connect advertising, invoices, and orders in a single dashboard, and provide practical tools and actionable analytics, built on real data, that address the daily reality of the operator.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "Restaurant owners use Ballurh to recover wasted costs, optimize marketing, and make clearer operational decisions.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "Investors see an opportunity to build a new operational infrastructure for the digital food sector, and talents are joining a team that works on a product with a clear impact in a market full of opportunities, and with a realistic approach.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}], "direction": "rtl"}}	\N	\N	\N	Ballurh - a business intelligence platform for the retail, restaurant, and cafe sectors.	\N	Increase your sales, predict demand behaviors, and improve performance indicators by making data-driven growth decisions using the power of business intelligence technologies.	1215	en	bf142327-abd6-4aee-a03a-6a2ca0141234	\N	\N	f
 \N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h1", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "Boost your growth on delivery apps", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "Ballurh simplifies marketing management and improves restaurant performance on delivery apps through a single platform to manage campaigns, optimize ad spend, and increase profitability... without complexity.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}], "direction": "rtl"}}	546f5f03-400f-4043-b548-bc3a0684491a	\N	\N	Restaurant Growth System on Delivery Apps	a402cbba-b2b5-4b39-98d4-72d2fd9fba1d	Are your profits being eroded by delivery app discounts? With Ballurh, activate your campaigns, monitor your performance, and recover lost costs from one place.	1321	en	5befbaf7-ffbd-4fc5-b8ae-8a6aad8de1a3	\N	\N	f
 عن بلّورة	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h1", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "نظام التشغيل الجديد لتحسين ربحية المطاعم على تطبيقات التوصيل", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "سوق تطبيقات التوصيل غيّر طريقة عمل المطاعم. الطلبات صارت رقمية، المنافسة صارت يومية، والربحية صارت مرتبطة بقرارات تسويقية وتشغيلية معقّدة، كل ريال ينصرف على خصم أو إعلان أو عمولة يحتاج يشتغل بكفاءة.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "بلّورة منصة سعودية تساعد المطاعم على تحسين ربحيتها من تطبيقات التوصيل.. نربط بين الإعلانات، الفواتير، والطلبات في لوحة تحكم واحدة، ونوفّر أدوات عملية وتحليلات قابلة للتنفيذ، مبنية على بيانات فعلية، وتخاطب الواقع اليومي للمشغّل.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "أصحاب المطاعم يستخدمون بلّورة لاسترجاع التكاليف المهدرة، ضبط التسويق، واتخاذ قرارات تشغيلية أوضح.. ", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "المستثمرون يشوفون فرصة في بناء بنية تشغيلية جديدة لقطاع الأغذية الرقمي.. والمواهب تنضم لفريق يشتغل على منتج له أثر واضح في سوق مليان فرص، وبمنهجية واقعية", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}], "direction": "rtl"}}	\N	\N	\N	بلّورة – منصة ذكاء أعمال لقطاع التجزئة والمطاعم والمقاهي	\N	‏زد مبيعاتك، تنبأ بسلوكيات الطلب وقم بتحسين مؤشرات الأداء من خلال إتخاذ قرارات نمو تعتمد على البيانات باستخدام قوة تقنيات ذكاء الأعمال.	1216	ar	bf142327-abd6-4aee-a03a-6a2ca0141234	\N	\N	f
+\N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "سياسة الخصوصية", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": null, "textStyle": "", "textFormat": 0}], "direction": null}}	\N	\N	\N	\N	\N	\N	1405	en	d4f20a0c-29eb-4449-be1a-43f04494f46e	\N	\N	f
 About Ballurh	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h1", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "The new operating system to increase restaurant profitability on delivery apps", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "The delivery app market has changed the way restaurants operate. Orders are now digital, competition is daily, and profitability is linked to complex marketing and operational decisions. Every riyal spent on a discount, advertisement, or commission needs to work efficiently.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "Ballurh is a Saudi platform that helps restaurants improve their profitability from delivery apps. We connect advertising, invoices, and orders in a single dashboard, and provide practical tools and actionable analytics, built on real data, that address the daily reality of the operator.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "Restaurant owners use Ballurh to recover wasted costs, optimize marketing, and make clearer operational decisions.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "Investors see an opportunity to build a new operational infrastructure for the digital food sector, and talents are joining a team that works on a product with a clear impact in a market full of opportunities, and with a realistic approach.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}], "direction": "rtl"}}	\N	\N	\N	Ballurh - a business intelligence platform for the retail, restaurant, and cafe sectors.	\N	Increase your sales, predict demand behaviors, and improve performance indicators by making data-driven growth decisions using the power of business intelligence technologies.	1289	en	868df81e-d817-4217-bcf3-c5409e711824	\N	\N	f
 عن بلّورة	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h1", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "نظام التشغيل الجديد لتحسين ربحية المطاعم على تطبيقات التوصيل", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "سوق تطبيقات التوصيل غيّر طريقة عمل المطاعم. الطلبات صارت رقمية، المنافسة صارت يومية، والربحية صارت مرتبطة بقرارات تسويقية وتشغيلية معقّدة، كل ريال ينصرف على خصم أو إعلان أو عمولة يحتاج يشتغل بكفاءة.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "بلّورة منصة سعودية تساعد المطاعم على تحسين ربحيتها من تطبيقات التوصيل.. نربط بين الإعلانات، الفواتير، والطلبات في لوحة تحكم واحدة، ونوفّر أدوات عملية وتحليلات قابلة للتنفيذ، مبنية على بيانات فعلية، وتخاطب الواقع اليومي للمشغّل.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "أصحاب المطاعم يستخدمون بلّورة لاسترجاع التكاليف المهدرة، ضبط التسويق، واتخاذ قرارات تشغيلية أوضح.. ", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "المستثمرون يشوفون فرصة في بناء بنية تشغيلية جديدة لقطاع الأغذية الرقمي.. والمواهب تنضم لفريق يشتغل على منتج له أثر واضح في سوق مليان فرص، وبمنهجية واقعية", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}], "direction": "rtl"}}	\N	\N	\N	بلّورة – منصة ذكاء أعمال لقطاع التجزئة والمطاعم والمقاهي	\N	‏زد مبيعاتك، تنبأ بسلوكيات الطلب وقم بتحسين مؤشرات الأداء من خلال إتخاذ قرارات نمو تعتمد على البيانات باستخدام قوة تقنيات ذكاء الأعمال.	1290	ar	868df81e-d817-4217-bcf3-c5409e711824	\N	\N	f
+\N	\N	\N	\N	\N	\N	\N	\N	1406	en	3d788509-0d02-4dda-a925-88ed4f866123	\N	\N	f
 About Ballurh	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h1", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "The new operating system to increase restaurant profitability on delivery apps", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "The delivery app market has changed the way restaurants operate. Orders are now digital, competition is daily, and profitability is linked to complex marketing and operational decisions. Every riyal spent on a discount, advertisement, or commission needs to work efficiently.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "Ballurh is a Saudi platform that helps restaurants improve their profitability from delivery apps. We connect advertising, invoices, and orders in a single dashboard, and provide practical tools and actionable analytics, built on real data, that address the daily reality of the operator.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "Restaurant owners use Ballurh to recover wasted costs, optimize marketing, and make clearer operational decisions.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "Investors see an opportunity to build a new operational infrastructure for the digital food sector, and talents are joining a team that works on a product with a clear impact in a market full of opportunities, and with a realistic approach.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}], "direction": "rtl"}}	\N	\N	\N	Ballurh - a business intelligence platform for the retail, restaurant, and cafe sectors.	\N	Increase your sales, predict demand behaviors, and improve performance indicators by making data-driven growth decisions using the power of business intelligence technologies.	1291	en	227b995d-f68e-46cb-93e4-8f83abebb7f6	\N	\N	f
 عن بلّورة	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h1", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "نظام التشغيل الجديد لتحسين ربحية المطاعم على تطبيقات التوصيل", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "سوق تطبيقات التوصيل غيّر طريقة عمل المطاعم. الطلبات صارت رقمية، المنافسة صارت يومية، والربحية صارت مرتبطة بقرارات تسويقية وتشغيلية معقّدة، كل ريال ينصرف على خصم أو إعلان أو عمولة يحتاج يشتغل بكفاءة.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "بلّورة منصة سعودية تساعد المطاعم على تحسين ربحيتها من تطبيقات التوصيل.. نربط بين الإعلانات، الفواتير، والطلبات في لوحة تحكم واحدة، ونوفّر أدوات عملية وتحليلات قابلة للتنفيذ، مبنية على بيانات فعلية، وتخاطب الواقع اليومي للمشغّل.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "أصحاب المطاعم يستخدمون بلّورة لاسترجاع التكاليف المهدرة، ضبط التسويق، واتخاذ قرارات تشغيلية أوضح.. ", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "المستثمرون يشوفون فرصة في بناء بنية تشغيلية جديدة لقطاع الأغذية الرقمي.. والمواهب تنضم لفريق يشتغل على منتج له أثر واضح في سوق مليان فرص، وبمنهجية واقعية", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}], "direction": "rtl"}}	\N	\N	\N	بلّورة – منصة ذكاء أعمال لقطاع التجزئة والمطاعم والمقاهي	\N	‏زد مبيعاتك، تنبأ بسلوكيات الطلب وقم بتحسين مؤشرات الأداء من خلال إتخاذ قرارات نمو تعتمد على البيانات باستخدام قوة تقنيات ذكاء الأعمال.	1292	ar	227b995d-f68e-46cb-93e4-8f83abebb7f6	\N	\N	f
 About Ballurh	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h1", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "The new operating system to increase restaurant profitability on delivery apps", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "The delivery app market has changed the way restaurants operate. Orders are now digital, competition is daily, and profitability is linked to complex marketing and operational decisions. Every riyal spent on a discount, advertisement, or commission needs to work efficiently.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "Ballurh is a Saudi platform that helps restaurants improve their profitability from delivery apps. We connect advertising, invoices, and orders in a single dashboard, and provide practical tools and actionable analytics, built on real data, that address the daily reality of the operator.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "Restaurant owners use Ballurh to recover wasted costs, optimize marketing, and make clearer operational decisions.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "Investors see an opportunity to build a new operational infrastructure for the digital food sector, and talents are joining a team that works on a product with a clear impact in a market full of opportunities, and with a realistic approach.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}], "direction": "rtl"}}	\N	\N	\N	Ballurh - a business intelligence platform for the retail, restaurant, and cafe sectors.	\N	Increase your sales, predict demand behaviors, and improve performance indicators by making data-driven growth decisions using the power of business intelligence technologies.	1223	en	4ecf9d84-fac6-4c7b-8528-bec6d72beb0d	\N	\N	f
 \N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h1", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "Boost your growth on delivery apps", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "Ballurh simplifies marketing management and improves restaurant performance on delivery apps through a single platform to manage campaigns, optimize ad spend, and increase profitability... without complexity..", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}], "direction": "rtl"}}	546f5f03-400f-4043-b548-bc3a0684491a	\N	\N	Restaurant Growth System on Delivery Apps	a402cbba-b2b5-4b39-98d4-72d2fd9fba1d	Are your profits being eroded by delivery app discounts? With Ballurh, activate your campaigns, monitor your performance, and recover lost costs from one place.	1327	en	b988988c-b274-4303-baca-3c185b34e80f	\N	\N	f
 عن بلّورة	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h1", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "نظام التشغيل الجديد لتحسين ربحية المطاعم على تطبيقات التوصيل", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "سوق تطبيقات التوصيل غيّر طريقة عمل المطاعم. الطلبات صارت رقمية، المنافسة صارت يومية، والربحية صارت مرتبطة بقرارات تسويقية وتشغيلية معقّدة، كل ريال ينصرف على خصم أو إعلان أو عمولة يحتاج يشتغل بكفاءة.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "بلّورة منصة سعودية تساعد المطاعم على تحسين ربحيتها من تطبيقات التوصيل.. نربط بين الإعلانات، الفواتير، والطلبات في لوحة تحكم واحدة، ونوفّر أدوات عملية وتحليلات قابلة للتنفيذ، مبنية على بيانات فعلية، وتخاطب الواقع اليومي للمشغّل.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "أصحاب المطاعم يستخدمون بلّورة لاسترجاع التكاليف المهدرة، ضبط التسويق، واتخاذ قرارات تشغيلية أوضح.. ", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "المستثمرون يشوفون فرصة في بناء بنية تشغيلية جديدة لقطاع الأغذية الرقمي.. والمواهب تنضم لفريق يشتغل على منتج له أثر واضح في سوق مليان فرص، وبمنهجية واقعية", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}], "direction": "rtl"}}	\N	\N	\N	بلّورة – منصة ذكاء أعمال لقطاع التجزئة والمطاعم والمقاهي	\N	‏زد مبيعاتك، تنبأ بسلوكيات الطلب وقم بتحسين مؤشرات الأداء من خلال إتخاذ قرارات نمو تعتمد على البيانات باستخدام قوة تقنيات ذكاء الأعمال.	1224	ar	4ecf9d84-fac6-4c7b-8528-bec6d72beb0d	\N	\N	f
+\N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h1", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "Terms and Conditions", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": null}], "direction": null}}	\N	\N	\N	\N	\N	\N	1421	en	02002e08-e14f-4d65-9edf-e5d6216399f3	\N	\N	f
 About Ballurh	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h1", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "The new operating system to increase restaurant profitability on delivery apps", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "The delivery app market has changed the way restaurants operate. Orders are now digital, competition is daily, and profitability is linked to complex marketing and operational decisions. Every riyal spent on a discount, advertisement, or commission needs to work efficiently.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "Ballurh is a Saudi platform that helps restaurants improve their profitability from delivery apps. We connect advertising, invoices, and orders in a single dashboard, and provide practical tools and actionable analytics, built on real data, that address the daily reality of the operator.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "Restaurant owners use Ballurh to recover wasted costs, optimize marketing, and make clearer operational decisions.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "Investors see an opportunity to build a new operational infrastructure for the digital food sector, and talents are joining a team that works on a product with a clear impact in a market full of opportunities, and with a realistic approach.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}], "direction": "rtl"}}	\N	\N	\N	Ballurh - a business intelligence platform for the retail, restaurant, and cafe sectors.	\N	Increase your sales, predict demand behaviors, and improve performance indicators by making data-driven growth decisions using the power of business intelligence technologies.	1225	en	94244a4d-2803-4eca-bfce-70bc5ec1e0ae	\N	\N	f
 عن بلّورة	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h1", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "نظام التشغيل الجديد لتحسين ربحية المطاعم على تطبيقات التوصيل", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "سوق تطبيقات التوصيل غيّر طريقة عمل المطاعم. الطلبات صارت رقمية، المنافسة صارت يومية، والربحية صارت مرتبطة بقرارات تسويقية وتشغيلية معقّدة، كل ريال ينصرف على خصم أو إعلان أو عمولة يحتاج يشتغل بكفاءة.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "بلّورة منصة سعودية تساعد المطاعم على تحسين ربحيتها من تطبيقات التوصيل.. نربط بين الإعلانات، الفواتير، والطلبات في لوحة تحكم واحدة، ونوفّر أدوات عملية وتحليلات قابلة للتنفيذ، مبنية على بيانات فعلية، وتخاطب الواقع اليومي للمشغّل.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "أصحاب المطاعم يستخدمون بلّورة لاسترجاع التكاليف المهدرة، ضبط التسويق، واتخاذ قرارات تشغيلية أوضح.. ", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "المستثمرون يشوفون فرصة في بناء بنية تشغيلية جديدة لقطاع الأغذية الرقمي.. والمواهب تنضم لفريق يشتغل على منتج له أثر واضح في سوق مليان فرص، وبمنهجية واقعية", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}], "direction": "rtl"}}	\N	\N	\N	بلّورة – منصة ذكاء أعمال لقطاع التجزئة والمطاعم والمقاهي	\N	‏زد مبيعاتك، تنبأ بسلوكيات الطلب وقم بتحسين مؤشرات الأداء من خلال إتخاذ قرارات نمو تعتمد على البيانات باستخدام قوة تقنيات ذكاء الأعمال.	1226	ar	94244a4d-2803-4eca-bfce-70bc5ec1e0ae	\N	\N	f
 About Ballurh	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h1", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "The new operating system to increase restaurant profitability on delivery apps", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "The delivery app market has changed the way restaurants operate. Orders are now digital, competition is daily, and profitability is linked to complex marketing and operational decisions. Every riyal spent on a discount, advertisement, or commission needs to work efficiently.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "Ballurh is a Saudi platform that helps restaurants improve their profitability from delivery apps. We connect advertising, invoices, and orders in a single dashboard, and provide practical tools and actionable analytics, built on real data, that address the daily reality of the operator.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "Restaurant owners use Ballurh to recover wasted costs, optimize marketing, and make clearer operational decisions.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "Investors see an opportunity to build a new operational infrastructure for the digital food sector, and talents are joining a team that works on a product with a clear impact in a market full of opportunities, and with a realistic approach.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}], "direction": "rtl"}}	\N	\N	\N	Ballurh - a business intelligence platform for the retail, restaurant, and cafe sectors.	\N	Increase your sales, predict demand behaviors, and improve performance indicators by making data-driven growth decisions using the power of business intelligence technologies.	1295	en	e4d04395-b8a7-439a-98fb-a81567f5061b	\N	\N	f
 عن بلّورة	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h1", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "نظام التشغيل الجديد لتحسين ربحية المطاعم على تطبيقات التوصيل", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "سوق تطبيقات التوصيل غيّر طريقة عمل المطاعم. الطلبات صارت رقمية، المنافسة صارت يومية، والربحية صارت مرتبطة بقرارات تسويقية وتشغيلية معقّدة، كل ريال ينصرف على خصم أو إعلان أو عمولة يحتاج يشتغل بكفاءة.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "بلّورة منصة سعودية تساعد المطاعم على تحسين ربحيتها من تطبيقات التوصيل.. نربط بين الإعلانات، الفواتير، والطلبات في لوحة تحكم واحدة، ونوفّر أدوات عملية وتحليلات قابلة للتنفيذ، مبنية على بيانات فعلية، وتخاطب الواقع اليومي للمشغّل.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "أصحاب المطاعم يستخدمون بلّورة لاسترجاع التكاليف المهدرة، ضبط التسويق، واتخاذ قرارات تشغيلية أوضح.. ", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "المستثمرون يشوفون فرصة في بناء بنية تشغيلية جديدة لقطاع الأغذية الرقمي.. والمواهب تنضم لفريق يشتغل على منتج له أثر واضح في سوق مليان فرص، وبمنهجية واقعية", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}], "direction": "rtl"}}	\N	\N	\N	بلّورة – منصة ذكاء أعمال لقطاع التجزئة والمطاعم والمقاهي	\N	‏زد مبيعاتك، تنبأ بسلوكيات الطلب وقم بتحسين مؤشرات الأداء من خلال إتخاذ قرارات نمو تعتمد على البيانات باستخدام قوة تقنيات ذكاء الأعمال.	1296	ar	e4d04395-b8a7-439a-98fb-a81567f5061b	\N	\N	f
 عن بلّورة	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h1", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "نظام التشغيل الجديد لتحسين ربحية المطاعم على تطبيقات التوصيل", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "سوق تطبيقات التوصيل غيّر طريقة عمل المطاعم. الطلبات صارت رقمية، المنافسة صارت يومية، والربحية صارت مرتبطة بقرارات تسويقية وتشغيلية معقّدة، كل ريال ينصرف على خصم أو إعلان أو عمولة يحتاج يشتغل بكفاءة.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "بلّورة منصة سعودية تساعد المطاعم على تحسين ربحيتها من تطبيقات التوصيل.. نربط بين الإعلانات، الفواتير، والطلبات في لوحة تحكم واحدة، ونوفّر أدوات عملية وتحليلات قابلة للتنفيذ، مبنية على بيانات فعلية، وتخاطب الواقع اليومي للمشغّل.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "أصحاب المطاعم يستخدمون بلّورة لاسترجاع التكاليف المهدرة، ضبط التسويق، واتخاذ قرارات تشغيلية أوضح.. ", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "المستثمرون يشوفون فرصة في بناء بنية تشغيلية جديدة لقطاع الأغذية الرقمي.. والمواهب تنضم لفريق يشتغل على منتج له أثر واضح في سوق مليان فرص، وبمنهجية واقعية", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}], "direction": "rtl"}}	\N	\N	\N	بلّورة – منصة ذكاء أعمال لقطاع التجزئة والمطاعم والمقاهي	\N	‏زد مبيعاتك، تنبأ بسلوكيات الطلب وقم بتحسين مؤشرات الأداء من خلال إتخاذ قرارات نمو تعتمد على البيانات باستخدام قوة تقنيات ذكاء الأعمال.	1297	ar	091817b6-0342-4b73-91f3-5503868ebc22	\N	\N	f
 About Ballurh	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h1", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "The new operating system to increase restaurant profitability on delivery apps", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "The delivery app market has changed the way restaurants operate. Orders are now digital, competition is daily, and profitability is linked to complex marketing and operational decisions. Every riyal spent on a discount, advertisement, or commission needs to work efficiently.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "Ballurh is a Saudi platform that helps restaurants improve their profitability from delivery apps. We connect advertising, invoices, and orders in a single dashboard, and provide practical tools and actionable analytics, built on real data, that address the daily reality of the operator.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "Restaurant owners use Ballurh to recover wasted costs, optimize marketing, and make clearer operational decisions.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "Investors see an opportunity to build a new operational infrastructure for the digital food sector, and talents are joining a team that works on a product with a clear impact in a market full of opportunities, and with a realistic approach.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}], "direction": "rtl"}}	\N	\N	\N	Ballurh - a business intelligence platform for the retail, restaurant, and cafe sectors.	\N	Increase your sales, predict demand behaviors, and improve performance indicators by making data-driven growth decisions using the power of business intelligence technologies.	1298	en	091817b6-0342-4b73-91f3-5503868ebc22	\N	\N	f
+\N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h1", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "Terms and Conditions", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": null}], "direction": null}}	\N	\N	\N	\N	\N	\N	1422	en	52527650-47c2-4ce7-bee3-6ab0baf1e780	\N	\N	f
+\N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h1", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "سياسة الخصوصية", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": null}], "direction": null}}	\N	\N	\N	\N	\N	\N	1423	en	04916c68-26be-4395-b3b1-d697c5bd8cac	\N	\N	f
+\N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h1", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "سياسة الخصوصية", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": null}], "direction": null}}	\N	\N	\N	\N	\N	\N	1424	en	f06583f3-7395-4f76-88bf-72272a0cc793	\N	\N	f
 About Ballurh	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h1", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "The new operating system to increase restaurant profitability on delivery apps", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "The delivery app market has changed the way restaurants operate. Orders are now digital, competition is daily, and profitability is linked to complex marketing and operational decisions. Every riyal spent on a discount, advertisement, or commission needs to work efficiently.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "Ballurh is a Saudi platform that helps restaurants improve their profitability from delivery apps. We connect advertising, invoices, and orders in a single dashboard, and provide practical tools and actionable analytics, built on real data, that address the daily reality of the operator.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "Restaurant owners use Ballurh to recover wasted costs, optimize marketing, and make clearer operational decisions.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "Investors see an opportunity to build a new operational infrastructure for the digital food sector, and talents are joining a team that works on a product with a clear impact in a market full of opportunities, and with a realistic approach.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}], "direction": "rtl"}}	\N	\N	\N	Ballurh - a business intelligence platform for the retail, restaurant, and cafe sectors.	\N	Increase your sales, predict demand behaviors, and improve performance indicators by making data-driven growth decisions using the power of business intelligence technologies.	1309	en	955faaf3-565f-4607-bb5d-72ad0cd63d5d	\N	\N	f
 عن بلّورة	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h1", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "نظام التشغيل الجديد لتحسين ربحية المطاعم على تطبيقات التوصيل", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "سوق تطبيقات التوصيل غيّر طريقة عمل المطاعم. الطلبات صارت رقمية، المنافسة صارت يومية، والربحية صارت مرتبطة بقرارات تسويقية وتشغيلية معقّدة، كل ريال ينصرف على خصم أو إعلان أو عمولة يحتاج يشتغل بكفاءة.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "بلّورة منصة سعودية تساعد المطاعم على تحسين ربحيتها من تطبيقات التوصيل.. نربط بين الإعلانات، الفواتير، والطلبات في لوحة تحكم واحدة، ونوفّر أدوات عملية وتحليلات قابلة للتنفيذ، مبنية على بيانات فعلية، وتخاطب الواقع اليومي للمشغّل.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "أصحاب المطاعم يستخدمون بلّورة لاسترجاع التكاليف المهدرة، ضبط التسويق، واتخاذ قرارات تشغيلية أوضح.. ", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "المستثمرون يشوفون فرصة في بناء بنية تشغيلية جديدة لقطاع الأغذية الرقمي.. والمواهب تنضم لفريق يشتغل على منتج له أثر واضح في سوق مليان فرص، وبمنهجية واقعية", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}], "direction": "rtl"}}	\N	\N	\N	بلّورة – منصة ذكاء أعمال لقطاع التجزئة والمطاعم والمقاهي	\N	‏زد مبيعاتك، تنبأ بسلوكيات الطلب وقم بتحسين مؤشرات الأداء من خلال إتخاذ قرارات نمو تعتمد على البيانات باستخدام قوة تقنيات ذكاء الأعمال.	1310	ar	955faaf3-565f-4607-bb5d-72ad0cd63d5d	\N	\N	f
 About Ballurh	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h1", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "The new operating system to increase restaurant profitability on delivery apps", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "The delivery app market has changed the way restaurants operate. Orders are now digital, competition is daily, and profitability is linked to complex marketing and operational decisions. Every riyal spent on a discount, advertisement, or commission needs to work efficiently.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "Ballurh is a Saudi platform that helps restaurants improve their profitability from delivery apps. We connect advertising, invoices, and orders in a single dashboard, and provide practical tools and actionable analytics, built on real data, that address the daily reality of the operator.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "Restaurant owners use Ballurh to recover wasted costs, optimize marketing, and make clearer operational decisions.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "Investors see an opportunity to build a new operational infrastructure for the digital food sector, and talents are joining a team that works on a product with a clear impact in a market full of opportunities, and with a realistic approach.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}], "direction": "rtl"}}	\N	\N	\N	Ballurh - a business intelligence platform for the retail, restaurant, and cafe sectors.	\N	Increase your sales, predict demand behaviors, and improve performance indicators by making data-driven growth decisions using the power of business intelligence technologies.	1311	en	f714fe7f-ab61-4cf9-927c-9bcf97ccf1b6	\N	\N	f
 عن بلّورة	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h1", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "نظام التشغيل الجديد لتحسين ربحية المطاعم على تطبيقات التوصيل", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "سوق تطبيقات التوصيل غيّر طريقة عمل المطاعم. الطلبات صارت رقمية، المنافسة صارت يومية، والربحية صارت مرتبطة بقرارات تسويقية وتشغيلية معقّدة، كل ريال ينصرف على خصم أو إعلان أو عمولة يحتاج يشتغل بكفاءة.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "بلّورة منصة سعودية تساعد المطاعم على تحسين ربحيتها من تطبيقات التوصيل.. نربط بين الإعلانات، الفواتير، والطلبات في لوحة تحكم واحدة، ونوفّر أدوات عملية وتحليلات قابلة للتنفيذ، مبنية على بيانات فعلية، وتخاطب الواقع اليومي للمشغّل.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "أصحاب المطاعم يستخدمون بلّورة لاسترجاع التكاليف المهدرة، ضبط التسويق، واتخاذ قرارات تشغيلية أوضح.. ", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "المستثمرون يشوفون فرصة في بناء بنية تشغيلية جديدة لقطاع الأغذية الرقمي.. والمواهب تنضم لفريق يشتغل على منتج له أثر واضح في سوق مليان فرص، وبمنهجية واقعية", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}], "direction": "rtl"}}	\N	\N	\N	بلّورة – منصة ذكاء أعمال لقطاع التجزئة والمطاعم والمقاهي	\N	‏زد مبيعاتك، تنبأ بسلوكيات الطلب وقم بتحسين مؤشرات الأداء من خلال إتخاذ قرارات نمو تعتمد على البيانات باستخدام قوة تقنيات ذكاء الأعمال.	1312	ar	f714fe7f-ab61-4cf9-927c-9bcf97ccf1b6	\N	\N	f
+\N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h1", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "Terms and Conditions", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": null}], "direction": null}}	\N	\N	\N	\N	\N	\N	1427	en	4916d3fb-8b43-4a0a-83fa-ddb02eac1e6f	\N	\N	f
+\N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h1", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "الشروط والأحكام", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": null}], "direction": null}}	\N	\N	\N	\N	\N	\N	1428	ar	4916d3fb-8b43-4a0a-83fa-ddb02eac1e6f	\N	\N	f
+\N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h1", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "Terms and Conditions", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": null}], "direction": null}}	\N	\N	\N	\N	\N	\N	1429	en	7efd1f75-f585-4037-adc5-e36235ec6435	\N	\N	f
+\N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h1", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "الشروط والأحكام", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": null}], "direction": null}}	\N	\N	\N	\N	\N	\N	1430	ar	7efd1f75-f585-4037-adc5-e36235ec6435	\N	\N	f
 \N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h1", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "عزز نموك على تطبيقات التوصيل", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "بلّورة تبسّط إدارة التسويق وتحسّن أداء المطاعم على تطبيقات التوصيل من خلال منصة واحدة لإدارة الحملات، تحسين الإنفاق الإعلاني، وزيادة الربحية.. بدون تعقيد", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}], "direction": "rtl"}}	5afde42d-6a3f-4d34-a6ba-6eca5caea614	\N	\N	برنامج نمو المطاعم على تطبيقات التوصيل	a402cbba-b2b5-4b39-98d4-72d2fd9fba1d	هل أرباحك تتآكل بسبب خصومات تطبيقات التوصيل؟ مع بلّورة، فعّل حملاتك، راقب أداءك، واسترجع التكاليف المفقودة من مكان واحد.	1324	ar	332494df-8482-49a0-aedd-17be4e6346c8	\N	\N	f
 \N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h1", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "عزز نموك على تطبيقات التوصيل", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "بلّورة تبسّط إدارة التسويق وتحسّن أداء المطاعم على تطبيقات التوصيل من خلال منصة واحدة لإدارة الحملات، تحسين الإنفاق الإعلاني، وزيادة الربحية.. بدون تعقيد", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}], "direction": "rtl"}}	5afde42d-6a3f-4d34-a6ba-6eca5caea614	\N	\N	برنامج نمو المطاعم على تطبيقات التوصيل	a402cbba-b2b5-4b39-98d4-72d2fd9fba1d	هل أرباحك تتآكل بسبب خصومات تطبيقات التوصيل؟ مع بلّورة، فعّل حملاتك، راقب أداءك، واسترجع التكاليف المفقودة من مكان واحد.	1326	ar	b834d68c-8e85-4fef-8832-9223c6f99e7b	\N	\N	f
+\N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h1", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "Privacy Pol", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": null}], "direction": null}}	\N	\N	\N	\N	\N	\N	1437	en	3f8802e0-a7a5-462f-9fc2-b1e282d7e194	\N	\N	f
+\N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [], "direction": null}], "direction": null}}	\N	\N	\N	\N	\N	\N	1438	ar	3f8802e0-a7a5-462f-9fc2-b1e282d7e194	\N	\N	f
 \N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h1", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "عزز نموك على تطبيقات التوصيل", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "بلّورة تبسّط إدارة التسويق وتحسّن أداء المطاعم على تطبيقات التوصيل من خلال منصة واحدة لإدارة الحملات، تحسين الإنفاق الإعلاني، وزيادة الربحية.. بدون تعقيد", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}], "direction": "rtl"}}	5afde42d-6a3f-4d34-a6ba-6eca5caea614	\N	\N	برنامج نمو المطاعم على تطبيقات التوصيل	a402cbba-b2b5-4b39-98d4-72d2fd9fba1d	هل أرباحك تتآكل بسبب خصومات تطبيقات التوصيل؟ مع بلّورة، فعّل حملاتك، راقب أداءك، واسترجع التكاليف المفقودة من مكان واحد.	1328	ar	b988988c-b274-4303-baca-3c185b34e80f	\N	\N	f
 \N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h1", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "عزز نموك على تطبيقات التوصيل", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "بلّورة تبسّط إدارة التسويق وتحسّن أداء المطاعم على تطبيقات التوصيل من خلال منصة واحدة لإدارة الحملات، تحسين الإنفاق الإعلاني، وزيادة الربحية.. بدون تعقيد", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}], "direction": "rtl"}}	5afde42d-6a3f-4d34-a6ba-6eca5caea614	\N	\N	برنامج نمو المطاعم على تطبيقات التوصيل	a402cbba-b2b5-4b39-98d4-72d2fd9fba1d	هل أرباحك تتآكل بسبب خصومات تطبيقات التوصيل؟ مع بلّورة، فعّل حملاتك، راقب أداءك، واسترجع التكاليف المفقودة من مكان واحد.	1332	ar	b607d175-e9e4-4f24-9088-f7c06375a6d5	\N	\N	f
 \.
@@ -14539,1119 +14626,1119 @@ About Ballurh	{"root": {"type": "root", "format": "", "indent": 0, "version": 1,
 -- Data for Name: _pages_v_rels; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-COPY "public"."_pages_v_rels" ("id", "order", "parent_id", "path", "locale", "pages_id", "blog_posts_id", "media_id", "faq_id", "customers_id", "categories_id") FROM stdin;
-3977	1	121949fd-6c23-47b2-a9f6-4316de5d07cc	version.layout.0.logos	\N	\N	\N	8c44fa47-dbaa-44ba-9a83-c35e232404f7	\N	\N	\N
-3978	2	121949fd-6c23-47b2-a9f6-4316de5d07cc	version.layout.0.logos	\N	\N	\N	93e4c6fc-6bfb-4246-aad1-8861ebc78777	\N	\N	\N
-6065	1	040a7ac1-73c6-4fe0-8f2b-3804dbea6df3	version.layout.0.logos	\N	\N	\N	8c44fa47-dbaa-44ba-9a83-c35e232404f7	\N	\N	\N
-6066	2	040a7ac1-73c6-4fe0-8f2b-3804dbea6df3	version.layout.0.logos	\N	\N	\N	93e4c6fc-6bfb-4246-aad1-8861ebc78777	\N	\N	\N
-6067	3	040a7ac1-73c6-4fe0-8f2b-3804dbea6df3	version.layout.0.logos	\N	\N	\N	8cfbc8ec-db06-4d17-9c8b-bbf589f91e67	\N	\N	\N
-6068	4	040a7ac1-73c6-4fe0-8f2b-3804dbea6df3	version.layout.0.logos	\N	\N	\N	4f3b0cf8-dc31-4ff9-aa9f-9e0ec3cfb001	\N	\N	\N
-6069	5	040a7ac1-73c6-4fe0-8f2b-3804dbea6df3	version.layout.0.logos	\N	\N	\N	d67a9625-6f30-4d2a-9643-0962f6faf385	\N	\N	\N
-6070	1	040a7ac1-73c6-4fe0-8f2b-3804dbea6df3	version.layout.2.logos	\N	\N	\N	513d34fb-5dbc-4333-b0ab-af8e3756cc8a	\N	\N	\N
-6071	2	040a7ac1-73c6-4fe0-8f2b-3804dbea6df3	version.layout.2.logos	\N	\N	\N	92890105-dde4-4c79-acac-d81ad6dd978a	\N	\N	\N
-6072	1	040a7ac1-73c6-4fe0-8f2b-3804dbea6df3	version.layout.3.selectedTestimonials	\N	\N	\N	\N	\N	b440e19a-7d00-487a-9927-d384dee97e22	\N
-6073	1	040a7ac1-73c6-4fe0-8f2b-3804dbea6df3	version.layout.7.selectedTestimonials	\N	\N	\N	\N	\N	ad1d03ad-f60b-4f83-90c2-d456f1fbaf21	\N
-6074	1	040a7ac1-73c6-4fe0-8f2b-3804dbea6df3	version.layout.9.logos	\N	\N	\N	8c44fa47-dbaa-44ba-9a83-c35e232404f7	\N	\N	\N
-486	1	c20c2c0b-4fa6-45f3-acb3-34e06f115342	version.layout.5.logos	\N	\N	\N	92890105-dde4-4c79-acac-d81ad6dd978a	\N	\N	\N
-487	2	c20c2c0b-4fa6-45f3-acb3-34e06f115342	version.layout.5.logos	\N	\N	\N	513d34fb-5dbc-4333-b0ab-af8e3756cc8a	\N	\N	\N
-488	1	90cf9707-369c-4799-8aa5-8c6eeab55ba2	version.layout.5.logos	\N	\N	\N	92890105-dde4-4c79-acac-d81ad6dd978a	\N	\N	\N
-489	2	90cf9707-369c-4799-8aa5-8c6eeab55ba2	version.layout.5.logos	\N	\N	\N	513d34fb-5dbc-4333-b0ab-af8e3756cc8a	\N	\N	\N
-490	1	57ff426a-9250-4471-94f7-2ce9173606fa	version.layout.5.logos	\N	\N	\N	92890105-dde4-4c79-acac-d81ad6dd978a	\N	\N	\N
-6245	1	b607d175-e9e4-4f24-9088-f7c06375a6d5	version.layout.0.logos	\N	\N	\N	8c44fa47-dbaa-44ba-9a83-c35e232404f7	\N	\N	\N
-491	2	57ff426a-9250-4471-94f7-2ce9173606fa	version.layout.5.logos	\N	\N	\N	513d34fb-5dbc-4333-b0ab-af8e3756cc8a	\N	\N	\N
-6246	2	b607d175-e9e4-4f24-9088-f7c06375a6d5	version.layout.0.logos	\N	\N	\N	93e4c6fc-6bfb-4246-aad1-8861ebc78777	\N	\N	\N
-6247	3	b607d175-e9e4-4f24-9088-f7c06375a6d5	version.layout.0.logos	\N	\N	\N	8cfbc8ec-db06-4d17-9c8b-bbf589f91e67	\N	\N	\N
-6248	4	b607d175-e9e4-4f24-9088-f7c06375a6d5	version.layout.0.logos	\N	\N	\N	4f3b0cf8-dc31-4ff9-aa9f-9e0ec3cfb001	\N	\N	\N
-6249	5	b607d175-e9e4-4f24-9088-f7c06375a6d5	version.layout.0.logos	\N	\N	\N	d67a9625-6f30-4d2a-9643-0962f6faf385	\N	\N	\N
-6250	1	b607d175-e9e4-4f24-9088-f7c06375a6d5	version.layout.2.logos	\N	\N	\N	513d34fb-5dbc-4333-b0ab-af8e3756cc8a	\N	\N	\N
-6251	2	b607d175-e9e4-4f24-9088-f7c06375a6d5	version.layout.2.logos	\N	\N	\N	92890105-dde4-4c79-acac-d81ad6dd978a	\N	\N	\N
-6252	1	b607d175-e9e4-4f24-9088-f7c06375a6d5	version.layout.3.selectedTestimonials	\N	\N	\N	\N	\N	b440e19a-7d00-487a-9927-d384dee97e22	\N
-6253	1	b607d175-e9e4-4f24-9088-f7c06375a6d5	version.layout.7.selectedTestimonials	\N	\N	\N	\N	\N	ad1d03ad-f60b-4f83-90c2-d456f1fbaf21	\N
-6254	1	b607d175-e9e4-4f24-9088-f7c06375a6d5	version.layout.9.logos	\N	\N	\N	8c44fa47-dbaa-44ba-9a83-c35e232404f7	\N	\N	\N
-6255	2	b607d175-e9e4-4f24-9088-f7c06375a6d5	version.layout.9.logos	\N	\N	\N	93e4c6fc-6bfb-4246-aad1-8861ebc78777	\N	\N	\N
-6256	3	b607d175-e9e4-4f24-9088-f7c06375a6d5	version.layout.9.logos	\N	\N	\N	8cfbc8ec-db06-4d17-9c8b-bbf589f91e67	\N	\N	\N
-6257	4	b607d175-e9e4-4f24-9088-f7c06375a6d5	version.layout.9.logos	\N	\N	\N	4f3b0cf8-dc31-4ff9-aa9f-9e0ec3cfb001	\N	\N	\N
-6258	5	b607d175-e9e4-4f24-9088-f7c06375a6d5	version.layout.9.logos	\N	\N	\N	d67a9625-6f30-4d2a-9643-0962f6faf385	\N	\N	\N
-6259	1	b607d175-e9e4-4f24-9088-f7c06375a6d5	version.layout.10.faqs	\N	\N	\N	\N	487d16ef-4d7e-4603-885d-53d42734b0f1	\N	\N
-6260	2	b607d175-e9e4-4f24-9088-f7c06375a6d5	version.layout.10.faqs	\N	\N	\N	\N	2d37f238-e71e-4291-8919-33e4c7a73544	\N	\N
-6261	3	b607d175-e9e4-4f24-9088-f7c06375a6d5	version.layout.10.faqs	\N	\N	\N	\N	4696359a-45b8-4fea-b14f-ca34e928e5d0	\N	\N
-6262	4	b607d175-e9e4-4f24-9088-f7c06375a6d5	version.layout.10.faqs	\N	\N	\N	\N	0786b804-85ea-4269-841e-5f4fe762ada3	\N	\N
-6263	5	b607d175-e9e4-4f24-9088-f7c06375a6d5	version.layout.10.faqs	\N	\N	\N	\N	0ad17856-43c0-4ec9-bd88-c26f826dfb68	\N	\N
-492	1	8a100411-d7e9-4035-bcda-bb9916e0c4ff	version.layout.5.logos	\N	\N	\N	92890105-dde4-4c79-acac-d81ad6dd978a	\N	\N	\N
-493	2	8a100411-d7e9-4035-bcda-bb9916e0c4ff	version.layout.5.logos	\N	\N	\N	513d34fb-5dbc-4333-b0ab-af8e3756cc8a	\N	\N	\N
-6075	2	040a7ac1-73c6-4fe0-8f2b-3804dbea6df3	version.layout.9.logos	\N	\N	\N	93e4c6fc-6bfb-4246-aad1-8861ebc78777	\N	\N	\N
-6076	3	040a7ac1-73c6-4fe0-8f2b-3804dbea6df3	version.layout.9.logos	\N	\N	\N	8cfbc8ec-db06-4d17-9c8b-bbf589f91e67	\N	\N	\N
-6077	4	040a7ac1-73c6-4fe0-8f2b-3804dbea6df3	version.layout.9.logos	\N	\N	\N	4f3b0cf8-dc31-4ff9-aa9f-9e0ec3cfb001	\N	\N	\N
-6078	5	040a7ac1-73c6-4fe0-8f2b-3804dbea6df3	version.layout.9.logos	\N	\N	\N	d67a9625-6f30-4d2a-9643-0962f6faf385	\N	\N	\N
-496	1	42c8f4e2-6b54-4c96-9da9-672741e82033	version.layout.5.logos	\N	\N	\N	92890105-dde4-4c79-acac-d81ad6dd978a	\N	\N	\N
-497	2	42c8f4e2-6b54-4c96-9da9-672741e82033	version.layout.5.logos	\N	\N	\N	513d34fb-5dbc-4333-b0ab-af8e3756cc8a	\N	\N	\N
-6079	1	040a7ac1-73c6-4fe0-8f2b-3804dbea6df3	version.layout.10.faqs	\N	\N	\N	\N	487d16ef-4d7e-4603-885d-53d42734b0f1	\N	\N
-6080	2	040a7ac1-73c6-4fe0-8f2b-3804dbea6df3	version.layout.10.faqs	\N	\N	\N	\N	2d37f238-e71e-4291-8919-33e4c7a73544	\N	\N
-414	1	f223e689-6799-47bf-8a55-75f2d2a07e4b	version.layout.5.logos	\N	\N	\N	92890105-dde4-4c79-acac-d81ad6dd978a	\N	\N	\N
-6264	6	b607d175-e9e4-4f24-9088-f7c06375a6d5	version.layout.10.faqs	\N	\N	\N	\N	cf06eaf5-c215-44fc-82c2-a7696336ef41	\N	\N
-415	2	f223e689-6799-47bf-8a55-75f2d2a07e4b	version.layout.5.logos	\N	\N	\N	513d34fb-5dbc-4333-b0ab-af8e3756cc8a	\N	\N	\N
-3979	3	121949fd-6c23-47b2-a9f6-4316de5d07cc	version.layout.0.logos	\N	\N	\N	8cfbc8ec-db06-4d17-9c8b-bbf589f91e67	\N	\N	\N
-3980	4	121949fd-6c23-47b2-a9f6-4316de5d07cc	version.layout.0.logos	\N	\N	\N	4f3b0cf8-dc31-4ff9-aa9f-9e0ec3cfb001	\N	\N	\N
-3981	5	121949fd-6c23-47b2-a9f6-4316de5d07cc	version.layout.0.logos	\N	\N	\N	d67a9625-6f30-4d2a-9643-0962f6faf385	\N	\N	\N
-3982	1	121949fd-6c23-47b2-a9f6-4316de5d07cc	version.layout.2.logos	\N	\N	\N	513d34fb-5dbc-4333-b0ab-af8e3756cc8a	\N	\N	\N
-3983	2	121949fd-6c23-47b2-a9f6-4316de5d07cc	version.layout.2.logos	\N	\N	\N	92890105-dde4-4c79-acac-d81ad6dd978a	\N	\N	\N
-3984	1	121949fd-6c23-47b2-a9f6-4316de5d07cc	version.layout.3.selectedTestimonials	\N	\N	\N	\N	\N	b440e19a-7d00-487a-9927-d384dee97e22	\N
-3985	1	121949fd-6c23-47b2-a9f6-4316de5d07cc	version.layout.7.selectedTestimonials	\N	\N	\N	\N	\N	ad1d03ad-f60b-4f83-90c2-d456f1fbaf21	\N
-3986	1	121949fd-6c23-47b2-a9f6-4316de5d07cc	version.layout.9.logos	\N	\N	\N	8c44fa47-dbaa-44ba-9a83-c35e232404f7	\N	\N	\N
-446	1	5daad5c5-875d-4b1a-a149-104e6386d7e1	version.layout.5.logos	\N	\N	\N	92890105-dde4-4c79-acac-d81ad6dd978a	\N	\N	\N
-447	2	5daad5c5-875d-4b1a-a149-104e6386d7e1	version.layout.5.logos	\N	\N	\N	513d34fb-5dbc-4333-b0ab-af8e3756cc8a	\N	\N	\N
-448	1	c21624fa-2468-4a75-81c3-2e915c43ea04	version.layout.5.logos	\N	\N	\N	92890105-dde4-4c79-acac-d81ad6dd978a	\N	\N	\N
-449	2	c21624fa-2468-4a75-81c3-2e915c43ea04	version.layout.5.logos	\N	\N	\N	513d34fb-5dbc-4333-b0ab-af8e3756cc8a	\N	\N	\N
-450	1	66191476-6739-46e9-832b-99f58a05dcee	version.layout.5.logos	\N	\N	\N	92890105-dde4-4c79-acac-d81ad6dd978a	\N	\N	\N
-451	2	66191476-6739-46e9-832b-99f58a05dcee	version.layout.5.logos	\N	\N	\N	513d34fb-5dbc-4333-b0ab-af8e3756cc8a	\N	\N	\N
-452	1	a97e39c7-1ff9-4ab6-8ff7-a5a7fe85b1ca	version.layout.5.logos	\N	\N	\N	92890105-dde4-4c79-acac-d81ad6dd978a	\N	\N	\N
-453	2	a97e39c7-1ff9-4ab6-8ff7-a5a7fe85b1ca	version.layout.5.logos	\N	\N	\N	513d34fb-5dbc-4333-b0ab-af8e3756cc8a	\N	\N	\N
-498	1	0f74cab3-d27d-472e-b2eb-35ab19e69c72	version.layout.5.logos	\N	\N	\N	92890105-dde4-4c79-acac-d81ad6dd978a	\N	\N	\N
-499	2	0f74cab3-d27d-472e-b2eb-35ab19e69c72	version.layout.5.logos	\N	\N	\N	513d34fb-5dbc-4333-b0ab-af8e3756cc8a	\N	\N	\N
-3987	2	121949fd-6c23-47b2-a9f6-4316de5d07cc	version.layout.9.logos	\N	\N	\N	93e4c6fc-6bfb-4246-aad1-8861ebc78777	\N	\N	\N
-3988	3	121949fd-6c23-47b2-a9f6-4316de5d07cc	version.layout.9.logos	\N	\N	\N	8cfbc8ec-db06-4d17-9c8b-bbf589f91e67	\N	\N	\N
-3989	4	121949fd-6c23-47b2-a9f6-4316de5d07cc	version.layout.9.logos	\N	\N	\N	4f3b0cf8-dc31-4ff9-aa9f-9e0ec3cfb001	\N	\N	\N
-3990	5	121949fd-6c23-47b2-a9f6-4316de5d07cc	version.layout.9.logos	\N	\N	\N	d67a9625-6f30-4d2a-9643-0962f6faf385	\N	\N	\N
-3991	1	121949fd-6c23-47b2-a9f6-4316de5d07cc	version.layout.10.faqs	\N	\N	\N	\N	487d16ef-4d7e-4603-885d-53d42734b0f1	\N	\N
-3992	2	121949fd-6c23-47b2-a9f6-4316de5d07cc	version.layout.10.faqs	\N	\N	\N	\N	2d37f238-e71e-4291-8919-33e4c7a73544	\N	\N
-3993	3	121949fd-6c23-47b2-a9f6-4316de5d07cc	version.layout.10.faqs	\N	\N	\N	\N	4696359a-45b8-4fea-b14f-ca34e928e5d0	\N	\N
-3994	4	121949fd-6c23-47b2-a9f6-4316de5d07cc	version.layout.10.faqs	\N	\N	\N	\N	0786b804-85ea-4269-841e-5f4fe762ada3	\N	\N
-3995	5	121949fd-6c23-47b2-a9f6-4316de5d07cc	version.layout.10.faqs	\N	\N	\N	\N	0ad17856-43c0-4ec9-bd88-c26f826dfb68	\N	\N
-4537	1	681b0764-f5fe-4c35-a300-1f450048c6bd	version.layout.0.logos	\N	\N	\N	8c44fa47-dbaa-44ba-9a83-c35e232404f7	\N	\N	\N
-4538	2	681b0764-f5fe-4c35-a300-1f450048c6bd	version.layout.0.logos	\N	\N	\N	93e4c6fc-6bfb-4246-aad1-8861ebc78777	\N	\N	\N
-4539	3	681b0764-f5fe-4c35-a300-1f450048c6bd	version.layout.0.logos	\N	\N	\N	8cfbc8ec-db06-4d17-9c8b-bbf589f91e67	\N	\N	\N
-4540	4	681b0764-f5fe-4c35-a300-1f450048c6bd	version.layout.0.logos	\N	\N	\N	4f3b0cf8-dc31-4ff9-aa9f-9e0ec3cfb001	\N	\N	\N
-4541	5	681b0764-f5fe-4c35-a300-1f450048c6bd	version.layout.0.logos	\N	\N	\N	d67a9625-6f30-4d2a-9643-0962f6faf385	\N	\N	\N
-4542	1	681b0764-f5fe-4c35-a300-1f450048c6bd	version.layout.2.logos	\N	\N	\N	513d34fb-5dbc-4333-b0ab-af8e3756cc8a	\N	\N	\N
-4543	2	681b0764-f5fe-4c35-a300-1f450048c6bd	version.layout.2.logos	\N	\N	\N	92890105-dde4-4c79-acac-d81ad6dd978a	\N	\N	\N
-4544	1	681b0764-f5fe-4c35-a300-1f450048c6bd	version.layout.3.selectedTestimonials	\N	\N	\N	\N	\N	b440e19a-7d00-487a-9927-d384dee97e22	\N
-4545	1	681b0764-f5fe-4c35-a300-1f450048c6bd	version.layout.7.selectedTestimonials	\N	\N	\N	\N	\N	ad1d03ad-f60b-4f83-90c2-d456f1fbaf21	\N
-4546	1	681b0764-f5fe-4c35-a300-1f450048c6bd	version.layout.9.logos	\N	\N	\N	8c44fa47-dbaa-44ba-9a83-c35e232404f7	\N	\N	\N
-622	1	5a14f13d-26a1-40fe-af37-216b5bd0fe17	version.layout.5.logos	\N	\N	\N	92890105-dde4-4c79-acac-d81ad6dd978a	\N	\N	\N
-623	2	5a14f13d-26a1-40fe-af37-216b5bd0fe17	version.layout.5.logos	\N	\N	\N	513d34fb-5dbc-4333-b0ab-af8e3756cc8a	\N	\N	\N
-4547	2	681b0764-f5fe-4c35-a300-1f450048c6bd	version.layout.9.logos	\N	\N	\N	93e4c6fc-6bfb-4246-aad1-8861ebc78777	\N	\N	\N
-4548	3	681b0764-f5fe-4c35-a300-1f450048c6bd	version.layout.9.logos	\N	\N	\N	8cfbc8ec-db06-4d17-9c8b-bbf589f91e67	\N	\N	\N
-4549	4	681b0764-f5fe-4c35-a300-1f450048c6bd	version.layout.9.logos	\N	\N	\N	4f3b0cf8-dc31-4ff9-aa9f-9e0ec3cfb001	\N	\N	\N
-4550	5	681b0764-f5fe-4c35-a300-1f450048c6bd	version.layout.9.logos	\N	\N	\N	d67a9625-6f30-4d2a-9643-0962f6faf385	\N	\N	\N
-4551	1	681b0764-f5fe-4c35-a300-1f450048c6bd	version.layout.10.faqs	\N	\N	\N	\N	487d16ef-4d7e-4603-885d-53d42734b0f1	\N	\N
-4552	2	681b0764-f5fe-4c35-a300-1f450048c6bd	version.layout.10.faqs	\N	\N	\N	\N	2d37f238-e71e-4291-8919-33e4c7a73544	\N	\N
-4553	3	681b0764-f5fe-4c35-a300-1f450048c6bd	version.layout.10.faqs	\N	\N	\N	\N	4696359a-45b8-4fea-b14f-ca34e928e5d0	\N	\N
-4554	4	681b0764-f5fe-4c35-a300-1f450048c6bd	version.layout.10.faqs	\N	\N	\N	\N	0786b804-85ea-4269-841e-5f4fe762ada3	\N	\N
-4555	5	681b0764-f5fe-4c35-a300-1f450048c6bd	version.layout.10.faqs	\N	\N	\N	\N	0ad17856-43c0-4ec9-bd88-c26f826dfb68	\N	\N
-4556	6	681b0764-f5fe-4c35-a300-1f450048c6bd	version.layout.10.faqs	\N	\N	\N	\N	cf06eaf5-c215-44fc-82c2-a7696336ef41	\N	\N
-4871	1	e6890100-eaeb-429b-8577-30fe440dc964	version.layout.0.logos	\N	\N	\N	8c44fa47-dbaa-44ba-9a83-c35e232404f7	\N	\N	\N
-4872	2	e6890100-eaeb-429b-8577-30fe440dc964	version.layout.0.logos	\N	\N	\N	93e4c6fc-6bfb-4246-aad1-8861ebc78777	\N	\N	\N
-504	1	c3e0ac67-68ff-45a0-a95f-0bae5b004b85	version.layout.5.logos	\N	\N	\N	92890105-dde4-4c79-acac-d81ad6dd978a	\N	\N	\N
-505	2	c3e0ac67-68ff-45a0-a95f-0bae5b004b85	version.layout.5.logos	\N	\N	\N	513d34fb-5dbc-4333-b0ab-af8e3756cc8a	\N	\N	\N
-506	1	2522dd02-3c88-4d0f-8f54-000c6331c042	version.layout.5.logos	\N	\N	\N	92890105-dde4-4c79-acac-d81ad6dd978a	\N	\N	\N
-507	2	2522dd02-3c88-4d0f-8f54-000c6331c042	version.layout.5.logos	\N	\N	\N	513d34fb-5dbc-4333-b0ab-af8e3756cc8a	\N	\N	\N
-4873	3	e6890100-eaeb-429b-8577-30fe440dc964	version.layout.0.logos	\N	\N	\N	8cfbc8ec-db06-4d17-9c8b-bbf589f91e67	\N	\N	\N
-4874	4	e6890100-eaeb-429b-8577-30fe440dc964	version.layout.0.logos	\N	\N	\N	4f3b0cf8-dc31-4ff9-aa9f-9e0ec3cfb001	\N	\N	\N
-4875	5	e6890100-eaeb-429b-8577-30fe440dc964	version.layout.0.logos	\N	\N	\N	d67a9625-6f30-4d2a-9643-0962f6faf385	\N	\N	\N
-4876	1	e6890100-eaeb-429b-8577-30fe440dc964	version.layout.2.logos	\N	\N	\N	513d34fb-5dbc-4333-b0ab-af8e3756cc8a	\N	\N	\N
-4877	2	e6890100-eaeb-429b-8577-30fe440dc964	version.layout.2.logos	\N	\N	\N	92890105-dde4-4c79-acac-d81ad6dd978a	\N	\N	\N
-4878	1	e6890100-eaeb-429b-8577-30fe440dc964	version.layout.3.selectedTestimonials	\N	\N	\N	\N	\N	b440e19a-7d00-487a-9927-d384dee97e22	\N
-4879	1	e6890100-eaeb-429b-8577-30fe440dc964	version.layout.7.selectedTestimonials	\N	\N	\N	\N	\N	ad1d03ad-f60b-4f83-90c2-d456f1fbaf21	\N
-4880	1	e6890100-eaeb-429b-8577-30fe440dc964	version.layout.9.logos	\N	\N	\N	8c44fa47-dbaa-44ba-9a83-c35e232404f7	\N	\N	\N
-620	1	5cf29f02-25c3-4b24-b574-1aadab774686	version.layout.5.logos	\N	\N	\N	92890105-dde4-4c79-acac-d81ad6dd978a	\N	\N	\N
-621	2	5cf29f02-25c3-4b24-b574-1aadab774686	version.layout.5.logos	\N	\N	\N	513d34fb-5dbc-4333-b0ab-af8e3756cc8a	\N	\N	\N
-4881	2	e6890100-eaeb-429b-8577-30fe440dc964	version.layout.9.logos	\N	\N	\N	93e4c6fc-6bfb-4246-aad1-8861ebc78777	\N	\N	\N
-4882	3	e6890100-eaeb-429b-8577-30fe440dc964	version.layout.9.logos	\N	\N	\N	8cfbc8ec-db06-4d17-9c8b-bbf589f91e67	\N	\N	\N
-4883	4	e6890100-eaeb-429b-8577-30fe440dc964	version.layout.9.logos	\N	\N	\N	4f3b0cf8-dc31-4ff9-aa9f-9e0ec3cfb001	\N	\N	\N
-4884	5	e6890100-eaeb-429b-8577-30fe440dc964	version.layout.9.logos	\N	\N	\N	d67a9625-6f30-4d2a-9643-0962f6faf385	\N	\N	\N
-4885	1	e6890100-eaeb-429b-8577-30fe440dc964	version.layout.10.faqs	\N	\N	\N	\N	487d16ef-4d7e-4603-885d-53d42734b0f1	\N	\N
-4886	2	e6890100-eaeb-429b-8577-30fe440dc964	version.layout.10.faqs	\N	\N	\N	\N	2d37f238-e71e-4291-8919-33e4c7a73544	\N	\N
-4887	3	e6890100-eaeb-429b-8577-30fe440dc964	version.layout.10.faqs	\N	\N	\N	\N	4696359a-45b8-4fea-b14f-ca34e928e5d0	\N	\N
-4888	4	e6890100-eaeb-429b-8577-30fe440dc964	version.layout.10.faqs	\N	\N	\N	\N	0786b804-85ea-4269-841e-5f4fe762ada3	\N	\N
-821	1	50ab6bc6-7eb9-4e97-98f4-4e27d6d699ef	version.layout.5.logos	\N	\N	\N	92890105-dde4-4c79-acac-d81ad6dd978a	\N	\N	\N
-822	2	50ab6bc6-7eb9-4e97-98f4-4e27d6d699ef	version.layout.5.logos	\N	\N	\N	513d34fb-5dbc-4333-b0ab-af8e3756cc8a	\N	\N	\N
-532	1	9907622f-51f6-4107-b865-5f8fa357f96c	version.layout.5.logos	\N	\N	\N	92890105-dde4-4c79-acac-d81ad6dd978a	\N	\N	\N
-533	2	9907622f-51f6-4107-b865-5f8fa357f96c	version.layout.5.logos	\N	\N	\N	513d34fb-5dbc-4333-b0ab-af8e3756cc8a	\N	\N	\N
-534	1	274a0b43-8c00-4a28-aa9e-f2d70144f72e	version.layout.5.logos	\N	\N	\N	92890105-dde4-4c79-acac-d81ad6dd978a	\N	\N	\N
-535	2	274a0b43-8c00-4a28-aa9e-f2d70144f72e	version.layout.5.logos	\N	\N	\N	513d34fb-5dbc-4333-b0ab-af8e3756cc8a	\N	\N	\N
-536	1	dbf959bb-8af9-427b-9320-f4aeb0536d2c	version.layout.5.logos	\N	\N	\N	92890105-dde4-4c79-acac-d81ad6dd978a	\N	\N	\N
-537	2	dbf959bb-8af9-427b-9320-f4aeb0536d2c	version.layout.5.logos	\N	\N	\N	513d34fb-5dbc-4333-b0ab-af8e3756cc8a	\N	\N	\N
-823	1	9faf6e5f-3f02-41dc-90ca-2facbefcb29b	version.layout.5.logos	\N	\N	\N	92890105-dde4-4c79-acac-d81ad6dd978a	\N	\N	\N
-824	2	9faf6e5f-3f02-41dc-90ca-2facbefcb29b	version.layout.5.logos	\N	\N	\N	513d34fb-5dbc-4333-b0ab-af8e3756cc8a	\N	\N	\N
-548	1	39ed86c1-7622-472a-a921-06def66d1ca6	version.layout.5.logos	\N	\N	\N	92890105-dde4-4c79-acac-d81ad6dd978a	\N	\N	\N
-549	2	39ed86c1-7622-472a-a921-06def66d1ca6	version.layout.5.logos	\N	\N	\N	513d34fb-5dbc-4333-b0ab-af8e3756cc8a	\N	\N	\N
-550	1	7cb3435f-1591-4a85-9538-1a329412829b	version.layout.5.logos	\N	\N	\N	92890105-dde4-4c79-acac-d81ad6dd978a	\N	\N	\N
-551	2	7cb3435f-1591-4a85-9538-1a329412829b	version.layout.5.logos	\N	\N	\N	513d34fb-5dbc-4333-b0ab-af8e3756cc8a	\N	\N	\N
-4889	5	e6890100-eaeb-429b-8577-30fe440dc964	version.layout.10.faqs	\N	\N	\N	\N	0ad17856-43c0-4ec9-bd88-c26f826dfb68	\N	\N
-4890	6	e6890100-eaeb-429b-8577-30fe440dc964	version.layout.10.faqs	\N	\N	\N	\N	cf06eaf5-c215-44fc-82c2-a7696336ef41	\N	\N
-4891	1	7e6a8c79-56a7-464d-b879-8f1b64203ab0	version.layout.0.logos	\N	\N	\N	8c44fa47-dbaa-44ba-9a83-c35e232404f7	\N	\N	\N
-4892	2	7e6a8c79-56a7-464d-b879-8f1b64203ab0	version.layout.0.logos	\N	\N	\N	93e4c6fc-6bfb-4246-aad1-8861ebc78777	\N	\N	\N
-4893	3	7e6a8c79-56a7-464d-b879-8f1b64203ab0	version.layout.0.logos	\N	\N	\N	8cfbc8ec-db06-4d17-9c8b-bbf589f91e67	\N	\N	\N
-4894	4	7e6a8c79-56a7-464d-b879-8f1b64203ab0	version.layout.0.logos	\N	\N	\N	4f3b0cf8-dc31-4ff9-aa9f-9e0ec3cfb001	\N	\N	\N
-4895	5	7e6a8c79-56a7-464d-b879-8f1b64203ab0	version.layout.0.logos	\N	\N	\N	d67a9625-6f30-4d2a-9643-0962f6faf385	\N	\N	\N
-4896	1	7e6a8c79-56a7-464d-b879-8f1b64203ab0	version.layout.2.logos	\N	\N	\N	513d34fb-5dbc-4333-b0ab-af8e3756cc8a	\N	\N	\N
-4897	2	7e6a8c79-56a7-464d-b879-8f1b64203ab0	version.layout.2.logos	\N	\N	\N	92890105-dde4-4c79-acac-d81ad6dd978a	\N	\N	\N
-5871	1	5ddf4b7a-819b-4141-9c29-6963ead1e5ef	version.layout.0.logos	\N	\N	\N	8c44fa47-dbaa-44ba-9a83-c35e232404f7	\N	\N	\N
-5872	2	5ddf4b7a-819b-4141-9c29-6963ead1e5ef	version.layout.0.logos	\N	\N	\N	93e4c6fc-6bfb-4246-aad1-8861ebc78777	\N	\N	\N
-5873	3	5ddf4b7a-819b-4141-9c29-6963ead1e5ef	version.layout.0.logos	\N	\N	\N	8cfbc8ec-db06-4d17-9c8b-bbf589f91e67	\N	\N	\N
-5874	4	5ddf4b7a-819b-4141-9c29-6963ead1e5ef	version.layout.0.logos	\N	\N	\N	4f3b0cf8-dc31-4ff9-aa9f-9e0ec3cfb001	\N	\N	\N
-4557	1	bd74169e-d529-441c-8b27-84658dee558d	version.layout.0.logos	\N	\N	\N	8c44fa47-dbaa-44ba-9a83-c35e232404f7	\N	\N	\N
-4558	2	bd74169e-d529-441c-8b27-84658dee558d	version.layout.0.logos	\N	\N	\N	93e4c6fc-6bfb-4246-aad1-8861ebc78777	\N	\N	\N
-825	1	fab894a9-a99c-498f-9196-b98496719cb9	version.layout.5.logos	\N	\N	\N	92890105-dde4-4c79-acac-d81ad6dd978a	\N	\N	\N
-826	2	fab894a9-a99c-498f-9196-b98496719cb9	version.layout.5.logos	\N	\N	\N	513d34fb-5dbc-4333-b0ab-af8e3756cc8a	\N	\N	\N
-827	1	c0aa14cd-4f74-4562-bb73-a03e7b40e9fb	version.layout.5.logos	\N	\N	\N	92890105-dde4-4c79-acac-d81ad6dd978a	\N	\N	\N
-828	2	c0aa14cd-4f74-4562-bb73-a03e7b40e9fb	version.layout.5.logos	\N	\N	\N	513d34fb-5dbc-4333-b0ab-af8e3756cc8a	\N	\N	\N
-5875	5	5ddf4b7a-819b-4141-9c29-6963ead1e5ef	version.layout.0.logos	\N	\N	\N	d67a9625-6f30-4d2a-9643-0962f6faf385	\N	\N	\N
-5876	1	5ddf4b7a-819b-4141-9c29-6963ead1e5ef	version.layout.2.logos	\N	\N	\N	513d34fb-5dbc-4333-b0ab-af8e3756cc8a	\N	\N	\N
-5877	2	5ddf4b7a-819b-4141-9c29-6963ead1e5ef	version.layout.2.logos	\N	\N	\N	92890105-dde4-4c79-acac-d81ad6dd978a	\N	\N	\N
-4559	3	bd74169e-d529-441c-8b27-84658dee558d	version.layout.0.logos	\N	\N	\N	8cfbc8ec-db06-4d17-9c8b-bbf589f91e67	\N	\N	\N
-4560	4	bd74169e-d529-441c-8b27-84658dee558d	version.layout.0.logos	\N	\N	\N	4f3b0cf8-dc31-4ff9-aa9f-9e0ec3cfb001	\N	\N	\N
-4561	5	bd74169e-d529-441c-8b27-84658dee558d	version.layout.0.logos	\N	\N	\N	d67a9625-6f30-4d2a-9643-0962f6faf385	\N	\N	\N
-4562	1	bd74169e-d529-441c-8b27-84658dee558d	version.layout.2.logos	\N	\N	\N	513d34fb-5dbc-4333-b0ab-af8e3756cc8a	\N	\N	\N
-4563	2	bd74169e-d529-441c-8b27-84658dee558d	version.layout.2.logos	\N	\N	\N	92890105-dde4-4c79-acac-d81ad6dd978a	\N	\N	\N
-4564	1	bd74169e-d529-441c-8b27-84658dee558d	version.layout.3.selectedTestimonials	\N	\N	\N	\N	\N	b440e19a-7d00-487a-9927-d384dee97e22	\N
-4565	1	bd74169e-d529-441c-8b27-84658dee558d	version.layout.7.selectedTestimonials	\N	\N	\N	\N	\N	ad1d03ad-f60b-4f83-90c2-d456f1fbaf21	\N
-4566	1	bd74169e-d529-441c-8b27-84658dee558d	version.layout.9.logos	\N	\N	\N	8c44fa47-dbaa-44ba-9a83-c35e232404f7	\N	\N	\N
-4567	2	bd74169e-d529-441c-8b27-84658dee558d	version.layout.9.logos	\N	\N	\N	93e4c6fc-6bfb-4246-aad1-8861ebc78777	\N	\N	\N
-841	1	c9ef3f17-3deb-417c-a299-7bb9ba2b4a88	version.layout.5.logos	\N	\N	\N	92890105-dde4-4c79-acac-d81ad6dd978a	\N	\N	\N
-842	2	c9ef3f17-3deb-417c-a299-7bb9ba2b4a88	version.layout.5.logos	\N	\N	\N	513d34fb-5dbc-4333-b0ab-af8e3756cc8a	\N	\N	\N
-843	1	6dfea5de-27e2-41ff-9048-7ad8e260e99b	version.layout.5.logos	\N	\N	\N	92890105-dde4-4c79-acac-d81ad6dd978a	\N	\N	\N
-844	2	6dfea5de-27e2-41ff-9048-7ad8e260e99b	version.layout.5.logos	\N	\N	\N	513d34fb-5dbc-4333-b0ab-af8e3756cc8a	\N	\N	\N
-845	1	d5349b2d-7284-47ef-96ec-ca806928b051	version.layout.5.logos	\N	\N	\N	92890105-dde4-4c79-acac-d81ad6dd978a	\N	\N	\N
-846	2	d5349b2d-7284-47ef-96ec-ca806928b051	version.layout.5.logos	\N	\N	\N	513d34fb-5dbc-4333-b0ab-af8e3756cc8a	\N	\N	\N
-847	1	91f7c666-83f6-4d89-bf60-8eb8a90d0abd	version.layout.5.logos	\N	\N	\N	92890105-dde4-4c79-acac-d81ad6dd978a	\N	\N	\N
-848	2	91f7c666-83f6-4d89-bf60-8eb8a90d0abd	version.layout.5.logos	\N	\N	\N	513d34fb-5dbc-4333-b0ab-af8e3756cc8a	\N	\N	\N
-4568	3	bd74169e-d529-441c-8b27-84658dee558d	version.layout.9.logos	\N	\N	\N	8cfbc8ec-db06-4d17-9c8b-bbf589f91e67	\N	\N	\N
-4569	4	bd74169e-d529-441c-8b27-84658dee558d	version.layout.9.logos	\N	\N	\N	4f3b0cf8-dc31-4ff9-aa9f-9e0ec3cfb001	\N	\N	\N
-4570	5	bd74169e-d529-441c-8b27-84658dee558d	version.layout.9.logos	\N	\N	\N	d67a9625-6f30-4d2a-9643-0962f6faf385	\N	\N	\N
-4571	1	bd74169e-d529-441c-8b27-84658dee558d	version.layout.10.faqs	\N	\N	\N	\N	487d16ef-4d7e-4603-885d-53d42734b0f1	\N	\N
-4572	2	bd74169e-d529-441c-8b27-84658dee558d	version.layout.10.faqs	\N	\N	\N	\N	2d37f238-e71e-4291-8919-33e4c7a73544	\N	\N
-4573	3	bd74169e-d529-441c-8b27-84658dee558d	version.layout.10.faqs	\N	\N	\N	\N	4696359a-45b8-4fea-b14f-ca34e928e5d0	\N	\N
-4574	4	bd74169e-d529-441c-8b27-84658dee558d	version.layout.10.faqs	\N	\N	\N	\N	0786b804-85ea-4269-841e-5f4fe762ada3	\N	\N
-4575	5	bd74169e-d529-441c-8b27-84658dee558d	version.layout.10.faqs	\N	\N	\N	\N	0ad17856-43c0-4ec9-bd88-c26f826dfb68	\N	\N
-4576	6	bd74169e-d529-441c-8b27-84658dee558d	version.layout.10.faqs	\N	\N	\N	\N	cf06eaf5-c215-44fc-82c2-a7696336ef41	\N	\N
-4577	1	10b09cc8-e2d4-4fa0-be66-83eadde2a7ae	version.layout.0.logos	\N	\N	\N	8c44fa47-dbaa-44ba-9a83-c35e232404f7	\N	\N	\N
-4578	2	10b09cc8-e2d4-4fa0-be66-83eadde2a7ae	version.layout.0.logos	\N	\N	\N	93e4c6fc-6bfb-4246-aad1-8861ebc78777	\N	\N	\N
-4579	3	10b09cc8-e2d4-4fa0-be66-83eadde2a7ae	version.layout.0.logos	\N	\N	\N	8cfbc8ec-db06-4d17-9c8b-bbf589f91e67	\N	\N	\N
-4580	4	10b09cc8-e2d4-4fa0-be66-83eadde2a7ae	version.layout.0.logos	\N	\N	\N	4f3b0cf8-dc31-4ff9-aa9f-9e0ec3cfb001	\N	\N	\N
-4581	5	10b09cc8-e2d4-4fa0-be66-83eadde2a7ae	version.layout.0.logos	\N	\N	\N	d67a9625-6f30-4d2a-9643-0962f6faf385	\N	\N	\N
-5878	1	5ddf4b7a-819b-4141-9c29-6963ead1e5ef	version.layout.3.selectedTestimonials	\N	\N	\N	\N	\N	b440e19a-7d00-487a-9927-d384dee97e22	\N
-5879	1	5ddf4b7a-819b-4141-9c29-6963ead1e5ef	version.layout.7.selectedTestimonials	\N	\N	\N	\N	\N	ad1d03ad-f60b-4f83-90c2-d456f1fbaf21	\N
-5880	1	5ddf4b7a-819b-4141-9c29-6963ead1e5ef	version.layout.9.logos	\N	\N	\N	8c44fa47-dbaa-44ba-9a83-c35e232404f7	\N	\N	\N
-5881	2	5ddf4b7a-819b-4141-9c29-6963ead1e5ef	version.layout.9.logos	\N	\N	\N	93e4c6fc-6bfb-4246-aad1-8861ebc78777	\N	\N	\N
-5882	3	5ddf4b7a-819b-4141-9c29-6963ead1e5ef	version.layout.9.logos	\N	\N	\N	8cfbc8ec-db06-4d17-9c8b-bbf589f91e67	\N	\N	\N
-5883	4	5ddf4b7a-819b-4141-9c29-6963ead1e5ef	version.layout.9.logos	\N	\N	\N	4f3b0cf8-dc31-4ff9-aa9f-9e0ec3cfb001	\N	\N	\N
-5884	5	5ddf4b7a-819b-4141-9c29-6963ead1e5ef	version.layout.9.logos	\N	\N	\N	d67a9625-6f30-4d2a-9643-0962f6faf385	\N	\N	\N
-5885	1	5ddf4b7a-819b-4141-9c29-6963ead1e5ef	version.layout.10.faqs	\N	\N	\N	\N	487d16ef-4d7e-4603-885d-53d42734b0f1	\N	\N
-5886	2	5ddf4b7a-819b-4141-9c29-6963ead1e5ef	version.layout.10.faqs	\N	\N	\N	\N	2d37f238-e71e-4291-8919-33e4c7a73544	\N	\N
-5887	3	5ddf4b7a-819b-4141-9c29-6963ead1e5ef	version.layout.10.faqs	\N	\N	\N	\N	4696359a-45b8-4fea-b14f-ca34e928e5d0	\N	\N
-5888	4	5ddf4b7a-819b-4141-9c29-6963ead1e5ef	version.layout.10.faqs	\N	\N	\N	\N	0786b804-85ea-4269-841e-5f4fe762ada3	\N	\N
-4582	1	10b09cc8-e2d4-4fa0-be66-83eadde2a7ae	version.layout.2.logos	\N	\N	\N	513d34fb-5dbc-4333-b0ab-af8e3756cc8a	\N	\N	\N
-4583	2	10b09cc8-e2d4-4fa0-be66-83eadde2a7ae	version.layout.2.logos	\N	\N	\N	92890105-dde4-4c79-acac-d81ad6dd978a	\N	\N	\N
-4584	1	10b09cc8-e2d4-4fa0-be66-83eadde2a7ae	version.layout.3.selectedTestimonials	\N	\N	\N	\N	\N	b440e19a-7d00-487a-9927-d384dee97e22	\N
-4585	1	10b09cc8-e2d4-4fa0-be66-83eadde2a7ae	version.layout.7.selectedTestimonials	\N	\N	\N	\N	\N	ad1d03ad-f60b-4f83-90c2-d456f1fbaf21	\N
-4586	1	10b09cc8-e2d4-4fa0-be66-83eadde2a7ae	version.layout.9.logos	\N	\N	\N	8c44fa47-dbaa-44ba-9a83-c35e232404f7	\N	\N	\N
-4587	2	10b09cc8-e2d4-4fa0-be66-83eadde2a7ae	version.layout.9.logos	\N	\N	\N	93e4c6fc-6bfb-4246-aad1-8861ebc78777	\N	\N	\N
-4588	3	10b09cc8-e2d4-4fa0-be66-83eadde2a7ae	version.layout.9.logos	\N	\N	\N	8cfbc8ec-db06-4d17-9c8b-bbf589f91e67	\N	\N	\N
-4589	4	10b09cc8-e2d4-4fa0-be66-83eadde2a7ae	version.layout.9.logos	\N	\N	\N	4f3b0cf8-dc31-4ff9-aa9f-9e0ec3cfb001	\N	\N	\N
-4590	5	10b09cc8-e2d4-4fa0-be66-83eadde2a7ae	version.layout.9.logos	\N	\N	\N	d67a9625-6f30-4d2a-9643-0962f6faf385	\N	\N	\N
-4898	1	7e6a8c79-56a7-464d-b879-8f1b64203ab0	version.layout.3.selectedTestimonials	\N	\N	\N	\N	\N	b440e19a-7d00-487a-9927-d384dee97e22	\N
-4899	1	7e6a8c79-56a7-464d-b879-8f1b64203ab0	version.layout.7.selectedTestimonials	\N	\N	\N	\N	\N	ad1d03ad-f60b-4f83-90c2-d456f1fbaf21	\N
-4900	1	7e6a8c79-56a7-464d-b879-8f1b64203ab0	version.layout.9.logos	\N	\N	\N	8c44fa47-dbaa-44ba-9a83-c35e232404f7	\N	\N	\N
-4901	2	7e6a8c79-56a7-464d-b879-8f1b64203ab0	version.layout.9.logos	\N	\N	\N	93e4c6fc-6bfb-4246-aad1-8861ebc78777	\N	\N	\N
-4902	3	7e6a8c79-56a7-464d-b879-8f1b64203ab0	version.layout.9.logos	\N	\N	\N	8cfbc8ec-db06-4d17-9c8b-bbf589f91e67	\N	\N	\N
-4903	4	7e6a8c79-56a7-464d-b879-8f1b64203ab0	version.layout.9.logos	\N	\N	\N	4f3b0cf8-dc31-4ff9-aa9f-9e0ec3cfb001	\N	\N	\N
-4904	5	7e6a8c79-56a7-464d-b879-8f1b64203ab0	version.layout.9.logos	\N	\N	\N	d67a9625-6f30-4d2a-9643-0962f6faf385	\N	\N	\N
-4905	1	7e6a8c79-56a7-464d-b879-8f1b64203ab0	version.layout.10.faqs	\N	\N	\N	\N	487d16ef-4d7e-4603-885d-53d42734b0f1	\N	\N
-4906	2	7e6a8c79-56a7-464d-b879-8f1b64203ab0	version.layout.10.faqs	\N	\N	\N	\N	2d37f238-e71e-4291-8919-33e4c7a73544	\N	\N
-4591	1	10b09cc8-e2d4-4fa0-be66-83eadde2a7ae	version.layout.10.faqs	\N	\N	\N	\N	487d16ef-4d7e-4603-885d-53d42734b0f1	\N	\N
-4592	2	10b09cc8-e2d4-4fa0-be66-83eadde2a7ae	version.layout.10.faqs	\N	\N	\N	\N	2d37f238-e71e-4291-8919-33e4c7a73544	\N	\N
-4593	3	10b09cc8-e2d4-4fa0-be66-83eadde2a7ae	version.layout.10.faqs	\N	\N	\N	\N	4696359a-45b8-4fea-b14f-ca34e928e5d0	\N	\N
-4594	4	10b09cc8-e2d4-4fa0-be66-83eadde2a7ae	version.layout.10.faqs	\N	\N	\N	\N	0786b804-85ea-4269-841e-5f4fe762ada3	\N	\N
-4595	5	10b09cc8-e2d4-4fa0-be66-83eadde2a7ae	version.layout.10.faqs	\N	\N	\N	\N	0ad17856-43c0-4ec9-bd88-c26f826dfb68	\N	\N
-4596	6	10b09cc8-e2d4-4fa0-be66-83eadde2a7ae	version.layout.10.faqs	\N	\N	\N	\N	cf06eaf5-c215-44fc-82c2-a7696336ef41	\N	\N
-4907	3	7e6a8c79-56a7-464d-b879-8f1b64203ab0	version.layout.10.faqs	\N	\N	\N	\N	4696359a-45b8-4fea-b14f-ca34e928e5d0	\N	\N
-4908	4	7e6a8c79-56a7-464d-b879-8f1b64203ab0	version.layout.10.faqs	\N	\N	\N	\N	0786b804-85ea-4269-841e-5f4fe762ada3	\N	\N
-4909	5	7e6a8c79-56a7-464d-b879-8f1b64203ab0	version.layout.10.faqs	\N	\N	\N	\N	0ad17856-43c0-4ec9-bd88-c26f826dfb68	\N	\N
-4910	6	7e6a8c79-56a7-464d-b879-8f1b64203ab0	version.layout.10.faqs	\N	\N	\N	\N	cf06eaf5-c215-44fc-82c2-a7696336ef41	\N	\N
-5889	5	5ddf4b7a-819b-4141-9c29-6963ead1e5ef	version.layout.10.faqs	\N	\N	\N	\N	0ad17856-43c0-4ec9-bd88-c26f826dfb68	\N	\N
-5890	6	5ddf4b7a-819b-4141-9c29-6963ead1e5ef	version.layout.10.faqs	\N	\N	\N	\N	cf06eaf5-c215-44fc-82c2-a7696336ef41	\N	\N
-6081	3	040a7ac1-73c6-4fe0-8f2b-3804dbea6df3	version.layout.10.faqs	\N	\N	\N	\N	4696359a-45b8-4fea-b14f-ca34e928e5d0	\N	\N
-6082	4	040a7ac1-73c6-4fe0-8f2b-3804dbea6df3	version.layout.10.faqs	\N	\N	\N	\N	0786b804-85ea-4269-841e-5f4fe762ada3	\N	\N
-6083	5	040a7ac1-73c6-4fe0-8f2b-3804dbea6df3	version.layout.10.faqs	\N	\N	\N	\N	0ad17856-43c0-4ec9-bd88-c26f826dfb68	\N	\N
-6084	6	040a7ac1-73c6-4fe0-8f2b-3804dbea6df3	version.layout.10.faqs	\N	\N	\N	\N	cf06eaf5-c215-44fc-82c2-a7696336ef41	\N	\N
-6205	1	b988988c-b274-4303-baca-3c185b34e80f	version.layout.0.logos	\N	\N	\N	8c44fa47-dbaa-44ba-9a83-c35e232404f7	\N	\N	\N
-6206	2	b988988c-b274-4303-baca-3c185b34e80f	version.layout.0.logos	\N	\N	\N	93e4c6fc-6bfb-4246-aad1-8861ebc78777	\N	\N	\N
-6207	3	b988988c-b274-4303-baca-3c185b34e80f	version.layout.0.logos	\N	\N	\N	8cfbc8ec-db06-4d17-9c8b-bbf589f91e67	\N	\N	\N
-6208	4	b988988c-b274-4303-baca-3c185b34e80f	version.layout.0.logos	\N	\N	\N	4f3b0cf8-dc31-4ff9-aa9f-9e0ec3cfb001	\N	\N	\N
-6209	5	b988988c-b274-4303-baca-3c185b34e80f	version.layout.0.logos	\N	\N	\N	d67a9625-6f30-4d2a-9643-0962f6faf385	\N	\N	\N
-6210	1	b988988c-b274-4303-baca-3c185b34e80f	version.layout.2.logos	\N	\N	\N	513d34fb-5dbc-4333-b0ab-af8e3756cc8a	\N	\N	\N
-6211	2	b988988c-b274-4303-baca-3c185b34e80f	version.layout.2.logos	\N	\N	\N	92890105-dde4-4c79-acac-d81ad6dd978a	\N	\N	\N
-6212	1	b988988c-b274-4303-baca-3c185b34e80f	version.layout.3.selectedTestimonials	\N	\N	\N	\N	\N	b440e19a-7d00-487a-9927-d384dee97e22	\N
-6213	1	b988988c-b274-4303-baca-3c185b34e80f	version.layout.7.selectedTestimonials	\N	\N	\N	\N	\N	ad1d03ad-f60b-4f83-90c2-d456f1fbaf21	\N
-6214	1	b988988c-b274-4303-baca-3c185b34e80f	version.layout.9.logos	\N	\N	\N	8c44fa47-dbaa-44ba-9a83-c35e232404f7	\N	\N	\N
-6215	2	b988988c-b274-4303-baca-3c185b34e80f	version.layout.9.logos	\N	\N	\N	93e4c6fc-6bfb-4246-aad1-8861ebc78777	\N	\N	\N
-6216	3	b988988c-b274-4303-baca-3c185b34e80f	version.layout.9.logos	\N	\N	\N	8cfbc8ec-db06-4d17-9c8b-bbf589f91e67	\N	\N	\N
-6217	4	b988988c-b274-4303-baca-3c185b34e80f	version.layout.9.logos	\N	\N	\N	4f3b0cf8-dc31-4ff9-aa9f-9e0ec3cfb001	\N	\N	\N
-6218	5	b988988c-b274-4303-baca-3c185b34e80f	version.layout.9.logos	\N	\N	\N	d67a9625-6f30-4d2a-9643-0962f6faf385	\N	\N	\N
-6219	1	b988988c-b274-4303-baca-3c185b34e80f	version.layout.10.faqs	\N	\N	\N	\N	487d16ef-4d7e-4603-885d-53d42734b0f1	\N	\N
-6220	2	b988988c-b274-4303-baca-3c185b34e80f	version.layout.10.faqs	\N	\N	\N	\N	2d37f238-e71e-4291-8919-33e4c7a73544	\N	\N
-6221	3	b988988c-b274-4303-baca-3c185b34e80f	version.layout.10.faqs	\N	\N	\N	\N	4696359a-45b8-4fea-b14f-ca34e928e5d0	\N	\N
-6222	4	b988988c-b274-4303-baca-3c185b34e80f	version.layout.10.faqs	\N	\N	\N	\N	0786b804-85ea-4269-841e-5f4fe762ada3	\N	\N
-6223	5	b988988c-b274-4303-baca-3c185b34e80f	version.layout.10.faqs	\N	\N	\N	\N	0ad17856-43c0-4ec9-bd88-c26f826dfb68	\N	\N
-6224	6	b988988c-b274-4303-baca-3c185b34e80f	version.layout.10.faqs	\N	\N	\N	\N	cf06eaf5-c215-44fc-82c2-a7696336ef41	\N	\N
-6265	1	9c74e1c0-9a5d-413b-8da8-b2b138a7907f	version.layout.0.logos	\N	\N	\N	8c44fa47-dbaa-44ba-9a83-c35e232404f7	\N	\N	\N
-6266	2	9c74e1c0-9a5d-413b-8da8-b2b138a7907f	version.layout.0.logos	\N	\N	\N	93e4c6fc-6bfb-4246-aad1-8861ebc78777	\N	\N	\N
-6267	3	9c74e1c0-9a5d-413b-8da8-b2b138a7907f	version.layout.0.logos	\N	\N	\N	8cfbc8ec-db06-4d17-9c8b-bbf589f91e67	\N	\N	\N
-6268	4	9c74e1c0-9a5d-413b-8da8-b2b138a7907f	version.layout.0.logos	\N	\N	\N	4f3b0cf8-dc31-4ff9-aa9f-9e0ec3cfb001	\N	\N	\N
-6269	5	9c74e1c0-9a5d-413b-8da8-b2b138a7907f	version.layout.0.logos	\N	\N	\N	d67a9625-6f30-4d2a-9643-0962f6faf385	\N	\N	\N
-6270	1	9c74e1c0-9a5d-413b-8da8-b2b138a7907f	version.layout.2.logos	\N	\N	\N	513d34fb-5dbc-4333-b0ab-af8e3756cc8a	\N	\N	\N
-6271	2	9c74e1c0-9a5d-413b-8da8-b2b138a7907f	version.layout.2.logos	\N	\N	\N	92890105-dde4-4c79-acac-d81ad6dd978a	\N	\N	\N
-6272	1	9c74e1c0-9a5d-413b-8da8-b2b138a7907f	version.layout.3.selectedTestimonials	\N	\N	\N	\N	\N	b440e19a-7d00-487a-9927-d384dee97e22	\N
-6273	1	9c74e1c0-9a5d-413b-8da8-b2b138a7907f	version.layout.7.selectedTestimonials	\N	\N	\N	\N	\N	ad1d03ad-f60b-4f83-90c2-d456f1fbaf21	\N
-6011	1	1ee329f1-1129-42dd-a064-650b4964fb9f	version.layout.5.logos	\N	\N	\N	92890105-dde4-4c79-acac-d81ad6dd978a	\N	\N	\N
-6012	2	1ee329f1-1129-42dd-a064-650b4964fb9f	version.layout.5.logos	\N	\N	\N	513d34fb-5dbc-4333-b0ab-af8e3756cc8a	\N	\N	\N
-6013	1	2919d024-03ac-422e-94d6-77cdfc4a7014	version.layout.5.logos	\N	\N	\N	92890105-dde4-4c79-acac-d81ad6dd978a	\N	\N	\N
-6014	2	2919d024-03ac-422e-94d6-77cdfc4a7014	version.layout.5.logos	\N	\N	\N	513d34fb-5dbc-4333-b0ab-af8e3756cc8a	\N	\N	\N
-6274	1	9c74e1c0-9a5d-413b-8da8-b2b138a7907f	version.layout.9.logos	\N	\N	\N	8c44fa47-dbaa-44ba-9a83-c35e232404f7	\N	\N	\N
-6275	2	9c74e1c0-9a5d-413b-8da8-b2b138a7907f	version.layout.9.logos	\N	\N	\N	93e4c6fc-6bfb-4246-aad1-8861ebc78777	\N	\N	\N
-6276	3	9c74e1c0-9a5d-413b-8da8-b2b138a7907f	version.layout.9.logos	\N	\N	\N	8cfbc8ec-db06-4d17-9c8b-bbf589f91e67	\N	\N	\N
-6277	4	9c74e1c0-9a5d-413b-8da8-b2b138a7907f	version.layout.9.logos	\N	\N	\N	4f3b0cf8-dc31-4ff9-aa9f-9e0ec3cfb001	\N	\N	\N
-6278	5	9c74e1c0-9a5d-413b-8da8-b2b138a7907f	version.layout.9.logos	\N	\N	\N	d67a9625-6f30-4d2a-9643-0962f6faf385	\N	\N	\N
-6279	1	9c74e1c0-9a5d-413b-8da8-b2b138a7907f	version.layout.10.faqs	\N	\N	\N	\N	487d16ef-4d7e-4603-885d-53d42734b0f1	\N	\N
-6280	2	9c74e1c0-9a5d-413b-8da8-b2b138a7907f	version.layout.10.faqs	\N	\N	\N	\N	2d37f238-e71e-4291-8919-33e4c7a73544	\N	\N
-6281	3	9c74e1c0-9a5d-413b-8da8-b2b138a7907f	version.layout.10.faqs	\N	\N	\N	\N	4696359a-45b8-4fea-b14f-ca34e928e5d0	\N	\N
-6282	4	9c74e1c0-9a5d-413b-8da8-b2b138a7907f	version.layout.10.faqs	\N	\N	\N	\N	0786b804-85ea-4269-841e-5f4fe762ada3	\N	\N
-6283	5	9c74e1c0-9a5d-413b-8da8-b2b138a7907f	version.layout.10.faqs	\N	\N	\N	\N	0ad17856-43c0-4ec9-bd88-c26f826dfb68	\N	\N
-6061	1	955faaf3-565f-4607-bb5d-72ad0cd63d5d	version.layout.5.logos	\N	\N	\N	92890105-dde4-4c79-acac-d81ad6dd978a	\N	\N	\N
-6062	2	955faaf3-565f-4607-bb5d-72ad0cd63d5d	version.layout.5.logos	\N	\N	\N	513d34fb-5dbc-4333-b0ab-af8e3756cc8a	\N	\N	\N
-6063	1	f714fe7f-ab61-4cf9-927c-9bcf97ccf1b6	version.layout.5.logos	\N	\N	\N	92890105-dde4-4c79-acac-d81ad6dd978a	\N	\N	\N
-6064	2	f714fe7f-ab61-4cf9-927c-9bcf97ccf1b6	version.layout.5.logos	\N	\N	\N	513d34fb-5dbc-4333-b0ab-af8e3756cc8a	\N	\N	\N
-6284	6	9c74e1c0-9a5d-413b-8da8-b2b138a7907f	version.layout.10.faqs	\N	\N	\N	\N	cf06eaf5-c215-44fc-82c2-a7696336ef41	\N	\N
-5591	1	444fb6f2-0056-4c49-83e5-882d57ef0da3	version.layout.0.logos	\N	\N	\N	8c44fa47-dbaa-44ba-9a83-c35e232404f7	\N	\N	\N
-5592	2	444fb6f2-0056-4c49-83e5-882d57ef0da3	version.layout.0.logos	\N	\N	\N	93e4c6fc-6bfb-4246-aad1-8861ebc78777	\N	\N	\N
-5593	3	444fb6f2-0056-4c49-83e5-882d57ef0da3	version.layout.0.logos	\N	\N	\N	8cfbc8ec-db06-4d17-9c8b-bbf589f91e67	\N	\N	\N
-5594	4	444fb6f2-0056-4c49-83e5-882d57ef0da3	version.layout.0.logos	\N	\N	\N	4f3b0cf8-dc31-4ff9-aa9f-9e0ec3cfb001	\N	\N	\N
-5595	5	444fb6f2-0056-4c49-83e5-882d57ef0da3	version.layout.0.logos	\N	\N	\N	d67a9625-6f30-4d2a-9643-0962f6faf385	\N	\N	\N
-5596	1	444fb6f2-0056-4c49-83e5-882d57ef0da3	version.layout.2.logos	\N	\N	\N	513d34fb-5dbc-4333-b0ab-af8e3756cc8a	\N	\N	\N
-5597	2	444fb6f2-0056-4c49-83e5-882d57ef0da3	version.layout.2.logos	\N	\N	\N	92890105-dde4-4c79-acac-d81ad6dd978a	\N	\N	\N
-5598	1	444fb6f2-0056-4c49-83e5-882d57ef0da3	version.layout.3.selectedTestimonials	\N	\N	\N	\N	\N	b440e19a-7d00-487a-9927-d384dee97e22	\N
-5599	1	444fb6f2-0056-4c49-83e5-882d57ef0da3	version.layout.7.selectedTestimonials	\N	\N	\N	\N	\N	ad1d03ad-f60b-4f83-90c2-d456f1fbaf21	\N
-5600	1	444fb6f2-0056-4c49-83e5-882d57ef0da3	version.layout.9.logos	\N	\N	\N	8c44fa47-dbaa-44ba-9a83-c35e232404f7	\N	\N	\N
-5601	2	444fb6f2-0056-4c49-83e5-882d57ef0da3	version.layout.9.logos	\N	\N	\N	93e4c6fc-6bfb-4246-aad1-8861ebc78777	\N	\N	\N
-5602	3	444fb6f2-0056-4c49-83e5-882d57ef0da3	version.layout.9.logos	\N	\N	\N	8cfbc8ec-db06-4d17-9c8b-bbf589f91e67	\N	\N	\N
-5603	4	444fb6f2-0056-4c49-83e5-882d57ef0da3	version.layout.9.logos	\N	\N	\N	4f3b0cf8-dc31-4ff9-aa9f-9e0ec3cfb001	\N	\N	\N
-5604	5	444fb6f2-0056-4c49-83e5-882d57ef0da3	version.layout.9.logos	\N	\N	\N	d67a9625-6f30-4d2a-9643-0962f6faf385	\N	\N	\N
-5605	1	444fb6f2-0056-4c49-83e5-882d57ef0da3	version.layout.10.faqs	\N	\N	\N	\N	487d16ef-4d7e-4603-885d-53d42734b0f1	\N	\N
-5606	2	444fb6f2-0056-4c49-83e5-882d57ef0da3	version.layout.10.faqs	\N	\N	\N	\N	2d37f238-e71e-4291-8919-33e4c7a73544	\N	\N
-5607	3	444fb6f2-0056-4c49-83e5-882d57ef0da3	version.layout.10.faqs	\N	\N	\N	\N	4696359a-45b8-4fea-b14f-ca34e928e5d0	\N	\N
-5608	4	444fb6f2-0056-4c49-83e5-882d57ef0da3	version.layout.10.faqs	\N	\N	\N	\N	0786b804-85ea-4269-841e-5f4fe762ada3	\N	\N
-5609	5	444fb6f2-0056-4c49-83e5-882d57ef0da3	version.layout.10.faqs	\N	\N	\N	\N	0ad17856-43c0-4ec9-bd88-c26f826dfb68	\N	\N
-5610	6	444fb6f2-0056-4c49-83e5-882d57ef0da3	version.layout.10.faqs	\N	\N	\N	\N	cf06eaf5-c215-44fc-82c2-a7696336ef41	\N	\N
-5611	1	6f525e3d-e3d3-48ee-a833-7300891659a4	version.layout.0.logos	\N	\N	\N	8c44fa47-dbaa-44ba-9a83-c35e232404f7	\N	\N	\N
-5612	2	6f525e3d-e3d3-48ee-a833-7300891659a4	version.layout.0.logos	\N	\N	\N	93e4c6fc-6bfb-4246-aad1-8861ebc78777	\N	\N	\N
-5613	3	6f525e3d-e3d3-48ee-a833-7300891659a4	version.layout.0.logos	\N	\N	\N	8cfbc8ec-db06-4d17-9c8b-bbf589f91e67	\N	\N	\N
-5614	4	6f525e3d-e3d3-48ee-a833-7300891659a4	version.layout.0.logos	\N	\N	\N	4f3b0cf8-dc31-4ff9-aa9f-9e0ec3cfb001	\N	\N	\N
-5615	5	6f525e3d-e3d3-48ee-a833-7300891659a4	version.layout.0.logos	\N	\N	\N	d67a9625-6f30-4d2a-9643-0962f6faf385	\N	\N	\N
-5616	1	6f525e3d-e3d3-48ee-a833-7300891659a4	version.layout.2.logos	\N	\N	\N	513d34fb-5dbc-4333-b0ab-af8e3756cc8a	\N	\N	\N
-5617	2	6f525e3d-e3d3-48ee-a833-7300891659a4	version.layout.2.logos	\N	\N	\N	92890105-dde4-4c79-acac-d81ad6dd978a	\N	\N	\N
-5618	1	6f525e3d-e3d3-48ee-a833-7300891659a4	version.layout.3.selectedTestimonials	\N	\N	\N	\N	\N	b440e19a-7d00-487a-9927-d384dee97e22	\N
-5619	1	6f525e3d-e3d3-48ee-a833-7300891659a4	version.layout.7.selectedTestimonials	\N	\N	\N	\N	\N	ad1d03ad-f60b-4f83-90c2-d456f1fbaf21	\N
-5620	1	6f525e3d-e3d3-48ee-a833-7300891659a4	version.layout.9.logos	\N	\N	\N	8c44fa47-dbaa-44ba-9a83-c35e232404f7	\N	\N	\N
-5621	2	6f525e3d-e3d3-48ee-a833-7300891659a4	version.layout.9.logos	\N	\N	\N	93e4c6fc-6bfb-4246-aad1-8861ebc78777	\N	\N	\N
-5622	3	6f525e3d-e3d3-48ee-a833-7300891659a4	version.layout.9.logos	\N	\N	\N	8cfbc8ec-db06-4d17-9c8b-bbf589f91e67	\N	\N	\N
-5623	4	6f525e3d-e3d3-48ee-a833-7300891659a4	version.layout.9.logos	\N	\N	\N	4f3b0cf8-dc31-4ff9-aa9f-9e0ec3cfb001	\N	\N	\N
-5624	5	6f525e3d-e3d3-48ee-a833-7300891659a4	version.layout.9.logos	\N	\N	\N	d67a9625-6f30-4d2a-9643-0962f6faf385	\N	\N	\N
-5625	1	6f525e3d-e3d3-48ee-a833-7300891659a4	version.layout.10.faqs	\N	\N	\N	\N	487d16ef-4d7e-4603-885d-53d42734b0f1	\N	\N
-5626	2	6f525e3d-e3d3-48ee-a833-7300891659a4	version.layout.10.faqs	\N	\N	\N	\N	2d37f238-e71e-4291-8919-33e4c7a73544	\N	\N
-5627	3	6f525e3d-e3d3-48ee-a833-7300891659a4	version.layout.10.faqs	\N	\N	\N	\N	4696359a-45b8-4fea-b14f-ca34e928e5d0	\N	\N
-5628	4	6f525e3d-e3d3-48ee-a833-7300891659a4	version.layout.10.faqs	\N	\N	\N	\N	0786b804-85ea-4269-841e-5f4fe762ada3	\N	\N
-5629	5	6f525e3d-e3d3-48ee-a833-7300891659a4	version.layout.10.faqs	\N	\N	\N	\N	0ad17856-43c0-4ec9-bd88-c26f826dfb68	\N	\N
-5630	6	6f525e3d-e3d3-48ee-a833-7300891659a4	version.layout.10.faqs	\N	\N	\N	\N	cf06eaf5-c215-44fc-82c2-a7696336ef41	\N	\N
-5891	1	c8d59231-e7a0-463e-8fd1-e6763da8be9d	version.layout.0.logos	\N	\N	\N	8c44fa47-dbaa-44ba-9a83-c35e232404f7	\N	\N	\N
-5892	2	c8d59231-e7a0-463e-8fd1-e6763da8be9d	version.layout.0.logos	\N	\N	\N	93e4c6fc-6bfb-4246-aad1-8861ebc78777	\N	\N	\N
-5893	3	c8d59231-e7a0-463e-8fd1-e6763da8be9d	version.layout.0.logos	\N	\N	\N	8cfbc8ec-db06-4d17-9c8b-bbf589f91e67	\N	\N	\N
-5894	4	c8d59231-e7a0-463e-8fd1-e6763da8be9d	version.layout.0.logos	\N	\N	\N	4f3b0cf8-dc31-4ff9-aa9f-9e0ec3cfb001	\N	\N	\N
-5895	5	c8d59231-e7a0-463e-8fd1-e6763da8be9d	version.layout.0.logos	\N	\N	\N	d67a9625-6f30-4d2a-9643-0962f6faf385	\N	\N	\N
-5896	1	c8d59231-e7a0-463e-8fd1-e6763da8be9d	version.layout.2.logos	\N	\N	\N	513d34fb-5dbc-4333-b0ab-af8e3756cc8a	\N	\N	\N
-5897	2	c8d59231-e7a0-463e-8fd1-e6763da8be9d	version.layout.2.logos	\N	\N	\N	92890105-dde4-4c79-acac-d81ad6dd978a	\N	\N	\N
-5898	1	c8d59231-e7a0-463e-8fd1-e6763da8be9d	version.layout.3.selectedTestimonials	\N	\N	\N	\N	\N	b440e19a-7d00-487a-9927-d384dee97e22	\N
-5899	1	c8d59231-e7a0-463e-8fd1-e6763da8be9d	version.layout.7.selectedTestimonials	\N	\N	\N	\N	\N	ad1d03ad-f60b-4f83-90c2-d456f1fbaf21	\N
-5900	1	c8d59231-e7a0-463e-8fd1-e6763da8be9d	version.layout.9.logos	\N	\N	\N	8c44fa47-dbaa-44ba-9a83-c35e232404f7	\N	\N	\N
-5901	2	c8d59231-e7a0-463e-8fd1-e6763da8be9d	version.layout.9.logos	\N	\N	\N	93e4c6fc-6bfb-4246-aad1-8861ebc78777	\N	\N	\N
-5902	3	c8d59231-e7a0-463e-8fd1-e6763da8be9d	version.layout.9.logos	\N	\N	\N	8cfbc8ec-db06-4d17-9c8b-bbf589f91e67	\N	\N	\N
-5903	4	c8d59231-e7a0-463e-8fd1-e6763da8be9d	version.layout.9.logos	\N	\N	\N	4f3b0cf8-dc31-4ff9-aa9f-9e0ec3cfb001	\N	\N	\N
-5904	5	c8d59231-e7a0-463e-8fd1-e6763da8be9d	version.layout.9.logos	\N	\N	\N	d67a9625-6f30-4d2a-9643-0962f6faf385	\N	\N	\N
-5905	1	c8d59231-e7a0-463e-8fd1-e6763da8be9d	version.layout.10.faqs	\N	\N	\N	\N	487d16ef-4d7e-4603-885d-53d42734b0f1	\N	\N
-5906	2	c8d59231-e7a0-463e-8fd1-e6763da8be9d	version.layout.10.faqs	\N	\N	\N	\N	2d37f238-e71e-4291-8919-33e4c7a73544	\N	\N
-5907	3	c8d59231-e7a0-463e-8fd1-e6763da8be9d	version.layout.10.faqs	\N	\N	\N	\N	4696359a-45b8-4fea-b14f-ca34e928e5d0	\N	\N
-5908	4	c8d59231-e7a0-463e-8fd1-e6763da8be9d	version.layout.10.faqs	\N	\N	\N	\N	0786b804-85ea-4269-841e-5f4fe762ada3	\N	\N
-5909	5	c8d59231-e7a0-463e-8fd1-e6763da8be9d	version.layout.10.faqs	\N	\N	\N	\N	0ad17856-43c0-4ec9-bd88-c26f826dfb68	\N	\N
-5910	6	c8d59231-e7a0-463e-8fd1-e6763da8be9d	version.layout.10.faqs	\N	\N	\N	\N	cf06eaf5-c215-44fc-82c2-a7696336ef41	\N	\N
-4951	1	1d24c50c-85c9-4f22-9f26-736826283f5e	version.layout.0.logos	\N	\N	\N	8c44fa47-dbaa-44ba-9a83-c35e232404f7	\N	\N	\N
-4952	2	1d24c50c-85c9-4f22-9f26-736826283f5e	version.layout.0.logos	\N	\N	\N	93e4c6fc-6bfb-4246-aad1-8861ebc78777	\N	\N	\N
-4953	3	1d24c50c-85c9-4f22-9f26-736826283f5e	version.layout.0.logos	\N	\N	\N	8cfbc8ec-db06-4d17-9c8b-bbf589f91e67	\N	\N	\N
-4954	4	1d24c50c-85c9-4f22-9f26-736826283f5e	version.layout.0.logos	\N	\N	\N	4f3b0cf8-dc31-4ff9-aa9f-9e0ec3cfb001	\N	\N	\N
-4955	5	1d24c50c-85c9-4f22-9f26-736826283f5e	version.layout.0.logos	\N	\N	\N	d67a9625-6f30-4d2a-9643-0962f6faf385	\N	\N	\N
-4956	1	1d24c50c-85c9-4f22-9f26-736826283f5e	version.layout.2.logos	\N	\N	\N	513d34fb-5dbc-4333-b0ab-af8e3756cc8a	\N	\N	\N
-4957	2	1d24c50c-85c9-4f22-9f26-736826283f5e	version.layout.2.logos	\N	\N	\N	92890105-dde4-4c79-acac-d81ad6dd978a	\N	\N	\N
-4958	1	1d24c50c-85c9-4f22-9f26-736826283f5e	version.layout.3.selectedTestimonials	\N	\N	\N	\N	\N	b440e19a-7d00-487a-9927-d384dee97e22	\N
-4959	1	1d24c50c-85c9-4f22-9f26-736826283f5e	version.layout.7.selectedTestimonials	\N	\N	\N	\N	\N	ad1d03ad-f60b-4f83-90c2-d456f1fbaf21	\N
-4960	1	1d24c50c-85c9-4f22-9f26-736826283f5e	version.layout.9.logos	\N	\N	\N	8c44fa47-dbaa-44ba-9a83-c35e232404f7	\N	\N	\N
-4961	2	1d24c50c-85c9-4f22-9f26-736826283f5e	version.layout.9.logos	\N	\N	\N	93e4c6fc-6bfb-4246-aad1-8861ebc78777	\N	\N	\N
-4962	3	1d24c50c-85c9-4f22-9f26-736826283f5e	version.layout.9.logos	\N	\N	\N	8cfbc8ec-db06-4d17-9c8b-bbf589f91e67	\N	\N	\N
-4963	4	1d24c50c-85c9-4f22-9f26-736826283f5e	version.layout.9.logos	\N	\N	\N	4f3b0cf8-dc31-4ff9-aa9f-9e0ec3cfb001	\N	\N	\N
-4964	5	1d24c50c-85c9-4f22-9f26-736826283f5e	version.layout.9.logos	\N	\N	\N	d67a9625-6f30-4d2a-9643-0962f6faf385	\N	\N	\N
-4965	1	1d24c50c-85c9-4f22-9f26-736826283f5e	version.layout.10.faqs	\N	\N	\N	\N	487d16ef-4d7e-4603-885d-53d42734b0f1	\N	\N
-4966	2	1d24c50c-85c9-4f22-9f26-736826283f5e	version.layout.10.faqs	\N	\N	\N	\N	2d37f238-e71e-4291-8919-33e4c7a73544	\N	\N
-4967	3	1d24c50c-85c9-4f22-9f26-736826283f5e	version.layout.10.faqs	\N	\N	\N	\N	4696359a-45b8-4fea-b14f-ca34e928e5d0	\N	\N
-4968	4	1d24c50c-85c9-4f22-9f26-736826283f5e	version.layout.10.faqs	\N	\N	\N	\N	0786b804-85ea-4269-841e-5f4fe762ada3	\N	\N
-4969	5	1d24c50c-85c9-4f22-9f26-736826283f5e	version.layout.10.faqs	\N	\N	\N	\N	0ad17856-43c0-4ec9-bd88-c26f826dfb68	\N	\N
-4970	6	1d24c50c-85c9-4f22-9f26-736826283f5e	version.layout.10.faqs	\N	\N	\N	\N	cf06eaf5-c215-44fc-82c2-a7696336ef41	\N	\N
-5791	1	7b10acb8-518f-4fb4-8bbf-75ef9b57460f	version.layout.0.logos	\N	\N	\N	8c44fa47-dbaa-44ba-9a83-c35e232404f7	\N	\N	\N
-5792	2	7b10acb8-518f-4fb4-8bbf-75ef9b57460f	version.layout.0.logos	\N	\N	\N	93e4c6fc-6bfb-4246-aad1-8861ebc78777	\N	\N	\N
-5793	3	7b10acb8-518f-4fb4-8bbf-75ef9b57460f	version.layout.0.logos	\N	\N	\N	8cfbc8ec-db06-4d17-9c8b-bbf589f91e67	\N	\N	\N
-5794	4	7b10acb8-518f-4fb4-8bbf-75ef9b57460f	version.layout.0.logos	\N	\N	\N	4f3b0cf8-dc31-4ff9-aa9f-9e0ec3cfb001	\N	\N	\N
-5795	5	7b10acb8-518f-4fb4-8bbf-75ef9b57460f	version.layout.0.logos	\N	\N	\N	d67a9625-6f30-4d2a-9643-0962f6faf385	\N	\N	\N
-5796	1	7b10acb8-518f-4fb4-8bbf-75ef9b57460f	version.layout.2.logos	\N	\N	\N	513d34fb-5dbc-4333-b0ab-af8e3756cc8a	\N	\N	\N
-5797	2	7b10acb8-518f-4fb4-8bbf-75ef9b57460f	version.layout.2.logos	\N	\N	\N	92890105-dde4-4c79-acac-d81ad6dd978a	\N	\N	\N
-5798	1	7b10acb8-518f-4fb4-8bbf-75ef9b57460f	version.layout.3.selectedTestimonials	\N	\N	\N	\N	\N	b440e19a-7d00-487a-9927-d384dee97e22	\N
-5799	1	7b10acb8-518f-4fb4-8bbf-75ef9b57460f	version.layout.7.selectedTestimonials	\N	\N	\N	\N	\N	ad1d03ad-f60b-4f83-90c2-d456f1fbaf21	\N
-5800	1	7b10acb8-518f-4fb4-8bbf-75ef9b57460f	version.layout.9.logos	\N	\N	\N	8c44fa47-dbaa-44ba-9a83-c35e232404f7	\N	\N	\N
-5801	2	7b10acb8-518f-4fb4-8bbf-75ef9b57460f	version.layout.9.logos	\N	\N	\N	93e4c6fc-6bfb-4246-aad1-8861ebc78777	\N	\N	\N
-5802	3	7b10acb8-518f-4fb4-8bbf-75ef9b57460f	version.layout.9.logos	\N	\N	\N	8cfbc8ec-db06-4d17-9c8b-bbf589f91e67	\N	\N	\N
-5803	4	7b10acb8-518f-4fb4-8bbf-75ef9b57460f	version.layout.9.logos	\N	\N	\N	4f3b0cf8-dc31-4ff9-aa9f-9e0ec3cfb001	\N	\N	\N
-5804	5	7b10acb8-518f-4fb4-8bbf-75ef9b57460f	version.layout.9.logos	\N	\N	\N	d67a9625-6f30-4d2a-9643-0962f6faf385	\N	\N	\N
-5805	1	7b10acb8-518f-4fb4-8bbf-75ef9b57460f	version.layout.10.faqs	\N	\N	\N	\N	487d16ef-4d7e-4603-885d-53d42734b0f1	\N	\N
-5806	2	7b10acb8-518f-4fb4-8bbf-75ef9b57460f	version.layout.10.faqs	\N	\N	\N	\N	2d37f238-e71e-4291-8919-33e4c7a73544	\N	\N
-5807	3	7b10acb8-518f-4fb4-8bbf-75ef9b57460f	version.layout.10.faqs	\N	\N	\N	\N	4696359a-45b8-4fea-b14f-ca34e928e5d0	\N	\N
-5808	4	7b10acb8-518f-4fb4-8bbf-75ef9b57460f	version.layout.10.faqs	\N	\N	\N	\N	0786b804-85ea-4269-841e-5f4fe762ada3	\N	\N
-5809	5	7b10acb8-518f-4fb4-8bbf-75ef9b57460f	version.layout.10.faqs	\N	\N	\N	\N	0ad17856-43c0-4ec9-bd88-c26f826dfb68	\N	\N
-6085	1	c6179f9d-b0c1-41c3-9997-6e6aabec88cd	version.layout.0.logos	\N	\N	\N	8c44fa47-dbaa-44ba-9a83-c35e232404f7	\N	\N	\N
-6086	2	c6179f9d-b0c1-41c3-9997-6e6aabec88cd	version.layout.0.logos	\N	\N	\N	93e4c6fc-6bfb-4246-aad1-8861ebc78777	\N	\N	\N
-5810	6	7b10acb8-518f-4fb4-8bbf-75ef9b57460f	version.layout.10.faqs	\N	\N	\N	\N	cf06eaf5-c215-44fc-82c2-a7696336ef41	\N	\N
-5811	1	0e4a4b08-7246-47c2-aad7-6a69b9d95d2c	version.layout.0.logos	\N	\N	\N	8c44fa47-dbaa-44ba-9a83-c35e232404f7	\N	\N	\N
-5812	2	0e4a4b08-7246-47c2-aad7-6a69b9d95d2c	version.layout.0.logos	\N	\N	\N	93e4c6fc-6bfb-4246-aad1-8861ebc78777	\N	\N	\N
-5813	3	0e4a4b08-7246-47c2-aad7-6a69b9d95d2c	version.layout.0.logos	\N	\N	\N	8cfbc8ec-db06-4d17-9c8b-bbf589f91e67	\N	\N	\N
-5814	4	0e4a4b08-7246-47c2-aad7-6a69b9d95d2c	version.layout.0.logos	\N	\N	\N	4f3b0cf8-dc31-4ff9-aa9f-9e0ec3cfb001	\N	\N	\N
-5815	5	0e4a4b08-7246-47c2-aad7-6a69b9d95d2c	version.layout.0.logos	\N	\N	\N	d67a9625-6f30-4d2a-9643-0962f6faf385	\N	\N	\N
-5816	1	0e4a4b08-7246-47c2-aad7-6a69b9d95d2c	version.layout.2.logos	\N	\N	\N	513d34fb-5dbc-4333-b0ab-af8e3756cc8a	\N	\N	\N
-5817	2	0e4a4b08-7246-47c2-aad7-6a69b9d95d2c	version.layout.2.logos	\N	\N	\N	92890105-dde4-4c79-acac-d81ad6dd978a	\N	\N	\N
-5818	1	0e4a4b08-7246-47c2-aad7-6a69b9d95d2c	version.layout.3.selectedTestimonials	\N	\N	\N	\N	\N	b440e19a-7d00-487a-9927-d384dee97e22	\N
-5819	1	0e4a4b08-7246-47c2-aad7-6a69b9d95d2c	version.layout.7.selectedTestimonials	\N	\N	\N	\N	\N	ad1d03ad-f60b-4f83-90c2-d456f1fbaf21	\N
-5820	1	0e4a4b08-7246-47c2-aad7-6a69b9d95d2c	version.layout.9.logos	\N	\N	\N	8c44fa47-dbaa-44ba-9a83-c35e232404f7	\N	\N	\N
-5821	2	0e4a4b08-7246-47c2-aad7-6a69b9d95d2c	version.layout.9.logos	\N	\N	\N	93e4c6fc-6bfb-4246-aad1-8861ebc78777	\N	\N	\N
-5822	3	0e4a4b08-7246-47c2-aad7-6a69b9d95d2c	version.layout.9.logos	\N	\N	\N	8cfbc8ec-db06-4d17-9c8b-bbf589f91e67	\N	\N	\N
-5823	4	0e4a4b08-7246-47c2-aad7-6a69b9d95d2c	version.layout.9.logos	\N	\N	\N	4f3b0cf8-dc31-4ff9-aa9f-9e0ec3cfb001	\N	\N	\N
-5824	5	0e4a4b08-7246-47c2-aad7-6a69b9d95d2c	version.layout.9.logos	\N	\N	\N	d67a9625-6f30-4d2a-9643-0962f6faf385	\N	\N	\N
-5825	1	0e4a4b08-7246-47c2-aad7-6a69b9d95d2c	version.layout.10.faqs	\N	\N	\N	\N	487d16ef-4d7e-4603-885d-53d42734b0f1	\N	\N
-5826	2	0e4a4b08-7246-47c2-aad7-6a69b9d95d2c	version.layout.10.faqs	\N	\N	\N	\N	2d37f238-e71e-4291-8919-33e4c7a73544	\N	\N
-5827	3	0e4a4b08-7246-47c2-aad7-6a69b9d95d2c	version.layout.10.faqs	\N	\N	\N	\N	4696359a-45b8-4fea-b14f-ca34e928e5d0	\N	\N
-5828	4	0e4a4b08-7246-47c2-aad7-6a69b9d95d2c	version.layout.10.faqs	\N	\N	\N	\N	0786b804-85ea-4269-841e-5f4fe762ada3	\N	\N
-5829	5	0e4a4b08-7246-47c2-aad7-6a69b9d95d2c	version.layout.10.faqs	\N	\N	\N	\N	0ad17856-43c0-4ec9-bd88-c26f826dfb68	\N	\N
-5830	6	0e4a4b08-7246-47c2-aad7-6a69b9d95d2c	version.layout.10.faqs	\N	\N	\N	\N	cf06eaf5-c215-44fc-82c2-a7696336ef41	\N	\N
-6087	3	c6179f9d-b0c1-41c3-9997-6e6aabec88cd	version.layout.0.logos	\N	\N	\N	8cfbc8ec-db06-4d17-9c8b-bbf589f91e67	\N	\N	\N
-6088	4	c6179f9d-b0c1-41c3-9997-6e6aabec88cd	version.layout.0.logos	\N	\N	\N	4f3b0cf8-dc31-4ff9-aa9f-9e0ec3cfb001	\N	\N	\N
-6089	5	c6179f9d-b0c1-41c3-9997-6e6aabec88cd	version.layout.0.logos	\N	\N	\N	d67a9625-6f30-4d2a-9643-0962f6faf385	\N	\N	\N
-6090	1	c6179f9d-b0c1-41c3-9997-6e6aabec88cd	version.layout.2.logos	\N	\N	\N	513d34fb-5dbc-4333-b0ab-af8e3756cc8a	\N	\N	\N
-6091	2	c6179f9d-b0c1-41c3-9997-6e6aabec88cd	version.layout.2.logos	\N	\N	\N	92890105-dde4-4c79-acac-d81ad6dd978a	\N	\N	\N
-6092	1	c6179f9d-b0c1-41c3-9997-6e6aabec88cd	version.layout.3.selectedTestimonials	\N	\N	\N	\N	\N	b440e19a-7d00-487a-9927-d384dee97e22	\N
-6093	1	c6179f9d-b0c1-41c3-9997-6e6aabec88cd	version.layout.7.selectedTestimonials	\N	\N	\N	\N	\N	ad1d03ad-f60b-4f83-90c2-d456f1fbaf21	\N
-6094	1	c6179f9d-b0c1-41c3-9997-6e6aabec88cd	version.layout.9.logos	\N	\N	\N	8c44fa47-dbaa-44ba-9a83-c35e232404f7	\N	\N	\N
-6095	2	c6179f9d-b0c1-41c3-9997-6e6aabec88cd	version.layout.9.logos	\N	\N	\N	93e4c6fc-6bfb-4246-aad1-8861ebc78777	\N	\N	\N
-6096	3	c6179f9d-b0c1-41c3-9997-6e6aabec88cd	version.layout.9.logos	\N	\N	\N	8cfbc8ec-db06-4d17-9c8b-bbf589f91e67	\N	\N	\N
-6097	4	c6179f9d-b0c1-41c3-9997-6e6aabec88cd	version.layout.9.logos	\N	\N	\N	4f3b0cf8-dc31-4ff9-aa9f-9e0ec3cfb001	\N	\N	\N
-6098	5	c6179f9d-b0c1-41c3-9997-6e6aabec88cd	version.layout.9.logos	\N	\N	\N	d67a9625-6f30-4d2a-9643-0962f6faf385	\N	\N	\N
-6099	1	c6179f9d-b0c1-41c3-9997-6e6aabec88cd	version.layout.10.faqs	\N	\N	\N	\N	487d16ef-4d7e-4603-885d-53d42734b0f1	\N	\N
-6100	2	c6179f9d-b0c1-41c3-9997-6e6aabec88cd	version.layout.10.faqs	\N	\N	\N	\N	2d37f238-e71e-4291-8919-33e4c7a73544	\N	\N
-6101	3	c6179f9d-b0c1-41c3-9997-6e6aabec88cd	version.layout.10.faqs	\N	\N	\N	\N	4696359a-45b8-4fea-b14f-ca34e928e5d0	\N	\N
-6102	4	c6179f9d-b0c1-41c3-9997-6e6aabec88cd	version.layout.10.faqs	\N	\N	\N	\N	0786b804-85ea-4269-841e-5f4fe762ada3	\N	\N
-6103	5	c6179f9d-b0c1-41c3-9997-6e6aabec88cd	version.layout.10.faqs	\N	\N	\N	\N	0ad17856-43c0-4ec9-bd88-c26f826dfb68	\N	\N
-6104	6	c6179f9d-b0c1-41c3-9997-6e6aabec88cd	version.layout.10.faqs	\N	\N	\N	\N	cf06eaf5-c215-44fc-82c2-a7696336ef41	\N	\N
-1443	1	62a42c83-e7ff-454b-8946-e264891b6a83	version.layout.5.logos	\N	\N	\N	92890105-dde4-4c79-acac-d81ad6dd978a	\N	\N	\N
-1444	2	62a42c83-e7ff-454b-8946-e264891b6a83	version.layout.5.logos	\N	\N	\N	513d34fb-5dbc-4333-b0ab-af8e3756cc8a	\N	\N	\N
-1445	1	fb216ed8-a9eb-4f6f-adfa-bc16f638b14a	version.layout.5.logos	\N	\N	\N	92890105-dde4-4c79-acac-d81ad6dd978a	\N	\N	\N
-1446	2	fb216ed8-a9eb-4f6f-adfa-bc16f638b14a	version.layout.5.logos	\N	\N	\N	513d34fb-5dbc-4333-b0ab-af8e3756cc8a	\N	\N	\N
-3996	6	121949fd-6c23-47b2-a9f6-4316de5d07cc	version.layout.10.faqs	\N	\N	\N	\N	cf06eaf5-c215-44fc-82c2-a7696336ef41	\N	\N
-4971	1	57aea5dc-5bfe-4cf1-b716-b0c95df2b185	version.layout.0.logos	\N	\N	\N	8c44fa47-dbaa-44ba-9a83-c35e232404f7	\N	\N	\N
-4972	2	57aea5dc-5bfe-4cf1-b716-b0c95df2b185	version.layout.0.logos	\N	\N	\N	93e4c6fc-6bfb-4246-aad1-8861ebc78777	\N	\N	\N
-4973	3	57aea5dc-5bfe-4cf1-b716-b0c95df2b185	version.layout.0.logos	\N	\N	\N	8cfbc8ec-db06-4d17-9c8b-bbf589f91e67	\N	\N	\N
-4974	4	57aea5dc-5bfe-4cf1-b716-b0c95df2b185	version.layout.0.logos	\N	\N	\N	4f3b0cf8-dc31-4ff9-aa9f-9e0ec3cfb001	\N	\N	\N
-4975	5	57aea5dc-5bfe-4cf1-b716-b0c95df2b185	version.layout.0.logos	\N	\N	\N	d67a9625-6f30-4d2a-9643-0962f6faf385	\N	\N	\N
-4976	1	57aea5dc-5bfe-4cf1-b716-b0c95df2b185	version.layout.2.logos	\N	\N	\N	513d34fb-5dbc-4333-b0ab-af8e3756cc8a	\N	\N	\N
-4977	2	57aea5dc-5bfe-4cf1-b716-b0c95df2b185	version.layout.2.logos	\N	\N	\N	92890105-dde4-4c79-acac-d81ad6dd978a	\N	\N	\N
-4978	1	57aea5dc-5bfe-4cf1-b716-b0c95df2b185	version.layout.3.selectedTestimonials	\N	\N	\N	\N	\N	b440e19a-7d00-487a-9927-d384dee97e22	\N
-4979	1	57aea5dc-5bfe-4cf1-b716-b0c95df2b185	version.layout.7.selectedTestimonials	\N	\N	\N	\N	\N	ad1d03ad-f60b-4f83-90c2-d456f1fbaf21	\N
-4980	1	57aea5dc-5bfe-4cf1-b716-b0c95df2b185	version.layout.9.logos	\N	\N	\N	8c44fa47-dbaa-44ba-9a83-c35e232404f7	\N	\N	\N
-4981	2	57aea5dc-5bfe-4cf1-b716-b0c95df2b185	version.layout.9.logos	\N	\N	\N	93e4c6fc-6bfb-4246-aad1-8861ebc78777	\N	\N	\N
-4982	3	57aea5dc-5bfe-4cf1-b716-b0c95df2b185	version.layout.9.logos	\N	\N	\N	8cfbc8ec-db06-4d17-9c8b-bbf589f91e67	\N	\N	\N
-4983	4	57aea5dc-5bfe-4cf1-b716-b0c95df2b185	version.layout.9.logos	\N	\N	\N	4f3b0cf8-dc31-4ff9-aa9f-9e0ec3cfb001	\N	\N	\N
-4984	5	57aea5dc-5bfe-4cf1-b716-b0c95df2b185	version.layout.9.logos	\N	\N	\N	d67a9625-6f30-4d2a-9643-0962f6faf385	\N	\N	\N
-4985	1	57aea5dc-5bfe-4cf1-b716-b0c95df2b185	version.layout.10.faqs	\N	\N	\N	\N	487d16ef-4d7e-4603-885d-53d42734b0f1	\N	\N
-4986	2	57aea5dc-5bfe-4cf1-b716-b0c95df2b185	version.layout.10.faqs	\N	\N	\N	\N	2d37f238-e71e-4291-8919-33e4c7a73544	\N	\N
-4987	3	57aea5dc-5bfe-4cf1-b716-b0c95df2b185	version.layout.10.faqs	\N	\N	\N	\N	4696359a-45b8-4fea-b14f-ca34e928e5d0	\N	\N
-4988	4	57aea5dc-5bfe-4cf1-b716-b0c95df2b185	version.layout.10.faqs	\N	\N	\N	\N	0786b804-85ea-4269-841e-5f4fe762ada3	\N	\N
-4989	5	57aea5dc-5bfe-4cf1-b716-b0c95df2b185	version.layout.10.faqs	\N	\N	\N	\N	0ad17856-43c0-4ec9-bd88-c26f826dfb68	\N	\N
-4990	6	57aea5dc-5bfe-4cf1-b716-b0c95df2b185	version.layout.10.faqs	\N	\N	\N	\N	cf06eaf5-c215-44fc-82c2-a7696336ef41	\N	\N
-4991	1	1384226b-240a-4adc-ab9c-f0d2f30ca2ed	version.layout.0.logos	\N	\N	\N	8c44fa47-dbaa-44ba-9a83-c35e232404f7	\N	\N	\N
-4847	1	a7d8fbd8-d73b-49bb-a69a-51c10ce9f17c	version.layout.5.logos	\N	\N	\N	92890105-dde4-4c79-acac-d81ad6dd978a	\N	\N	\N
-4848	2	a7d8fbd8-d73b-49bb-a69a-51c10ce9f17c	version.layout.5.logos	\N	\N	\N	513d34fb-5dbc-4333-b0ab-af8e3756cc8a	\N	\N	\N
-4849	1	1e917311-a2dc-43d9-9cf3-9222e6db43c0	version.layout.5.logos	\N	\N	\N	92890105-dde4-4c79-acac-d81ad6dd978a	\N	\N	\N
-4850	2	1e917311-a2dc-43d9-9cf3-9222e6db43c0	version.layout.5.logos	\N	\N	\N	513d34fb-5dbc-4333-b0ab-af8e3756cc8a	\N	\N	\N
-4992	2	1384226b-240a-4adc-ab9c-f0d2f30ca2ed	version.layout.0.logos	\N	\N	\N	93e4c6fc-6bfb-4246-aad1-8861ebc78777	\N	\N	\N
-4993	3	1384226b-240a-4adc-ab9c-f0d2f30ca2ed	version.layout.0.logos	\N	\N	\N	8cfbc8ec-db06-4d17-9c8b-bbf589f91e67	\N	\N	\N
-4994	4	1384226b-240a-4adc-ab9c-f0d2f30ca2ed	version.layout.0.logos	\N	\N	\N	4f3b0cf8-dc31-4ff9-aa9f-9e0ec3cfb001	\N	\N	\N
-4995	5	1384226b-240a-4adc-ab9c-f0d2f30ca2ed	version.layout.0.logos	\N	\N	\N	d67a9625-6f30-4d2a-9643-0962f6faf385	\N	\N	\N
-4996	1	1384226b-240a-4adc-ab9c-f0d2f30ca2ed	version.layout.2.logos	\N	\N	\N	513d34fb-5dbc-4333-b0ab-af8e3756cc8a	\N	\N	\N
-4997	2	1384226b-240a-4adc-ab9c-f0d2f30ca2ed	version.layout.2.logos	\N	\N	\N	92890105-dde4-4c79-acac-d81ad6dd978a	\N	\N	\N
-4998	1	1384226b-240a-4adc-ab9c-f0d2f30ca2ed	version.layout.3.selectedTestimonials	\N	\N	\N	\N	\N	b440e19a-7d00-487a-9927-d384dee97e22	\N
-4999	1	1384226b-240a-4adc-ab9c-f0d2f30ca2ed	version.layout.7.selectedTestimonials	\N	\N	\N	\N	\N	ad1d03ad-f60b-4f83-90c2-d456f1fbaf21	\N
-5000	1	1384226b-240a-4adc-ab9c-f0d2f30ca2ed	version.layout.9.logos	\N	\N	\N	8c44fa47-dbaa-44ba-9a83-c35e232404f7	\N	\N	\N
-5001	2	1384226b-240a-4adc-ab9c-f0d2f30ca2ed	version.layout.9.logos	\N	\N	\N	93e4c6fc-6bfb-4246-aad1-8861ebc78777	\N	\N	\N
-5002	3	1384226b-240a-4adc-ab9c-f0d2f30ca2ed	version.layout.9.logos	\N	\N	\N	8cfbc8ec-db06-4d17-9c8b-bbf589f91e67	\N	\N	\N
-5003	4	1384226b-240a-4adc-ab9c-f0d2f30ca2ed	version.layout.9.logos	\N	\N	\N	4f3b0cf8-dc31-4ff9-aa9f-9e0ec3cfb001	\N	\N	\N
-4137	1	b9bfdcc5-4500-4b24-827a-bdb5cd5f47d6	version.layout.0.logos	\N	\N	\N	8c44fa47-dbaa-44ba-9a83-c35e232404f7	\N	\N	\N
-4138	2	b9bfdcc5-4500-4b24-827a-bdb5cd5f47d6	version.layout.0.logos	\N	\N	\N	93e4c6fc-6bfb-4246-aad1-8861ebc78777	\N	\N	\N
-4139	3	b9bfdcc5-4500-4b24-827a-bdb5cd5f47d6	version.layout.0.logos	\N	\N	\N	8cfbc8ec-db06-4d17-9c8b-bbf589f91e67	\N	\N	\N
-4140	4	b9bfdcc5-4500-4b24-827a-bdb5cd5f47d6	version.layout.0.logos	\N	\N	\N	4f3b0cf8-dc31-4ff9-aa9f-9e0ec3cfb001	\N	\N	\N
-5911	1	8c0a9435-014f-4434-b79a-d1865d02dcb2	version.layout.0.logos	\N	\N	\N	8c44fa47-dbaa-44ba-9a83-c35e232404f7	\N	\N	\N
-5912	2	8c0a9435-014f-4434-b79a-d1865d02dcb2	version.layout.0.logos	\N	\N	\N	93e4c6fc-6bfb-4246-aad1-8861ebc78777	\N	\N	\N
-5913	3	8c0a9435-014f-4434-b79a-d1865d02dcb2	version.layout.0.logos	\N	\N	\N	8cfbc8ec-db06-4d17-9c8b-bbf589f91e67	\N	\N	\N
-5914	4	8c0a9435-014f-4434-b79a-d1865d02dcb2	version.layout.0.logos	\N	\N	\N	4f3b0cf8-dc31-4ff9-aa9f-9e0ec3cfb001	\N	\N	\N
-5915	5	8c0a9435-014f-4434-b79a-d1865d02dcb2	version.layout.0.logos	\N	\N	\N	d67a9625-6f30-4d2a-9643-0962f6faf385	\N	\N	\N
-5916	1	8c0a9435-014f-4434-b79a-d1865d02dcb2	version.layout.2.logos	\N	\N	\N	513d34fb-5dbc-4333-b0ab-af8e3756cc8a	\N	\N	\N
-5917	2	8c0a9435-014f-4434-b79a-d1865d02dcb2	version.layout.2.logos	\N	\N	\N	92890105-dde4-4c79-acac-d81ad6dd978a	\N	\N	\N
-5918	1	8c0a9435-014f-4434-b79a-d1865d02dcb2	version.layout.3.selectedTestimonials	\N	\N	\N	\N	\N	b440e19a-7d00-487a-9927-d384dee97e22	\N
-5919	1	8c0a9435-014f-4434-b79a-d1865d02dcb2	version.layout.7.selectedTestimonials	\N	\N	\N	\N	\N	ad1d03ad-f60b-4f83-90c2-d456f1fbaf21	\N
-5920	1	8c0a9435-014f-4434-b79a-d1865d02dcb2	version.layout.9.logos	\N	\N	\N	8c44fa47-dbaa-44ba-9a83-c35e232404f7	\N	\N	\N
-5004	5	1384226b-240a-4adc-ab9c-f0d2f30ca2ed	version.layout.9.logos	\N	\N	\N	d67a9625-6f30-4d2a-9643-0962f6faf385	\N	\N	\N
-5005	1	1384226b-240a-4adc-ab9c-f0d2f30ca2ed	version.layout.10.faqs	\N	\N	\N	\N	487d16ef-4d7e-4603-885d-53d42734b0f1	\N	\N
-5006	2	1384226b-240a-4adc-ab9c-f0d2f30ca2ed	version.layout.10.faqs	\N	\N	\N	\N	2d37f238-e71e-4291-8919-33e4c7a73544	\N	\N
-5007	3	1384226b-240a-4adc-ab9c-f0d2f30ca2ed	version.layout.10.faqs	\N	\N	\N	\N	4696359a-45b8-4fea-b14f-ca34e928e5d0	\N	\N
-5008	4	1384226b-240a-4adc-ab9c-f0d2f30ca2ed	version.layout.10.faqs	\N	\N	\N	\N	0786b804-85ea-4269-841e-5f4fe762ada3	\N	\N
-5009	5	1384226b-240a-4adc-ab9c-f0d2f30ca2ed	version.layout.10.faqs	\N	\N	\N	\N	0ad17856-43c0-4ec9-bd88-c26f826dfb68	\N	\N
-5010	6	1384226b-240a-4adc-ab9c-f0d2f30ca2ed	version.layout.10.faqs	\N	\N	\N	\N	cf06eaf5-c215-44fc-82c2-a7696336ef41	\N	\N
-5011	1	3701e4af-e4a1-44b0-9353-78765e183a93	version.layout.0.logos	\N	\N	\N	8c44fa47-dbaa-44ba-9a83-c35e232404f7	\N	\N	\N
-4141	5	b9bfdcc5-4500-4b24-827a-bdb5cd5f47d6	version.layout.0.logos	\N	\N	\N	d67a9625-6f30-4d2a-9643-0962f6faf385	\N	\N	\N
-4142	1	b9bfdcc5-4500-4b24-827a-bdb5cd5f47d6	version.layout.2.logos	\N	\N	\N	513d34fb-5dbc-4333-b0ab-af8e3756cc8a	\N	\N	\N
-4143	2	b9bfdcc5-4500-4b24-827a-bdb5cd5f47d6	version.layout.2.logos	\N	\N	\N	92890105-dde4-4c79-acac-d81ad6dd978a	\N	\N	\N
-4144	1	b9bfdcc5-4500-4b24-827a-bdb5cd5f47d6	version.layout.3.selectedTestimonials	\N	\N	\N	\N	\N	b440e19a-7d00-487a-9927-d384dee97e22	\N
-4145	1	b9bfdcc5-4500-4b24-827a-bdb5cd5f47d6	version.layout.7.selectedTestimonials	\N	\N	\N	\N	\N	ad1d03ad-f60b-4f83-90c2-d456f1fbaf21	\N
-4146	1	b9bfdcc5-4500-4b24-827a-bdb5cd5f47d6	version.layout.9.logos	\N	\N	\N	8c44fa47-dbaa-44ba-9a83-c35e232404f7	\N	\N	\N
-4147	2	b9bfdcc5-4500-4b24-827a-bdb5cd5f47d6	version.layout.9.logos	\N	\N	\N	93e4c6fc-6bfb-4246-aad1-8861ebc78777	\N	\N	\N
-4148	3	b9bfdcc5-4500-4b24-827a-bdb5cd5f47d6	version.layout.9.logos	\N	\N	\N	8cfbc8ec-db06-4d17-9c8b-bbf589f91e67	\N	\N	\N
-4149	4	b9bfdcc5-4500-4b24-827a-bdb5cd5f47d6	version.layout.9.logos	\N	\N	\N	4f3b0cf8-dc31-4ff9-aa9f-9e0ec3cfb001	\N	\N	\N
-4150	5	b9bfdcc5-4500-4b24-827a-bdb5cd5f47d6	version.layout.9.logos	\N	\N	\N	d67a9625-6f30-4d2a-9643-0962f6faf385	\N	\N	\N
-5012	2	3701e4af-e4a1-44b0-9353-78765e183a93	version.layout.0.logos	\N	\N	\N	93e4c6fc-6bfb-4246-aad1-8861ebc78777	\N	\N	\N
-4617	1	94248fa7-c7f2-494d-ab96-5db4f8cf8a09	version.layout.0.logos	\N	\N	\N	8c44fa47-dbaa-44ba-9a83-c35e232404f7	\N	\N	\N
-4618	2	94248fa7-c7f2-494d-ab96-5db4f8cf8a09	version.layout.0.logos	\N	\N	\N	93e4c6fc-6bfb-4246-aad1-8861ebc78777	\N	\N	\N
-4619	3	94248fa7-c7f2-494d-ab96-5db4f8cf8a09	version.layout.0.logos	\N	\N	\N	8cfbc8ec-db06-4d17-9c8b-bbf589f91e67	\N	\N	\N
-4620	4	94248fa7-c7f2-494d-ab96-5db4f8cf8a09	version.layout.0.logos	\N	\N	\N	4f3b0cf8-dc31-4ff9-aa9f-9e0ec3cfb001	\N	\N	\N
-4621	5	94248fa7-c7f2-494d-ab96-5db4f8cf8a09	version.layout.0.logos	\N	\N	\N	d67a9625-6f30-4d2a-9643-0962f6faf385	\N	\N	\N
-4622	1	94248fa7-c7f2-494d-ab96-5db4f8cf8a09	version.layout.2.logos	\N	\N	\N	513d34fb-5dbc-4333-b0ab-af8e3756cc8a	\N	\N	\N
-4623	2	94248fa7-c7f2-494d-ab96-5db4f8cf8a09	version.layout.2.logos	\N	\N	\N	92890105-dde4-4c79-acac-d81ad6dd978a	\N	\N	\N
-4624	1	94248fa7-c7f2-494d-ab96-5db4f8cf8a09	version.layout.3.selectedTestimonials	\N	\N	\N	\N	\N	b440e19a-7d00-487a-9927-d384dee97e22	\N
-4625	1	94248fa7-c7f2-494d-ab96-5db4f8cf8a09	version.layout.7.selectedTestimonials	\N	\N	\N	\N	\N	ad1d03ad-f60b-4f83-90c2-d456f1fbaf21	\N
-4626	1	94248fa7-c7f2-494d-ab96-5db4f8cf8a09	version.layout.9.logos	\N	\N	\N	8c44fa47-dbaa-44ba-9a83-c35e232404f7	\N	\N	\N
-4627	2	94248fa7-c7f2-494d-ab96-5db4f8cf8a09	version.layout.9.logos	\N	\N	\N	93e4c6fc-6bfb-4246-aad1-8861ebc78777	\N	\N	\N
-4628	3	94248fa7-c7f2-494d-ab96-5db4f8cf8a09	version.layout.9.logos	\N	\N	\N	8cfbc8ec-db06-4d17-9c8b-bbf589f91e67	\N	\N	\N
-4629	4	94248fa7-c7f2-494d-ab96-5db4f8cf8a09	version.layout.9.logos	\N	\N	\N	4f3b0cf8-dc31-4ff9-aa9f-9e0ec3cfb001	\N	\N	\N
-4630	5	94248fa7-c7f2-494d-ab96-5db4f8cf8a09	version.layout.9.logos	\N	\N	\N	d67a9625-6f30-4d2a-9643-0962f6faf385	\N	\N	\N
-4631	1	94248fa7-c7f2-494d-ab96-5db4f8cf8a09	version.layout.10.faqs	\N	\N	\N	\N	487d16ef-4d7e-4603-885d-53d42734b0f1	\N	\N
-4632	2	94248fa7-c7f2-494d-ab96-5db4f8cf8a09	version.layout.10.faqs	\N	\N	\N	\N	2d37f238-e71e-4291-8919-33e4c7a73544	\N	\N
-4633	3	94248fa7-c7f2-494d-ab96-5db4f8cf8a09	version.layout.10.faqs	\N	\N	\N	\N	4696359a-45b8-4fea-b14f-ca34e928e5d0	\N	\N
-4634	4	94248fa7-c7f2-494d-ab96-5db4f8cf8a09	version.layout.10.faqs	\N	\N	\N	\N	0786b804-85ea-4269-841e-5f4fe762ada3	\N	\N
-4635	5	94248fa7-c7f2-494d-ab96-5db4f8cf8a09	version.layout.10.faqs	\N	\N	\N	\N	0ad17856-43c0-4ec9-bd88-c26f826dfb68	\N	\N
-4636	6	94248fa7-c7f2-494d-ab96-5db4f8cf8a09	version.layout.10.faqs	\N	\N	\N	\N	cf06eaf5-c215-44fc-82c2-a7696336ef41	\N	\N
-4637	1	d33aa7ed-6c4a-4c19-ab8c-6ffe2b067097	version.layout.0.logos	\N	\N	\N	8c44fa47-dbaa-44ba-9a83-c35e232404f7	\N	\N	\N
-4638	2	d33aa7ed-6c4a-4c19-ab8c-6ffe2b067097	version.layout.0.logos	\N	\N	\N	93e4c6fc-6bfb-4246-aad1-8861ebc78777	\N	\N	\N
-4639	3	d33aa7ed-6c4a-4c19-ab8c-6ffe2b067097	version.layout.0.logos	\N	\N	\N	8cfbc8ec-db06-4d17-9c8b-bbf589f91e67	\N	\N	\N
-4640	4	d33aa7ed-6c4a-4c19-ab8c-6ffe2b067097	version.layout.0.logos	\N	\N	\N	4f3b0cf8-dc31-4ff9-aa9f-9e0ec3cfb001	\N	\N	\N
-4641	5	d33aa7ed-6c4a-4c19-ab8c-6ffe2b067097	version.layout.0.logos	\N	\N	\N	d67a9625-6f30-4d2a-9643-0962f6faf385	\N	\N	\N
-4642	1	d33aa7ed-6c4a-4c19-ab8c-6ffe2b067097	version.layout.2.logos	\N	\N	\N	513d34fb-5dbc-4333-b0ab-af8e3756cc8a	\N	\N	\N
-1723	1	c75b3602-1177-46a4-8980-b2e7b8525952	version.layout.5.logos	\N	\N	\N	92890105-dde4-4c79-acac-d81ad6dd978a	\N	\N	\N
-1724	2	c75b3602-1177-46a4-8980-b2e7b8525952	version.layout.5.logos	\N	\N	\N	513d34fb-5dbc-4333-b0ab-af8e3756cc8a	\N	\N	\N
-1725	1	f7e02b39-9f78-4b54-9e59-9d00943a9a68	version.layout.5.logos	\N	\N	\N	92890105-dde4-4c79-acac-d81ad6dd978a	\N	\N	\N
-1726	2	f7e02b39-9f78-4b54-9e59-9d00943a9a68	version.layout.5.logos	\N	\N	\N	513d34fb-5dbc-4333-b0ab-af8e3756cc8a	\N	\N	\N
-4643	2	d33aa7ed-6c4a-4c19-ab8c-6ffe2b067097	version.layout.2.logos	\N	\N	\N	92890105-dde4-4c79-acac-d81ad6dd978a	\N	\N	\N
-4644	1	d33aa7ed-6c4a-4c19-ab8c-6ffe2b067097	version.layout.3.selectedTestimonials	\N	\N	\N	\N	\N	b440e19a-7d00-487a-9927-d384dee97e22	\N
-4645	1	d33aa7ed-6c4a-4c19-ab8c-6ffe2b067097	version.layout.7.selectedTestimonials	\N	\N	\N	\N	\N	ad1d03ad-f60b-4f83-90c2-d456f1fbaf21	\N
-4646	1	d33aa7ed-6c4a-4c19-ab8c-6ffe2b067097	version.layout.9.logos	\N	\N	\N	8c44fa47-dbaa-44ba-9a83-c35e232404f7	\N	\N	\N
-4647	2	d33aa7ed-6c4a-4c19-ab8c-6ffe2b067097	version.layout.9.logos	\N	\N	\N	93e4c6fc-6bfb-4246-aad1-8861ebc78777	\N	\N	\N
-4648	3	d33aa7ed-6c4a-4c19-ab8c-6ffe2b067097	version.layout.9.logos	\N	\N	\N	8cfbc8ec-db06-4d17-9c8b-bbf589f91e67	\N	\N	\N
-4649	4	d33aa7ed-6c4a-4c19-ab8c-6ffe2b067097	version.layout.9.logos	\N	\N	\N	4f3b0cf8-dc31-4ff9-aa9f-9e0ec3cfb001	\N	\N	\N
-4650	5	d33aa7ed-6c4a-4c19-ab8c-6ffe2b067097	version.layout.9.logos	\N	\N	\N	d67a9625-6f30-4d2a-9643-0962f6faf385	\N	\N	\N
-4651	1	d33aa7ed-6c4a-4c19-ab8c-6ffe2b067097	version.layout.10.faqs	\N	\N	\N	\N	487d16ef-4d7e-4603-885d-53d42734b0f1	\N	\N
-5013	3	3701e4af-e4a1-44b0-9353-78765e183a93	version.layout.0.logos	\N	\N	\N	8cfbc8ec-db06-4d17-9c8b-bbf589f91e67	\N	\N	\N
-5014	4	3701e4af-e4a1-44b0-9353-78765e183a93	version.layout.0.logos	\N	\N	\N	4f3b0cf8-dc31-4ff9-aa9f-9e0ec3cfb001	\N	\N	\N
-5015	5	3701e4af-e4a1-44b0-9353-78765e183a93	version.layout.0.logos	\N	\N	\N	d67a9625-6f30-4d2a-9643-0962f6faf385	\N	\N	\N
-5016	1	3701e4af-e4a1-44b0-9353-78765e183a93	version.layout.2.logos	\N	\N	\N	513d34fb-5dbc-4333-b0ab-af8e3756cc8a	\N	\N	\N
-5017	2	3701e4af-e4a1-44b0-9353-78765e183a93	version.layout.2.logos	\N	\N	\N	92890105-dde4-4c79-acac-d81ad6dd978a	\N	\N	\N
-5018	1	3701e4af-e4a1-44b0-9353-78765e183a93	version.layout.3.selectedTestimonials	\N	\N	\N	\N	\N	b440e19a-7d00-487a-9927-d384dee97e22	\N
-5019	1	3701e4af-e4a1-44b0-9353-78765e183a93	version.layout.7.selectedTestimonials	\N	\N	\N	\N	\N	ad1d03ad-f60b-4f83-90c2-d456f1fbaf21	\N
-5020	1	3701e4af-e4a1-44b0-9353-78765e183a93	version.layout.9.logos	\N	\N	\N	8c44fa47-dbaa-44ba-9a83-c35e232404f7	\N	\N	\N
-5021	2	3701e4af-e4a1-44b0-9353-78765e183a93	version.layout.9.logos	\N	\N	\N	93e4c6fc-6bfb-4246-aad1-8861ebc78777	\N	\N	\N
-5022	3	3701e4af-e4a1-44b0-9353-78765e183a93	version.layout.9.logos	\N	\N	\N	8cfbc8ec-db06-4d17-9c8b-bbf589f91e67	\N	\N	\N
-5023	4	3701e4af-e4a1-44b0-9353-78765e183a93	version.layout.9.logos	\N	\N	\N	4f3b0cf8-dc31-4ff9-aa9f-9e0ec3cfb001	\N	\N	\N
-5024	5	3701e4af-e4a1-44b0-9353-78765e183a93	version.layout.9.logos	\N	\N	\N	d67a9625-6f30-4d2a-9643-0962f6faf385	\N	\N	\N
-5025	1	3701e4af-e4a1-44b0-9353-78765e183a93	version.layout.10.faqs	\N	\N	\N	\N	487d16ef-4d7e-4603-885d-53d42734b0f1	\N	\N
-5026	2	3701e4af-e4a1-44b0-9353-78765e183a93	version.layout.10.faqs	\N	\N	\N	\N	2d37f238-e71e-4291-8919-33e4c7a73544	\N	\N
-5027	3	3701e4af-e4a1-44b0-9353-78765e183a93	version.layout.10.faqs	\N	\N	\N	\N	4696359a-45b8-4fea-b14f-ca34e928e5d0	\N	\N
-5028	4	3701e4af-e4a1-44b0-9353-78765e183a93	version.layout.10.faqs	\N	\N	\N	\N	0786b804-85ea-4269-841e-5f4fe762ada3	\N	\N
-5029	5	3701e4af-e4a1-44b0-9353-78765e183a93	version.layout.10.faqs	\N	\N	\N	\N	0ad17856-43c0-4ec9-bd88-c26f826dfb68	\N	\N
-5030	6	3701e4af-e4a1-44b0-9353-78765e183a93	version.layout.10.faqs	\N	\N	\N	\N	cf06eaf5-c215-44fc-82c2-a7696336ef41	\N	\N
-5921	2	8c0a9435-014f-4434-b79a-d1865d02dcb2	version.layout.9.logos	\N	\N	\N	93e4c6fc-6bfb-4246-aad1-8861ebc78777	\N	\N	\N
-5922	3	8c0a9435-014f-4434-b79a-d1865d02dcb2	version.layout.9.logos	\N	\N	\N	8cfbc8ec-db06-4d17-9c8b-bbf589f91e67	\N	\N	\N
-4757	1	77e301a5-e288-4e46-ad7a-5ce25d4e0af0	version.layout.0.logos	\N	\N	\N	8c44fa47-dbaa-44ba-9a83-c35e232404f7	\N	\N	\N
-4758	2	77e301a5-e288-4e46-ad7a-5ce25d4e0af0	version.layout.0.logos	\N	\N	\N	93e4c6fc-6bfb-4246-aad1-8861ebc78777	\N	\N	\N
-4759	3	77e301a5-e288-4e46-ad7a-5ce25d4e0af0	version.layout.0.logos	\N	\N	\N	8cfbc8ec-db06-4d17-9c8b-bbf589f91e67	\N	\N	\N
-4760	4	77e301a5-e288-4e46-ad7a-5ce25d4e0af0	version.layout.0.logos	\N	\N	\N	4f3b0cf8-dc31-4ff9-aa9f-9e0ec3cfb001	\N	\N	\N
-4761	5	77e301a5-e288-4e46-ad7a-5ce25d4e0af0	version.layout.0.logos	\N	\N	\N	d67a9625-6f30-4d2a-9643-0962f6faf385	\N	\N	\N
-4762	1	77e301a5-e288-4e46-ad7a-5ce25d4e0af0	version.layout.2.logos	\N	\N	\N	513d34fb-5dbc-4333-b0ab-af8e3756cc8a	\N	\N	\N
-4763	2	77e301a5-e288-4e46-ad7a-5ce25d4e0af0	version.layout.2.logos	\N	\N	\N	92890105-dde4-4c79-acac-d81ad6dd978a	\N	\N	\N
-4764	1	77e301a5-e288-4e46-ad7a-5ce25d4e0af0	version.layout.3.selectedTestimonials	\N	\N	\N	\N	\N	b440e19a-7d00-487a-9927-d384dee97e22	\N
-4765	1	77e301a5-e288-4e46-ad7a-5ce25d4e0af0	version.layout.7.selectedTestimonials	\N	\N	\N	\N	\N	ad1d03ad-f60b-4f83-90c2-d456f1fbaf21	\N
-4766	1	77e301a5-e288-4e46-ad7a-5ce25d4e0af0	version.layout.9.logos	\N	\N	\N	8c44fa47-dbaa-44ba-9a83-c35e232404f7	\N	\N	\N
-4767	2	77e301a5-e288-4e46-ad7a-5ce25d4e0af0	version.layout.9.logos	\N	\N	\N	93e4c6fc-6bfb-4246-aad1-8861ebc78777	\N	\N	\N
-4768	3	77e301a5-e288-4e46-ad7a-5ce25d4e0af0	version.layout.9.logos	\N	\N	\N	8cfbc8ec-db06-4d17-9c8b-bbf589f91e67	\N	\N	\N
-4769	4	77e301a5-e288-4e46-ad7a-5ce25d4e0af0	version.layout.9.logos	\N	\N	\N	4f3b0cf8-dc31-4ff9-aa9f-9e0ec3cfb001	\N	\N	\N
-4770	5	77e301a5-e288-4e46-ad7a-5ce25d4e0af0	version.layout.9.logos	\N	\N	\N	d67a9625-6f30-4d2a-9643-0962f6faf385	\N	\N	\N
-4771	1	77e301a5-e288-4e46-ad7a-5ce25d4e0af0	version.layout.10.faqs	\N	\N	\N	\N	487d16ef-4d7e-4603-885d-53d42734b0f1	\N	\N
-4772	2	77e301a5-e288-4e46-ad7a-5ce25d4e0af0	version.layout.10.faqs	\N	\N	\N	\N	2d37f238-e71e-4291-8919-33e4c7a73544	\N	\N
-4773	3	77e301a5-e288-4e46-ad7a-5ce25d4e0af0	version.layout.10.faqs	\N	\N	\N	\N	4696359a-45b8-4fea-b14f-ca34e928e5d0	\N	\N
-4774	4	77e301a5-e288-4e46-ad7a-5ce25d4e0af0	version.layout.10.faqs	\N	\N	\N	\N	0786b804-85ea-4269-841e-5f4fe762ada3	\N	\N
-4775	5	77e301a5-e288-4e46-ad7a-5ce25d4e0af0	version.layout.10.faqs	\N	\N	\N	\N	0ad17856-43c0-4ec9-bd88-c26f826dfb68	\N	\N
-4776	6	77e301a5-e288-4e46-ad7a-5ce25d4e0af0	version.layout.10.faqs	\N	\N	\N	\N	cf06eaf5-c215-44fc-82c2-a7696336ef41	\N	\N
-5923	4	8c0a9435-014f-4434-b79a-d1865d02dcb2	version.layout.9.logos	\N	\N	\N	4f3b0cf8-dc31-4ff9-aa9f-9e0ec3cfb001	\N	\N	\N
-5924	5	8c0a9435-014f-4434-b79a-d1865d02dcb2	version.layout.9.logos	\N	\N	\N	d67a9625-6f30-4d2a-9643-0962f6faf385	\N	\N	\N
-5925	1	8c0a9435-014f-4434-b79a-d1865d02dcb2	version.layout.10.faqs	\N	\N	\N	\N	487d16ef-4d7e-4603-885d-53d42734b0f1	\N	\N
-5926	2	8c0a9435-014f-4434-b79a-d1865d02dcb2	version.layout.10.faqs	\N	\N	\N	\N	2d37f238-e71e-4291-8919-33e4c7a73544	\N	\N
-5927	3	8c0a9435-014f-4434-b79a-d1865d02dcb2	version.layout.10.faqs	\N	\N	\N	\N	4696359a-45b8-4fea-b14f-ca34e928e5d0	\N	\N
-5259	1	bba0b5b7-03f8-43d5-9bae-91f4ffdabb9a	version.layout.8.selectedTestimonials	\N	\N	\N	\N	\N	ad1d03ad-f60b-4f83-90c2-d456f1fbaf21	\N
-5260	1	bba0b5b7-03f8-43d5-9bae-91f4ffdabb9a	version.layout.10.logos	\N	\N	\N	8c44fa47-dbaa-44ba-9a83-c35e232404f7	\N	\N	\N
-5261	2	bba0b5b7-03f8-43d5-9bae-91f4ffdabb9a	version.layout.10.logos	\N	\N	\N	93e4c6fc-6bfb-4246-aad1-8861ebc78777	\N	\N	\N
-4151	1	b9bfdcc5-4500-4b24-827a-bdb5cd5f47d6	version.layout.10.faqs	\N	\N	\N	\N	487d16ef-4d7e-4603-885d-53d42734b0f1	\N	\N
-4152	2	b9bfdcc5-4500-4b24-827a-bdb5cd5f47d6	version.layout.10.faqs	\N	\N	\N	\N	2d37f238-e71e-4291-8919-33e4c7a73544	\N	\N
-4153	3	b9bfdcc5-4500-4b24-827a-bdb5cd5f47d6	version.layout.10.faqs	\N	\N	\N	\N	4696359a-45b8-4fea-b14f-ca34e928e5d0	\N	\N
-4154	4	b9bfdcc5-4500-4b24-827a-bdb5cd5f47d6	version.layout.10.faqs	\N	\N	\N	\N	0786b804-85ea-4269-841e-5f4fe762ada3	\N	\N
-4155	5	b9bfdcc5-4500-4b24-827a-bdb5cd5f47d6	version.layout.10.faqs	\N	\N	\N	\N	0ad17856-43c0-4ec9-bd88-c26f826dfb68	\N	\N
-4156	6	b9bfdcc5-4500-4b24-827a-bdb5cd5f47d6	version.layout.10.faqs	\N	\N	\N	\N	cf06eaf5-c215-44fc-82c2-a7696336ef41	\N	\N
-4157	1	45540fc3-9808-4242-bdbc-5de03d3750e8	version.layout.0.logos	\N	\N	\N	8c44fa47-dbaa-44ba-9a83-c35e232404f7	\N	\N	\N
-4158	2	45540fc3-9808-4242-bdbc-5de03d3750e8	version.layout.0.logos	\N	\N	\N	93e4c6fc-6bfb-4246-aad1-8861ebc78777	\N	\N	\N
-4159	3	45540fc3-9808-4242-bdbc-5de03d3750e8	version.layout.0.logos	\N	\N	\N	8cfbc8ec-db06-4d17-9c8b-bbf589f91e67	\N	\N	\N
-4160	4	45540fc3-9808-4242-bdbc-5de03d3750e8	version.layout.0.logos	\N	\N	\N	4f3b0cf8-dc31-4ff9-aa9f-9e0ec3cfb001	\N	\N	\N
-4161	5	45540fc3-9808-4242-bdbc-5de03d3750e8	version.layout.0.logos	\N	\N	\N	d67a9625-6f30-4d2a-9643-0962f6faf385	\N	\N	\N
-4162	1	45540fc3-9808-4242-bdbc-5de03d3750e8	version.layout.2.logos	\N	\N	\N	513d34fb-5dbc-4333-b0ab-af8e3756cc8a	\N	\N	\N
-4163	2	45540fc3-9808-4242-bdbc-5de03d3750e8	version.layout.2.logos	\N	\N	\N	92890105-dde4-4c79-acac-d81ad6dd978a	\N	\N	\N
-4164	1	45540fc3-9808-4242-bdbc-5de03d3750e8	version.layout.3.selectedTestimonials	\N	\N	\N	\N	\N	b440e19a-7d00-487a-9927-d384dee97e22	\N
-4165	1	45540fc3-9808-4242-bdbc-5de03d3750e8	version.layout.7.selectedTestimonials	\N	\N	\N	\N	\N	ad1d03ad-f60b-4f83-90c2-d456f1fbaf21	\N
-4166	1	45540fc3-9808-4242-bdbc-5de03d3750e8	version.layout.9.logos	\N	\N	\N	8c44fa47-dbaa-44ba-9a83-c35e232404f7	\N	\N	\N
-4167	2	45540fc3-9808-4242-bdbc-5de03d3750e8	version.layout.9.logos	\N	\N	\N	93e4c6fc-6bfb-4246-aad1-8861ebc78777	\N	\N	\N
-4168	3	45540fc3-9808-4242-bdbc-5de03d3750e8	version.layout.9.logos	\N	\N	\N	8cfbc8ec-db06-4d17-9c8b-bbf589f91e67	\N	\N	\N
-4169	4	45540fc3-9808-4242-bdbc-5de03d3750e8	version.layout.9.logos	\N	\N	\N	4f3b0cf8-dc31-4ff9-aa9f-9e0ec3cfb001	\N	\N	\N
-4170	5	45540fc3-9808-4242-bdbc-5de03d3750e8	version.layout.9.logos	\N	\N	\N	d67a9625-6f30-4d2a-9643-0962f6faf385	\N	\N	\N
-4171	1	45540fc3-9808-4242-bdbc-5de03d3750e8	version.layout.10.faqs	\N	\N	\N	\N	487d16ef-4d7e-4603-885d-53d42734b0f1	\N	\N
-4172	2	45540fc3-9808-4242-bdbc-5de03d3750e8	version.layout.10.faqs	\N	\N	\N	\N	2d37f238-e71e-4291-8919-33e4c7a73544	\N	\N
-4652	2	d33aa7ed-6c4a-4c19-ab8c-6ffe2b067097	version.layout.10.faqs	\N	\N	\N	\N	2d37f238-e71e-4291-8919-33e4c7a73544	\N	\N
-4653	3	d33aa7ed-6c4a-4c19-ab8c-6ffe2b067097	version.layout.10.faqs	\N	\N	\N	\N	4696359a-45b8-4fea-b14f-ca34e928e5d0	\N	\N
-4654	4	d33aa7ed-6c4a-4c19-ab8c-6ffe2b067097	version.layout.10.faqs	\N	\N	\N	\N	0786b804-85ea-4269-841e-5f4fe762ada3	\N	\N
-4655	5	d33aa7ed-6c4a-4c19-ab8c-6ffe2b067097	version.layout.10.faqs	\N	\N	\N	\N	0ad17856-43c0-4ec9-bd88-c26f826dfb68	\N	\N
-4656	6	d33aa7ed-6c4a-4c19-ab8c-6ffe2b067097	version.layout.10.faqs	\N	\N	\N	\N	cf06eaf5-c215-44fc-82c2-a7696336ef41	\N	\N
-4777	1	8fd47bf9-f046-4a6d-b023-f3ec85d06825	version.layout.0.logos	\N	\N	\N	8c44fa47-dbaa-44ba-9a83-c35e232404f7	\N	\N	\N
-4778	2	8fd47bf9-f046-4a6d-b023-f3ec85d06825	version.layout.0.logos	\N	\N	\N	93e4c6fc-6bfb-4246-aad1-8861ebc78777	\N	\N	\N
-4779	3	8fd47bf9-f046-4a6d-b023-f3ec85d06825	version.layout.0.logos	\N	\N	\N	8cfbc8ec-db06-4d17-9c8b-bbf589f91e67	\N	\N	\N
-4780	4	8fd47bf9-f046-4a6d-b023-f3ec85d06825	version.layout.0.logos	\N	\N	\N	4f3b0cf8-dc31-4ff9-aa9f-9e0ec3cfb001	\N	\N	\N
-4781	5	8fd47bf9-f046-4a6d-b023-f3ec85d06825	version.layout.0.logos	\N	\N	\N	d67a9625-6f30-4d2a-9643-0962f6faf385	\N	\N	\N
-4782	1	8fd47bf9-f046-4a6d-b023-f3ec85d06825	version.layout.2.logos	\N	\N	\N	513d34fb-5dbc-4333-b0ab-af8e3756cc8a	\N	\N	\N
-4783	2	8fd47bf9-f046-4a6d-b023-f3ec85d06825	version.layout.2.logos	\N	\N	\N	92890105-dde4-4c79-acac-d81ad6dd978a	\N	\N	\N
-4784	1	8fd47bf9-f046-4a6d-b023-f3ec85d06825	version.layout.3.selectedTestimonials	\N	\N	\N	\N	\N	b440e19a-7d00-487a-9927-d384dee97e22	\N
-4785	1	8fd47bf9-f046-4a6d-b023-f3ec85d06825	version.layout.7.selectedTestimonials	\N	\N	\N	\N	\N	ad1d03ad-f60b-4f83-90c2-d456f1fbaf21	\N
-4786	1	8fd47bf9-f046-4a6d-b023-f3ec85d06825	version.layout.9.logos	\N	\N	\N	8c44fa47-dbaa-44ba-9a83-c35e232404f7	\N	\N	\N
-4787	2	8fd47bf9-f046-4a6d-b023-f3ec85d06825	version.layout.9.logos	\N	\N	\N	93e4c6fc-6bfb-4246-aad1-8861ebc78777	\N	\N	\N
-4788	3	8fd47bf9-f046-4a6d-b023-f3ec85d06825	version.layout.9.logos	\N	\N	\N	8cfbc8ec-db06-4d17-9c8b-bbf589f91e67	\N	\N	\N
-4789	4	8fd47bf9-f046-4a6d-b023-f3ec85d06825	version.layout.9.logos	\N	\N	\N	4f3b0cf8-dc31-4ff9-aa9f-9e0ec3cfb001	\N	\N	\N
-4790	5	8fd47bf9-f046-4a6d-b023-f3ec85d06825	version.layout.9.logos	\N	\N	\N	d67a9625-6f30-4d2a-9643-0962f6faf385	\N	\N	\N
-4791	1	8fd47bf9-f046-4a6d-b023-f3ec85d06825	version.layout.10.faqs	\N	\N	\N	\N	487d16ef-4d7e-4603-885d-53d42734b0f1	\N	\N
-4792	2	8fd47bf9-f046-4a6d-b023-f3ec85d06825	version.layout.10.faqs	\N	\N	\N	\N	2d37f238-e71e-4291-8919-33e4c7a73544	\N	\N
-4793	3	8fd47bf9-f046-4a6d-b023-f3ec85d06825	version.layout.10.faqs	\N	\N	\N	\N	4696359a-45b8-4fea-b14f-ca34e928e5d0	\N	\N
-4794	4	8fd47bf9-f046-4a6d-b023-f3ec85d06825	version.layout.10.faqs	\N	\N	\N	\N	0786b804-85ea-4269-841e-5f4fe762ada3	\N	\N
-4795	5	8fd47bf9-f046-4a6d-b023-f3ec85d06825	version.layout.10.faqs	\N	\N	\N	\N	0ad17856-43c0-4ec9-bd88-c26f826dfb68	\N	\N
-4796	6	8fd47bf9-f046-4a6d-b023-f3ec85d06825	version.layout.10.faqs	\N	\N	\N	\N	cf06eaf5-c215-44fc-82c2-a7696336ef41	\N	\N
-5262	3	bba0b5b7-03f8-43d5-9bae-91f4ffdabb9a	version.layout.10.logos	\N	\N	\N	8cfbc8ec-db06-4d17-9c8b-bbf589f91e67	\N	\N	\N
-5263	4	bba0b5b7-03f8-43d5-9bae-91f4ffdabb9a	version.layout.10.logos	\N	\N	\N	4f3b0cf8-dc31-4ff9-aa9f-9e0ec3cfb001	\N	\N	\N
-5264	5	bba0b5b7-03f8-43d5-9bae-91f4ffdabb9a	version.layout.10.logos	\N	\N	\N	d67a9625-6f30-4d2a-9643-0962f6faf385	\N	\N	\N
-5265	1	bba0b5b7-03f8-43d5-9bae-91f4ffdabb9a	version.layout.11.faqs	\N	\N	\N	\N	487d16ef-4d7e-4603-885d-53d42734b0f1	\N	\N
-5266	2	bba0b5b7-03f8-43d5-9bae-91f4ffdabb9a	version.layout.11.faqs	\N	\N	\N	\N	2d37f238-e71e-4291-8919-33e4c7a73544	\N	\N
-5267	3	bba0b5b7-03f8-43d5-9bae-91f4ffdabb9a	version.layout.11.faqs	\N	\N	\N	\N	4696359a-45b8-4fea-b14f-ca34e928e5d0	\N	\N
-5268	4	bba0b5b7-03f8-43d5-9bae-91f4ffdabb9a	version.layout.11.faqs	\N	\N	\N	\N	0786b804-85ea-4269-841e-5f4fe762ada3	\N	\N
-5269	5	bba0b5b7-03f8-43d5-9bae-91f4ffdabb9a	version.layout.11.faqs	\N	\N	\N	\N	0ad17856-43c0-4ec9-bd88-c26f826dfb68	\N	\N
-5270	6	bba0b5b7-03f8-43d5-9bae-91f4ffdabb9a	version.layout.11.faqs	\N	\N	\N	\N	cf06eaf5-c215-44fc-82c2-a7696336ef41	\N	\N
-5271	1	bba0b5b7-03f8-43d5-9bae-91f4ffdabb9a	version.layout.0.logos	\N	\N	\N	8c44fa47-dbaa-44ba-9a83-c35e232404f7	\N	\N	\N
-5272	2	bba0b5b7-03f8-43d5-9bae-91f4ffdabb9a	version.layout.0.logos	\N	\N	\N	93e4c6fc-6bfb-4246-aad1-8861ebc78777	\N	\N	\N
-5273	3	bba0b5b7-03f8-43d5-9bae-91f4ffdabb9a	version.layout.0.logos	\N	\N	\N	8cfbc8ec-db06-4d17-9c8b-bbf589f91e67	\N	\N	\N
-5274	4	bba0b5b7-03f8-43d5-9bae-91f4ffdabb9a	version.layout.0.logos	\N	\N	\N	4f3b0cf8-dc31-4ff9-aa9f-9e0ec3cfb001	\N	\N	\N
-5275	5	bba0b5b7-03f8-43d5-9bae-91f4ffdabb9a	version.layout.0.logos	\N	\N	\N	d67a9625-6f30-4d2a-9643-0962f6faf385	\N	\N	\N
-5276	1	bba0b5b7-03f8-43d5-9bae-91f4ffdabb9a	version.layout.2.logos	\N	\N	\N	513d34fb-5dbc-4333-b0ab-af8e3756cc8a	\N	\N	\N
-5277	2	bba0b5b7-03f8-43d5-9bae-91f4ffdabb9a	version.layout.2.logos	\N	\N	\N	92890105-dde4-4c79-acac-d81ad6dd978a	\N	\N	\N
-5278	1	bba0b5b7-03f8-43d5-9bae-91f4ffdabb9a	version.layout.3.selectedTestimonials	\N	\N	\N	\N	\N	b440e19a-7d00-487a-9927-d384dee97e22	\N
-5279	1	bba0b5b7-03f8-43d5-9bae-91f4ffdabb9a	version.layout.7.selectedTestimonials	\N	\N	\N	\N	\N	ad1d03ad-f60b-4f83-90c2-d456f1fbaf21	\N
-5280	1	bba0b5b7-03f8-43d5-9bae-91f4ffdabb9a	version.layout.9.logos	\N	\N	\N	8c44fa47-dbaa-44ba-9a83-c35e232404f7	\N	\N	\N
-5281	2	bba0b5b7-03f8-43d5-9bae-91f4ffdabb9a	version.layout.9.logos	\N	\N	\N	93e4c6fc-6bfb-4246-aad1-8861ebc78777	\N	\N	\N
-5282	3	bba0b5b7-03f8-43d5-9bae-91f4ffdabb9a	version.layout.9.logos	\N	\N	\N	8cfbc8ec-db06-4d17-9c8b-bbf589f91e67	\N	\N	\N
-5283	4	bba0b5b7-03f8-43d5-9bae-91f4ffdabb9a	version.layout.9.logos	\N	\N	\N	4f3b0cf8-dc31-4ff9-aa9f-9e0ec3cfb001	\N	\N	\N
-5284	5	bba0b5b7-03f8-43d5-9bae-91f4ffdabb9a	version.layout.9.logos	\N	\N	\N	d67a9625-6f30-4d2a-9643-0962f6faf385	\N	\N	\N
-5285	1	bba0b5b7-03f8-43d5-9bae-91f4ffdabb9a	version.layout.10.faqs	\N	\N	\N	\N	487d16ef-4d7e-4603-885d-53d42734b0f1	\N	\N
-5286	2	bba0b5b7-03f8-43d5-9bae-91f4ffdabb9a	version.layout.10.faqs	\N	\N	\N	\N	2d37f238-e71e-4291-8919-33e4c7a73544	\N	\N
-5287	3	bba0b5b7-03f8-43d5-9bae-91f4ffdabb9a	version.layout.10.faqs	\N	\N	\N	\N	4696359a-45b8-4fea-b14f-ca34e928e5d0	\N	\N
-5288	4	bba0b5b7-03f8-43d5-9bae-91f4ffdabb9a	version.layout.10.faqs	\N	\N	\N	\N	0786b804-85ea-4269-841e-5f4fe762ada3	\N	\N
-5289	5	bba0b5b7-03f8-43d5-9bae-91f4ffdabb9a	version.layout.10.faqs	\N	\N	\N	\N	0ad17856-43c0-4ec9-bd88-c26f826dfb68	\N	\N
-5290	6	bba0b5b7-03f8-43d5-9bae-91f4ffdabb9a	version.layout.10.faqs	\N	\N	\N	\N	cf06eaf5-c215-44fc-82c2-a7696336ef41	\N	\N
-5928	4	8c0a9435-014f-4434-b79a-d1865d02dcb2	version.layout.10.faqs	\N	\N	\N	\N	0786b804-85ea-4269-841e-5f4fe762ada3	\N	\N
-5929	5	8c0a9435-014f-4434-b79a-d1865d02dcb2	version.layout.10.faqs	\N	\N	\N	\N	0ad17856-43c0-4ec9-bd88-c26f826dfb68	\N	\N
-5930	6	8c0a9435-014f-4434-b79a-d1865d02dcb2	version.layout.10.faqs	\N	\N	\N	\N	cf06eaf5-c215-44fc-82c2-a7696336ef41	\N	\N
-6105	1	f5795b7d-5690-4e22-8a02-5e40c4dfe615	version.layout.0.logos	\N	\N	\N	8c44fa47-dbaa-44ba-9a83-c35e232404f7	\N	\N	\N
-6106	2	f5795b7d-5690-4e22-8a02-5e40c4dfe615	version.layout.0.logos	\N	\N	\N	93e4c6fc-6bfb-4246-aad1-8861ebc78777	\N	\N	\N
-5957	1	af8faec0-f970-4457-b247-da532bf3f7a8	version.layout.5.logos	\N	\N	\N	92890105-dde4-4c79-acac-d81ad6dd978a	\N	\N	\N
-4173	3	45540fc3-9808-4242-bdbc-5de03d3750e8	version.layout.10.faqs	\N	\N	\N	\N	4696359a-45b8-4fea-b14f-ca34e928e5d0	\N	\N
-4174	4	45540fc3-9808-4242-bdbc-5de03d3750e8	version.layout.10.faqs	\N	\N	\N	\N	0786b804-85ea-4269-841e-5f4fe762ada3	\N	\N
-4175	5	45540fc3-9808-4242-bdbc-5de03d3750e8	version.layout.10.faqs	\N	\N	\N	\N	0ad17856-43c0-4ec9-bd88-c26f826dfb68	\N	\N
-4176	6	45540fc3-9808-4242-bdbc-5de03d3750e8	version.layout.10.faqs	\N	\N	\N	\N	cf06eaf5-c215-44fc-82c2-a7696336ef41	\N	\N
-4177	1	ef5c6a38-e9a0-4159-84b2-e47e23e98868	version.layout.0.logos	\N	\N	\N	8c44fa47-dbaa-44ba-9a83-c35e232404f7	\N	\N	\N
-4178	2	ef5c6a38-e9a0-4159-84b2-e47e23e98868	version.layout.0.logos	\N	\N	\N	93e4c6fc-6bfb-4246-aad1-8861ebc78777	\N	\N	\N
-4179	3	ef5c6a38-e9a0-4159-84b2-e47e23e98868	version.layout.0.logos	\N	\N	\N	8cfbc8ec-db06-4d17-9c8b-bbf589f91e67	\N	\N	\N
-4180	4	ef5c6a38-e9a0-4159-84b2-e47e23e98868	version.layout.0.logos	\N	\N	\N	4f3b0cf8-dc31-4ff9-aa9f-9e0ec3cfb001	\N	\N	\N
-4181	5	ef5c6a38-e9a0-4159-84b2-e47e23e98868	version.layout.0.logos	\N	\N	\N	d67a9625-6f30-4d2a-9643-0962f6faf385	\N	\N	\N
-4182	1	ef5c6a38-e9a0-4159-84b2-e47e23e98868	version.layout.2.logos	\N	\N	\N	513d34fb-5dbc-4333-b0ab-af8e3756cc8a	\N	\N	\N
-4183	2	ef5c6a38-e9a0-4159-84b2-e47e23e98868	version.layout.2.logos	\N	\N	\N	92890105-dde4-4c79-acac-d81ad6dd978a	\N	\N	\N
-4184	1	ef5c6a38-e9a0-4159-84b2-e47e23e98868	version.layout.3.selectedTestimonials	\N	\N	\N	\N	\N	b440e19a-7d00-487a-9927-d384dee97e22	\N
-4185	1	ef5c6a38-e9a0-4159-84b2-e47e23e98868	version.layout.7.selectedTestimonials	\N	\N	\N	\N	\N	ad1d03ad-f60b-4f83-90c2-d456f1fbaf21	\N
-4186	1	ef5c6a38-e9a0-4159-84b2-e47e23e98868	version.layout.9.logos	\N	\N	\N	8c44fa47-dbaa-44ba-9a83-c35e232404f7	\N	\N	\N
-4187	2	ef5c6a38-e9a0-4159-84b2-e47e23e98868	version.layout.9.logos	\N	\N	\N	93e4c6fc-6bfb-4246-aad1-8861ebc78777	\N	\N	\N
-4188	3	ef5c6a38-e9a0-4159-84b2-e47e23e98868	version.layout.9.logos	\N	\N	\N	8cfbc8ec-db06-4d17-9c8b-bbf589f91e67	\N	\N	\N
-4189	4	ef5c6a38-e9a0-4159-84b2-e47e23e98868	version.layout.9.logos	\N	\N	\N	4f3b0cf8-dc31-4ff9-aa9f-9e0ec3cfb001	\N	\N	\N
-4190	5	ef5c6a38-e9a0-4159-84b2-e47e23e98868	version.layout.9.logos	\N	\N	\N	d67a9625-6f30-4d2a-9643-0962f6faf385	\N	\N	\N
-4191	1	ef5c6a38-e9a0-4159-84b2-e47e23e98868	version.layout.10.faqs	\N	\N	\N	\N	487d16ef-4d7e-4603-885d-53d42734b0f1	\N	\N
-5291	1	ee61372e-21b1-4e1d-ac2f-a39d22106ed9	version.layout.0.logos	\N	\N	\N	8c44fa47-dbaa-44ba-9a83-c35e232404f7	\N	\N	\N
-5292	2	ee61372e-21b1-4e1d-ac2f-a39d22106ed9	version.layout.0.logos	\N	\N	\N	93e4c6fc-6bfb-4246-aad1-8861ebc78777	\N	\N	\N
-5293	3	ee61372e-21b1-4e1d-ac2f-a39d22106ed9	version.layout.0.logos	\N	\N	\N	8cfbc8ec-db06-4d17-9c8b-bbf589f91e67	\N	\N	\N
-5294	4	ee61372e-21b1-4e1d-ac2f-a39d22106ed9	version.layout.0.logos	\N	\N	\N	4f3b0cf8-dc31-4ff9-aa9f-9e0ec3cfb001	\N	\N	\N
-5295	5	ee61372e-21b1-4e1d-ac2f-a39d22106ed9	version.layout.0.logos	\N	\N	\N	d67a9625-6f30-4d2a-9643-0962f6faf385	\N	\N	\N
-5296	1	ee61372e-21b1-4e1d-ac2f-a39d22106ed9	version.layout.2.logos	\N	\N	\N	513d34fb-5dbc-4333-b0ab-af8e3756cc8a	\N	\N	\N
-5297	2	ee61372e-21b1-4e1d-ac2f-a39d22106ed9	version.layout.2.logos	\N	\N	\N	92890105-dde4-4c79-acac-d81ad6dd978a	\N	\N	\N
-5298	1	ee61372e-21b1-4e1d-ac2f-a39d22106ed9	version.layout.3.selectedTestimonials	\N	\N	\N	\N	\N	b440e19a-7d00-487a-9927-d384dee97e22	\N
-5299	1	ee61372e-21b1-4e1d-ac2f-a39d22106ed9	version.layout.7.selectedTestimonials	\N	\N	\N	\N	\N	ad1d03ad-f60b-4f83-90c2-d456f1fbaf21	\N
-5300	1	ee61372e-21b1-4e1d-ac2f-a39d22106ed9	version.layout.9.logos	\N	\N	\N	8c44fa47-dbaa-44ba-9a83-c35e232404f7	\N	\N	\N
-5301	2	ee61372e-21b1-4e1d-ac2f-a39d22106ed9	version.layout.9.logos	\N	\N	\N	93e4c6fc-6bfb-4246-aad1-8861ebc78777	\N	\N	\N
-5302	3	ee61372e-21b1-4e1d-ac2f-a39d22106ed9	version.layout.9.logos	\N	\N	\N	8cfbc8ec-db06-4d17-9c8b-bbf589f91e67	\N	\N	\N
-5303	4	ee61372e-21b1-4e1d-ac2f-a39d22106ed9	version.layout.9.logos	\N	\N	\N	4f3b0cf8-dc31-4ff9-aa9f-9e0ec3cfb001	\N	\N	\N
-5304	5	ee61372e-21b1-4e1d-ac2f-a39d22106ed9	version.layout.9.logos	\N	\N	\N	d67a9625-6f30-4d2a-9643-0962f6faf385	\N	\N	\N
-5305	1	ee61372e-21b1-4e1d-ac2f-a39d22106ed9	version.layout.10.faqs	\N	\N	\N	\N	487d16ef-4d7e-4603-885d-53d42734b0f1	\N	\N
-5306	2	ee61372e-21b1-4e1d-ac2f-a39d22106ed9	version.layout.10.faqs	\N	\N	\N	\N	2d37f238-e71e-4291-8919-33e4c7a73544	\N	\N
-5307	3	ee61372e-21b1-4e1d-ac2f-a39d22106ed9	version.layout.10.faqs	\N	\N	\N	\N	4696359a-45b8-4fea-b14f-ca34e928e5d0	\N	\N
-5308	4	ee61372e-21b1-4e1d-ac2f-a39d22106ed9	version.layout.10.faqs	\N	\N	\N	\N	0786b804-85ea-4269-841e-5f4fe762ada3	\N	\N
-5309	5	ee61372e-21b1-4e1d-ac2f-a39d22106ed9	version.layout.10.faqs	\N	\N	\N	\N	0ad17856-43c0-4ec9-bd88-c26f826dfb68	\N	\N
-5310	6	ee61372e-21b1-4e1d-ac2f-a39d22106ed9	version.layout.10.faqs	\N	\N	\N	\N	cf06eaf5-c215-44fc-82c2-a7696336ef41	\N	\N
-6107	3	f5795b7d-5690-4e22-8a02-5e40c4dfe615	version.layout.0.logos	\N	\N	\N	8cfbc8ec-db06-4d17-9c8b-bbf589f91e67	\N	\N	\N
-6108	4	f5795b7d-5690-4e22-8a02-5e40c4dfe615	version.layout.0.logos	\N	\N	\N	4f3b0cf8-dc31-4ff9-aa9f-9e0ec3cfb001	\N	\N	\N
-5958	2	af8faec0-f970-4457-b247-da532bf3f7a8	version.layout.5.logos	\N	\N	\N	513d34fb-5dbc-4333-b0ab-af8e3756cc8a	\N	\N	\N
-5959	1	49a0209c-b18c-4487-a8f6-8e681af9ef9b	version.layout.5.logos	\N	\N	\N	92890105-dde4-4c79-acac-d81ad6dd978a	\N	\N	\N
-5960	2	49a0209c-b18c-4487-a8f6-8e681af9ef9b	version.layout.5.logos	\N	\N	\N	513d34fb-5dbc-4333-b0ab-af8e3756cc8a	\N	\N	\N
-6109	5	f5795b7d-5690-4e22-8a02-5e40c4dfe615	version.layout.0.logos	\N	\N	\N	d67a9625-6f30-4d2a-9643-0962f6faf385	\N	\N	\N
-5651	1	e971bceb-3387-49e0-890e-ad8e79c52c35	version.layout.0.logos	\N	\N	\N	8c44fa47-dbaa-44ba-9a83-c35e232404f7	\N	\N	\N
-5652	2	e971bceb-3387-49e0-890e-ad8e79c52c35	version.layout.0.logos	\N	\N	\N	93e4c6fc-6bfb-4246-aad1-8861ebc78777	\N	\N	\N
-5653	3	e971bceb-3387-49e0-890e-ad8e79c52c35	version.layout.0.logos	\N	\N	\N	8cfbc8ec-db06-4d17-9c8b-bbf589f91e67	\N	\N	\N
-5654	4	e971bceb-3387-49e0-890e-ad8e79c52c35	version.layout.0.logos	\N	\N	\N	4f3b0cf8-dc31-4ff9-aa9f-9e0ec3cfb001	\N	\N	\N
-5655	5	e971bceb-3387-49e0-890e-ad8e79c52c35	version.layout.0.logos	\N	\N	\N	d67a9625-6f30-4d2a-9643-0962f6faf385	\N	\N	\N
-5656	1	e971bceb-3387-49e0-890e-ad8e79c52c35	version.layout.2.logos	\N	\N	\N	513d34fb-5dbc-4333-b0ab-af8e3756cc8a	\N	\N	\N
-5657	2	e971bceb-3387-49e0-890e-ad8e79c52c35	version.layout.2.logos	\N	\N	\N	92890105-dde4-4c79-acac-d81ad6dd978a	\N	\N	\N
-5658	1	e971bceb-3387-49e0-890e-ad8e79c52c35	version.layout.3.selectedTestimonials	\N	\N	\N	\N	\N	b440e19a-7d00-487a-9927-d384dee97e22	\N
-5659	1	e971bceb-3387-49e0-890e-ad8e79c52c35	version.layout.7.selectedTestimonials	\N	\N	\N	\N	\N	ad1d03ad-f60b-4f83-90c2-d456f1fbaf21	\N
-5660	1	e971bceb-3387-49e0-890e-ad8e79c52c35	version.layout.9.logos	\N	\N	\N	8c44fa47-dbaa-44ba-9a83-c35e232404f7	\N	\N	\N
-5661	2	e971bceb-3387-49e0-890e-ad8e79c52c35	version.layout.9.logos	\N	\N	\N	93e4c6fc-6bfb-4246-aad1-8861ebc78777	\N	\N	\N
-5662	3	e971bceb-3387-49e0-890e-ad8e79c52c35	version.layout.9.logos	\N	\N	\N	8cfbc8ec-db06-4d17-9c8b-bbf589f91e67	\N	\N	\N
-5663	4	e971bceb-3387-49e0-890e-ad8e79c52c35	version.layout.9.logos	\N	\N	\N	4f3b0cf8-dc31-4ff9-aa9f-9e0ec3cfb001	\N	\N	\N
-5664	5	e971bceb-3387-49e0-890e-ad8e79c52c35	version.layout.9.logos	\N	\N	\N	d67a9625-6f30-4d2a-9643-0962f6faf385	\N	\N	\N
-5665	1	e971bceb-3387-49e0-890e-ad8e79c52c35	version.layout.10.faqs	\N	\N	\N	\N	487d16ef-4d7e-4603-885d-53d42734b0f1	\N	\N
-5666	2	e971bceb-3387-49e0-890e-ad8e79c52c35	version.layout.10.faqs	\N	\N	\N	\N	2d37f238-e71e-4291-8919-33e4c7a73544	\N	\N
-5667	3	e971bceb-3387-49e0-890e-ad8e79c52c35	version.layout.10.faqs	\N	\N	\N	\N	4696359a-45b8-4fea-b14f-ca34e928e5d0	\N	\N
-5668	4	e971bceb-3387-49e0-890e-ad8e79c52c35	version.layout.10.faqs	\N	\N	\N	\N	0786b804-85ea-4269-841e-5f4fe762ada3	\N	\N
-5669	5	e971bceb-3387-49e0-890e-ad8e79c52c35	version.layout.10.faqs	\N	\N	\N	\N	0ad17856-43c0-4ec9-bd88-c26f826dfb68	\N	\N
-5670	6	e971bceb-3387-49e0-890e-ad8e79c52c35	version.layout.10.faqs	\N	\N	\N	\N	cf06eaf5-c215-44fc-82c2-a7696336ef41	\N	\N
-6110	1	f5795b7d-5690-4e22-8a02-5e40c4dfe615	version.layout.2.logos	\N	\N	\N	513d34fb-5dbc-4333-b0ab-af8e3756cc8a	\N	\N	\N
-5851	1	165fa488-fd8c-48af-a5f3-a736d87f44a1	version.layout.0.logos	\N	\N	\N	8c44fa47-dbaa-44ba-9a83-c35e232404f7	\N	\N	\N
-5852	2	165fa488-fd8c-48af-a5f3-a736d87f44a1	version.layout.0.logos	\N	\N	\N	93e4c6fc-6bfb-4246-aad1-8861ebc78777	\N	\N	\N
-5853	3	165fa488-fd8c-48af-a5f3-a736d87f44a1	version.layout.0.logos	\N	\N	\N	8cfbc8ec-db06-4d17-9c8b-bbf589f91e67	\N	\N	\N
-5854	4	165fa488-fd8c-48af-a5f3-a736d87f44a1	version.layout.0.logos	\N	\N	\N	4f3b0cf8-dc31-4ff9-aa9f-9e0ec3cfb001	\N	\N	\N
-5855	5	165fa488-fd8c-48af-a5f3-a736d87f44a1	version.layout.0.logos	\N	\N	\N	d67a9625-6f30-4d2a-9643-0962f6faf385	\N	\N	\N
-5856	1	165fa488-fd8c-48af-a5f3-a736d87f44a1	version.layout.2.logos	\N	\N	\N	513d34fb-5dbc-4333-b0ab-af8e3756cc8a	\N	\N	\N
-5857	2	165fa488-fd8c-48af-a5f3-a736d87f44a1	version.layout.2.logos	\N	\N	\N	92890105-dde4-4c79-acac-d81ad6dd978a	\N	\N	\N
-5858	1	165fa488-fd8c-48af-a5f3-a736d87f44a1	version.layout.3.selectedTestimonials	\N	\N	\N	\N	\N	b440e19a-7d00-487a-9927-d384dee97e22	\N
-5859	1	165fa488-fd8c-48af-a5f3-a736d87f44a1	version.layout.7.selectedTestimonials	\N	\N	\N	\N	\N	ad1d03ad-f60b-4f83-90c2-d456f1fbaf21	\N
-5860	1	165fa488-fd8c-48af-a5f3-a736d87f44a1	version.layout.9.logos	\N	\N	\N	8c44fa47-dbaa-44ba-9a83-c35e232404f7	\N	\N	\N
-5861	2	165fa488-fd8c-48af-a5f3-a736d87f44a1	version.layout.9.logos	\N	\N	\N	93e4c6fc-6bfb-4246-aad1-8861ebc78777	\N	\N	\N
-5862	3	165fa488-fd8c-48af-a5f3-a736d87f44a1	version.layout.9.logos	\N	\N	\N	8cfbc8ec-db06-4d17-9c8b-bbf589f91e67	\N	\N	\N
-5863	4	165fa488-fd8c-48af-a5f3-a736d87f44a1	version.layout.9.logos	\N	\N	\N	4f3b0cf8-dc31-4ff9-aa9f-9e0ec3cfb001	\N	\N	\N
-5864	5	165fa488-fd8c-48af-a5f3-a736d87f44a1	version.layout.9.logos	\N	\N	\N	d67a9625-6f30-4d2a-9643-0962f6faf385	\N	\N	\N
-5865	1	165fa488-fd8c-48af-a5f3-a736d87f44a1	version.layout.10.faqs	\N	\N	\N	\N	487d16ef-4d7e-4603-885d-53d42734b0f1	\N	\N
-5866	2	165fa488-fd8c-48af-a5f3-a736d87f44a1	version.layout.10.faqs	\N	\N	\N	\N	2d37f238-e71e-4291-8919-33e4c7a73544	\N	\N
-5867	3	165fa488-fd8c-48af-a5f3-a736d87f44a1	version.layout.10.faqs	\N	\N	\N	\N	4696359a-45b8-4fea-b14f-ca34e928e5d0	\N	\N
-5868	4	165fa488-fd8c-48af-a5f3-a736d87f44a1	version.layout.10.faqs	\N	\N	\N	\N	0786b804-85ea-4269-841e-5f4fe762ada3	\N	\N
-5869	5	165fa488-fd8c-48af-a5f3-a736d87f44a1	version.layout.10.faqs	\N	\N	\N	\N	0ad17856-43c0-4ec9-bd88-c26f826dfb68	\N	\N
-5870	6	165fa488-fd8c-48af-a5f3-a736d87f44a1	version.layout.10.faqs	\N	\N	\N	\N	cf06eaf5-c215-44fc-82c2-a7696336ef41	\N	\N
-6111	2	f5795b7d-5690-4e22-8a02-5e40c4dfe615	version.layout.2.logos	\N	\N	\N	92890105-dde4-4c79-acac-d81ad6dd978a	\N	\N	\N
-6112	1	f5795b7d-5690-4e22-8a02-5e40c4dfe615	version.layout.3.selectedTestimonials	\N	\N	\N	\N	\N	b440e19a-7d00-487a-9927-d384dee97e22	\N
-6113	1	f5795b7d-5690-4e22-8a02-5e40c4dfe615	version.layout.7.selectedTestimonials	\N	\N	\N	\N	\N	ad1d03ad-f60b-4f83-90c2-d456f1fbaf21	\N
-6114	1	f5795b7d-5690-4e22-8a02-5e40c4dfe615	version.layout.9.logos	\N	\N	\N	8c44fa47-dbaa-44ba-9a83-c35e232404f7	\N	\N	\N
-6115	2	f5795b7d-5690-4e22-8a02-5e40c4dfe615	version.layout.9.logos	\N	\N	\N	93e4c6fc-6bfb-4246-aad1-8861ebc78777	\N	\N	\N
-6116	3	f5795b7d-5690-4e22-8a02-5e40c4dfe615	version.layout.9.logos	\N	\N	\N	8cfbc8ec-db06-4d17-9c8b-bbf589f91e67	\N	\N	\N
-6117	4	f5795b7d-5690-4e22-8a02-5e40c4dfe615	version.layout.9.logos	\N	\N	\N	4f3b0cf8-dc31-4ff9-aa9f-9e0ec3cfb001	\N	\N	\N
-6118	5	f5795b7d-5690-4e22-8a02-5e40c4dfe615	version.layout.9.logos	\N	\N	\N	d67a9625-6f30-4d2a-9643-0962f6faf385	\N	\N	\N
-6119	1	f5795b7d-5690-4e22-8a02-5e40c4dfe615	version.layout.10.faqs	\N	\N	\N	\N	487d16ef-4d7e-4603-885d-53d42734b0f1	\N	\N
-6120	2	f5795b7d-5690-4e22-8a02-5e40c4dfe615	version.layout.10.faqs	\N	\N	\N	\N	2d37f238-e71e-4291-8919-33e4c7a73544	\N	\N
-6121	3	f5795b7d-5690-4e22-8a02-5e40c4dfe615	version.layout.10.faqs	\N	\N	\N	\N	4696359a-45b8-4fea-b14f-ca34e928e5d0	\N	\N
-6122	4	f5795b7d-5690-4e22-8a02-5e40c4dfe615	version.layout.10.faqs	\N	\N	\N	\N	0786b804-85ea-4269-841e-5f4fe762ada3	\N	\N
-6123	5	f5795b7d-5690-4e22-8a02-5e40c4dfe615	version.layout.10.faqs	\N	\N	\N	\N	0ad17856-43c0-4ec9-bd88-c26f826dfb68	\N	\N
-5671	1	b4abd354-ca2f-4b0c-ba58-0077b70dee46	version.layout.0.logos	\N	\N	\N	8c44fa47-dbaa-44ba-9a83-c35e232404f7	\N	\N	\N
-5672	2	b4abd354-ca2f-4b0c-ba58-0077b70dee46	version.layout.0.logos	\N	\N	\N	93e4c6fc-6bfb-4246-aad1-8861ebc78777	\N	\N	\N
-5673	3	b4abd354-ca2f-4b0c-ba58-0077b70dee46	version.layout.0.logos	\N	\N	\N	8cfbc8ec-db06-4d17-9c8b-bbf589f91e67	\N	\N	\N
-5674	4	b4abd354-ca2f-4b0c-ba58-0077b70dee46	version.layout.0.logos	\N	\N	\N	4f3b0cf8-dc31-4ff9-aa9f-9e0ec3cfb001	\N	\N	\N
-5675	5	b4abd354-ca2f-4b0c-ba58-0077b70dee46	version.layout.0.logos	\N	\N	\N	d67a9625-6f30-4d2a-9643-0962f6faf385	\N	\N	\N
-5676	1	b4abd354-ca2f-4b0c-ba58-0077b70dee46	version.layout.2.logos	\N	\N	\N	513d34fb-5dbc-4333-b0ab-af8e3756cc8a	\N	\N	\N
-5677	2	b4abd354-ca2f-4b0c-ba58-0077b70dee46	version.layout.2.logos	\N	\N	\N	92890105-dde4-4c79-acac-d81ad6dd978a	\N	\N	\N
-5678	1	b4abd354-ca2f-4b0c-ba58-0077b70dee46	version.layout.3.selectedTestimonials	\N	\N	\N	\N	\N	b440e19a-7d00-487a-9927-d384dee97e22	\N
-5679	1	b4abd354-ca2f-4b0c-ba58-0077b70dee46	version.layout.7.selectedTestimonials	\N	\N	\N	\N	\N	ad1d03ad-f60b-4f83-90c2-d456f1fbaf21	\N
-5680	1	b4abd354-ca2f-4b0c-ba58-0077b70dee46	version.layout.9.logos	\N	\N	\N	8c44fa47-dbaa-44ba-9a83-c35e232404f7	\N	\N	\N
-5681	2	b4abd354-ca2f-4b0c-ba58-0077b70dee46	version.layout.9.logos	\N	\N	\N	93e4c6fc-6bfb-4246-aad1-8861ebc78777	\N	\N	\N
-5682	3	b4abd354-ca2f-4b0c-ba58-0077b70dee46	version.layout.9.logos	\N	\N	\N	8cfbc8ec-db06-4d17-9c8b-bbf589f91e67	\N	\N	\N
-5683	4	b4abd354-ca2f-4b0c-ba58-0077b70dee46	version.layout.9.logos	\N	\N	\N	4f3b0cf8-dc31-4ff9-aa9f-9e0ec3cfb001	\N	\N	\N
-5684	5	b4abd354-ca2f-4b0c-ba58-0077b70dee46	version.layout.9.logos	\N	\N	\N	d67a9625-6f30-4d2a-9643-0962f6faf385	\N	\N	\N
-5685	1	b4abd354-ca2f-4b0c-ba58-0077b70dee46	version.layout.10.faqs	\N	\N	\N	\N	487d16ef-4d7e-4603-885d-53d42734b0f1	\N	\N
-5686	2	b4abd354-ca2f-4b0c-ba58-0077b70dee46	version.layout.10.faqs	\N	\N	\N	\N	2d37f238-e71e-4291-8919-33e4c7a73544	\N	\N
-5687	3	b4abd354-ca2f-4b0c-ba58-0077b70dee46	version.layout.10.faqs	\N	\N	\N	\N	4696359a-45b8-4fea-b14f-ca34e928e5d0	\N	\N
-5688	4	b4abd354-ca2f-4b0c-ba58-0077b70dee46	version.layout.10.faqs	\N	\N	\N	\N	0786b804-85ea-4269-841e-5f4fe762ada3	\N	\N
-5689	5	b4abd354-ca2f-4b0c-ba58-0077b70dee46	version.layout.10.faqs	\N	\N	\N	\N	0ad17856-43c0-4ec9-bd88-c26f826dfb68	\N	\N
-5690	6	b4abd354-ca2f-4b0c-ba58-0077b70dee46	version.layout.10.faqs	\N	\N	\N	\N	cf06eaf5-c215-44fc-82c2-a7696336ef41	\N	\N
-6124	6	f5795b7d-5690-4e22-8a02-5e40c4dfe615	version.layout.10.faqs	\N	\N	\N	\N	cf06eaf5-c215-44fc-82c2-a7696336ef41	\N	\N
-6125	1	d499de0a-6aa2-44ee-a6b3-4d11c1a81fba	version.layout.0.logos	\N	\N	\N	8c44fa47-dbaa-44ba-9a83-c35e232404f7	\N	\N	\N
-6126	2	d499de0a-6aa2-44ee-a6b3-4d11c1a81fba	version.layout.0.logos	\N	\N	\N	93e4c6fc-6bfb-4246-aad1-8861ebc78777	\N	\N	\N
-6127	3	d499de0a-6aa2-44ee-a6b3-4d11c1a81fba	version.layout.0.logos	\N	\N	\N	8cfbc8ec-db06-4d17-9c8b-bbf589f91e67	\N	\N	\N
-6128	4	d499de0a-6aa2-44ee-a6b3-4d11c1a81fba	version.layout.0.logos	\N	\N	\N	4f3b0cf8-dc31-4ff9-aa9f-9e0ec3cfb001	\N	\N	\N
-6129	5	d499de0a-6aa2-44ee-a6b3-4d11c1a81fba	version.layout.0.logos	\N	\N	\N	d67a9625-6f30-4d2a-9643-0962f6faf385	\N	\N	\N
-6130	1	d499de0a-6aa2-44ee-a6b3-4d11c1a81fba	version.layout.2.logos	\N	\N	\N	513d34fb-5dbc-4333-b0ab-af8e3756cc8a	\N	\N	\N
-6131	2	d499de0a-6aa2-44ee-a6b3-4d11c1a81fba	version.layout.2.logos	\N	\N	\N	92890105-dde4-4c79-acac-d81ad6dd978a	\N	\N	\N
-5965	1	94653181-14e8-4c89-b775-45eb55a457ac	version.layout.5.logos	\N	\N	\N	92890105-dde4-4c79-acac-d81ad6dd978a	\N	\N	\N
-5966	2	94653181-14e8-4c89-b775-45eb55a457ac	version.layout.5.logos	\N	\N	\N	513d34fb-5dbc-4333-b0ab-af8e3756cc8a	\N	\N	\N
-5967	1	bf142327-abd6-4aee-a03a-6a2ca0141234	version.layout.5.logos	\N	\N	\N	92890105-dde4-4c79-acac-d81ad6dd978a	\N	\N	\N
-5968	2	bf142327-abd6-4aee-a03a-6a2ca0141234	version.layout.5.logos	\N	\N	\N	513d34fb-5dbc-4333-b0ab-af8e3756cc8a	\N	\N	\N
-6132	1	d499de0a-6aa2-44ee-a6b3-4d11c1a81fba	version.layout.3.selectedTestimonials	\N	\N	\N	\N	\N	b440e19a-7d00-487a-9927-d384dee97e22	\N
-6133	1	d499de0a-6aa2-44ee-a6b3-4d11c1a81fba	version.layout.7.selectedTestimonials	\N	\N	\N	\N	\N	ad1d03ad-f60b-4f83-90c2-d456f1fbaf21	\N
-6134	1	d499de0a-6aa2-44ee-a6b3-4d11c1a81fba	version.layout.9.logos	\N	\N	\N	8c44fa47-dbaa-44ba-9a83-c35e232404f7	\N	\N	\N
-6135	2	d499de0a-6aa2-44ee-a6b3-4d11c1a81fba	version.layout.9.logos	\N	\N	\N	93e4c6fc-6bfb-4246-aad1-8861ebc78777	\N	\N	\N
-6136	3	d499de0a-6aa2-44ee-a6b3-4d11c1a81fba	version.layout.9.logos	\N	\N	\N	8cfbc8ec-db06-4d17-9c8b-bbf589f91e67	\N	\N	\N
-6137	4	d499de0a-6aa2-44ee-a6b3-4d11c1a81fba	version.layout.9.logos	\N	\N	\N	4f3b0cf8-dc31-4ff9-aa9f-9e0ec3cfb001	\N	\N	\N
-6138	5	d499de0a-6aa2-44ee-a6b3-4d11c1a81fba	version.layout.9.logos	\N	\N	\N	d67a9625-6f30-4d2a-9643-0962f6faf385	\N	\N	\N
-6139	1	d499de0a-6aa2-44ee-a6b3-4d11c1a81fba	version.layout.10.faqs	\N	\N	\N	\N	487d16ef-4d7e-4603-885d-53d42734b0f1	\N	\N
-6140	2	d499de0a-6aa2-44ee-a6b3-4d11c1a81fba	version.layout.10.faqs	\N	\N	\N	\N	2d37f238-e71e-4291-8919-33e4c7a73544	\N	\N
-6141	3	d499de0a-6aa2-44ee-a6b3-4d11c1a81fba	version.layout.10.faqs	\N	\N	\N	\N	4696359a-45b8-4fea-b14f-ca34e928e5d0	\N	\N
-6142	4	d499de0a-6aa2-44ee-a6b3-4d11c1a81fba	version.layout.10.faqs	\N	\N	\N	\N	0786b804-85ea-4269-841e-5f4fe762ada3	\N	\N
-6143	5	d499de0a-6aa2-44ee-a6b3-4d11c1a81fba	version.layout.10.faqs	\N	\N	\N	\N	0ad17856-43c0-4ec9-bd88-c26f826dfb68	\N	\N
-6144	6	d499de0a-6aa2-44ee-a6b3-4d11c1a81fba	version.layout.10.faqs	\N	\N	\N	\N	cf06eaf5-c215-44fc-82c2-a7696336ef41	\N	\N
-3837	1	3c55e0be-bf8b-49a3-b786-331f07012f5f	version.layout.0.logos	\N	\N	\N	8c44fa47-dbaa-44ba-9a83-c35e232404f7	\N	\N	\N
-3838	2	3c55e0be-bf8b-49a3-b786-331f07012f5f	version.layout.0.logos	\N	\N	\N	93e4c6fc-6bfb-4246-aad1-8861ebc78777	\N	\N	\N
-3839	3	3c55e0be-bf8b-49a3-b786-331f07012f5f	version.layout.0.logos	\N	\N	\N	8cfbc8ec-db06-4d17-9c8b-bbf589f91e67	\N	\N	\N
-3840	4	3c55e0be-bf8b-49a3-b786-331f07012f5f	version.layout.0.logos	\N	\N	\N	4f3b0cf8-dc31-4ff9-aa9f-9e0ec3cfb001	\N	\N	\N
-3841	5	3c55e0be-bf8b-49a3-b786-331f07012f5f	version.layout.0.logos	\N	\N	\N	d67a9625-6f30-4d2a-9643-0962f6faf385	\N	\N	\N
-3842	1	3c55e0be-bf8b-49a3-b786-331f07012f5f	version.layout.2.logos	\N	\N	\N	513d34fb-5dbc-4333-b0ab-af8e3756cc8a	\N	\N	\N
-3843	2	3c55e0be-bf8b-49a3-b786-331f07012f5f	version.layout.2.logos	\N	\N	\N	92890105-dde4-4c79-acac-d81ad6dd978a	\N	\N	\N
-3844	1	3c55e0be-bf8b-49a3-b786-331f07012f5f	version.layout.3.selectedTestimonials	\N	\N	\N	\N	\N	b440e19a-7d00-487a-9927-d384dee97e22	\N
-3845	1	3c55e0be-bf8b-49a3-b786-331f07012f5f	version.layout.7.selectedTestimonials	\N	\N	\N	\N	\N	ad1d03ad-f60b-4f83-90c2-d456f1fbaf21	\N
-3846	1	3c55e0be-bf8b-49a3-b786-331f07012f5f	version.layout.9.logos	\N	\N	\N	8c44fa47-dbaa-44ba-9a83-c35e232404f7	\N	\N	\N
-3847	2	3c55e0be-bf8b-49a3-b786-331f07012f5f	version.layout.9.logos	\N	\N	\N	93e4c6fc-6bfb-4246-aad1-8861ebc78777	\N	\N	\N
-3848	3	3c55e0be-bf8b-49a3-b786-331f07012f5f	version.layout.9.logos	\N	\N	\N	8cfbc8ec-db06-4d17-9c8b-bbf589f91e67	\N	\N	\N
-3849	4	3c55e0be-bf8b-49a3-b786-331f07012f5f	version.layout.9.logos	\N	\N	\N	4f3b0cf8-dc31-4ff9-aa9f-9e0ec3cfb001	\N	\N	\N
-3850	5	3c55e0be-bf8b-49a3-b786-331f07012f5f	version.layout.9.logos	\N	\N	\N	d67a9625-6f30-4d2a-9643-0962f6faf385	\N	\N	\N
-3851	1	3c55e0be-bf8b-49a3-b786-331f07012f5f	version.layout.10.faqs	\N	\N	\N	\N	487d16ef-4d7e-4603-885d-53d42734b0f1	\N	\N
-3852	2	3c55e0be-bf8b-49a3-b786-331f07012f5f	version.layout.10.faqs	\N	\N	\N	\N	2d37f238-e71e-4291-8919-33e4c7a73544	\N	\N
-3853	3	3c55e0be-bf8b-49a3-b786-331f07012f5f	version.layout.10.faqs	\N	\N	\N	\N	4696359a-45b8-4fea-b14f-ca34e928e5d0	\N	\N
-3854	4	3c55e0be-bf8b-49a3-b786-331f07012f5f	version.layout.10.faqs	\N	\N	\N	\N	0786b804-85ea-4269-841e-5f4fe762ada3	\N	\N
-3855	5	3c55e0be-bf8b-49a3-b786-331f07012f5f	version.layout.10.faqs	\N	\N	\N	\N	0ad17856-43c0-4ec9-bd88-c26f826dfb68	\N	\N
-3856	6	3c55e0be-bf8b-49a3-b786-331f07012f5f	version.layout.10.faqs	\N	\N	\N	\N	cf06eaf5-c215-44fc-82c2-a7696336ef41	\N	\N
-3857	1	45abc8e4-6e61-47dd-991c-44eb6332b11a	version.layout.0.logos	\N	\N	\N	8c44fa47-dbaa-44ba-9a83-c35e232404f7	\N	\N	\N
-3858	2	45abc8e4-6e61-47dd-991c-44eb6332b11a	version.layout.0.logos	\N	\N	\N	93e4c6fc-6bfb-4246-aad1-8861ebc78777	\N	\N	\N
-3859	3	45abc8e4-6e61-47dd-991c-44eb6332b11a	version.layout.0.logos	\N	\N	\N	8cfbc8ec-db06-4d17-9c8b-bbf589f91e67	\N	\N	\N
-3860	4	45abc8e4-6e61-47dd-991c-44eb6332b11a	version.layout.0.logos	\N	\N	\N	4f3b0cf8-dc31-4ff9-aa9f-9e0ec3cfb001	\N	\N	\N
-3861	5	45abc8e4-6e61-47dd-991c-44eb6332b11a	version.layout.0.logos	\N	\N	\N	d67a9625-6f30-4d2a-9643-0962f6faf385	\N	\N	\N
-3862	1	45abc8e4-6e61-47dd-991c-44eb6332b11a	version.layout.2.logos	\N	\N	\N	513d34fb-5dbc-4333-b0ab-af8e3756cc8a	\N	\N	\N
-3863	2	45abc8e4-6e61-47dd-991c-44eb6332b11a	version.layout.2.logos	\N	\N	\N	92890105-dde4-4c79-acac-d81ad6dd978a	\N	\N	\N
-3864	1	45abc8e4-6e61-47dd-991c-44eb6332b11a	version.layout.3.selectedTestimonials	\N	\N	\N	\N	\N	b440e19a-7d00-487a-9927-d384dee97e22	\N
-3865	1	45abc8e4-6e61-47dd-991c-44eb6332b11a	version.layout.7.selectedTestimonials	\N	\N	\N	\N	\N	ad1d03ad-f60b-4f83-90c2-d456f1fbaf21	\N
-3866	1	45abc8e4-6e61-47dd-991c-44eb6332b11a	version.layout.9.logos	\N	\N	\N	8c44fa47-dbaa-44ba-9a83-c35e232404f7	\N	\N	\N
-3867	2	45abc8e4-6e61-47dd-991c-44eb6332b11a	version.layout.9.logos	\N	\N	\N	93e4c6fc-6bfb-4246-aad1-8861ebc78777	\N	\N	\N
-3868	3	45abc8e4-6e61-47dd-991c-44eb6332b11a	version.layout.9.logos	\N	\N	\N	8cfbc8ec-db06-4d17-9c8b-bbf589f91e67	\N	\N	\N
-6145	1	5befbaf7-ffbd-4fc5-b8ae-8a6aad8de1a3	version.layout.0.logos	\N	\N	\N	8c44fa47-dbaa-44ba-9a83-c35e232404f7	\N	\N	\N
-6146	2	5befbaf7-ffbd-4fc5-b8ae-8a6aad8de1a3	version.layout.0.logos	\N	\N	\N	93e4c6fc-6bfb-4246-aad1-8861ebc78777	\N	\N	\N
-6147	3	5befbaf7-ffbd-4fc5-b8ae-8a6aad8de1a3	version.layout.0.logos	\N	\N	\N	8cfbc8ec-db06-4d17-9c8b-bbf589f91e67	\N	\N	\N
-6148	4	5befbaf7-ffbd-4fc5-b8ae-8a6aad8de1a3	version.layout.0.logos	\N	\N	\N	4f3b0cf8-dc31-4ff9-aa9f-9e0ec3cfb001	\N	\N	\N
-6149	5	5befbaf7-ffbd-4fc5-b8ae-8a6aad8de1a3	version.layout.0.logos	\N	\N	\N	d67a9625-6f30-4d2a-9643-0962f6faf385	\N	\N	\N
-6150	1	5befbaf7-ffbd-4fc5-b8ae-8a6aad8de1a3	version.layout.2.logos	\N	\N	\N	513d34fb-5dbc-4333-b0ab-af8e3756cc8a	\N	\N	\N
-6151	2	5befbaf7-ffbd-4fc5-b8ae-8a6aad8de1a3	version.layout.2.logos	\N	\N	\N	92890105-dde4-4c79-acac-d81ad6dd978a	\N	\N	\N
-6152	1	5befbaf7-ffbd-4fc5-b8ae-8a6aad8de1a3	version.layout.3.selectedTestimonials	\N	\N	\N	\N	\N	b440e19a-7d00-487a-9927-d384dee97e22	\N
-6153	1	5befbaf7-ffbd-4fc5-b8ae-8a6aad8de1a3	version.layout.7.selectedTestimonials	\N	\N	\N	\N	\N	ad1d03ad-f60b-4f83-90c2-d456f1fbaf21	\N
-6154	1	5befbaf7-ffbd-4fc5-b8ae-8a6aad8de1a3	version.layout.9.logos	\N	\N	\N	8c44fa47-dbaa-44ba-9a83-c35e232404f7	\N	\N	\N
-6155	2	5befbaf7-ffbd-4fc5-b8ae-8a6aad8de1a3	version.layout.9.logos	\N	\N	\N	93e4c6fc-6bfb-4246-aad1-8861ebc78777	\N	\N	\N
-6156	3	5befbaf7-ffbd-4fc5-b8ae-8a6aad8de1a3	version.layout.9.logos	\N	\N	\N	8cfbc8ec-db06-4d17-9c8b-bbf589f91e67	\N	\N	\N
-6157	4	5befbaf7-ffbd-4fc5-b8ae-8a6aad8de1a3	version.layout.9.logos	\N	\N	\N	4f3b0cf8-dc31-4ff9-aa9f-9e0ec3cfb001	\N	\N	\N
-6158	5	5befbaf7-ffbd-4fc5-b8ae-8a6aad8de1a3	version.layout.9.logos	\N	\N	\N	d67a9625-6f30-4d2a-9643-0962f6faf385	\N	\N	\N
-6159	1	5befbaf7-ffbd-4fc5-b8ae-8a6aad8de1a3	version.layout.10.faqs	\N	\N	\N	\N	487d16ef-4d7e-4603-885d-53d42734b0f1	\N	\N
-6160	2	5befbaf7-ffbd-4fc5-b8ae-8a6aad8de1a3	version.layout.10.faqs	\N	\N	\N	\N	2d37f238-e71e-4291-8919-33e4c7a73544	\N	\N
-6161	3	5befbaf7-ffbd-4fc5-b8ae-8a6aad8de1a3	version.layout.10.faqs	\N	\N	\N	\N	4696359a-45b8-4fea-b14f-ca34e928e5d0	\N	\N
-6162	4	5befbaf7-ffbd-4fc5-b8ae-8a6aad8de1a3	version.layout.10.faqs	\N	\N	\N	\N	0786b804-85ea-4269-841e-5f4fe762ada3	\N	\N
-6163	5	5befbaf7-ffbd-4fc5-b8ae-8a6aad8de1a3	version.layout.10.faqs	\N	\N	\N	\N	0ad17856-43c0-4ec9-bd88-c26f826dfb68	\N	\N
-6164	6	5befbaf7-ffbd-4fc5-b8ae-8a6aad8de1a3	version.layout.10.faqs	\N	\N	\N	\N	cf06eaf5-c215-44fc-82c2-a7696336ef41	\N	\N
-3869	4	45abc8e4-6e61-47dd-991c-44eb6332b11a	version.layout.9.logos	\N	\N	\N	4f3b0cf8-dc31-4ff9-aa9f-9e0ec3cfb001	\N	\N	\N
-3870	5	45abc8e4-6e61-47dd-991c-44eb6332b11a	version.layout.9.logos	\N	\N	\N	d67a9625-6f30-4d2a-9643-0962f6faf385	\N	\N	\N
-3871	1	45abc8e4-6e61-47dd-991c-44eb6332b11a	version.layout.10.faqs	\N	\N	\N	\N	487d16ef-4d7e-4603-885d-53d42734b0f1	\N	\N
-3872	2	45abc8e4-6e61-47dd-991c-44eb6332b11a	version.layout.10.faqs	\N	\N	\N	\N	2d37f238-e71e-4291-8919-33e4c7a73544	\N	\N
-3873	3	45abc8e4-6e61-47dd-991c-44eb6332b11a	version.layout.10.faqs	\N	\N	\N	\N	4696359a-45b8-4fea-b14f-ca34e928e5d0	\N	\N
-3874	4	45abc8e4-6e61-47dd-991c-44eb6332b11a	version.layout.10.faqs	\N	\N	\N	\N	0786b804-85ea-4269-841e-5f4fe762ada3	\N	\N
-3875	5	45abc8e4-6e61-47dd-991c-44eb6332b11a	version.layout.10.faqs	\N	\N	\N	\N	0ad17856-43c0-4ec9-bd88-c26f826dfb68	\N	\N
-3876	6	45abc8e4-6e61-47dd-991c-44eb6332b11a	version.layout.10.faqs	\N	\N	\N	\N	cf06eaf5-c215-44fc-82c2-a7696336ef41	\N	\N
-4657	1	3940efdc-d964-4ee0-bc99-81ac8abfa0d7	version.layout.0.logos	\N	\N	\N	8c44fa47-dbaa-44ba-9a83-c35e232404f7	\N	\N	\N
-4658	2	3940efdc-d964-4ee0-bc99-81ac8abfa0d7	version.layout.0.logos	\N	\N	\N	93e4c6fc-6bfb-4246-aad1-8861ebc78777	\N	\N	\N
-4659	3	3940efdc-d964-4ee0-bc99-81ac8abfa0d7	version.layout.0.logos	\N	\N	\N	8cfbc8ec-db06-4d17-9c8b-bbf589f91e67	\N	\N	\N
-4660	4	3940efdc-d964-4ee0-bc99-81ac8abfa0d7	version.layout.0.logos	\N	\N	\N	4f3b0cf8-dc31-4ff9-aa9f-9e0ec3cfb001	\N	\N	\N
-4661	5	3940efdc-d964-4ee0-bc99-81ac8abfa0d7	version.layout.0.logos	\N	\N	\N	d67a9625-6f30-4d2a-9643-0962f6faf385	\N	\N	\N
-4662	1	3940efdc-d964-4ee0-bc99-81ac8abfa0d7	version.layout.2.logos	\N	\N	\N	513d34fb-5dbc-4333-b0ab-af8e3756cc8a	\N	\N	\N
-4663	2	3940efdc-d964-4ee0-bc99-81ac8abfa0d7	version.layout.2.logos	\N	\N	\N	92890105-dde4-4c79-acac-d81ad6dd978a	\N	\N	\N
-4664	1	3940efdc-d964-4ee0-bc99-81ac8abfa0d7	version.layout.3.selectedTestimonials	\N	\N	\N	\N	\N	b440e19a-7d00-487a-9927-d384dee97e22	\N
-4665	1	3940efdc-d964-4ee0-bc99-81ac8abfa0d7	version.layout.7.selectedTestimonials	\N	\N	\N	\N	\N	ad1d03ad-f60b-4f83-90c2-d456f1fbaf21	\N
-4666	1	3940efdc-d964-4ee0-bc99-81ac8abfa0d7	version.layout.9.logos	\N	\N	\N	8c44fa47-dbaa-44ba-9a83-c35e232404f7	\N	\N	\N
-4667	2	3940efdc-d964-4ee0-bc99-81ac8abfa0d7	version.layout.9.logos	\N	\N	\N	93e4c6fc-6bfb-4246-aad1-8861ebc78777	\N	\N	\N
-4668	3	3940efdc-d964-4ee0-bc99-81ac8abfa0d7	version.layout.9.logos	\N	\N	\N	8cfbc8ec-db06-4d17-9c8b-bbf589f91e67	\N	\N	\N
-4669	4	3940efdc-d964-4ee0-bc99-81ac8abfa0d7	version.layout.9.logos	\N	\N	\N	4f3b0cf8-dc31-4ff9-aa9f-9e0ec3cfb001	\N	\N	\N
-4670	5	3940efdc-d964-4ee0-bc99-81ac8abfa0d7	version.layout.9.logos	\N	\N	\N	d67a9625-6f30-4d2a-9643-0962f6faf385	\N	\N	\N
-4671	1	3940efdc-d964-4ee0-bc99-81ac8abfa0d7	version.layout.10.faqs	\N	\N	\N	\N	487d16ef-4d7e-4603-885d-53d42734b0f1	\N	\N
-4672	2	3940efdc-d964-4ee0-bc99-81ac8abfa0d7	version.layout.10.faqs	\N	\N	\N	\N	2d37f238-e71e-4291-8919-33e4c7a73544	\N	\N
-4673	3	3940efdc-d964-4ee0-bc99-81ac8abfa0d7	version.layout.10.faqs	\N	\N	\N	\N	4696359a-45b8-4fea-b14f-ca34e928e5d0	\N	\N
-4674	4	3940efdc-d964-4ee0-bc99-81ac8abfa0d7	version.layout.10.faqs	\N	\N	\N	\N	0786b804-85ea-4269-841e-5f4fe762ada3	\N	\N
-4675	5	3940efdc-d964-4ee0-bc99-81ac8abfa0d7	version.layout.10.faqs	\N	\N	\N	\N	0ad17856-43c0-4ec9-bd88-c26f826dfb68	\N	\N
-4676	6	3940efdc-d964-4ee0-bc99-81ac8abfa0d7	version.layout.10.faqs	\N	\N	\N	\N	cf06eaf5-c215-44fc-82c2-a7696336ef41	\N	\N
-4077	1	c215530b-9bca-4fab-95b4-59994f19f57e	version.layout.0.logos	\N	\N	\N	8c44fa47-dbaa-44ba-9a83-c35e232404f7	\N	\N	\N
-4078	2	c215530b-9bca-4fab-95b4-59994f19f57e	version.layout.0.logos	\N	\N	\N	93e4c6fc-6bfb-4246-aad1-8861ebc78777	\N	\N	\N
-4079	3	c215530b-9bca-4fab-95b4-59994f19f57e	version.layout.0.logos	\N	\N	\N	8cfbc8ec-db06-4d17-9c8b-bbf589f91e67	\N	\N	\N
-4080	4	c215530b-9bca-4fab-95b4-59994f19f57e	version.layout.0.logos	\N	\N	\N	4f3b0cf8-dc31-4ff9-aa9f-9e0ec3cfb001	\N	\N	\N
-4081	5	c215530b-9bca-4fab-95b4-59994f19f57e	version.layout.0.logos	\N	\N	\N	d67a9625-6f30-4d2a-9643-0962f6faf385	\N	\N	\N
-4082	1	c215530b-9bca-4fab-95b4-59994f19f57e	version.layout.2.logos	\N	\N	\N	513d34fb-5dbc-4333-b0ab-af8e3756cc8a	\N	\N	\N
-4083	2	c215530b-9bca-4fab-95b4-59994f19f57e	version.layout.2.logos	\N	\N	\N	92890105-dde4-4c79-acac-d81ad6dd978a	\N	\N	\N
-4084	1	c215530b-9bca-4fab-95b4-59994f19f57e	version.layout.3.selectedTestimonials	\N	\N	\N	\N	\N	b440e19a-7d00-487a-9927-d384dee97e22	\N
-4085	1	c215530b-9bca-4fab-95b4-59994f19f57e	version.layout.7.selectedTestimonials	\N	\N	\N	\N	\N	ad1d03ad-f60b-4f83-90c2-d456f1fbaf21	\N
-4086	1	c215530b-9bca-4fab-95b4-59994f19f57e	version.layout.9.logos	\N	\N	\N	8c44fa47-dbaa-44ba-9a83-c35e232404f7	\N	\N	\N
-4087	2	c215530b-9bca-4fab-95b4-59994f19f57e	version.layout.9.logos	\N	\N	\N	93e4c6fc-6bfb-4246-aad1-8861ebc78777	\N	\N	\N
-4088	3	c215530b-9bca-4fab-95b4-59994f19f57e	version.layout.9.logos	\N	\N	\N	8cfbc8ec-db06-4d17-9c8b-bbf589f91e67	\N	\N	\N
-4089	4	c215530b-9bca-4fab-95b4-59994f19f57e	version.layout.9.logos	\N	\N	\N	4f3b0cf8-dc31-4ff9-aa9f-9e0ec3cfb001	\N	\N	\N
-4090	5	c215530b-9bca-4fab-95b4-59994f19f57e	version.layout.9.logos	\N	\N	\N	d67a9625-6f30-4d2a-9643-0962f6faf385	\N	\N	\N
-4091	1	c215530b-9bca-4fab-95b4-59994f19f57e	version.layout.10.faqs	\N	\N	\N	\N	487d16ef-4d7e-4603-885d-53d42734b0f1	\N	\N
-4092	2	c215530b-9bca-4fab-95b4-59994f19f57e	version.layout.10.faqs	\N	\N	\N	\N	2d37f238-e71e-4291-8919-33e4c7a73544	\N	\N
-4093	3	c215530b-9bca-4fab-95b4-59994f19f57e	version.layout.10.faqs	\N	\N	\N	\N	4696359a-45b8-4fea-b14f-ca34e928e5d0	\N	\N
-4094	4	c215530b-9bca-4fab-95b4-59994f19f57e	version.layout.10.faqs	\N	\N	\N	\N	0786b804-85ea-4269-841e-5f4fe762ada3	\N	\N
-4095	5	c215530b-9bca-4fab-95b4-59994f19f57e	version.layout.10.faqs	\N	\N	\N	\N	0ad17856-43c0-4ec9-bd88-c26f826dfb68	\N	\N
-4096	6	c215530b-9bca-4fab-95b4-59994f19f57e	version.layout.10.faqs	\N	\N	\N	\N	cf06eaf5-c215-44fc-82c2-a7696336ef41	\N	\N
-4097	1	ecbe3c3f-2b09-4776-8f23-53c91e136a32	version.layout.0.logos	\N	\N	\N	8c44fa47-dbaa-44ba-9a83-c35e232404f7	\N	\N	\N
-4098	2	ecbe3c3f-2b09-4776-8f23-53c91e136a32	version.layout.0.logos	\N	\N	\N	93e4c6fc-6bfb-4246-aad1-8861ebc78777	\N	\N	\N
-4099	3	ecbe3c3f-2b09-4776-8f23-53c91e136a32	version.layout.0.logos	\N	\N	\N	8cfbc8ec-db06-4d17-9c8b-bbf589f91e67	\N	\N	\N
-4100	4	ecbe3c3f-2b09-4776-8f23-53c91e136a32	version.layout.0.logos	\N	\N	\N	4f3b0cf8-dc31-4ff9-aa9f-9e0ec3cfb001	\N	\N	\N
-4101	5	ecbe3c3f-2b09-4776-8f23-53c91e136a32	version.layout.0.logos	\N	\N	\N	d67a9625-6f30-4d2a-9643-0962f6faf385	\N	\N	\N
-4102	1	ecbe3c3f-2b09-4776-8f23-53c91e136a32	version.layout.2.logos	\N	\N	\N	513d34fb-5dbc-4333-b0ab-af8e3756cc8a	\N	\N	\N
-3957	1	b45bc75c-000b-478f-b800-b4f23c264b27	version.layout.0.logos	\N	\N	\N	8c44fa47-dbaa-44ba-9a83-c35e232404f7	\N	\N	\N
-3958	2	b45bc75c-000b-478f-b800-b4f23c264b27	version.layout.0.logos	\N	\N	\N	93e4c6fc-6bfb-4246-aad1-8861ebc78777	\N	\N	\N
-3959	3	b45bc75c-000b-478f-b800-b4f23c264b27	version.layout.0.logos	\N	\N	\N	8cfbc8ec-db06-4d17-9c8b-bbf589f91e67	\N	\N	\N
-3960	4	b45bc75c-000b-478f-b800-b4f23c264b27	version.layout.0.logos	\N	\N	\N	4f3b0cf8-dc31-4ff9-aa9f-9e0ec3cfb001	\N	\N	\N
-3961	5	b45bc75c-000b-478f-b800-b4f23c264b27	version.layout.0.logos	\N	\N	\N	d67a9625-6f30-4d2a-9643-0962f6faf385	\N	\N	\N
-3962	1	b45bc75c-000b-478f-b800-b4f23c264b27	version.layout.2.logos	\N	\N	\N	513d34fb-5dbc-4333-b0ab-af8e3756cc8a	\N	\N	\N
-3963	2	b45bc75c-000b-478f-b800-b4f23c264b27	version.layout.2.logos	\N	\N	\N	92890105-dde4-4c79-acac-d81ad6dd978a	\N	\N	\N
-3964	1	b45bc75c-000b-478f-b800-b4f23c264b27	version.layout.3.selectedTestimonials	\N	\N	\N	\N	\N	b440e19a-7d00-487a-9927-d384dee97e22	\N
-3965	1	b45bc75c-000b-478f-b800-b4f23c264b27	version.layout.7.selectedTestimonials	\N	\N	\N	\N	\N	ad1d03ad-f60b-4f83-90c2-d456f1fbaf21	\N
-3966	1	b45bc75c-000b-478f-b800-b4f23c264b27	version.layout.9.logos	\N	\N	\N	8c44fa47-dbaa-44ba-9a83-c35e232404f7	\N	\N	\N
-3967	2	b45bc75c-000b-478f-b800-b4f23c264b27	version.layout.9.logos	\N	\N	\N	93e4c6fc-6bfb-4246-aad1-8861ebc78777	\N	\N	\N
-3968	3	b45bc75c-000b-478f-b800-b4f23c264b27	version.layout.9.logos	\N	\N	\N	8cfbc8ec-db06-4d17-9c8b-bbf589f91e67	\N	\N	\N
-3969	4	b45bc75c-000b-478f-b800-b4f23c264b27	version.layout.9.logos	\N	\N	\N	4f3b0cf8-dc31-4ff9-aa9f-9e0ec3cfb001	\N	\N	\N
-3970	5	b45bc75c-000b-478f-b800-b4f23c264b27	version.layout.9.logos	\N	\N	\N	d67a9625-6f30-4d2a-9643-0962f6faf385	\N	\N	\N
-3971	1	b45bc75c-000b-478f-b800-b4f23c264b27	version.layout.10.faqs	\N	\N	\N	\N	487d16ef-4d7e-4603-885d-53d42734b0f1	\N	\N
-3972	2	b45bc75c-000b-478f-b800-b4f23c264b27	version.layout.10.faqs	\N	\N	\N	\N	2d37f238-e71e-4291-8919-33e4c7a73544	\N	\N
-3973	3	b45bc75c-000b-478f-b800-b4f23c264b27	version.layout.10.faqs	\N	\N	\N	\N	4696359a-45b8-4fea-b14f-ca34e928e5d0	\N	\N
-3974	4	b45bc75c-000b-478f-b800-b4f23c264b27	version.layout.10.faqs	\N	\N	\N	\N	0786b804-85ea-4269-841e-5f4fe762ada3	\N	\N
-3975	5	b45bc75c-000b-478f-b800-b4f23c264b27	version.layout.10.faqs	\N	\N	\N	\N	0ad17856-43c0-4ec9-bd88-c26f826dfb68	\N	\N
-3976	6	b45bc75c-000b-478f-b800-b4f23c264b27	version.layout.10.faqs	\N	\N	\N	\N	cf06eaf5-c215-44fc-82c2-a7696336ef41	\N	\N
-4103	2	ecbe3c3f-2b09-4776-8f23-53c91e136a32	version.layout.2.logos	\N	\N	\N	92890105-dde4-4c79-acac-d81ad6dd978a	\N	\N	\N
-4104	1	ecbe3c3f-2b09-4776-8f23-53c91e136a32	version.layout.3.selectedTestimonials	\N	\N	\N	\N	\N	b440e19a-7d00-487a-9927-d384dee97e22	\N
-4105	1	ecbe3c3f-2b09-4776-8f23-53c91e136a32	version.layout.7.selectedTestimonials	\N	\N	\N	\N	\N	ad1d03ad-f60b-4f83-90c2-d456f1fbaf21	\N
-4106	1	ecbe3c3f-2b09-4776-8f23-53c91e136a32	version.layout.9.logos	\N	\N	\N	8c44fa47-dbaa-44ba-9a83-c35e232404f7	\N	\N	\N
-4107	2	ecbe3c3f-2b09-4776-8f23-53c91e136a32	version.layout.9.logos	\N	\N	\N	93e4c6fc-6bfb-4246-aad1-8861ebc78777	\N	\N	\N
-4108	3	ecbe3c3f-2b09-4776-8f23-53c91e136a32	version.layout.9.logos	\N	\N	\N	8cfbc8ec-db06-4d17-9c8b-bbf589f91e67	\N	\N	\N
-4109	4	ecbe3c3f-2b09-4776-8f23-53c91e136a32	version.layout.9.logos	\N	\N	\N	4f3b0cf8-dc31-4ff9-aa9f-9e0ec3cfb001	\N	\N	\N
-4110	5	ecbe3c3f-2b09-4776-8f23-53c91e136a32	version.layout.9.logos	\N	\N	\N	d67a9625-6f30-4d2a-9643-0962f6faf385	\N	\N	\N
-4111	1	ecbe3c3f-2b09-4776-8f23-53c91e136a32	version.layout.10.faqs	\N	\N	\N	\N	487d16ef-4d7e-4603-885d-53d42734b0f1	\N	\N
-4112	2	ecbe3c3f-2b09-4776-8f23-53c91e136a32	version.layout.10.faqs	\N	\N	\N	\N	2d37f238-e71e-4291-8919-33e4c7a73544	\N	\N
-4113	3	ecbe3c3f-2b09-4776-8f23-53c91e136a32	version.layout.10.faqs	\N	\N	\N	\N	4696359a-45b8-4fea-b14f-ca34e928e5d0	\N	\N
-4114	4	ecbe3c3f-2b09-4776-8f23-53c91e136a32	version.layout.10.faqs	\N	\N	\N	\N	0786b804-85ea-4269-841e-5f4fe762ada3	\N	\N
-4115	5	ecbe3c3f-2b09-4776-8f23-53c91e136a32	version.layout.10.faqs	\N	\N	\N	\N	0ad17856-43c0-4ec9-bd88-c26f826dfb68	\N	\N
-4116	6	ecbe3c3f-2b09-4776-8f23-53c91e136a32	version.layout.10.faqs	\N	\N	\N	\N	cf06eaf5-c215-44fc-82c2-a7696336ef41	\N	\N
-4117	1	f3366135-d679-461a-9160-86eda5cdd969	version.layout.0.logos	\N	\N	\N	8c44fa47-dbaa-44ba-9a83-c35e232404f7	\N	\N	\N
-4118	2	f3366135-d679-461a-9160-86eda5cdd969	version.layout.0.logos	\N	\N	\N	93e4c6fc-6bfb-4246-aad1-8861ebc78777	\N	\N	\N
-4119	3	f3366135-d679-461a-9160-86eda5cdd969	version.layout.0.logos	\N	\N	\N	8cfbc8ec-db06-4d17-9c8b-bbf589f91e67	\N	\N	\N
-4120	4	f3366135-d679-461a-9160-86eda5cdd969	version.layout.0.logos	\N	\N	\N	4f3b0cf8-dc31-4ff9-aa9f-9e0ec3cfb001	\N	\N	\N
-4121	5	f3366135-d679-461a-9160-86eda5cdd969	version.layout.0.logos	\N	\N	\N	d67a9625-6f30-4d2a-9643-0962f6faf385	\N	\N	\N
-4122	1	f3366135-d679-461a-9160-86eda5cdd969	version.layout.2.logos	\N	\N	\N	513d34fb-5dbc-4333-b0ab-af8e3756cc8a	\N	\N	\N
-4123	2	f3366135-d679-461a-9160-86eda5cdd969	version.layout.2.logos	\N	\N	\N	92890105-dde4-4c79-acac-d81ad6dd978a	\N	\N	\N
-4124	1	f3366135-d679-461a-9160-86eda5cdd969	version.layout.3.selectedTestimonials	\N	\N	\N	\N	\N	b440e19a-7d00-487a-9927-d384dee97e22	\N
-4125	1	f3366135-d679-461a-9160-86eda5cdd969	version.layout.7.selectedTestimonials	\N	\N	\N	\N	\N	ad1d03ad-f60b-4f83-90c2-d456f1fbaf21	\N
-4126	1	f3366135-d679-461a-9160-86eda5cdd969	version.layout.9.logos	\N	\N	\N	8c44fa47-dbaa-44ba-9a83-c35e232404f7	\N	\N	\N
-4127	2	f3366135-d679-461a-9160-86eda5cdd969	version.layout.9.logos	\N	\N	\N	93e4c6fc-6bfb-4246-aad1-8861ebc78777	\N	\N	\N
-4128	3	f3366135-d679-461a-9160-86eda5cdd969	version.layout.9.logos	\N	\N	\N	8cfbc8ec-db06-4d17-9c8b-bbf589f91e67	\N	\N	\N
-4129	4	f3366135-d679-461a-9160-86eda5cdd969	version.layout.9.logos	\N	\N	\N	4f3b0cf8-dc31-4ff9-aa9f-9e0ec3cfb001	\N	\N	\N
-4130	5	f3366135-d679-461a-9160-86eda5cdd969	version.layout.9.logos	\N	\N	\N	d67a9625-6f30-4d2a-9643-0962f6faf385	\N	\N	\N
-4131	1	f3366135-d679-461a-9160-86eda5cdd969	version.layout.10.faqs	\N	\N	\N	\N	487d16ef-4d7e-4603-885d-53d42734b0f1	\N	\N
-4132	2	f3366135-d679-461a-9160-86eda5cdd969	version.layout.10.faqs	\N	\N	\N	\N	2d37f238-e71e-4291-8919-33e4c7a73544	\N	\N
-4133	3	f3366135-d679-461a-9160-86eda5cdd969	version.layout.10.faqs	\N	\N	\N	\N	4696359a-45b8-4fea-b14f-ca34e928e5d0	\N	\N
-4134	4	f3366135-d679-461a-9160-86eda5cdd969	version.layout.10.faqs	\N	\N	\N	\N	0786b804-85ea-4269-841e-5f4fe762ada3	\N	\N
-4135	5	f3366135-d679-461a-9160-86eda5cdd969	version.layout.10.faqs	\N	\N	\N	\N	0ad17856-43c0-4ec9-bd88-c26f826dfb68	\N	\N
-4136	6	f3366135-d679-461a-9160-86eda5cdd969	version.layout.10.faqs	\N	\N	\N	\N	cf06eaf5-c215-44fc-82c2-a7696336ef41	\N	\N
-4192	2	ef5c6a38-e9a0-4159-84b2-e47e23e98868	version.layout.10.faqs	\N	\N	\N	\N	2d37f238-e71e-4291-8919-33e4c7a73544	\N	\N
-4193	3	ef5c6a38-e9a0-4159-84b2-e47e23e98868	version.layout.10.faqs	\N	\N	\N	\N	4696359a-45b8-4fea-b14f-ca34e928e5d0	\N	\N
-4194	4	ef5c6a38-e9a0-4159-84b2-e47e23e98868	version.layout.10.faqs	\N	\N	\N	\N	0786b804-85ea-4269-841e-5f4fe762ada3	\N	\N
-4195	5	ef5c6a38-e9a0-4159-84b2-e47e23e98868	version.layout.10.faqs	\N	\N	\N	\N	0ad17856-43c0-4ec9-bd88-c26f826dfb68	\N	\N
-4196	6	ef5c6a38-e9a0-4159-84b2-e47e23e98868	version.layout.10.faqs	\N	\N	\N	\N	cf06eaf5-c215-44fc-82c2-a7696336ef41	\N	\N
-4677	1	b5dd6e1e-8913-4ada-b039-861fea98b16b	version.layout.0.logos	\N	\N	\N	8c44fa47-dbaa-44ba-9a83-c35e232404f7	\N	\N	\N
-4678	2	b5dd6e1e-8913-4ada-b039-861fea98b16b	version.layout.0.logos	\N	\N	\N	93e4c6fc-6bfb-4246-aad1-8861ebc78777	\N	\N	\N
-4679	3	b5dd6e1e-8913-4ada-b039-861fea98b16b	version.layout.0.logos	\N	\N	\N	8cfbc8ec-db06-4d17-9c8b-bbf589f91e67	\N	\N	\N
-4680	4	b5dd6e1e-8913-4ada-b039-861fea98b16b	version.layout.0.logos	\N	\N	\N	4f3b0cf8-dc31-4ff9-aa9f-9e0ec3cfb001	\N	\N	\N
-4681	5	b5dd6e1e-8913-4ada-b039-861fea98b16b	version.layout.0.logos	\N	\N	\N	d67a9625-6f30-4d2a-9643-0962f6faf385	\N	\N	\N
-4682	1	b5dd6e1e-8913-4ada-b039-861fea98b16b	version.layout.2.logos	\N	\N	\N	513d34fb-5dbc-4333-b0ab-af8e3756cc8a	\N	\N	\N
-4683	2	b5dd6e1e-8913-4ada-b039-861fea98b16b	version.layout.2.logos	\N	\N	\N	92890105-dde4-4c79-acac-d81ad6dd978a	\N	\N	\N
-4684	1	b5dd6e1e-8913-4ada-b039-861fea98b16b	version.layout.3.selectedTestimonials	\N	\N	\N	\N	\N	b440e19a-7d00-487a-9927-d384dee97e22	\N
-4685	1	b5dd6e1e-8913-4ada-b039-861fea98b16b	version.layout.7.selectedTestimonials	\N	\N	\N	\N	\N	ad1d03ad-f60b-4f83-90c2-d456f1fbaf21	\N
-4686	1	b5dd6e1e-8913-4ada-b039-861fea98b16b	version.layout.9.logos	\N	\N	\N	8c44fa47-dbaa-44ba-9a83-c35e232404f7	\N	\N	\N
-4687	2	b5dd6e1e-8913-4ada-b039-861fea98b16b	version.layout.9.logos	\N	\N	\N	93e4c6fc-6bfb-4246-aad1-8861ebc78777	\N	\N	\N
-4688	3	b5dd6e1e-8913-4ada-b039-861fea98b16b	version.layout.9.logos	\N	\N	\N	8cfbc8ec-db06-4d17-9c8b-bbf589f91e67	\N	\N	\N
-4689	4	b5dd6e1e-8913-4ada-b039-861fea98b16b	version.layout.9.logos	\N	\N	\N	4f3b0cf8-dc31-4ff9-aa9f-9e0ec3cfb001	\N	\N	\N
-4690	5	b5dd6e1e-8913-4ada-b039-861fea98b16b	version.layout.9.logos	\N	\N	\N	d67a9625-6f30-4d2a-9643-0962f6faf385	\N	\N	\N
-4691	1	b5dd6e1e-8913-4ada-b039-861fea98b16b	version.layout.10.faqs	\N	\N	\N	\N	487d16ef-4d7e-4603-885d-53d42734b0f1	\N	\N
-4692	2	b5dd6e1e-8913-4ada-b039-861fea98b16b	version.layout.10.faqs	\N	\N	\N	\N	2d37f238-e71e-4291-8919-33e4c7a73544	\N	\N
-4693	3	b5dd6e1e-8913-4ada-b039-861fea98b16b	version.layout.10.faqs	\N	\N	\N	\N	4696359a-45b8-4fea-b14f-ca34e928e5d0	\N	\N
-4694	4	b5dd6e1e-8913-4ada-b039-861fea98b16b	version.layout.10.faqs	\N	\N	\N	\N	0786b804-85ea-4269-841e-5f4fe762ada3	\N	\N
-4695	5	b5dd6e1e-8913-4ada-b039-861fea98b16b	version.layout.10.faqs	\N	\N	\N	\N	0ad17856-43c0-4ec9-bd88-c26f826dfb68	\N	\N
-4696	6	b5dd6e1e-8913-4ada-b039-861fea98b16b	version.layout.10.faqs	\N	\N	\N	\N	cf06eaf5-c215-44fc-82c2-a7696336ef41	\N	\N
-4797	1	cb057bf7-d3b7-4a13-9d3f-46872336859f	version.layout.0.logos	\N	\N	\N	8c44fa47-dbaa-44ba-9a83-c35e232404f7	\N	\N	\N
-4798	2	cb057bf7-d3b7-4a13-9d3f-46872336859f	version.layout.0.logos	\N	\N	\N	93e4c6fc-6bfb-4246-aad1-8861ebc78777	\N	\N	\N
-4799	3	cb057bf7-d3b7-4a13-9d3f-46872336859f	version.layout.0.logos	\N	\N	\N	8cfbc8ec-db06-4d17-9c8b-bbf589f91e67	\N	\N	\N
-4800	4	cb057bf7-d3b7-4a13-9d3f-46872336859f	version.layout.0.logos	\N	\N	\N	4f3b0cf8-dc31-4ff9-aa9f-9e0ec3cfb001	\N	\N	\N
-4801	5	cb057bf7-d3b7-4a13-9d3f-46872336859f	version.layout.0.logos	\N	\N	\N	d67a9625-6f30-4d2a-9643-0962f6faf385	\N	\N	\N
-4802	1	cb057bf7-d3b7-4a13-9d3f-46872336859f	version.layout.2.logos	\N	\N	\N	513d34fb-5dbc-4333-b0ab-af8e3756cc8a	\N	\N	\N
-4803	2	cb057bf7-d3b7-4a13-9d3f-46872336859f	version.layout.2.logos	\N	\N	\N	92890105-dde4-4c79-acac-d81ad6dd978a	\N	\N	\N
-4804	1	cb057bf7-d3b7-4a13-9d3f-46872336859f	version.layout.3.selectedTestimonials	\N	\N	\N	\N	\N	b440e19a-7d00-487a-9927-d384dee97e22	\N
-4805	1	cb057bf7-d3b7-4a13-9d3f-46872336859f	version.layout.7.selectedTestimonials	\N	\N	\N	\N	\N	ad1d03ad-f60b-4f83-90c2-d456f1fbaf21	\N
-4806	1	cb057bf7-d3b7-4a13-9d3f-46872336859f	version.layout.9.logos	\N	\N	\N	8c44fa47-dbaa-44ba-9a83-c35e232404f7	\N	\N	\N
-4807	2	cb057bf7-d3b7-4a13-9d3f-46872336859f	version.layout.9.logos	\N	\N	\N	93e4c6fc-6bfb-4246-aad1-8861ebc78777	\N	\N	\N
-4808	3	cb057bf7-d3b7-4a13-9d3f-46872336859f	version.layout.9.logos	\N	\N	\N	8cfbc8ec-db06-4d17-9c8b-bbf589f91e67	\N	\N	\N
-4809	4	cb057bf7-d3b7-4a13-9d3f-46872336859f	version.layout.9.logos	\N	\N	\N	4f3b0cf8-dc31-4ff9-aa9f-9e0ec3cfb001	\N	\N	\N
-4810	5	cb057bf7-d3b7-4a13-9d3f-46872336859f	version.layout.9.logos	\N	\N	\N	d67a9625-6f30-4d2a-9643-0962f6faf385	\N	\N	\N
-4811	1	cb057bf7-d3b7-4a13-9d3f-46872336859f	version.layout.10.faqs	\N	\N	\N	\N	487d16ef-4d7e-4603-885d-53d42734b0f1	\N	\N
-4812	2	cb057bf7-d3b7-4a13-9d3f-46872336859f	version.layout.10.faqs	\N	\N	\N	\N	2d37f238-e71e-4291-8919-33e4c7a73544	\N	\N
-4813	3	cb057bf7-d3b7-4a13-9d3f-46872336859f	version.layout.10.faqs	\N	\N	\N	\N	4696359a-45b8-4fea-b14f-ca34e928e5d0	\N	\N
-4814	4	cb057bf7-d3b7-4a13-9d3f-46872336859f	version.layout.10.faqs	\N	\N	\N	\N	0786b804-85ea-4269-841e-5f4fe762ada3	\N	\N
-4815	5	cb057bf7-d3b7-4a13-9d3f-46872336859f	version.layout.10.faqs	\N	\N	\N	\N	0ad17856-43c0-4ec9-bd88-c26f826dfb68	\N	\N
-4816	6	cb057bf7-d3b7-4a13-9d3f-46872336859f	version.layout.10.faqs	\N	\N	\N	\N	cf06eaf5-c215-44fc-82c2-a7696336ef41	\N	\N
-4817	1	6f9a67c3-db23-4ee7-8f1d-5a9d10db345a	version.layout.0.logos	\N	\N	\N	8c44fa47-dbaa-44ba-9a83-c35e232404f7	\N	\N	\N
-4818	2	6f9a67c3-db23-4ee7-8f1d-5a9d10db345a	version.layout.0.logos	\N	\N	\N	93e4c6fc-6bfb-4246-aad1-8861ebc78777	\N	\N	\N
-4819	3	6f9a67c3-db23-4ee7-8f1d-5a9d10db345a	version.layout.0.logos	\N	\N	\N	8cfbc8ec-db06-4d17-9c8b-bbf589f91e67	\N	\N	\N
-4820	4	6f9a67c3-db23-4ee7-8f1d-5a9d10db345a	version.layout.0.logos	\N	\N	\N	4f3b0cf8-dc31-4ff9-aa9f-9e0ec3cfb001	\N	\N	\N
-4821	5	6f9a67c3-db23-4ee7-8f1d-5a9d10db345a	version.layout.0.logos	\N	\N	\N	d67a9625-6f30-4d2a-9643-0962f6faf385	\N	\N	\N
-4822	1	6f9a67c3-db23-4ee7-8f1d-5a9d10db345a	version.layout.2.logos	\N	\N	\N	513d34fb-5dbc-4333-b0ab-af8e3756cc8a	\N	\N	\N
-4823	2	6f9a67c3-db23-4ee7-8f1d-5a9d10db345a	version.layout.2.logos	\N	\N	\N	92890105-dde4-4c79-acac-d81ad6dd978a	\N	\N	\N
-4824	1	6f9a67c3-db23-4ee7-8f1d-5a9d10db345a	version.layout.3.selectedTestimonials	\N	\N	\N	\N	\N	b440e19a-7d00-487a-9927-d384dee97e22	\N
-4825	1	6f9a67c3-db23-4ee7-8f1d-5a9d10db345a	version.layout.7.selectedTestimonials	\N	\N	\N	\N	\N	ad1d03ad-f60b-4f83-90c2-d456f1fbaf21	\N
-4826	1	6f9a67c3-db23-4ee7-8f1d-5a9d10db345a	version.layout.9.logos	\N	\N	\N	8c44fa47-dbaa-44ba-9a83-c35e232404f7	\N	\N	\N
-4827	2	6f9a67c3-db23-4ee7-8f1d-5a9d10db345a	version.layout.9.logos	\N	\N	\N	93e4c6fc-6bfb-4246-aad1-8861ebc78777	\N	\N	\N
-4828	3	6f9a67c3-db23-4ee7-8f1d-5a9d10db345a	version.layout.9.logos	\N	\N	\N	8cfbc8ec-db06-4d17-9c8b-bbf589f91e67	\N	\N	\N
-4829	4	6f9a67c3-db23-4ee7-8f1d-5a9d10db345a	version.layout.9.logos	\N	\N	\N	4f3b0cf8-dc31-4ff9-aa9f-9e0ec3cfb001	\N	\N	\N
-4830	5	6f9a67c3-db23-4ee7-8f1d-5a9d10db345a	version.layout.9.logos	\N	\N	\N	d67a9625-6f30-4d2a-9643-0962f6faf385	\N	\N	\N
-4831	1	6f9a67c3-db23-4ee7-8f1d-5a9d10db345a	version.layout.10.faqs	\N	\N	\N	\N	487d16ef-4d7e-4603-885d-53d42734b0f1	\N	\N
-4832	2	6f9a67c3-db23-4ee7-8f1d-5a9d10db345a	version.layout.10.faqs	\N	\N	\N	\N	2d37f238-e71e-4291-8919-33e4c7a73544	\N	\N
-4833	3	6f9a67c3-db23-4ee7-8f1d-5a9d10db345a	version.layout.10.faqs	\N	\N	\N	\N	4696359a-45b8-4fea-b14f-ca34e928e5d0	\N	\N
-4834	4	6f9a67c3-db23-4ee7-8f1d-5a9d10db345a	version.layout.10.faqs	\N	\N	\N	\N	0786b804-85ea-4269-841e-5f4fe762ada3	\N	\N
-4835	5	6f9a67c3-db23-4ee7-8f1d-5a9d10db345a	version.layout.10.faqs	\N	\N	\N	\N	0ad17856-43c0-4ec9-bd88-c26f826dfb68	\N	\N
-4836	6	6f9a67c3-db23-4ee7-8f1d-5a9d10db345a	version.layout.10.faqs	\N	\N	\N	\N	cf06eaf5-c215-44fc-82c2-a7696336ef41	\N	\N
-6165	1	332494df-8482-49a0-aedd-17be4e6346c8	version.layout.0.logos	\N	\N	\N	8c44fa47-dbaa-44ba-9a83-c35e232404f7	\N	\N	\N
-6166	2	332494df-8482-49a0-aedd-17be4e6346c8	version.layout.0.logos	\N	\N	\N	93e4c6fc-6bfb-4246-aad1-8861ebc78777	\N	\N	\N
-6167	3	332494df-8482-49a0-aedd-17be4e6346c8	version.layout.0.logos	\N	\N	\N	8cfbc8ec-db06-4d17-9c8b-bbf589f91e67	\N	\N	\N
-6168	4	332494df-8482-49a0-aedd-17be4e6346c8	version.layout.0.logos	\N	\N	\N	4f3b0cf8-dc31-4ff9-aa9f-9e0ec3cfb001	\N	\N	\N
-6169	5	332494df-8482-49a0-aedd-17be4e6346c8	version.layout.0.logos	\N	\N	\N	d67a9625-6f30-4d2a-9643-0962f6faf385	\N	\N	\N
-6170	1	332494df-8482-49a0-aedd-17be4e6346c8	version.layout.2.logos	\N	\N	\N	513d34fb-5dbc-4333-b0ab-af8e3756cc8a	\N	\N	\N
-6171	2	332494df-8482-49a0-aedd-17be4e6346c8	version.layout.2.logos	\N	\N	\N	92890105-dde4-4c79-acac-d81ad6dd978a	\N	\N	\N
-6172	1	332494df-8482-49a0-aedd-17be4e6346c8	version.layout.3.selectedTestimonials	\N	\N	\N	\N	\N	b440e19a-7d00-487a-9927-d384dee97e22	\N
-6173	1	332494df-8482-49a0-aedd-17be4e6346c8	version.layout.7.selectedTestimonials	\N	\N	\N	\N	\N	ad1d03ad-f60b-4f83-90c2-d456f1fbaf21	\N
-6174	1	332494df-8482-49a0-aedd-17be4e6346c8	version.layout.9.logos	\N	\N	\N	8c44fa47-dbaa-44ba-9a83-c35e232404f7	\N	\N	\N
-6175	2	332494df-8482-49a0-aedd-17be4e6346c8	version.layout.9.logos	\N	\N	\N	93e4c6fc-6bfb-4246-aad1-8861ebc78777	\N	\N	\N
-6176	3	332494df-8482-49a0-aedd-17be4e6346c8	version.layout.9.logos	\N	\N	\N	8cfbc8ec-db06-4d17-9c8b-bbf589f91e67	\N	\N	\N
-6177	4	332494df-8482-49a0-aedd-17be4e6346c8	version.layout.9.logos	\N	\N	\N	4f3b0cf8-dc31-4ff9-aa9f-9e0ec3cfb001	\N	\N	\N
-6178	5	332494df-8482-49a0-aedd-17be4e6346c8	version.layout.9.logos	\N	\N	\N	d67a9625-6f30-4d2a-9643-0962f6faf385	\N	\N	\N
-6179	1	332494df-8482-49a0-aedd-17be4e6346c8	version.layout.10.faqs	\N	\N	\N	\N	487d16ef-4d7e-4603-885d-53d42734b0f1	\N	\N
-6180	2	332494df-8482-49a0-aedd-17be4e6346c8	version.layout.10.faqs	\N	\N	\N	\N	2d37f238-e71e-4291-8919-33e4c7a73544	\N	\N
-6181	3	332494df-8482-49a0-aedd-17be4e6346c8	version.layout.10.faqs	\N	\N	\N	\N	4696359a-45b8-4fea-b14f-ca34e928e5d0	\N	\N
-5949	1	776bee6e-d93a-475f-aa30-53d23438faa4	version.layout.5.logos	\N	\N	\N	92890105-dde4-4c79-acac-d81ad6dd978a	\N	\N	\N
-5950	2	776bee6e-d93a-475f-aa30-53d23438faa4	version.layout.5.logos	\N	\N	\N	513d34fb-5dbc-4333-b0ab-af8e3756cc8a	\N	\N	\N
-6182	4	332494df-8482-49a0-aedd-17be4e6346c8	version.layout.10.faqs	\N	\N	\N	\N	0786b804-85ea-4269-841e-5f4fe762ada3	\N	\N
-6183	5	332494df-8482-49a0-aedd-17be4e6346c8	version.layout.10.faqs	\N	\N	\N	\N	0ad17856-43c0-4ec9-bd88-c26f826dfb68	\N	\N
-5977	1	94244a4d-2803-4eca-bfce-70bc5ec1e0ae	version.layout.5.logos	\N	\N	\N	92890105-dde4-4c79-acac-d81ad6dd978a	\N	\N	\N
-5978	2	94244a4d-2803-4eca-bfce-70bc5ec1e0ae	version.layout.5.logos	\N	\N	\N	513d34fb-5dbc-4333-b0ab-af8e3756cc8a	\N	\N	\N
-6184	6	332494df-8482-49a0-aedd-17be4e6346c8	version.layout.10.faqs	\N	\N	\N	\N	cf06eaf5-c215-44fc-82c2-a7696336ef41	\N	\N
-6041	1	868df81e-d817-4217-bcf3-c5409e711824	version.layout.5.logos	\N	\N	\N	92890105-dde4-4c79-acac-d81ad6dd978a	\N	\N	\N
-6042	2	868df81e-d817-4217-bcf3-c5409e711824	version.layout.5.logos	\N	\N	\N	513d34fb-5dbc-4333-b0ab-af8e3756cc8a	\N	\N	\N
-6043	1	227b995d-f68e-46cb-93e4-8f83abebb7f6	version.layout.5.logos	\N	\N	\N	92890105-dde4-4c79-acac-d81ad6dd978a	\N	\N	\N
-6044	2	227b995d-f68e-46cb-93e4-8f83abebb7f6	version.layout.5.logos	\N	\N	\N	513d34fb-5dbc-4333-b0ab-af8e3756cc8a	\N	\N	\N
-5951	1	5dc29ddf-a604-4102-bcda-6868180ad4bb	version.layout.5.logos	\N	\N	\N	92890105-dde4-4c79-acac-d81ad6dd978a	\N	\N	\N
-5952	2	5dc29ddf-a604-4102-bcda-6868180ad4bb	version.layout.5.logos	\N	\N	\N	513d34fb-5dbc-4333-b0ab-af8e3756cc8a	\N	\N	\N
-6185	1	b834d68c-8e85-4fef-8832-9223c6f99e7b	version.layout.0.logos	\N	\N	\N	8c44fa47-dbaa-44ba-9a83-c35e232404f7	\N	\N	\N
-6186	2	b834d68c-8e85-4fef-8832-9223c6f99e7b	version.layout.0.logos	\N	\N	\N	93e4c6fc-6bfb-4246-aad1-8861ebc78777	\N	\N	\N
-5975	1	4ecf9d84-fac6-4c7b-8528-bec6d72beb0d	version.layout.5.logos	\N	\N	\N	92890105-dde4-4c79-acac-d81ad6dd978a	\N	\N	\N
-5976	2	4ecf9d84-fac6-4c7b-8528-bec6d72beb0d	version.layout.5.logos	\N	\N	\N	513d34fb-5dbc-4333-b0ab-af8e3756cc8a	\N	\N	\N
-6047	1	e4d04395-b8a7-439a-98fb-a81567f5061b	version.layout.5.logos	\N	\N	\N	92890105-dde4-4c79-acac-d81ad6dd978a	\N	\N	\N
-6048	2	e4d04395-b8a7-439a-98fb-a81567f5061b	version.layout.5.logos	\N	\N	\N	513d34fb-5dbc-4333-b0ab-af8e3756cc8a	\N	\N	\N
-6049	1	091817b6-0342-4b73-91f3-5503868ebc22	version.layout.5.logos	\N	\N	\N	92890105-dde4-4c79-acac-d81ad6dd978a	\N	\N	\N
-6050	2	091817b6-0342-4b73-91f3-5503868ebc22	version.layout.5.logos	\N	\N	\N	513d34fb-5dbc-4333-b0ab-af8e3756cc8a	\N	\N	\N
-6187	3	b834d68c-8e85-4fef-8832-9223c6f99e7b	version.layout.0.logos	\N	\N	\N	8cfbc8ec-db06-4d17-9c8b-bbf589f91e67	\N	\N	\N
-6188	4	b834d68c-8e85-4fef-8832-9223c6f99e7b	version.layout.0.logos	\N	\N	\N	4f3b0cf8-dc31-4ff9-aa9f-9e0ec3cfb001	\N	\N	\N
-6189	5	b834d68c-8e85-4fef-8832-9223c6f99e7b	version.layout.0.logos	\N	\N	\N	d67a9625-6f30-4d2a-9643-0962f6faf385	\N	\N	\N
-6190	1	b834d68c-8e85-4fef-8832-9223c6f99e7b	version.layout.2.logos	\N	\N	\N	513d34fb-5dbc-4333-b0ab-af8e3756cc8a	\N	\N	\N
-6191	2	b834d68c-8e85-4fef-8832-9223c6f99e7b	version.layout.2.logos	\N	\N	\N	92890105-dde4-4c79-acac-d81ad6dd978a	\N	\N	\N
-6192	1	b834d68c-8e85-4fef-8832-9223c6f99e7b	version.layout.3.selectedTestimonials	\N	\N	\N	\N	\N	b440e19a-7d00-487a-9927-d384dee97e22	\N
-6193	1	b834d68c-8e85-4fef-8832-9223c6f99e7b	version.layout.7.selectedTestimonials	\N	\N	\N	\N	\N	ad1d03ad-f60b-4f83-90c2-d456f1fbaf21	\N
-6194	1	b834d68c-8e85-4fef-8832-9223c6f99e7b	version.layout.9.logos	\N	\N	\N	8c44fa47-dbaa-44ba-9a83-c35e232404f7	\N	\N	\N
-6195	2	b834d68c-8e85-4fef-8832-9223c6f99e7b	version.layout.9.logos	\N	\N	\N	93e4c6fc-6bfb-4246-aad1-8861ebc78777	\N	\N	\N
-6196	3	b834d68c-8e85-4fef-8832-9223c6f99e7b	version.layout.9.logos	\N	\N	\N	8cfbc8ec-db06-4d17-9c8b-bbf589f91e67	\N	\N	\N
-6197	4	b834d68c-8e85-4fef-8832-9223c6f99e7b	version.layout.9.logos	\N	\N	\N	4f3b0cf8-dc31-4ff9-aa9f-9e0ec3cfb001	\N	\N	\N
-6198	5	b834d68c-8e85-4fef-8832-9223c6f99e7b	version.layout.9.logos	\N	\N	\N	d67a9625-6f30-4d2a-9643-0962f6faf385	\N	\N	\N
-6199	1	b834d68c-8e85-4fef-8832-9223c6f99e7b	version.layout.10.faqs	\N	\N	\N	\N	487d16ef-4d7e-4603-885d-53d42734b0f1	\N	\N
-6200	2	b834d68c-8e85-4fef-8832-9223c6f99e7b	version.layout.10.faqs	\N	\N	\N	\N	2d37f238-e71e-4291-8919-33e4c7a73544	\N	\N
-6201	3	b834d68c-8e85-4fef-8832-9223c6f99e7b	version.layout.10.faqs	\N	\N	\N	\N	4696359a-45b8-4fea-b14f-ca34e928e5d0	\N	\N
-6202	4	b834d68c-8e85-4fef-8832-9223c6f99e7b	version.layout.10.faqs	\N	\N	\N	\N	0786b804-85ea-4269-841e-5f4fe762ada3	\N	\N
-6203	5	b834d68c-8e85-4fef-8832-9223c6f99e7b	version.layout.10.faqs	\N	\N	\N	\N	0ad17856-43c0-4ec9-bd88-c26f826dfb68	\N	\N
-6204	6	b834d68c-8e85-4fef-8832-9223c6f99e7b	version.layout.10.faqs	\N	\N	\N	\N	cf06eaf5-c215-44fc-82c2-a7696336ef41	\N	\N
-4517	1	c9a6ebc4-f4a5-490d-814c-fb1f4608c68f	version.layout.0.logos	\N	\N	\N	8c44fa47-dbaa-44ba-9a83-c35e232404f7	\N	\N	\N
-4518	2	c9a6ebc4-f4a5-490d-814c-fb1f4608c68f	version.layout.0.logos	\N	\N	\N	93e4c6fc-6bfb-4246-aad1-8861ebc78777	\N	\N	\N
-4519	3	c9a6ebc4-f4a5-490d-814c-fb1f4608c68f	version.layout.0.logos	\N	\N	\N	8cfbc8ec-db06-4d17-9c8b-bbf589f91e67	\N	\N	\N
-4520	4	c9a6ebc4-f4a5-490d-814c-fb1f4608c68f	version.layout.0.logos	\N	\N	\N	4f3b0cf8-dc31-4ff9-aa9f-9e0ec3cfb001	\N	\N	\N
-4521	5	c9a6ebc4-f4a5-490d-814c-fb1f4608c68f	version.layout.0.logos	\N	\N	\N	d67a9625-6f30-4d2a-9643-0962f6faf385	\N	\N	\N
-4522	1	c9a6ebc4-f4a5-490d-814c-fb1f4608c68f	version.layout.2.logos	\N	\N	\N	513d34fb-5dbc-4333-b0ab-af8e3756cc8a	\N	\N	\N
-4523	2	c9a6ebc4-f4a5-490d-814c-fb1f4608c68f	version.layout.2.logos	\N	\N	\N	92890105-dde4-4c79-acac-d81ad6dd978a	\N	\N	\N
-4524	1	c9a6ebc4-f4a5-490d-814c-fb1f4608c68f	version.layout.3.selectedTestimonials	\N	\N	\N	\N	\N	b440e19a-7d00-487a-9927-d384dee97e22	\N
-4525	1	c9a6ebc4-f4a5-490d-814c-fb1f4608c68f	version.layout.7.selectedTestimonials	\N	\N	\N	\N	\N	ad1d03ad-f60b-4f83-90c2-d456f1fbaf21	\N
-4526	1	c9a6ebc4-f4a5-490d-814c-fb1f4608c68f	version.layout.9.logos	\N	\N	\N	8c44fa47-dbaa-44ba-9a83-c35e232404f7	\N	\N	\N
-4527	2	c9a6ebc4-f4a5-490d-814c-fb1f4608c68f	version.layout.9.logos	\N	\N	\N	93e4c6fc-6bfb-4246-aad1-8861ebc78777	\N	\N	\N
-4528	3	c9a6ebc4-f4a5-490d-814c-fb1f4608c68f	version.layout.9.logos	\N	\N	\N	8cfbc8ec-db06-4d17-9c8b-bbf589f91e67	\N	\N	\N
-4529	4	c9a6ebc4-f4a5-490d-814c-fb1f4608c68f	version.layout.9.logos	\N	\N	\N	4f3b0cf8-dc31-4ff9-aa9f-9e0ec3cfb001	\N	\N	\N
-4530	5	c9a6ebc4-f4a5-490d-814c-fb1f4608c68f	version.layout.9.logos	\N	\N	\N	d67a9625-6f30-4d2a-9643-0962f6faf385	\N	\N	\N
-4531	1	c9a6ebc4-f4a5-490d-814c-fb1f4608c68f	version.layout.10.faqs	\N	\N	\N	\N	487d16ef-4d7e-4603-885d-53d42734b0f1	\N	\N
-4532	2	c9a6ebc4-f4a5-490d-814c-fb1f4608c68f	version.layout.10.faqs	\N	\N	\N	\N	2d37f238-e71e-4291-8919-33e4c7a73544	\N	\N
-4533	3	c9a6ebc4-f4a5-490d-814c-fb1f4608c68f	version.layout.10.faqs	\N	\N	\N	\N	4696359a-45b8-4fea-b14f-ca34e928e5d0	\N	\N
-4534	4	c9a6ebc4-f4a5-490d-814c-fb1f4608c68f	version.layout.10.faqs	\N	\N	\N	\N	0786b804-85ea-4269-841e-5f4fe762ada3	\N	\N
-4535	5	c9a6ebc4-f4a5-490d-814c-fb1f4608c68f	version.layout.10.faqs	\N	\N	\N	\N	0ad17856-43c0-4ec9-bd88-c26f826dfb68	\N	\N
-4536	6	c9a6ebc4-f4a5-490d-814c-fb1f4608c68f	version.layout.10.faqs	\N	\N	\N	\N	cf06eaf5-c215-44fc-82c2-a7696336ef41	\N	\N
+COPY "public"."_pages_v_rels" ("id", "order", "parent_id", "path", "locale", "pages_id", "blog_posts_id", "media_id", "faq_id", "customers_id", "categories_id", "news_id") FROM stdin;
+3977	1	121949fd-6c23-47b2-a9f6-4316de5d07cc	version.layout.0.logos	\N	\N	\N	8c44fa47-dbaa-44ba-9a83-c35e232404f7	\N	\N	\N	\N
+3978	2	121949fd-6c23-47b2-a9f6-4316de5d07cc	version.layout.0.logos	\N	\N	\N	93e4c6fc-6bfb-4246-aad1-8861ebc78777	\N	\N	\N	\N
+6065	1	040a7ac1-73c6-4fe0-8f2b-3804dbea6df3	version.layout.0.logos	\N	\N	\N	8c44fa47-dbaa-44ba-9a83-c35e232404f7	\N	\N	\N	\N
+6066	2	040a7ac1-73c6-4fe0-8f2b-3804dbea6df3	version.layout.0.logos	\N	\N	\N	93e4c6fc-6bfb-4246-aad1-8861ebc78777	\N	\N	\N	\N
+6067	3	040a7ac1-73c6-4fe0-8f2b-3804dbea6df3	version.layout.0.logos	\N	\N	\N	8cfbc8ec-db06-4d17-9c8b-bbf589f91e67	\N	\N	\N	\N
+6068	4	040a7ac1-73c6-4fe0-8f2b-3804dbea6df3	version.layout.0.logos	\N	\N	\N	4f3b0cf8-dc31-4ff9-aa9f-9e0ec3cfb001	\N	\N	\N	\N
+6069	5	040a7ac1-73c6-4fe0-8f2b-3804dbea6df3	version.layout.0.logos	\N	\N	\N	d67a9625-6f30-4d2a-9643-0962f6faf385	\N	\N	\N	\N
+6070	1	040a7ac1-73c6-4fe0-8f2b-3804dbea6df3	version.layout.2.logos	\N	\N	\N	513d34fb-5dbc-4333-b0ab-af8e3756cc8a	\N	\N	\N	\N
+6071	2	040a7ac1-73c6-4fe0-8f2b-3804dbea6df3	version.layout.2.logos	\N	\N	\N	92890105-dde4-4c79-acac-d81ad6dd978a	\N	\N	\N	\N
+6072	1	040a7ac1-73c6-4fe0-8f2b-3804dbea6df3	version.layout.3.selectedTestimonials	\N	\N	\N	\N	\N	b440e19a-7d00-487a-9927-d384dee97e22	\N	\N
+6073	1	040a7ac1-73c6-4fe0-8f2b-3804dbea6df3	version.layout.7.selectedTestimonials	\N	\N	\N	\N	\N	ad1d03ad-f60b-4f83-90c2-d456f1fbaf21	\N	\N
+6074	1	040a7ac1-73c6-4fe0-8f2b-3804dbea6df3	version.layout.9.logos	\N	\N	\N	8c44fa47-dbaa-44ba-9a83-c35e232404f7	\N	\N	\N	\N
+486	1	c20c2c0b-4fa6-45f3-acb3-34e06f115342	version.layout.5.logos	\N	\N	\N	92890105-dde4-4c79-acac-d81ad6dd978a	\N	\N	\N	\N
+487	2	c20c2c0b-4fa6-45f3-acb3-34e06f115342	version.layout.5.logos	\N	\N	\N	513d34fb-5dbc-4333-b0ab-af8e3756cc8a	\N	\N	\N	\N
+488	1	90cf9707-369c-4799-8aa5-8c6eeab55ba2	version.layout.5.logos	\N	\N	\N	92890105-dde4-4c79-acac-d81ad6dd978a	\N	\N	\N	\N
+489	2	90cf9707-369c-4799-8aa5-8c6eeab55ba2	version.layout.5.logos	\N	\N	\N	513d34fb-5dbc-4333-b0ab-af8e3756cc8a	\N	\N	\N	\N
+490	1	57ff426a-9250-4471-94f7-2ce9173606fa	version.layout.5.logos	\N	\N	\N	92890105-dde4-4c79-acac-d81ad6dd978a	\N	\N	\N	\N
+6245	1	b607d175-e9e4-4f24-9088-f7c06375a6d5	version.layout.0.logos	\N	\N	\N	8c44fa47-dbaa-44ba-9a83-c35e232404f7	\N	\N	\N	\N
+491	2	57ff426a-9250-4471-94f7-2ce9173606fa	version.layout.5.logos	\N	\N	\N	513d34fb-5dbc-4333-b0ab-af8e3756cc8a	\N	\N	\N	\N
+6246	2	b607d175-e9e4-4f24-9088-f7c06375a6d5	version.layout.0.logos	\N	\N	\N	93e4c6fc-6bfb-4246-aad1-8861ebc78777	\N	\N	\N	\N
+6247	3	b607d175-e9e4-4f24-9088-f7c06375a6d5	version.layout.0.logos	\N	\N	\N	8cfbc8ec-db06-4d17-9c8b-bbf589f91e67	\N	\N	\N	\N
+6248	4	b607d175-e9e4-4f24-9088-f7c06375a6d5	version.layout.0.logos	\N	\N	\N	4f3b0cf8-dc31-4ff9-aa9f-9e0ec3cfb001	\N	\N	\N	\N
+6249	5	b607d175-e9e4-4f24-9088-f7c06375a6d5	version.layout.0.logos	\N	\N	\N	d67a9625-6f30-4d2a-9643-0962f6faf385	\N	\N	\N	\N
+6250	1	b607d175-e9e4-4f24-9088-f7c06375a6d5	version.layout.2.logos	\N	\N	\N	513d34fb-5dbc-4333-b0ab-af8e3756cc8a	\N	\N	\N	\N
+6251	2	b607d175-e9e4-4f24-9088-f7c06375a6d5	version.layout.2.logos	\N	\N	\N	92890105-dde4-4c79-acac-d81ad6dd978a	\N	\N	\N	\N
+6252	1	b607d175-e9e4-4f24-9088-f7c06375a6d5	version.layout.3.selectedTestimonials	\N	\N	\N	\N	\N	b440e19a-7d00-487a-9927-d384dee97e22	\N	\N
+6253	1	b607d175-e9e4-4f24-9088-f7c06375a6d5	version.layout.7.selectedTestimonials	\N	\N	\N	\N	\N	ad1d03ad-f60b-4f83-90c2-d456f1fbaf21	\N	\N
+6254	1	b607d175-e9e4-4f24-9088-f7c06375a6d5	version.layout.9.logos	\N	\N	\N	8c44fa47-dbaa-44ba-9a83-c35e232404f7	\N	\N	\N	\N
+6255	2	b607d175-e9e4-4f24-9088-f7c06375a6d5	version.layout.9.logos	\N	\N	\N	93e4c6fc-6bfb-4246-aad1-8861ebc78777	\N	\N	\N	\N
+6256	3	b607d175-e9e4-4f24-9088-f7c06375a6d5	version.layout.9.logos	\N	\N	\N	8cfbc8ec-db06-4d17-9c8b-bbf589f91e67	\N	\N	\N	\N
+6257	4	b607d175-e9e4-4f24-9088-f7c06375a6d5	version.layout.9.logos	\N	\N	\N	4f3b0cf8-dc31-4ff9-aa9f-9e0ec3cfb001	\N	\N	\N	\N
+6258	5	b607d175-e9e4-4f24-9088-f7c06375a6d5	version.layout.9.logos	\N	\N	\N	d67a9625-6f30-4d2a-9643-0962f6faf385	\N	\N	\N	\N
+6259	1	b607d175-e9e4-4f24-9088-f7c06375a6d5	version.layout.10.faqs	\N	\N	\N	\N	487d16ef-4d7e-4603-885d-53d42734b0f1	\N	\N	\N
+6260	2	b607d175-e9e4-4f24-9088-f7c06375a6d5	version.layout.10.faqs	\N	\N	\N	\N	2d37f238-e71e-4291-8919-33e4c7a73544	\N	\N	\N
+6261	3	b607d175-e9e4-4f24-9088-f7c06375a6d5	version.layout.10.faqs	\N	\N	\N	\N	4696359a-45b8-4fea-b14f-ca34e928e5d0	\N	\N	\N
+6262	4	b607d175-e9e4-4f24-9088-f7c06375a6d5	version.layout.10.faqs	\N	\N	\N	\N	0786b804-85ea-4269-841e-5f4fe762ada3	\N	\N	\N
+6263	5	b607d175-e9e4-4f24-9088-f7c06375a6d5	version.layout.10.faqs	\N	\N	\N	\N	0ad17856-43c0-4ec9-bd88-c26f826dfb68	\N	\N	\N
+492	1	8a100411-d7e9-4035-bcda-bb9916e0c4ff	version.layout.5.logos	\N	\N	\N	92890105-dde4-4c79-acac-d81ad6dd978a	\N	\N	\N	\N
+493	2	8a100411-d7e9-4035-bcda-bb9916e0c4ff	version.layout.5.logos	\N	\N	\N	513d34fb-5dbc-4333-b0ab-af8e3756cc8a	\N	\N	\N	\N
+6075	2	040a7ac1-73c6-4fe0-8f2b-3804dbea6df3	version.layout.9.logos	\N	\N	\N	93e4c6fc-6bfb-4246-aad1-8861ebc78777	\N	\N	\N	\N
+6076	3	040a7ac1-73c6-4fe0-8f2b-3804dbea6df3	version.layout.9.logos	\N	\N	\N	8cfbc8ec-db06-4d17-9c8b-bbf589f91e67	\N	\N	\N	\N
+6077	4	040a7ac1-73c6-4fe0-8f2b-3804dbea6df3	version.layout.9.logos	\N	\N	\N	4f3b0cf8-dc31-4ff9-aa9f-9e0ec3cfb001	\N	\N	\N	\N
+6078	5	040a7ac1-73c6-4fe0-8f2b-3804dbea6df3	version.layout.9.logos	\N	\N	\N	d67a9625-6f30-4d2a-9643-0962f6faf385	\N	\N	\N	\N
+496	1	42c8f4e2-6b54-4c96-9da9-672741e82033	version.layout.5.logos	\N	\N	\N	92890105-dde4-4c79-acac-d81ad6dd978a	\N	\N	\N	\N
+497	2	42c8f4e2-6b54-4c96-9da9-672741e82033	version.layout.5.logos	\N	\N	\N	513d34fb-5dbc-4333-b0ab-af8e3756cc8a	\N	\N	\N	\N
+6079	1	040a7ac1-73c6-4fe0-8f2b-3804dbea6df3	version.layout.10.faqs	\N	\N	\N	\N	487d16ef-4d7e-4603-885d-53d42734b0f1	\N	\N	\N
+6080	2	040a7ac1-73c6-4fe0-8f2b-3804dbea6df3	version.layout.10.faqs	\N	\N	\N	\N	2d37f238-e71e-4291-8919-33e4c7a73544	\N	\N	\N
+414	1	f223e689-6799-47bf-8a55-75f2d2a07e4b	version.layout.5.logos	\N	\N	\N	92890105-dde4-4c79-acac-d81ad6dd978a	\N	\N	\N	\N
+6264	6	b607d175-e9e4-4f24-9088-f7c06375a6d5	version.layout.10.faqs	\N	\N	\N	\N	cf06eaf5-c215-44fc-82c2-a7696336ef41	\N	\N	\N
+415	2	f223e689-6799-47bf-8a55-75f2d2a07e4b	version.layout.5.logos	\N	\N	\N	513d34fb-5dbc-4333-b0ab-af8e3756cc8a	\N	\N	\N	\N
+3979	3	121949fd-6c23-47b2-a9f6-4316de5d07cc	version.layout.0.logos	\N	\N	\N	8cfbc8ec-db06-4d17-9c8b-bbf589f91e67	\N	\N	\N	\N
+3980	4	121949fd-6c23-47b2-a9f6-4316de5d07cc	version.layout.0.logos	\N	\N	\N	4f3b0cf8-dc31-4ff9-aa9f-9e0ec3cfb001	\N	\N	\N	\N
+3981	5	121949fd-6c23-47b2-a9f6-4316de5d07cc	version.layout.0.logos	\N	\N	\N	d67a9625-6f30-4d2a-9643-0962f6faf385	\N	\N	\N	\N
+3982	1	121949fd-6c23-47b2-a9f6-4316de5d07cc	version.layout.2.logos	\N	\N	\N	513d34fb-5dbc-4333-b0ab-af8e3756cc8a	\N	\N	\N	\N
+3983	2	121949fd-6c23-47b2-a9f6-4316de5d07cc	version.layout.2.logos	\N	\N	\N	92890105-dde4-4c79-acac-d81ad6dd978a	\N	\N	\N	\N
+3984	1	121949fd-6c23-47b2-a9f6-4316de5d07cc	version.layout.3.selectedTestimonials	\N	\N	\N	\N	\N	b440e19a-7d00-487a-9927-d384dee97e22	\N	\N
+3985	1	121949fd-6c23-47b2-a9f6-4316de5d07cc	version.layout.7.selectedTestimonials	\N	\N	\N	\N	\N	ad1d03ad-f60b-4f83-90c2-d456f1fbaf21	\N	\N
+3986	1	121949fd-6c23-47b2-a9f6-4316de5d07cc	version.layout.9.logos	\N	\N	\N	8c44fa47-dbaa-44ba-9a83-c35e232404f7	\N	\N	\N	\N
+446	1	5daad5c5-875d-4b1a-a149-104e6386d7e1	version.layout.5.logos	\N	\N	\N	92890105-dde4-4c79-acac-d81ad6dd978a	\N	\N	\N	\N
+447	2	5daad5c5-875d-4b1a-a149-104e6386d7e1	version.layout.5.logos	\N	\N	\N	513d34fb-5dbc-4333-b0ab-af8e3756cc8a	\N	\N	\N	\N
+448	1	c21624fa-2468-4a75-81c3-2e915c43ea04	version.layout.5.logos	\N	\N	\N	92890105-dde4-4c79-acac-d81ad6dd978a	\N	\N	\N	\N
+449	2	c21624fa-2468-4a75-81c3-2e915c43ea04	version.layout.5.logos	\N	\N	\N	513d34fb-5dbc-4333-b0ab-af8e3756cc8a	\N	\N	\N	\N
+450	1	66191476-6739-46e9-832b-99f58a05dcee	version.layout.5.logos	\N	\N	\N	92890105-dde4-4c79-acac-d81ad6dd978a	\N	\N	\N	\N
+451	2	66191476-6739-46e9-832b-99f58a05dcee	version.layout.5.logos	\N	\N	\N	513d34fb-5dbc-4333-b0ab-af8e3756cc8a	\N	\N	\N	\N
+452	1	a97e39c7-1ff9-4ab6-8ff7-a5a7fe85b1ca	version.layout.5.logos	\N	\N	\N	92890105-dde4-4c79-acac-d81ad6dd978a	\N	\N	\N	\N
+453	2	a97e39c7-1ff9-4ab6-8ff7-a5a7fe85b1ca	version.layout.5.logos	\N	\N	\N	513d34fb-5dbc-4333-b0ab-af8e3756cc8a	\N	\N	\N	\N
+498	1	0f74cab3-d27d-472e-b2eb-35ab19e69c72	version.layout.5.logos	\N	\N	\N	92890105-dde4-4c79-acac-d81ad6dd978a	\N	\N	\N	\N
+499	2	0f74cab3-d27d-472e-b2eb-35ab19e69c72	version.layout.5.logos	\N	\N	\N	513d34fb-5dbc-4333-b0ab-af8e3756cc8a	\N	\N	\N	\N
+3987	2	121949fd-6c23-47b2-a9f6-4316de5d07cc	version.layout.9.logos	\N	\N	\N	93e4c6fc-6bfb-4246-aad1-8861ebc78777	\N	\N	\N	\N
+3988	3	121949fd-6c23-47b2-a9f6-4316de5d07cc	version.layout.9.logos	\N	\N	\N	8cfbc8ec-db06-4d17-9c8b-bbf589f91e67	\N	\N	\N	\N
+3989	4	121949fd-6c23-47b2-a9f6-4316de5d07cc	version.layout.9.logos	\N	\N	\N	4f3b0cf8-dc31-4ff9-aa9f-9e0ec3cfb001	\N	\N	\N	\N
+3990	5	121949fd-6c23-47b2-a9f6-4316de5d07cc	version.layout.9.logos	\N	\N	\N	d67a9625-6f30-4d2a-9643-0962f6faf385	\N	\N	\N	\N
+3991	1	121949fd-6c23-47b2-a9f6-4316de5d07cc	version.layout.10.faqs	\N	\N	\N	\N	487d16ef-4d7e-4603-885d-53d42734b0f1	\N	\N	\N
+3992	2	121949fd-6c23-47b2-a9f6-4316de5d07cc	version.layout.10.faqs	\N	\N	\N	\N	2d37f238-e71e-4291-8919-33e4c7a73544	\N	\N	\N
+3993	3	121949fd-6c23-47b2-a9f6-4316de5d07cc	version.layout.10.faqs	\N	\N	\N	\N	4696359a-45b8-4fea-b14f-ca34e928e5d0	\N	\N	\N
+3994	4	121949fd-6c23-47b2-a9f6-4316de5d07cc	version.layout.10.faqs	\N	\N	\N	\N	0786b804-85ea-4269-841e-5f4fe762ada3	\N	\N	\N
+3995	5	121949fd-6c23-47b2-a9f6-4316de5d07cc	version.layout.10.faqs	\N	\N	\N	\N	0ad17856-43c0-4ec9-bd88-c26f826dfb68	\N	\N	\N
+4537	1	681b0764-f5fe-4c35-a300-1f450048c6bd	version.layout.0.logos	\N	\N	\N	8c44fa47-dbaa-44ba-9a83-c35e232404f7	\N	\N	\N	\N
+4538	2	681b0764-f5fe-4c35-a300-1f450048c6bd	version.layout.0.logos	\N	\N	\N	93e4c6fc-6bfb-4246-aad1-8861ebc78777	\N	\N	\N	\N
+4539	3	681b0764-f5fe-4c35-a300-1f450048c6bd	version.layout.0.logos	\N	\N	\N	8cfbc8ec-db06-4d17-9c8b-bbf589f91e67	\N	\N	\N	\N
+4540	4	681b0764-f5fe-4c35-a300-1f450048c6bd	version.layout.0.logos	\N	\N	\N	4f3b0cf8-dc31-4ff9-aa9f-9e0ec3cfb001	\N	\N	\N	\N
+4541	5	681b0764-f5fe-4c35-a300-1f450048c6bd	version.layout.0.logos	\N	\N	\N	d67a9625-6f30-4d2a-9643-0962f6faf385	\N	\N	\N	\N
+4542	1	681b0764-f5fe-4c35-a300-1f450048c6bd	version.layout.2.logos	\N	\N	\N	513d34fb-5dbc-4333-b0ab-af8e3756cc8a	\N	\N	\N	\N
+4543	2	681b0764-f5fe-4c35-a300-1f450048c6bd	version.layout.2.logos	\N	\N	\N	92890105-dde4-4c79-acac-d81ad6dd978a	\N	\N	\N	\N
+4544	1	681b0764-f5fe-4c35-a300-1f450048c6bd	version.layout.3.selectedTestimonials	\N	\N	\N	\N	\N	b440e19a-7d00-487a-9927-d384dee97e22	\N	\N
+4545	1	681b0764-f5fe-4c35-a300-1f450048c6bd	version.layout.7.selectedTestimonials	\N	\N	\N	\N	\N	ad1d03ad-f60b-4f83-90c2-d456f1fbaf21	\N	\N
+4546	1	681b0764-f5fe-4c35-a300-1f450048c6bd	version.layout.9.logos	\N	\N	\N	8c44fa47-dbaa-44ba-9a83-c35e232404f7	\N	\N	\N	\N
+622	1	5a14f13d-26a1-40fe-af37-216b5bd0fe17	version.layout.5.logos	\N	\N	\N	92890105-dde4-4c79-acac-d81ad6dd978a	\N	\N	\N	\N
+623	2	5a14f13d-26a1-40fe-af37-216b5bd0fe17	version.layout.5.logos	\N	\N	\N	513d34fb-5dbc-4333-b0ab-af8e3756cc8a	\N	\N	\N	\N
+4547	2	681b0764-f5fe-4c35-a300-1f450048c6bd	version.layout.9.logos	\N	\N	\N	93e4c6fc-6bfb-4246-aad1-8861ebc78777	\N	\N	\N	\N
+4548	3	681b0764-f5fe-4c35-a300-1f450048c6bd	version.layout.9.logos	\N	\N	\N	8cfbc8ec-db06-4d17-9c8b-bbf589f91e67	\N	\N	\N	\N
+4549	4	681b0764-f5fe-4c35-a300-1f450048c6bd	version.layout.9.logos	\N	\N	\N	4f3b0cf8-dc31-4ff9-aa9f-9e0ec3cfb001	\N	\N	\N	\N
+4550	5	681b0764-f5fe-4c35-a300-1f450048c6bd	version.layout.9.logos	\N	\N	\N	d67a9625-6f30-4d2a-9643-0962f6faf385	\N	\N	\N	\N
+4551	1	681b0764-f5fe-4c35-a300-1f450048c6bd	version.layout.10.faqs	\N	\N	\N	\N	487d16ef-4d7e-4603-885d-53d42734b0f1	\N	\N	\N
+4552	2	681b0764-f5fe-4c35-a300-1f450048c6bd	version.layout.10.faqs	\N	\N	\N	\N	2d37f238-e71e-4291-8919-33e4c7a73544	\N	\N	\N
+4553	3	681b0764-f5fe-4c35-a300-1f450048c6bd	version.layout.10.faqs	\N	\N	\N	\N	4696359a-45b8-4fea-b14f-ca34e928e5d0	\N	\N	\N
+4554	4	681b0764-f5fe-4c35-a300-1f450048c6bd	version.layout.10.faqs	\N	\N	\N	\N	0786b804-85ea-4269-841e-5f4fe762ada3	\N	\N	\N
+4555	5	681b0764-f5fe-4c35-a300-1f450048c6bd	version.layout.10.faqs	\N	\N	\N	\N	0ad17856-43c0-4ec9-bd88-c26f826dfb68	\N	\N	\N
+4556	6	681b0764-f5fe-4c35-a300-1f450048c6bd	version.layout.10.faqs	\N	\N	\N	\N	cf06eaf5-c215-44fc-82c2-a7696336ef41	\N	\N	\N
+4871	1	e6890100-eaeb-429b-8577-30fe440dc964	version.layout.0.logos	\N	\N	\N	8c44fa47-dbaa-44ba-9a83-c35e232404f7	\N	\N	\N	\N
+4872	2	e6890100-eaeb-429b-8577-30fe440dc964	version.layout.0.logos	\N	\N	\N	93e4c6fc-6bfb-4246-aad1-8861ebc78777	\N	\N	\N	\N
+504	1	c3e0ac67-68ff-45a0-a95f-0bae5b004b85	version.layout.5.logos	\N	\N	\N	92890105-dde4-4c79-acac-d81ad6dd978a	\N	\N	\N	\N
+505	2	c3e0ac67-68ff-45a0-a95f-0bae5b004b85	version.layout.5.logos	\N	\N	\N	513d34fb-5dbc-4333-b0ab-af8e3756cc8a	\N	\N	\N	\N
+506	1	2522dd02-3c88-4d0f-8f54-000c6331c042	version.layout.5.logos	\N	\N	\N	92890105-dde4-4c79-acac-d81ad6dd978a	\N	\N	\N	\N
+507	2	2522dd02-3c88-4d0f-8f54-000c6331c042	version.layout.5.logos	\N	\N	\N	513d34fb-5dbc-4333-b0ab-af8e3756cc8a	\N	\N	\N	\N
+4873	3	e6890100-eaeb-429b-8577-30fe440dc964	version.layout.0.logos	\N	\N	\N	8cfbc8ec-db06-4d17-9c8b-bbf589f91e67	\N	\N	\N	\N
+4874	4	e6890100-eaeb-429b-8577-30fe440dc964	version.layout.0.logos	\N	\N	\N	4f3b0cf8-dc31-4ff9-aa9f-9e0ec3cfb001	\N	\N	\N	\N
+4875	5	e6890100-eaeb-429b-8577-30fe440dc964	version.layout.0.logos	\N	\N	\N	d67a9625-6f30-4d2a-9643-0962f6faf385	\N	\N	\N	\N
+4876	1	e6890100-eaeb-429b-8577-30fe440dc964	version.layout.2.logos	\N	\N	\N	513d34fb-5dbc-4333-b0ab-af8e3756cc8a	\N	\N	\N	\N
+4877	2	e6890100-eaeb-429b-8577-30fe440dc964	version.layout.2.logos	\N	\N	\N	92890105-dde4-4c79-acac-d81ad6dd978a	\N	\N	\N	\N
+4878	1	e6890100-eaeb-429b-8577-30fe440dc964	version.layout.3.selectedTestimonials	\N	\N	\N	\N	\N	b440e19a-7d00-487a-9927-d384dee97e22	\N	\N
+4879	1	e6890100-eaeb-429b-8577-30fe440dc964	version.layout.7.selectedTestimonials	\N	\N	\N	\N	\N	ad1d03ad-f60b-4f83-90c2-d456f1fbaf21	\N	\N
+4880	1	e6890100-eaeb-429b-8577-30fe440dc964	version.layout.9.logos	\N	\N	\N	8c44fa47-dbaa-44ba-9a83-c35e232404f7	\N	\N	\N	\N
+620	1	5cf29f02-25c3-4b24-b574-1aadab774686	version.layout.5.logos	\N	\N	\N	92890105-dde4-4c79-acac-d81ad6dd978a	\N	\N	\N	\N
+621	2	5cf29f02-25c3-4b24-b574-1aadab774686	version.layout.5.logos	\N	\N	\N	513d34fb-5dbc-4333-b0ab-af8e3756cc8a	\N	\N	\N	\N
+4881	2	e6890100-eaeb-429b-8577-30fe440dc964	version.layout.9.logos	\N	\N	\N	93e4c6fc-6bfb-4246-aad1-8861ebc78777	\N	\N	\N	\N
+4882	3	e6890100-eaeb-429b-8577-30fe440dc964	version.layout.9.logos	\N	\N	\N	8cfbc8ec-db06-4d17-9c8b-bbf589f91e67	\N	\N	\N	\N
+4883	4	e6890100-eaeb-429b-8577-30fe440dc964	version.layout.9.logos	\N	\N	\N	4f3b0cf8-dc31-4ff9-aa9f-9e0ec3cfb001	\N	\N	\N	\N
+4884	5	e6890100-eaeb-429b-8577-30fe440dc964	version.layout.9.logos	\N	\N	\N	d67a9625-6f30-4d2a-9643-0962f6faf385	\N	\N	\N	\N
+4885	1	e6890100-eaeb-429b-8577-30fe440dc964	version.layout.10.faqs	\N	\N	\N	\N	487d16ef-4d7e-4603-885d-53d42734b0f1	\N	\N	\N
+4886	2	e6890100-eaeb-429b-8577-30fe440dc964	version.layout.10.faqs	\N	\N	\N	\N	2d37f238-e71e-4291-8919-33e4c7a73544	\N	\N	\N
+4887	3	e6890100-eaeb-429b-8577-30fe440dc964	version.layout.10.faqs	\N	\N	\N	\N	4696359a-45b8-4fea-b14f-ca34e928e5d0	\N	\N	\N
+4888	4	e6890100-eaeb-429b-8577-30fe440dc964	version.layout.10.faqs	\N	\N	\N	\N	0786b804-85ea-4269-841e-5f4fe762ada3	\N	\N	\N
+821	1	50ab6bc6-7eb9-4e97-98f4-4e27d6d699ef	version.layout.5.logos	\N	\N	\N	92890105-dde4-4c79-acac-d81ad6dd978a	\N	\N	\N	\N
+822	2	50ab6bc6-7eb9-4e97-98f4-4e27d6d699ef	version.layout.5.logos	\N	\N	\N	513d34fb-5dbc-4333-b0ab-af8e3756cc8a	\N	\N	\N	\N
+532	1	9907622f-51f6-4107-b865-5f8fa357f96c	version.layout.5.logos	\N	\N	\N	92890105-dde4-4c79-acac-d81ad6dd978a	\N	\N	\N	\N
+533	2	9907622f-51f6-4107-b865-5f8fa357f96c	version.layout.5.logos	\N	\N	\N	513d34fb-5dbc-4333-b0ab-af8e3756cc8a	\N	\N	\N	\N
+534	1	274a0b43-8c00-4a28-aa9e-f2d70144f72e	version.layout.5.logos	\N	\N	\N	92890105-dde4-4c79-acac-d81ad6dd978a	\N	\N	\N	\N
+535	2	274a0b43-8c00-4a28-aa9e-f2d70144f72e	version.layout.5.logos	\N	\N	\N	513d34fb-5dbc-4333-b0ab-af8e3756cc8a	\N	\N	\N	\N
+536	1	dbf959bb-8af9-427b-9320-f4aeb0536d2c	version.layout.5.logos	\N	\N	\N	92890105-dde4-4c79-acac-d81ad6dd978a	\N	\N	\N	\N
+537	2	dbf959bb-8af9-427b-9320-f4aeb0536d2c	version.layout.5.logos	\N	\N	\N	513d34fb-5dbc-4333-b0ab-af8e3756cc8a	\N	\N	\N	\N
+823	1	9faf6e5f-3f02-41dc-90ca-2facbefcb29b	version.layout.5.logos	\N	\N	\N	92890105-dde4-4c79-acac-d81ad6dd978a	\N	\N	\N	\N
+824	2	9faf6e5f-3f02-41dc-90ca-2facbefcb29b	version.layout.5.logos	\N	\N	\N	513d34fb-5dbc-4333-b0ab-af8e3756cc8a	\N	\N	\N	\N
+548	1	39ed86c1-7622-472a-a921-06def66d1ca6	version.layout.5.logos	\N	\N	\N	92890105-dde4-4c79-acac-d81ad6dd978a	\N	\N	\N	\N
+549	2	39ed86c1-7622-472a-a921-06def66d1ca6	version.layout.5.logos	\N	\N	\N	513d34fb-5dbc-4333-b0ab-af8e3756cc8a	\N	\N	\N	\N
+550	1	7cb3435f-1591-4a85-9538-1a329412829b	version.layout.5.logos	\N	\N	\N	92890105-dde4-4c79-acac-d81ad6dd978a	\N	\N	\N	\N
+551	2	7cb3435f-1591-4a85-9538-1a329412829b	version.layout.5.logos	\N	\N	\N	513d34fb-5dbc-4333-b0ab-af8e3756cc8a	\N	\N	\N	\N
+4889	5	e6890100-eaeb-429b-8577-30fe440dc964	version.layout.10.faqs	\N	\N	\N	\N	0ad17856-43c0-4ec9-bd88-c26f826dfb68	\N	\N	\N
+4890	6	e6890100-eaeb-429b-8577-30fe440dc964	version.layout.10.faqs	\N	\N	\N	\N	cf06eaf5-c215-44fc-82c2-a7696336ef41	\N	\N	\N
+4891	1	7e6a8c79-56a7-464d-b879-8f1b64203ab0	version.layout.0.logos	\N	\N	\N	8c44fa47-dbaa-44ba-9a83-c35e232404f7	\N	\N	\N	\N
+4892	2	7e6a8c79-56a7-464d-b879-8f1b64203ab0	version.layout.0.logos	\N	\N	\N	93e4c6fc-6bfb-4246-aad1-8861ebc78777	\N	\N	\N	\N
+4893	3	7e6a8c79-56a7-464d-b879-8f1b64203ab0	version.layout.0.logos	\N	\N	\N	8cfbc8ec-db06-4d17-9c8b-bbf589f91e67	\N	\N	\N	\N
+4894	4	7e6a8c79-56a7-464d-b879-8f1b64203ab0	version.layout.0.logos	\N	\N	\N	4f3b0cf8-dc31-4ff9-aa9f-9e0ec3cfb001	\N	\N	\N	\N
+4895	5	7e6a8c79-56a7-464d-b879-8f1b64203ab0	version.layout.0.logos	\N	\N	\N	d67a9625-6f30-4d2a-9643-0962f6faf385	\N	\N	\N	\N
+4896	1	7e6a8c79-56a7-464d-b879-8f1b64203ab0	version.layout.2.logos	\N	\N	\N	513d34fb-5dbc-4333-b0ab-af8e3756cc8a	\N	\N	\N	\N
+4897	2	7e6a8c79-56a7-464d-b879-8f1b64203ab0	version.layout.2.logos	\N	\N	\N	92890105-dde4-4c79-acac-d81ad6dd978a	\N	\N	\N	\N
+5871	1	5ddf4b7a-819b-4141-9c29-6963ead1e5ef	version.layout.0.logos	\N	\N	\N	8c44fa47-dbaa-44ba-9a83-c35e232404f7	\N	\N	\N	\N
+5872	2	5ddf4b7a-819b-4141-9c29-6963ead1e5ef	version.layout.0.logos	\N	\N	\N	93e4c6fc-6bfb-4246-aad1-8861ebc78777	\N	\N	\N	\N
+5873	3	5ddf4b7a-819b-4141-9c29-6963ead1e5ef	version.layout.0.logos	\N	\N	\N	8cfbc8ec-db06-4d17-9c8b-bbf589f91e67	\N	\N	\N	\N
+5874	4	5ddf4b7a-819b-4141-9c29-6963ead1e5ef	version.layout.0.logos	\N	\N	\N	4f3b0cf8-dc31-4ff9-aa9f-9e0ec3cfb001	\N	\N	\N	\N
+4557	1	bd74169e-d529-441c-8b27-84658dee558d	version.layout.0.logos	\N	\N	\N	8c44fa47-dbaa-44ba-9a83-c35e232404f7	\N	\N	\N	\N
+4558	2	bd74169e-d529-441c-8b27-84658dee558d	version.layout.0.logos	\N	\N	\N	93e4c6fc-6bfb-4246-aad1-8861ebc78777	\N	\N	\N	\N
+825	1	fab894a9-a99c-498f-9196-b98496719cb9	version.layout.5.logos	\N	\N	\N	92890105-dde4-4c79-acac-d81ad6dd978a	\N	\N	\N	\N
+826	2	fab894a9-a99c-498f-9196-b98496719cb9	version.layout.5.logos	\N	\N	\N	513d34fb-5dbc-4333-b0ab-af8e3756cc8a	\N	\N	\N	\N
+827	1	c0aa14cd-4f74-4562-bb73-a03e7b40e9fb	version.layout.5.logos	\N	\N	\N	92890105-dde4-4c79-acac-d81ad6dd978a	\N	\N	\N	\N
+828	2	c0aa14cd-4f74-4562-bb73-a03e7b40e9fb	version.layout.5.logos	\N	\N	\N	513d34fb-5dbc-4333-b0ab-af8e3756cc8a	\N	\N	\N	\N
+5875	5	5ddf4b7a-819b-4141-9c29-6963ead1e5ef	version.layout.0.logos	\N	\N	\N	d67a9625-6f30-4d2a-9643-0962f6faf385	\N	\N	\N	\N
+5876	1	5ddf4b7a-819b-4141-9c29-6963ead1e5ef	version.layout.2.logos	\N	\N	\N	513d34fb-5dbc-4333-b0ab-af8e3756cc8a	\N	\N	\N	\N
+5877	2	5ddf4b7a-819b-4141-9c29-6963ead1e5ef	version.layout.2.logos	\N	\N	\N	92890105-dde4-4c79-acac-d81ad6dd978a	\N	\N	\N	\N
+4559	3	bd74169e-d529-441c-8b27-84658dee558d	version.layout.0.logos	\N	\N	\N	8cfbc8ec-db06-4d17-9c8b-bbf589f91e67	\N	\N	\N	\N
+4560	4	bd74169e-d529-441c-8b27-84658dee558d	version.layout.0.logos	\N	\N	\N	4f3b0cf8-dc31-4ff9-aa9f-9e0ec3cfb001	\N	\N	\N	\N
+4561	5	bd74169e-d529-441c-8b27-84658dee558d	version.layout.0.logos	\N	\N	\N	d67a9625-6f30-4d2a-9643-0962f6faf385	\N	\N	\N	\N
+4562	1	bd74169e-d529-441c-8b27-84658dee558d	version.layout.2.logos	\N	\N	\N	513d34fb-5dbc-4333-b0ab-af8e3756cc8a	\N	\N	\N	\N
+4563	2	bd74169e-d529-441c-8b27-84658dee558d	version.layout.2.logos	\N	\N	\N	92890105-dde4-4c79-acac-d81ad6dd978a	\N	\N	\N	\N
+4564	1	bd74169e-d529-441c-8b27-84658dee558d	version.layout.3.selectedTestimonials	\N	\N	\N	\N	\N	b440e19a-7d00-487a-9927-d384dee97e22	\N	\N
+4565	1	bd74169e-d529-441c-8b27-84658dee558d	version.layout.7.selectedTestimonials	\N	\N	\N	\N	\N	ad1d03ad-f60b-4f83-90c2-d456f1fbaf21	\N	\N
+4566	1	bd74169e-d529-441c-8b27-84658dee558d	version.layout.9.logos	\N	\N	\N	8c44fa47-dbaa-44ba-9a83-c35e232404f7	\N	\N	\N	\N
+4567	2	bd74169e-d529-441c-8b27-84658dee558d	version.layout.9.logos	\N	\N	\N	93e4c6fc-6bfb-4246-aad1-8861ebc78777	\N	\N	\N	\N
+841	1	c9ef3f17-3deb-417c-a299-7bb9ba2b4a88	version.layout.5.logos	\N	\N	\N	92890105-dde4-4c79-acac-d81ad6dd978a	\N	\N	\N	\N
+842	2	c9ef3f17-3deb-417c-a299-7bb9ba2b4a88	version.layout.5.logos	\N	\N	\N	513d34fb-5dbc-4333-b0ab-af8e3756cc8a	\N	\N	\N	\N
+843	1	6dfea5de-27e2-41ff-9048-7ad8e260e99b	version.layout.5.logos	\N	\N	\N	92890105-dde4-4c79-acac-d81ad6dd978a	\N	\N	\N	\N
+844	2	6dfea5de-27e2-41ff-9048-7ad8e260e99b	version.layout.5.logos	\N	\N	\N	513d34fb-5dbc-4333-b0ab-af8e3756cc8a	\N	\N	\N	\N
+845	1	d5349b2d-7284-47ef-96ec-ca806928b051	version.layout.5.logos	\N	\N	\N	92890105-dde4-4c79-acac-d81ad6dd978a	\N	\N	\N	\N
+846	2	d5349b2d-7284-47ef-96ec-ca806928b051	version.layout.5.logos	\N	\N	\N	513d34fb-5dbc-4333-b0ab-af8e3756cc8a	\N	\N	\N	\N
+847	1	91f7c666-83f6-4d89-bf60-8eb8a90d0abd	version.layout.5.logos	\N	\N	\N	92890105-dde4-4c79-acac-d81ad6dd978a	\N	\N	\N	\N
+848	2	91f7c666-83f6-4d89-bf60-8eb8a90d0abd	version.layout.5.logos	\N	\N	\N	513d34fb-5dbc-4333-b0ab-af8e3756cc8a	\N	\N	\N	\N
+4568	3	bd74169e-d529-441c-8b27-84658dee558d	version.layout.9.logos	\N	\N	\N	8cfbc8ec-db06-4d17-9c8b-bbf589f91e67	\N	\N	\N	\N
+4569	4	bd74169e-d529-441c-8b27-84658dee558d	version.layout.9.logos	\N	\N	\N	4f3b0cf8-dc31-4ff9-aa9f-9e0ec3cfb001	\N	\N	\N	\N
+4570	5	bd74169e-d529-441c-8b27-84658dee558d	version.layout.9.logos	\N	\N	\N	d67a9625-6f30-4d2a-9643-0962f6faf385	\N	\N	\N	\N
+4571	1	bd74169e-d529-441c-8b27-84658dee558d	version.layout.10.faqs	\N	\N	\N	\N	487d16ef-4d7e-4603-885d-53d42734b0f1	\N	\N	\N
+4572	2	bd74169e-d529-441c-8b27-84658dee558d	version.layout.10.faqs	\N	\N	\N	\N	2d37f238-e71e-4291-8919-33e4c7a73544	\N	\N	\N
+4573	3	bd74169e-d529-441c-8b27-84658dee558d	version.layout.10.faqs	\N	\N	\N	\N	4696359a-45b8-4fea-b14f-ca34e928e5d0	\N	\N	\N
+4574	4	bd74169e-d529-441c-8b27-84658dee558d	version.layout.10.faqs	\N	\N	\N	\N	0786b804-85ea-4269-841e-5f4fe762ada3	\N	\N	\N
+4575	5	bd74169e-d529-441c-8b27-84658dee558d	version.layout.10.faqs	\N	\N	\N	\N	0ad17856-43c0-4ec9-bd88-c26f826dfb68	\N	\N	\N
+4576	6	bd74169e-d529-441c-8b27-84658dee558d	version.layout.10.faqs	\N	\N	\N	\N	cf06eaf5-c215-44fc-82c2-a7696336ef41	\N	\N	\N
+4577	1	10b09cc8-e2d4-4fa0-be66-83eadde2a7ae	version.layout.0.logos	\N	\N	\N	8c44fa47-dbaa-44ba-9a83-c35e232404f7	\N	\N	\N	\N
+4578	2	10b09cc8-e2d4-4fa0-be66-83eadde2a7ae	version.layout.0.logos	\N	\N	\N	93e4c6fc-6bfb-4246-aad1-8861ebc78777	\N	\N	\N	\N
+4579	3	10b09cc8-e2d4-4fa0-be66-83eadde2a7ae	version.layout.0.logos	\N	\N	\N	8cfbc8ec-db06-4d17-9c8b-bbf589f91e67	\N	\N	\N	\N
+4580	4	10b09cc8-e2d4-4fa0-be66-83eadde2a7ae	version.layout.0.logos	\N	\N	\N	4f3b0cf8-dc31-4ff9-aa9f-9e0ec3cfb001	\N	\N	\N	\N
+4581	5	10b09cc8-e2d4-4fa0-be66-83eadde2a7ae	version.layout.0.logos	\N	\N	\N	d67a9625-6f30-4d2a-9643-0962f6faf385	\N	\N	\N	\N
+5878	1	5ddf4b7a-819b-4141-9c29-6963ead1e5ef	version.layout.3.selectedTestimonials	\N	\N	\N	\N	\N	b440e19a-7d00-487a-9927-d384dee97e22	\N	\N
+5879	1	5ddf4b7a-819b-4141-9c29-6963ead1e5ef	version.layout.7.selectedTestimonials	\N	\N	\N	\N	\N	ad1d03ad-f60b-4f83-90c2-d456f1fbaf21	\N	\N
+5880	1	5ddf4b7a-819b-4141-9c29-6963ead1e5ef	version.layout.9.logos	\N	\N	\N	8c44fa47-dbaa-44ba-9a83-c35e232404f7	\N	\N	\N	\N
+5881	2	5ddf4b7a-819b-4141-9c29-6963ead1e5ef	version.layout.9.logos	\N	\N	\N	93e4c6fc-6bfb-4246-aad1-8861ebc78777	\N	\N	\N	\N
+5882	3	5ddf4b7a-819b-4141-9c29-6963ead1e5ef	version.layout.9.logos	\N	\N	\N	8cfbc8ec-db06-4d17-9c8b-bbf589f91e67	\N	\N	\N	\N
+5883	4	5ddf4b7a-819b-4141-9c29-6963ead1e5ef	version.layout.9.logos	\N	\N	\N	4f3b0cf8-dc31-4ff9-aa9f-9e0ec3cfb001	\N	\N	\N	\N
+5884	5	5ddf4b7a-819b-4141-9c29-6963ead1e5ef	version.layout.9.logos	\N	\N	\N	d67a9625-6f30-4d2a-9643-0962f6faf385	\N	\N	\N	\N
+5885	1	5ddf4b7a-819b-4141-9c29-6963ead1e5ef	version.layout.10.faqs	\N	\N	\N	\N	487d16ef-4d7e-4603-885d-53d42734b0f1	\N	\N	\N
+5886	2	5ddf4b7a-819b-4141-9c29-6963ead1e5ef	version.layout.10.faqs	\N	\N	\N	\N	2d37f238-e71e-4291-8919-33e4c7a73544	\N	\N	\N
+5887	3	5ddf4b7a-819b-4141-9c29-6963ead1e5ef	version.layout.10.faqs	\N	\N	\N	\N	4696359a-45b8-4fea-b14f-ca34e928e5d0	\N	\N	\N
+5888	4	5ddf4b7a-819b-4141-9c29-6963ead1e5ef	version.layout.10.faqs	\N	\N	\N	\N	0786b804-85ea-4269-841e-5f4fe762ada3	\N	\N	\N
+4582	1	10b09cc8-e2d4-4fa0-be66-83eadde2a7ae	version.layout.2.logos	\N	\N	\N	513d34fb-5dbc-4333-b0ab-af8e3756cc8a	\N	\N	\N	\N
+4583	2	10b09cc8-e2d4-4fa0-be66-83eadde2a7ae	version.layout.2.logos	\N	\N	\N	92890105-dde4-4c79-acac-d81ad6dd978a	\N	\N	\N	\N
+4584	1	10b09cc8-e2d4-4fa0-be66-83eadde2a7ae	version.layout.3.selectedTestimonials	\N	\N	\N	\N	\N	b440e19a-7d00-487a-9927-d384dee97e22	\N	\N
+4585	1	10b09cc8-e2d4-4fa0-be66-83eadde2a7ae	version.layout.7.selectedTestimonials	\N	\N	\N	\N	\N	ad1d03ad-f60b-4f83-90c2-d456f1fbaf21	\N	\N
+4586	1	10b09cc8-e2d4-4fa0-be66-83eadde2a7ae	version.layout.9.logos	\N	\N	\N	8c44fa47-dbaa-44ba-9a83-c35e232404f7	\N	\N	\N	\N
+4587	2	10b09cc8-e2d4-4fa0-be66-83eadde2a7ae	version.layout.9.logos	\N	\N	\N	93e4c6fc-6bfb-4246-aad1-8861ebc78777	\N	\N	\N	\N
+4588	3	10b09cc8-e2d4-4fa0-be66-83eadde2a7ae	version.layout.9.logos	\N	\N	\N	8cfbc8ec-db06-4d17-9c8b-bbf589f91e67	\N	\N	\N	\N
+4589	4	10b09cc8-e2d4-4fa0-be66-83eadde2a7ae	version.layout.9.logos	\N	\N	\N	4f3b0cf8-dc31-4ff9-aa9f-9e0ec3cfb001	\N	\N	\N	\N
+4590	5	10b09cc8-e2d4-4fa0-be66-83eadde2a7ae	version.layout.9.logos	\N	\N	\N	d67a9625-6f30-4d2a-9643-0962f6faf385	\N	\N	\N	\N
+4898	1	7e6a8c79-56a7-464d-b879-8f1b64203ab0	version.layout.3.selectedTestimonials	\N	\N	\N	\N	\N	b440e19a-7d00-487a-9927-d384dee97e22	\N	\N
+4899	1	7e6a8c79-56a7-464d-b879-8f1b64203ab0	version.layout.7.selectedTestimonials	\N	\N	\N	\N	\N	ad1d03ad-f60b-4f83-90c2-d456f1fbaf21	\N	\N
+4900	1	7e6a8c79-56a7-464d-b879-8f1b64203ab0	version.layout.9.logos	\N	\N	\N	8c44fa47-dbaa-44ba-9a83-c35e232404f7	\N	\N	\N	\N
+4901	2	7e6a8c79-56a7-464d-b879-8f1b64203ab0	version.layout.9.logos	\N	\N	\N	93e4c6fc-6bfb-4246-aad1-8861ebc78777	\N	\N	\N	\N
+4902	3	7e6a8c79-56a7-464d-b879-8f1b64203ab0	version.layout.9.logos	\N	\N	\N	8cfbc8ec-db06-4d17-9c8b-bbf589f91e67	\N	\N	\N	\N
+4903	4	7e6a8c79-56a7-464d-b879-8f1b64203ab0	version.layout.9.logos	\N	\N	\N	4f3b0cf8-dc31-4ff9-aa9f-9e0ec3cfb001	\N	\N	\N	\N
+4904	5	7e6a8c79-56a7-464d-b879-8f1b64203ab0	version.layout.9.logos	\N	\N	\N	d67a9625-6f30-4d2a-9643-0962f6faf385	\N	\N	\N	\N
+4905	1	7e6a8c79-56a7-464d-b879-8f1b64203ab0	version.layout.10.faqs	\N	\N	\N	\N	487d16ef-4d7e-4603-885d-53d42734b0f1	\N	\N	\N
+4906	2	7e6a8c79-56a7-464d-b879-8f1b64203ab0	version.layout.10.faqs	\N	\N	\N	\N	2d37f238-e71e-4291-8919-33e4c7a73544	\N	\N	\N
+4591	1	10b09cc8-e2d4-4fa0-be66-83eadde2a7ae	version.layout.10.faqs	\N	\N	\N	\N	487d16ef-4d7e-4603-885d-53d42734b0f1	\N	\N	\N
+4592	2	10b09cc8-e2d4-4fa0-be66-83eadde2a7ae	version.layout.10.faqs	\N	\N	\N	\N	2d37f238-e71e-4291-8919-33e4c7a73544	\N	\N	\N
+4593	3	10b09cc8-e2d4-4fa0-be66-83eadde2a7ae	version.layout.10.faqs	\N	\N	\N	\N	4696359a-45b8-4fea-b14f-ca34e928e5d0	\N	\N	\N
+4594	4	10b09cc8-e2d4-4fa0-be66-83eadde2a7ae	version.layout.10.faqs	\N	\N	\N	\N	0786b804-85ea-4269-841e-5f4fe762ada3	\N	\N	\N
+4595	5	10b09cc8-e2d4-4fa0-be66-83eadde2a7ae	version.layout.10.faqs	\N	\N	\N	\N	0ad17856-43c0-4ec9-bd88-c26f826dfb68	\N	\N	\N
+4596	6	10b09cc8-e2d4-4fa0-be66-83eadde2a7ae	version.layout.10.faqs	\N	\N	\N	\N	cf06eaf5-c215-44fc-82c2-a7696336ef41	\N	\N	\N
+4907	3	7e6a8c79-56a7-464d-b879-8f1b64203ab0	version.layout.10.faqs	\N	\N	\N	\N	4696359a-45b8-4fea-b14f-ca34e928e5d0	\N	\N	\N
+4908	4	7e6a8c79-56a7-464d-b879-8f1b64203ab0	version.layout.10.faqs	\N	\N	\N	\N	0786b804-85ea-4269-841e-5f4fe762ada3	\N	\N	\N
+4909	5	7e6a8c79-56a7-464d-b879-8f1b64203ab0	version.layout.10.faqs	\N	\N	\N	\N	0ad17856-43c0-4ec9-bd88-c26f826dfb68	\N	\N	\N
+4910	6	7e6a8c79-56a7-464d-b879-8f1b64203ab0	version.layout.10.faqs	\N	\N	\N	\N	cf06eaf5-c215-44fc-82c2-a7696336ef41	\N	\N	\N
+5889	5	5ddf4b7a-819b-4141-9c29-6963ead1e5ef	version.layout.10.faqs	\N	\N	\N	\N	0ad17856-43c0-4ec9-bd88-c26f826dfb68	\N	\N	\N
+5890	6	5ddf4b7a-819b-4141-9c29-6963ead1e5ef	version.layout.10.faqs	\N	\N	\N	\N	cf06eaf5-c215-44fc-82c2-a7696336ef41	\N	\N	\N
+6081	3	040a7ac1-73c6-4fe0-8f2b-3804dbea6df3	version.layout.10.faqs	\N	\N	\N	\N	4696359a-45b8-4fea-b14f-ca34e928e5d0	\N	\N	\N
+6082	4	040a7ac1-73c6-4fe0-8f2b-3804dbea6df3	version.layout.10.faqs	\N	\N	\N	\N	0786b804-85ea-4269-841e-5f4fe762ada3	\N	\N	\N
+6083	5	040a7ac1-73c6-4fe0-8f2b-3804dbea6df3	version.layout.10.faqs	\N	\N	\N	\N	0ad17856-43c0-4ec9-bd88-c26f826dfb68	\N	\N	\N
+6084	6	040a7ac1-73c6-4fe0-8f2b-3804dbea6df3	version.layout.10.faqs	\N	\N	\N	\N	cf06eaf5-c215-44fc-82c2-a7696336ef41	\N	\N	\N
+6205	1	b988988c-b274-4303-baca-3c185b34e80f	version.layout.0.logos	\N	\N	\N	8c44fa47-dbaa-44ba-9a83-c35e232404f7	\N	\N	\N	\N
+6206	2	b988988c-b274-4303-baca-3c185b34e80f	version.layout.0.logos	\N	\N	\N	93e4c6fc-6bfb-4246-aad1-8861ebc78777	\N	\N	\N	\N
+6207	3	b988988c-b274-4303-baca-3c185b34e80f	version.layout.0.logos	\N	\N	\N	8cfbc8ec-db06-4d17-9c8b-bbf589f91e67	\N	\N	\N	\N
+6208	4	b988988c-b274-4303-baca-3c185b34e80f	version.layout.0.logos	\N	\N	\N	4f3b0cf8-dc31-4ff9-aa9f-9e0ec3cfb001	\N	\N	\N	\N
+6209	5	b988988c-b274-4303-baca-3c185b34e80f	version.layout.0.logos	\N	\N	\N	d67a9625-6f30-4d2a-9643-0962f6faf385	\N	\N	\N	\N
+6210	1	b988988c-b274-4303-baca-3c185b34e80f	version.layout.2.logos	\N	\N	\N	513d34fb-5dbc-4333-b0ab-af8e3756cc8a	\N	\N	\N	\N
+6211	2	b988988c-b274-4303-baca-3c185b34e80f	version.layout.2.logos	\N	\N	\N	92890105-dde4-4c79-acac-d81ad6dd978a	\N	\N	\N	\N
+6212	1	b988988c-b274-4303-baca-3c185b34e80f	version.layout.3.selectedTestimonials	\N	\N	\N	\N	\N	b440e19a-7d00-487a-9927-d384dee97e22	\N	\N
+6213	1	b988988c-b274-4303-baca-3c185b34e80f	version.layout.7.selectedTestimonials	\N	\N	\N	\N	\N	ad1d03ad-f60b-4f83-90c2-d456f1fbaf21	\N	\N
+6214	1	b988988c-b274-4303-baca-3c185b34e80f	version.layout.9.logos	\N	\N	\N	8c44fa47-dbaa-44ba-9a83-c35e232404f7	\N	\N	\N	\N
+6215	2	b988988c-b274-4303-baca-3c185b34e80f	version.layout.9.logos	\N	\N	\N	93e4c6fc-6bfb-4246-aad1-8861ebc78777	\N	\N	\N	\N
+6216	3	b988988c-b274-4303-baca-3c185b34e80f	version.layout.9.logos	\N	\N	\N	8cfbc8ec-db06-4d17-9c8b-bbf589f91e67	\N	\N	\N	\N
+6217	4	b988988c-b274-4303-baca-3c185b34e80f	version.layout.9.logos	\N	\N	\N	4f3b0cf8-dc31-4ff9-aa9f-9e0ec3cfb001	\N	\N	\N	\N
+6218	5	b988988c-b274-4303-baca-3c185b34e80f	version.layout.9.logos	\N	\N	\N	d67a9625-6f30-4d2a-9643-0962f6faf385	\N	\N	\N	\N
+6219	1	b988988c-b274-4303-baca-3c185b34e80f	version.layout.10.faqs	\N	\N	\N	\N	487d16ef-4d7e-4603-885d-53d42734b0f1	\N	\N	\N
+6220	2	b988988c-b274-4303-baca-3c185b34e80f	version.layout.10.faqs	\N	\N	\N	\N	2d37f238-e71e-4291-8919-33e4c7a73544	\N	\N	\N
+6221	3	b988988c-b274-4303-baca-3c185b34e80f	version.layout.10.faqs	\N	\N	\N	\N	4696359a-45b8-4fea-b14f-ca34e928e5d0	\N	\N	\N
+6222	4	b988988c-b274-4303-baca-3c185b34e80f	version.layout.10.faqs	\N	\N	\N	\N	0786b804-85ea-4269-841e-5f4fe762ada3	\N	\N	\N
+6223	5	b988988c-b274-4303-baca-3c185b34e80f	version.layout.10.faqs	\N	\N	\N	\N	0ad17856-43c0-4ec9-bd88-c26f826dfb68	\N	\N	\N
+6224	6	b988988c-b274-4303-baca-3c185b34e80f	version.layout.10.faqs	\N	\N	\N	\N	cf06eaf5-c215-44fc-82c2-a7696336ef41	\N	\N	\N
+6265	1	9c74e1c0-9a5d-413b-8da8-b2b138a7907f	version.layout.0.logos	\N	\N	\N	8c44fa47-dbaa-44ba-9a83-c35e232404f7	\N	\N	\N	\N
+6266	2	9c74e1c0-9a5d-413b-8da8-b2b138a7907f	version.layout.0.logos	\N	\N	\N	93e4c6fc-6bfb-4246-aad1-8861ebc78777	\N	\N	\N	\N
+6267	3	9c74e1c0-9a5d-413b-8da8-b2b138a7907f	version.layout.0.logos	\N	\N	\N	8cfbc8ec-db06-4d17-9c8b-bbf589f91e67	\N	\N	\N	\N
+6268	4	9c74e1c0-9a5d-413b-8da8-b2b138a7907f	version.layout.0.logos	\N	\N	\N	4f3b0cf8-dc31-4ff9-aa9f-9e0ec3cfb001	\N	\N	\N	\N
+6269	5	9c74e1c0-9a5d-413b-8da8-b2b138a7907f	version.layout.0.logos	\N	\N	\N	d67a9625-6f30-4d2a-9643-0962f6faf385	\N	\N	\N	\N
+6270	1	9c74e1c0-9a5d-413b-8da8-b2b138a7907f	version.layout.2.logos	\N	\N	\N	513d34fb-5dbc-4333-b0ab-af8e3756cc8a	\N	\N	\N	\N
+6271	2	9c74e1c0-9a5d-413b-8da8-b2b138a7907f	version.layout.2.logos	\N	\N	\N	92890105-dde4-4c79-acac-d81ad6dd978a	\N	\N	\N	\N
+6272	1	9c74e1c0-9a5d-413b-8da8-b2b138a7907f	version.layout.3.selectedTestimonials	\N	\N	\N	\N	\N	b440e19a-7d00-487a-9927-d384dee97e22	\N	\N
+6273	1	9c74e1c0-9a5d-413b-8da8-b2b138a7907f	version.layout.7.selectedTestimonials	\N	\N	\N	\N	\N	ad1d03ad-f60b-4f83-90c2-d456f1fbaf21	\N	\N
+6011	1	1ee329f1-1129-42dd-a064-650b4964fb9f	version.layout.5.logos	\N	\N	\N	92890105-dde4-4c79-acac-d81ad6dd978a	\N	\N	\N	\N
+6012	2	1ee329f1-1129-42dd-a064-650b4964fb9f	version.layout.5.logos	\N	\N	\N	513d34fb-5dbc-4333-b0ab-af8e3756cc8a	\N	\N	\N	\N
+6013	1	2919d024-03ac-422e-94d6-77cdfc4a7014	version.layout.5.logos	\N	\N	\N	92890105-dde4-4c79-acac-d81ad6dd978a	\N	\N	\N	\N
+6014	2	2919d024-03ac-422e-94d6-77cdfc4a7014	version.layout.5.logos	\N	\N	\N	513d34fb-5dbc-4333-b0ab-af8e3756cc8a	\N	\N	\N	\N
+6274	1	9c74e1c0-9a5d-413b-8da8-b2b138a7907f	version.layout.9.logos	\N	\N	\N	8c44fa47-dbaa-44ba-9a83-c35e232404f7	\N	\N	\N	\N
+6275	2	9c74e1c0-9a5d-413b-8da8-b2b138a7907f	version.layout.9.logos	\N	\N	\N	93e4c6fc-6bfb-4246-aad1-8861ebc78777	\N	\N	\N	\N
+6276	3	9c74e1c0-9a5d-413b-8da8-b2b138a7907f	version.layout.9.logos	\N	\N	\N	8cfbc8ec-db06-4d17-9c8b-bbf589f91e67	\N	\N	\N	\N
+6277	4	9c74e1c0-9a5d-413b-8da8-b2b138a7907f	version.layout.9.logos	\N	\N	\N	4f3b0cf8-dc31-4ff9-aa9f-9e0ec3cfb001	\N	\N	\N	\N
+6278	5	9c74e1c0-9a5d-413b-8da8-b2b138a7907f	version.layout.9.logos	\N	\N	\N	d67a9625-6f30-4d2a-9643-0962f6faf385	\N	\N	\N	\N
+6279	1	9c74e1c0-9a5d-413b-8da8-b2b138a7907f	version.layout.10.faqs	\N	\N	\N	\N	487d16ef-4d7e-4603-885d-53d42734b0f1	\N	\N	\N
+6280	2	9c74e1c0-9a5d-413b-8da8-b2b138a7907f	version.layout.10.faqs	\N	\N	\N	\N	2d37f238-e71e-4291-8919-33e4c7a73544	\N	\N	\N
+6281	3	9c74e1c0-9a5d-413b-8da8-b2b138a7907f	version.layout.10.faqs	\N	\N	\N	\N	4696359a-45b8-4fea-b14f-ca34e928e5d0	\N	\N	\N
+6282	4	9c74e1c0-9a5d-413b-8da8-b2b138a7907f	version.layout.10.faqs	\N	\N	\N	\N	0786b804-85ea-4269-841e-5f4fe762ada3	\N	\N	\N
+6283	5	9c74e1c0-9a5d-413b-8da8-b2b138a7907f	version.layout.10.faqs	\N	\N	\N	\N	0ad17856-43c0-4ec9-bd88-c26f826dfb68	\N	\N	\N
+6061	1	955faaf3-565f-4607-bb5d-72ad0cd63d5d	version.layout.5.logos	\N	\N	\N	92890105-dde4-4c79-acac-d81ad6dd978a	\N	\N	\N	\N
+6062	2	955faaf3-565f-4607-bb5d-72ad0cd63d5d	version.layout.5.logos	\N	\N	\N	513d34fb-5dbc-4333-b0ab-af8e3756cc8a	\N	\N	\N	\N
+6063	1	f714fe7f-ab61-4cf9-927c-9bcf97ccf1b6	version.layout.5.logos	\N	\N	\N	92890105-dde4-4c79-acac-d81ad6dd978a	\N	\N	\N	\N
+6064	2	f714fe7f-ab61-4cf9-927c-9bcf97ccf1b6	version.layout.5.logos	\N	\N	\N	513d34fb-5dbc-4333-b0ab-af8e3756cc8a	\N	\N	\N	\N
+6284	6	9c74e1c0-9a5d-413b-8da8-b2b138a7907f	version.layout.10.faqs	\N	\N	\N	\N	cf06eaf5-c215-44fc-82c2-a7696336ef41	\N	\N	\N
+5591	1	444fb6f2-0056-4c49-83e5-882d57ef0da3	version.layout.0.logos	\N	\N	\N	8c44fa47-dbaa-44ba-9a83-c35e232404f7	\N	\N	\N	\N
+5592	2	444fb6f2-0056-4c49-83e5-882d57ef0da3	version.layout.0.logos	\N	\N	\N	93e4c6fc-6bfb-4246-aad1-8861ebc78777	\N	\N	\N	\N
+5593	3	444fb6f2-0056-4c49-83e5-882d57ef0da3	version.layout.0.logos	\N	\N	\N	8cfbc8ec-db06-4d17-9c8b-bbf589f91e67	\N	\N	\N	\N
+5594	4	444fb6f2-0056-4c49-83e5-882d57ef0da3	version.layout.0.logos	\N	\N	\N	4f3b0cf8-dc31-4ff9-aa9f-9e0ec3cfb001	\N	\N	\N	\N
+5595	5	444fb6f2-0056-4c49-83e5-882d57ef0da3	version.layout.0.logos	\N	\N	\N	d67a9625-6f30-4d2a-9643-0962f6faf385	\N	\N	\N	\N
+5596	1	444fb6f2-0056-4c49-83e5-882d57ef0da3	version.layout.2.logos	\N	\N	\N	513d34fb-5dbc-4333-b0ab-af8e3756cc8a	\N	\N	\N	\N
+5597	2	444fb6f2-0056-4c49-83e5-882d57ef0da3	version.layout.2.logos	\N	\N	\N	92890105-dde4-4c79-acac-d81ad6dd978a	\N	\N	\N	\N
+5598	1	444fb6f2-0056-4c49-83e5-882d57ef0da3	version.layout.3.selectedTestimonials	\N	\N	\N	\N	\N	b440e19a-7d00-487a-9927-d384dee97e22	\N	\N
+5599	1	444fb6f2-0056-4c49-83e5-882d57ef0da3	version.layout.7.selectedTestimonials	\N	\N	\N	\N	\N	ad1d03ad-f60b-4f83-90c2-d456f1fbaf21	\N	\N
+5600	1	444fb6f2-0056-4c49-83e5-882d57ef0da3	version.layout.9.logos	\N	\N	\N	8c44fa47-dbaa-44ba-9a83-c35e232404f7	\N	\N	\N	\N
+5601	2	444fb6f2-0056-4c49-83e5-882d57ef0da3	version.layout.9.logos	\N	\N	\N	93e4c6fc-6bfb-4246-aad1-8861ebc78777	\N	\N	\N	\N
+5602	3	444fb6f2-0056-4c49-83e5-882d57ef0da3	version.layout.9.logos	\N	\N	\N	8cfbc8ec-db06-4d17-9c8b-bbf589f91e67	\N	\N	\N	\N
+5603	4	444fb6f2-0056-4c49-83e5-882d57ef0da3	version.layout.9.logos	\N	\N	\N	4f3b0cf8-dc31-4ff9-aa9f-9e0ec3cfb001	\N	\N	\N	\N
+5604	5	444fb6f2-0056-4c49-83e5-882d57ef0da3	version.layout.9.logos	\N	\N	\N	d67a9625-6f30-4d2a-9643-0962f6faf385	\N	\N	\N	\N
+5605	1	444fb6f2-0056-4c49-83e5-882d57ef0da3	version.layout.10.faqs	\N	\N	\N	\N	487d16ef-4d7e-4603-885d-53d42734b0f1	\N	\N	\N
+5606	2	444fb6f2-0056-4c49-83e5-882d57ef0da3	version.layout.10.faqs	\N	\N	\N	\N	2d37f238-e71e-4291-8919-33e4c7a73544	\N	\N	\N
+5607	3	444fb6f2-0056-4c49-83e5-882d57ef0da3	version.layout.10.faqs	\N	\N	\N	\N	4696359a-45b8-4fea-b14f-ca34e928e5d0	\N	\N	\N
+5608	4	444fb6f2-0056-4c49-83e5-882d57ef0da3	version.layout.10.faqs	\N	\N	\N	\N	0786b804-85ea-4269-841e-5f4fe762ada3	\N	\N	\N
+5609	5	444fb6f2-0056-4c49-83e5-882d57ef0da3	version.layout.10.faqs	\N	\N	\N	\N	0ad17856-43c0-4ec9-bd88-c26f826dfb68	\N	\N	\N
+5610	6	444fb6f2-0056-4c49-83e5-882d57ef0da3	version.layout.10.faqs	\N	\N	\N	\N	cf06eaf5-c215-44fc-82c2-a7696336ef41	\N	\N	\N
+5611	1	6f525e3d-e3d3-48ee-a833-7300891659a4	version.layout.0.logos	\N	\N	\N	8c44fa47-dbaa-44ba-9a83-c35e232404f7	\N	\N	\N	\N
+5612	2	6f525e3d-e3d3-48ee-a833-7300891659a4	version.layout.0.logos	\N	\N	\N	93e4c6fc-6bfb-4246-aad1-8861ebc78777	\N	\N	\N	\N
+5613	3	6f525e3d-e3d3-48ee-a833-7300891659a4	version.layout.0.logos	\N	\N	\N	8cfbc8ec-db06-4d17-9c8b-bbf589f91e67	\N	\N	\N	\N
+5614	4	6f525e3d-e3d3-48ee-a833-7300891659a4	version.layout.0.logos	\N	\N	\N	4f3b0cf8-dc31-4ff9-aa9f-9e0ec3cfb001	\N	\N	\N	\N
+5615	5	6f525e3d-e3d3-48ee-a833-7300891659a4	version.layout.0.logos	\N	\N	\N	d67a9625-6f30-4d2a-9643-0962f6faf385	\N	\N	\N	\N
+5616	1	6f525e3d-e3d3-48ee-a833-7300891659a4	version.layout.2.logos	\N	\N	\N	513d34fb-5dbc-4333-b0ab-af8e3756cc8a	\N	\N	\N	\N
+5617	2	6f525e3d-e3d3-48ee-a833-7300891659a4	version.layout.2.logos	\N	\N	\N	92890105-dde4-4c79-acac-d81ad6dd978a	\N	\N	\N	\N
+5618	1	6f525e3d-e3d3-48ee-a833-7300891659a4	version.layout.3.selectedTestimonials	\N	\N	\N	\N	\N	b440e19a-7d00-487a-9927-d384dee97e22	\N	\N
+5619	1	6f525e3d-e3d3-48ee-a833-7300891659a4	version.layout.7.selectedTestimonials	\N	\N	\N	\N	\N	ad1d03ad-f60b-4f83-90c2-d456f1fbaf21	\N	\N
+5620	1	6f525e3d-e3d3-48ee-a833-7300891659a4	version.layout.9.logos	\N	\N	\N	8c44fa47-dbaa-44ba-9a83-c35e232404f7	\N	\N	\N	\N
+5621	2	6f525e3d-e3d3-48ee-a833-7300891659a4	version.layout.9.logos	\N	\N	\N	93e4c6fc-6bfb-4246-aad1-8861ebc78777	\N	\N	\N	\N
+5622	3	6f525e3d-e3d3-48ee-a833-7300891659a4	version.layout.9.logos	\N	\N	\N	8cfbc8ec-db06-4d17-9c8b-bbf589f91e67	\N	\N	\N	\N
+5623	4	6f525e3d-e3d3-48ee-a833-7300891659a4	version.layout.9.logos	\N	\N	\N	4f3b0cf8-dc31-4ff9-aa9f-9e0ec3cfb001	\N	\N	\N	\N
+5624	5	6f525e3d-e3d3-48ee-a833-7300891659a4	version.layout.9.logos	\N	\N	\N	d67a9625-6f30-4d2a-9643-0962f6faf385	\N	\N	\N	\N
+5625	1	6f525e3d-e3d3-48ee-a833-7300891659a4	version.layout.10.faqs	\N	\N	\N	\N	487d16ef-4d7e-4603-885d-53d42734b0f1	\N	\N	\N
+5626	2	6f525e3d-e3d3-48ee-a833-7300891659a4	version.layout.10.faqs	\N	\N	\N	\N	2d37f238-e71e-4291-8919-33e4c7a73544	\N	\N	\N
+5627	3	6f525e3d-e3d3-48ee-a833-7300891659a4	version.layout.10.faqs	\N	\N	\N	\N	4696359a-45b8-4fea-b14f-ca34e928e5d0	\N	\N	\N
+5628	4	6f525e3d-e3d3-48ee-a833-7300891659a4	version.layout.10.faqs	\N	\N	\N	\N	0786b804-85ea-4269-841e-5f4fe762ada3	\N	\N	\N
+5629	5	6f525e3d-e3d3-48ee-a833-7300891659a4	version.layout.10.faqs	\N	\N	\N	\N	0ad17856-43c0-4ec9-bd88-c26f826dfb68	\N	\N	\N
+5630	6	6f525e3d-e3d3-48ee-a833-7300891659a4	version.layout.10.faqs	\N	\N	\N	\N	cf06eaf5-c215-44fc-82c2-a7696336ef41	\N	\N	\N
+5891	1	c8d59231-e7a0-463e-8fd1-e6763da8be9d	version.layout.0.logos	\N	\N	\N	8c44fa47-dbaa-44ba-9a83-c35e232404f7	\N	\N	\N	\N
+5892	2	c8d59231-e7a0-463e-8fd1-e6763da8be9d	version.layout.0.logos	\N	\N	\N	93e4c6fc-6bfb-4246-aad1-8861ebc78777	\N	\N	\N	\N
+5893	3	c8d59231-e7a0-463e-8fd1-e6763da8be9d	version.layout.0.logos	\N	\N	\N	8cfbc8ec-db06-4d17-9c8b-bbf589f91e67	\N	\N	\N	\N
+5894	4	c8d59231-e7a0-463e-8fd1-e6763da8be9d	version.layout.0.logos	\N	\N	\N	4f3b0cf8-dc31-4ff9-aa9f-9e0ec3cfb001	\N	\N	\N	\N
+5895	5	c8d59231-e7a0-463e-8fd1-e6763da8be9d	version.layout.0.logos	\N	\N	\N	d67a9625-6f30-4d2a-9643-0962f6faf385	\N	\N	\N	\N
+5896	1	c8d59231-e7a0-463e-8fd1-e6763da8be9d	version.layout.2.logos	\N	\N	\N	513d34fb-5dbc-4333-b0ab-af8e3756cc8a	\N	\N	\N	\N
+5897	2	c8d59231-e7a0-463e-8fd1-e6763da8be9d	version.layout.2.logos	\N	\N	\N	92890105-dde4-4c79-acac-d81ad6dd978a	\N	\N	\N	\N
+5898	1	c8d59231-e7a0-463e-8fd1-e6763da8be9d	version.layout.3.selectedTestimonials	\N	\N	\N	\N	\N	b440e19a-7d00-487a-9927-d384dee97e22	\N	\N
+5899	1	c8d59231-e7a0-463e-8fd1-e6763da8be9d	version.layout.7.selectedTestimonials	\N	\N	\N	\N	\N	ad1d03ad-f60b-4f83-90c2-d456f1fbaf21	\N	\N
+5900	1	c8d59231-e7a0-463e-8fd1-e6763da8be9d	version.layout.9.logos	\N	\N	\N	8c44fa47-dbaa-44ba-9a83-c35e232404f7	\N	\N	\N	\N
+5901	2	c8d59231-e7a0-463e-8fd1-e6763da8be9d	version.layout.9.logos	\N	\N	\N	93e4c6fc-6bfb-4246-aad1-8861ebc78777	\N	\N	\N	\N
+5902	3	c8d59231-e7a0-463e-8fd1-e6763da8be9d	version.layout.9.logos	\N	\N	\N	8cfbc8ec-db06-4d17-9c8b-bbf589f91e67	\N	\N	\N	\N
+5903	4	c8d59231-e7a0-463e-8fd1-e6763da8be9d	version.layout.9.logos	\N	\N	\N	4f3b0cf8-dc31-4ff9-aa9f-9e0ec3cfb001	\N	\N	\N	\N
+5904	5	c8d59231-e7a0-463e-8fd1-e6763da8be9d	version.layout.9.logos	\N	\N	\N	d67a9625-6f30-4d2a-9643-0962f6faf385	\N	\N	\N	\N
+5905	1	c8d59231-e7a0-463e-8fd1-e6763da8be9d	version.layout.10.faqs	\N	\N	\N	\N	487d16ef-4d7e-4603-885d-53d42734b0f1	\N	\N	\N
+5906	2	c8d59231-e7a0-463e-8fd1-e6763da8be9d	version.layout.10.faqs	\N	\N	\N	\N	2d37f238-e71e-4291-8919-33e4c7a73544	\N	\N	\N
+5907	3	c8d59231-e7a0-463e-8fd1-e6763da8be9d	version.layout.10.faqs	\N	\N	\N	\N	4696359a-45b8-4fea-b14f-ca34e928e5d0	\N	\N	\N
+5908	4	c8d59231-e7a0-463e-8fd1-e6763da8be9d	version.layout.10.faqs	\N	\N	\N	\N	0786b804-85ea-4269-841e-5f4fe762ada3	\N	\N	\N
+5909	5	c8d59231-e7a0-463e-8fd1-e6763da8be9d	version.layout.10.faqs	\N	\N	\N	\N	0ad17856-43c0-4ec9-bd88-c26f826dfb68	\N	\N	\N
+5910	6	c8d59231-e7a0-463e-8fd1-e6763da8be9d	version.layout.10.faqs	\N	\N	\N	\N	cf06eaf5-c215-44fc-82c2-a7696336ef41	\N	\N	\N
+4951	1	1d24c50c-85c9-4f22-9f26-736826283f5e	version.layout.0.logos	\N	\N	\N	8c44fa47-dbaa-44ba-9a83-c35e232404f7	\N	\N	\N	\N
+4952	2	1d24c50c-85c9-4f22-9f26-736826283f5e	version.layout.0.logos	\N	\N	\N	93e4c6fc-6bfb-4246-aad1-8861ebc78777	\N	\N	\N	\N
+4953	3	1d24c50c-85c9-4f22-9f26-736826283f5e	version.layout.0.logos	\N	\N	\N	8cfbc8ec-db06-4d17-9c8b-bbf589f91e67	\N	\N	\N	\N
+4954	4	1d24c50c-85c9-4f22-9f26-736826283f5e	version.layout.0.logos	\N	\N	\N	4f3b0cf8-dc31-4ff9-aa9f-9e0ec3cfb001	\N	\N	\N	\N
+4955	5	1d24c50c-85c9-4f22-9f26-736826283f5e	version.layout.0.logos	\N	\N	\N	d67a9625-6f30-4d2a-9643-0962f6faf385	\N	\N	\N	\N
+4956	1	1d24c50c-85c9-4f22-9f26-736826283f5e	version.layout.2.logos	\N	\N	\N	513d34fb-5dbc-4333-b0ab-af8e3756cc8a	\N	\N	\N	\N
+4957	2	1d24c50c-85c9-4f22-9f26-736826283f5e	version.layout.2.logos	\N	\N	\N	92890105-dde4-4c79-acac-d81ad6dd978a	\N	\N	\N	\N
+4958	1	1d24c50c-85c9-4f22-9f26-736826283f5e	version.layout.3.selectedTestimonials	\N	\N	\N	\N	\N	b440e19a-7d00-487a-9927-d384dee97e22	\N	\N
+4959	1	1d24c50c-85c9-4f22-9f26-736826283f5e	version.layout.7.selectedTestimonials	\N	\N	\N	\N	\N	ad1d03ad-f60b-4f83-90c2-d456f1fbaf21	\N	\N
+4960	1	1d24c50c-85c9-4f22-9f26-736826283f5e	version.layout.9.logos	\N	\N	\N	8c44fa47-dbaa-44ba-9a83-c35e232404f7	\N	\N	\N	\N
+4961	2	1d24c50c-85c9-4f22-9f26-736826283f5e	version.layout.9.logos	\N	\N	\N	93e4c6fc-6bfb-4246-aad1-8861ebc78777	\N	\N	\N	\N
+4962	3	1d24c50c-85c9-4f22-9f26-736826283f5e	version.layout.9.logos	\N	\N	\N	8cfbc8ec-db06-4d17-9c8b-bbf589f91e67	\N	\N	\N	\N
+4963	4	1d24c50c-85c9-4f22-9f26-736826283f5e	version.layout.9.logos	\N	\N	\N	4f3b0cf8-dc31-4ff9-aa9f-9e0ec3cfb001	\N	\N	\N	\N
+4964	5	1d24c50c-85c9-4f22-9f26-736826283f5e	version.layout.9.logos	\N	\N	\N	d67a9625-6f30-4d2a-9643-0962f6faf385	\N	\N	\N	\N
+4965	1	1d24c50c-85c9-4f22-9f26-736826283f5e	version.layout.10.faqs	\N	\N	\N	\N	487d16ef-4d7e-4603-885d-53d42734b0f1	\N	\N	\N
+4966	2	1d24c50c-85c9-4f22-9f26-736826283f5e	version.layout.10.faqs	\N	\N	\N	\N	2d37f238-e71e-4291-8919-33e4c7a73544	\N	\N	\N
+4967	3	1d24c50c-85c9-4f22-9f26-736826283f5e	version.layout.10.faqs	\N	\N	\N	\N	4696359a-45b8-4fea-b14f-ca34e928e5d0	\N	\N	\N
+4968	4	1d24c50c-85c9-4f22-9f26-736826283f5e	version.layout.10.faqs	\N	\N	\N	\N	0786b804-85ea-4269-841e-5f4fe762ada3	\N	\N	\N
+4969	5	1d24c50c-85c9-4f22-9f26-736826283f5e	version.layout.10.faqs	\N	\N	\N	\N	0ad17856-43c0-4ec9-bd88-c26f826dfb68	\N	\N	\N
+4970	6	1d24c50c-85c9-4f22-9f26-736826283f5e	version.layout.10.faqs	\N	\N	\N	\N	cf06eaf5-c215-44fc-82c2-a7696336ef41	\N	\N	\N
+5791	1	7b10acb8-518f-4fb4-8bbf-75ef9b57460f	version.layout.0.logos	\N	\N	\N	8c44fa47-dbaa-44ba-9a83-c35e232404f7	\N	\N	\N	\N
+5792	2	7b10acb8-518f-4fb4-8bbf-75ef9b57460f	version.layout.0.logos	\N	\N	\N	93e4c6fc-6bfb-4246-aad1-8861ebc78777	\N	\N	\N	\N
+5793	3	7b10acb8-518f-4fb4-8bbf-75ef9b57460f	version.layout.0.logos	\N	\N	\N	8cfbc8ec-db06-4d17-9c8b-bbf589f91e67	\N	\N	\N	\N
+5794	4	7b10acb8-518f-4fb4-8bbf-75ef9b57460f	version.layout.0.logos	\N	\N	\N	4f3b0cf8-dc31-4ff9-aa9f-9e0ec3cfb001	\N	\N	\N	\N
+5795	5	7b10acb8-518f-4fb4-8bbf-75ef9b57460f	version.layout.0.logos	\N	\N	\N	d67a9625-6f30-4d2a-9643-0962f6faf385	\N	\N	\N	\N
+5796	1	7b10acb8-518f-4fb4-8bbf-75ef9b57460f	version.layout.2.logos	\N	\N	\N	513d34fb-5dbc-4333-b0ab-af8e3756cc8a	\N	\N	\N	\N
+5797	2	7b10acb8-518f-4fb4-8bbf-75ef9b57460f	version.layout.2.logos	\N	\N	\N	92890105-dde4-4c79-acac-d81ad6dd978a	\N	\N	\N	\N
+5798	1	7b10acb8-518f-4fb4-8bbf-75ef9b57460f	version.layout.3.selectedTestimonials	\N	\N	\N	\N	\N	b440e19a-7d00-487a-9927-d384dee97e22	\N	\N
+5799	1	7b10acb8-518f-4fb4-8bbf-75ef9b57460f	version.layout.7.selectedTestimonials	\N	\N	\N	\N	\N	ad1d03ad-f60b-4f83-90c2-d456f1fbaf21	\N	\N
+5800	1	7b10acb8-518f-4fb4-8bbf-75ef9b57460f	version.layout.9.logos	\N	\N	\N	8c44fa47-dbaa-44ba-9a83-c35e232404f7	\N	\N	\N	\N
+5801	2	7b10acb8-518f-4fb4-8bbf-75ef9b57460f	version.layout.9.logos	\N	\N	\N	93e4c6fc-6bfb-4246-aad1-8861ebc78777	\N	\N	\N	\N
+5802	3	7b10acb8-518f-4fb4-8bbf-75ef9b57460f	version.layout.9.logos	\N	\N	\N	8cfbc8ec-db06-4d17-9c8b-bbf589f91e67	\N	\N	\N	\N
+5803	4	7b10acb8-518f-4fb4-8bbf-75ef9b57460f	version.layout.9.logos	\N	\N	\N	4f3b0cf8-dc31-4ff9-aa9f-9e0ec3cfb001	\N	\N	\N	\N
+5804	5	7b10acb8-518f-4fb4-8bbf-75ef9b57460f	version.layout.9.logos	\N	\N	\N	d67a9625-6f30-4d2a-9643-0962f6faf385	\N	\N	\N	\N
+5805	1	7b10acb8-518f-4fb4-8bbf-75ef9b57460f	version.layout.10.faqs	\N	\N	\N	\N	487d16ef-4d7e-4603-885d-53d42734b0f1	\N	\N	\N
+5806	2	7b10acb8-518f-4fb4-8bbf-75ef9b57460f	version.layout.10.faqs	\N	\N	\N	\N	2d37f238-e71e-4291-8919-33e4c7a73544	\N	\N	\N
+5807	3	7b10acb8-518f-4fb4-8bbf-75ef9b57460f	version.layout.10.faqs	\N	\N	\N	\N	4696359a-45b8-4fea-b14f-ca34e928e5d0	\N	\N	\N
+5808	4	7b10acb8-518f-4fb4-8bbf-75ef9b57460f	version.layout.10.faqs	\N	\N	\N	\N	0786b804-85ea-4269-841e-5f4fe762ada3	\N	\N	\N
+5809	5	7b10acb8-518f-4fb4-8bbf-75ef9b57460f	version.layout.10.faqs	\N	\N	\N	\N	0ad17856-43c0-4ec9-bd88-c26f826dfb68	\N	\N	\N
+6085	1	c6179f9d-b0c1-41c3-9997-6e6aabec88cd	version.layout.0.logos	\N	\N	\N	8c44fa47-dbaa-44ba-9a83-c35e232404f7	\N	\N	\N	\N
+6086	2	c6179f9d-b0c1-41c3-9997-6e6aabec88cd	version.layout.0.logos	\N	\N	\N	93e4c6fc-6bfb-4246-aad1-8861ebc78777	\N	\N	\N	\N
+5810	6	7b10acb8-518f-4fb4-8bbf-75ef9b57460f	version.layout.10.faqs	\N	\N	\N	\N	cf06eaf5-c215-44fc-82c2-a7696336ef41	\N	\N	\N
+5811	1	0e4a4b08-7246-47c2-aad7-6a69b9d95d2c	version.layout.0.logos	\N	\N	\N	8c44fa47-dbaa-44ba-9a83-c35e232404f7	\N	\N	\N	\N
+5812	2	0e4a4b08-7246-47c2-aad7-6a69b9d95d2c	version.layout.0.logos	\N	\N	\N	93e4c6fc-6bfb-4246-aad1-8861ebc78777	\N	\N	\N	\N
+5813	3	0e4a4b08-7246-47c2-aad7-6a69b9d95d2c	version.layout.0.logos	\N	\N	\N	8cfbc8ec-db06-4d17-9c8b-bbf589f91e67	\N	\N	\N	\N
+5814	4	0e4a4b08-7246-47c2-aad7-6a69b9d95d2c	version.layout.0.logos	\N	\N	\N	4f3b0cf8-dc31-4ff9-aa9f-9e0ec3cfb001	\N	\N	\N	\N
+5815	5	0e4a4b08-7246-47c2-aad7-6a69b9d95d2c	version.layout.0.logos	\N	\N	\N	d67a9625-6f30-4d2a-9643-0962f6faf385	\N	\N	\N	\N
+5816	1	0e4a4b08-7246-47c2-aad7-6a69b9d95d2c	version.layout.2.logos	\N	\N	\N	513d34fb-5dbc-4333-b0ab-af8e3756cc8a	\N	\N	\N	\N
+5817	2	0e4a4b08-7246-47c2-aad7-6a69b9d95d2c	version.layout.2.logos	\N	\N	\N	92890105-dde4-4c79-acac-d81ad6dd978a	\N	\N	\N	\N
+5818	1	0e4a4b08-7246-47c2-aad7-6a69b9d95d2c	version.layout.3.selectedTestimonials	\N	\N	\N	\N	\N	b440e19a-7d00-487a-9927-d384dee97e22	\N	\N
+5819	1	0e4a4b08-7246-47c2-aad7-6a69b9d95d2c	version.layout.7.selectedTestimonials	\N	\N	\N	\N	\N	ad1d03ad-f60b-4f83-90c2-d456f1fbaf21	\N	\N
+5820	1	0e4a4b08-7246-47c2-aad7-6a69b9d95d2c	version.layout.9.logos	\N	\N	\N	8c44fa47-dbaa-44ba-9a83-c35e232404f7	\N	\N	\N	\N
+5821	2	0e4a4b08-7246-47c2-aad7-6a69b9d95d2c	version.layout.9.logos	\N	\N	\N	93e4c6fc-6bfb-4246-aad1-8861ebc78777	\N	\N	\N	\N
+5822	3	0e4a4b08-7246-47c2-aad7-6a69b9d95d2c	version.layout.9.logos	\N	\N	\N	8cfbc8ec-db06-4d17-9c8b-bbf589f91e67	\N	\N	\N	\N
+5823	4	0e4a4b08-7246-47c2-aad7-6a69b9d95d2c	version.layout.9.logos	\N	\N	\N	4f3b0cf8-dc31-4ff9-aa9f-9e0ec3cfb001	\N	\N	\N	\N
+5824	5	0e4a4b08-7246-47c2-aad7-6a69b9d95d2c	version.layout.9.logos	\N	\N	\N	d67a9625-6f30-4d2a-9643-0962f6faf385	\N	\N	\N	\N
+5825	1	0e4a4b08-7246-47c2-aad7-6a69b9d95d2c	version.layout.10.faqs	\N	\N	\N	\N	487d16ef-4d7e-4603-885d-53d42734b0f1	\N	\N	\N
+5826	2	0e4a4b08-7246-47c2-aad7-6a69b9d95d2c	version.layout.10.faqs	\N	\N	\N	\N	2d37f238-e71e-4291-8919-33e4c7a73544	\N	\N	\N
+5827	3	0e4a4b08-7246-47c2-aad7-6a69b9d95d2c	version.layout.10.faqs	\N	\N	\N	\N	4696359a-45b8-4fea-b14f-ca34e928e5d0	\N	\N	\N
+5828	4	0e4a4b08-7246-47c2-aad7-6a69b9d95d2c	version.layout.10.faqs	\N	\N	\N	\N	0786b804-85ea-4269-841e-5f4fe762ada3	\N	\N	\N
+5829	5	0e4a4b08-7246-47c2-aad7-6a69b9d95d2c	version.layout.10.faqs	\N	\N	\N	\N	0ad17856-43c0-4ec9-bd88-c26f826dfb68	\N	\N	\N
+5830	6	0e4a4b08-7246-47c2-aad7-6a69b9d95d2c	version.layout.10.faqs	\N	\N	\N	\N	cf06eaf5-c215-44fc-82c2-a7696336ef41	\N	\N	\N
+6087	3	c6179f9d-b0c1-41c3-9997-6e6aabec88cd	version.layout.0.logos	\N	\N	\N	8cfbc8ec-db06-4d17-9c8b-bbf589f91e67	\N	\N	\N	\N
+6088	4	c6179f9d-b0c1-41c3-9997-6e6aabec88cd	version.layout.0.logos	\N	\N	\N	4f3b0cf8-dc31-4ff9-aa9f-9e0ec3cfb001	\N	\N	\N	\N
+6089	5	c6179f9d-b0c1-41c3-9997-6e6aabec88cd	version.layout.0.logos	\N	\N	\N	d67a9625-6f30-4d2a-9643-0962f6faf385	\N	\N	\N	\N
+6090	1	c6179f9d-b0c1-41c3-9997-6e6aabec88cd	version.layout.2.logos	\N	\N	\N	513d34fb-5dbc-4333-b0ab-af8e3756cc8a	\N	\N	\N	\N
+6091	2	c6179f9d-b0c1-41c3-9997-6e6aabec88cd	version.layout.2.logos	\N	\N	\N	92890105-dde4-4c79-acac-d81ad6dd978a	\N	\N	\N	\N
+6092	1	c6179f9d-b0c1-41c3-9997-6e6aabec88cd	version.layout.3.selectedTestimonials	\N	\N	\N	\N	\N	b440e19a-7d00-487a-9927-d384dee97e22	\N	\N
+6093	1	c6179f9d-b0c1-41c3-9997-6e6aabec88cd	version.layout.7.selectedTestimonials	\N	\N	\N	\N	\N	ad1d03ad-f60b-4f83-90c2-d456f1fbaf21	\N	\N
+6094	1	c6179f9d-b0c1-41c3-9997-6e6aabec88cd	version.layout.9.logos	\N	\N	\N	8c44fa47-dbaa-44ba-9a83-c35e232404f7	\N	\N	\N	\N
+6095	2	c6179f9d-b0c1-41c3-9997-6e6aabec88cd	version.layout.9.logos	\N	\N	\N	93e4c6fc-6bfb-4246-aad1-8861ebc78777	\N	\N	\N	\N
+6096	3	c6179f9d-b0c1-41c3-9997-6e6aabec88cd	version.layout.9.logos	\N	\N	\N	8cfbc8ec-db06-4d17-9c8b-bbf589f91e67	\N	\N	\N	\N
+6097	4	c6179f9d-b0c1-41c3-9997-6e6aabec88cd	version.layout.9.logos	\N	\N	\N	4f3b0cf8-dc31-4ff9-aa9f-9e0ec3cfb001	\N	\N	\N	\N
+6098	5	c6179f9d-b0c1-41c3-9997-6e6aabec88cd	version.layout.9.logos	\N	\N	\N	d67a9625-6f30-4d2a-9643-0962f6faf385	\N	\N	\N	\N
+6099	1	c6179f9d-b0c1-41c3-9997-6e6aabec88cd	version.layout.10.faqs	\N	\N	\N	\N	487d16ef-4d7e-4603-885d-53d42734b0f1	\N	\N	\N
+6100	2	c6179f9d-b0c1-41c3-9997-6e6aabec88cd	version.layout.10.faqs	\N	\N	\N	\N	2d37f238-e71e-4291-8919-33e4c7a73544	\N	\N	\N
+6101	3	c6179f9d-b0c1-41c3-9997-6e6aabec88cd	version.layout.10.faqs	\N	\N	\N	\N	4696359a-45b8-4fea-b14f-ca34e928e5d0	\N	\N	\N
+6102	4	c6179f9d-b0c1-41c3-9997-6e6aabec88cd	version.layout.10.faqs	\N	\N	\N	\N	0786b804-85ea-4269-841e-5f4fe762ada3	\N	\N	\N
+6103	5	c6179f9d-b0c1-41c3-9997-6e6aabec88cd	version.layout.10.faqs	\N	\N	\N	\N	0ad17856-43c0-4ec9-bd88-c26f826dfb68	\N	\N	\N
+6104	6	c6179f9d-b0c1-41c3-9997-6e6aabec88cd	version.layout.10.faqs	\N	\N	\N	\N	cf06eaf5-c215-44fc-82c2-a7696336ef41	\N	\N	\N
+1443	1	62a42c83-e7ff-454b-8946-e264891b6a83	version.layout.5.logos	\N	\N	\N	92890105-dde4-4c79-acac-d81ad6dd978a	\N	\N	\N	\N
+1444	2	62a42c83-e7ff-454b-8946-e264891b6a83	version.layout.5.logos	\N	\N	\N	513d34fb-5dbc-4333-b0ab-af8e3756cc8a	\N	\N	\N	\N
+1445	1	fb216ed8-a9eb-4f6f-adfa-bc16f638b14a	version.layout.5.logos	\N	\N	\N	92890105-dde4-4c79-acac-d81ad6dd978a	\N	\N	\N	\N
+1446	2	fb216ed8-a9eb-4f6f-adfa-bc16f638b14a	version.layout.5.logos	\N	\N	\N	513d34fb-5dbc-4333-b0ab-af8e3756cc8a	\N	\N	\N	\N
+3996	6	121949fd-6c23-47b2-a9f6-4316de5d07cc	version.layout.10.faqs	\N	\N	\N	\N	cf06eaf5-c215-44fc-82c2-a7696336ef41	\N	\N	\N
+4971	1	57aea5dc-5bfe-4cf1-b716-b0c95df2b185	version.layout.0.logos	\N	\N	\N	8c44fa47-dbaa-44ba-9a83-c35e232404f7	\N	\N	\N	\N
+4972	2	57aea5dc-5bfe-4cf1-b716-b0c95df2b185	version.layout.0.logos	\N	\N	\N	93e4c6fc-6bfb-4246-aad1-8861ebc78777	\N	\N	\N	\N
+4973	3	57aea5dc-5bfe-4cf1-b716-b0c95df2b185	version.layout.0.logos	\N	\N	\N	8cfbc8ec-db06-4d17-9c8b-bbf589f91e67	\N	\N	\N	\N
+4974	4	57aea5dc-5bfe-4cf1-b716-b0c95df2b185	version.layout.0.logos	\N	\N	\N	4f3b0cf8-dc31-4ff9-aa9f-9e0ec3cfb001	\N	\N	\N	\N
+4975	5	57aea5dc-5bfe-4cf1-b716-b0c95df2b185	version.layout.0.logos	\N	\N	\N	d67a9625-6f30-4d2a-9643-0962f6faf385	\N	\N	\N	\N
+4976	1	57aea5dc-5bfe-4cf1-b716-b0c95df2b185	version.layout.2.logos	\N	\N	\N	513d34fb-5dbc-4333-b0ab-af8e3756cc8a	\N	\N	\N	\N
+4977	2	57aea5dc-5bfe-4cf1-b716-b0c95df2b185	version.layout.2.logos	\N	\N	\N	92890105-dde4-4c79-acac-d81ad6dd978a	\N	\N	\N	\N
+4978	1	57aea5dc-5bfe-4cf1-b716-b0c95df2b185	version.layout.3.selectedTestimonials	\N	\N	\N	\N	\N	b440e19a-7d00-487a-9927-d384dee97e22	\N	\N
+4979	1	57aea5dc-5bfe-4cf1-b716-b0c95df2b185	version.layout.7.selectedTestimonials	\N	\N	\N	\N	\N	ad1d03ad-f60b-4f83-90c2-d456f1fbaf21	\N	\N
+4980	1	57aea5dc-5bfe-4cf1-b716-b0c95df2b185	version.layout.9.logos	\N	\N	\N	8c44fa47-dbaa-44ba-9a83-c35e232404f7	\N	\N	\N	\N
+4981	2	57aea5dc-5bfe-4cf1-b716-b0c95df2b185	version.layout.9.logos	\N	\N	\N	93e4c6fc-6bfb-4246-aad1-8861ebc78777	\N	\N	\N	\N
+4982	3	57aea5dc-5bfe-4cf1-b716-b0c95df2b185	version.layout.9.logos	\N	\N	\N	8cfbc8ec-db06-4d17-9c8b-bbf589f91e67	\N	\N	\N	\N
+4983	4	57aea5dc-5bfe-4cf1-b716-b0c95df2b185	version.layout.9.logos	\N	\N	\N	4f3b0cf8-dc31-4ff9-aa9f-9e0ec3cfb001	\N	\N	\N	\N
+4984	5	57aea5dc-5bfe-4cf1-b716-b0c95df2b185	version.layout.9.logos	\N	\N	\N	d67a9625-6f30-4d2a-9643-0962f6faf385	\N	\N	\N	\N
+4985	1	57aea5dc-5bfe-4cf1-b716-b0c95df2b185	version.layout.10.faqs	\N	\N	\N	\N	487d16ef-4d7e-4603-885d-53d42734b0f1	\N	\N	\N
+4986	2	57aea5dc-5bfe-4cf1-b716-b0c95df2b185	version.layout.10.faqs	\N	\N	\N	\N	2d37f238-e71e-4291-8919-33e4c7a73544	\N	\N	\N
+4987	3	57aea5dc-5bfe-4cf1-b716-b0c95df2b185	version.layout.10.faqs	\N	\N	\N	\N	4696359a-45b8-4fea-b14f-ca34e928e5d0	\N	\N	\N
+4988	4	57aea5dc-5bfe-4cf1-b716-b0c95df2b185	version.layout.10.faqs	\N	\N	\N	\N	0786b804-85ea-4269-841e-5f4fe762ada3	\N	\N	\N
+4989	5	57aea5dc-5bfe-4cf1-b716-b0c95df2b185	version.layout.10.faqs	\N	\N	\N	\N	0ad17856-43c0-4ec9-bd88-c26f826dfb68	\N	\N	\N
+4990	6	57aea5dc-5bfe-4cf1-b716-b0c95df2b185	version.layout.10.faqs	\N	\N	\N	\N	cf06eaf5-c215-44fc-82c2-a7696336ef41	\N	\N	\N
+4991	1	1384226b-240a-4adc-ab9c-f0d2f30ca2ed	version.layout.0.logos	\N	\N	\N	8c44fa47-dbaa-44ba-9a83-c35e232404f7	\N	\N	\N	\N
+4847	1	a7d8fbd8-d73b-49bb-a69a-51c10ce9f17c	version.layout.5.logos	\N	\N	\N	92890105-dde4-4c79-acac-d81ad6dd978a	\N	\N	\N	\N
+4848	2	a7d8fbd8-d73b-49bb-a69a-51c10ce9f17c	version.layout.5.logos	\N	\N	\N	513d34fb-5dbc-4333-b0ab-af8e3756cc8a	\N	\N	\N	\N
+4849	1	1e917311-a2dc-43d9-9cf3-9222e6db43c0	version.layout.5.logos	\N	\N	\N	92890105-dde4-4c79-acac-d81ad6dd978a	\N	\N	\N	\N
+4850	2	1e917311-a2dc-43d9-9cf3-9222e6db43c0	version.layout.5.logos	\N	\N	\N	513d34fb-5dbc-4333-b0ab-af8e3756cc8a	\N	\N	\N	\N
+4992	2	1384226b-240a-4adc-ab9c-f0d2f30ca2ed	version.layout.0.logos	\N	\N	\N	93e4c6fc-6bfb-4246-aad1-8861ebc78777	\N	\N	\N	\N
+4993	3	1384226b-240a-4adc-ab9c-f0d2f30ca2ed	version.layout.0.logos	\N	\N	\N	8cfbc8ec-db06-4d17-9c8b-bbf589f91e67	\N	\N	\N	\N
+4994	4	1384226b-240a-4adc-ab9c-f0d2f30ca2ed	version.layout.0.logos	\N	\N	\N	4f3b0cf8-dc31-4ff9-aa9f-9e0ec3cfb001	\N	\N	\N	\N
+4995	5	1384226b-240a-4adc-ab9c-f0d2f30ca2ed	version.layout.0.logos	\N	\N	\N	d67a9625-6f30-4d2a-9643-0962f6faf385	\N	\N	\N	\N
+4996	1	1384226b-240a-4adc-ab9c-f0d2f30ca2ed	version.layout.2.logos	\N	\N	\N	513d34fb-5dbc-4333-b0ab-af8e3756cc8a	\N	\N	\N	\N
+4997	2	1384226b-240a-4adc-ab9c-f0d2f30ca2ed	version.layout.2.logos	\N	\N	\N	92890105-dde4-4c79-acac-d81ad6dd978a	\N	\N	\N	\N
+4998	1	1384226b-240a-4adc-ab9c-f0d2f30ca2ed	version.layout.3.selectedTestimonials	\N	\N	\N	\N	\N	b440e19a-7d00-487a-9927-d384dee97e22	\N	\N
+4999	1	1384226b-240a-4adc-ab9c-f0d2f30ca2ed	version.layout.7.selectedTestimonials	\N	\N	\N	\N	\N	ad1d03ad-f60b-4f83-90c2-d456f1fbaf21	\N	\N
+5000	1	1384226b-240a-4adc-ab9c-f0d2f30ca2ed	version.layout.9.logos	\N	\N	\N	8c44fa47-dbaa-44ba-9a83-c35e232404f7	\N	\N	\N	\N
+5001	2	1384226b-240a-4adc-ab9c-f0d2f30ca2ed	version.layout.9.logos	\N	\N	\N	93e4c6fc-6bfb-4246-aad1-8861ebc78777	\N	\N	\N	\N
+5002	3	1384226b-240a-4adc-ab9c-f0d2f30ca2ed	version.layout.9.logos	\N	\N	\N	8cfbc8ec-db06-4d17-9c8b-bbf589f91e67	\N	\N	\N	\N
+5003	4	1384226b-240a-4adc-ab9c-f0d2f30ca2ed	version.layout.9.logos	\N	\N	\N	4f3b0cf8-dc31-4ff9-aa9f-9e0ec3cfb001	\N	\N	\N	\N
+4137	1	b9bfdcc5-4500-4b24-827a-bdb5cd5f47d6	version.layout.0.logos	\N	\N	\N	8c44fa47-dbaa-44ba-9a83-c35e232404f7	\N	\N	\N	\N
+4138	2	b9bfdcc5-4500-4b24-827a-bdb5cd5f47d6	version.layout.0.logos	\N	\N	\N	93e4c6fc-6bfb-4246-aad1-8861ebc78777	\N	\N	\N	\N
+4139	3	b9bfdcc5-4500-4b24-827a-bdb5cd5f47d6	version.layout.0.logos	\N	\N	\N	8cfbc8ec-db06-4d17-9c8b-bbf589f91e67	\N	\N	\N	\N
+4140	4	b9bfdcc5-4500-4b24-827a-bdb5cd5f47d6	version.layout.0.logos	\N	\N	\N	4f3b0cf8-dc31-4ff9-aa9f-9e0ec3cfb001	\N	\N	\N	\N
+5911	1	8c0a9435-014f-4434-b79a-d1865d02dcb2	version.layout.0.logos	\N	\N	\N	8c44fa47-dbaa-44ba-9a83-c35e232404f7	\N	\N	\N	\N
+5912	2	8c0a9435-014f-4434-b79a-d1865d02dcb2	version.layout.0.logos	\N	\N	\N	93e4c6fc-6bfb-4246-aad1-8861ebc78777	\N	\N	\N	\N
+5913	3	8c0a9435-014f-4434-b79a-d1865d02dcb2	version.layout.0.logos	\N	\N	\N	8cfbc8ec-db06-4d17-9c8b-bbf589f91e67	\N	\N	\N	\N
+5914	4	8c0a9435-014f-4434-b79a-d1865d02dcb2	version.layout.0.logos	\N	\N	\N	4f3b0cf8-dc31-4ff9-aa9f-9e0ec3cfb001	\N	\N	\N	\N
+5915	5	8c0a9435-014f-4434-b79a-d1865d02dcb2	version.layout.0.logos	\N	\N	\N	d67a9625-6f30-4d2a-9643-0962f6faf385	\N	\N	\N	\N
+5916	1	8c0a9435-014f-4434-b79a-d1865d02dcb2	version.layout.2.logos	\N	\N	\N	513d34fb-5dbc-4333-b0ab-af8e3756cc8a	\N	\N	\N	\N
+5917	2	8c0a9435-014f-4434-b79a-d1865d02dcb2	version.layout.2.logos	\N	\N	\N	92890105-dde4-4c79-acac-d81ad6dd978a	\N	\N	\N	\N
+5918	1	8c0a9435-014f-4434-b79a-d1865d02dcb2	version.layout.3.selectedTestimonials	\N	\N	\N	\N	\N	b440e19a-7d00-487a-9927-d384dee97e22	\N	\N
+5919	1	8c0a9435-014f-4434-b79a-d1865d02dcb2	version.layout.7.selectedTestimonials	\N	\N	\N	\N	\N	ad1d03ad-f60b-4f83-90c2-d456f1fbaf21	\N	\N
+5920	1	8c0a9435-014f-4434-b79a-d1865d02dcb2	version.layout.9.logos	\N	\N	\N	8c44fa47-dbaa-44ba-9a83-c35e232404f7	\N	\N	\N	\N
+5004	5	1384226b-240a-4adc-ab9c-f0d2f30ca2ed	version.layout.9.logos	\N	\N	\N	d67a9625-6f30-4d2a-9643-0962f6faf385	\N	\N	\N	\N
+5005	1	1384226b-240a-4adc-ab9c-f0d2f30ca2ed	version.layout.10.faqs	\N	\N	\N	\N	487d16ef-4d7e-4603-885d-53d42734b0f1	\N	\N	\N
+5006	2	1384226b-240a-4adc-ab9c-f0d2f30ca2ed	version.layout.10.faqs	\N	\N	\N	\N	2d37f238-e71e-4291-8919-33e4c7a73544	\N	\N	\N
+5007	3	1384226b-240a-4adc-ab9c-f0d2f30ca2ed	version.layout.10.faqs	\N	\N	\N	\N	4696359a-45b8-4fea-b14f-ca34e928e5d0	\N	\N	\N
+5008	4	1384226b-240a-4adc-ab9c-f0d2f30ca2ed	version.layout.10.faqs	\N	\N	\N	\N	0786b804-85ea-4269-841e-5f4fe762ada3	\N	\N	\N
+5009	5	1384226b-240a-4adc-ab9c-f0d2f30ca2ed	version.layout.10.faqs	\N	\N	\N	\N	0ad17856-43c0-4ec9-bd88-c26f826dfb68	\N	\N	\N
+5010	6	1384226b-240a-4adc-ab9c-f0d2f30ca2ed	version.layout.10.faqs	\N	\N	\N	\N	cf06eaf5-c215-44fc-82c2-a7696336ef41	\N	\N	\N
+5011	1	3701e4af-e4a1-44b0-9353-78765e183a93	version.layout.0.logos	\N	\N	\N	8c44fa47-dbaa-44ba-9a83-c35e232404f7	\N	\N	\N	\N
+4141	5	b9bfdcc5-4500-4b24-827a-bdb5cd5f47d6	version.layout.0.logos	\N	\N	\N	d67a9625-6f30-4d2a-9643-0962f6faf385	\N	\N	\N	\N
+4142	1	b9bfdcc5-4500-4b24-827a-bdb5cd5f47d6	version.layout.2.logos	\N	\N	\N	513d34fb-5dbc-4333-b0ab-af8e3756cc8a	\N	\N	\N	\N
+4143	2	b9bfdcc5-4500-4b24-827a-bdb5cd5f47d6	version.layout.2.logos	\N	\N	\N	92890105-dde4-4c79-acac-d81ad6dd978a	\N	\N	\N	\N
+4144	1	b9bfdcc5-4500-4b24-827a-bdb5cd5f47d6	version.layout.3.selectedTestimonials	\N	\N	\N	\N	\N	b440e19a-7d00-487a-9927-d384dee97e22	\N	\N
+4145	1	b9bfdcc5-4500-4b24-827a-bdb5cd5f47d6	version.layout.7.selectedTestimonials	\N	\N	\N	\N	\N	ad1d03ad-f60b-4f83-90c2-d456f1fbaf21	\N	\N
+4146	1	b9bfdcc5-4500-4b24-827a-bdb5cd5f47d6	version.layout.9.logos	\N	\N	\N	8c44fa47-dbaa-44ba-9a83-c35e232404f7	\N	\N	\N	\N
+4147	2	b9bfdcc5-4500-4b24-827a-bdb5cd5f47d6	version.layout.9.logos	\N	\N	\N	93e4c6fc-6bfb-4246-aad1-8861ebc78777	\N	\N	\N	\N
+4148	3	b9bfdcc5-4500-4b24-827a-bdb5cd5f47d6	version.layout.9.logos	\N	\N	\N	8cfbc8ec-db06-4d17-9c8b-bbf589f91e67	\N	\N	\N	\N
+4149	4	b9bfdcc5-4500-4b24-827a-bdb5cd5f47d6	version.layout.9.logos	\N	\N	\N	4f3b0cf8-dc31-4ff9-aa9f-9e0ec3cfb001	\N	\N	\N	\N
+4150	5	b9bfdcc5-4500-4b24-827a-bdb5cd5f47d6	version.layout.9.logos	\N	\N	\N	d67a9625-6f30-4d2a-9643-0962f6faf385	\N	\N	\N	\N
+5012	2	3701e4af-e4a1-44b0-9353-78765e183a93	version.layout.0.logos	\N	\N	\N	93e4c6fc-6bfb-4246-aad1-8861ebc78777	\N	\N	\N	\N
+4617	1	94248fa7-c7f2-494d-ab96-5db4f8cf8a09	version.layout.0.logos	\N	\N	\N	8c44fa47-dbaa-44ba-9a83-c35e232404f7	\N	\N	\N	\N
+4618	2	94248fa7-c7f2-494d-ab96-5db4f8cf8a09	version.layout.0.logos	\N	\N	\N	93e4c6fc-6bfb-4246-aad1-8861ebc78777	\N	\N	\N	\N
+4619	3	94248fa7-c7f2-494d-ab96-5db4f8cf8a09	version.layout.0.logos	\N	\N	\N	8cfbc8ec-db06-4d17-9c8b-bbf589f91e67	\N	\N	\N	\N
+4620	4	94248fa7-c7f2-494d-ab96-5db4f8cf8a09	version.layout.0.logos	\N	\N	\N	4f3b0cf8-dc31-4ff9-aa9f-9e0ec3cfb001	\N	\N	\N	\N
+4621	5	94248fa7-c7f2-494d-ab96-5db4f8cf8a09	version.layout.0.logos	\N	\N	\N	d67a9625-6f30-4d2a-9643-0962f6faf385	\N	\N	\N	\N
+4622	1	94248fa7-c7f2-494d-ab96-5db4f8cf8a09	version.layout.2.logos	\N	\N	\N	513d34fb-5dbc-4333-b0ab-af8e3756cc8a	\N	\N	\N	\N
+4623	2	94248fa7-c7f2-494d-ab96-5db4f8cf8a09	version.layout.2.logos	\N	\N	\N	92890105-dde4-4c79-acac-d81ad6dd978a	\N	\N	\N	\N
+4624	1	94248fa7-c7f2-494d-ab96-5db4f8cf8a09	version.layout.3.selectedTestimonials	\N	\N	\N	\N	\N	b440e19a-7d00-487a-9927-d384dee97e22	\N	\N
+4625	1	94248fa7-c7f2-494d-ab96-5db4f8cf8a09	version.layout.7.selectedTestimonials	\N	\N	\N	\N	\N	ad1d03ad-f60b-4f83-90c2-d456f1fbaf21	\N	\N
+4626	1	94248fa7-c7f2-494d-ab96-5db4f8cf8a09	version.layout.9.logos	\N	\N	\N	8c44fa47-dbaa-44ba-9a83-c35e232404f7	\N	\N	\N	\N
+4627	2	94248fa7-c7f2-494d-ab96-5db4f8cf8a09	version.layout.9.logos	\N	\N	\N	93e4c6fc-6bfb-4246-aad1-8861ebc78777	\N	\N	\N	\N
+4628	3	94248fa7-c7f2-494d-ab96-5db4f8cf8a09	version.layout.9.logos	\N	\N	\N	8cfbc8ec-db06-4d17-9c8b-bbf589f91e67	\N	\N	\N	\N
+4629	4	94248fa7-c7f2-494d-ab96-5db4f8cf8a09	version.layout.9.logos	\N	\N	\N	4f3b0cf8-dc31-4ff9-aa9f-9e0ec3cfb001	\N	\N	\N	\N
+4630	5	94248fa7-c7f2-494d-ab96-5db4f8cf8a09	version.layout.9.logos	\N	\N	\N	d67a9625-6f30-4d2a-9643-0962f6faf385	\N	\N	\N	\N
+4631	1	94248fa7-c7f2-494d-ab96-5db4f8cf8a09	version.layout.10.faqs	\N	\N	\N	\N	487d16ef-4d7e-4603-885d-53d42734b0f1	\N	\N	\N
+4632	2	94248fa7-c7f2-494d-ab96-5db4f8cf8a09	version.layout.10.faqs	\N	\N	\N	\N	2d37f238-e71e-4291-8919-33e4c7a73544	\N	\N	\N
+4633	3	94248fa7-c7f2-494d-ab96-5db4f8cf8a09	version.layout.10.faqs	\N	\N	\N	\N	4696359a-45b8-4fea-b14f-ca34e928e5d0	\N	\N	\N
+4634	4	94248fa7-c7f2-494d-ab96-5db4f8cf8a09	version.layout.10.faqs	\N	\N	\N	\N	0786b804-85ea-4269-841e-5f4fe762ada3	\N	\N	\N
+4635	5	94248fa7-c7f2-494d-ab96-5db4f8cf8a09	version.layout.10.faqs	\N	\N	\N	\N	0ad17856-43c0-4ec9-bd88-c26f826dfb68	\N	\N	\N
+4636	6	94248fa7-c7f2-494d-ab96-5db4f8cf8a09	version.layout.10.faqs	\N	\N	\N	\N	cf06eaf5-c215-44fc-82c2-a7696336ef41	\N	\N	\N
+4637	1	d33aa7ed-6c4a-4c19-ab8c-6ffe2b067097	version.layout.0.logos	\N	\N	\N	8c44fa47-dbaa-44ba-9a83-c35e232404f7	\N	\N	\N	\N
+4638	2	d33aa7ed-6c4a-4c19-ab8c-6ffe2b067097	version.layout.0.logos	\N	\N	\N	93e4c6fc-6bfb-4246-aad1-8861ebc78777	\N	\N	\N	\N
+4639	3	d33aa7ed-6c4a-4c19-ab8c-6ffe2b067097	version.layout.0.logos	\N	\N	\N	8cfbc8ec-db06-4d17-9c8b-bbf589f91e67	\N	\N	\N	\N
+4640	4	d33aa7ed-6c4a-4c19-ab8c-6ffe2b067097	version.layout.0.logos	\N	\N	\N	4f3b0cf8-dc31-4ff9-aa9f-9e0ec3cfb001	\N	\N	\N	\N
+4641	5	d33aa7ed-6c4a-4c19-ab8c-6ffe2b067097	version.layout.0.logos	\N	\N	\N	d67a9625-6f30-4d2a-9643-0962f6faf385	\N	\N	\N	\N
+4642	1	d33aa7ed-6c4a-4c19-ab8c-6ffe2b067097	version.layout.2.logos	\N	\N	\N	513d34fb-5dbc-4333-b0ab-af8e3756cc8a	\N	\N	\N	\N
+1723	1	c75b3602-1177-46a4-8980-b2e7b8525952	version.layout.5.logos	\N	\N	\N	92890105-dde4-4c79-acac-d81ad6dd978a	\N	\N	\N	\N
+1724	2	c75b3602-1177-46a4-8980-b2e7b8525952	version.layout.5.logos	\N	\N	\N	513d34fb-5dbc-4333-b0ab-af8e3756cc8a	\N	\N	\N	\N
+1725	1	f7e02b39-9f78-4b54-9e59-9d00943a9a68	version.layout.5.logos	\N	\N	\N	92890105-dde4-4c79-acac-d81ad6dd978a	\N	\N	\N	\N
+1726	2	f7e02b39-9f78-4b54-9e59-9d00943a9a68	version.layout.5.logos	\N	\N	\N	513d34fb-5dbc-4333-b0ab-af8e3756cc8a	\N	\N	\N	\N
+4643	2	d33aa7ed-6c4a-4c19-ab8c-6ffe2b067097	version.layout.2.logos	\N	\N	\N	92890105-dde4-4c79-acac-d81ad6dd978a	\N	\N	\N	\N
+4644	1	d33aa7ed-6c4a-4c19-ab8c-6ffe2b067097	version.layout.3.selectedTestimonials	\N	\N	\N	\N	\N	b440e19a-7d00-487a-9927-d384dee97e22	\N	\N
+4645	1	d33aa7ed-6c4a-4c19-ab8c-6ffe2b067097	version.layout.7.selectedTestimonials	\N	\N	\N	\N	\N	ad1d03ad-f60b-4f83-90c2-d456f1fbaf21	\N	\N
+4646	1	d33aa7ed-6c4a-4c19-ab8c-6ffe2b067097	version.layout.9.logos	\N	\N	\N	8c44fa47-dbaa-44ba-9a83-c35e232404f7	\N	\N	\N	\N
+4647	2	d33aa7ed-6c4a-4c19-ab8c-6ffe2b067097	version.layout.9.logos	\N	\N	\N	93e4c6fc-6bfb-4246-aad1-8861ebc78777	\N	\N	\N	\N
+4648	3	d33aa7ed-6c4a-4c19-ab8c-6ffe2b067097	version.layout.9.logos	\N	\N	\N	8cfbc8ec-db06-4d17-9c8b-bbf589f91e67	\N	\N	\N	\N
+4649	4	d33aa7ed-6c4a-4c19-ab8c-6ffe2b067097	version.layout.9.logos	\N	\N	\N	4f3b0cf8-dc31-4ff9-aa9f-9e0ec3cfb001	\N	\N	\N	\N
+4650	5	d33aa7ed-6c4a-4c19-ab8c-6ffe2b067097	version.layout.9.logos	\N	\N	\N	d67a9625-6f30-4d2a-9643-0962f6faf385	\N	\N	\N	\N
+4651	1	d33aa7ed-6c4a-4c19-ab8c-6ffe2b067097	version.layout.10.faqs	\N	\N	\N	\N	487d16ef-4d7e-4603-885d-53d42734b0f1	\N	\N	\N
+5013	3	3701e4af-e4a1-44b0-9353-78765e183a93	version.layout.0.logos	\N	\N	\N	8cfbc8ec-db06-4d17-9c8b-bbf589f91e67	\N	\N	\N	\N
+5014	4	3701e4af-e4a1-44b0-9353-78765e183a93	version.layout.0.logos	\N	\N	\N	4f3b0cf8-dc31-4ff9-aa9f-9e0ec3cfb001	\N	\N	\N	\N
+5015	5	3701e4af-e4a1-44b0-9353-78765e183a93	version.layout.0.logos	\N	\N	\N	d67a9625-6f30-4d2a-9643-0962f6faf385	\N	\N	\N	\N
+5016	1	3701e4af-e4a1-44b0-9353-78765e183a93	version.layout.2.logos	\N	\N	\N	513d34fb-5dbc-4333-b0ab-af8e3756cc8a	\N	\N	\N	\N
+5017	2	3701e4af-e4a1-44b0-9353-78765e183a93	version.layout.2.logos	\N	\N	\N	92890105-dde4-4c79-acac-d81ad6dd978a	\N	\N	\N	\N
+5018	1	3701e4af-e4a1-44b0-9353-78765e183a93	version.layout.3.selectedTestimonials	\N	\N	\N	\N	\N	b440e19a-7d00-487a-9927-d384dee97e22	\N	\N
+5019	1	3701e4af-e4a1-44b0-9353-78765e183a93	version.layout.7.selectedTestimonials	\N	\N	\N	\N	\N	ad1d03ad-f60b-4f83-90c2-d456f1fbaf21	\N	\N
+5020	1	3701e4af-e4a1-44b0-9353-78765e183a93	version.layout.9.logos	\N	\N	\N	8c44fa47-dbaa-44ba-9a83-c35e232404f7	\N	\N	\N	\N
+5021	2	3701e4af-e4a1-44b0-9353-78765e183a93	version.layout.9.logos	\N	\N	\N	93e4c6fc-6bfb-4246-aad1-8861ebc78777	\N	\N	\N	\N
+5022	3	3701e4af-e4a1-44b0-9353-78765e183a93	version.layout.9.logos	\N	\N	\N	8cfbc8ec-db06-4d17-9c8b-bbf589f91e67	\N	\N	\N	\N
+5023	4	3701e4af-e4a1-44b0-9353-78765e183a93	version.layout.9.logos	\N	\N	\N	4f3b0cf8-dc31-4ff9-aa9f-9e0ec3cfb001	\N	\N	\N	\N
+5024	5	3701e4af-e4a1-44b0-9353-78765e183a93	version.layout.9.logos	\N	\N	\N	d67a9625-6f30-4d2a-9643-0962f6faf385	\N	\N	\N	\N
+5025	1	3701e4af-e4a1-44b0-9353-78765e183a93	version.layout.10.faqs	\N	\N	\N	\N	487d16ef-4d7e-4603-885d-53d42734b0f1	\N	\N	\N
+5026	2	3701e4af-e4a1-44b0-9353-78765e183a93	version.layout.10.faqs	\N	\N	\N	\N	2d37f238-e71e-4291-8919-33e4c7a73544	\N	\N	\N
+5027	3	3701e4af-e4a1-44b0-9353-78765e183a93	version.layout.10.faqs	\N	\N	\N	\N	4696359a-45b8-4fea-b14f-ca34e928e5d0	\N	\N	\N
+5028	4	3701e4af-e4a1-44b0-9353-78765e183a93	version.layout.10.faqs	\N	\N	\N	\N	0786b804-85ea-4269-841e-5f4fe762ada3	\N	\N	\N
+5029	5	3701e4af-e4a1-44b0-9353-78765e183a93	version.layout.10.faqs	\N	\N	\N	\N	0ad17856-43c0-4ec9-bd88-c26f826dfb68	\N	\N	\N
+5030	6	3701e4af-e4a1-44b0-9353-78765e183a93	version.layout.10.faqs	\N	\N	\N	\N	cf06eaf5-c215-44fc-82c2-a7696336ef41	\N	\N	\N
+5921	2	8c0a9435-014f-4434-b79a-d1865d02dcb2	version.layout.9.logos	\N	\N	\N	93e4c6fc-6bfb-4246-aad1-8861ebc78777	\N	\N	\N	\N
+5922	3	8c0a9435-014f-4434-b79a-d1865d02dcb2	version.layout.9.logos	\N	\N	\N	8cfbc8ec-db06-4d17-9c8b-bbf589f91e67	\N	\N	\N	\N
+4757	1	77e301a5-e288-4e46-ad7a-5ce25d4e0af0	version.layout.0.logos	\N	\N	\N	8c44fa47-dbaa-44ba-9a83-c35e232404f7	\N	\N	\N	\N
+4758	2	77e301a5-e288-4e46-ad7a-5ce25d4e0af0	version.layout.0.logos	\N	\N	\N	93e4c6fc-6bfb-4246-aad1-8861ebc78777	\N	\N	\N	\N
+4759	3	77e301a5-e288-4e46-ad7a-5ce25d4e0af0	version.layout.0.logos	\N	\N	\N	8cfbc8ec-db06-4d17-9c8b-bbf589f91e67	\N	\N	\N	\N
+4760	4	77e301a5-e288-4e46-ad7a-5ce25d4e0af0	version.layout.0.logos	\N	\N	\N	4f3b0cf8-dc31-4ff9-aa9f-9e0ec3cfb001	\N	\N	\N	\N
+4761	5	77e301a5-e288-4e46-ad7a-5ce25d4e0af0	version.layout.0.logos	\N	\N	\N	d67a9625-6f30-4d2a-9643-0962f6faf385	\N	\N	\N	\N
+4762	1	77e301a5-e288-4e46-ad7a-5ce25d4e0af0	version.layout.2.logos	\N	\N	\N	513d34fb-5dbc-4333-b0ab-af8e3756cc8a	\N	\N	\N	\N
+4763	2	77e301a5-e288-4e46-ad7a-5ce25d4e0af0	version.layout.2.logos	\N	\N	\N	92890105-dde4-4c79-acac-d81ad6dd978a	\N	\N	\N	\N
+4764	1	77e301a5-e288-4e46-ad7a-5ce25d4e0af0	version.layout.3.selectedTestimonials	\N	\N	\N	\N	\N	b440e19a-7d00-487a-9927-d384dee97e22	\N	\N
+4765	1	77e301a5-e288-4e46-ad7a-5ce25d4e0af0	version.layout.7.selectedTestimonials	\N	\N	\N	\N	\N	ad1d03ad-f60b-4f83-90c2-d456f1fbaf21	\N	\N
+4766	1	77e301a5-e288-4e46-ad7a-5ce25d4e0af0	version.layout.9.logos	\N	\N	\N	8c44fa47-dbaa-44ba-9a83-c35e232404f7	\N	\N	\N	\N
+4767	2	77e301a5-e288-4e46-ad7a-5ce25d4e0af0	version.layout.9.logos	\N	\N	\N	93e4c6fc-6bfb-4246-aad1-8861ebc78777	\N	\N	\N	\N
+4768	3	77e301a5-e288-4e46-ad7a-5ce25d4e0af0	version.layout.9.logos	\N	\N	\N	8cfbc8ec-db06-4d17-9c8b-bbf589f91e67	\N	\N	\N	\N
+4769	4	77e301a5-e288-4e46-ad7a-5ce25d4e0af0	version.layout.9.logos	\N	\N	\N	4f3b0cf8-dc31-4ff9-aa9f-9e0ec3cfb001	\N	\N	\N	\N
+4770	5	77e301a5-e288-4e46-ad7a-5ce25d4e0af0	version.layout.9.logos	\N	\N	\N	d67a9625-6f30-4d2a-9643-0962f6faf385	\N	\N	\N	\N
+4771	1	77e301a5-e288-4e46-ad7a-5ce25d4e0af0	version.layout.10.faqs	\N	\N	\N	\N	487d16ef-4d7e-4603-885d-53d42734b0f1	\N	\N	\N
+4772	2	77e301a5-e288-4e46-ad7a-5ce25d4e0af0	version.layout.10.faqs	\N	\N	\N	\N	2d37f238-e71e-4291-8919-33e4c7a73544	\N	\N	\N
+4773	3	77e301a5-e288-4e46-ad7a-5ce25d4e0af0	version.layout.10.faqs	\N	\N	\N	\N	4696359a-45b8-4fea-b14f-ca34e928e5d0	\N	\N	\N
+4774	4	77e301a5-e288-4e46-ad7a-5ce25d4e0af0	version.layout.10.faqs	\N	\N	\N	\N	0786b804-85ea-4269-841e-5f4fe762ada3	\N	\N	\N
+4775	5	77e301a5-e288-4e46-ad7a-5ce25d4e0af0	version.layout.10.faqs	\N	\N	\N	\N	0ad17856-43c0-4ec9-bd88-c26f826dfb68	\N	\N	\N
+4776	6	77e301a5-e288-4e46-ad7a-5ce25d4e0af0	version.layout.10.faqs	\N	\N	\N	\N	cf06eaf5-c215-44fc-82c2-a7696336ef41	\N	\N	\N
+5923	4	8c0a9435-014f-4434-b79a-d1865d02dcb2	version.layout.9.logos	\N	\N	\N	4f3b0cf8-dc31-4ff9-aa9f-9e0ec3cfb001	\N	\N	\N	\N
+5924	5	8c0a9435-014f-4434-b79a-d1865d02dcb2	version.layout.9.logos	\N	\N	\N	d67a9625-6f30-4d2a-9643-0962f6faf385	\N	\N	\N	\N
+5925	1	8c0a9435-014f-4434-b79a-d1865d02dcb2	version.layout.10.faqs	\N	\N	\N	\N	487d16ef-4d7e-4603-885d-53d42734b0f1	\N	\N	\N
+5926	2	8c0a9435-014f-4434-b79a-d1865d02dcb2	version.layout.10.faqs	\N	\N	\N	\N	2d37f238-e71e-4291-8919-33e4c7a73544	\N	\N	\N
+5927	3	8c0a9435-014f-4434-b79a-d1865d02dcb2	version.layout.10.faqs	\N	\N	\N	\N	4696359a-45b8-4fea-b14f-ca34e928e5d0	\N	\N	\N
+5259	1	bba0b5b7-03f8-43d5-9bae-91f4ffdabb9a	version.layout.8.selectedTestimonials	\N	\N	\N	\N	\N	ad1d03ad-f60b-4f83-90c2-d456f1fbaf21	\N	\N
+5260	1	bba0b5b7-03f8-43d5-9bae-91f4ffdabb9a	version.layout.10.logos	\N	\N	\N	8c44fa47-dbaa-44ba-9a83-c35e232404f7	\N	\N	\N	\N
+5261	2	bba0b5b7-03f8-43d5-9bae-91f4ffdabb9a	version.layout.10.logos	\N	\N	\N	93e4c6fc-6bfb-4246-aad1-8861ebc78777	\N	\N	\N	\N
+4151	1	b9bfdcc5-4500-4b24-827a-bdb5cd5f47d6	version.layout.10.faqs	\N	\N	\N	\N	487d16ef-4d7e-4603-885d-53d42734b0f1	\N	\N	\N
+4152	2	b9bfdcc5-4500-4b24-827a-bdb5cd5f47d6	version.layout.10.faqs	\N	\N	\N	\N	2d37f238-e71e-4291-8919-33e4c7a73544	\N	\N	\N
+4153	3	b9bfdcc5-4500-4b24-827a-bdb5cd5f47d6	version.layout.10.faqs	\N	\N	\N	\N	4696359a-45b8-4fea-b14f-ca34e928e5d0	\N	\N	\N
+4154	4	b9bfdcc5-4500-4b24-827a-bdb5cd5f47d6	version.layout.10.faqs	\N	\N	\N	\N	0786b804-85ea-4269-841e-5f4fe762ada3	\N	\N	\N
+4155	5	b9bfdcc5-4500-4b24-827a-bdb5cd5f47d6	version.layout.10.faqs	\N	\N	\N	\N	0ad17856-43c0-4ec9-bd88-c26f826dfb68	\N	\N	\N
+4156	6	b9bfdcc5-4500-4b24-827a-bdb5cd5f47d6	version.layout.10.faqs	\N	\N	\N	\N	cf06eaf5-c215-44fc-82c2-a7696336ef41	\N	\N	\N
+4157	1	45540fc3-9808-4242-bdbc-5de03d3750e8	version.layout.0.logos	\N	\N	\N	8c44fa47-dbaa-44ba-9a83-c35e232404f7	\N	\N	\N	\N
+4158	2	45540fc3-9808-4242-bdbc-5de03d3750e8	version.layout.0.logos	\N	\N	\N	93e4c6fc-6bfb-4246-aad1-8861ebc78777	\N	\N	\N	\N
+4159	3	45540fc3-9808-4242-bdbc-5de03d3750e8	version.layout.0.logos	\N	\N	\N	8cfbc8ec-db06-4d17-9c8b-bbf589f91e67	\N	\N	\N	\N
+4160	4	45540fc3-9808-4242-bdbc-5de03d3750e8	version.layout.0.logos	\N	\N	\N	4f3b0cf8-dc31-4ff9-aa9f-9e0ec3cfb001	\N	\N	\N	\N
+4161	5	45540fc3-9808-4242-bdbc-5de03d3750e8	version.layout.0.logos	\N	\N	\N	d67a9625-6f30-4d2a-9643-0962f6faf385	\N	\N	\N	\N
+4162	1	45540fc3-9808-4242-bdbc-5de03d3750e8	version.layout.2.logos	\N	\N	\N	513d34fb-5dbc-4333-b0ab-af8e3756cc8a	\N	\N	\N	\N
+4163	2	45540fc3-9808-4242-bdbc-5de03d3750e8	version.layout.2.logos	\N	\N	\N	92890105-dde4-4c79-acac-d81ad6dd978a	\N	\N	\N	\N
+4164	1	45540fc3-9808-4242-bdbc-5de03d3750e8	version.layout.3.selectedTestimonials	\N	\N	\N	\N	\N	b440e19a-7d00-487a-9927-d384dee97e22	\N	\N
+4165	1	45540fc3-9808-4242-bdbc-5de03d3750e8	version.layout.7.selectedTestimonials	\N	\N	\N	\N	\N	ad1d03ad-f60b-4f83-90c2-d456f1fbaf21	\N	\N
+4166	1	45540fc3-9808-4242-bdbc-5de03d3750e8	version.layout.9.logos	\N	\N	\N	8c44fa47-dbaa-44ba-9a83-c35e232404f7	\N	\N	\N	\N
+4167	2	45540fc3-9808-4242-bdbc-5de03d3750e8	version.layout.9.logos	\N	\N	\N	93e4c6fc-6bfb-4246-aad1-8861ebc78777	\N	\N	\N	\N
+4168	3	45540fc3-9808-4242-bdbc-5de03d3750e8	version.layout.9.logos	\N	\N	\N	8cfbc8ec-db06-4d17-9c8b-bbf589f91e67	\N	\N	\N	\N
+4169	4	45540fc3-9808-4242-bdbc-5de03d3750e8	version.layout.9.logos	\N	\N	\N	4f3b0cf8-dc31-4ff9-aa9f-9e0ec3cfb001	\N	\N	\N	\N
+4170	5	45540fc3-9808-4242-bdbc-5de03d3750e8	version.layout.9.logos	\N	\N	\N	d67a9625-6f30-4d2a-9643-0962f6faf385	\N	\N	\N	\N
+4171	1	45540fc3-9808-4242-bdbc-5de03d3750e8	version.layout.10.faqs	\N	\N	\N	\N	487d16ef-4d7e-4603-885d-53d42734b0f1	\N	\N	\N
+4172	2	45540fc3-9808-4242-bdbc-5de03d3750e8	version.layout.10.faqs	\N	\N	\N	\N	2d37f238-e71e-4291-8919-33e4c7a73544	\N	\N	\N
+4652	2	d33aa7ed-6c4a-4c19-ab8c-6ffe2b067097	version.layout.10.faqs	\N	\N	\N	\N	2d37f238-e71e-4291-8919-33e4c7a73544	\N	\N	\N
+4653	3	d33aa7ed-6c4a-4c19-ab8c-6ffe2b067097	version.layout.10.faqs	\N	\N	\N	\N	4696359a-45b8-4fea-b14f-ca34e928e5d0	\N	\N	\N
+4654	4	d33aa7ed-6c4a-4c19-ab8c-6ffe2b067097	version.layout.10.faqs	\N	\N	\N	\N	0786b804-85ea-4269-841e-5f4fe762ada3	\N	\N	\N
+4655	5	d33aa7ed-6c4a-4c19-ab8c-6ffe2b067097	version.layout.10.faqs	\N	\N	\N	\N	0ad17856-43c0-4ec9-bd88-c26f826dfb68	\N	\N	\N
+4656	6	d33aa7ed-6c4a-4c19-ab8c-6ffe2b067097	version.layout.10.faqs	\N	\N	\N	\N	cf06eaf5-c215-44fc-82c2-a7696336ef41	\N	\N	\N
+4777	1	8fd47bf9-f046-4a6d-b023-f3ec85d06825	version.layout.0.logos	\N	\N	\N	8c44fa47-dbaa-44ba-9a83-c35e232404f7	\N	\N	\N	\N
+4778	2	8fd47bf9-f046-4a6d-b023-f3ec85d06825	version.layout.0.logos	\N	\N	\N	93e4c6fc-6bfb-4246-aad1-8861ebc78777	\N	\N	\N	\N
+4779	3	8fd47bf9-f046-4a6d-b023-f3ec85d06825	version.layout.0.logos	\N	\N	\N	8cfbc8ec-db06-4d17-9c8b-bbf589f91e67	\N	\N	\N	\N
+4780	4	8fd47bf9-f046-4a6d-b023-f3ec85d06825	version.layout.0.logos	\N	\N	\N	4f3b0cf8-dc31-4ff9-aa9f-9e0ec3cfb001	\N	\N	\N	\N
+4781	5	8fd47bf9-f046-4a6d-b023-f3ec85d06825	version.layout.0.logos	\N	\N	\N	d67a9625-6f30-4d2a-9643-0962f6faf385	\N	\N	\N	\N
+4782	1	8fd47bf9-f046-4a6d-b023-f3ec85d06825	version.layout.2.logos	\N	\N	\N	513d34fb-5dbc-4333-b0ab-af8e3756cc8a	\N	\N	\N	\N
+4783	2	8fd47bf9-f046-4a6d-b023-f3ec85d06825	version.layout.2.logos	\N	\N	\N	92890105-dde4-4c79-acac-d81ad6dd978a	\N	\N	\N	\N
+4784	1	8fd47bf9-f046-4a6d-b023-f3ec85d06825	version.layout.3.selectedTestimonials	\N	\N	\N	\N	\N	b440e19a-7d00-487a-9927-d384dee97e22	\N	\N
+4785	1	8fd47bf9-f046-4a6d-b023-f3ec85d06825	version.layout.7.selectedTestimonials	\N	\N	\N	\N	\N	ad1d03ad-f60b-4f83-90c2-d456f1fbaf21	\N	\N
+4786	1	8fd47bf9-f046-4a6d-b023-f3ec85d06825	version.layout.9.logos	\N	\N	\N	8c44fa47-dbaa-44ba-9a83-c35e232404f7	\N	\N	\N	\N
+4787	2	8fd47bf9-f046-4a6d-b023-f3ec85d06825	version.layout.9.logos	\N	\N	\N	93e4c6fc-6bfb-4246-aad1-8861ebc78777	\N	\N	\N	\N
+4788	3	8fd47bf9-f046-4a6d-b023-f3ec85d06825	version.layout.9.logos	\N	\N	\N	8cfbc8ec-db06-4d17-9c8b-bbf589f91e67	\N	\N	\N	\N
+4789	4	8fd47bf9-f046-4a6d-b023-f3ec85d06825	version.layout.9.logos	\N	\N	\N	4f3b0cf8-dc31-4ff9-aa9f-9e0ec3cfb001	\N	\N	\N	\N
+4790	5	8fd47bf9-f046-4a6d-b023-f3ec85d06825	version.layout.9.logos	\N	\N	\N	d67a9625-6f30-4d2a-9643-0962f6faf385	\N	\N	\N	\N
+4791	1	8fd47bf9-f046-4a6d-b023-f3ec85d06825	version.layout.10.faqs	\N	\N	\N	\N	487d16ef-4d7e-4603-885d-53d42734b0f1	\N	\N	\N
+4792	2	8fd47bf9-f046-4a6d-b023-f3ec85d06825	version.layout.10.faqs	\N	\N	\N	\N	2d37f238-e71e-4291-8919-33e4c7a73544	\N	\N	\N
+4793	3	8fd47bf9-f046-4a6d-b023-f3ec85d06825	version.layout.10.faqs	\N	\N	\N	\N	4696359a-45b8-4fea-b14f-ca34e928e5d0	\N	\N	\N
+4794	4	8fd47bf9-f046-4a6d-b023-f3ec85d06825	version.layout.10.faqs	\N	\N	\N	\N	0786b804-85ea-4269-841e-5f4fe762ada3	\N	\N	\N
+4795	5	8fd47bf9-f046-4a6d-b023-f3ec85d06825	version.layout.10.faqs	\N	\N	\N	\N	0ad17856-43c0-4ec9-bd88-c26f826dfb68	\N	\N	\N
+4796	6	8fd47bf9-f046-4a6d-b023-f3ec85d06825	version.layout.10.faqs	\N	\N	\N	\N	cf06eaf5-c215-44fc-82c2-a7696336ef41	\N	\N	\N
+5262	3	bba0b5b7-03f8-43d5-9bae-91f4ffdabb9a	version.layout.10.logos	\N	\N	\N	8cfbc8ec-db06-4d17-9c8b-bbf589f91e67	\N	\N	\N	\N
+5263	4	bba0b5b7-03f8-43d5-9bae-91f4ffdabb9a	version.layout.10.logos	\N	\N	\N	4f3b0cf8-dc31-4ff9-aa9f-9e0ec3cfb001	\N	\N	\N	\N
+5264	5	bba0b5b7-03f8-43d5-9bae-91f4ffdabb9a	version.layout.10.logos	\N	\N	\N	d67a9625-6f30-4d2a-9643-0962f6faf385	\N	\N	\N	\N
+5265	1	bba0b5b7-03f8-43d5-9bae-91f4ffdabb9a	version.layout.11.faqs	\N	\N	\N	\N	487d16ef-4d7e-4603-885d-53d42734b0f1	\N	\N	\N
+5266	2	bba0b5b7-03f8-43d5-9bae-91f4ffdabb9a	version.layout.11.faqs	\N	\N	\N	\N	2d37f238-e71e-4291-8919-33e4c7a73544	\N	\N	\N
+5267	3	bba0b5b7-03f8-43d5-9bae-91f4ffdabb9a	version.layout.11.faqs	\N	\N	\N	\N	4696359a-45b8-4fea-b14f-ca34e928e5d0	\N	\N	\N
+5268	4	bba0b5b7-03f8-43d5-9bae-91f4ffdabb9a	version.layout.11.faqs	\N	\N	\N	\N	0786b804-85ea-4269-841e-5f4fe762ada3	\N	\N	\N
+5269	5	bba0b5b7-03f8-43d5-9bae-91f4ffdabb9a	version.layout.11.faqs	\N	\N	\N	\N	0ad17856-43c0-4ec9-bd88-c26f826dfb68	\N	\N	\N
+5270	6	bba0b5b7-03f8-43d5-9bae-91f4ffdabb9a	version.layout.11.faqs	\N	\N	\N	\N	cf06eaf5-c215-44fc-82c2-a7696336ef41	\N	\N	\N
+5271	1	bba0b5b7-03f8-43d5-9bae-91f4ffdabb9a	version.layout.0.logos	\N	\N	\N	8c44fa47-dbaa-44ba-9a83-c35e232404f7	\N	\N	\N	\N
+5272	2	bba0b5b7-03f8-43d5-9bae-91f4ffdabb9a	version.layout.0.logos	\N	\N	\N	93e4c6fc-6bfb-4246-aad1-8861ebc78777	\N	\N	\N	\N
+5273	3	bba0b5b7-03f8-43d5-9bae-91f4ffdabb9a	version.layout.0.logos	\N	\N	\N	8cfbc8ec-db06-4d17-9c8b-bbf589f91e67	\N	\N	\N	\N
+5274	4	bba0b5b7-03f8-43d5-9bae-91f4ffdabb9a	version.layout.0.logos	\N	\N	\N	4f3b0cf8-dc31-4ff9-aa9f-9e0ec3cfb001	\N	\N	\N	\N
+5275	5	bba0b5b7-03f8-43d5-9bae-91f4ffdabb9a	version.layout.0.logos	\N	\N	\N	d67a9625-6f30-4d2a-9643-0962f6faf385	\N	\N	\N	\N
+5276	1	bba0b5b7-03f8-43d5-9bae-91f4ffdabb9a	version.layout.2.logos	\N	\N	\N	513d34fb-5dbc-4333-b0ab-af8e3756cc8a	\N	\N	\N	\N
+5277	2	bba0b5b7-03f8-43d5-9bae-91f4ffdabb9a	version.layout.2.logos	\N	\N	\N	92890105-dde4-4c79-acac-d81ad6dd978a	\N	\N	\N	\N
+5278	1	bba0b5b7-03f8-43d5-9bae-91f4ffdabb9a	version.layout.3.selectedTestimonials	\N	\N	\N	\N	\N	b440e19a-7d00-487a-9927-d384dee97e22	\N	\N
+5279	1	bba0b5b7-03f8-43d5-9bae-91f4ffdabb9a	version.layout.7.selectedTestimonials	\N	\N	\N	\N	\N	ad1d03ad-f60b-4f83-90c2-d456f1fbaf21	\N	\N
+5280	1	bba0b5b7-03f8-43d5-9bae-91f4ffdabb9a	version.layout.9.logos	\N	\N	\N	8c44fa47-dbaa-44ba-9a83-c35e232404f7	\N	\N	\N	\N
+5281	2	bba0b5b7-03f8-43d5-9bae-91f4ffdabb9a	version.layout.9.logos	\N	\N	\N	93e4c6fc-6bfb-4246-aad1-8861ebc78777	\N	\N	\N	\N
+5282	3	bba0b5b7-03f8-43d5-9bae-91f4ffdabb9a	version.layout.9.logos	\N	\N	\N	8cfbc8ec-db06-4d17-9c8b-bbf589f91e67	\N	\N	\N	\N
+5283	4	bba0b5b7-03f8-43d5-9bae-91f4ffdabb9a	version.layout.9.logos	\N	\N	\N	4f3b0cf8-dc31-4ff9-aa9f-9e0ec3cfb001	\N	\N	\N	\N
+5284	5	bba0b5b7-03f8-43d5-9bae-91f4ffdabb9a	version.layout.9.logos	\N	\N	\N	d67a9625-6f30-4d2a-9643-0962f6faf385	\N	\N	\N	\N
+5285	1	bba0b5b7-03f8-43d5-9bae-91f4ffdabb9a	version.layout.10.faqs	\N	\N	\N	\N	487d16ef-4d7e-4603-885d-53d42734b0f1	\N	\N	\N
+5286	2	bba0b5b7-03f8-43d5-9bae-91f4ffdabb9a	version.layout.10.faqs	\N	\N	\N	\N	2d37f238-e71e-4291-8919-33e4c7a73544	\N	\N	\N
+5287	3	bba0b5b7-03f8-43d5-9bae-91f4ffdabb9a	version.layout.10.faqs	\N	\N	\N	\N	4696359a-45b8-4fea-b14f-ca34e928e5d0	\N	\N	\N
+5288	4	bba0b5b7-03f8-43d5-9bae-91f4ffdabb9a	version.layout.10.faqs	\N	\N	\N	\N	0786b804-85ea-4269-841e-5f4fe762ada3	\N	\N	\N
+5289	5	bba0b5b7-03f8-43d5-9bae-91f4ffdabb9a	version.layout.10.faqs	\N	\N	\N	\N	0ad17856-43c0-4ec9-bd88-c26f826dfb68	\N	\N	\N
+5290	6	bba0b5b7-03f8-43d5-9bae-91f4ffdabb9a	version.layout.10.faqs	\N	\N	\N	\N	cf06eaf5-c215-44fc-82c2-a7696336ef41	\N	\N	\N
+5928	4	8c0a9435-014f-4434-b79a-d1865d02dcb2	version.layout.10.faqs	\N	\N	\N	\N	0786b804-85ea-4269-841e-5f4fe762ada3	\N	\N	\N
+5929	5	8c0a9435-014f-4434-b79a-d1865d02dcb2	version.layout.10.faqs	\N	\N	\N	\N	0ad17856-43c0-4ec9-bd88-c26f826dfb68	\N	\N	\N
+5930	6	8c0a9435-014f-4434-b79a-d1865d02dcb2	version.layout.10.faqs	\N	\N	\N	\N	cf06eaf5-c215-44fc-82c2-a7696336ef41	\N	\N	\N
+6105	1	f5795b7d-5690-4e22-8a02-5e40c4dfe615	version.layout.0.logos	\N	\N	\N	8c44fa47-dbaa-44ba-9a83-c35e232404f7	\N	\N	\N	\N
+6106	2	f5795b7d-5690-4e22-8a02-5e40c4dfe615	version.layout.0.logos	\N	\N	\N	93e4c6fc-6bfb-4246-aad1-8861ebc78777	\N	\N	\N	\N
+5957	1	af8faec0-f970-4457-b247-da532bf3f7a8	version.layout.5.logos	\N	\N	\N	92890105-dde4-4c79-acac-d81ad6dd978a	\N	\N	\N	\N
+4173	3	45540fc3-9808-4242-bdbc-5de03d3750e8	version.layout.10.faqs	\N	\N	\N	\N	4696359a-45b8-4fea-b14f-ca34e928e5d0	\N	\N	\N
+4174	4	45540fc3-9808-4242-bdbc-5de03d3750e8	version.layout.10.faqs	\N	\N	\N	\N	0786b804-85ea-4269-841e-5f4fe762ada3	\N	\N	\N
+4175	5	45540fc3-9808-4242-bdbc-5de03d3750e8	version.layout.10.faqs	\N	\N	\N	\N	0ad17856-43c0-4ec9-bd88-c26f826dfb68	\N	\N	\N
+4176	6	45540fc3-9808-4242-bdbc-5de03d3750e8	version.layout.10.faqs	\N	\N	\N	\N	cf06eaf5-c215-44fc-82c2-a7696336ef41	\N	\N	\N
+4177	1	ef5c6a38-e9a0-4159-84b2-e47e23e98868	version.layout.0.logos	\N	\N	\N	8c44fa47-dbaa-44ba-9a83-c35e232404f7	\N	\N	\N	\N
+4178	2	ef5c6a38-e9a0-4159-84b2-e47e23e98868	version.layout.0.logos	\N	\N	\N	93e4c6fc-6bfb-4246-aad1-8861ebc78777	\N	\N	\N	\N
+4179	3	ef5c6a38-e9a0-4159-84b2-e47e23e98868	version.layout.0.logos	\N	\N	\N	8cfbc8ec-db06-4d17-9c8b-bbf589f91e67	\N	\N	\N	\N
+4180	4	ef5c6a38-e9a0-4159-84b2-e47e23e98868	version.layout.0.logos	\N	\N	\N	4f3b0cf8-dc31-4ff9-aa9f-9e0ec3cfb001	\N	\N	\N	\N
+4181	5	ef5c6a38-e9a0-4159-84b2-e47e23e98868	version.layout.0.logos	\N	\N	\N	d67a9625-6f30-4d2a-9643-0962f6faf385	\N	\N	\N	\N
+4182	1	ef5c6a38-e9a0-4159-84b2-e47e23e98868	version.layout.2.logos	\N	\N	\N	513d34fb-5dbc-4333-b0ab-af8e3756cc8a	\N	\N	\N	\N
+4183	2	ef5c6a38-e9a0-4159-84b2-e47e23e98868	version.layout.2.logos	\N	\N	\N	92890105-dde4-4c79-acac-d81ad6dd978a	\N	\N	\N	\N
+4184	1	ef5c6a38-e9a0-4159-84b2-e47e23e98868	version.layout.3.selectedTestimonials	\N	\N	\N	\N	\N	b440e19a-7d00-487a-9927-d384dee97e22	\N	\N
+4185	1	ef5c6a38-e9a0-4159-84b2-e47e23e98868	version.layout.7.selectedTestimonials	\N	\N	\N	\N	\N	ad1d03ad-f60b-4f83-90c2-d456f1fbaf21	\N	\N
+4186	1	ef5c6a38-e9a0-4159-84b2-e47e23e98868	version.layout.9.logos	\N	\N	\N	8c44fa47-dbaa-44ba-9a83-c35e232404f7	\N	\N	\N	\N
+4187	2	ef5c6a38-e9a0-4159-84b2-e47e23e98868	version.layout.9.logos	\N	\N	\N	93e4c6fc-6bfb-4246-aad1-8861ebc78777	\N	\N	\N	\N
+4188	3	ef5c6a38-e9a0-4159-84b2-e47e23e98868	version.layout.9.logos	\N	\N	\N	8cfbc8ec-db06-4d17-9c8b-bbf589f91e67	\N	\N	\N	\N
+4189	4	ef5c6a38-e9a0-4159-84b2-e47e23e98868	version.layout.9.logos	\N	\N	\N	4f3b0cf8-dc31-4ff9-aa9f-9e0ec3cfb001	\N	\N	\N	\N
+4190	5	ef5c6a38-e9a0-4159-84b2-e47e23e98868	version.layout.9.logos	\N	\N	\N	d67a9625-6f30-4d2a-9643-0962f6faf385	\N	\N	\N	\N
+4191	1	ef5c6a38-e9a0-4159-84b2-e47e23e98868	version.layout.10.faqs	\N	\N	\N	\N	487d16ef-4d7e-4603-885d-53d42734b0f1	\N	\N	\N
+5291	1	ee61372e-21b1-4e1d-ac2f-a39d22106ed9	version.layout.0.logos	\N	\N	\N	8c44fa47-dbaa-44ba-9a83-c35e232404f7	\N	\N	\N	\N
+5292	2	ee61372e-21b1-4e1d-ac2f-a39d22106ed9	version.layout.0.logos	\N	\N	\N	93e4c6fc-6bfb-4246-aad1-8861ebc78777	\N	\N	\N	\N
+5293	3	ee61372e-21b1-4e1d-ac2f-a39d22106ed9	version.layout.0.logos	\N	\N	\N	8cfbc8ec-db06-4d17-9c8b-bbf589f91e67	\N	\N	\N	\N
+5294	4	ee61372e-21b1-4e1d-ac2f-a39d22106ed9	version.layout.0.logos	\N	\N	\N	4f3b0cf8-dc31-4ff9-aa9f-9e0ec3cfb001	\N	\N	\N	\N
+5295	5	ee61372e-21b1-4e1d-ac2f-a39d22106ed9	version.layout.0.logos	\N	\N	\N	d67a9625-6f30-4d2a-9643-0962f6faf385	\N	\N	\N	\N
+5296	1	ee61372e-21b1-4e1d-ac2f-a39d22106ed9	version.layout.2.logos	\N	\N	\N	513d34fb-5dbc-4333-b0ab-af8e3756cc8a	\N	\N	\N	\N
+5297	2	ee61372e-21b1-4e1d-ac2f-a39d22106ed9	version.layout.2.logos	\N	\N	\N	92890105-dde4-4c79-acac-d81ad6dd978a	\N	\N	\N	\N
+5298	1	ee61372e-21b1-4e1d-ac2f-a39d22106ed9	version.layout.3.selectedTestimonials	\N	\N	\N	\N	\N	b440e19a-7d00-487a-9927-d384dee97e22	\N	\N
+5299	1	ee61372e-21b1-4e1d-ac2f-a39d22106ed9	version.layout.7.selectedTestimonials	\N	\N	\N	\N	\N	ad1d03ad-f60b-4f83-90c2-d456f1fbaf21	\N	\N
+5300	1	ee61372e-21b1-4e1d-ac2f-a39d22106ed9	version.layout.9.logos	\N	\N	\N	8c44fa47-dbaa-44ba-9a83-c35e232404f7	\N	\N	\N	\N
+5301	2	ee61372e-21b1-4e1d-ac2f-a39d22106ed9	version.layout.9.logos	\N	\N	\N	93e4c6fc-6bfb-4246-aad1-8861ebc78777	\N	\N	\N	\N
+5302	3	ee61372e-21b1-4e1d-ac2f-a39d22106ed9	version.layout.9.logos	\N	\N	\N	8cfbc8ec-db06-4d17-9c8b-bbf589f91e67	\N	\N	\N	\N
+5303	4	ee61372e-21b1-4e1d-ac2f-a39d22106ed9	version.layout.9.logos	\N	\N	\N	4f3b0cf8-dc31-4ff9-aa9f-9e0ec3cfb001	\N	\N	\N	\N
+5304	5	ee61372e-21b1-4e1d-ac2f-a39d22106ed9	version.layout.9.logos	\N	\N	\N	d67a9625-6f30-4d2a-9643-0962f6faf385	\N	\N	\N	\N
+5305	1	ee61372e-21b1-4e1d-ac2f-a39d22106ed9	version.layout.10.faqs	\N	\N	\N	\N	487d16ef-4d7e-4603-885d-53d42734b0f1	\N	\N	\N
+5306	2	ee61372e-21b1-4e1d-ac2f-a39d22106ed9	version.layout.10.faqs	\N	\N	\N	\N	2d37f238-e71e-4291-8919-33e4c7a73544	\N	\N	\N
+5307	3	ee61372e-21b1-4e1d-ac2f-a39d22106ed9	version.layout.10.faqs	\N	\N	\N	\N	4696359a-45b8-4fea-b14f-ca34e928e5d0	\N	\N	\N
+5308	4	ee61372e-21b1-4e1d-ac2f-a39d22106ed9	version.layout.10.faqs	\N	\N	\N	\N	0786b804-85ea-4269-841e-5f4fe762ada3	\N	\N	\N
+5309	5	ee61372e-21b1-4e1d-ac2f-a39d22106ed9	version.layout.10.faqs	\N	\N	\N	\N	0ad17856-43c0-4ec9-bd88-c26f826dfb68	\N	\N	\N
+5310	6	ee61372e-21b1-4e1d-ac2f-a39d22106ed9	version.layout.10.faqs	\N	\N	\N	\N	cf06eaf5-c215-44fc-82c2-a7696336ef41	\N	\N	\N
+6107	3	f5795b7d-5690-4e22-8a02-5e40c4dfe615	version.layout.0.logos	\N	\N	\N	8cfbc8ec-db06-4d17-9c8b-bbf589f91e67	\N	\N	\N	\N
+6108	4	f5795b7d-5690-4e22-8a02-5e40c4dfe615	version.layout.0.logos	\N	\N	\N	4f3b0cf8-dc31-4ff9-aa9f-9e0ec3cfb001	\N	\N	\N	\N
+5958	2	af8faec0-f970-4457-b247-da532bf3f7a8	version.layout.5.logos	\N	\N	\N	513d34fb-5dbc-4333-b0ab-af8e3756cc8a	\N	\N	\N	\N
+5959	1	49a0209c-b18c-4487-a8f6-8e681af9ef9b	version.layout.5.logos	\N	\N	\N	92890105-dde4-4c79-acac-d81ad6dd978a	\N	\N	\N	\N
+5960	2	49a0209c-b18c-4487-a8f6-8e681af9ef9b	version.layout.5.logos	\N	\N	\N	513d34fb-5dbc-4333-b0ab-af8e3756cc8a	\N	\N	\N	\N
+6109	5	f5795b7d-5690-4e22-8a02-5e40c4dfe615	version.layout.0.logos	\N	\N	\N	d67a9625-6f30-4d2a-9643-0962f6faf385	\N	\N	\N	\N
+5651	1	e971bceb-3387-49e0-890e-ad8e79c52c35	version.layout.0.logos	\N	\N	\N	8c44fa47-dbaa-44ba-9a83-c35e232404f7	\N	\N	\N	\N
+5652	2	e971bceb-3387-49e0-890e-ad8e79c52c35	version.layout.0.logos	\N	\N	\N	93e4c6fc-6bfb-4246-aad1-8861ebc78777	\N	\N	\N	\N
+5653	3	e971bceb-3387-49e0-890e-ad8e79c52c35	version.layout.0.logos	\N	\N	\N	8cfbc8ec-db06-4d17-9c8b-bbf589f91e67	\N	\N	\N	\N
+5654	4	e971bceb-3387-49e0-890e-ad8e79c52c35	version.layout.0.logos	\N	\N	\N	4f3b0cf8-dc31-4ff9-aa9f-9e0ec3cfb001	\N	\N	\N	\N
+5655	5	e971bceb-3387-49e0-890e-ad8e79c52c35	version.layout.0.logos	\N	\N	\N	d67a9625-6f30-4d2a-9643-0962f6faf385	\N	\N	\N	\N
+5656	1	e971bceb-3387-49e0-890e-ad8e79c52c35	version.layout.2.logos	\N	\N	\N	513d34fb-5dbc-4333-b0ab-af8e3756cc8a	\N	\N	\N	\N
+5657	2	e971bceb-3387-49e0-890e-ad8e79c52c35	version.layout.2.logos	\N	\N	\N	92890105-dde4-4c79-acac-d81ad6dd978a	\N	\N	\N	\N
+5658	1	e971bceb-3387-49e0-890e-ad8e79c52c35	version.layout.3.selectedTestimonials	\N	\N	\N	\N	\N	b440e19a-7d00-487a-9927-d384dee97e22	\N	\N
+5659	1	e971bceb-3387-49e0-890e-ad8e79c52c35	version.layout.7.selectedTestimonials	\N	\N	\N	\N	\N	ad1d03ad-f60b-4f83-90c2-d456f1fbaf21	\N	\N
+5660	1	e971bceb-3387-49e0-890e-ad8e79c52c35	version.layout.9.logos	\N	\N	\N	8c44fa47-dbaa-44ba-9a83-c35e232404f7	\N	\N	\N	\N
+5661	2	e971bceb-3387-49e0-890e-ad8e79c52c35	version.layout.9.logos	\N	\N	\N	93e4c6fc-6bfb-4246-aad1-8861ebc78777	\N	\N	\N	\N
+5662	3	e971bceb-3387-49e0-890e-ad8e79c52c35	version.layout.9.logos	\N	\N	\N	8cfbc8ec-db06-4d17-9c8b-bbf589f91e67	\N	\N	\N	\N
+5663	4	e971bceb-3387-49e0-890e-ad8e79c52c35	version.layout.9.logos	\N	\N	\N	4f3b0cf8-dc31-4ff9-aa9f-9e0ec3cfb001	\N	\N	\N	\N
+5664	5	e971bceb-3387-49e0-890e-ad8e79c52c35	version.layout.9.logos	\N	\N	\N	d67a9625-6f30-4d2a-9643-0962f6faf385	\N	\N	\N	\N
+5665	1	e971bceb-3387-49e0-890e-ad8e79c52c35	version.layout.10.faqs	\N	\N	\N	\N	487d16ef-4d7e-4603-885d-53d42734b0f1	\N	\N	\N
+5666	2	e971bceb-3387-49e0-890e-ad8e79c52c35	version.layout.10.faqs	\N	\N	\N	\N	2d37f238-e71e-4291-8919-33e4c7a73544	\N	\N	\N
+5667	3	e971bceb-3387-49e0-890e-ad8e79c52c35	version.layout.10.faqs	\N	\N	\N	\N	4696359a-45b8-4fea-b14f-ca34e928e5d0	\N	\N	\N
+5668	4	e971bceb-3387-49e0-890e-ad8e79c52c35	version.layout.10.faqs	\N	\N	\N	\N	0786b804-85ea-4269-841e-5f4fe762ada3	\N	\N	\N
+5669	5	e971bceb-3387-49e0-890e-ad8e79c52c35	version.layout.10.faqs	\N	\N	\N	\N	0ad17856-43c0-4ec9-bd88-c26f826dfb68	\N	\N	\N
+5670	6	e971bceb-3387-49e0-890e-ad8e79c52c35	version.layout.10.faqs	\N	\N	\N	\N	cf06eaf5-c215-44fc-82c2-a7696336ef41	\N	\N	\N
+6110	1	f5795b7d-5690-4e22-8a02-5e40c4dfe615	version.layout.2.logos	\N	\N	\N	513d34fb-5dbc-4333-b0ab-af8e3756cc8a	\N	\N	\N	\N
+5851	1	165fa488-fd8c-48af-a5f3-a736d87f44a1	version.layout.0.logos	\N	\N	\N	8c44fa47-dbaa-44ba-9a83-c35e232404f7	\N	\N	\N	\N
+5852	2	165fa488-fd8c-48af-a5f3-a736d87f44a1	version.layout.0.logos	\N	\N	\N	93e4c6fc-6bfb-4246-aad1-8861ebc78777	\N	\N	\N	\N
+5853	3	165fa488-fd8c-48af-a5f3-a736d87f44a1	version.layout.0.logos	\N	\N	\N	8cfbc8ec-db06-4d17-9c8b-bbf589f91e67	\N	\N	\N	\N
+5854	4	165fa488-fd8c-48af-a5f3-a736d87f44a1	version.layout.0.logos	\N	\N	\N	4f3b0cf8-dc31-4ff9-aa9f-9e0ec3cfb001	\N	\N	\N	\N
+5855	5	165fa488-fd8c-48af-a5f3-a736d87f44a1	version.layout.0.logos	\N	\N	\N	d67a9625-6f30-4d2a-9643-0962f6faf385	\N	\N	\N	\N
+5856	1	165fa488-fd8c-48af-a5f3-a736d87f44a1	version.layout.2.logos	\N	\N	\N	513d34fb-5dbc-4333-b0ab-af8e3756cc8a	\N	\N	\N	\N
+5857	2	165fa488-fd8c-48af-a5f3-a736d87f44a1	version.layout.2.logos	\N	\N	\N	92890105-dde4-4c79-acac-d81ad6dd978a	\N	\N	\N	\N
+5858	1	165fa488-fd8c-48af-a5f3-a736d87f44a1	version.layout.3.selectedTestimonials	\N	\N	\N	\N	\N	b440e19a-7d00-487a-9927-d384dee97e22	\N	\N
+5859	1	165fa488-fd8c-48af-a5f3-a736d87f44a1	version.layout.7.selectedTestimonials	\N	\N	\N	\N	\N	ad1d03ad-f60b-4f83-90c2-d456f1fbaf21	\N	\N
+5860	1	165fa488-fd8c-48af-a5f3-a736d87f44a1	version.layout.9.logos	\N	\N	\N	8c44fa47-dbaa-44ba-9a83-c35e232404f7	\N	\N	\N	\N
+5861	2	165fa488-fd8c-48af-a5f3-a736d87f44a1	version.layout.9.logos	\N	\N	\N	93e4c6fc-6bfb-4246-aad1-8861ebc78777	\N	\N	\N	\N
+5862	3	165fa488-fd8c-48af-a5f3-a736d87f44a1	version.layout.9.logos	\N	\N	\N	8cfbc8ec-db06-4d17-9c8b-bbf589f91e67	\N	\N	\N	\N
+5863	4	165fa488-fd8c-48af-a5f3-a736d87f44a1	version.layout.9.logos	\N	\N	\N	4f3b0cf8-dc31-4ff9-aa9f-9e0ec3cfb001	\N	\N	\N	\N
+5864	5	165fa488-fd8c-48af-a5f3-a736d87f44a1	version.layout.9.logos	\N	\N	\N	d67a9625-6f30-4d2a-9643-0962f6faf385	\N	\N	\N	\N
+5865	1	165fa488-fd8c-48af-a5f3-a736d87f44a1	version.layout.10.faqs	\N	\N	\N	\N	487d16ef-4d7e-4603-885d-53d42734b0f1	\N	\N	\N
+5866	2	165fa488-fd8c-48af-a5f3-a736d87f44a1	version.layout.10.faqs	\N	\N	\N	\N	2d37f238-e71e-4291-8919-33e4c7a73544	\N	\N	\N
+5867	3	165fa488-fd8c-48af-a5f3-a736d87f44a1	version.layout.10.faqs	\N	\N	\N	\N	4696359a-45b8-4fea-b14f-ca34e928e5d0	\N	\N	\N
+5868	4	165fa488-fd8c-48af-a5f3-a736d87f44a1	version.layout.10.faqs	\N	\N	\N	\N	0786b804-85ea-4269-841e-5f4fe762ada3	\N	\N	\N
+5869	5	165fa488-fd8c-48af-a5f3-a736d87f44a1	version.layout.10.faqs	\N	\N	\N	\N	0ad17856-43c0-4ec9-bd88-c26f826dfb68	\N	\N	\N
+5870	6	165fa488-fd8c-48af-a5f3-a736d87f44a1	version.layout.10.faqs	\N	\N	\N	\N	cf06eaf5-c215-44fc-82c2-a7696336ef41	\N	\N	\N
+6111	2	f5795b7d-5690-4e22-8a02-5e40c4dfe615	version.layout.2.logos	\N	\N	\N	92890105-dde4-4c79-acac-d81ad6dd978a	\N	\N	\N	\N
+6112	1	f5795b7d-5690-4e22-8a02-5e40c4dfe615	version.layout.3.selectedTestimonials	\N	\N	\N	\N	\N	b440e19a-7d00-487a-9927-d384dee97e22	\N	\N
+6113	1	f5795b7d-5690-4e22-8a02-5e40c4dfe615	version.layout.7.selectedTestimonials	\N	\N	\N	\N	\N	ad1d03ad-f60b-4f83-90c2-d456f1fbaf21	\N	\N
+6114	1	f5795b7d-5690-4e22-8a02-5e40c4dfe615	version.layout.9.logos	\N	\N	\N	8c44fa47-dbaa-44ba-9a83-c35e232404f7	\N	\N	\N	\N
+6115	2	f5795b7d-5690-4e22-8a02-5e40c4dfe615	version.layout.9.logos	\N	\N	\N	93e4c6fc-6bfb-4246-aad1-8861ebc78777	\N	\N	\N	\N
+6116	3	f5795b7d-5690-4e22-8a02-5e40c4dfe615	version.layout.9.logos	\N	\N	\N	8cfbc8ec-db06-4d17-9c8b-bbf589f91e67	\N	\N	\N	\N
+6117	4	f5795b7d-5690-4e22-8a02-5e40c4dfe615	version.layout.9.logos	\N	\N	\N	4f3b0cf8-dc31-4ff9-aa9f-9e0ec3cfb001	\N	\N	\N	\N
+6118	5	f5795b7d-5690-4e22-8a02-5e40c4dfe615	version.layout.9.logos	\N	\N	\N	d67a9625-6f30-4d2a-9643-0962f6faf385	\N	\N	\N	\N
+6119	1	f5795b7d-5690-4e22-8a02-5e40c4dfe615	version.layout.10.faqs	\N	\N	\N	\N	487d16ef-4d7e-4603-885d-53d42734b0f1	\N	\N	\N
+6120	2	f5795b7d-5690-4e22-8a02-5e40c4dfe615	version.layout.10.faqs	\N	\N	\N	\N	2d37f238-e71e-4291-8919-33e4c7a73544	\N	\N	\N
+6121	3	f5795b7d-5690-4e22-8a02-5e40c4dfe615	version.layout.10.faqs	\N	\N	\N	\N	4696359a-45b8-4fea-b14f-ca34e928e5d0	\N	\N	\N
+6122	4	f5795b7d-5690-4e22-8a02-5e40c4dfe615	version.layout.10.faqs	\N	\N	\N	\N	0786b804-85ea-4269-841e-5f4fe762ada3	\N	\N	\N
+6123	5	f5795b7d-5690-4e22-8a02-5e40c4dfe615	version.layout.10.faqs	\N	\N	\N	\N	0ad17856-43c0-4ec9-bd88-c26f826dfb68	\N	\N	\N
+5671	1	b4abd354-ca2f-4b0c-ba58-0077b70dee46	version.layout.0.logos	\N	\N	\N	8c44fa47-dbaa-44ba-9a83-c35e232404f7	\N	\N	\N	\N
+5672	2	b4abd354-ca2f-4b0c-ba58-0077b70dee46	version.layout.0.logos	\N	\N	\N	93e4c6fc-6bfb-4246-aad1-8861ebc78777	\N	\N	\N	\N
+5673	3	b4abd354-ca2f-4b0c-ba58-0077b70dee46	version.layout.0.logos	\N	\N	\N	8cfbc8ec-db06-4d17-9c8b-bbf589f91e67	\N	\N	\N	\N
+5674	4	b4abd354-ca2f-4b0c-ba58-0077b70dee46	version.layout.0.logos	\N	\N	\N	4f3b0cf8-dc31-4ff9-aa9f-9e0ec3cfb001	\N	\N	\N	\N
+5675	5	b4abd354-ca2f-4b0c-ba58-0077b70dee46	version.layout.0.logos	\N	\N	\N	d67a9625-6f30-4d2a-9643-0962f6faf385	\N	\N	\N	\N
+5676	1	b4abd354-ca2f-4b0c-ba58-0077b70dee46	version.layout.2.logos	\N	\N	\N	513d34fb-5dbc-4333-b0ab-af8e3756cc8a	\N	\N	\N	\N
+5677	2	b4abd354-ca2f-4b0c-ba58-0077b70dee46	version.layout.2.logos	\N	\N	\N	92890105-dde4-4c79-acac-d81ad6dd978a	\N	\N	\N	\N
+5678	1	b4abd354-ca2f-4b0c-ba58-0077b70dee46	version.layout.3.selectedTestimonials	\N	\N	\N	\N	\N	b440e19a-7d00-487a-9927-d384dee97e22	\N	\N
+5679	1	b4abd354-ca2f-4b0c-ba58-0077b70dee46	version.layout.7.selectedTestimonials	\N	\N	\N	\N	\N	ad1d03ad-f60b-4f83-90c2-d456f1fbaf21	\N	\N
+5680	1	b4abd354-ca2f-4b0c-ba58-0077b70dee46	version.layout.9.logos	\N	\N	\N	8c44fa47-dbaa-44ba-9a83-c35e232404f7	\N	\N	\N	\N
+5681	2	b4abd354-ca2f-4b0c-ba58-0077b70dee46	version.layout.9.logos	\N	\N	\N	93e4c6fc-6bfb-4246-aad1-8861ebc78777	\N	\N	\N	\N
+5682	3	b4abd354-ca2f-4b0c-ba58-0077b70dee46	version.layout.9.logos	\N	\N	\N	8cfbc8ec-db06-4d17-9c8b-bbf589f91e67	\N	\N	\N	\N
+5683	4	b4abd354-ca2f-4b0c-ba58-0077b70dee46	version.layout.9.logos	\N	\N	\N	4f3b0cf8-dc31-4ff9-aa9f-9e0ec3cfb001	\N	\N	\N	\N
+5684	5	b4abd354-ca2f-4b0c-ba58-0077b70dee46	version.layout.9.logos	\N	\N	\N	d67a9625-6f30-4d2a-9643-0962f6faf385	\N	\N	\N	\N
+5685	1	b4abd354-ca2f-4b0c-ba58-0077b70dee46	version.layout.10.faqs	\N	\N	\N	\N	487d16ef-4d7e-4603-885d-53d42734b0f1	\N	\N	\N
+5686	2	b4abd354-ca2f-4b0c-ba58-0077b70dee46	version.layout.10.faqs	\N	\N	\N	\N	2d37f238-e71e-4291-8919-33e4c7a73544	\N	\N	\N
+5687	3	b4abd354-ca2f-4b0c-ba58-0077b70dee46	version.layout.10.faqs	\N	\N	\N	\N	4696359a-45b8-4fea-b14f-ca34e928e5d0	\N	\N	\N
+5688	4	b4abd354-ca2f-4b0c-ba58-0077b70dee46	version.layout.10.faqs	\N	\N	\N	\N	0786b804-85ea-4269-841e-5f4fe762ada3	\N	\N	\N
+5689	5	b4abd354-ca2f-4b0c-ba58-0077b70dee46	version.layout.10.faqs	\N	\N	\N	\N	0ad17856-43c0-4ec9-bd88-c26f826dfb68	\N	\N	\N
+5690	6	b4abd354-ca2f-4b0c-ba58-0077b70dee46	version.layout.10.faqs	\N	\N	\N	\N	cf06eaf5-c215-44fc-82c2-a7696336ef41	\N	\N	\N
+6124	6	f5795b7d-5690-4e22-8a02-5e40c4dfe615	version.layout.10.faqs	\N	\N	\N	\N	cf06eaf5-c215-44fc-82c2-a7696336ef41	\N	\N	\N
+6125	1	d499de0a-6aa2-44ee-a6b3-4d11c1a81fba	version.layout.0.logos	\N	\N	\N	8c44fa47-dbaa-44ba-9a83-c35e232404f7	\N	\N	\N	\N
+6126	2	d499de0a-6aa2-44ee-a6b3-4d11c1a81fba	version.layout.0.logos	\N	\N	\N	93e4c6fc-6bfb-4246-aad1-8861ebc78777	\N	\N	\N	\N
+6127	3	d499de0a-6aa2-44ee-a6b3-4d11c1a81fba	version.layout.0.logos	\N	\N	\N	8cfbc8ec-db06-4d17-9c8b-bbf589f91e67	\N	\N	\N	\N
+6128	4	d499de0a-6aa2-44ee-a6b3-4d11c1a81fba	version.layout.0.logos	\N	\N	\N	4f3b0cf8-dc31-4ff9-aa9f-9e0ec3cfb001	\N	\N	\N	\N
+6129	5	d499de0a-6aa2-44ee-a6b3-4d11c1a81fba	version.layout.0.logos	\N	\N	\N	d67a9625-6f30-4d2a-9643-0962f6faf385	\N	\N	\N	\N
+6130	1	d499de0a-6aa2-44ee-a6b3-4d11c1a81fba	version.layout.2.logos	\N	\N	\N	513d34fb-5dbc-4333-b0ab-af8e3756cc8a	\N	\N	\N	\N
+6131	2	d499de0a-6aa2-44ee-a6b3-4d11c1a81fba	version.layout.2.logos	\N	\N	\N	92890105-dde4-4c79-acac-d81ad6dd978a	\N	\N	\N	\N
+5965	1	94653181-14e8-4c89-b775-45eb55a457ac	version.layout.5.logos	\N	\N	\N	92890105-dde4-4c79-acac-d81ad6dd978a	\N	\N	\N	\N
+5966	2	94653181-14e8-4c89-b775-45eb55a457ac	version.layout.5.logos	\N	\N	\N	513d34fb-5dbc-4333-b0ab-af8e3756cc8a	\N	\N	\N	\N
+5967	1	bf142327-abd6-4aee-a03a-6a2ca0141234	version.layout.5.logos	\N	\N	\N	92890105-dde4-4c79-acac-d81ad6dd978a	\N	\N	\N	\N
+5968	2	bf142327-abd6-4aee-a03a-6a2ca0141234	version.layout.5.logos	\N	\N	\N	513d34fb-5dbc-4333-b0ab-af8e3756cc8a	\N	\N	\N	\N
+6132	1	d499de0a-6aa2-44ee-a6b3-4d11c1a81fba	version.layout.3.selectedTestimonials	\N	\N	\N	\N	\N	b440e19a-7d00-487a-9927-d384dee97e22	\N	\N
+6133	1	d499de0a-6aa2-44ee-a6b3-4d11c1a81fba	version.layout.7.selectedTestimonials	\N	\N	\N	\N	\N	ad1d03ad-f60b-4f83-90c2-d456f1fbaf21	\N	\N
+6134	1	d499de0a-6aa2-44ee-a6b3-4d11c1a81fba	version.layout.9.logos	\N	\N	\N	8c44fa47-dbaa-44ba-9a83-c35e232404f7	\N	\N	\N	\N
+6135	2	d499de0a-6aa2-44ee-a6b3-4d11c1a81fba	version.layout.9.logos	\N	\N	\N	93e4c6fc-6bfb-4246-aad1-8861ebc78777	\N	\N	\N	\N
+6136	3	d499de0a-6aa2-44ee-a6b3-4d11c1a81fba	version.layout.9.logos	\N	\N	\N	8cfbc8ec-db06-4d17-9c8b-bbf589f91e67	\N	\N	\N	\N
+6137	4	d499de0a-6aa2-44ee-a6b3-4d11c1a81fba	version.layout.9.logos	\N	\N	\N	4f3b0cf8-dc31-4ff9-aa9f-9e0ec3cfb001	\N	\N	\N	\N
+6138	5	d499de0a-6aa2-44ee-a6b3-4d11c1a81fba	version.layout.9.logos	\N	\N	\N	d67a9625-6f30-4d2a-9643-0962f6faf385	\N	\N	\N	\N
+6139	1	d499de0a-6aa2-44ee-a6b3-4d11c1a81fba	version.layout.10.faqs	\N	\N	\N	\N	487d16ef-4d7e-4603-885d-53d42734b0f1	\N	\N	\N
+6140	2	d499de0a-6aa2-44ee-a6b3-4d11c1a81fba	version.layout.10.faqs	\N	\N	\N	\N	2d37f238-e71e-4291-8919-33e4c7a73544	\N	\N	\N
+6141	3	d499de0a-6aa2-44ee-a6b3-4d11c1a81fba	version.layout.10.faqs	\N	\N	\N	\N	4696359a-45b8-4fea-b14f-ca34e928e5d0	\N	\N	\N
+6142	4	d499de0a-6aa2-44ee-a6b3-4d11c1a81fba	version.layout.10.faqs	\N	\N	\N	\N	0786b804-85ea-4269-841e-5f4fe762ada3	\N	\N	\N
+6143	5	d499de0a-6aa2-44ee-a6b3-4d11c1a81fba	version.layout.10.faqs	\N	\N	\N	\N	0ad17856-43c0-4ec9-bd88-c26f826dfb68	\N	\N	\N
+6144	6	d499de0a-6aa2-44ee-a6b3-4d11c1a81fba	version.layout.10.faqs	\N	\N	\N	\N	cf06eaf5-c215-44fc-82c2-a7696336ef41	\N	\N	\N
+3837	1	3c55e0be-bf8b-49a3-b786-331f07012f5f	version.layout.0.logos	\N	\N	\N	8c44fa47-dbaa-44ba-9a83-c35e232404f7	\N	\N	\N	\N
+3838	2	3c55e0be-bf8b-49a3-b786-331f07012f5f	version.layout.0.logos	\N	\N	\N	93e4c6fc-6bfb-4246-aad1-8861ebc78777	\N	\N	\N	\N
+3839	3	3c55e0be-bf8b-49a3-b786-331f07012f5f	version.layout.0.logos	\N	\N	\N	8cfbc8ec-db06-4d17-9c8b-bbf589f91e67	\N	\N	\N	\N
+3840	4	3c55e0be-bf8b-49a3-b786-331f07012f5f	version.layout.0.logos	\N	\N	\N	4f3b0cf8-dc31-4ff9-aa9f-9e0ec3cfb001	\N	\N	\N	\N
+3841	5	3c55e0be-bf8b-49a3-b786-331f07012f5f	version.layout.0.logos	\N	\N	\N	d67a9625-6f30-4d2a-9643-0962f6faf385	\N	\N	\N	\N
+3842	1	3c55e0be-bf8b-49a3-b786-331f07012f5f	version.layout.2.logos	\N	\N	\N	513d34fb-5dbc-4333-b0ab-af8e3756cc8a	\N	\N	\N	\N
+3843	2	3c55e0be-bf8b-49a3-b786-331f07012f5f	version.layout.2.logos	\N	\N	\N	92890105-dde4-4c79-acac-d81ad6dd978a	\N	\N	\N	\N
+3844	1	3c55e0be-bf8b-49a3-b786-331f07012f5f	version.layout.3.selectedTestimonials	\N	\N	\N	\N	\N	b440e19a-7d00-487a-9927-d384dee97e22	\N	\N
+3845	1	3c55e0be-bf8b-49a3-b786-331f07012f5f	version.layout.7.selectedTestimonials	\N	\N	\N	\N	\N	ad1d03ad-f60b-4f83-90c2-d456f1fbaf21	\N	\N
+3846	1	3c55e0be-bf8b-49a3-b786-331f07012f5f	version.layout.9.logos	\N	\N	\N	8c44fa47-dbaa-44ba-9a83-c35e232404f7	\N	\N	\N	\N
+3847	2	3c55e0be-bf8b-49a3-b786-331f07012f5f	version.layout.9.logos	\N	\N	\N	93e4c6fc-6bfb-4246-aad1-8861ebc78777	\N	\N	\N	\N
+3848	3	3c55e0be-bf8b-49a3-b786-331f07012f5f	version.layout.9.logos	\N	\N	\N	8cfbc8ec-db06-4d17-9c8b-bbf589f91e67	\N	\N	\N	\N
+3849	4	3c55e0be-bf8b-49a3-b786-331f07012f5f	version.layout.9.logos	\N	\N	\N	4f3b0cf8-dc31-4ff9-aa9f-9e0ec3cfb001	\N	\N	\N	\N
+3850	5	3c55e0be-bf8b-49a3-b786-331f07012f5f	version.layout.9.logos	\N	\N	\N	d67a9625-6f30-4d2a-9643-0962f6faf385	\N	\N	\N	\N
+3851	1	3c55e0be-bf8b-49a3-b786-331f07012f5f	version.layout.10.faqs	\N	\N	\N	\N	487d16ef-4d7e-4603-885d-53d42734b0f1	\N	\N	\N
+3852	2	3c55e0be-bf8b-49a3-b786-331f07012f5f	version.layout.10.faqs	\N	\N	\N	\N	2d37f238-e71e-4291-8919-33e4c7a73544	\N	\N	\N
+3853	3	3c55e0be-bf8b-49a3-b786-331f07012f5f	version.layout.10.faqs	\N	\N	\N	\N	4696359a-45b8-4fea-b14f-ca34e928e5d0	\N	\N	\N
+3854	4	3c55e0be-bf8b-49a3-b786-331f07012f5f	version.layout.10.faqs	\N	\N	\N	\N	0786b804-85ea-4269-841e-5f4fe762ada3	\N	\N	\N
+3855	5	3c55e0be-bf8b-49a3-b786-331f07012f5f	version.layout.10.faqs	\N	\N	\N	\N	0ad17856-43c0-4ec9-bd88-c26f826dfb68	\N	\N	\N
+3856	6	3c55e0be-bf8b-49a3-b786-331f07012f5f	version.layout.10.faqs	\N	\N	\N	\N	cf06eaf5-c215-44fc-82c2-a7696336ef41	\N	\N	\N
+3857	1	45abc8e4-6e61-47dd-991c-44eb6332b11a	version.layout.0.logos	\N	\N	\N	8c44fa47-dbaa-44ba-9a83-c35e232404f7	\N	\N	\N	\N
+3858	2	45abc8e4-6e61-47dd-991c-44eb6332b11a	version.layout.0.logos	\N	\N	\N	93e4c6fc-6bfb-4246-aad1-8861ebc78777	\N	\N	\N	\N
+3859	3	45abc8e4-6e61-47dd-991c-44eb6332b11a	version.layout.0.logos	\N	\N	\N	8cfbc8ec-db06-4d17-9c8b-bbf589f91e67	\N	\N	\N	\N
+3860	4	45abc8e4-6e61-47dd-991c-44eb6332b11a	version.layout.0.logos	\N	\N	\N	4f3b0cf8-dc31-4ff9-aa9f-9e0ec3cfb001	\N	\N	\N	\N
+3861	5	45abc8e4-6e61-47dd-991c-44eb6332b11a	version.layout.0.logos	\N	\N	\N	d67a9625-6f30-4d2a-9643-0962f6faf385	\N	\N	\N	\N
+3862	1	45abc8e4-6e61-47dd-991c-44eb6332b11a	version.layout.2.logos	\N	\N	\N	513d34fb-5dbc-4333-b0ab-af8e3756cc8a	\N	\N	\N	\N
+3863	2	45abc8e4-6e61-47dd-991c-44eb6332b11a	version.layout.2.logos	\N	\N	\N	92890105-dde4-4c79-acac-d81ad6dd978a	\N	\N	\N	\N
+3864	1	45abc8e4-6e61-47dd-991c-44eb6332b11a	version.layout.3.selectedTestimonials	\N	\N	\N	\N	\N	b440e19a-7d00-487a-9927-d384dee97e22	\N	\N
+3865	1	45abc8e4-6e61-47dd-991c-44eb6332b11a	version.layout.7.selectedTestimonials	\N	\N	\N	\N	\N	ad1d03ad-f60b-4f83-90c2-d456f1fbaf21	\N	\N
+3866	1	45abc8e4-6e61-47dd-991c-44eb6332b11a	version.layout.9.logos	\N	\N	\N	8c44fa47-dbaa-44ba-9a83-c35e232404f7	\N	\N	\N	\N
+3867	2	45abc8e4-6e61-47dd-991c-44eb6332b11a	version.layout.9.logos	\N	\N	\N	93e4c6fc-6bfb-4246-aad1-8861ebc78777	\N	\N	\N	\N
+3868	3	45abc8e4-6e61-47dd-991c-44eb6332b11a	version.layout.9.logos	\N	\N	\N	8cfbc8ec-db06-4d17-9c8b-bbf589f91e67	\N	\N	\N	\N
+6145	1	5befbaf7-ffbd-4fc5-b8ae-8a6aad8de1a3	version.layout.0.logos	\N	\N	\N	8c44fa47-dbaa-44ba-9a83-c35e232404f7	\N	\N	\N	\N
+6146	2	5befbaf7-ffbd-4fc5-b8ae-8a6aad8de1a3	version.layout.0.logos	\N	\N	\N	93e4c6fc-6bfb-4246-aad1-8861ebc78777	\N	\N	\N	\N
+6147	3	5befbaf7-ffbd-4fc5-b8ae-8a6aad8de1a3	version.layout.0.logos	\N	\N	\N	8cfbc8ec-db06-4d17-9c8b-bbf589f91e67	\N	\N	\N	\N
+6148	4	5befbaf7-ffbd-4fc5-b8ae-8a6aad8de1a3	version.layout.0.logos	\N	\N	\N	4f3b0cf8-dc31-4ff9-aa9f-9e0ec3cfb001	\N	\N	\N	\N
+6149	5	5befbaf7-ffbd-4fc5-b8ae-8a6aad8de1a3	version.layout.0.logos	\N	\N	\N	d67a9625-6f30-4d2a-9643-0962f6faf385	\N	\N	\N	\N
+6150	1	5befbaf7-ffbd-4fc5-b8ae-8a6aad8de1a3	version.layout.2.logos	\N	\N	\N	513d34fb-5dbc-4333-b0ab-af8e3756cc8a	\N	\N	\N	\N
+6151	2	5befbaf7-ffbd-4fc5-b8ae-8a6aad8de1a3	version.layout.2.logos	\N	\N	\N	92890105-dde4-4c79-acac-d81ad6dd978a	\N	\N	\N	\N
+6152	1	5befbaf7-ffbd-4fc5-b8ae-8a6aad8de1a3	version.layout.3.selectedTestimonials	\N	\N	\N	\N	\N	b440e19a-7d00-487a-9927-d384dee97e22	\N	\N
+6153	1	5befbaf7-ffbd-4fc5-b8ae-8a6aad8de1a3	version.layout.7.selectedTestimonials	\N	\N	\N	\N	\N	ad1d03ad-f60b-4f83-90c2-d456f1fbaf21	\N	\N
+6154	1	5befbaf7-ffbd-4fc5-b8ae-8a6aad8de1a3	version.layout.9.logos	\N	\N	\N	8c44fa47-dbaa-44ba-9a83-c35e232404f7	\N	\N	\N	\N
+6155	2	5befbaf7-ffbd-4fc5-b8ae-8a6aad8de1a3	version.layout.9.logos	\N	\N	\N	93e4c6fc-6bfb-4246-aad1-8861ebc78777	\N	\N	\N	\N
+6156	3	5befbaf7-ffbd-4fc5-b8ae-8a6aad8de1a3	version.layout.9.logos	\N	\N	\N	8cfbc8ec-db06-4d17-9c8b-bbf589f91e67	\N	\N	\N	\N
+6157	4	5befbaf7-ffbd-4fc5-b8ae-8a6aad8de1a3	version.layout.9.logos	\N	\N	\N	4f3b0cf8-dc31-4ff9-aa9f-9e0ec3cfb001	\N	\N	\N	\N
+6158	5	5befbaf7-ffbd-4fc5-b8ae-8a6aad8de1a3	version.layout.9.logos	\N	\N	\N	d67a9625-6f30-4d2a-9643-0962f6faf385	\N	\N	\N	\N
+6159	1	5befbaf7-ffbd-4fc5-b8ae-8a6aad8de1a3	version.layout.10.faqs	\N	\N	\N	\N	487d16ef-4d7e-4603-885d-53d42734b0f1	\N	\N	\N
+6160	2	5befbaf7-ffbd-4fc5-b8ae-8a6aad8de1a3	version.layout.10.faqs	\N	\N	\N	\N	2d37f238-e71e-4291-8919-33e4c7a73544	\N	\N	\N
+6161	3	5befbaf7-ffbd-4fc5-b8ae-8a6aad8de1a3	version.layout.10.faqs	\N	\N	\N	\N	4696359a-45b8-4fea-b14f-ca34e928e5d0	\N	\N	\N
+6162	4	5befbaf7-ffbd-4fc5-b8ae-8a6aad8de1a3	version.layout.10.faqs	\N	\N	\N	\N	0786b804-85ea-4269-841e-5f4fe762ada3	\N	\N	\N
+6163	5	5befbaf7-ffbd-4fc5-b8ae-8a6aad8de1a3	version.layout.10.faqs	\N	\N	\N	\N	0ad17856-43c0-4ec9-bd88-c26f826dfb68	\N	\N	\N
+6164	6	5befbaf7-ffbd-4fc5-b8ae-8a6aad8de1a3	version.layout.10.faqs	\N	\N	\N	\N	cf06eaf5-c215-44fc-82c2-a7696336ef41	\N	\N	\N
+3869	4	45abc8e4-6e61-47dd-991c-44eb6332b11a	version.layout.9.logos	\N	\N	\N	4f3b0cf8-dc31-4ff9-aa9f-9e0ec3cfb001	\N	\N	\N	\N
+3870	5	45abc8e4-6e61-47dd-991c-44eb6332b11a	version.layout.9.logos	\N	\N	\N	d67a9625-6f30-4d2a-9643-0962f6faf385	\N	\N	\N	\N
+3871	1	45abc8e4-6e61-47dd-991c-44eb6332b11a	version.layout.10.faqs	\N	\N	\N	\N	487d16ef-4d7e-4603-885d-53d42734b0f1	\N	\N	\N
+3872	2	45abc8e4-6e61-47dd-991c-44eb6332b11a	version.layout.10.faqs	\N	\N	\N	\N	2d37f238-e71e-4291-8919-33e4c7a73544	\N	\N	\N
+3873	3	45abc8e4-6e61-47dd-991c-44eb6332b11a	version.layout.10.faqs	\N	\N	\N	\N	4696359a-45b8-4fea-b14f-ca34e928e5d0	\N	\N	\N
+3874	4	45abc8e4-6e61-47dd-991c-44eb6332b11a	version.layout.10.faqs	\N	\N	\N	\N	0786b804-85ea-4269-841e-5f4fe762ada3	\N	\N	\N
+3875	5	45abc8e4-6e61-47dd-991c-44eb6332b11a	version.layout.10.faqs	\N	\N	\N	\N	0ad17856-43c0-4ec9-bd88-c26f826dfb68	\N	\N	\N
+3876	6	45abc8e4-6e61-47dd-991c-44eb6332b11a	version.layout.10.faqs	\N	\N	\N	\N	cf06eaf5-c215-44fc-82c2-a7696336ef41	\N	\N	\N
+4657	1	3940efdc-d964-4ee0-bc99-81ac8abfa0d7	version.layout.0.logos	\N	\N	\N	8c44fa47-dbaa-44ba-9a83-c35e232404f7	\N	\N	\N	\N
+4658	2	3940efdc-d964-4ee0-bc99-81ac8abfa0d7	version.layout.0.logos	\N	\N	\N	93e4c6fc-6bfb-4246-aad1-8861ebc78777	\N	\N	\N	\N
+4659	3	3940efdc-d964-4ee0-bc99-81ac8abfa0d7	version.layout.0.logos	\N	\N	\N	8cfbc8ec-db06-4d17-9c8b-bbf589f91e67	\N	\N	\N	\N
+4660	4	3940efdc-d964-4ee0-bc99-81ac8abfa0d7	version.layout.0.logos	\N	\N	\N	4f3b0cf8-dc31-4ff9-aa9f-9e0ec3cfb001	\N	\N	\N	\N
+4661	5	3940efdc-d964-4ee0-bc99-81ac8abfa0d7	version.layout.0.logos	\N	\N	\N	d67a9625-6f30-4d2a-9643-0962f6faf385	\N	\N	\N	\N
+4662	1	3940efdc-d964-4ee0-bc99-81ac8abfa0d7	version.layout.2.logos	\N	\N	\N	513d34fb-5dbc-4333-b0ab-af8e3756cc8a	\N	\N	\N	\N
+4663	2	3940efdc-d964-4ee0-bc99-81ac8abfa0d7	version.layout.2.logos	\N	\N	\N	92890105-dde4-4c79-acac-d81ad6dd978a	\N	\N	\N	\N
+4664	1	3940efdc-d964-4ee0-bc99-81ac8abfa0d7	version.layout.3.selectedTestimonials	\N	\N	\N	\N	\N	b440e19a-7d00-487a-9927-d384dee97e22	\N	\N
+4665	1	3940efdc-d964-4ee0-bc99-81ac8abfa0d7	version.layout.7.selectedTestimonials	\N	\N	\N	\N	\N	ad1d03ad-f60b-4f83-90c2-d456f1fbaf21	\N	\N
+4666	1	3940efdc-d964-4ee0-bc99-81ac8abfa0d7	version.layout.9.logos	\N	\N	\N	8c44fa47-dbaa-44ba-9a83-c35e232404f7	\N	\N	\N	\N
+4667	2	3940efdc-d964-4ee0-bc99-81ac8abfa0d7	version.layout.9.logos	\N	\N	\N	93e4c6fc-6bfb-4246-aad1-8861ebc78777	\N	\N	\N	\N
+4668	3	3940efdc-d964-4ee0-bc99-81ac8abfa0d7	version.layout.9.logos	\N	\N	\N	8cfbc8ec-db06-4d17-9c8b-bbf589f91e67	\N	\N	\N	\N
+4669	4	3940efdc-d964-4ee0-bc99-81ac8abfa0d7	version.layout.9.logos	\N	\N	\N	4f3b0cf8-dc31-4ff9-aa9f-9e0ec3cfb001	\N	\N	\N	\N
+4670	5	3940efdc-d964-4ee0-bc99-81ac8abfa0d7	version.layout.9.logos	\N	\N	\N	d67a9625-6f30-4d2a-9643-0962f6faf385	\N	\N	\N	\N
+4671	1	3940efdc-d964-4ee0-bc99-81ac8abfa0d7	version.layout.10.faqs	\N	\N	\N	\N	487d16ef-4d7e-4603-885d-53d42734b0f1	\N	\N	\N
+4672	2	3940efdc-d964-4ee0-bc99-81ac8abfa0d7	version.layout.10.faqs	\N	\N	\N	\N	2d37f238-e71e-4291-8919-33e4c7a73544	\N	\N	\N
+4673	3	3940efdc-d964-4ee0-bc99-81ac8abfa0d7	version.layout.10.faqs	\N	\N	\N	\N	4696359a-45b8-4fea-b14f-ca34e928e5d0	\N	\N	\N
+4674	4	3940efdc-d964-4ee0-bc99-81ac8abfa0d7	version.layout.10.faqs	\N	\N	\N	\N	0786b804-85ea-4269-841e-5f4fe762ada3	\N	\N	\N
+4675	5	3940efdc-d964-4ee0-bc99-81ac8abfa0d7	version.layout.10.faqs	\N	\N	\N	\N	0ad17856-43c0-4ec9-bd88-c26f826dfb68	\N	\N	\N
+4676	6	3940efdc-d964-4ee0-bc99-81ac8abfa0d7	version.layout.10.faqs	\N	\N	\N	\N	cf06eaf5-c215-44fc-82c2-a7696336ef41	\N	\N	\N
+4077	1	c215530b-9bca-4fab-95b4-59994f19f57e	version.layout.0.logos	\N	\N	\N	8c44fa47-dbaa-44ba-9a83-c35e232404f7	\N	\N	\N	\N
+4078	2	c215530b-9bca-4fab-95b4-59994f19f57e	version.layout.0.logos	\N	\N	\N	93e4c6fc-6bfb-4246-aad1-8861ebc78777	\N	\N	\N	\N
+4079	3	c215530b-9bca-4fab-95b4-59994f19f57e	version.layout.0.logos	\N	\N	\N	8cfbc8ec-db06-4d17-9c8b-bbf589f91e67	\N	\N	\N	\N
+4080	4	c215530b-9bca-4fab-95b4-59994f19f57e	version.layout.0.logos	\N	\N	\N	4f3b0cf8-dc31-4ff9-aa9f-9e0ec3cfb001	\N	\N	\N	\N
+4081	5	c215530b-9bca-4fab-95b4-59994f19f57e	version.layout.0.logos	\N	\N	\N	d67a9625-6f30-4d2a-9643-0962f6faf385	\N	\N	\N	\N
+4082	1	c215530b-9bca-4fab-95b4-59994f19f57e	version.layout.2.logos	\N	\N	\N	513d34fb-5dbc-4333-b0ab-af8e3756cc8a	\N	\N	\N	\N
+4083	2	c215530b-9bca-4fab-95b4-59994f19f57e	version.layout.2.logos	\N	\N	\N	92890105-dde4-4c79-acac-d81ad6dd978a	\N	\N	\N	\N
+4084	1	c215530b-9bca-4fab-95b4-59994f19f57e	version.layout.3.selectedTestimonials	\N	\N	\N	\N	\N	b440e19a-7d00-487a-9927-d384dee97e22	\N	\N
+4085	1	c215530b-9bca-4fab-95b4-59994f19f57e	version.layout.7.selectedTestimonials	\N	\N	\N	\N	\N	ad1d03ad-f60b-4f83-90c2-d456f1fbaf21	\N	\N
+4086	1	c215530b-9bca-4fab-95b4-59994f19f57e	version.layout.9.logos	\N	\N	\N	8c44fa47-dbaa-44ba-9a83-c35e232404f7	\N	\N	\N	\N
+4087	2	c215530b-9bca-4fab-95b4-59994f19f57e	version.layout.9.logos	\N	\N	\N	93e4c6fc-6bfb-4246-aad1-8861ebc78777	\N	\N	\N	\N
+4088	3	c215530b-9bca-4fab-95b4-59994f19f57e	version.layout.9.logos	\N	\N	\N	8cfbc8ec-db06-4d17-9c8b-bbf589f91e67	\N	\N	\N	\N
+4089	4	c215530b-9bca-4fab-95b4-59994f19f57e	version.layout.9.logos	\N	\N	\N	4f3b0cf8-dc31-4ff9-aa9f-9e0ec3cfb001	\N	\N	\N	\N
+4090	5	c215530b-9bca-4fab-95b4-59994f19f57e	version.layout.9.logos	\N	\N	\N	d67a9625-6f30-4d2a-9643-0962f6faf385	\N	\N	\N	\N
+4091	1	c215530b-9bca-4fab-95b4-59994f19f57e	version.layout.10.faqs	\N	\N	\N	\N	487d16ef-4d7e-4603-885d-53d42734b0f1	\N	\N	\N
+4092	2	c215530b-9bca-4fab-95b4-59994f19f57e	version.layout.10.faqs	\N	\N	\N	\N	2d37f238-e71e-4291-8919-33e4c7a73544	\N	\N	\N
+4093	3	c215530b-9bca-4fab-95b4-59994f19f57e	version.layout.10.faqs	\N	\N	\N	\N	4696359a-45b8-4fea-b14f-ca34e928e5d0	\N	\N	\N
+4094	4	c215530b-9bca-4fab-95b4-59994f19f57e	version.layout.10.faqs	\N	\N	\N	\N	0786b804-85ea-4269-841e-5f4fe762ada3	\N	\N	\N
+4095	5	c215530b-9bca-4fab-95b4-59994f19f57e	version.layout.10.faqs	\N	\N	\N	\N	0ad17856-43c0-4ec9-bd88-c26f826dfb68	\N	\N	\N
+4096	6	c215530b-9bca-4fab-95b4-59994f19f57e	version.layout.10.faqs	\N	\N	\N	\N	cf06eaf5-c215-44fc-82c2-a7696336ef41	\N	\N	\N
+4097	1	ecbe3c3f-2b09-4776-8f23-53c91e136a32	version.layout.0.logos	\N	\N	\N	8c44fa47-dbaa-44ba-9a83-c35e232404f7	\N	\N	\N	\N
+4098	2	ecbe3c3f-2b09-4776-8f23-53c91e136a32	version.layout.0.logos	\N	\N	\N	93e4c6fc-6bfb-4246-aad1-8861ebc78777	\N	\N	\N	\N
+4099	3	ecbe3c3f-2b09-4776-8f23-53c91e136a32	version.layout.0.logos	\N	\N	\N	8cfbc8ec-db06-4d17-9c8b-bbf589f91e67	\N	\N	\N	\N
+4100	4	ecbe3c3f-2b09-4776-8f23-53c91e136a32	version.layout.0.logos	\N	\N	\N	4f3b0cf8-dc31-4ff9-aa9f-9e0ec3cfb001	\N	\N	\N	\N
+4101	5	ecbe3c3f-2b09-4776-8f23-53c91e136a32	version.layout.0.logos	\N	\N	\N	d67a9625-6f30-4d2a-9643-0962f6faf385	\N	\N	\N	\N
+4102	1	ecbe3c3f-2b09-4776-8f23-53c91e136a32	version.layout.2.logos	\N	\N	\N	513d34fb-5dbc-4333-b0ab-af8e3756cc8a	\N	\N	\N	\N
+3957	1	b45bc75c-000b-478f-b800-b4f23c264b27	version.layout.0.logos	\N	\N	\N	8c44fa47-dbaa-44ba-9a83-c35e232404f7	\N	\N	\N	\N
+3958	2	b45bc75c-000b-478f-b800-b4f23c264b27	version.layout.0.logos	\N	\N	\N	93e4c6fc-6bfb-4246-aad1-8861ebc78777	\N	\N	\N	\N
+3959	3	b45bc75c-000b-478f-b800-b4f23c264b27	version.layout.0.logos	\N	\N	\N	8cfbc8ec-db06-4d17-9c8b-bbf589f91e67	\N	\N	\N	\N
+3960	4	b45bc75c-000b-478f-b800-b4f23c264b27	version.layout.0.logos	\N	\N	\N	4f3b0cf8-dc31-4ff9-aa9f-9e0ec3cfb001	\N	\N	\N	\N
+3961	5	b45bc75c-000b-478f-b800-b4f23c264b27	version.layout.0.logos	\N	\N	\N	d67a9625-6f30-4d2a-9643-0962f6faf385	\N	\N	\N	\N
+3962	1	b45bc75c-000b-478f-b800-b4f23c264b27	version.layout.2.logos	\N	\N	\N	513d34fb-5dbc-4333-b0ab-af8e3756cc8a	\N	\N	\N	\N
+3963	2	b45bc75c-000b-478f-b800-b4f23c264b27	version.layout.2.logos	\N	\N	\N	92890105-dde4-4c79-acac-d81ad6dd978a	\N	\N	\N	\N
+3964	1	b45bc75c-000b-478f-b800-b4f23c264b27	version.layout.3.selectedTestimonials	\N	\N	\N	\N	\N	b440e19a-7d00-487a-9927-d384dee97e22	\N	\N
+3965	1	b45bc75c-000b-478f-b800-b4f23c264b27	version.layout.7.selectedTestimonials	\N	\N	\N	\N	\N	ad1d03ad-f60b-4f83-90c2-d456f1fbaf21	\N	\N
+3966	1	b45bc75c-000b-478f-b800-b4f23c264b27	version.layout.9.logos	\N	\N	\N	8c44fa47-dbaa-44ba-9a83-c35e232404f7	\N	\N	\N	\N
+3967	2	b45bc75c-000b-478f-b800-b4f23c264b27	version.layout.9.logos	\N	\N	\N	93e4c6fc-6bfb-4246-aad1-8861ebc78777	\N	\N	\N	\N
+3968	3	b45bc75c-000b-478f-b800-b4f23c264b27	version.layout.9.logos	\N	\N	\N	8cfbc8ec-db06-4d17-9c8b-bbf589f91e67	\N	\N	\N	\N
+3969	4	b45bc75c-000b-478f-b800-b4f23c264b27	version.layout.9.logos	\N	\N	\N	4f3b0cf8-dc31-4ff9-aa9f-9e0ec3cfb001	\N	\N	\N	\N
+3970	5	b45bc75c-000b-478f-b800-b4f23c264b27	version.layout.9.logos	\N	\N	\N	d67a9625-6f30-4d2a-9643-0962f6faf385	\N	\N	\N	\N
+3971	1	b45bc75c-000b-478f-b800-b4f23c264b27	version.layout.10.faqs	\N	\N	\N	\N	487d16ef-4d7e-4603-885d-53d42734b0f1	\N	\N	\N
+3972	2	b45bc75c-000b-478f-b800-b4f23c264b27	version.layout.10.faqs	\N	\N	\N	\N	2d37f238-e71e-4291-8919-33e4c7a73544	\N	\N	\N
+3973	3	b45bc75c-000b-478f-b800-b4f23c264b27	version.layout.10.faqs	\N	\N	\N	\N	4696359a-45b8-4fea-b14f-ca34e928e5d0	\N	\N	\N
+3974	4	b45bc75c-000b-478f-b800-b4f23c264b27	version.layout.10.faqs	\N	\N	\N	\N	0786b804-85ea-4269-841e-5f4fe762ada3	\N	\N	\N
+3975	5	b45bc75c-000b-478f-b800-b4f23c264b27	version.layout.10.faqs	\N	\N	\N	\N	0ad17856-43c0-4ec9-bd88-c26f826dfb68	\N	\N	\N
+3976	6	b45bc75c-000b-478f-b800-b4f23c264b27	version.layout.10.faqs	\N	\N	\N	\N	cf06eaf5-c215-44fc-82c2-a7696336ef41	\N	\N	\N
+4103	2	ecbe3c3f-2b09-4776-8f23-53c91e136a32	version.layout.2.logos	\N	\N	\N	92890105-dde4-4c79-acac-d81ad6dd978a	\N	\N	\N	\N
+4104	1	ecbe3c3f-2b09-4776-8f23-53c91e136a32	version.layout.3.selectedTestimonials	\N	\N	\N	\N	\N	b440e19a-7d00-487a-9927-d384dee97e22	\N	\N
+4105	1	ecbe3c3f-2b09-4776-8f23-53c91e136a32	version.layout.7.selectedTestimonials	\N	\N	\N	\N	\N	ad1d03ad-f60b-4f83-90c2-d456f1fbaf21	\N	\N
+4106	1	ecbe3c3f-2b09-4776-8f23-53c91e136a32	version.layout.9.logos	\N	\N	\N	8c44fa47-dbaa-44ba-9a83-c35e232404f7	\N	\N	\N	\N
+4107	2	ecbe3c3f-2b09-4776-8f23-53c91e136a32	version.layout.9.logos	\N	\N	\N	93e4c6fc-6bfb-4246-aad1-8861ebc78777	\N	\N	\N	\N
+4108	3	ecbe3c3f-2b09-4776-8f23-53c91e136a32	version.layout.9.logos	\N	\N	\N	8cfbc8ec-db06-4d17-9c8b-bbf589f91e67	\N	\N	\N	\N
+4109	4	ecbe3c3f-2b09-4776-8f23-53c91e136a32	version.layout.9.logos	\N	\N	\N	4f3b0cf8-dc31-4ff9-aa9f-9e0ec3cfb001	\N	\N	\N	\N
+4110	5	ecbe3c3f-2b09-4776-8f23-53c91e136a32	version.layout.9.logos	\N	\N	\N	d67a9625-6f30-4d2a-9643-0962f6faf385	\N	\N	\N	\N
+4111	1	ecbe3c3f-2b09-4776-8f23-53c91e136a32	version.layout.10.faqs	\N	\N	\N	\N	487d16ef-4d7e-4603-885d-53d42734b0f1	\N	\N	\N
+4112	2	ecbe3c3f-2b09-4776-8f23-53c91e136a32	version.layout.10.faqs	\N	\N	\N	\N	2d37f238-e71e-4291-8919-33e4c7a73544	\N	\N	\N
+4113	3	ecbe3c3f-2b09-4776-8f23-53c91e136a32	version.layout.10.faqs	\N	\N	\N	\N	4696359a-45b8-4fea-b14f-ca34e928e5d0	\N	\N	\N
+4114	4	ecbe3c3f-2b09-4776-8f23-53c91e136a32	version.layout.10.faqs	\N	\N	\N	\N	0786b804-85ea-4269-841e-5f4fe762ada3	\N	\N	\N
+4115	5	ecbe3c3f-2b09-4776-8f23-53c91e136a32	version.layout.10.faqs	\N	\N	\N	\N	0ad17856-43c0-4ec9-bd88-c26f826dfb68	\N	\N	\N
+4116	6	ecbe3c3f-2b09-4776-8f23-53c91e136a32	version.layout.10.faqs	\N	\N	\N	\N	cf06eaf5-c215-44fc-82c2-a7696336ef41	\N	\N	\N
+4117	1	f3366135-d679-461a-9160-86eda5cdd969	version.layout.0.logos	\N	\N	\N	8c44fa47-dbaa-44ba-9a83-c35e232404f7	\N	\N	\N	\N
+4118	2	f3366135-d679-461a-9160-86eda5cdd969	version.layout.0.logos	\N	\N	\N	93e4c6fc-6bfb-4246-aad1-8861ebc78777	\N	\N	\N	\N
+4119	3	f3366135-d679-461a-9160-86eda5cdd969	version.layout.0.logos	\N	\N	\N	8cfbc8ec-db06-4d17-9c8b-bbf589f91e67	\N	\N	\N	\N
+4120	4	f3366135-d679-461a-9160-86eda5cdd969	version.layout.0.logos	\N	\N	\N	4f3b0cf8-dc31-4ff9-aa9f-9e0ec3cfb001	\N	\N	\N	\N
+4121	5	f3366135-d679-461a-9160-86eda5cdd969	version.layout.0.logos	\N	\N	\N	d67a9625-6f30-4d2a-9643-0962f6faf385	\N	\N	\N	\N
+4122	1	f3366135-d679-461a-9160-86eda5cdd969	version.layout.2.logos	\N	\N	\N	513d34fb-5dbc-4333-b0ab-af8e3756cc8a	\N	\N	\N	\N
+4123	2	f3366135-d679-461a-9160-86eda5cdd969	version.layout.2.logos	\N	\N	\N	92890105-dde4-4c79-acac-d81ad6dd978a	\N	\N	\N	\N
+4124	1	f3366135-d679-461a-9160-86eda5cdd969	version.layout.3.selectedTestimonials	\N	\N	\N	\N	\N	b440e19a-7d00-487a-9927-d384dee97e22	\N	\N
+4125	1	f3366135-d679-461a-9160-86eda5cdd969	version.layout.7.selectedTestimonials	\N	\N	\N	\N	\N	ad1d03ad-f60b-4f83-90c2-d456f1fbaf21	\N	\N
+4126	1	f3366135-d679-461a-9160-86eda5cdd969	version.layout.9.logos	\N	\N	\N	8c44fa47-dbaa-44ba-9a83-c35e232404f7	\N	\N	\N	\N
+4127	2	f3366135-d679-461a-9160-86eda5cdd969	version.layout.9.logos	\N	\N	\N	93e4c6fc-6bfb-4246-aad1-8861ebc78777	\N	\N	\N	\N
+4128	3	f3366135-d679-461a-9160-86eda5cdd969	version.layout.9.logos	\N	\N	\N	8cfbc8ec-db06-4d17-9c8b-bbf589f91e67	\N	\N	\N	\N
+4129	4	f3366135-d679-461a-9160-86eda5cdd969	version.layout.9.logos	\N	\N	\N	4f3b0cf8-dc31-4ff9-aa9f-9e0ec3cfb001	\N	\N	\N	\N
+4130	5	f3366135-d679-461a-9160-86eda5cdd969	version.layout.9.logos	\N	\N	\N	d67a9625-6f30-4d2a-9643-0962f6faf385	\N	\N	\N	\N
+4131	1	f3366135-d679-461a-9160-86eda5cdd969	version.layout.10.faqs	\N	\N	\N	\N	487d16ef-4d7e-4603-885d-53d42734b0f1	\N	\N	\N
+4132	2	f3366135-d679-461a-9160-86eda5cdd969	version.layout.10.faqs	\N	\N	\N	\N	2d37f238-e71e-4291-8919-33e4c7a73544	\N	\N	\N
+4133	3	f3366135-d679-461a-9160-86eda5cdd969	version.layout.10.faqs	\N	\N	\N	\N	4696359a-45b8-4fea-b14f-ca34e928e5d0	\N	\N	\N
+4134	4	f3366135-d679-461a-9160-86eda5cdd969	version.layout.10.faqs	\N	\N	\N	\N	0786b804-85ea-4269-841e-5f4fe762ada3	\N	\N	\N
+4135	5	f3366135-d679-461a-9160-86eda5cdd969	version.layout.10.faqs	\N	\N	\N	\N	0ad17856-43c0-4ec9-bd88-c26f826dfb68	\N	\N	\N
+4136	6	f3366135-d679-461a-9160-86eda5cdd969	version.layout.10.faqs	\N	\N	\N	\N	cf06eaf5-c215-44fc-82c2-a7696336ef41	\N	\N	\N
+4192	2	ef5c6a38-e9a0-4159-84b2-e47e23e98868	version.layout.10.faqs	\N	\N	\N	\N	2d37f238-e71e-4291-8919-33e4c7a73544	\N	\N	\N
+4193	3	ef5c6a38-e9a0-4159-84b2-e47e23e98868	version.layout.10.faqs	\N	\N	\N	\N	4696359a-45b8-4fea-b14f-ca34e928e5d0	\N	\N	\N
+4194	4	ef5c6a38-e9a0-4159-84b2-e47e23e98868	version.layout.10.faqs	\N	\N	\N	\N	0786b804-85ea-4269-841e-5f4fe762ada3	\N	\N	\N
+4195	5	ef5c6a38-e9a0-4159-84b2-e47e23e98868	version.layout.10.faqs	\N	\N	\N	\N	0ad17856-43c0-4ec9-bd88-c26f826dfb68	\N	\N	\N
+4196	6	ef5c6a38-e9a0-4159-84b2-e47e23e98868	version.layout.10.faqs	\N	\N	\N	\N	cf06eaf5-c215-44fc-82c2-a7696336ef41	\N	\N	\N
+4677	1	b5dd6e1e-8913-4ada-b039-861fea98b16b	version.layout.0.logos	\N	\N	\N	8c44fa47-dbaa-44ba-9a83-c35e232404f7	\N	\N	\N	\N
+4678	2	b5dd6e1e-8913-4ada-b039-861fea98b16b	version.layout.0.logos	\N	\N	\N	93e4c6fc-6bfb-4246-aad1-8861ebc78777	\N	\N	\N	\N
+4679	3	b5dd6e1e-8913-4ada-b039-861fea98b16b	version.layout.0.logos	\N	\N	\N	8cfbc8ec-db06-4d17-9c8b-bbf589f91e67	\N	\N	\N	\N
+4680	4	b5dd6e1e-8913-4ada-b039-861fea98b16b	version.layout.0.logos	\N	\N	\N	4f3b0cf8-dc31-4ff9-aa9f-9e0ec3cfb001	\N	\N	\N	\N
+4681	5	b5dd6e1e-8913-4ada-b039-861fea98b16b	version.layout.0.logos	\N	\N	\N	d67a9625-6f30-4d2a-9643-0962f6faf385	\N	\N	\N	\N
+4682	1	b5dd6e1e-8913-4ada-b039-861fea98b16b	version.layout.2.logos	\N	\N	\N	513d34fb-5dbc-4333-b0ab-af8e3756cc8a	\N	\N	\N	\N
+4683	2	b5dd6e1e-8913-4ada-b039-861fea98b16b	version.layout.2.logos	\N	\N	\N	92890105-dde4-4c79-acac-d81ad6dd978a	\N	\N	\N	\N
+4684	1	b5dd6e1e-8913-4ada-b039-861fea98b16b	version.layout.3.selectedTestimonials	\N	\N	\N	\N	\N	b440e19a-7d00-487a-9927-d384dee97e22	\N	\N
+4685	1	b5dd6e1e-8913-4ada-b039-861fea98b16b	version.layout.7.selectedTestimonials	\N	\N	\N	\N	\N	ad1d03ad-f60b-4f83-90c2-d456f1fbaf21	\N	\N
+4686	1	b5dd6e1e-8913-4ada-b039-861fea98b16b	version.layout.9.logos	\N	\N	\N	8c44fa47-dbaa-44ba-9a83-c35e232404f7	\N	\N	\N	\N
+4687	2	b5dd6e1e-8913-4ada-b039-861fea98b16b	version.layout.9.logos	\N	\N	\N	93e4c6fc-6bfb-4246-aad1-8861ebc78777	\N	\N	\N	\N
+4688	3	b5dd6e1e-8913-4ada-b039-861fea98b16b	version.layout.9.logos	\N	\N	\N	8cfbc8ec-db06-4d17-9c8b-bbf589f91e67	\N	\N	\N	\N
+4689	4	b5dd6e1e-8913-4ada-b039-861fea98b16b	version.layout.9.logos	\N	\N	\N	4f3b0cf8-dc31-4ff9-aa9f-9e0ec3cfb001	\N	\N	\N	\N
+4690	5	b5dd6e1e-8913-4ada-b039-861fea98b16b	version.layout.9.logos	\N	\N	\N	d67a9625-6f30-4d2a-9643-0962f6faf385	\N	\N	\N	\N
+4691	1	b5dd6e1e-8913-4ada-b039-861fea98b16b	version.layout.10.faqs	\N	\N	\N	\N	487d16ef-4d7e-4603-885d-53d42734b0f1	\N	\N	\N
+4692	2	b5dd6e1e-8913-4ada-b039-861fea98b16b	version.layout.10.faqs	\N	\N	\N	\N	2d37f238-e71e-4291-8919-33e4c7a73544	\N	\N	\N
+4693	3	b5dd6e1e-8913-4ada-b039-861fea98b16b	version.layout.10.faqs	\N	\N	\N	\N	4696359a-45b8-4fea-b14f-ca34e928e5d0	\N	\N	\N
+4694	4	b5dd6e1e-8913-4ada-b039-861fea98b16b	version.layout.10.faqs	\N	\N	\N	\N	0786b804-85ea-4269-841e-5f4fe762ada3	\N	\N	\N
+4695	5	b5dd6e1e-8913-4ada-b039-861fea98b16b	version.layout.10.faqs	\N	\N	\N	\N	0ad17856-43c0-4ec9-bd88-c26f826dfb68	\N	\N	\N
+4696	6	b5dd6e1e-8913-4ada-b039-861fea98b16b	version.layout.10.faqs	\N	\N	\N	\N	cf06eaf5-c215-44fc-82c2-a7696336ef41	\N	\N	\N
+4797	1	cb057bf7-d3b7-4a13-9d3f-46872336859f	version.layout.0.logos	\N	\N	\N	8c44fa47-dbaa-44ba-9a83-c35e232404f7	\N	\N	\N	\N
+4798	2	cb057bf7-d3b7-4a13-9d3f-46872336859f	version.layout.0.logos	\N	\N	\N	93e4c6fc-6bfb-4246-aad1-8861ebc78777	\N	\N	\N	\N
+4799	3	cb057bf7-d3b7-4a13-9d3f-46872336859f	version.layout.0.logos	\N	\N	\N	8cfbc8ec-db06-4d17-9c8b-bbf589f91e67	\N	\N	\N	\N
+4800	4	cb057bf7-d3b7-4a13-9d3f-46872336859f	version.layout.0.logos	\N	\N	\N	4f3b0cf8-dc31-4ff9-aa9f-9e0ec3cfb001	\N	\N	\N	\N
+4801	5	cb057bf7-d3b7-4a13-9d3f-46872336859f	version.layout.0.logos	\N	\N	\N	d67a9625-6f30-4d2a-9643-0962f6faf385	\N	\N	\N	\N
+4802	1	cb057bf7-d3b7-4a13-9d3f-46872336859f	version.layout.2.logos	\N	\N	\N	513d34fb-5dbc-4333-b0ab-af8e3756cc8a	\N	\N	\N	\N
+4803	2	cb057bf7-d3b7-4a13-9d3f-46872336859f	version.layout.2.logos	\N	\N	\N	92890105-dde4-4c79-acac-d81ad6dd978a	\N	\N	\N	\N
+4804	1	cb057bf7-d3b7-4a13-9d3f-46872336859f	version.layout.3.selectedTestimonials	\N	\N	\N	\N	\N	b440e19a-7d00-487a-9927-d384dee97e22	\N	\N
+4805	1	cb057bf7-d3b7-4a13-9d3f-46872336859f	version.layout.7.selectedTestimonials	\N	\N	\N	\N	\N	ad1d03ad-f60b-4f83-90c2-d456f1fbaf21	\N	\N
+4806	1	cb057bf7-d3b7-4a13-9d3f-46872336859f	version.layout.9.logos	\N	\N	\N	8c44fa47-dbaa-44ba-9a83-c35e232404f7	\N	\N	\N	\N
+4807	2	cb057bf7-d3b7-4a13-9d3f-46872336859f	version.layout.9.logos	\N	\N	\N	93e4c6fc-6bfb-4246-aad1-8861ebc78777	\N	\N	\N	\N
+4808	3	cb057bf7-d3b7-4a13-9d3f-46872336859f	version.layout.9.logos	\N	\N	\N	8cfbc8ec-db06-4d17-9c8b-bbf589f91e67	\N	\N	\N	\N
+4809	4	cb057bf7-d3b7-4a13-9d3f-46872336859f	version.layout.9.logos	\N	\N	\N	4f3b0cf8-dc31-4ff9-aa9f-9e0ec3cfb001	\N	\N	\N	\N
+4810	5	cb057bf7-d3b7-4a13-9d3f-46872336859f	version.layout.9.logos	\N	\N	\N	d67a9625-6f30-4d2a-9643-0962f6faf385	\N	\N	\N	\N
+4811	1	cb057bf7-d3b7-4a13-9d3f-46872336859f	version.layout.10.faqs	\N	\N	\N	\N	487d16ef-4d7e-4603-885d-53d42734b0f1	\N	\N	\N
+4812	2	cb057bf7-d3b7-4a13-9d3f-46872336859f	version.layout.10.faqs	\N	\N	\N	\N	2d37f238-e71e-4291-8919-33e4c7a73544	\N	\N	\N
+4813	3	cb057bf7-d3b7-4a13-9d3f-46872336859f	version.layout.10.faqs	\N	\N	\N	\N	4696359a-45b8-4fea-b14f-ca34e928e5d0	\N	\N	\N
+4814	4	cb057bf7-d3b7-4a13-9d3f-46872336859f	version.layout.10.faqs	\N	\N	\N	\N	0786b804-85ea-4269-841e-5f4fe762ada3	\N	\N	\N
+4815	5	cb057bf7-d3b7-4a13-9d3f-46872336859f	version.layout.10.faqs	\N	\N	\N	\N	0ad17856-43c0-4ec9-bd88-c26f826dfb68	\N	\N	\N
+4816	6	cb057bf7-d3b7-4a13-9d3f-46872336859f	version.layout.10.faqs	\N	\N	\N	\N	cf06eaf5-c215-44fc-82c2-a7696336ef41	\N	\N	\N
+4817	1	6f9a67c3-db23-4ee7-8f1d-5a9d10db345a	version.layout.0.logos	\N	\N	\N	8c44fa47-dbaa-44ba-9a83-c35e232404f7	\N	\N	\N	\N
+4818	2	6f9a67c3-db23-4ee7-8f1d-5a9d10db345a	version.layout.0.logos	\N	\N	\N	93e4c6fc-6bfb-4246-aad1-8861ebc78777	\N	\N	\N	\N
+4819	3	6f9a67c3-db23-4ee7-8f1d-5a9d10db345a	version.layout.0.logos	\N	\N	\N	8cfbc8ec-db06-4d17-9c8b-bbf589f91e67	\N	\N	\N	\N
+4820	4	6f9a67c3-db23-4ee7-8f1d-5a9d10db345a	version.layout.0.logos	\N	\N	\N	4f3b0cf8-dc31-4ff9-aa9f-9e0ec3cfb001	\N	\N	\N	\N
+4821	5	6f9a67c3-db23-4ee7-8f1d-5a9d10db345a	version.layout.0.logos	\N	\N	\N	d67a9625-6f30-4d2a-9643-0962f6faf385	\N	\N	\N	\N
+4822	1	6f9a67c3-db23-4ee7-8f1d-5a9d10db345a	version.layout.2.logos	\N	\N	\N	513d34fb-5dbc-4333-b0ab-af8e3756cc8a	\N	\N	\N	\N
+4823	2	6f9a67c3-db23-4ee7-8f1d-5a9d10db345a	version.layout.2.logos	\N	\N	\N	92890105-dde4-4c79-acac-d81ad6dd978a	\N	\N	\N	\N
+4824	1	6f9a67c3-db23-4ee7-8f1d-5a9d10db345a	version.layout.3.selectedTestimonials	\N	\N	\N	\N	\N	b440e19a-7d00-487a-9927-d384dee97e22	\N	\N
+4825	1	6f9a67c3-db23-4ee7-8f1d-5a9d10db345a	version.layout.7.selectedTestimonials	\N	\N	\N	\N	\N	ad1d03ad-f60b-4f83-90c2-d456f1fbaf21	\N	\N
+4826	1	6f9a67c3-db23-4ee7-8f1d-5a9d10db345a	version.layout.9.logos	\N	\N	\N	8c44fa47-dbaa-44ba-9a83-c35e232404f7	\N	\N	\N	\N
+4827	2	6f9a67c3-db23-4ee7-8f1d-5a9d10db345a	version.layout.9.logos	\N	\N	\N	93e4c6fc-6bfb-4246-aad1-8861ebc78777	\N	\N	\N	\N
+4828	3	6f9a67c3-db23-4ee7-8f1d-5a9d10db345a	version.layout.9.logos	\N	\N	\N	8cfbc8ec-db06-4d17-9c8b-bbf589f91e67	\N	\N	\N	\N
+4829	4	6f9a67c3-db23-4ee7-8f1d-5a9d10db345a	version.layout.9.logos	\N	\N	\N	4f3b0cf8-dc31-4ff9-aa9f-9e0ec3cfb001	\N	\N	\N	\N
+4830	5	6f9a67c3-db23-4ee7-8f1d-5a9d10db345a	version.layout.9.logos	\N	\N	\N	d67a9625-6f30-4d2a-9643-0962f6faf385	\N	\N	\N	\N
+4831	1	6f9a67c3-db23-4ee7-8f1d-5a9d10db345a	version.layout.10.faqs	\N	\N	\N	\N	487d16ef-4d7e-4603-885d-53d42734b0f1	\N	\N	\N
+4832	2	6f9a67c3-db23-4ee7-8f1d-5a9d10db345a	version.layout.10.faqs	\N	\N	\N	\N	2d37f238-e71e-4291-8919-33e4c7a73544	\N	\N	\N
+4833	3	6f9a67c3-db23-4ee7-8f1d-5a9d10db345a	version.layout.10.faqs	\N	\N	\N	\N	4696359a-45b8-4fea-b14f-ca34e928e5d0	\N	\N	\N
+4834	4	6f9a67c3-db23-4ee7-8f1d-5a9d10db345a	version.layout.10.faqs	\N	\N	\N	\N	0786b804-85ea-4269-841e-5f4fe762ada3	\N	\N	\N
+4835	5	6f9a67c3-db23-4ee7-8f1d-5a9d10db345a	version.layout.10.faqs	\N	\N	\N	\N	0ad17856-43c0-4ec9-bd88-c26f826dfb68	\N	\N	\N
+4836	6	6f9a67c3-db23-4ee7-8f1d-5a9d10db345a	version.layout.10.faqs	\N	\N	\N	\N	cf06eaf5-c215-44fc-82c2-a7696336ef41	\N	\N	\N
+6165	1	332494df-8482-49a0-aedd-17be4e6346c8	version.layout.0.logos	\N	\N	\N	8c44fa47-dbaa-44ba-9a83-c35e232404f7	\N	\N	\N	\N
+6166	2	332494df-8482-49a0-aedd-17be4e6346c8	version.layout.0.logos	\N	\N	\N	93e4c6fc-6bfb-4246-aad1-8861ebc78777	\N	\N	\N	\N
+6167	3	332494df-8482-49a0-aedd-17be4e6346c8	version.layout.0.logos	\N	\N	\N	8cfbc8ec-db06-4d17-9c8b-bbf589f91e67	\N	\N	\N	\N
+6168	4	332494df-8482-49a0-aedd-17be4e6346c8	version.layout.0.logos	\N	\N	\N	4f3b0cf8-dc31-4ff9-aa9f-9e0ec3cfb001	\N	\N	\N	\N
+6169	5	332494df-8482-49a0-aedd-17be4e6346c8	version.layout.0.logos	\N	\N	\N	d67a9625-6f30-4d2a-9643-0962f6faf385	\N	\N	\N	\N
+6170	1	332494df-8482-49a0-aedd-17be4e6346c8	version.layout.2.logos	\N	\N	\N	513d34fb-5dbc-4333-b0ab-af8e3756cc8a	\N	\N	\N	\N
+6171	2	332494df-8482-49a0-aedd-17be4e6346c8	version.layout.2.logos	\N	\N	\N	92890105-dde4-4c79-acac-d81ad6dd978a	\N	\N	\N	\N
+6172	1	332494df-8482-49a0-aedd-17be4e6346c8	version.layout.3.selectedTestimonials	\N	\N	\N	\N	\N	b440e19a-7d00-487a-9927-d384dee97e22	\N	\N
+6173	1	332494df-8482-49a0-aedd-17be4e6346c8	version.layout.7.selectedTestimonials	\N	\N	\N	\N	\N	ad1d03ad-f60b-4f83-90c2-d456f1fbaf21	\N	\N
+6174	1	332494df-8482-49a0-aedd-17be4e6346c8	version.layout.9.logos	\N	\N	\N	8c44fa47-dbaa-44ba-9a83-c35e232404f7	\N	\N	\N	\N
+6175	2	332494df-8482-49a0-aedd-17be4e6346c8	version.layout.9.logos	\N	\N	\N	93e4c6fc-6bfb-4246-aad1-8861ebc78777	\N	\N	\N	\N
+6176	3	332494df-8482-49a0-aedd-17be4e6346c8	version.layout.9.logos	\N	\N	\N	8cfbc8ec-db06-4d17-9c8b-bbf589f91e67	\N	\N	\N	\N
+6177	4	332494df-8482-49a0-aedd-17be4e6346c8	version.layout.9.logos	\N	\N	\N	4f3b0cf8-dc31-4ff9-aa9f-9e0ec3cfb001	\N	\N	\N	\N
+6178	5	332494df-8482-49a0-aedd-17be4e6346c8	version.layout.9.logos	\N	\N	\N	d67a9625-6f30-4d2a-9643-0962f6faf385	\N	\N	\N	\N
+6179	1	332494df-8482-49a0-aedd-17be4e6346c8	version.layout.10.faqs	\N	\N	\N	\N	487d16ef-4d7e-4603-885d-53d42734b0f1	\N	\N	\N
+6180	2	332494df-8482-49a0-aedd-17be4e6346c8	version.layout.10.faqs	\N	\N	\N	\N	2d37f238-e71e-4291-8919-33e4c7a73544	\N	\N	\N
+6181	3	332494df-8482-49a0-aedd-17be4e6346c8	version.layout.10.faqs	\N	\N	\N	\N	4696359a-45b8-4fea-b14f-ca34e928e5d0	\N	\N	\N
+5949	1	776bee6e-d93a-475f-aa30-53d23438faa4	version.layout.5.logos	\N	\N	\N	92890105-dde4-4c79-acac-d81ad6dd978a	\N	\N	\N	\N
+5950	2	776bee6e-d93a-475f-aa30-53d23438faa4	version.layout.5.logos	\N	\N	\N	513d34fb-5dbc-4333-b0ab-af8e3756cc8a	\N	\N	\N	\N
+6182	4	332494df-8482-49a0-aedd-17be4e6346c8	version.layout.10.faqs	\N	\N	\N	\N	0786b804-85ea-4269-841e-5f4fe762ada3	\N	\N	\N
+6183	5	332494df-8482-49a0-aedd-17be4e6346c8	version.layout.10.faqs	\N	\N	\N	\N	0ad17856-43c0-4ec9-bd88-c26f826dfb68	\N	\N	\N
+5977	1	94244a4d-2803-4eca-bfce-70bc5ec1e0ae	version.layout.5.logos	\N	\N	\N	92890105-dde4-4c79-acac-d81ad6dd978a	\N	\N	\N	\N
+5978	2	94244a4d-2803-4eca-bfce-70bc5ec1e0ae	version.layout.5.logos	\N	\N	\N	513d34fb-5dbc-4333-b0ab-af8e3756cc8a	\N	\N	\N	\N
+6184	6	332494df-8482-49a0-aedd-17be4e6346c8	version.layout.10.faqs	\N	\N	\N	\N	cf06eaf5-c215-44fc-82c2-a7696336ef41	\N	\N	\N
+6041	1	868df81e-d817-4217-bcf3-c5409e711824	version.layout.5.logos	\N	\N	\N	92890105-dde4-4c79-acac-d81ad6dd978a	\N	\N	\N	\N
+6042	2	868df81e-d817-4217-bcf3-c5409e711824	version.layout.5.logos	\N	\N	\N	513d34fb-5dbc-4333-b0ab-af8e3756cc8a	\N	\N	\N	\N
+6043	1	227b995d-f68e-46cb-93e4-8f83abebb7f6	version.layout.5.logos	\N	\N	\N	92890105-dde4-4c79-acac-d81ad6dd978a	\N	\N	\N	\N
+6044	2	227b995d-f68e-46cb-93e4-8f83abebb7f6	version.layout.5.logos	\N	\N	\N	513d34fb-5dbc-4333-b0ab-af8e3756cc8a	\N	\N	\N	\N
+5951	1	5dc29ddf-a604-4102-bcda-6868180ad4bb	version.layout.5.logos	\N	\N	\N	92890105-dde4-4c79-acac-d81ad6dd978a	\N	\N	\N	\N
+5952	2	5dc29ddf-a604-4102-bcda-6868180ad4bb	version.layout.5.logos	\N	\N	\N	513d34fb-5dbc-4333-b0ab-af8e3756cc8a	\N	\N	\N	\N
+6185	1	b834d68c-8e85-4fef-8832-9223c6f99e7b	version.layout.0.logos	\N	\N	\N	8c44fa47-dbaa-44ba-9a83-c35e232404f7	\N	\N	\N	\N
+6186	2	b834d68c-8e85-4fef-8832-9223c6f99e7b	version.layout.0.logos	\N	\N	\N	93e4c6fc-6bfb-4246-aad1-8861ebc78777	\N	\N	\N	\N
+5975	1	4ecf9d84-fac6-4c7b-8528-bec6d72beb0d	version.layout.5.logos	\N	\N	\N	92890105-dde4-4c79-acac-d81ad6dd978a	\N	\N	\N	\N
+5976	2	4ecf9d84-fac6-4c7b-8528-bec6d72beb0d	version.layout.5.logos	\N	\N	\N	513d34fb-5dbc-4333-b0ab-af8e3756cc8a	\N	\N	\N	\N
+6047	1	e4d04395-b8a7-439a-98fb-a81567f5061b	version.layout.5.logos	\N	\N	\N	92890105-dde4-4c79-acac-d81ad6dd978a	\N	\N	\N	\N
+6048	2	e4d04395-b8a7-439a-98fb-a81567f5061b	version.layout.5.logos	\N	\N	\N	513d34fb-5dbc-4333-b0ab-af8e3756cc8a	\N	\N	\N	\N
+6049	1	091817b6-0342-4b73-91f3-5503868ebc22	version.layout.5.logos	\N	\N	\N	92890105-dde4-4c79-acac-d81ad6dd978a	\N	\N	\N	\N
+6050	2	091817b6-0342-4b73-91f3-5503868ebc22	version.layout.5.logos	\N	\N	\N	513d34fb-5dbc-4333-b0ab-af8e3756cc8a	\N	\N	\N	\N
+6187	3	b834d68c-8e85-4fef-8832-9223c6f99e7b	version.layout.0.logos	\N	\N	\N	8cfbc8ec-db06-4d17-9c8b-bbf589f91e67	\N	\N	\N	\N
+6188	4	b834d68c-8e85-4fef-8832-9223c6f99e7b	version.layout.0.logos	\N	\N	\N	4f3b0cf8-dc31-4ff9-aa9f-9e0ec3cfb001	\N	\N	\N	\N
+6189	5	b834d68c-8e85-4fef-8832-9223c6f99e7b	version.layout.0.logos	\N	\N	\N	d67a9625-6f30-4d2a-9643-0962f6faf385	\N	\N	\N	\N
+6190	1	b834d68c-8e85-4fef-8832-9223c6f99e7b	version.layout.2.logos	\N	\N	\N	513d34fb-5dbc-4333-b0ab-af8e3756cc8a	\N	\N	\N	\N
+6191	2	b834d68c-8e85-4fef-8832-9223c6f99e7b	version.layout.2.logos	\N	\N	\N	92890105-dde4-4c79-acac-d81ad6dd978a	\N	\N	\N	\N
+6192	1	b834d68c-8e85-4fef-8832-9223c6f99e7b	version.layout.3.selectedTestimonials	\N	\N	\N	\N	\N	b440e19a-7d00-487a-9927-d384dee97e22	\N	\N
+6193	1	b834d68c-8e85-4fef-8832-9223c6f99e7b	version.layout.7.selectedTestimonials	\N	\N	\N	\N	\N	ad1d03ad-f60b-4f83-90c2-d456f1fbaf21	\N	\N
+6194	1	b834d68c-8e85-4fef-8832-9223c6f99e7b	version.layout.9.logos	\N	\N	\N	8c44fa47-dbaa-44ba-9a83-c35e232404f7	\N	\N	\N	\N
+6195	2	b834d68c-8e85-4fef-8832-9223c6f99e7b	version.layout.9.logos	\N	\N	\N	93e4c6fc-6bfb-4246-aad1-8861ebc78777	\N	\N	\N	\N
+6196	3	b834d68c-8e85-4fef-8832-9223c6f99e7b	version.layout.9.logos	\N	\N	\N	8cfbc8ec-db06-4d17-9c8b-bbf589f91e67	\N	\N	\N	\N
+6197	4	b834d68c-8e85-4fef-8832-9223c6f99e7b	version.layout.9.logos	\N	\N	\N	4f3b0cf8-dc31-4ff9-aa9f-9e0ec3cfb001	\N	\N	\N	\N
+6198	5	b834d68c-8e85-4fef-8832-9223c6f99e7b	version.layout.9.logos	\N	\N	\N	d67a9625-6f30-4d2a-9643-0962f6faf385	\N	\N	\N	\N
+6199	1	b834d68c-8e85-4fef-8832-9223c6f99e7b	version.layout.10.faqs	\N	\N	\N	\N	487d16ef-4d7e-4603-885d-53d42734b0f1	\N	\N	\N
+6200	2	b834d68c-8e85-4fef-8832-9223c6f99e7b	version.layout.10.faqs	\N	\N	\N	\N	2d37f238-e71e-4291-8919-33e4c7a73544	\N	\N	\N
+6201	3	b834d68c-8e85-4fef-8832-9223c6f99e7b	version.layout.10.faqs	\N	\N	\N	\N	4696359a-45b8-4fea-b14f-ca34e928e5d0	\N	\N	\N
+6202	4	b834d68c-8e85-4fef-8832-9223c6f99e7b	version.layout.10.faqs	\N	\N	\N	\N	0786b804-85ea-4269-841e-5f4fe762ada3	\N	\N	\N
+6203	5	b834d68c-8e85-4fef-8832-9223c6f99e7b	version.layout.10.faqs	\N	\N	\N	\N	0ad17856-43c0-4ec9-bd88-c26f826dfb68	\N	\N	\N
+6204	6	b834d68c-8e85-4fef-8832-9223c6f99e7b	version.layout.10.faqs	\N	\N	\N	\N	cf06eaf5-c215-44fc-82c2-a7696336ef41	\N	\N	\N
+4517	1	c9a6ebc4-f4a5-490d-814c-fb1f4608c68f	version.layout.0.logos	\N	\N	\N	8c44fa47-dbaa-44ba-9a83-c35e232404f7	\N	\N	\N	\N
+4518	2	c9a6ebc4-f4a5-490d-814c-fb1f4608c68f	version.layout.0.logos	\N	\N	\N	93e4c6fc-6bfb-4246-aad1-8861ebc78777	\N	\N	\N	\N
+4519	3	c9a6ebc4-f4a5-490d-814c-fb1f4608c68f	version.layout.0.logos	\N	\N	\N	8cfbc8ec-db06-4d17-9c8b-bbf589f91e67	\N	\N	\N	\N
+4520	4	c9a6ebc4-f4a5-490d-814c-fb1f4608c68f	version.layout.0.logos	\N	\N	\N	4f3b0cf8-dc31-4ff9-aa9f-9e0ec3cfb001	\N	\N	\N	\N
+4521	5	c9a6ebc4-f4a5-490d-814c-fb1f4608c68f	version.layout.0.logos	\N	\N	\N	d67a9625-6f30-4d2a-9643-0962f6faf385	\N	\N	\N	\N
+4522	1	c9a6ebc4-f4a5-490d-814c-fb1f4608c68f	version.layout.2.logos	\N	\N	\N	513d34fb-5dbc-4333-b0ab-af8e3756cc8a	\N	\N	\N	\N
+4523	2	c9a6ebc4-f4a5-490d-814c-fb1f4608c68f	version.layout.2.logos	\N	\N	\N	92890105-dde4-4c79-acac-d81ad6dd978a	\N	\N	\N	\N
+4524	1	c9a6ebc4-f4a5-490d-814c-fb1f4608c68f	version.layout.3.selectedTestimonials	\N	\N	\N	\N	\N	b440e19a-7d00-487a-9927-d384dee97e22	\N	\N
+4525	1	c9a6ebc4-f4a5-490d-814c-fb1f4608c68f	version.layout.7.selectedTestimonials	\N	\N	\N	\N	\N	ad1d03ad-f60b-4f83-90c2-d456f1fbaf21	\N	\N
+4526	1	c9a6ebc4-f4a5-490d-814c-fb1f4608c68f	version.layout.9.logos	\N	\N	\N	8c44fa47-dbaa-44ba-9a83-c35e232404f7	\N	\N	\N	\N
+4527	2	c9a6ebc4-f4a5-490d-814c-fb1f4608c68f	version.layout.9.logos	\N	\N	\N	93e4c6fc-6bfb-4246-aad1-8861ebc78777	\N	\N	\N	\N
+4528	3	c9a6ebc4-f4a5-490d-814c-fb1f4608c68f	version.layout.9.logos	\N	\N	\N	8cfbc8ec-db06-4d17-9c8b-bbf589f91e67	\N	\N	\N	\N
+4529	4	c9a6ebc4-f4a5-490d-814c-fb1f4608c68f	version.layout.9.logos	\N	\N	\N	4f3b0cf8-dc31-4ff9-aa9f-9e0ec3cfb001	\N	\N	\N	\N
+4530	5	c9a6ebc4-f4a5-490d-814c-fb1f4608c68f	version.layout.9.logos	\N	\N	\N	d67a9625-6f30-4d2a-9643-0962f6faf385	\N	\N	\N	\N
+4531	1	c9a6ebc4-f4a5-490d-814c-fb1f4608c68f	version.layout.10.faqs	\N	\N	\N	\N	487d16ef-4d7e-4603-885d-53d42734b0f1	\N	\N	\N
+4532	2	c9a6ebc4-f4a5-490d-814c-fb1f4608c68f	version.layout.10.faqs	\N	\N	\N	\N	2d37f238-e71e-4291-8919-33e4c7a73544	\N	\N	\N
+4533	3	c9a6ebc4-f4a5-490d-814c-fb1f4608c68f	version.layout.10.faqs	\N	\N	\N	\N	4696359a-45b8-4fea-b14f-ca34e928e5d0	\N	\N	\N
+4534	4	c9a6ebc4-f4a5-490d-814c-fb1f4608c68f	version.layout.10.faqs	\N	\N	\N	\N	0786b804-85ea-4269-841e-5f4fe762ada3	\N	\N	\N
+4535	5	c9a6ebc4-f4a5-490d-814c-fb1f4608c68f	version.layout.10.faqs	\N	\N	\N	\N	0ad17856-43c0-4ec9-bd88-c26f826dfb68	\N	\N	\N
+4536	6	c9a6ebc4-f4a5-490d-814c-fb1f4608c68f	version.layout.10.faqs	\N	\N	\N	\N	cf06eaf5-c215-44fc-82c2-a7696336ef41	\N	\N	\N
 \.
 
 
@@ -16482,16 +16569,30 @@ COPY "public"."_richTextBlock_v" ("_order", "_parent_id", "_path", "id", "block_
 2	1e917311-a2dc-43d9-9cf3-9222e6db43c0	version.layout	cd93a939-73e9-4f94-a154-e5da362312ed	center	\N	blue	\N	flex-row	02	large	1	68869cf2f3705a4904040d30	\N
 2	955faaf3-565f-4607-bb5d-72ad0cd63d5d	version.layout	03ab4129-d64a-4412-98e1-318e89a8b5cd	center	\N	blue	\N	flex-row	02	large	1	68869cf2f3705a4904040d30	\N
 2	f714fe7f-ab61-4cf9-927c-9bcf97ccf1b6	version.layout	2d2f828d-b1cb-4c85-94a3-2e7659deddb2	center	\N	blue	\N	flex-row	02	large	1	68869cf2f3705a4904040d30	\N
+1	bc71c353-8f39-446c-a109-c4ab58c012b0	version.layout	0ebe71a8-41f0-4388-8af4-44ad674689b4	center	\N	blue	\N	flex-row	01	default	1	68f7999da54bf97ce5bc1aec	\N
+1	3dd8c78b-5eec-4e75-9321-7fa42e51bc63	version.layout	60149806-6248-47a3-8dc7-ceca783b4fe5	center	\N	blue	\N	flex-row	01	default	1	68f7999da54bf97ce5bc1aec	\N
 2	776bee6e-d93a-475f-aa30-53d23438faa4	version.layout	eb2218b0-168c-48d0-a7d9-7697903cfd05	center	\N	blue	\N	flex-row	02	large	1	68869cf2f3705a4904040d30	\N
 2	5dc29ddf-a604-4102-bcda-6868180ad4bb	version.layout	7e437174-c9d3-4a24-b1ad-e8166533209a	center	\N	blue	\N	flex-row	02	large	1	68869cf2f3705a4904040d30	\N
+1	c880bf86-4e6a-4f45-8af1-822beb735beb	version.layout	75dc3d01-2a9d-4faf-b778-b123a1474a22	center	\N	blue	\N	flex-row	01	default	1	68f7999da54bf97ce5bc1aec	\N
 2	af8faec0-f970-4457-b247-da532bf3f7a8	version.layout	383bcaa5-b510-41b8-b8cf-d754e51bb457	center	\N	blue	\N	flex-row	02	large	1	68869cf2f3705a4904040d30	\N
 2	49a0209c-b18c-4487-a8f6-8e681af9ef9b	version.layout	1dcd3ba6-3ebf-42cb-bde8-21a6a05fa34d	center	\N	blue	\N	flex-row	02	large	1	68869cf2f3705a4904040d30	\N
+1	d4f20a0c-29eb-4449-be1a-43f04494f46e	version.layout	dcf9cdf6-6da3-4607-9518-15c0078c5e3e	center	\N	blue	\N	flex-row	01	default	1	68f7999da54bf97ce5bc1aec	\N
 2	94653181-14e8-4c89-b775-45eb55a457ac	version.layout	0e71e1ee-a6fd-4bef-b284-93c0702b2624	center	\N	blue	\N	flex-row	02	large	1	68869cf2f3705a4904040d30	\N
 2	bf142327-abd6-4aee-a03a-6a2ca0141234	version.layout	27258118-6d1c-4837-a1bd-d4d77d780080	center	\N	blue	\N	flex-row	02	large	1	68869cf2f3705a4904040d30	\N
+1	02002e08-e14f-4d65-9edf-e5d6216399f3	version.layout	8f55b4e1-efd0-4ec9-876e-48b4b7d0a866	center	\N	blue	\N	flex-row	01	default	1	68f79a6056d611c865b8ad5d	\N
+1	52527650-47c2-4ce7-bee3-6ab0baf1e780	version.layout	c5f8be01-0955-492f-8af0-7d141a921623	center	\N	blue	\N	flex-row	01	default	1	68f79a6056d611c865b8ad5d	\N
 2	4ecf9d84-fac6-4c7b-8528-bec6d72beb0d	version.layout	2d8fae1b-7958-4b09-b103-48adde4a1873	center	\N	blue	\N	flex-row	02	large	1	68869cf2f3705a4904040d30	\N
 2	94244a4d-2803-4eca-bfce-70bc5ec1e0ae	version.layout	0d565e14-7bf9-4e93-8396-4dde0e7e643c	center	\N	blue	\N	flex-row	02	large	1	68869cf2f3705a4904040d30	\N
 2	1ee329f1-1129-42dd-a064-650b4964fb9f	version.layout	5412caa7-6bd6-4256-b696-a0f0cd3dd191	center	\N	blue	\N	flex-row	02	large	1	68869cf2f3705a4904040d30	\N
 2	2919d024-03ac-422e-94d6-77cdfc4a7014	version.layout	5d22145f-87d2-442b-9dc9-775e1d8f721a	center	\N	blue	\N	flex-row	02	large	1	68869cf2f3705a4904040d30	\N
+1	04916c68-26be-4395-b3b1-d697c5bd8cac	version.layout	5335b331-bf0e-46e9-b1cd-30be10369b5a	center	\N	blue	\N	flex-row	01	default	1	68f7999da54bf97ce5bc1aec	\N
+1	f06583f3-7395-4f76-88bf-72272a0cc793	version.layout	13babcc3-d458-41c5-b479-e295c9fa1934	center	\N	blue	\N	flex-row	01	default	1	68f7999da54bf97ce5bc1aec	\N
+1	4916d3fb-8b43-4a0a-83fa-ddb02eac1e6f	version.layout	c82942c0-5148-4359-9447-0b62014e452e	center	\N	blue	\N	flex-row	01	default	1	68f79a6056d611c865b8ad5d	\N
+1	7efd1f75-f585-4037-adc5-e36235ec6435	version.layout	a50c63dc-9f70-4fbb-81f8-b4b201ae2769	center	\N	blue	\N	flex-row	01	default	1	68f79a6056d611c865b8ad5d	\N
+1	3f8802e0-a7a5-462f-9fc2-b1e282d7e194	version.layout	0ee1e584-9b0f-407e-b092-1d1953a0ed05	center	\N	blue	\N	flex-row	01	default	1	68f7999da54bf97ce5bc1aec	\N
+1	63c7408a-6ac3-4b43-9ce3-dabd8ec493d8	version.layout	7f3a9e77-47c0-4dad-9e06-2c504c513465	center	\N	blue	\N	flex-row	01	default	1	68f7999da54bf97ce5bc1aec	\N
+1	f4dc7f37-4b3e-4272-a877-af01623af114	version.layout	4b0bf0bf-e953-4a5f-a47b-9a4c0cefd120	center	\N	blue	\N	flex-row	01	default	1	68f7999da54bf97ce5bc1aec	\N
+1	e202df17-3e48-4b23-a29b-ebad8a6393ec	version.layout	90f47627-28d2-415a-b11f-29acf51c006f	center	\N	blue	\N	flex-row	01	default	1	68f7999da54bf97ce5bc1aec	\N
 \.
 
 
@@ -16517,6 +16618,7 @@ COPY "public"."_richTextBlock_v_block_header_links_locales" ("link_label", "id",
 
 COPY "public"."_richTextBlock_v_locales" ("block_header_badge_label", "block_header_header_text", "content", "id", "_locale", "_parent_id") FROM stdin;
 \N	\N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h4", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "اشتغلت بنفسي في تشغيل المطاعم، وأعرف وش يعني تحاول توازن بين الحملات، الخصومات، والعمولات، خاصة على تطبيقات التوصيل، بدون ما يكون عندك رؤية واضحة عن العائد.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}, {"type": "linebreak", "version": 1}, {"mode": "normal", "text": "ومع تحوّل قطاع التوصيل إلى تجارة إلكترونية مزدحمة، دخلت اللعبة متغيّرات جديدة: مطاعم سحابية جديدة كل شهر، عروض متغيرة، وتكلفة اكتساب عميل تزيد مع كل حملة.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}, {"type": "linebreak", "version": 1}, {"mode": "normal", "text": "عشان كذا انطلقت بلّورة.. مو كأداة تقارير، بل كنظام تشغيل يساعدك تربط الإعلان بالطلب والفاتورة، وتراجع كل ريال يطلع أو يضيع، بوضوح وكفاءة.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}, {"type": "linebreak", "version": 1}, {"mode": "normal", "text": "هدفنا إن كل مطعم يلاقي قدامه نظام واحد يوضّح له كل شيء، يساعده يسترجع التكاليف المهدرة، يضبط أداءه، ويكسب أكثر من نفس القنوات اللي يشتغل عليها كل يوم.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}, {"type": "linebreak", "version": 1}, {"mode": "normal", "text": "نبغى نكون جزء من يومهم، نشتغل معهم، ونكبر سوا.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}, {"type": "linebreak", "version": 1}], "direction": "rtl"}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [], "direction": "rtl", "textStyle": "", "textFormat": 0}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "عبدالوهاب الزايدي", "type": "text", "style": "", "detail": 0, "format": 1, "version": 1}, {"type": "linebreak", "version": 1}, {"mode": "normal", "text": "الشريك المؤسس والمدير التنفيذي", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 1}], "direction": "rtl", "textFormat": 1}}	136	ar	8e3ae7bc-e498-4f47-85eb-bf36fda94f59
+\N	\N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "/", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": null, "textStyle": "", "textFormat": 0}], "direction": null}}	365	en	60149806-6248-47a3-8dc7-ceca783b4fe5
 \N	\N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h4", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "اشتغلت بنفسي في تشغيل المطاعم، وأعرف وش يعني تحاول توازن بين الحملات، الخصومات، والعمولات، خاصة على تطبيقات التوصيل، بدون ما يكون عندك رؤية واضحة عن العائد.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}, {"type": "linebreak", "version": 1}, {"mode": "normal", "text": "ومع تحوّل قطاع التوصيل إلى تجارة إلكترونية مزدحمة، دخلت اللعبة متغيّرات جديدة: مطاعم سحابية جديدة كل شهر، عروض متغيرة، وتكلفة اكتساب عميل تزيد مع كل حملة.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}, {"type": "linebreak", "version": 1}, {"mode": "normal", "text": "عشان كذا انطلقت بلّورة.. مو كأداة تقارير، بل كنظام تشغيل يساعدك تربط الإعلان بالطلب والفاتورة، وتراجع كل ريال يطلع أو يضيع، بوضوح وكفاءة.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}, {"type": "linebreak", "version": 1}, {"mode": "normal", "text": "هدفنا إن كل مطعم يلاقي قدامه نظام واحد يوضّح له كل شيء، يساعده يسترجع التكاليف المهدرة، يضبط أداءه، ويكسب أكثر من نفس القنوات اللي يشتغل عليها كل يوم.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}, {"type": "linebreak", "version": 1}, {"mode": "normal", "text": "نبغى نكون جزء من يومهم، نشتغل معهم، ونكبر سوا.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}, {"type": "linebreak", "version": 1}], "direction": "rtl"}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [], "direction": "rtl", "textStyle": "", "textFormat": 0}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "عبدالوهاب الزايدي", "type": "text", "style": "", "detail": 0, "format": 1, "version": 1}, {"type": "linebreak", "version": 1}, {"mode": "normal", "text": "الشريك المؤسس والمدير التنفيذي", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 1}], "direction": "rtl", "textFormat": 1}}	135	ar	64e606e0-dd18-46b8-a7af-679fff830d77
 \N	\N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h4", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "تحسين الإيرادات وهوامش الربح لمطاعم والشركات عبر قنوات المبيعات عبر الإنترنت وخارجها", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}, {"type": "linebreak", "version": 1}, {"mode": "normal", "text": "في بالوره، بدأت في بناء أول نظام تشغيل للربح مصمم فقط للمطاعم. نحن ندمج موثوقية على مستوى البنوك - أنابيب بيانات آمنة، تسويات محكمة - مع أدوات محددة لقطاع الأغذية والمشروبات تحول بيانات تطبيقات التوصيل إلى تسويق أكثر دقة، وعمليات أكثر كفاءة، وفي النهاية، هوامش ربح أكبر. الهدف بسيط: منح كل مطعم القدرة على العمل بكفاءة أكبر، والتنافس بشكل أقوى، والاحتفاظ بمزيد من كل ريال يكسبونه.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "عبدالوهاب الزيدي", "type": "text", "style": "", "detail": 0, "format": 1, "version": 1}, {"type": "linebreak", "version": 1}, {"mode": "normal", "text": "شريك مؤسس، مدير تنفيذي", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 1}], "direction": "rtl", "textFormat": 1}}	84	ar	47c84449-8de8-4bdc-8822-a448af6fa010
 \N	\N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h4", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "تحسين الإيرادات وهوامش الربح لمطاعم والشركات عبر قنوات المبيعات عبر الإنترنت وخارجها", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}, {"type": "linebreak", "version": 1}, {"mode": "normal", "text": "في بلورة، بدينا في بناء أول نظام تشغيل للربح مصمم فقط للمطاعم. نحن ندمج موثوقية على مستوى البنوك - أنابيب بيانات آمنة، تسويات محكمة - مع أدوات محددة لقطاع المطاعم تحول بيانات تطبيقات التوصيل إلى تسويق أكثر دقة، وعمليات أكثر كفاءة، وفي النهاية، هوامش ربح أكبر. الهدف بسيط: منح كل مطعم القدرة على العمل بكفاءة أكبر، والتنافس بشكل أقوى، والاحتفاظ بمزيد من كل ريال يكسبونه.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [], "direction": "rtl", "textStyle": "", "textFormat": 0}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "عبدالوهاب الزيدي", "type": "text", "style": "", "detail": 0, "format": 1, "version": 1}, {"type": "linebreak", "version": 1}, {"mode": "normal", "text": "شريك مؤسس، مدير تنفيذي", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 1}], "direction": "rtl"}}	92	ar	438e954f-e93c-4e91-9464-017a90f6cb64
@@ -16553,6 +16655,11 @@ COPY "public"."_richTextBlock_v_locales" ("block_header_badge_label", "block_hea
 \N	\N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h4", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "I’ve worked in restaurant operations myself, and I know what it’s like to juggle campaigns, discounts, and commissions on delivery apps without having a clear view of the return.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "ltr"}, {"tag": "h4", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "As delivery has transformed into a crowded e-commerce space, the challenges have grown: new cloud kitchens opening every month, offers changing constantly, and customer acquisition costs rising with every campaign.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "ltr"}, {"tag": "h4", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "That’s why we launched Ballurh.. not as another reporting tool, but as an operating system. A single platform that connects campaigns, orders, and invoices, helping restaurants track every riyal, recover lost costs, and operate with clarity.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "ltr"}, {"tag": "h4", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "Our goal is to give every restaurant one system that makes their delivery growth simpler, more efficient, and more profitable.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "ltr"}, {"tag": "h4", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "We want to be part of their day, work alongside them, and grow together.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}, {"type": "linebreak", "version": 1}], "direction": "ltr"}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [], "direction": "ltr", "textStyle": "", "textFormat": 0}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "Abdulwahab AlZaidi", "type": "text", "style": "", "detail": 0, "format": 1, "version": 1}, {"type": "linebreak", "version": 1}, {"mode": "normal", "text": "Co-founder and CEO", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 1}], "direction": "rtl"}}	337	en	dd31da40-f5b6-4abf-b8c5-81c606af2037
 \N	\N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h4", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "اشتغلت بنفسي في تشغيل قطاعالمطاعم، وأعرف وش يعني تحاول توازن بين الحملات، الخصومات، والعمولات على تطبيقات التوصيل، بدون ما يكون عندك رؤية واضحة عن العائد.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"tag": "h4", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "ومع تحوّل القطاع إلى تجارة إلكترونية مزدحمة، دخلت اللعبة متغيرات جديدة: مطاعم سحابية جديدة كل شهر، عروض تتغيّر باستمرار، وتكلفة اكتساب عميل تزيد مع كل حملة.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"tag": "h4", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "عشان كذا انطلقت بلّورة.. مو كأداة تقارير، بل كنظام تشغيل يربط الإعلان بالطلب والفاتورة، ويخليك تراجع كل ريال بدقة، توقف الهدر، وتشتغل بثقة.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"tag": "h4", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "هدفنا إن كل مطعم يلقى عنده نظام واحد يوضّح الصورة، يساعده يسترجع الإيرادات المفقودة، ويكسب أكثر من نفس قنوات التوصيل اللي يشتغل عليها.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"tag": "h4", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "نبغى نكون جزء من يومهم، نشتغل معاهم، ونكبر سوا.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}, {"type": "linebreak", "version": 1}], "direction": "rtl"}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [], "direction": null, "textStyle": "", "textFormat": 0}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "عبدالوهاب الزايدي", "type": "text", "style": "", "detail": 0, "format": 1, "version": 1}, {"type": "linebreak", "version": 1}, {"mode": "normal", "text": "الشريك المؤسس والمدير التنفيذي", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 1}], "direction": "rtl"}}	338	ar	dd31da40-f5b6-4abf-b8c5-81c606af2037
 \N	\N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h4", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "I’ve worked in restaurant operations myself, and I know what it’s like to juggle campaigns, discounts, and commissions on delivery apps without having a clear view of the return.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "ltr"}, {"tag": "h4", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "As delivery has transformed into a crowded e-commerce space, the challenges have grown: new cloud kitchens opening every month, offers changing constantly, and customer acquisition costs rising with every campaign.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "ltr"}, {"tag": "h4", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "That’s why we launched Ballurh.. not as another reporting tool, but as an operating system. A single platform that connects campaigns, orders, and invoices, helping restaurants track every riyal, recover lost costs, and operate with clarity.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "ltr"}, {"tag": "h4", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "Our goal is to give every restaurant one system that makes their delivery growth simpler, more efficient, and more profitable.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "ltr"}, {"tag": "h4", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "We want to be part of their day, work alongside them, and grow together.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}, {"type": "linebreak", "version": 1}], "direction": "ltr"}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [], "direction": "ltr", "textStyle": "", "textFormat": 0}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "Abdulwahab AlZaidi", "type": "text", "style": "", "detail": 0, "format": 1, "version": 1}, {"type": "linebreak", "version": 1}, {"mode": "normal", "text": "Co-founder and CEO", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 1}], "direction": "rtl"}}	339	en	68ad3131-c813-4a0f-9331-cfb30f14255a
+\N	\N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "/", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": null, "textStyle": "", "textFormat": 0}], "direction": null}}	368	en	75dc3d01-2a9d-4faf-b778-b123a1474a22
+\N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [], "direction": null}], "direction": null}}	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "/", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": null, "textStyle": "", "textFormat": 0}], "direction": null}}	386	en	0ee1e584-9b0f-407e-b092-1d1953a0ed05
+\N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [], "direction": null}], "direction": null}}	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [], "direction": null}], "direction": null}}	387	ar	0ee1e584-9b0f-407e-b092-1d1953a0ed05
+\N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [], "direction": null}], "direction": null}}	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "/", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": null, "textStyle": "", "textFormat": 0}], "direction": null}}	388	en	7f3a9e77-47c0-4dad-9e06-2c504c513465
+\N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [], "direction": null}], "direction": null}}	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [], "direction": null}], "direction": null}}	389	ar	7f3a9e77-47c0-4dad-9e06-2c504c513465
 \N	\N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h4", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "اشتغلت بنفسي في تشغيل قطاع المطاعم، وأعرف وش يعني تحاول توازن بين الحملات، الخصومات، والعمولات على تطبيقات التوصيل، بدون ما يكون عندك رؤية واضحة عن العائد.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"tag": "h4", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "ومع تحوّل القطاع إلى تجارة إلكترونية مزدحمة، دخلت اللعبة متغيرات جديدة: مطاعم سحابية جديدة كل شهر، عروض تتغيّر باستمرار، وتكلفة اكتساب عميل تزيد مع كل حملة.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"tag": "h4", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "عشان كذا انطلقت بلّورة.. مو كأداة تقارير، بل كنظام تشغيل يربط الإعلان بالطلب والفاتورة، ويخليك تراجع كل ريال بدقة، توقف الهدر، وتشتغل بثقة.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"tag": "h4", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "هدفنا إن كل مطعم يلقى عنده نظام واحد يوضّح الصورة، يساعده يسترجع الإيرادات المفقودة، ويكسب أكثر من نفس قنوات التوصيل اللي يشتغل عليها.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"tag": "h4", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "نبغى نكون جزء من يومهم، نشتغل معاهم، ونكبر سوا.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}, {"type": "linebreak", "version": 1}], "direction": "rtl"}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [], "direction": null, "textStyle": "", "textFormat": 0}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "عبدالوهاب الزايدي", "type": "text", "style": "", "detail": 0, "format": 1, "version": 1}, {"type": "linebreak", "version": 1}, {"mode": "normal", "text": "الشريك المؤسس والمدير التنفيذي", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 1}], "direction": "rtl"}}	340	ar	68ad3131-c813-4a0f-9331-cfb30f14255a
 \N	\N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h4", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "I've worked in restaurant operations myself, and I know what it means to try to balance campaigns, discounts, and commissions, especially on delivery apps, without a clear view of the return.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}, {"type": "linebreak", "version": 1}, {"mode": "normal", "text": "And with the delivery sector's transformation into a crowded e-commerce space, new variables have entered the game: new cloud kitchens every month, changing offers, and a cost of customer acquisition that increases with each campaign.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}, {"type": "linebreak", "version": 1}, {"mode": "normal", "text": "That's why Ballurh was launched... not as a reporting tool, but as an operating system that helps you connect advertising to orders and invoices, and review every riyal that comes in or is wasted, with clarity and efficiency.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}, {"type": "linebreak", "version": 1}, {"mode": "normal", "text": "Our goal is for every restaurant to find a single system that clarifies everything for them, helps them recover wasted costs, optimize their performance, and earn more from the same channels they work on every day.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}, {"type": "linebreak", "version": 1}, {"mode": "normal", "text": "We want to be part of their day, work with them, and grow together.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}, {"type": "linebreak", "version": 1}], "direction": "rtl"}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [], "direction": "rtl", "textStyle": "", "textFormat": 0}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "Abdulwahab Al-Zaidy", "type": "text", "style": "", "detail": 0, "format": 1, "version": 1}, {"type": "linebreak", "version": 1}, {"mode": "normal", "text": "Co-founder and CEO", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 1}], "direction": "rtl", "textFormat": 1}}	207	en	6026112e-9295-48df-9dfc-23c57495e20f
 \N	\N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h4", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "اشتغلت بنفسي في تشغيل المطاعم، وأعرف وش يعني تحاول توازن بين الحملات، الخصومات، والعمولات، خاصة على تطبيقات التوصيل، بدون ما يكون عندك رؤية واضحة عن العائد.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}, {"type": "linebreak", "version": 1}, {"mode": "normal", "text": "ومع تحوّل قطاع التوصيل إلى تجارة إلكترونية مزدحمة، دخلت اللعبة متغيّرات جديدة: مطاعم سحابية جديدة كل شهر، عروض متغيرة، وتكلفة اكتساب عميل تزيد مع كل حملة.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}, {"type": "linebreak", "version": 1}, {"mode": "normal", "text": "عشان كذا انطلقت بلّورة.. مو كأداة تقارير، بل كنظام تشغيل يساعدك تربط الإعلان بالطلب والفاتورة، وتراجع كل ريال يطلع أو يضيع، بوضوح وكفاءة.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}, {"type": "linebreak", "version": 1}, {"mode": "normal", "text": "هدفنا إن كل مطعم يلاقي قدامه نظام واحد يوضّح له كل شيء، يساعده يسترجع التكاليف المهدرة، يضبط أداءه، ويكسب أكثر من نفس القنوات اللي يشتغل عليها كل يوم.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}, {"type": "linebreak", "version": 1}, {"mode": "normal", "text": "نبغى نكون جزء من يومهم، نشتغل معهم، ونكبر سوا.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}, {"type": "linebreak", "version": 1}], "direction": "rtl"}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [], "direction": "rtl", "textStyle": "", "textFormat": 0}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "عبدالوهاب الزايدي", "type": "text", "style": "", "detail": 0, "format": 1, "version": 1}, {"type": "linebreak", "version": 1}, {"mode": "normal", "text": "الشريك المؤسس والمدير التنفيذي", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 1}], "direction": "rtl", "textFormat": 1}}	208	ar	6026112e-9295-48df-9dfc-23c57495e20f
@@ -16560,6 +16667,7 @@ COPY "public"."_richTextBlock_v_locales" ("block_header_badge_label", "block_hea
 \N	\N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h4", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "اشتغلت بنفسي في تشغيل المطاعم، وأعرف وش يعني تحاول توازن بين الحملات، الخصومات، والعمولات، خاصة على تطبيقات التوصيل، بدون ما يكون عندك رؤية واضحة عن العائد.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}, {"type": "linebreak", "version": 1}, {"mode": "normal", "text": "ومع تحوّل قطاع التوصيل إلى تجارة إلكترونية مزدحمة، دخلت اللعبة متغيّرات جديدة: مطاعم سحابية جديدة كل شهر، عروض متغيرة، وتكلفة اكتساب عميل تزيد مع كل حملة.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}, {"type": "linebreak", "version": 1}, {"mode": "normal", "text": "عشان كذا انطلقت بلّورة.. مو كأداة تقارير، بل كنظام تشغيل يساعدك تربط الإعلان بالطلب والفاتورة، وتراجع كل ريال يطلع أو يضيع، بوضوح وكفاءة.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}, {"type": "linebreak", "version": 1}, {"mode": "normal", "text": "هدفنا إن كل مطعم يلاقي قدامه نظام واحد يوضّح له كل شيء، يساعده يسترجع التكاليف المهدرة، يضبط أداءه، ويكسب أكثر من نفس القنوات اللي يشتغل عليها كل يوم.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}, {"type": "linebreak", "version": 1}, {"mode": "normal", "text": "نبغى نكون جزء من يومهم، نشتغل معهم، ونكبر سوا.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}, {"type": "linebreak", "version": 1}], "direction": "rtl"}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [], "direction": "rtl", "textStyle": "", "textFormat": 0}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "عبدالوهاب الزايدي", "type": "text", "style": "", "detail": 0, "format": 1, "version": 1}, {"type": "linebreak", "version": 1}, {"mode": "normal", "text": "الشريك المؤسس والمدير التنفيذي", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 1}], "direction": "rtl", "textFormat": 1}}	210	ar	830fa295-d6b4-481c-8afc-a2c5e52077ab
 \N	\N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h4", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "I've worked in restaurant operations myself, and I know what it means to try to balance campaigns, discounts, and commissions, especially on delivery apps, without a clear view of the return.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}, {"type": "linebreak", "version": 1}, {"mode": "normal", "text": "And with the delivery sector's transformation into a crowded e-commerce space, new variables have entered the game: new cloud kitchens every month, changing offers, and a cost of customer acquisition that increases with each campaign.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}, {"type": "linebreak", "version": 1}, {"mode": "normal", "text": "That's why Ballurh was launched... not as a reporting tool, but as an operating system that helps you connect advertising to orders and invoices, and review every riyal that comes in or is wasted, with clarity and efficiency.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}, {"type": "linebreak", "version": 1}, {"mode": "normal", "text": "Our goal is for every restaurant to find a single system that clarifies everything for them, helps them recover wasted costs, optimize their performance, and earn more from the same channels they work on every day.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}, {"type": "linebreak", "version": 1}, {"mode": "normal", "text": "We want to be part of their day, work with them, and grow together.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}, {"type": "linebreak", "version": 1}], "direction": "rtl"}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [], "direction": "rtl", "textStyle": "", "textFormat": 0}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "Abdulwahab AlZaidi", "type": "text", "style": "", "detail": 0, "format": 1, "version": 1}, {"type": "linebreak", "version": 1}, {"mode": "normal", "text": "Co-founder and CEO", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 1}], "direction": "rtl", "textFormat": 1}}	273	en	0d565e14-7bf9-4e93-8396-4dde0e7e643c
 \N	\N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h4", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "اشتغلت بنفسي في تشغيل المطاعم، وأعرف وش يعني تحاول توازن بين الحملات، الخصومات، والعمولات على تطبيقات التوصيل، بدون ما يكون عندك رؤية واضحة عن العائد.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"tag": "h4", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "ومع تحوّل القطاع إلى تجارة إلكترونية مزدحمة، صارت التحديات أكبر: مطاعم سحابية جديدة كل شهر، عروض تتغيّر باستمرار، وتكلفة اكتساب عميل تزيد مع كل حملة.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"tag": "h4", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "عشان كذا انطلقت بلّورة.. مو كأداة تقارير، بل كنظام تشغيل يربط الإعلان بالطلب والفاتورة، ويخليك تراجع كل ريال بدقة، توقف الهدر، وتشتغل بثقة.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"tag": "h4", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "هدفنا إن كل مطعم يلقى عنده نظام واحد يوضّح الصورة، يساعده يسترجع التكاليف المفقودة، ويكسب أكثر من نفس قنوات التوصيل اللي يشتغل عليها.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"tag": "h4", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "نبغى نكون جزء من يومهم، نشتغل معاهم، ونكبر سوا.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}, {"type": "linebreak", "version": 1}], "direction": "rtl"}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [], "direction": null, "textStyle": "", "textFormat": 0}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "عبدالوهاب الزايدي", "type": "text", "style": "", "detail": 0, "format": 1, "version": 1}, {"type": "linebreak", "version": 1}, {"mode": "normal", "text": "الشريك المؤسس والمدير التنفيذي", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}], "direction": "rtl", "textFormat": 1}}	274	ar	0d565e14-7bf9-4e93-8396-4dde0e7e643c
+\N	\N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "/", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": null, "textStyle": "", "textFormat": 0}], "direction": null}}	369	en	dcf9cdf6-6da3-4607-9518-15c0078c5e3e
 \N	\N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h4", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "I’ve worked in restaurant operations myself, and I know what it’s like to juggle campaigns, discounts, and commissions on delivery apps without having a clear view of the return.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "ltr"}, {"tag": "h4", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "As delivery has transformed into a crowded e-commerce space, the challenges have grown: new cloud kitchens opening every month, offers changing constantly, and customer acquisition costs rising with every campaign.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "ltr"}, {"tag": "h4", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "That’s why we launched Ballurh.. not as another reporting tool, but as an operating system. A single platform that connects campaigns, orders, and invoices, helping restaurants track every riyal, recover lost costs, and operate with clarity.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "ltr"}, {"tag": "h4", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "Our goal is to give every restaurant one system that makes their delivery growth simpler, more efficient, and more profitable.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "ltr"}, {"tag": "h4", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "We want to be part of their day, work alongside them, and grow together.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}, {"type": "linebreak", "version": 1}], "direction": "ltr"}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [], "direction": "ltr", "textStyle": "", "textFormat": 0}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "Abdulwahab AlZaidi", "type": "text", "style": "", "detail": 0, "format": 1, "version": 1}, {"type": "linebreak", "version": 1}, {"mode": "normal", "text": "Co-founder and CEO", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 1}], "direction": "rtl"}}	343	en	c1c02e36-7510-4ee8-8b3f-107b311da710
 \N	\N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h4", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "اشتغلت بنفسي في تشغيل قطاع المطاعم، وأعرف وش يعني تحاول توازن بين الحملات، الخصومات، والعمولات على تطبيقات التوصيل، بدون ما يكون عندك رؤية واضحة عن العائد.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"tag": "h4", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "ومع تحوّل القطاع إلى تجارة إلكترونية مزدحمة، دخلت اللعبة متغيرات جديدة: مطاعم سحابية جديدة كل شهر، عروض تتغيّر باستمرار، وتكلفة اكتساب عميل تزيد مع كل حملة.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"tag": "h4", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "عشان كذا انطلقت بلّورة.. مو كأداة تقارير، بل كنظام تشغيل يربط الإعلان بالطلب والفاتورة، ويخليك تراجع كل ريال بدقة، توقف الهدر، وتشتغل بثقة.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"tag": "h4", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "هدفنا إن كل مطعم يلقى عنده نظام واحد يوضّح الصورة، يساعده يسترجع الإيرادات المفقودة، ويكسب أكثر من نفس قنوات التوصيل اللي يشتغل عليها.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"tag": "h4", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "نبغى نكون جزء من يومهم، نشتغل معاهم، ونكبر سوا.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}, {"type": "linebreak", "version": 1}], "direction": "rtl"}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [], "direction": null, "textStyle": "", "textFormat": 0}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "عبدالوهاب الزايدي", "type": "text", "style": "", "detail": 0, "format": 1, "version": 1}, {"type": "linebreak", "version": 1}, {"mode": "normal", "text": "الشريك المؤسس والمدير التنفيذي", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 1}], "direction": "rtl"}}	344	ar	c1c02e36-7510-4ee8-8b3f-107b311da710
 \N	\N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h4", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "I've worked in restaurant operations myself, and I know what it means to try to balance campaigns, discounts, and commissions, especially on delivery apps, without a clear view of the return.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}, {"type": "linebreak", "version": 1}, {"mode": "normal", "text": "And with the delivery sector's transformation into a crowded e-commerce space, new variables have entered the game: new cloud kitchens every month, changing offers, and a cost of customer acquisition that increases with each campaign.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}, {"type": "linebreak", "version": 1}, {"mode": "normal", "text": "That's why Ballurh was launched... not as a reporting tool, but as an operating system that helps you connect advertising to orders and invoices, and review every riyal that comes in or is wasted, with clarity and efficiency.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}, {"type": "linebreak", "version": 1}, {"mode": "normal", "text": "Our goal is for every restaurant to find a single system that clarifies everything for them, helps them recover wasted costs, optimize their performance, and earn more from the same channels they work on every day.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}, {"type": "linebreak", "version": 1}, {"mode": "normal", "text": "We want to be part of their day, work with them, and grow together.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}, {"type": "linebreak", "version": 1}], "direction": "rtl"}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [], "direction": "rtl", "textStyle": "", "textFormat": 0}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "Abdulwahab AlZaidi", "type": "text", "style": "", "detail": 0, "format": 1, "version": 1}, {"type": "linebreak", "version": 1}, {"mode": "normal", "text": "Co-founder and CEO", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 1}], "direction": "rtl", "textFormat": 1}}	271	en	2d8fae1b-7958-4b09-b103-48adde4a1873
@@ -16570,7 +16678,9 @@ COPY "public"."_richTextBlock_v_locales" ("block_header_badge_label", "block_hea
 \N	\N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h4", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "اشتغلت بنفسي في تشغيل المطاعم، وأعرف وش يعني تحاول توازن بين الحملات، الخصومات، والعمولات، خاصة على تطبيقات التوصيل، بدون ما يكون عندك رؤية واضحة عن العائد.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}, {"type": "linebreak", "version": 1}, {"mode": "normal", "text": "ومع تحوّل قطاع التوصيل إلى تجارة إلكترونية مزدحمة، دخلت اللعبة متغيّرات جديدة: مطاعم سحابية جديدة كل شهر، عروض متغيرة، وتكلفة اكتساب عميل تزيد مع كل حملة.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}, {"type": "linebreak", "version": 1}, {"mode": "normal", "text": "عشان كذا انطلقت بلّورة.. مو كأداة تقارير، بل كنظام تشغيل يساعدك تربط الإعلان بالطلب والفاتورة، وتراجع كل ريال يطلع أو يضيع، بوضوح وكفاءة.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}, {"type": "linebreak", "version": 1}, {"mode": "normal", "text": "هدفنا إن كل مطعم يلاقي قدامه نظام واحد يوضّح له كل شيء، يساعده يسترجع التكاليف المهدرة، يضبط أداءه، ويكسب أكثر من نفس القنوات اللي يشتغل عليها كل يوم.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}, {"type": "linebreak", "version": 1}, {"mode": "normal", "text": "نبغى نكون جزء من يومهم، نشتغل معهم، ونكبر سوا.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}, {"type": "linebreak", "version": 1}], "direction": "rtl"}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [], "direction": "rtl", "textStyle": "", "textFormat": 0}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "عبدالوهاب الزايدي", "type": "text", "style": "", "detail": 0, "format": 1, "version": 1}, {"type": "linebreak", "version": 1}, {"mode": "normal", "text": "الشريك المؤسس والمدير التنفيذي", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 1}], "direction": "rtl", "textFormat": 1}}	226	ar	cd93a939-73e9-4f94-a154-e5da362312ed
 \N	\N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h4", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "I’ve worked in restaurant operations myself, and I know what it’s like to juggle campaigns, discounts, and commissions on delivery apps without having a clear view of the return.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "ltr"}, {"tag": "h4", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "As delivery has transformed into a crowded e-commerce space, the challenges have grown: new cloud kitchens opening every month, offers changing constantly, and customer acquisition costs rising with every campaign.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "ltr"}, {"tag": "h4", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "That’s why we launched Ballurh.. not as another reporting tool, but as an operating system. A single platform that connects campaigns, orders, and invoices, helping restaurants track every riyal, recover lost costs, and operate with clarity.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "ltr"}, {"tag": "h4", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "Our goal is to give every restaurant one system that makes their delivery growth simpler, more efficient, and more profitable.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "ltr"}, {"tag": "h4", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "We want to be part of their day, work alongside them, and grow together.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}, {"type": "linebreak", "version": 1}], "direction": "ltr"}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [], "direction": "ltr", "textStyle": "", "textFormat": 0}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "Abdulwahab AlZaidi", "type": "text", "style": "", "detail": 0, "format": 1, "version": 1}, {"type": "linebreak", "version": 1}, {"mode": "normal", "text": "Co-founder and CEO", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 1}], "direction": "rtl"}}	345	en	e0a0c95a-f880-4e24-b6f1-d3550a36d49d
 \N	\N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h4", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "اشتغلت بنفسي في تشغيل قطاع المطاعم، وأعرف وش يعني تحاول توازن بين الحملات، الخصومات، والعمولات على تطبيقات التوصيل، بدون ما يكون عندك رؤية واضحة عن العائد.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"tag": "h4", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "ومع تحوّل القطاع إلى تجارة إلكترونية مزدحمة، دخلت اللعبة متغيرات جديدة: مطاعم سحابية جديدة كل شهر، عروض تتغيّر باستمرار، وتكلفة اكتساب عميل تزيد مع كل حملة.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"tag": "h4", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "عشان كذا انطلقت بلّورة.. مو كأداة تقارير، بل كنظام تشغيل يربط الإعلان بالطلب والفاتورة، ويخليك تراجع كل ريال بدقة، توقف الهدر، وتشتغل بثقة.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"tag": "h4", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "هدفنا إن كل مطعم يلقى عنده نظام واحد يوضّح الصورة، يساعده يسترجع الإيرادات المفقودة، ويكسب أكثر من نفس قنوات التوصيل اللي يشتغل عليها.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"tag": "h4", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "نبغى نكون جزء من يومهم، نشتغل معاهم، ونكبر سوا.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}, {"type": "linebreak", "version": 1}], "direction": "rtl"}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [], "direction": null, "textStyle": "", "textFormat": 0}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "عبدالوهاب الزايدي", "type": "text", "style": "", "detail": 0, "format": 1, "version": 1}, {"type": "linebreak", "version": 1}, {"mode": "normal", "text": "الشريك المؤسس والمدير التنفيذي", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 1}], "direction": "rtl"}}	346	ar	e0a0c95a-f880-4e24-b6f1-d3550a36d49d
+\N	\N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "/", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": null, "textStyle": "", "textFormat": 0}], "direction": null}}	370	en	8f55b4e1-efd0-4ec9-876e-48b4b7d0a866
 \N	\N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h4", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "I’ve worked in restaurant operations myself, and I know what it’s like to juggle campaigns, discounts, and commissions on delivery apps without having a clear view of the return.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "ltr"}, {"tag": "h4", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "As delivery has transformed into a crowded e-commerce space, the challenges have grown: new cloud kitchens opening every month, offers changing constantly, and customer acquisition costs rising with every campaign.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "ltr"}, {"tag": "h4", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "That’s why we launched Ballurh.. not as another reporting tool, but as an operating system. A single platform that connects campaigns, orders, and invoices, helping restaurants track every riyal, recover lost costs, and operate with clarity.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "ltr"}, {"tag": "h4", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "Our goal is to give every restaurant one system that makes their delivery growth simpler, more efficient, and more profitable.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "ltr"}, {"tag": "h4", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "We want to be part of their day, work alongside them, and grow together.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}, {"type": "linebreak", "version": 1}], "direction": "ltr"}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [], "direction": "ltr", "textStyle": "", "textFormat": 0}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "Abdulwahab AlZaidi", "type": "text", "style": "", "detail": 0, "format": 1, "version": 1}, {"type": "linebreak", "version": 1}, {"mode": "normal", "text": "Co-founder and CEO", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 1}], "direction": "rtl"}}	357	en	03ab4129-d64a-4412-98e1-318e89a8b5cd
+\N	\N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "/", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": null, "textStyle": "", "textFormat": 0}], "direction": null}}	371	en	c5f8be01-0955-492f-8af0-7d141a921623
 \N	\N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h4", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "اشتغلت بنفسي في تشغيل قطاع المطاعم، وأعرف وش يعني تحاول توازن بين الحملات، الخصومات، والعمولات على تطبيقات التوصيل، بدون ما يكون عندك رؤية واضحة عن العائد.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"tag": "h4", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "ومع تحوّل القطاع إلى تجارة إلكترونية مزدحمة، دخلت اللعبة متغيرات جديدة: مطاعم سحابية جديدة كل شهر، عروض تتغيّر باستمرار، وتكلفة اكتساب عميل تزيد مع كل حملة.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"tag": "h4", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "عشان كذا انطلقت بلّورة.. مو كأداة تقارير، بل كنظام تشغيل يربط الإعلان بالطلب والفاتورة، ويخليك تراجع كل ريال بدقة، توقف الهدر، وتشتغل بثقة.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"tag": "h4", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "هدفنا إن كل مطعم يلقى عنده نظام واحد يوضّح الصورة، يساعده يسترجع الإيرادات المفقودة، ويكسب أكثر من نفس قنوات التوصيل اللي يشتغل عليها.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"tag": "h4", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "نبغى نكون جزء من يومهم، نشتغل معاهم، ونكبر سوا.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}, {"type": "linebreak", "version": 1}], "direction": "rtl"}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [], "direction": null, "textStyle": "", "textFormat": 0}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "عبدالوهاب الزايدي", "type": "text", "style": "", "detail": 0, "format": 1, "version": 1}, {"type": "linebreak", "version": 1}, {"mode": "normal", "text": "الشريك المؤسس والمدير التنفيذي", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 1}], "direction": "rtl"}}	358	ar	03ab4129-d64a-4412-98e1-318e89a8b5cd
 \N	\N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h4", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "I’ve worked in restaurant operations myself, and I know what it’s like to juggle campaigns, discounts, and commissions on delivery apps without having a clear view of the return.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "ltr"}, {"tag": "h4", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "As delivery has transformed into a crowded e-commerce space, the challenges have grown: new cloud kitchens opening every month, offers changing constantly, and customer acquisition costs rising with every campaign.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "ltr"}, {"tag": "h4", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "That’s why we launched Ballurh.. not as another reporting tool, but as an operating system. A single platform that connects campaigns, orders, and invoices, helping restaurants track every riyal, recover lost costs, and operate with clarity.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "ltr"}, {"tag": "h4", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "Our goal is to give every restaurant one system that makes their delivery growth simpler, more efficient, and more profitable.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "ltr"}, {"tag": "h4", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "We want to be part of their day, work alongside them, and grow together.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}, {"type": "linebreak", "version": 1}], "direction": "ltr"}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [], "direction": "ltr", "textStyle": "", "textFormat": 0}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "Abdulwahab AlZaidi", "type": "text", "style": "", "detail": 0, "format": 1, "version": 1}, {"type": "linebreak", "version": 1}, {"mode": "normal", "text": "Co-founder and CEO", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 1}], "direction": "rtl"}}	359	en	2d2f828d-b1cb-4c85-94a3-2e7659deddb2
 \N	\N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h4", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "I've worked in restaurant operations myself, and I know what it means to try to balance campaigns, discounts, and commissions, especially on delivery apps, without a clear view of the return.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}, {"type": "linebreak", "version": 1}, {"mode": "normal", "text": "And with the delivery sector's transformation into a crowded e-commerce space, new variables have entered the game: new cloud kitchens every month, changing offers, and a cost of customer acquisition that increases with each campaign.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}, {"type": "linebreak", "version": 1}, {"mode": "normal", "text": "That's why Ballurh was launched... not as a reporting tool, but as an operating system that helps you connect advertising to orders and invoices, and review every riyal that comes in or is wasted, with clarity and efficiency.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}, {"type": "linebreak", "version": 1}, {"mode": "normal", "text": "Our goal is for every restaurant to find a single system that clarifies everything for them, helps them recover wasted costs, optimize their performance, and earn more from the same channels they work on every day.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}, {"type": "linebreak", "version": 1}, {"mode": "normal", "text": "We want to be part of their day, work with them, and grow together.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}, {"type": "linebreak", "version": 1}], "direction": "rtl"}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [], "direction": "rtl", "textStyle": "", "textFormat": 0}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "Abdulwahab AlZaidi", "type": "text", "style": "", "detail": 0, "format": 1, "version": 1}, {"type": "linebreak", "version": 1}, {"mode": "normal", "text": "Co-founder and CEO", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 1}], "direction": "rtl", "textFormat": 1}}	245	en	eb2218b0-168c-48d0-a7d9-7697903cfd05
@@ -16586,6 +16696,17 @@ COPY "public"."_richTextBlock_v_locales" ("block_header_badge_label", "block_hea
 \N	\N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h4", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "اشتغلت بنفسي في تشغيل المطاعم، وأعرف وش يعني تحاول توازن بين الحملات، الخصومات، والعمولات على تطبيقات التوصيل، بدون ما يكون عندك رؤية واضحة عن العائد.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"tag": "h4", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "ومع تحوّل القطاع إلى تجارة إلكترونية مزدحمة، صارت التحديات أكبر: مطاعم سحابية جديدة كل شهر، عروض تتغيّر باستمرار، وتكلفة اكتساب عميل تزيد مع كل حملة.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"tag": "h4", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "عشان كذا انطلقت بلّورة.. مو كأداة تقارير، بل كنظام تشغيل يربط الإعلان بالطلب والفاتورة، ويخليك تراجع كل ريال بدقة، توقف الهدر، وتشتغل بثقة.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"tag": "h4", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "هدفنا إن كل مطعم يلقى عنده نظام واحد يوضّح الصورة، يساعده يسترجع التكاليف المفقودة، ويكسب أكثر من نفس قنوات التوصيل اللي يشتغل عليها.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"tag": "h4", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "نبغى نكون جزء من يومهم، نشتغل معاهم، ونكبر سوا.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}, {"type": "linebreak", "version": 1}], "direction": "rtl"}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [], "direction": null, "textStyle": "", "textFormat": 0}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "عبدالوهاب الزايدي", "type": "text", "style": "", "detail": 0, "format": 1, "version": 1}, {"type": "linebreak", "version": 1}, {"mode": "normal", "text": "الشريك المؤسس والمدير التنفيذي", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}], "direction": "rtl", "textFormat": 1}}	308	ar	5412caa7-6bd6-4256-b696-a0f0cd3dd191
 \N	\N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h4", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "I’ve worked in restaurant operations myself, and I know what it’s like to juggle campaigns, discounts, and commissions on delivery apps without having a clear view of the return.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "ltr"}, {"tag": "h4", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "As delivery has transformed into a crowded e-commerce space, the challenges have grown: new cloud kitchens opening every month, offers changing constantly, and customer acquisition costs rising with every campaign.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "ltr"}, {"tag": "h4", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "That’s why we launched Ballurh.. not as another reporting tool, but as an operating system. A single platform that connects campaigns, orders, and invoices, helping restaurants track every riyal, recover lost costs, and operate with clarity.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "ltr"}, {"tag": "h4", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "Our goal is to give every restaurant one system that makes their delivery growth simpler, more efficient, and more profitable.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "ltr"}, {"tag": "h4", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "We want to be part of their day, work alongside them, and grow together.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}, {"type": "linebreak", "version": 1}], "direction": "ltr"}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [], "direction": "ltr", "textStyle": "", "textFormat": 0}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "Abdulwahab AlZaidi", "type": "text", "style": "", "detail": 0, "format": 1, "version": 1}, {"type": "linebreak", "version": 1}, {"mode": "normal", "text": "Co-founder and CEO", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 1}], "direction": "rtl"}}	309	en	5d22145f-87d2-442b-9dc9-775e1d8f721a
 \N	\N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h4", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "اشتغلت بنفسي في تشغيل المطاعم، وأعرف وش يعني تحاول توازن بين الحملات، الخصومات، والعمولات على تطبيقات التوصيل، بدون ما يكون عندك رؤية واضحة عن العائد.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"tag": "h4", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "ومع تحوّل القطاع إلى تجارة إلكترونية مزدحمة، صارت التحديات أكبر: مطاعم سحابية جديدة كل شهر، عروض تتغيّر باستمرار، وتكلفة اكتساب عميل تزيد مع كل حملة.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"tag": "h4", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "عشان كذا انطلقت بلّورة.. مو كأداة تقارير، بل كنظام تشغيل يربط الإعلان بالطلب والفاتورة، ويخليك تراجع كل ريال بدقة، توقف الهدر، وتشتغل بثقة.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"tag": "h4", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "هدفنا إن كل مطعم يلقى عنده نظام واحد يوضّح الصورة، يساعده يسترجع التكاليف المفقودة، ويكسب أكثر من نفس قنوات التوصيل اللي يشتغل عليها.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"tag": "h4", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "نبغى نكون جزء من يومهم، نشتغل معاهم، ونكبر سوا.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}, {"type": "linebreak", "version": 1}], "direction": "rtl"}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [], "direction": null, "textStyle": "", "textFormat": 0}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "عبدالوهاب الزايدي", "type": "text", "style": "", "detail": 0, "format": 1, "version": 1}, {"type": "linebreak", "version": 1}, {"mode": "normal", "text": "الشريك المؤسس والمدير التنفيذي", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}], "direction": "rtl", "textFormat": 1}}	310	ar	5d22145f-87d2-442b-9dc9-775e1d8f721a
+\N	\N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "/", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": null, "textStyle": "", "textFormat": 0}], "direction": null}}	372	en	5335b331-bf0e-46e9-b1cd-30be10369b5a
+\N	\N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "/", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": null, "textStyle": "", "textFormat": 0}], "direction": null}}	373	en	13babcc3-d458-41c5-b479-e295c9fa1934
+\N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [], "direction": null}], "direction": null}}	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "/", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": null, "textStyle": "", "textFormat": 0}], "direction": null}}	392	en	4b0bf0bf-e953-4a5f-a47b-9a4c0cefd120
+\N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [], "direction": null}], "direction": null}}	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "/", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": null, "textStyle": "", "textFormat": 0}], "direction": null}}	393	ar	4b0bf0bf-e953-4a5f-a47b-9a4c0cefd120
+\N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [], "direction": null}], "direction": null}}	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "/", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": null, "textStyle": "", "textFormat": 0}], "direction": null}}	394	en	90f47627-28d2-415a-b11f-29acf51c006f
+\N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [], "direction": null}], "direction": null}}	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "/", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": null, "textStyle": "", "textFormat": 0}], "direction": null}}	395	ar	90f47627-28d2-415a-b11f-29acf51c006f
+\N	\N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "/", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": null, "textStyle": "", "textFormat": 0}], "direction": null}}	364	en	0ebe71a8-41f0-4388-8af4-44ad674689b4
+\N	\N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "/", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": null, "textStyle": "", "textFormat": 0}], "direction": null}}	376	en	c82942c0-5148-4359-9447-0b62014e452e
+\N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [], "direction": null}], "direction": null}}	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "/", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": null, "textStyle": "", "textFormat": 0}], "direction": null}}	377	ar	c82942c0-5148-4359-9447-0b62014e452e
+\N	\N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "/", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": null, "textStyle": "", "textFormat": 0}], "direction": null}}	378	en	a50c63dc-9f70-4fbb-81f8-b4b201ae2769
+\N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [], "direction": null}], "direction": null}}	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "/", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": null, "textStyle": "", "textFormat": 0}], "direction": null}}	379	ar	a50c63dc-9f70-4fbb-81f8-b4b201ae2769
 \.
 
 
@@ -17301,7 +17422,7 @@ COPY "public"."customers_locales" ("testimonial_quote", "testimonial_company_com
 -- Data for Name: customers_rels; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-COPY "public"."customers_rels" ("id", "order", "parent_id", "path", "pages_id", "blog_posts_id", "categories_id") FROM stdin;
+COPY "public"."customers_rels" ("id", "order", "parent_id", "path", "pages_id", "blog_posts_id", "categories_id", "news_id") FROM stdin;
 \.
 
 
@@ -17526,7 +17647,7 @@ COPY "public"."footer_columns_nav_items_locales" ("link_label", "id", "_locale",
 -- Data for Name: footer_rels; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-COPY "public"."footer_rels" ("id", "order", "parent_id", "path", "pages_id", "blog_posts_id") FROM stdin;
+COPY "public"."footer_rels" ("id", "order", "parent_id", "path", "pages_id", "blog_posts_id", "news_id") FROM stdin;
 \.
 
 
@@ -17569,6 +17690,14 @@ d8d71a0a-b87e-4a5f-89aa-d5408f636921	5fbec645-effa-40d1-8ef0-436c01504e32	2025-0
 fdef5422-4bea-4d32-aa49-863915b5e7fc	5fbec645-effa-40d1-8ef0-436c01504e32	2025-10-01 08:34:02.102+00	2025-10-01 08:34:02.044+00
 04248327-5ba4-433b-908a-e1b148a7ed50	5fbec645-effa-40d1-8ef0-436c01504e32	2025-10-02 21:15:58.8+00	2025-10-02 21:15:58.797+00
 45641c3c-7cd6-4095-956b-381a9a3cec9a	5fbec645-effa-40d1-8ef0-436c01504e32	2025-10-02 22:29:52.207+00	2025-10-02 22:29:52.206+00
+4171e95e-0523-4d0a-ab8a-74bd5b62ea2d	5fbec645-effa-40d1-8ef0-436c01504e32	2025-10-06 23:03:05.252+00	2025-10-06 23:03:05.25+00
+105371bb-8cfd-457f-b997-3e3db8e99272	5fbec645-effa-40d1-8ef0-436c01504e32	2025-10-12 07:15:16.322+00	2025-10-12 07:15:16.319+00
+90aa03ef-4fee-4175-b45b-8b1fe8e107ae	5fbec645-effa-40d1-8ef0-436c01504e32	2025-10-12 22:42:01.01+00	2025-10-12 22:42:01.007+00
+6501b478-6062-46ee-a035-d819192b53c4	5fbec645-effa-40d1-8ef0-436c01504e32	2025-10-14 01:13:15.894+00	2025-10-14 01:13:15.893+00
+18713668-3440-4657-abf8-392cbc1f1b71	5fbec645-effa-40d1-8ef0-436c01504e32	2025-10-16 16:15:59.875+00	2025-10-16 16:15:59.875+00
+9d1a643c-ac9f-4ad9-81d7-dc76c281ed05	5fbec645-effa-40d1-8ef0-436c01504e32	2025-10-17 10:00:31.329+00	2025-10-17 10:00:31.329+00
+6e890205-6352-47f4-8ac5-904231285080	5fbec645-effa-40d1-8ef0-436c01504e32	2025-10-17 21:09:02.919+00	2025-10-17 21:09:02.918+00
+edb4593e-816f-4e24-9524-5b6ae7102c95	5fbec645-effa-40d1-8ef0-436c01504e32	2025-10-22 17:00:06.829+00	2025-10-22 17:00:06.828+00
 \.
 
 
@@ -18329,6 +18458,198 @@ COPY "public"."form_submissions_submission_data" ("_order", "_parent_id", "id", 
 22	45641c3c-7cd6-4095-956b-381a9a3cec9a	68defce0e4cb7f00014c93ae	calculated_profit_plus_30	36400
 23	45641c3c-7cd6-4095-956b-381a9a3cec9a	68defce0e4cb7f00014c93af	disputes_minus_70	3500
 24	45641c3c-7cd6-4095-956b-381a9a3cec9a	68defce0e4cb7f00014c93b0	profit_calculator_message	\n  صافي الربح\n  SAR 36,400 - SAR 32,200\n  نسبة الربح\n  36.4% - 32.2%\n  تعويضات مستردة\n  SAR 3500\n  
+1	4171e95e-0523-4d0a-ab8a-74bd5b62ea2d	68e44aa912ab950001fe12bb	firstname	mm
+2	4171e95e-0523-4d0a-ab8a-74bd5b62ea2d	68e44aa912ab950001fe12bc	email	mg6636@hotmail.com
+3	4171e95e-0523-4d0a-ab8a-74bd5b62ea2d	68e44aa912ab950001fe12bd	mobilephone	0544244933
+4	4171e95e-0523-4d0a-ab8a-74bd5b62ea2d	68e44aa912ab950001fe12be	brand_name	
+5	4171e95e-0523-4d0a-ab8a-74bd5b62ea2d	68e44aa912ab950001fe12bf	business_type	Restaurant / Café
+6	4171e95e-0523-4d0a-ab8a-74bd5b62ea2d	68e44aa912ab950001fe12c0	number_of_locations	2
+7	4171e95e-0523-4d0a-ab8a-74bd5b62ea2d	68e44aa912ab950001fe12c1	has_cloud_brands	Yes
+8	4171e95e-0523-4d0a-ab8a-74bd5b62ea2d	68e44aa912ab950001fe12c2	number_of_cloud_brands	1
+9	4171e95e-0523-4d0a-ab8a-74bd5b62ea2d	68e44aa912ab950001fe12c3	annual_sales_revenue	70000
+10	4171e95e-0523-4d0a-ab8a-74bd5b62ea2d	68e44aa912ab950001fe12c4	monthly_orders	1200
+11	4171e95e-0523-4d0a-ab8a-74bd5b62ea2d	68e44aa912ab950001fe12c5	delivery_app_commission_percentage	20
+12	4171e95e-0523-4d0a-ab8a-74bd5b62ea2d	68e44aa912ab950001fe12c6	food_cost	32
+13	4171e95e-0523-4d0a-ab8a-74bd5b62ea2d	68e44aa912ab950001fe12c7	monthly_advertising	0
+14	4171e95e-0523-4d0a-ab8a-74bd5b62ea2d	68e44aa912ab950001fe12c8	monthly_disputes	3500
+15	4171e95e-0523-4d0a-ab8a-74bd5b62ea2d	68e44aa912ab950001fe12c9	annual_disputes	42000
+16	4171e95e-0523-4d0a-ab8a-74bd5b62ea2d	68e44aa912ab950001fe12ca	delivery_fees	7
+17	4171e95e-0523-4d0a-ab8a-74bd5b62ea2d	68e44aa912ab950001fe12cb	calculated_profit	19600
+18	4171e95e-0523-4d0a-ab8a-74bd5b62ea2d	68e44aa912ab950001fe12cc	calculated_profit_rate	28.000000000000004
+19	4171e95e-0523-4d0a-ab8a-74bd5b62ea2d	68e44aa912ab950001fe12cd	calculated_profit_15_percent	2940
+20	4171e95e-0523-4d0a-ab8a-74bd5b62ea2d	68e44aa912ab950001fe12ce	calculated_profit_30_percent	5880
+21	4171e95e-0523-4d0a-ab8a-74bd5b62ea2d	68e44aa912ab950001fe12cf	calculated_profit_plus_15	22540
+22	4171e95e-0523-4d0a-ab8a-74bd5b62ea2d	68e44aa912ab950001fe12d0	calculated_profit_plus_30	25480
+23	4171e95e-0523-4d0a-ab8a-74bd5b62ea2d	68e44aa912ab950001fe12d1	disputes_minus_70	2450
+24	4171e95e-0523-4d0a-ab8a-74bd5b62ea2d	68e44aa912ab950001fe12d2	profit_calculator_message	\n  صافي الربح\n  SAR 25,480 - SAR 22,540\n  نسبة الربح\n  36.4% - 32.2%\n  تعويضات مستردة\n  SAR 2450\n  
+1	105371bb-8cfd-457f-b997-3e3db8e99272	68eb558487686400011462e3	firstname	تركي
+2	105371bb-8cfd-457f-b997-3e3db8e99272	68eb558487686400011462e4	email	Turkeyroot12@gmail.com
+3	105371bb-8cfd-457f-b997-3e3db8e99272	68eb558487686400011462e5	mobilephone	966/570503966
+4	105371bb-8cfd-457f-b997-3e3db8e99272	68eb558487686400011462e6	brand_name	
+5	105371bb-8cfd-457f-b997-3e3db8e99272	68eb558487686400011462e7	business_type	Dark Kitchen / Dark Store
+6	105371bb-8cfd-457f-b997-3e3db8e99272	68eb558487686400011462e8	number_of_locations	1
+7	105371bb-8cfd-457f-b997-3e3db8e99272	68eb558487686400011462e9	has_cloud_brands	Yes
+8	105371bb-8cfd-457f-b997-3e3db8e99272	68eb558487686400011462ea	number_of_cloud_brands	1
+9	105371bb-8cfd-457f-b997-3e3db8e99272	68eb558487686400011462eb	annual_sales_revenue	2905
+10	105371bb-8cfd-457f-b997-3e3db8e99272	68eb558487686400011462ec	monthly_orders	126
+11	105371bb-8cfd-457f-b997-3e3db8e99272	68eb558487686400011462ed	delivery_app_commission_percentage	19
+12	105371bb-8cfd-457f-b997-3e3db8e99272	68eb558487686400011462ee	food_cost	40
+13	105371bb-8cfd-457f-b997-3e3db8e99272	68eb558487686400011462ef	monthly_advertising	0
+14	105371bb-8cfd-457f-b997-3e3db8e99272	68eb558487686400011462f0	monthly_disputes	145.25
+15	105371bb-8cfd-457f-b997-3e3db8e99272	68eb558487686400011462f1	annual_disputes	1743
+16	105371bb-8cfd-457f-b997-3e3db8e99272	68eb558487686400011462f2	delivery_fees	10
+17	105371bb-8cfd-457f-b997-3e3db8e99272	68eb558487686400011462f3	calculated_profit	-290.5
+18	105371bb-8cfd-457f-b997-3e3db8e99272	68eb558487686400011462f4	calculated_profit_rate	-10
+19	105371bb-8cfd-457f-b997-3e3db8e99272	68eb558487686400011462f5	calculated_profit_15_percent	-43.57
+20	105371bb-8cfd-457f-b997-3e3db8e99272	68eb558487686400011462f6	calculated_profit_30_percent	-87.15
+21	105371bb-8cfd-457f-b997-3e3db8e99272	68eb558487686400011462f7	calculated_profit_plus_15	-334.07
+22	105371bb-8cfd-457f-b997-3e3db8e99272	68eb558487686400011462f8	calculated_profit_plus_30	-377.65
+23	105371bb-8cfd-457f-b997-3e3db8e99272	68eb558487686400011462f9	disputes_minus_70	101.68
+24	105371bb-8cfd-457f-b997-3e3db8e99272	68eb558487686400011462fa	profit_calculator_message	\n  صافي الربح\n  -SAR 378 - -SAR 334\n  نسبة الربح\n  -13% - -11.5%\n  تعويضات مستردة\n  SAR 101.68\n  
+1	90aa03ef-4fee-4175-b45b-8b1fe8e107ae	68ec2eb887686400011462fb	firstname	Abdulrahman Fantokh
+2	90aa03ef-4fee-4175-b45b-8b1fe8e107ae	68ec2eb887686400011462fc	email	abdulrahman.fantokh@gmail.com
+3	90aa03ef-4fee-4175-b45b-8b1fe8e107ae	68ec2eb887686400011462fd	mobilephone	+9660559959977
+4	90aa03ef-4fee-4175-b45b-8b1fe8e107ae	68ec2eb887686400011462fe	brand_name	ERA Nuts
+5	90aa03ef-4fee-4175-b45b-8b1fe8e107ae	68ec2eb887686400011462ff	business_type	Dark Kitchen / Dark Store
+6	90aa03ef-4fee-4175-b45b-8b1fe8e107ae	68ec2eb88768640001146300	number_of_locations	1
+7	90aa03ef-4fee-4175-b45b-8b1fe8e107ae	68ec2eb88768640001146301	has_cloud_brands	Yes
+8	90aa03ef-4fee-4175-b45b-8b1fe8e107ae	68ec2eb88768640001146302	number_of_cloud_brands	1
+9	90aa03ef-4fee-4175-b45b-8b1fe8e107ae	68ec2eb88768640001146303	annual_sales_revenue	150000
+10	90aa03ef-4fee-4175-b45b-8b1fe8e107ae	68ec2eb88768640001146304	monthly_orders	600
+11	90aa03ef-4fee-4175-b45b-8b1fe8e107ae	68ec2eb88768640001146305	delivery_app_commission_percentage	25
+12	90aa03ef-4fee-4175-b45b-8b1fe8e107ae	68ec2eb88768640001146306	food_cost	30
+13	90aa03ef-4fee-4175-b45b-8b1fe8e107ae	68ec2eb88768640001146307	monthly_advertising	1000
+14	90aa03ef-4fee-4175-b45b-8b1fe8e107ae	68ec2eb88768640001146308	monthly_disputes	7500
+15	90aa03ef-4fee-4175-b45b-8b1fe8e107ae	68ec2eb88768640001146309	annual_disputes	90000
+16	90aa03ef-4fee-4175-b45b-8b1fe8e107ae	68ec2eb8876864000114630a	delivery_fees	10
+17	90aa03ef-4fee-4175-b45b-8b1fe8e107ae	68ec2eb8876864000114630b	calculated_profit	49500
+18	90aa03ef-4fee-4175-b45b-8b1fe8e107ae	68ec2eb8876864000114630c	calculated_profit_rate	33
+19	90aa03ef-4fee-4175-b45b-8b1fe8e107ae	68ec2eb8876864000114630d	calculated_profit_15_percent	7425
+20	90aa03ef-4fee-4175-b45b-8b1fe8e107ae	68ec2eb8876864000114630e	calculated_profit_30_percent	14850
+21	90aa03ef-4fee-4175-b45b-8b1fe8e107ae	68ec2eb8876864000114630f	calculated_profit_plus_15	56925
+22	90aa03ef-4fee-4175-b45b-8b1fe8e107ae	68ec2eb88768640001146310	calculated_profit_plus_30	64350
+23	90aa03ef-4fee-4175-b45b-8b1fe8e107ae	68ec2eb88768640001146311	disputes_minus_70	5250
+24	90aa03ef-4fee-4175-b45b-8b1fe8e107ae	68ec2eb88768640001146312	profit_calculator_message	\n  صافي الربح\n  SAR 64,350 - SAR 56,925\n  نسبة الربح\n  42.9% - 37.95%\n  تعويضات مستردة\n  SAR 5250\n  
+1	6501b478-6062-46ee-a035-d819192b53c4	68eda3ab8768640001146313	firstname	Ggg
+2	6501b478-6062-46ee-a035-d819192b53c4	68eda3ab8768640001146314	email	zoomfreetrail69@gmail.com
+3	6501b478-6062-46ee-a035-d819192b53c4	68eda3ab8768640001146315	mobilephone	0558968888
+4	6501b478-6062-46ee-a035-d819192b53c4	68eda3ab8768640001146316	brand_name	Ff
+5	6501b478-6062-46ee-a035-d819192b53c4	68eda3ab8768640001146317	business_type	Restaurant / Café
+6	6501b478-6062-46ee-a035-d819192b53c4	68eda3ab8768640001146318	number_of_locations	1
+7	6501b478-6062-46ee-a035-d819192b53c4	68eda3ab8768640001146319	has_cloud_brands	Yes
+8	6501b478-6062-46ee-a035-d819192b53c4	68eda3ab876864000114631a	number_of_cloud_brands	1
+9	6501b478-6062-46ee-a035-d819192b53c4	68eda3ab876864000114631b	annual_sales_revenue	10000
+10	6501b478-6062-46ee-a035-d819192b53c4	68eda3ab876864000114631c	monthly_orders	1000
+11	6501b478-6062-46ee-a035-d819192b53c4	68eda3ab876864000114631d	delivery_app_commission_percentage	33
+12	6501b478-6062-46ee-a035-d819192b53c4	68eda3ab876864000114631e	food_cost	30
+13	6501b478-6062-46ee-a035-d819192b53c4	68eda3ab876864000114631f	monthly_advertising	1000
+14	6501b478-6062-46ee-a035-d819192b53c4	68eda3ab8768640001146320	monthly_disputes	500
+15	6501b478-6062-46ee-a035-d819192b53c4	68eda3ab8768640001146321	annual_disputes	6000
+16	6501b478-6062-46ee-a035-d819192b53c4	68eda3ab8768640001146322	delivery_fees	7
+17	6501b478-6062-46ee-a035-d819192b53c4	68eda3ab8768640001146323	calculated_profit	-5100
+18	6501b478-6062-46ee-a035-d819192b53c4	68eda3ab8768640001146324	calculated_profit_rate	-51
+19	6501b478-6062-46ee-a035-d819192b53c4	68eda3ab8768640001146325	calculated_profit_15_percent	-765
+20	6501b478-6062-46ee-a035-d819192b53c4	68eda3ab8768640001146326	calculated_profit_30_percent	-1530
+21	6501b478-6062-46ee-a035-d819192b53c4	68eda3ab8768640001146327	calculated_profit_plus_15	-5865
+22	6501b478-6062-46ee-a035-d819192b53c4	68eda3ab8768640001146328	calculated_profit_plus_30	-6630
+23	6501b478-6062-46ee-a035-d819192b53c4	68eda3ab8768640001146329	disputes_minus_70	350
+24	6501b478-6062-46ee-a035-d819192b53c4	68eda3ab876864000114632a	profit_calculator_message	\n  صافي الربح\n  -SAR 6,630 - -SAR 5,865\n  نسبة الربح\n  -66.3% - -58.65%\n  تعويضات مستردة\n  SAR 350\n  
+1	18713668-3440-4657-abf8-392cbc1f1b71	68f11a3f876864000114632b	firstname	محمود 
+2	18713668-3440-4657-abf8-392cbc1f1b71	68f11a3f876864000114632c	email	mk2422221@gmail.com
+3	18713668-3440-4657-abf8-392cbc1f1b71	68f11a3f876864000114632d	mobilephone	966565352790
+4	18713668-3440-4657-abf8-392cbc1f1b71	68f11a3f876864000114632e	brand_name	كافيه قعده وناسه 
+5	18713668-3440-4657-abf8-392cbc1f1b71	68f11a3f876864000114632f	business_type	Restaurant / Café
+6	18713668-3440-4657-abf8-392cbc1f1b71	68f11a3f8768640001146330	number_of_locations	2
+7	18713668-3440-4657-abf8-392cbc1f1b71	68f11a3f8768640001146331	has_cloud_brands	Yes
+8	18713668-3440-4657-abf8-392cbc1f1b71	68f11a3f8768640001146332	number_of_cloud_brands	1
+9	18713668-3440-4657-abf8-392cbc1f1b71	68f11a3f8768640001146333	annual_sales_revenue	60000
+10	18713668-3440-4657-abf8-392cbc1f1b71	68f11a3f8768640001146334	monthly_orders	850
+11	18713668-3440-4657-abf8-392cbc1f1b71	68f11a3f8768640001146335	delivery_app_commission_percentage	25
+12	18713668-3440-4657-abf8-392cbc1f1b71	68f11a3f8768640001146336	food_cost	30
+13	18713668-3440-4657-abf8-392cbc1f1b71	68f11a3f8768640001146337	monthly_advertising	1000
+14	18713668-3440-4657-abf8-392cbc1f1b71	68f11a3f8768640001146338	monthly_disputes	3000
+15	18713668-3440-4657-abf8-392cbc1f1b71	68f11a3f8768640001146339	annual_disputes	36000
+16	18713668-3440-4657-abf8-392cbc1f1b71	68f11a3f876864000114633a	delivery_fees	10
+17	18713668-3440-4657-abf8-392cbc1f1b71	68f11a3f876864000114633b	calculated_profit	13200
+18	18713668-3440-4657-abf8-392cbc1f1b71	68f11a3f876864000114633c	calculated_profit_rate	22
+19	18713668-3440-4657-abf8-392cbc1f1b71	68f11a3f876864000114633d	calculated_profit_15_percent	1980
+20	18713668-3440-4657-abf8-392cbc1f1b71	68f11a3f876864000114633e	calculated_profit_30_percent	3960
+21	18713668-3440-4657-abf8-392cbc1f1b71	68f11a3f876864000114633f	calculated_profit_plus_15	15180
+22	18713668-3440-4657-abf8-392cbc1f1b71	68f11a3f8768640001146340	calculated_profit_plus_30	17160
+23	18713668-3440-4657-abf8-392cbc1f1b71	68f11a3f8768640001146341	disputes_minus_70	2100
+24	18713668-3440-4657-abf8-392cbc1f1b71	68f11a3f8768640001146342	profit_calculator_message	\n  صافي الربح\n  SAR 17,160 - SAR 15,180\n  نسبة الربح\n  28.6% - 25.3%\n  تعويضات مستردة\n  SAR 2100\n  
+1	9d1a643c-ac9f-4ad9-81d7-dc76c281ed05	68f213bf8768640001146343	firstname	Hatem Almalki
+2	9d1a643c-ac9f-4ad9-81d7-dc76c281ed05	68f213bf8768640001146344	email	hatem.malki711@gmail.com
+3	9d1a643c-ac9f-4ad9-81d7-dc76c281ed05	68f213bf8768640001146345	mobilephone	055888313
+4	9d1a643c-ac9f-4ad9-81d7-dc76c281ed05	68f213bf8768640001146346	brand_name	
+5	9d1a643c-ac9f-4ad9-81d7-dc76c281ed05	68f213bf8768640001146347	business_type	Restaurant / Café
+6	9d1a643c-ac9f-4ad9-81d7-dc76c281ed05	68f213bf8768640001146348	number_of_locations	1
+7	9d1a643c-ac9f-4ad9-81d7-dc76c281ed05	68f213bf8768640001146349	has_cloud_brands	Yes
+8	9d1a643c-ac9f-4ad9-81d7-dc76c281ed05	68f213bf876864000114634a	number_of_cloud_brands	1
+9	9d1a643c-ac9f-4ad9-81d7-dc76c281ed05	68f213bf876864000114634b	annual_sales_revenue	12500
+10	9d1a643c-ac9f-4ad9-81d7-dc76c281ed05	68f213bf876864000114634c	monthly_orders	500
+11	9d1a643c-ac9f-4ad9-81d7-dc76c281ed05	68f213bf876864000114634d	delivery_app_commission_percentage	18
+12	9d1a643c-ac9f-4ad9-81d7-dc76c281ed05	68f213bf876864000114634e	food_cost	24
+13	9d1a643c-ac9f-4ad9-81d7-dc76c281ed05	68f213bf876864000114634f	monthly_advertising	0
+14	9d1a643c-ac9f-4ad9-81d7-dc76c281ed05	68f213bf8768640001146350	monthly_disputes	625
+15	9d1a643c-ac9f-4ad9-81d7-dc76c281ed05	68f213bf8768640001146351	annual_disputes	7500
+16	9d1a643c-ac9f-4ad9-81d7-dc76c281ed05	68f213bf8768640001146352	delivery_fees	0
+17	9d1a643c-ac9f-4ad9-81d7-dc76c281ed05	68f213bf8768640001146353	calculated_profit	6250
+18	9d1a643c-ac9f-4ad9-81d7-dc76c281ed05	68f213bf8768640001146354	calculated_profit_rate	50
+19	9d1a643c-ac9f-4ad9-81d7-dc76c281ed05	68f213bf8768640001146355	calculated_profit_15_percent	937.5
+20	9d1a643c-ac9f-4ad9-81d7-dc76c281ed05	68f213bf8768640001146356	calculated_profit_30_percent	1875
+21	9d1a643c-ac9f-4ad9-81d7-dc76c281ed05	68f213bf8768640001146357	calculated_profit_plus_15	7187.5
+22	9d1a643c-ac9f-4ad9-81d7-dc76c281ed05	68f213bf8768640001146358	calculated_profit_plus_30	8125
+23	9d1a643c-ac9f-4ad9-81d7-dc76c281ed05	68f213bf8768640001146359	disputes_minus_70	437.5
+24	9d1a643c-ac9f-4ad9-81d7-dc76c281ed05	68f213bf876864000114635a	profit_calculator_message	\n  صافي الربح\n  SAR 8,125 - SAR 7,188\n  نسبة الربح\n  65% - 57.5%\n  تعويضات مستردة\n  SAR 437.5\n  
+1	6e890205-6352-47f4-8ac5-904231285080	68f2b06e876864000114635b	firstname	noflz
+2	6e890205-6352-47f4-8ac5-904231285080	68f2b06e876864000114635c	email	noflz@hotmail.com
+3	6e890205-6352-47f4-8ac5-904231285080	68f2b06e876864000114635d	mobilephone	0549506227
+4	6e890205-6352-47f4-8ac5-904231285080	68f2b06e876864000114635e	brand_name	
+5	6e890205-6352-47f4-8ac5-904231285080	68f2b06e876864000114635f	business_type	Restaurant / Café
+6	6e890205-6352-47f4-8ac5-904231285080	68f2b06e8768640001146360	number_of_locations	1
+7	6e890205-6352-47f4-8ac5-904231285080	68f2b06e8768640001146361	has_cloud_brands	Yes
+8	6e890205-6352-47f4-8ac5-904231285080	68f2b06e8768640001146362	number_of_cloud_brands	1
+9	6e890205-6352-47f4-8ac5-904231285080	68f2b06e8768640001146363	annual_sales_revenue	16684
+10	6e890205-6352-47f4-8ac5-904231285080	68f2b06e8768640001146364	monthly_orders	355
+11	6e890205-6352-47f4-8ac5-904231285080	68f2b06e8768640001146365	delivery_app_commission_percentage	23
+12	6e890205-6352-47f4-8ac5-904231285080	68f2b06e8768640001146366	food_cost	30
+13	6e890205-6352-47f4-8ac5-904231285080	68f2b06e8768640001146367	monthly_advertising	0
+14	6e890205-6352-47f4-8ac5-904231285080	68f2b06e8768640001146368	monthly_disputes	834.2
+15	6e890205-6352-47f4-8ac5-904231285080	68f2b06e8768640001146369	annual_disputes	10010.400000000001
+16	6e890205-6352-47f4-8ac5-904231285080	68f2b06e876864000114636a	delivery_fees	9
+17	6e890205-6352-47f4-8ac5-904231285080	68f2b06e876864000114636b	calculated_profit	3336.8
+18	6e890205-6352-47f4-8ac5-904231285080	68f2b06e876864000114636c	calculated_profit_rate	20
+19	6e890205-6352-47f4-8ac5-904231285080	68f2b06e876864000114636d	calculated_profit_15_percent	500.52
+20	6e890205-6352-47f4-8ac5-904231285080	68f2b06e876864000114636e	calculated_profit_30_percent	1001.04
+21	6e890205-6352-47f4-8ac5-904231285080	68f2b06e876864000114636f	calculated_profit_plus_15	3837.32
+22	6e890205-6352-47f4-8ac5-904231285080	68f2b06e8768640001146370	calculated_profit_plus_30	4337.84
+23	6e890205-6352-47f4-8ac5-904231285080	68f2b06e8768640001146371	disputes_minus_70	583.94
+24	6e890205-6352-47f4-8ac5-904231285080	68f2b06e8768640001146372	profit_calculator_message	\n  صافي الربح\n  SAR 4,338 - SAR 3,837\n  نسبة الربح\n  26% - 23%\n  تعويضات مستردة\n  SAR 583.94\n  
+1	edb4593e-816f-4e24-9524-5b6ae7102c95	68f90d96632e130001ea9f2b	firstname	Ali
+2	edb4593e-816f-4e24-9524-5b6ae7102c95	68f90d96632e130001ea9f2c	email	mralbar.s6@gmail.com
+3	edb4593e-816f-4e24-9524-5b6ae7102c95	68f90d96632e130001ea9f2d	mobilephone	0556666327
+4	edb4593e-816f-4e24-9524-5b6ae7102c95	68f90d96632e130001ea9f2e	brand_name	
+5	edb4593e-816f-4e24-9524-5b6ae7102c95	68f90d96632e130001ea9f2f	business_type	Restaurant / Café
+6	edb4593e-816f-4e24-9524-5b6ae7102c95	68f90d96632e130001ea9f30	number_of_locations	2
+7	edb4593e-816f-4e24-9524-5b6ae7102c95	68f90d96632e130001ea9f31	has_cloud_brands	Yes
+8	edb4593e-816f-4e24-9524-5b6ae7102c95	68f90d96632e130001ea9f32	number_of_cloud_brands	1
+9	edb4593e-816f-4e24-9524-5b6ae7102c95	68f90d96632e130001ea9f33	annual_sales_revenue	500000
+10	edb4593e-816f-4e24-9524-5b6ae7102c95	68f90d96632e130001ea9f34	monthly_orders	3700
+11	edb4593e-816f-4e24-9524-5b6ae7102c95	68f90d96632e130001ea9f35	delivery_app_commission_percentage	18
+12	edb4593e-816f-4e24-9524-5b6ae7102c95	68f90d96632e130001ea9f36	food_cost	30
+13	edb4593e-816f-4e24-9524-5b6ae7102c95	68f90d96632e130001ea9f37	monthly_advertising	2000
+14	edb4593e-816f-4e24-9524-5b6ae7102c95	68f90d96632e130001ea9f38	monthly_disputes	25000
+15	edb4593e-816f-4e24-9524-5b6ae7102c95	68f90d96632e130001ea9f39	annual_disputes	300000
+16	edb4593e-816f-4e24-9524-5b6ae7102c95	68f90d96632e130001ea9f3a	delivery_fees	9
+17	edb4593e-816f-4e24-9524-5b6ae7102c95	68f90d96632e130001ea9f3b	calculated_profit	185000
+18	edb4593e-816f-4e24-9524-5b6ae7102c95	68f90d96632e130001ea9f3c	calculated_profit_rate	37
+19	edb4593e-816f-4e24-9524-5b6ae7102c95	68f90d96632e130001ea9f3d	calculated_profit_15_percent	27750
+20	edb4593e-816f-4e24-9524-5b6ae7102c95	68f90d96632e130001ea9f3e	calculated_profit_30_percent	55500
+21	edb4593e-816f-4e24-9524-5b6ae7102c95	68f90d96632e130001ea9f3f	calculated_profit_plus_15	212750
+22	edb4593e-816f-4e24-9524-5b6ae7102c95	68f90d96632e130001ea9f40	calculated_profit_plus_30	240500
+23	edb4593e-816f-4e24-9524-5b6ae7102c95	68f90d96632e130001ea9f41	disputes_minus_70	17500
+24	edb4593e-816f-4e24-9524-5b6ae7102c95	68f90d96632e130001ea9f42	profit_calculator_message	\n  صافي الربح\n  SAR 240,500 - SAR 212,750\n  نسبة الربح\n  48.1% - 42.55%\n  تعويضات مستردة\n  SAR 17500\n  
 \.
 
 
@@ -18624,9 +18945,9 @@ Sign in	21	en	6886930673e9e43a4a6e3c01
 -- Data for Name: header_rels; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-COPY "public"."header_rels" ("id", "order", "parent_id", "path", "pages_id", "blog_posts_id") FROM stdin;
-13	\N	70ade6fc-ced2-4f94-958e-854fe2e48eb1	tabs.0.link.reference	742d2308-808d-4f0e-91f2-03d18be57d5c	\N
-14	\N	70ade6fc-ced2-4f94-958e-854fe2e48eb1	tabs.1.link.reference	e2c88328-cc74-46c9-aabd-7e7c2f92d013	\N
+COPY "public"."header_rels" ("id", "order", "parent_id", "path", "pages_id", "blog_posts_id", "news_id") FROM stdin;
+13	\N	70ade6fc-ced2-4f94-958e-854fe2e48eb1	tabs.0.link.reference	742d2308-808d-4f0e-91f2-03d18be57d5c	\N	\N
+14	\N	70ade6fc-ced2-4f94-958e-854fe2e48eb1	tabs.1.link.reference	e2c88328-cc74-46c9-aabd-7e7c2f92d013	\N	\N
 \.
 
 
@@ -18906,7 +19227,8 @@ COPY "public"."metricsBlock_table_rows_children_cells" ("_order", "_parent_id", 
 --
 
 COPY "public"."news" ("id", "updated_at", "created_at", "_status") FROM stdin;
-90126b34-62e0-4c0f-826a-e8ffbe2f8d66	2025-10-05 19:00:03.198+00	2025-10-05 18:58:41.597+00	published
+90126b34-62e0-4c0f-826a-e8ffbe2f8d66	2025-10-20 05:44:10.423+00	2025-10-05 18:58:41.597+00	published
+741a248c-77e4-4bc5-b563-d5a71f076b14	2025-10-21 14:13:33.35+00	2025-10-20 05:46:40.473+00	published
 \.
 
 
@@ -18915,7 +19237,9 @@ COPY "public"."news" ("id", "updated_at", "created_at", "_status") FROM stdin;
 --
 
 COPY "public"."news_locales" ("title", "hero_image_id", "content", "meta_title", "meta_image_id", "meta_description", "published_at", "slug", "slug_lock", "id", "_locale", "_parent_id") FROM stdin;
-عنوان الخبر	9bff3146-918d-43bd-a8bd-0eaf54839bfc	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "تفاصيل عن الخبر", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": null, "textStyle": "", "textFormat": 0}], "direction": null}}	\N	\N	\N	2025-10-05 18:58:41.587+00	عنوان-الخبر	t	2	ar	90126b34-62e0-4c0f-826a-e8ffbe2f8d66
+بلّورة في ملتقى بيبان 24	467c7dff-f127-49db-b919-3771878028d1	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "ul", "type": "list", "start": 1, "format": "start", "indent": 0, "version": 1, "children": [{"type": "listitem", "value": 1, "format": "", "indent": 0, "version": 1, "children": [{"id": "68f5cbd4b699a9bab5ce3876", "type": "link", "fields": {"url": "https://ballurh.ertaqi.net/2024/11/03/", "newTab": false, "linkType": "custom"}, "format": "", "indent": 0, "version": 3, "children": [{"mode": "normal", "text": "3 نوفمبر, 2024", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": null}], "direction": null}], "listType": "bullet", "direction": null}, {"tag": "h2", "type": "heading", "format": "right", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "بلّورة في ملتقى بيبان 24", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": null}, {"type": "paragraph", "format": "justify", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "تستعد بلّورة للمشاركة في ملتقى بيبان 24، بتاريخ 5 إلى 9 نوفمبر في مركز واجهة", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": null, "textStyle": "", "textFormat": 0}], "direction": null}}	بلورة	\N	\N	2025-10-19 18:58:41+00	بلّورة-في-ملتقى-بيبان-24	t	10	ar	90126b34-62e0-4c0f-826a-e8ffbe2f8d66
+Beban	\N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [], "direction": null, "textStyle": "", "textFormat": 0}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "BebanBeban", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": null, "textStyle": "", "textFormat": 0}], "direction": null}}	\N	\N	\N	2025-10-21 14:13:33.349+00	beban	t	13	en	741a248c-77e4-4bc5-b563-d5a71f076b14
+بلّورة في ملتقى بيبان 24	467c7dff-f127-49db-b919-3771878028d1	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": " تستعد بلّورة للمشاركة في ملتقى بيبان 24، بتاريخ 5 إلى 9 نوفمبر في مركز واجهة", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": null, "textStyle": "", "textFormat": 0}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [], "direction": null, "textStyle": "", "textFormat": 0}], "direction": null}}	\N	\N	\N	2025-10-18 21:00:00+00	بلّورة-في-ملتقى-بيبان-24	t	14	ar	741a248c-77e4-4bc5-b563-d5a71f076b14
 \.
 
 
@@ -18932,7 +19256,8 @@ COPY "public"."news_populated_authors" ("_order", "_parent_id", "id", "name") FR
 --
 
 COPY "public"."news_rels" ("id", "order", "parent_id", "path", "locale", "news_id", "categories_id", "users_id") FROM stdin;
-1	1	90126b34-62e0-4c0f-826a-e8ffbe2f8d66	authors	\N	\N	\N	a970b2d8-1ba1-4dfc-bb01-2bb7f15c9c0a
+8	1	90126b34-62e0-4c0f-826a-e8ffbe2f8d66	authors	\N	\N	\N	a970b2d8-1ba1-4dfc-bb01-2bb7f15c9c0a
+11	1	741a248c-77e4-4bc5-b563-d5a71f076b14	authors	\N	\N	\N	a970b2d8-1ba1-4dfc-bb01-2bb7f15c9c0a
 \.
 
 
@@ -18941,6 +19266,8 @@ COPY "public"."news_rels" ("id", "order", "parent_id", "path", "locale", "news_i
 --
 
 COPY "public"."pages" ("id", "title", "hero_type", "hero_badge_type", "hero_badge_color", "hero_badge_icon", "hero_badge_icon_position", "hero_caption", "published_at", "slug", "slug_lock", "updated_at", "created_at", "_status", "hero_list_style") FROM stdin;
+7f925134-f2cc-47ed-b4f9-91e1dbcbe97e	Terms	mediumImpact	\N	blue	\N	flex-row	\N	2025-10-21 14:35:30.511+00	terms	t	2025-10-21 18:36:36.081+00	2025-10-21 14:35:21.32+00	published	bullet
+735a9da5-598e-4290-8091-0f9990d4d6f5	Privacy	mediumImpact	\N	blue	\N	flex-row	\N	2025-10-21 14:31:41.675+00	privacy	t	2025-10-21 18:41:39.626+00	2025-10-21 14:31:37.683+00	published	bullet
 e2c88328-cc74-46c9-aabd-7e7c2f92d013	blog	mediumImpact	\N	blue	\N	flex-row	\N	2025-07-28 04:38:21.68+00	blog	t	2025-08-20 23:44:05.891+00	2025-07-28 04:37:29.274+00	published	bullet
 742d2308-808d-4f0e-91f2-03d18be57d5c	about	mediumImpact	label	gray	\N	flex-row	\N	2025-07-27 21:55:39.98+00	about	t	2025-08-25 23:09:33.219+00	2025-07-27 21:36:21.924+00	published	bullet
 a14442b0-9282-4efc-9df0-51d6374608d8	home	highImpact	\N	blue	\N	flex-row	\N	2025-07-27 20:53:08.677+00	home	t	2025-08-31 15:36:33.755+00	2025-07-27 20:48:06.623+00	published	icons
@@ -19007,6 +19334,10 @@ About Ballurh	{"root": {"type": "root", "format": "", "indent": 0, "version": 1,
 \N	\N	\N	\N	\N	\N	\N	\N	188	en	2d66d5ed-4f40-4d8b-8e4f-b5a60d261b20	\N	\N	f
 \N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h1", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "Under the Lens", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "Discover the latest market trends, tips, and strategies for restaurant management and growth.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}], "direction": "rtl"}}	\N	\N	\N	\N	\N	\N	140	en	e2c88328-cc74-46c9-aabd-7e7c2f92d013	\N	\N	f
 \N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h1", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "تحت المجهر", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "اكتشف أحدث اتجاهات السوق، والنصائح، والاستراتيجيات لإدارة المطاعم ونموها.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}], "direction": "rtl"}}	\N	\N	\N	\N	\N	\N	141	ar	e2c88328-cc74-46c9-aabd-7e7c2f92d013	\N	\N	f
+\N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h1", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "Terms and Conditions", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": null}], "direction": null}}	\N	\N	\N	\N	\N	\N	202	en	7f925134-f2cc-47ed-b4f9-91e1dbcbe97e	\N	\N	f
+\N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h1", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "الشروط والأحكام", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": null}], "direction": null}}	\N	\N	\N	\N	\N	\N	203	ar	7f925134-f2cc-47ed-b4f9-91e1dbcbe97e	\N	\N	f
+\N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h1", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "Privacy Policy", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": null}], "direction": null}}	\N	\N	\N	\N	\N	\N	206	en	735a9da5-598e-4290-8091-0f9990d4d6f5	\N	\N	f
+\N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h1", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "سياسة الخصوصية", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": null}], "direction": null}}	\N	\N	\N	\N	\N	\N	207	ar	735a9da5-598e-4290-8091-0f9990d4d6f5	\N	\N	f
 عن بلّورة	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h1", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "نظام التشغيل الجديد لتحسين ربحية المطاعم على تطبيقات التوصيل", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "سوق تطبيقات التوصيل غيّر طريقة عمل المطاعم. الطلبات صارت رقمية، المنافسة صارت يومية، والربحية صارت مرتبطة بقرارات تسويقية وتشغيلية معقّدة، كل ريال ينصرف على خصم أو إعلان أو عمولة يحتاج يشتغل بكفاءة.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "بلّورة منصة سعودية تساعد المطاعم على تحسين ربحيتها من تطبيقات التوصيل.. نربط بين الإعلانات، الفواتير، والطلبات في لوحة تحكم واحدة، ونوفّر أدوات عملية وتحليلات قابلة للتنفيذ، مبنية على بيانات فعلية، وتخاطب الواقع اليومي للمشغّل.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "أصحاب المطاعم يستخدمون بلّورة لاسترجاع التكاليف المهدرة، ضبط التسويق، واتخاذ قرارات تشغيلية أوضح.. ", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "المستثمرون يشوفون فرصة في بناء بنية تشغيلية جديدة لقطاع الأغذية الرقمي.. والمواهب تنضم لفريق يشتغل على منتج له أثر واضح في سوق مليان فرص، وبمنهجية واقعية", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 0}], "direction": "rtl"}}	\N	\N	\N	بلّورة – منصة ذكاء أعمال لقطاع التجزئة والمطاعم والمقاهي	\N	‏زد مبيعاتك، تنبأ بسلوكيات الطلب وقم بتحسين مؤشرات الأداء من خلال إتخاذ قرارات نمو تعتمد على البيانات باستخدام قوة تقنيات ذكاء الأعمال.	177	ar	742d2308-808d-4f0e-91f2-03d18be57d5c	\N	\N	f
 \N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h2", "type": "heading", "format": "right", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "أخبار بلورة", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}], "direction": "rtl"}}	\N	\N	تعلن بلّورة عن الشراكة الاستراتيجية مع أودو	\N	\N	\N	195	ar	fc20b1cb-072c-43c5-b73b-75dcd6e01dcd	\N	\N	f
 \.
@@ -19016,45 +19347,45 @@ About Ballurh	{"root": {"type": "root", "format": "", "indent": 0, "version": 1,
 -- Data for Name: pages_rels; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-COPY "public"."pages_rels" ("id", "order", "parent_id", "path", "locale", "pages_id", "blog_posts_id", "media_id", "faq_id", "customers_id", "categories_id") FROM stdin;
-339	1	a14442b0-9282-4efc-9df0-51d6374608d8	layout.1.logos	\N	\N	\N	513d34fb-5dbc-4333-b0ab-af8e3756cc8a	\N	\N	\N
-340	2	a14442b0-9282-4efc-9df0-51d6374608d8	layout.1.logos	\N	\N	\N	92890105-dde4-4c79-acac-d81ad6dd978a	\N	\N	\N
-341	1	a14442b0-9282-4efc-9df0-51d6374608d8	layout.2.selectedTestimonials	\N	\N	\N	\N	\N	b440e19a-7d00-487a-9927-d384dee97e22	\N
-342	1	a14442b0-9282-4efc-9df0-51d6374608d8	layout.6.selectedTestimonials	\N	\N	\N	\N	\N	ad1d03ad-f60b-4f83-90c2-d456f1fbaf21	\N
-343	1	a14442b0-9282-4efc-9df0-51d6374608d8	layout.8.faqs	\N	\N	\N	\N	487d16ef-4d7e-4603-885d-53d42734b0f1	\N	\N
-344	2	a14442b0-9282-4efc-9df0-51d6374608d8	layout.8.faqs	\N	\N	\N	\N	2d37f238-e71e-4291-8919-33e4c7a73544	\N	\N
-345	3	a14442b0-9282-4efc-9df0-51d6374608d8	layout.8.faqs	\N	\N	\N	\N	4696359a-45b8-4fea-b14f-ca34e928e5d0	\N	\N
-346	4	a14442b0-9282-4efc-9df0-51d6374608d8	layout.8.faqs	\N	\N	\N	\N	0786b804-85ea-4269-841e-5f4fe762ada3	\N	\N
-347	5	a14442b0-9282-4efc-9df0-51d6374608d8	layout.8.faqs	\N	\N	\N	\N	0ad17856-43c0-4ec9-bd88-c26f826dfb68	\N	\N
-348	6	a14442b0-9282-4efc-9df0-51d6374608d8	layout.8.faqs	\N	\N	\N	\N	cf06eaf5-c215-44fc-82c2-a7696336ef41	\N	\N
-358	1	a14442b0-9282-4efc-9df0-51d6374608d8	layout.9.faqs	\N	\N	\N	\N	487d16ef-4d7e-4603-885d-53d42734b0f1	\N	\N
-359	2	a14442b0-9282-4efc-9df0-51d6374608d8	layout.9.faqs	\N	\N	\N	\N	2d37f238-e71e-4291-8919-33e4c7a73544	\N	\N
-360	3	a14442b0-9282-4efc-9df0-51d6374608d8	layout.9.faqs	\N	\N	\N	\N	4696359a-45b8-4fea-b14f-ca34e928e5d0	\N	\N
-361	4	a14442b0-9282-4efc-9df0-51d6374608d8	layout.9.faqs	\N	\N	\N	\N	0786b804-85ea-4269-841e-5f4fe762ada3	\N	\N
-362	5	a14442b0-9282-4efc-9df0-51d6374608d8	layout.9.faqs	\N	\N	\N	\N	0ad17856-43c0-4ec9-bd88-c26f826dfb68	\N	\N
-363	6	a14442b0-9282-4efc-9df0-51d6374608d8	layout.9.faqs	\N	\N	\N	\N	cf06eaf5-c215-44fc-82c2-a7696336ef41	\N	\N
-1182	1	a14442b0-9282-4efc-9df0-51d6374608d8	layout.0.logos	\N	\N	\N	8c44fa47-dbaa-44ba-9a83-c35e232404f7	\N	\N	\N
-1183	2	a14442b0-9282-4efc-9df0-51d6374608d8	layout.0.logos	\N	\N	\N	93e4c6fc-6bfb-4246-aad1-8861ebc78777	\N	\N	\N
-1184	3	a14442b0-9282-4efc-9df0-51d6374608d8	layout.0.logos	\N	\N	\N	8cfbc8ec-db06-4d17-9c8b-bbf589f91e67	\N	\N	\N
-1185	4	a14442b0-9282-4efc-9df0-51d6374608d8	layout.0.logos	\N	\N	\N	4f3b0cf8-dc31-4ff9-aa9f-9e0ec3cfb001	\N	\N	\N
-1186	5	a14442b0-9282-4efc-9df0-51d6374608d8	layout.0.logos	\N	\N	\N	d67a9625-6f30-4d2a-9643-0962f6faf385	\N	\N	\N
-1187	1	a14442b0-9282-4efc-9df0-51d6374608d8	layout.2.logos	\N	\N	\N	513d34fb-5dbc-4333-b0ab-af8e3756cc8a	\N	\N	\N
-1188	2	a14442b0-9282-4efc-9df0-51d6374608d8	layout.2.logos	\N	\N	\N	92890105-dde4-4c79-acac-d81ad6dd978a	\N	\N	\N
-1189	1	a14442b0-9282-4efc-9df0-51d6374608d8	layout.3.selectedTestimonials	\N	\N	\N	\N	\N	b440e19a-7d00-487a-9927-d384dee97e22	\N
-1190	1	a14442b0-9282-4efc-9df0-51d6374608d8	layout.7.selectedTestimonials	\N	\N	\N	\N	\N	ad1d03ad-f60b-4f83-90c2-d456f1fbaf21	\N
-1191	1	a14442b0-9282-4efc-9df0-51d6374608d8	layout.9.logos	\N	\N	\N	8c44fa47-dbaa-44ba-9a83-c35e232404f7	\N	\N	\N
-1192	2	a14442b0-9282-4efc-9df0-51d6374608d8	layout.9.logos	\N	\N	\N	93e4c6fc-6bfb-4246-aad1-8861ebc78777	\N	\N	\N
-1193	3	a14442b0-9282-4efc-9df0-51d6374608d8	layout.9.logos	\N	\N	\N	8cfbc8ec-db06-4d17-9c8b-bbf589f91e67	\N	\N	\N
-1194	4	a14442b0-9282-4efc-9df0-51d6374608d8	layout.9.logos	\N	\N	\N	4f3b0cf8-dc31-4ff9-aa9f-9e0ec3cfb001	\N	\N	\N
-1195	5	a14442b0-9282-4efc-9df0-51d6374608d8	layout.9.logos	\N	\N	\N	d67a9625-6f30-4d2a-9643-0962f6faf385	\N	\N	\N
-1196	1	a14442b0-9282-4efc-9df0-51d6374608d8	layout.10.faqs	\N	\N	\N	\N	487d16ef-4d7e-4603-885d-53d42734b0f1	\N	\N
-1197	2	a14442b0-9282-4efc-9df0-51d6374608d8	layout.10.faqs	\N	\N	\N	\N	2d37f238-e71e-4291-8919-33e4c7a73544	\N	\N
-1198	3	a14442b0-9282-4efc-9df0-51d6374608d8	layout.10.faqs	\N	\N	\N	\N	4696359a-45b8-4fea-b14f-ca34e928e5d0	\N	\N
-1199	4	a14442b0-9282-4efc-9df0-51d6374608d8	layout.10.faqs	\N	\N	\N	\N	0786b804-85ea-4269-841e-5f4fe762ada3	\N	\N
-1200	5	a14442b0-9282-4efc-9df0-51d6374608d8	layout.10.faqs	\N	\N	\N	\N	0ad17856-43c0-4ec9-bd88-c26f826dfb68	\N	\N
-1201	6	a14442b0-9282-4efc-9df0-51d6374608d8	layout.10.faqs	\N	\N	\N	\N	cf06eaf5-c215-44fc-82c2-a7696336ef41	\N	\N
-1100	1	742d2308-808d-4f0e-91f2-03d18be57d5c	layout.5.logos	\N	\N	\N	92890105-dde4-4c79-acac-d81ad6dd978a	\N	\N	\N
-1101	2	742d2308-808d-4f0e-91f2-03d18be57d5c	layout.5.logos	\N	\N	\N	513d34fb-5dbc-4333-b0ab-af8e3756cc8a	\N	\N	\N
+COPY "public"."pages_rels" ("id", "order", "parent_id", "path", "locale", "pages_id", "blog_posts_id", "media_id", "faq_id", "customers_id", "categories_id", "news_id") FROM stdin;
+339	1	a14442b0-9282-4efc-9df0-51d6374608d8	layout.1.logos	\N	\N	\N	513d34fb-5dbc-4333-b0ab-af8e3756cc8a	\N	\N	\N	\N
+340	2	a14442b0-9282-4efc-9df0-51d6374608d8	layout.1.logos	\N	\N	\N	92890105-dde4-4c79-acac-d81ad6dd978a	\N	\N	\N	\N
+341	1	a14442b0-9282-4efc-9df0-51d6374608d8	layout.2.selectedTestimonials	\N	\N	\N	\N	\N	b440e19a-7d00-487a-9927-d384dee97e22	\N	\N
+342	1	a14442b0-9282-4efc-9df0-51d6374608d8	layout.6.selectedTestimonials	\N	\N	\N	\N	\N	ad1d03ad-f60b-4f83-90c2-d456f1fbaf21	\N	\N
+343	1	a14442b0-9282-4efc-9df0-51d6374608d8	layout.8.faqs	\N	\N	\N	\N	487d16ef-4d7e-4603-885d-53d42734b0f1	\N	\N	\N
+344	2	a14442b0-9282-4efc-9df0-51d6374608d8	layout.8.faqs	\N	\N	\N	\N	2d37f238-e71e-4291-8919-33e4c7a73544	\N	\N	\N
+345	3	a14442b0-9282-4efc-9df0-51d6374608d8	layout.8.faqs	\N	\N	\N	\N	4696359a-45b8-4fea-b14f-ca34e928e5d0	\N	\N	\N
+346	4	a14442b0-9282-4efc-9df0-51d6374608d8	layout.8.faqs	\N	\N	\N	\N	0786b804-85ea-4269-841e-5f4fe762ada3	\N	\N	\N
+347	5	a14442b0-9282-4efc-9df0-51d6374608d8	layout.8.faqs	\N	\N	\N	\N	0ad17856-43c0-4ec9-bd88-c26f826dfb68	\N	\N	\N
+348	6	a14442b0-9282-4efc-9df0-51d6374608d8	layout.8.faqs	\N	\N	\N	\N	cf06eaf5-c215-44fc-82c2-a7696336ef41	\N	\N	\N
+358	1	a14442b0-9282-4efc-9df0-51d6374608d8	layout.9.faqs	\N	\N	\N	\N	487d16ef-4d7e-4603-885d-53d42734b0f1	\N	\N	\N
+359	2	a14442b0-9282-4efc-9df0-51d6374608d8	layout.9.faqs	\N	\N	\N	\N	2d37f238-e71e-4291-8919-33e4c7a73544	\N	\N	\N
+360	3	a14442b0-9282-4efc-9df0-51d6374608d8	layout.9.faqs	\N	\N	\N	\N	4696359a-45b8-4fea-b14f-ca34e928e5d0	\N	\N	\N
+361	4	a14442b0-9282-4efc-9df0-51d6374608d8	layout.9.faqs	\N	\N	\N	\N	0786b804-85ea-4269-841e-5f4fe762ada3	\N	\N	\N
+362	5	a14442b0-9282-4efc-9df0-51d6374608d8	layout.9.faqs	\N	\N	\N	\N	0ad17856-43c0-4ec9-bd88-c26f826dfb68	\N	\N	\N
+363	6	a14442b0-9282-4efc-9df0-51d6374608d8	layout.9.faqs	\N	\N	\N	\N	cf06eaf5-c215-44fc-82c2-a7696336ef41	\N	\N	\N
+1182	1	a14442b0-9282-4efc-9df0-51d6374608d8	layout.0.logos	\N	\N	\N	8c44fa47-dbaa-44ba-9a83-c35e232404f7	\N	\N	\N	\N
+1183	2	a14442b0-9282-4efc-9df0-51d6374608d8	layout.0.logos	\N	\N	\N	93e4c6fc-6bfb-4246-aad1-8861ebc78777	\N	\N	\N	\N
+1184	3	a14442b0-9282-4efc-9df0-51d6374608d8	layout.0.logos	\N	\N	\N	8cfbc8ec-db06-4d17-9c8b-bbf589f91e67	\N	\N	\N	\N
+1185	4	a14442b0-9282-4efc-9df0-51d6374608d8	layout.0.logos	\N	\N	\N	4f3b0cf8-dc31-4ff9-aa9f-9e0ec3cfb001	\N	\N	\N	\N
+1186	5	a14442b0-9282-4efc-9df0-51d6374608d8	layout.0.logos	\N	\N	\N	d67a9625-6f30-4d2a-9643-0962f6faf385	\N	\N	\N	\N
+1187	1	a14442b0-9282-4efc-9df0-51d6374608d8	layout.2.logos	\N	\N	\N	513d34fb-5dbc-4333-b0ab-af8e3756cc8a	\N	\N	\N	\N
+1188	2	a14442b0-9282-4efc-9df0-51d6374608d8	layout.2.logos	\N	\N	\N	92890105-dde4-4c79-acac-d81ad6dd978a	\N	\N	\N	\N
+1189	1	a14442b0-9282-4efc-9df0-51d6374608d8	layout.3.selectedTestimonials	\N	\N	\N	\N	\N	b440e19a-7d00-487a-9927-d384dee97e22	\N	\N
+1190	1	a14442b0-9282-4efc-9df0-51d6374608d8	layout.7.selectedTestimonials	\N	\N	\N	\N	\N	ad1d03ad-f60b-4f83-90c2-d456f1fbaf21	\N	\N
+1191	1	a14442b0-9282-4efc-9df0-51d6374608d8	layout.9.logos	\N	\N	\N	8c44fa47-dbaa-44ba-9a83-c35e232404f7	\N	\N	\N	\N
+1192	2	a14442b0-9282-4efc-9df0-51d6374608d8	layout.9.logos	\N	\N	\N	93e4c6fc-6bfb-4246-aad1-8861ebc78777	\N	\N	\N	\N
+1193	3	a14442b0-9282-4efc-9df0-51d6374608d8	layout.9.logos	\N	\N	\N	8cfbc8ec-db06-4d17-9c8b-bbf589f91e67	\N	\N	\N	\N
+1194	4	a14442b0-9282-4efc-9df0-51d6374608d8	layout.9.logos	\N	\N	\N	4f3b0cf8-dc31-4ff9-aa9f-9e0ec3cfb001	\N	\N	\N	\N
+1195	5	a14442b0-9282-4efc-9df0-51d6374608d8	layout.9.logos	\N	\N	\N	d67a9625-6f30-4d2a-9643-0962f6faf385	\N	\N	\N	\N
+1196	1	a14442b0-9282-4efc-9df0-51d6374608d8	layout.10.faqs	\N	\N	\N	\N	487d16ef-4d7e-4603-885d-53d42734b0f1	\N	\N	\N
+1197	2	a14442b0-9282-4efc-9df0-51d6374608d8	layout.10.faqs	\N	\N	\N	\N	2d37f238-e71e-4291-8919-33e4c7a73544	\N	\N	\N
+1198	3	a14442b0-9282-4efc-9df0-51d6374608d8	layout.10.faqs	\N	\N	\N	\N	4696359a-45b8-4fea-b14f-ca34e928e5d0	\N	\N	\N
+1199	4	a14442b0-9282-4efc-9df0-51d6374608d8	layout.10.faqs	\N	\N	\N	\N	0786b804-85ea-4269-841e-5f4fe762ada3	\N	\N	\N
+1200	5	a14442b0-9282-4efc-9df0-51d6374608d8	layout.10.faqs	\N	\N	\N	\N	0ad17856-43c0-4ec9-bd88-c26f826dfb68	\N	\N	\N
+1201	6	a14442b0-9282-4efc-9df0-51d6374608d8	layout.10.faqs	\N	\N	\N	\N	cf06eaf5-c215-44fc-82c2-a7696336ef41	\N	\N	\N
+1100	1	742d2308-808d-4f0e-91f2-03d18be57d5c	layout.5.logos	\N	\N	\N	92890105-dde4-4c79-acac-d81ad6dd978a	\N	\N	\N	\N
+1101	2	742d2308-808d-4f0e-91f2-03d18be57d5c	layout.5.logos	\N	\N	\N	513d34fb-5dbc-4333-b0ab-af8e3756cc8a	\N	\N	\N	\N
 \.
 
 
@@ -19123,7 +19454,7 @@ dc6dc024-c792-480d-95fa-ebaf62bdb20c	\N	2025-08-01 21:32:36.844+00	2025-08-01 21
 b9f18e76-e175-40b3-a36a-522f8c181b0f	\N	2025-07-27 21:50:28.987+00	2025-07-27 21:50:29.035+00
 704f41bc-7058-4c4a-bb0a-5ae50b20d879	\N	2025-07-27 22:47:54.224+00	2025-07-27 22:47:54.273+00
 43352ddc-82ea-4358-8ac5-94ea9807a892	\N	2025-08-01 21:35:08.656+00	2025-08-01 21:35:08.704+00
-8afc48f5-6dcb-4459-b131-693bcb66b84f	\N	2025-10-06 13:27:39.381+00	2025-10-06 13:27:39.381+00
+301c3624-66ad-4555-a88f-0ce763977e9b	footer	2025-10-21 14:23:33.562+00	2025-10-21 14:23:33.562+00
 \.
 
 
@@ -19132,8 +19463,7 @@ b9f18e76-e175-40b3-a36a-522f8c181b0f	\N	2025-07-27 21:50:28.987+00	2025-07-27 21
 --
 
 COPY "public"."payload_locked_documents_rels" ("id", "order", "parent_id", "path", "pages_id", "blog_posts_id", "media_id", "customers_id", "categories_id", "faq_id", "users_id", "redirects_id", "forms_id", "form_submissions_id", "search_id", "payload_folders_id", "payload_jobs_id", "news_id") FROM stdin;
-1199	\N	8afc48f5-6dcb-4459-b131-693bcb66b84f	document	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	90126b34-62e0-4c0f-826a-e8ffbe2f8d66
-1200	\N	8afc48f5-6dcb-4459-b131-693bcb66b84f	user	\N	\N	\N	\N	\N	\N	9bedf5d0-2a99-427f-b0e1-967bbc2487cb	\N	\N	\N	\N	\N	\N	\N
+1217	\N	301c3624-66ad-4555-a88f-0ce763977e9b	user	\N	\N	\N	\N	\N	\N	a970b2d8-1ba1-4dfc-bb01-2bb7f15c9c0a	\N	\N	\N	\N	\N	\N	\N
 \.
 
 
@@ -19165,6 +19495,8 @@ be5eca61-e011-4b7a-93a9-ec13df324019	20250818_061039	11	2025-08-18 07:57:01.627+
 c8f9c81b-c2ec-409f-bfbb-869e80770d76	20250818_072714	11	2025-08-18 07:57:01.721+00	2025-08-18 07:57:01.714+00
 a5e714f1-4b65-4f0d-a781-49891fe0a8e3	20251001_210420	12	2025-10-01 22:43:01.436+00	2025-10-01 22:43:01.434+00
 56b2d4c9-5459-470b-ae35-41d4c9042099	20251006_124956	13	2025-10-06 13:01:48.33+00	2025-10-06 13:01:48.328+00
+fc31d1d2-15d2-43aa-92be-99ea409a5afb	20251006_192203	14	2025-10-06 21:27:27.066+00	2025-10-06 21:27:27.065+00
+9f13f78d-9136-42a3-b379-ae20caa4d138	20251021_172142	15	2025-10-21 18:15:03.147+00	2025-10-21 18:15:03.144+00
 \.
 
 
@@ -19175,14 +19507,16 @@ a5e714f1-4b65-4f0d-a781-49891fe0a8e3	20251001_210420	12	2025-10-01 22:43:01.436+
 COPY "public"."payload_preferences" ("id", "key", "value", "updated_at", "created_at") FROM stdin;
 e30eecd2-135f-419c-bf8d-2475e6d28e37	media-list	{"limit": 10, "preset": null}	2025-07-27 20:56:21.235+00	2025-07-27 20:53:09.834+00
 d2f31f20-3c88-4314-b573-102ed2c12d6f	blog-posts-list	{"preset": null}	2025-07-27 21:55:01.171+00	2025-07-27 21:55:01.22+00
-3789aa66-51f3-46f5-a201-d749b0a055ec	collection-pages	{"editViewType": "live-preview"}	2025-10-06 21:17:11.05+00	2025-08-05 23:02:40.806+00
 fef32b12-3d42-4fdd-933c-9bdee6b42f95	pages-list	{"limit": 10, "preset": null}	2025-07-27 21:00:31.974+00	2025-07-27 20:47:50.399+00
 0d5fde47-87f3-4c1c-90c5-bca704a2c00e	pages-list	{"limit": 10, "preset": null}	2025-07-27 21:00:32.248+00	2025-07-27 21:00:32.296+00
 9c1f8ab2-ecb8-4f9f-b278-3bc207f25826	categories-list	{"preset": null}	2025-07-27 21:55:07.733+00	2025-07-27 21:55:07.781+00
+3789aa66-51f3-46f5-a201-d749b0a055ec	collection-pages	{"editViewType": "default"}	2025-10-06 23:08:46.736+00	2025-08-05 23:02:40.806+00
 fd0e9533-0c05-49dc-85c7-109fbf76d887	customers-list	{"limit": 10, "preset": null, "columns": [{"active": true, "accessor": "title"}, {"active": true, "accessor": "publishedAt"}, {"active": true, "accessor": "updatedAt"}, {"active": false, "accessor": "id"}, {"active": false, "accessor": "testimonial-quote"}, {"active": false, "accessor": "testimonial-featuredImage"}, {"active": false, "accessor": "testimonial-stats"}, {"active": false, "accessor": "testimonial-company-companyName"}, {"active": false, "accessor": "testimonial-company-companyLogo"}, {"active": false, "accessor": "testimonial-company-link-type"}, {"active": false, "accessor": "testimonial-company-link-newTab"}, {"active": false, "accessor": "testimonial-company-link-reference"}, {"active": false, "accessor": "testimonial-company-link-url"}, {"active": false, "accessor": "testimonial-company-link-label"}, {"active": false, "accessor": "testimonial-company-industry"}, {"active": false, "accessor": "testimonial-company-foundingYear"}, {"active": false, "accessor": "testimonial-company-location"}, {"active": false, "accessor": "testimonial-company-branches"}, {"active": false, "accessor": "testimonial-authorInfo-name"}, {"active": false, "accessor": "testimonial-authorInfo-title"}, {"active": false, "accessor": "testimonial-authorInfo-avatar"}, {"active": false, "accessor": "caseStudy-caseStudytitle"}, {"active": false, "accessor": "caseStudy-summary"}, {"active": false, "accessor": "caseStudy-content"}, {"active": false, "accessor": "caseStudy-layout"}, {"active": false, "accessor": "enableCaseStudy"}, {"active": false, "accessor": "slug"}, {"active": false, "accessor": "slugLock"}, {"active": false, "accessor": "categories"}, {"active": false, "accessor": "createdAt"}, {"active": true, "accessor": "_status"}]}	2025-07-28 02:00:47.752+00	2025-07-27 21:49:04.477+00
+d98fe44d-1b10-4beb-99b4-8c696e7a41d6	collection-pages-fc20b1cb-072c-43c5-b73b-75dcd6e01dcd	{"fields": {"layout": {"collapsed": ["68de6a1dafcdea5ad000c903"]}, "_index-1": {"tabIndex": 0}}}	2025-10-20 14:09:44.322+00	2025-10-01 10:34:37.543+00
 6858dc41-74c1-4a76-8c00-1469aefd755f	users-list	{"preset": null}	2025-07-31 08:37:03.324+00	2025-07-31 08:37:03.373+00
 bd45a1e8-e9f6-4de0-a851-6cc359738125	faq-list	{"preset": null}	2025-08-03 07:40:28.196+00	2025-08-03 07:40:28.244+00
 a9e7baf3-10d7-48ac-aa1f-4abbe42a915c	locale	"en"	2025-08-25 23:09:22.673+00	2025-08-20 23:37:39.003+00
+dcd27f0c-77de-4f3a-a358-7cfc0f65c04e	locale	"en"	2025-10-21 14:13:14.537+00	2025-10-21 14:12:45.884+00
 46f19d2d-76ed-4a03-94d5-b259d8721506	collection-pages-a14442b0-9282-4efc-9df0-51d6374608d8	{"fields": {"layout": {"collapsed": ["688f13dcdb5b5b92cc7fdde8"]}, "_index-1": {"tabIndex": 0}, "hero.links": {"collapsed": []}, "hero._index-1": {"collapsed": false}, "hero._index-3": {"collapsed": false}, "hero._index-4": {"collapsed": false}, "hero._index-5": {"collapsed": false}, "hero._index-6": {"collapsed": false}, "layout.4.columns.1._index-7": {"collapsed": false}, "layout.4.columns.2._index-7": {"collapsed": false}, "layout.0.blockHeader._index-1": {"collapsed": true}, "layout.3.blockHeader._index-1": {"collapsed": false}, "layout.3.blockHeader._index-3": {"collapsed": true}, "layout.4.blockHeader._index-3": {"collapsed": true}}}	2025-08-21 14:24:01.024+00	2025-08-15 22:06:53.391+00
 c2ba4b5f-9157-42a7-9ccf-5bbf13dd0b71	nav	{"open": true}	2025-08-07 19:49:33.776+00	2025-08-01 21:35:38.885+00
 d3e5439d-d7bb-440c-928d-3836767cb8c8	collection-customers-ad1d03ad-f60b-4f83-90c2-d456f1fbaf21	{"fields": {"_index-1": {"tabIndex": 0}}}	2025-08-21 22:44:48.642+00	2025-08-21 22:44:48.646+00
@@ -19193,13 +19527,12 @@ f460cc40-80c9-4258-846c-0cd699c988f0	collection-categories	{}	2025-08-23 01:58:2
 17ef76db-1471-4a90-ab9b-384d96eb5f49	collection-forms	{}	2025-08-23 01:58:32.996+00	2025-08-23 01:58:32.998+00
 b17dde60-1a86-4c7f-9674-af8df368f33f	collection-search	{}	2025-08-23 01:58:39.066+00	2025-08-23 01:58:39.068+00
 dce60398-9c4c-4e25-ab4f-1b47ae6ba3ec	collection-forms-5fbec645-effa-40d1-8ef0-436c01504e32	{"fields": {"fields": {"collapsed": ["68a1741777c2cb311bb16dfb", "68a1745477c2cb311bb16dfd", "68a1745c77c2cb311bb16dfe", "68a1747377c2cb311bb16dff", "68a174c277c2cb311bb16e00", "68a174ee77c2cb311bb16e04", "68a1750677c2cb311bb16e09", "68a1750d77c2cb311bb16e0a", "68a1757077c2cb311bb16e16", "68a1758377c2cb311bb16e18", "68a1751877c2cb311bb16e0c", "68a1752577c2cb311bb16e0f", "68a1753177c2cb311bb16e12", "68a1753d77c2cb311bb16e14", "68a1754777c2cb311bb16e15"]}}}	2025-08-17 06:23:52.778+00	2025-08-17 06:23:52.158+00
+de0f5360-d542-4c70-8733-dd7aebdd0330	collection-pages-7f925134-f2cc-47ed-b4f9-91e1dbcbe97e	{"fields": {"layout": {"collapsed": ["68f79a6056d611c865b8ad5d"]}, "_index-1": {"tabIndex": 0}}}	2025-10-21 18:36:23.603+00	2025-10-21 14:35:47.412+00
 e830f01f-a4c7-4c4a-b196-acc46bdd7bcb	collection-pages-e2c88328-cc74-46c9-aabd-7e7c2f92d013	{"fields": {"layout": {"collapsed": []}, "_index-1": {"tabIndex": 0}}}	2025-10-02 12:00:06.134+00	2025-07-28 04:38:08.902+00
 2118d83a-7d94-4229-8ae1-1340720fdc45	collection-users	{}	2025-08-07 10:36:12.217+00	2025-08-07 10:36:12.218+00
 0e783cdb-d8e7-4083-a0f9-ce1a3e71f8fb	global-header	{"fields": {"cta": {"collapsed": ["688692cf73e9e43a4a6e3c00", "6886930673e9e43a4a6e3c01"]}, "tabs": {"collapsed": ["6886fee960d738a9e3c612ca", "6886fef960d738a9e3c612cb"]}}}	2025-10-02 12:03:34.115+00	2025-07-27 20:58:17.258+00
 c841a492-e453-43a3-99fc-c2cf462b167b	collection-media	{}	2025-10-05 18:59:43.778+00	2025-10-05 18:59:43.778+00
 9bad41f4-a50d-43d7-ba97-4a7c4654d247	collection-faq	{}	2025-08-06 03:35:47.019+00	2025-08-06 03:35:47.031+00
-d98fe44d-1b10-4beb-99b4-8c696e7a41d6	collection-pages-fc20b1cb-072c-43c5-b73b-75dcd6e01dcd	{"fields": {"layout": {"collapsed": ["68de6a1dafcdea5ad000c903"]}, "_index-1": {"tabIndex": 1}}}	2025-10-06 11:17:29.844+00	2025-10-01 10:34:37.543+00
-b5674a51-3af3-40da-aa41-3ad3f3239dfb	locale	"ar"	2025-10-06 13:27:47.585+00	2025-08-06 23:12:47.247+00
 3892c9c8-3d98-4052-a54a-8b56b5d7d89d	collection-customers	{}	2025-08-15 22:31:14.902+00	2025-08-15 22:31:14.903+00
 482724d5-bbc1-4d74-9993-f5b0419e1d37	collection-media	{"limit": 10}	2025-08-23 01:58:16.041+00	2025-08-23 01:58:10.72+00
 38a0b955-4f72-4e3f-b6e6-a46a94378bf2	collection-faq	{}	2025-08-23 01:58:25.012+00	2025-08-23 01:58:25.014+00
@@ -19212,17 +19545,22 @@ bce021d5-a126-41da-ab4b-930029b5ffd5	collection-media	{"limit": 100}	2025-08-19 
 2eb84b45-df53-4e61-b6a3-90b5f5fccec3	collection-categories	{}	2025-08-06 23:20:53.385+00	2025-08-06 23:20:53.386+00
 217416cf-df83-4eae-8035-54329713c642	collection-customers	{}	2025-08-06 23:20:54.7+00	2025-08-06 23:20:54.701+00
 7ddf0e3f-dbb4-4bd8-b12c-88246be6c1e9	collection-blog-posts	{}	2025-08-06 23:21:10.556+00	2025-08-06 23:21:10.557+00
+3ca1bcba-6cdb-46f6-a22b-873f22169416	collection-news-90126b34-62e0-4c0f-826a-e8ffbe2f8d66	{"fields": {"_index-1": {"tabIndex": 0}}}	2025-10-20 05:43:44.384+00	2025-10-20 05:43:05.238+00
 22fc7abb-d6c3-4967-996d-d56d821f893a	collection-pages-742d2308-808d-4f0e-91f2-03d18be57d5c	{"fields": {"layout": {"collapsed": ["6886ac02df64ca6dd9ecfe6a", "6886ad3cdf64ca6dd9ecfe74"]}, "_index-1": {"tabIndex": 1}, "hero._index-3": {"collapsed": false}, "hero._index-4": {"collapsed": false}, "hero._index-5": {"collapsed": false}}}	2025-08-23 01:59:08.367+00	2025-08-23 01:57:59.177+00
+a16eda22-6522-4b4a-811f-9bec0d36b424	collection-blog-posts	{"limit": 10}	2025-10-21 14:19:37.495+00	2025-10-05 19:00:37.04+00
 974f1685-12c3-409f-b5a2-00e77551a633	collection-pages-a14442b0-9282-4efc-9df0-51d6374608d8	{"fields": {"layout": {"collapsed": ["68950278ed5ebd7e302149dd", "688694d473e9e43a4a6e3c05", "6886953573e9e43a4a6e3c09", "6886a0cc5a3935fab3feb21d", "688695d673e9e43a4a6e3c0a", "68869a4d5a3935fab3feb217", "68aaa8059ce857dc34b99afa", "6886a0695a3935fab3feb21b", "6886a1475a3935fab3feb21f", "689502c5ed5ebd7e302149e0", "688f13dcdb5b5b92cc7fdde8"]}, "_index-1": {"tabIndex": 0}, "hero.links": {"collapsed": ["688693af73e9e43a4a6e3c03"]}, "hero._index-3": {"collapsed": true}, "hero._index-4": {"collapsed": true}, "hero._index-6": {"collapsed": true}, "layout.7.list": {"collapsed": ["6886a19a5a3935fab3feb221", "6886a1c05a3935fab3feb222", "6886a2575a3935fab3feb225"]}, "layout.7.links": {"collapsed": []}, "layout.0.columns": {"collapsed": ["688694f973e9e43a4a6e3c07", "6886950873e9e43a4a6e3c08"]}, "layout.2.columns": {"collapsed": []}, "layout.5.columns": {"collapsed": []}, "layout.6.columns": {"collapsed": []}, "layout.0._index-3": {"collapsed": true}, "layout.5._index-4": {"collapsed": false}, "layout.6._index-1": {"collapsed": false}, "layout.6._index-3": {"collapsed": false}, "layout.6._index-4": {"collapsed": false}, "layout.7._index-1": {"collapsed": false}, "layout.7._index-4": {"collapsed": false}, "layout.8._index-4": {"collapsed": false}, "layout.11._index-3": {"collapsed": false}, "layout.11._index-4": {"collapsed": false}, "layout.5._index-1-3": {"collapsed": true}, "layout.2.columns.0._index-6": {"collapsed": true}, "layout.2.columns.0._index-8": {"collapsed": false}, "layout.2.columns.1._index-6": {"collapsed": true}, "layout.2.columns.1._index-8": {"collapsed": false}, "layout.2.columns.2._index-8": {"collapsed": false}, "layout.6.columns.0._index-9": {"collapsed": true}, "layout.2.blockHeader._index-1": {"collapsed": true}, "layout.3.blockHeader._index-1": {"collapsed": false}, "layout.4.blockHeader._index-3": {"collapsed": false}, "layout.5.blockHeader._index-1": {"collapsed": true}}}	2025-08-31 15:29:34.05+00	2025-07-27 21:00:42.514+00
 11b7a9fb-d56d-4364-bc77-867c5a4a0403	collection-forms	{"limit": 10}	2025-09-06 14:14:45.496+00	2025-08-07 10:34:07.591+00
 ae21cbc9-538b-40e0-acfc-515011f88994	collection-pages	{"editViewType": "default"}	2025-10-01 09:26:45.048+00	2025-10-01 09:22:35.432+00
-a16eda22-6522-4b4a-811f-9bec0d36b424	collection-blog-posts	{}	2025-10-05 19:00:37.04+00	2025-10-05 19:00:37.04+00
-d3dc03b3-6219-4918-868a-9d6a35bd1e2c	collection-news	{"limit": 10}	2025-10-06 12:53:58.317+00	2025-10-02 11:59:56.663+00
+25ee8909-28f3-4734-bce0-d16ff80046aa	global-header	{"fields": {"cta": {"collapsed": ["688692cf73e9e43a4a6e3c00", "6886930673e9e43a4a6e3c01"]}, "tabs": {"collapsed": ["6886fee960d738a9e3c612ca", "6886fef960d738a9e3c612cb"]}}}	2025-10-21 14:23:21.221+00	2025-10-21 14:22:29.258+00
+d3dc03b3-6219-4918-868a-9d6a35bd1e2c	collection-news	{"limit": 10, "editViewType": "default"}	2025-10-21 18:33:19.647+00	2025-10-02 11:59:56.663+00
+b5674a51-3af3-40da-aa41-3ad3f3239dfb	locale	"ar"	2025-10-21 18:39:23.003+00	2025-08-06 23:12:47.247+00
 20d3f1fd-60cb-422b-baed-f01fcc37dd93	collection-blog-posts	{}	2025-08-23 01:58:09.375+00	2025-08-23 01:58:09.378+00
 5a129868-2b55-4cad-bac5-8a3262b18630	collection-pages	{"limit": 10}	2025-08-15 22:25:51.707+00	2025-08-15 22:06:41.744+00
 e8f53515-0e68-4f82-b948-fe02bc0316f9	media-collection-folder	{}	2025-08-19 07:23:26.57+00	2025-08-19 07:23:26.571+00
 864c10ef-0fc2-44b5-83a3-b7a6d6749e51	collection-pages-fc20b1cb-072c-43c5-b73b-75dcd6e01dcd	{"fields": {"_index-1": {"tabIndex": 0}, "hero._index-1": {"collapsed": false}, "hero._index-3": {"collapsed": true}, "hero._index-4": {"collapsed": false}, "hero._index-5": {"collapsed": false}}}	2025-10-01 09:27:16.522+00	2025-10-01 09:22:54.987+00
+b9a1ea1b-844e-4a22-a496-1a8704138c4c	collection-news-741a248c-77e4-4bc5-b563-d5a71f076b14	{"fields": {"_index-1": {"tabIndex": 0}}}	2025-10-21 14:16:18.296+00	2025-10-21 14:09:13.999+00
 b17b5b2d-c323-403b-9e08-25256a860cc3	collection-news	{"editViewType": "live-preview"}	2025-10-05 18:58:47.179+00	2025-10-05 18:57:51.458+00
+27c8cc77-b727-45a2-aaab-263f833d51e3	collection-pages-735a9da5-598e-4290-8091-0f9990d4d6f5	{"fields": {"layout": {"collapsed": ["68f7999da54bf97ce5bc1aec"]}, "_index-1": {"tabIndex": 0}}}	2025-10-21 18:38:53.548+00	2025-10-21 14:32:30.619+00
 \.
 
 
@@ -19241,10 +19579,13 @@ COPY "public"."payload_preferences_rels" ("id", "order", "parent_id", "path", "u
 112	\N	6858dc41-74c1-4a76-8c00-1469aefd755f	user	9bedf5d0-2a99-427f-b0e1-967bbc2487cb
 466	\N	a9e7baf3-10d7-48ac-aa1f-4abbe42a915c	user	103d28be-f604-464d-8ecb-2b1b3308b003
 401	\N	46f19d2d-76ed-4a03-94d5-b259d8721506	user	103d28be-f604-464d-8ecb-2b1b3308b003
+530	\N	3ca1bcba-6cdb-46f6-a22b-873f22169416	user	a970b2d8-1ba1-4dfc-bb01-2bb7f15c9c0a
 342	\N	5a129868-2b55-4cad-bac5-8a3262b18630	user	103d28be-f604-464d-8ecb-2b1b3308b003
 404	\N	d3e5439d-d7bb-440c-928d-3836767cb8c8	user	103d28be-f604-464d-8ecb-2b1b3308b003
 293	\N	c2ba4b5f-9157-42a7-9ccf-5bbf13dd0b71	user	9bedf5d0-2a99-427f-b0e1-967bbc2487cb
+533	\N	d98fe44d-1b10-4beb-99b4-8c696e7a41d6	user	9bedf5d0-2a99-427f-b0e1-967bbc2487cb
 412	\N	20d3f1fd-60cb-422b-baed-f01fcc37dd93	user	103d28be-f604-464d-8ecb-2b1b3308b003
+539	\N	dcd27f0c-77de-4f3a-a358-7cfc0f65c04e	user	a970b2d8-1ba1-4dfc-bb01-2bb7f15c9c0a
 414	\N	482724d5-bbc1-4d74-9993-f5b0419e1d37	user	103d28be-f604-464d-8ecb-2b1b3308b003
 303	\N	7df0e386-9de1-43ef-8633-8179bc57b9fe	user	9bedf5d0-2a99-427f-b0e1-967bbc2487cb
 415	\N	f460cc40-80c9-4258-846c-0cd699c988f0	user	103d28be-f604-464d-8ecb-2b1b3308b003
@@ -19262,6 +19603,8 @@ COPY "public"."payload_preferences_rels" ("id", "order", "parent_id", "path", "u
 479	\N	974f1685-12c3-409f-b5a2-00e77551a633	user	9bedf5d0-2a99-427f-b0e1-967bbc2487cb
 369	\N	e8f53515-0e68-4f82-b948-fe02bc0316f9	user	9bedf5d0-2a99-427f-b0e1-967bbc2487cb
 370	\N	bce021d5-a126-41da-ab4b-930029b5ffd5	user	9bedf5d0-2a99-427f-b0e1-967bbc2487cb
+544	\N	b9a1ea1b-844e-4a22-a496-1a8704138c4c	user	a970b2d8-1ba1-4dfc-bb01-2bb7f15c9c0a
+545	\N	a16eda22-6522-4b4a-811f-9bec0d36b424	user	a970b2d8-1ba1-4dfc-bb01-2bb7f15c9c0a
 427	\N	22fc7abb-d6c3-4967-996d-d56d821f893a	user	103d28be-f604-464d-8ecb-2b1b3308b003
 271	\N	2118d83a-7d94-4229-8ae1-1340720fdc45	user	9bedf5d0-2a99-427f-b0e1-967bbc2487cb
 376	\N	26217ef5-6a83-4b63-90c1-15861bde9853	user	103d28be-f604-464d-8ecb-2b1b3308b003
@@ -19270,17 +19613,18 @@ COPY "public"."payload_preferences_rels" ("id", "order", "parent_id", "path", "u
 215	\N	2eb84b45-df53-4e61-b6a3-90b5f5fccec3	user	9bedf5d0-2a99-427f-b0e1-967bbc2487cb
 216	\N	217416cf-df83-4eae-8035-54329713c642	user	9bedf5d0-2a99-427f-b0e1-967bbc2487cb
 217	\N	7ddf0e3f-dbb4-4bd8-b12c-88246be6c1e9	user	9bedf5d0-2a99-427f-b0e1-967bbc2487cb
+553	\N	25ee8909-28f3-4734-bce0-d16ff80046aa	user	a970b2d8-1ba1-4dfc-bb01-2bb7f15c9c0a
 494	\N	ae21cbc9-538b-40e0-acfc-515011f88994	user	a970b2d8-1ba1-4dfc-bb01-2bb7f15c9c0a
 496	\N	864c10ef-0fc2-44b5-83a3-b7a6d6749e51	user	a970b2d8-1ba1-4dfc-bb01-2bb7f15c9c0a
+563	\N	d3dc03b3-6219-4918-868a-9d6a35bd1e2c	user	9bedf5d0-2a99-427f-b0e1-967bbc2487cb
 503	\N	e830f01f-a4c7-4c4a-b196-acc46bdd7bcb	user	9bedf5d0-2a99-427f-b0e1-967bbc2487cb
 506	\N	0e783cdb-d8e7-4083-a0f9-ce1a3e71f8fb	user	9bedf5d0-2a99-427f-b0e1-967bbc2487cb
 508	\N	b17b5b2d-c323-403b-9e08-25256a860cc3	user	a970b2d8-1ba1-4dfc-bb01-2bb7f15c9c0a
 509	\N	c841a492-e453-43a3-99fc-c2cf462b167b	user	a970b2d8-1ba1-4dfc-bb01-2bb7f15c9c0a
-510	\N	a16eda22-6522-4b4a-811f-9bec0d36b424	user	a970b2d8-1ba1-4dfc-bb01-2bb7f15c9c0a
-515	\N	d98fe44d-1b10-4beb-99b4-8c696e7a41d6	user	9bedf5d0-2a99-427f-b0e1-967bbc2487cb
-518	\N	d3dc03b3-6219-4918-868a-9d6a35bd1e2c	user	9bedf5d0-2a99-427f-b0e1-967bbc2487cb
-520	\N	b5674a51-3af3-40da-aa41-3ad3f3239dfb	user	9bedf5d0-2a99-427f-b0e1-967bbc2487cb
-521	\N	3789aa66-51f3-46f5-a201-d749b0a055ec	user	9bedf5d0-2a99-427f-b0e1-967bbc2487cb
+569	\N	de0f5360-d542-4c70-8733-dd7aebdd0330	user	9bedf5d0-2a99-427f-b0e1-967bbc2487cb
+572	\N	27c8cc77-b727-45a2-aaab-263f833d51e3	user	9bedf5d0-2a99-427f-b0e1-967bbc2487cb
+573	\N	b5674a51-3af3-40da-aa41-3ad3f3239dfb	user	9bedf5d0-2a99-427f-b0e1-967bbc2487cb
+522	\N	3789aa66-51f3-46f5-a201-d749b0a055ec	user	9bedf5d0-2a99-427f-b0e1-967bbc2487cb
 \.
 
 
@@ -19296,7 +19640,7 @@ COPY "public"."redirects" ("id", "from", "to_type", "to_url", "updated_at", "cre
 -- Data for Name: redirects_rels; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-COPY "public"."redirects_rels" ("id", "order", "parent_id", "path", "pages_id", "blog_posts_id") FROM stdin;
+COPY "public"."redirects_rels" ("id", "order", "parent_id", "path", "pages_id", "blog_posts_id", "news_id") FROM stdin;
 \.
 
 
@@ -19306,6 +19650,8 @@ COPY "public"."redirects_rels" ("id", "order", "parent_id", "path", "pages_id", 
 
 COPY "public"."richTextBlock" ("_order", "_parent_id", "_path", "id", "block_header_type", "block_header_badge_type", "block_header_badge_color", "block_header_badge_icon", "block_header_badge_icon_position", "type", "max_width", "columns", "block_name") FROM stdin;
 2	742d2308-808d-4f0e-91f2-03d18be57d5c	layout	68869cf2f3705a4904040d30	center	\N	blue	\N	flex-row	02	large	1	\N
+1	7f925134-f2cc-47ed-b4f9-91e1dbcbe97e	layout	68f79a6056d611c865b8ad5d	center	\N	blue	\N	flex-row	01	default	1	\N
+1	735a9da5-598e-4290-8091-0f9990d4d6f5	layout	68f7999da54bf97ce5bc1aec	center	\N	blue	\N	flex-row	01	default	1	\N
 \.
 
 
@@ -19332,6 +19678,10 @@ COPY "public"."richTextBlock_block_header_links_locales" ("link_label", "id", "_
 COPY "public"."richTextBlock_locales" ("block_header_badge_label", "block_header_header_text", "content", "id", "_locale", "_parent_id") FROM stdin;
 \N	\N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h4", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "I’ve worked in restaurant operations myself, and I know what it’s like to juggle campaigns, discounts, and commissions on delivery apps without having a clear view of the return.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "ltr"}, {"tag": "h4", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "As delivery has transformed into a crowded e-commerce space, the challenges have grown: new cloud kitchens opening every month, offers changing constantly, and customer acquisition costs rising with every campaign.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "ltr"}, {"tag": "h4", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "That’s why we launched Ballurh.. not as another reporting tool, but as an operating system. A single platform that connects campaigns, orders, and invoices, helping restaurants track every riyal, recover lost costs, and operate with clarity.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "ltr"}, {"tag": "h4", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "Our goal is to give every restaurant one system that makes their delivery growth simpler, more efficient, and more profitable.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "ltr"}, {"tag": "h4", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "We want to be part of their day, work alongside them, and grow together.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}, {"type": "linebreak", "version": 1}], "direction": "ltr"}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [], "direction": "ltr", "textStyle": "", "textFormat": 0}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "Abdulwahab AlZaidi", "type": "text", "style": "", "detail": 0, "format": 1, "version": 1}, {"type": "linebreak", "version": 1}, {"mode": "normal", "text": "Co-founder and CEO", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 1}], "direction": "rtl"}}	33	en	68869cf2f3705a4904040d30
 \N	\N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"tag": "h4", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "اشتغلت بنفسي في تشغيل قطاع المطاعم، وأعرف وش يعني تحاول توازن بين الحملات، الخصومات، والعمولات على تطبيقات التوصيل، بدون ما يكون عندك رؤية واضحة عن العائد.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"tag": "h4", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "ومع تحوّل القطاع إلى تجارة إلكترونية مزدحمة، دخلت اللعبة متغيرات جديدة: مطاعم سحابية جديدة كل شهر، عروض تتغيّر باستمرار، وتكلفة اكتساب عميل تزيد مع كل حملة.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"tag": "h4", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "عشان كذا انطلقت بلّورة.. مو كأداة تقارير، بل كنظام تشغيل يربط الإعلان بالطلب والفاتورة، ويخليك تراجع كل ريال بدقة، توقف الهدر، وتشتغل بثقة.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"tag": "h4", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "هدفنا إن كل مطعم يلقى عنده نظام واحد يوضّح الصورة، يساعده يسترجع الإيرادات المفقودة، ويكسب أكثر من نفس قنوات التوصيل اللي يشتغل عليها.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl"}, {"tag": "h4", "type": "heading", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "نبغى نكون جزء من يومهم، نشتغل معاهم، ونكبر سوا.", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}, {"type": "linebreak", "version": 1}], "direction": "rtl"}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [], "direction": null, "textStyle": "", "textFormat": 0}, {"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "عبدالوهاب الزايدي", "type": "text", "style": "", "detail": 0, "format": 1, "version": 1}, {"type": "linebreak", "version": 1}, {"mode": "normal", "text": "الشريك المؤسس والمدير التنفيذي", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": "rtl", "textStyle": "", "textFormat": 1}], "direction": "rtl"}}	34	ar	68869cf2f3705a4904040d30
+\N	\N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "/", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": null, "textStyle": "", "textFormat": 0}], "direction": null}}	39	en	68f79a6056d611c865b8ad5d
+\N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [], "direction": null}], "direction": null}}	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "/", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": null, "textStyle": "", "textFormat": 0}], "direction": null}}	40	ar	68f79a6056d611c865b8ad5d
+\N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [], "direction": null}], "direction": null}}	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "/", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": null, "textStyle": "", "textFormat": 0}], "direction": null}}	43	en	68f7999da54bf97ce5bc1aec
+\N	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [], "direction": null}], "direction": null}}	{"root": {"type": "root", "format": "", "indent": 0, "version": 1, "children": [{"type": "paragraph", "format": "", "indent": 0, "version": 1, "children": [{"mode": "normal", "text": "/", "type": "text", "style": "", "detail": 0, "format": 0, "version": 1}], "direction": null, "textStyle": "", "textFormat": 0}], "direction": null}}	44	ar	68f7999da54bf97ce5bc1aec
 \.
 
 
@@ -19387,7 +19737,7 @@ COPY "public"."settings_locales" ("meta_title", "meta_image_id", "meta_descripti
 -- Data for Name: settings_rels; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-COPY "public"."settings_rels" ("id", "order", "parent_id", "path", "pages_id", "blog_posts_id") FROM stdin;
+COPY "public"."settings_rels" ("id", "order", "parent_id", "path", "pages_id", "blog_posts_id", "news_id") FROM stdin;
 \.
 
 
@@ -19487,8 +19837,8 @@ COPY "public"."testimonialsBlock_locales" ("block_header_badge_label", "block_he
 --
 
 COPY "public"."users" ("id", "updated_at", "created_at", "email", "reset_password_token", "reset_password_expiration", "salt", "hash", "login_attempts", "lock_until", "avatar_id") FROM stdin;
-a970b2d8-1ba1-4dfc-bb01-2bb7f15c9c0a	2025-10-05 18:57:43.384+00	2025-08-07 10:37:56.104+00	halradwan@ballurh.io	\N	\N	e794ebff42bc077e08c9e33830bae0cf174bfee719c447b40db6e421f77de531	65b8ca3c7ee64110b9ee1aa7d92e6a5400bc31f1df888d749c1c0b3c78e8974b03118b5784cbf6211a6a9dcf1d9a8afd0e4096b3b8dbcd202de21b6dc5eef81715c68d046c7f21bf53ae5ca75c54334e2158acc7221bddf350f7635165887aee7ecd6467babbe6caa9efa52eecc39f3b7486913982d7dced5fe4f3666f97ce2e846c6f89cc8022f97dd520491b9a971cab347f7d01d24c47fc4f43f72ad81be8c7723acb9b98c4865de3ec52f20729d70836ba9dd944c641b8f86128f10ceea0a054ba23bf08b01ecbb5079e4175c51d910825876db576d9eacf7657e88409b9ff71209243310da5692f27c6913edf7fc8d02e76130f1299fd1bb7d59ff2ec93e391455a8990f9904e19488040f7b23ea5b74434bdb6819707d66a61f49d5d49cf13ed8f5f9a184a2769d3fa0216210580a94f9eb24b7f7bebacaead2d8f9e0228ec8efb17ac71548df74269e106b1105f56a2db4f4947304cce049d95046d1f493184f7df52913f754b675db49980b0bd44505e5d7d5ed2a9af231e66b852b36e967d734b4e1d6492fa8a08bb0bbf4dd8f63a1a690363d1a650653c8661632996a66552511c3261104b87b5d57edd60a45b0747e2c555a3d7476da16a44e1c2db58dfe12cd753b2b0cae075decf9e28d9972232de6b7998393c14965777f886f3e754777d80e0c19c98322edfe597eee1e4e1d89913ba32fd66d2e5a0591992	0	\N	\N
-9bedf5d0-2a99-427f-b0e1-967bbc2487cb	2025-10-06 21:16:50.9+00	2025-07-27 20:47:39.813+00	omar@byvalence.com	\N	\N	b4c89ca178e7a779fc0ed0062ab45fe846fac61e84b17911d447936e4df4914c	fe1429067a966942526bba0da003b3a857e3ed239f9a8952f392f10e7dd151e9ab38cb0e8fa8721f8d4d931bdd2126ddf49deffa26866cf6757c00420f8deabf2c24420cb8a8e803d0c84e34759821432ff790defaaca8888aa5e4c1f1ec78457f9dc8866a3ec6c1493951d67b221d43640d56c8d42920bbb57d972d546abe56149a0957f1880a768cd0d81428ebf1d253e583d25bb321722eac71a7ab49fbeba6315da4d4380658696d4fe3ada50a7acc884c1b033c00de8e23fa2379a6d1db479b8bfcac736bbab43e0458eb53011fe2e1bff1ba9c4bcc02410062b7b2c80a594cf6c234c3eb8667bd9da64b0a503ba5d6ffeb0b4630c480051179aa3e651812297ac90ae26786089b8ea660c2ff51b960208fc76827bdf657122513d3c2ad6f531aad6976e6db77e1ac3ab0dea6835a44a53145a50f07caa66cf1a57860d3848b59e96ac662e34034fcb96599f8845b18c040f86d6bbc3c36f75eb6a72e7c1ae1923b404b54cefc67c3a2813b0e2b07ad43ca21d0e318e0cc85e1773101c06b3ebf3e0c356c87ea31a9f1741af1bcf7cf01cb4091e90cb66fb9178072b45c8d9fb2b974f44aeb30db7ba4ab496ecc8d597d657fc6e37445a2e896157a28057ce6b2d1bcb2c342a7a466d6dc0cb5fa9d39f7790a305b458bd9fe6b8cc6b1acc5eb104b85da2678e38c055ec82da524d739b21eaec3b5185ff00470cf30f2c3	0	\N	\N
+a970b2d8-1ba1-4dfc-bb01-2bb7f15c9c0a	2025-10-21 14:08:24.267+00	2025-08-07 10:37:56.104+00	halradwan@ballurh.io	\N	\N	e794ebff42bc077e08c9e33830bae0cf174bfee719c447b40db6e421f77de531	65b8ca3c7ee64110b9ee1aa7d92e6a5400bc31f1df888d749c1c0b3c78e8974b03118b5784cbf6211a6a9dcf1d9a8afd0e4096b3b8dbcd202de21b6dc5eef81715c68d046c7f21bf53ae5ca75c54334e2158acc7221bddf350f7635165887aee7ecd6467babbe6caa9efa52eecc39f3b7486913982d7dced5fe4f3666f97ce2e846c6f89cc8022f97dd520491b9a971cab347f7d01d24c47fc4f43f72ad81be8c7723acb9b98c4865de3ec52f20729d70836ba9dd944c641b8f86128f10ceea0a054ba23bf08b01ecbb5079e4175c51d910825876db576d9eacf7657e88409b9ff71209243310da5692f27c6913edf7fc8d02e76130f1299fd1bb7d59ff2ec93e391455a8990f9904e19488040f7b23ea5b74434bdb6819707d66a61f49d5d49cf13ed8f5f9a184a2769d3fa0216210580a94f9eb24b7f7bebacaead2d8f9e0228ec8efb17ac71548df74269e106b1105f56a2db4f4947304cce049d95046d1f493184f7df52913f754b675db49980b0bd44505e5d7d5ed2a9af231e66b852b36e967d734b4e1d6492fa8a08bb0bbf4dd8f63a1a690363d1a650653c8661632996a66552511c3261104b87b5d57edd60a45b0747e2c555a3d7476da16a44e1c2db58dfe12cd753b2b0cae075decf9e28d9972232de6b7998393c14965777f886f3e754777d80e0c19c98322edfe597eee1e4e1d89913ba32fd66d2e5a0591992	0	\N	\N
+9bedf5d0-2a99-427f-b0e1-967bbc2487cb	2025-10-21 18:32:49.074+00	2025-07-27 20:47:39.813+00	omar@byvalence.com	\N	\N	b4c89ca178e7a779fc0ed0062ab45fe846fac61e84b17911d447936e4df4914c	fe1429067a966942526bba0da003b3a857e3ed239f9a8952f392f10e7dd151e9ab38cb0e8fa8721f8d4d931bdd2126ddf49deffa26866cf6757c00420f8deabf2c24420cb8a8e803d0c84e34759821432ff790defaaca8888aa5e4c1f1ec78457f9dc8866a3ec6c1493951d67b221d43640d56c8d42920bbb57d972d546abe56149a0957f1880a768cd0d81428ebf1d253e583d25bb321722eac71a7ab49fbeba6315da4d4380658696d4fe3ada50a7acc884c1b033c00de8e23fa2379a6d1db479b8bfcac736bbab43e0458eb53011fe2e1bff1ba9c4bcc02410062b7b2c80a594cf6c234c3eb8667bd9da64b0a503ba5d6ffeb0b4630c480051179aa3e651812297ac90ae26786089b8ea660c2ff51b960208fc76827bdf657122513d3c2ad6f531aad6976e6db77e1ac3ab0dea6835a44a53145a50f07caa66cf1a57860d3848b59e96ac662e34034fcb96599f8845b18c040f86d6bbc3c36f75eb6a72e7c1ae1923b404b54cefc67c3a2813b0e2b07ad43ca21d0e318e0cc85e1773101c06b3ebf3e0c356c87ea31a9f1741af1bcf7cf01cb4091e90cb66fb9178072b45c8d9fb2b974f44aeb30db7ba4ab496ecc8d597d657fc6e37445a2e896157a28057ce6b2d1bcb2c342a7a466d6dc0cb5fa9d39f7790a305b458bd9fe6b8cc6b1acc5eb104b85da2678e38c055ec82da524d739b21eaec3b5185ff00470cf30f2c3	0	\N	\N
 103d28be-f604-464d-8ecb-2b1b3308b003	2025-08-31 15:57:23.781+00	2025-08-07 11:27:08.902+00	abdulwahab@ballurh.io	\N	\N	3bb66ff284689b7cc795d4e7ac8235f03952af87dcde125cf1a41e6b4e3dc621	be7ab849d66b38051b5db266c75fa6db6dcb683a38b665d128e533e8ae98c60194ed05f212fdd3b7af1375097df8dc01c5feb4431d723aed08d45d50de308fc21101d741a22bbefa4927d186ab2c049aae11b06d6b34845de7bf8515f3b3dac0345fc7f8f642ff5f1df1edd7e076214c37fdb05dd054e0f27c70136f82d198f77be3ca9843d8252230b228d5fdb54b27d85939f4de25b497e2525c2239e783d705b1942fb8b81e9e18dd86143f30b33bcda9c5f46f4eb8cbe0ced54e6f45a2aced7f1b4d613b0985f5144b07aa40647e49c79f6e855e40e0618e7c7af2a6a2f967fa948faa572e012da46281d09b32c8935e24ec078f73e9e32c775ddcd77d14f7f5a39b55968471818bf89659a917c5d641c5026ba5317889f185dd7b58d5259cf16deef2462aa98c9f408b5bd8b0dfd976f9283cbca7a45dd23ec45d28d636afceedad35d683222d6d2ff04af6152653d170a56ec13c911ff3fb407ff569c6af7fd8ba9254f737e4ca1ea4821c59075f03b59236a2ad87db1f31b076cbd6ca1792cd68ba3a3c5f27823370c29a45f4d62054f8f9384333fcaba0d87cbe5e02c7cf57e98d91f8844c58f97fe8cb935a8f9b72563dc6676d6dc495c823de1a173b0b2009b7fa25bd125bb6326e8a84fd72591d17421e72ebec62a26b6c97c573b761ba3db74d3aded91b815930f1e54fd1da0db61c6644adaba1021ba4f1bd69	0	\N	\N
 \.
 
@@ -19498,12 +19848,12 @@ a970b2d8-1ba1-4dfc-bb01-2bb7f15c9c0a	2025-10-05 18:57:43.384+00	2025-08-07 10:37
 --
 
 COPY "public"."users_locales" ("name", "id", "_locale", "_parent_id") FROM stdin;
-Hanan Alradwan	121	en	a970b2d8-1ba1-4dfc-bb01-2bb7f15c9c0a
-حنان الرضوان	122	ar	a970b2d8-1ba1-4dfc-bb01-2bb7f15c9c0a
-Omar Oubari	133	en	9bedf5d0-2a99-427f-b0e1-967bbc2487cb
-عمر	134	ar	9bedf5d0-2a99-427f-b0e1-967bbc2487cb
+Hanan Alradwan	153	en	a970b2d8-1ba1-4dfc-bb01-2bb7f15c9c0a
+حنان الرضوان	154	ar	a970b2d8-1ba1-4dfc-bb01-2bb7f15c9c0a
 Abdulwahab AlZaidi	103	en	103d28be-f604-464d-8ecb-2b1b3308b003
 عبدالوهاب الزايدي	104	ar	103d28be-f604-464d-8ecb-2b1b3308b003
+Omar Oubari	157	en	9bedf5d0-2a99-427f-b0e1-967bbc2487cb
+عمر	158	ar	9bedf5d0-2a99-427f-b0e1-967bbc2487cb
 \.
 
 
@@ -19512,9 +19862,9 @@ Abdulwahab AlZaidi	103	en	103d28be-f604-464d-8ecb-2b1b3308b003
 --
 
 COPY "public"."users_sessions" ("_order", "_parent_id", "id", "created_at", "expires_at") FROM stdin;
-1	9bedf5d0-2a99-427f-b0e1-967bbc2487cb	438dd6af-2123-4c0c-ae6f-ec8ae5b85d16	2025-10-06 21:16:50.9+00	2025-10-06 23:16:50.9+00
+1	a970b2d8-1ba1-4dfc-bb01-2bb7f15c9c0a	60836afc-bef8-4411-9087-f5b16416271e	2025-10-21 14:08:24.267+00	2025-10-21 16:08:24.267+00
+1	9bedf5d0-2a99-427f-b0e1-967bbc2487cb	5c992bfb-3da8-4c86-9fc2-3c8d6527b941	2025-10-21 18:32:49.074+00	2025-10-21 20:32:49.074+00
 1	103d28be-f604-464d-8ecb-2b1b3308b003	c7b59c8c-6128-4a93-81e0-a5eeb7c6d610	2025-08-31 15:57:23.781+00	2025-08-31 17:57:23.781+00
-1	a970b2d8-1ba1-4dfc-bb01-2bb7f15c9c0a	3b17fa9b-3b9d-4e85-a0df-f8cc8c1e6b3b	2025-10-05 18:57:43.384+00	2025-10-05 20:57:43.384+00
 \.
 
 
@@ -19683,21 +20033,21 @@ SELECT pg_catalog.setval('"public"."_metricsBlock_v_stats_locales_id_seq"', 1119
 -- Name: _news_v_locales_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('"public"."_news_v_locales_id_seq"', 2, true);
+SELECT pg_catalog.setval('"public"."_news_v_locales_id_seq"', 15, true);
 
 
 --
 -- Name: _news_v_rels_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('"public"."_news_v_rels_id_seq"', 1, true);
+SELECT pg_catalog.setval('"public"."_news_v_rels_id_seq"', 12, true);
 
 
 --
 -- Name: _pages_v_locales_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('"public"."_pages_v_locales_id_seq"', 1371, true);
+SELECT pg_catalog.setval('"public"."_pages_v_locales_id_seq"', 1446, true);
 
 
 --
@@ -19732,7 +20082,7 @@ SELECT pg_catalog.setval('"public"."_richTextBlock_v_block_header_links_locales_
 -- Name: _richTextBlock_v_locales_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('"public"."_richTextBlock_v_locales_id_seq"', 360, true);
+SELECT pg_catalog.setval('"public"."_richTextBlock_v_locales_id_seq"', 395, true);
 
 
 --
@@ -20096,14 +20446,14 @@ SELECT pg_catalog.setval('"public"."metricsBlock_stats_locales_id_seq"', 108, tr
 -- Name: news_locales_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('"public"."news_locales_id_seq"', 2, true);
+SELECT pg_catalog.setval('"public"."news_locales_id_seq"', 14, true);
 
 
 --
 -- Name: news_rels_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('"public"."news_rels_id_seq"', 1, true);
+SELECT pg_catalog.setval('"public"."news_rels_id_seq"', 11, true);
 
 
 --
@@ -20124,7 +20474,7 @@ SELECT pg_catalog.setval('"public"."pages_hero_list_items_locales_id_seq"', 369,
 -- Name: pages_locales_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('"public"."pages_locales_id_seq"', 195, true);
+SELECT pg_catalog.setval('"public"."pages_locales_id_seq"', 207, true);
 
 
 --
@@ -20138,14 +20488,14 @@ SELECT pg_catalog.setval('"public"."pages_rels_id_seq"', 1201, true);
 -- Name: payload_locked_documents_rels_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('"public"."payload_locked_documents_rels_id_seq"', 1200, true);
+SELECT pg_catalog.setval('"public"."payload_locked_documents_rels_id_seq"', 1299, true);
 
 
 --
 -- Name: payload_preferences_rels_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('"public"."payload_preferences_rels_id_seq"', 521, true);
+SELECT pg_catalog.setval('"public"."payload_preferences_rels_id_seq"', 573, true);
 
 
 --
@@ -20166,7 +20516,7 @@ SELECT pg_catalog.setval('"public"."richTextBlock_block_header_links_locales_id_
 -- Name: richTextBlock_locales_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('"public"."richTextBlock_locales_id_seq"', 34, true);
+SELECT pg_catalog.setval('"public"."richTextBlock_locales_id_seq"', 44, true);
 
 
 --
@@ -20236,7 +20586,7 @@ SELECT pg_catalog.setval('"public"."testimonialsBlock_locales_id_seq"', 1, false
 -- Name: users_locales_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('"public"."users_locales_id_seq"', 134, true);
+SELECT pg_catalog.setval('"public"."users_locales_id_seq"', 158, true);
 
 
 --
@@ -22404,6 +22754,13 @@ CREATE INDEX "_customers_v_rels_categories_id_idx" ON "public"."_customers_v_rel
 
 
 --
+-- Name: _customers_v_rels_news_id_idx; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX "_customers_v_rels_news_id_idx" ON "public"."_customers_v_rels" USING "btree" ("news_id");
+
+
+--
 -- Name: _customers_v_rels_order_idx; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -23300,6 +23657,13 @@ CREATE INDEX "_pages_v_rels_media_id_idx" ON "public"."_pages_v_rels" USING "btr
 
 
 --
+-- Name: _pages_v_rels_news_id_idx; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX "_pages_v_rels_news_id_idx" ON "public"."_pages_v_rels" USING "btree" ("news_id", "locale");
+
+
+--
 -- Name: _pages_v_rels_order_idx; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -23986,6 +24350,13 @@ CREATE INDEX "customers_rels_categories_id_idx" ON "public"."customers_rels" USI
 
 
 --
+-- Name: customers_rels_news_id_idx; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX "customers_rels_news_id_idx" ON "public"."customers_rels" USING "btree" ("news_id");
+
+
+--
 -- Name: customers_rels_order_idx; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -24298,6 +24669,13 @@ CREATE INDEX "footer_columns_parent_id_idx" ON "public"."footer_columns" USING "
 --
 
 CREATE INDEX "footer_rels_blog_posts_id_idx" ON "public"."footer_rels" USING "btree" ("blog_posts_id");
+
+
+--
+-- Name: footer_rels_news_id_idx; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX "footer_rels_news_id_idx" ON "public"."footer_rels" USING "btree" ("news_id");
 
 
 --
@@ -24781,6 +25159,13 @@ CREATE INDEX "header_cta_parent_id_idx" ON "public"."header_cta" USING "btree" (
 --
 
 CREATE INDEX "header_rels_blog_posts_id_idx" ON "public"."header_rels" USING "btree" ("blog_posts_id");
+
+
+--
+-- Name: header_rels_news_id_idx; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX "header_rels_news_id_idx" ON "public"."header_rels" USING "btree" ("news_id");
 
 
 --
@@ -25505,6 +25890,13 @@ CREATE INDEX "pages_rels_media_id_idx" ON "public"."pages_rels" USING "btree" ("
 
 
 --
+-- Name: pages_rels_news_id_idx; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX "pages_rels_news_id_idx" ON "public"."pages_rels" USING "btree" ("news_id", "locale");
+
+
+--
 -- Name: pages_rels_order_idx; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -25890,6 +26282,13 @@ CREATE INDEX "redirects_rels_blog_posts_id_idx" ON "public"."redirects_rels" USI
 
 
 --
+-- Name: redirects_rels_news_id_idx; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX "redirects_rels_news_id_idx" ON "public"."redirects_rels" USING "btree" ("news_id");
+
+
+--
 -- Name: redirects_rels_order_idx; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -26069,6 +26468,13 @@ CREATE INDEX "settings_meta_meta_image_idx" ON "public"."settings_locales" USING
 --
 
 CREATE INDEX "settings_rels_blog_posts_id_idx" ON "public"."settings_rels" USING "btree" ("blog_posts_id");
+
+
+--
+-- Name: settings_rels_news_id_idx; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX "settings_rels_news_id_idx" ON "public"."settings_rels" USING "btree" ("news_id");
 
 
 --
@@ -26488,6 +26894,14 @@ ALTER TABLE ONLY "public"."_customers_v_rels"
 
 ALTER TABLE ONLY "public"."_customers_v_rels"
     ADD CONSTRAINT "_customers_v_rels_categories_fk" FOREIGN KEY ("categories_id") REFERENCES "public"."categories"("id") ON DELETE CASCADE;
+
+
+--
+-- Name: _customers_v_rels _customers_v_rels_news_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY "public"."_customers_v_rels"
+    ADD CONSTRAINT "_customers_v_rels_news_fk" FOREIGN KEY ("news_id") REFERENCES "public"."news"("id") ON DELETE CASCADE;
 
 
 --
@@ -27027,6 +27441,14 @@ ALTER TABLE ONLY "public"."_pages_v_rels"
 
 
 --
+-- Name: _pages_v_rels _pages_v_rels_news_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY "public"."_pages_v_rels"
+    ADD CONSTRAINT "_pages_v_rels_news_fk" FOREIGN KEY ("news_id") REFERENCES "public"."news"("id") ON DELETE CASCADE;
+
+
+--
 -- Name: _pages_v_rels _pages_v_rels_pages_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -27427,6 +27849,14 @@ ALTER TABLE ONLY "public"."customers_rels"
 
 
 --
+-- Name: customers_rels customers_rels_news_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY "public"."customers_rels"
+    ADD CONSTRAINT "customers_rels_news_fk" FOREIGN KEY ("news_id") REFERENCES "public"."news"("id") ON DELETE CASCADE;
+
+
+--
 -- Name: customers_rels customers_rels_pages_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -27632,6 +28062,14 @@ ALTER TABLE ONLY "public"."footer_columns"
 
 ALTER TABLE ONLY "public"."footer_rels"
     ADD CONSTRAINT "footer_rels_blog_posts_fk" FOREIGN KEY ("blog_posts_id") REFERENCES "public"."blog_posts"("id") ON DELETE CASCADE;
+
+
+--
+-- Name: footer_rels footer_rels_news_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY "public"."footer_rels"
+    ADD CONSTRAINT "footer_rels_news_fk" FOREIGN KEY ("news_id") REFERENCES "public"."news"("id") ON DELETE CASCADE;
 
 
 --
@@ -27928,6 +28366,14 @@ ALTER TABLE ONLY "public"."header_cta"
 
 ALTER TABLE ONLY "public"."header_rels"
     ADD CONSTRAINT "header_rels_blog_posts_fk" FOREIGN KEY ("blog_posts_id") REFERENCES "public"."blog_posts"("id") ON DELETE CASCADE;
+
+
+--
+-- Name: header_rels header_rels_news_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY "public"."header_rels"
+    ADD CONSTRAINT "header_rels_news_fk" FOREIGN KEY ("news_id") REFERENCES "public"."news"("id") ON DELETE CASCADE;
 
 
 --
@@ -28363,6 +28809,14 @@ ALTER TABLE ONLY "public"."pages_rels"
 
 
 --
+-- Name: pages_rels pages_rels_news_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY "public"."pages_rels"
+    ADD CONSTRAINT "pages_rels_news_fk" FOREIGN KEY ("news_id") REFERENCES "public"."news"("id") ON DELETE CASCADE;
+
+
+--
 -- Name: pages_rels pages_rels_pages_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -28547,6 +29001,14 @@ ALTER TABLE ONLY "public"."redirects_rels"
 
 
 --
+-- Name: redirects_rels redirects_rels_news_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY "public"."redirects_rels"
+    ADD CONSTRAINT "redirects_rels_news_fk" FOREIGN KEY ("news_id") REFERENCES "public"."news"("id") ON DELETE CASCADE;
+
+
+--
 -- Name: redirects_rels redirects_rels_pages_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -28656,6 +29118,14 @@ ALTER TABLE ONLY "public"."settings_locales"
 
 ALTER TABLE ONLY "public"."settings_rels"
     ADD CONSTRAINT "settings_rels_blog_posts_fk" FOREIGN KEY ("blog_posts_id") REFERENCES "public"."blog_posts"("id") ON DELETE CASCADE;
+
+
+--
+-- Name: settings_rels settings_rels_news_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY "public"."settings_rels"
+    ADD CONSTRAINT "settings_rels_news_fk" FOREIGN KEY ("news_id") REFERENCES "public"."news"("id") ON DELETE CASCADE;
 
 
 --
@@ -28790,5 +29260,5 @@ ALTER TABLE ONLY "public"."users_sessions"
 -- PostgreSQL database dump complete
 --
 
-\unrestrict P2KiuQJb1dbhj9c4dgvAwypfYNUPsnndDnjoVQcZairXtU7K9ndiOSsgba6GEMv
+\unrestrict j6eaqZqSHhvJvmkbHk1aQfiodAreIMf7KcPghzqSahdOMzz0xqcTRpEhs14CzWc
 

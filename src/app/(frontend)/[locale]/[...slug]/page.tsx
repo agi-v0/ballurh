@@ -15,6 +15,7 @@ import PageClient from './page.client'
 import { LivePreviewListener } from '@/components/LivePreviewListener'
 
 export const dynamic = 'force-static'
+export const revalidate = 3600
 
 export async function generateStaticParams({ params: paramsPromise }: Args) {
   const payload = await getPayload({ config: configPromise })
