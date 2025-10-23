@@ -127,6 +127,7 @@ export const Features01: React.FC<FeaturesBlock> = ({ columns }) => {
                     resource={image}
                     className="group h-auto w-full overflow-hidden rounded-lg"
                     imgClassName="h-auto w-full object-cover"
+                    size="(max-width: 640px) 100vw, (max-width: 768px) 100vw, (max-width: 1024px) 480px, (max-width: 1280px) 500px, 500px"
                   />
                 )}
                 {size !== 'full' && stat && (
