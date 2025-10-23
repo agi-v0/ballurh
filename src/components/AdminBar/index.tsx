@@ -8,7 +8,7 @@ import { PayloadAdminBar } from 'payload-admin-bar'
 import React, { useState, useEffect, useRef } from 'react'
 import { useRouter } from 'next/navigation'
 
-import './index.scss'
+// import './index.scss'
 
 import { getClientSideURL } from '@/utilities/getURL'
 import { CollectionSlug } from 'payload'
@@ -66,8 +66,8 @@ export const AdminBar: React.FC<{
       ref={ref}
       className={cn(
         baseClass,
-        'z-[10] w-full bg-black text-white',
-        'h-0 md:h-10',
+        'z-10 w-full bg-black text-white',
+        'h-10 max-md:hidden md:block',
         // '-fixed -top-0 -left-0',
         {
           block: show,
