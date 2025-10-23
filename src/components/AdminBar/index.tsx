@@ -67,10 +67,10 @@ export const AdminBar: React.FC<{
       className={cn(
         baseClass,
         'z-10 w-full bg-black text-white',
-        'h-10 max-md:hidden md:block',
+        'h-10',
         // '-fixed -top-0 -left-0',
         {
-          block: show,
+          'md:block': show,
           hidden: !show,
         },
       )}
