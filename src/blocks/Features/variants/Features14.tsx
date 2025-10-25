@@ -19,6 +19,7 @@ export const Features14: React.FC<FeaturesBlock> = ({ columns, link, CTALabel })
                       resource={column.image}
                       className="h-auto w-full p-4"
                       imgClassName="aspect-square h-auto w-full rounded-3xl object-cover"
+                      size="(min-width: 1540px) 446px, (min-width: 1340px) calc(33.33vw - 152px), (min-width: 1040px) calc(5vw + 223px), (min-width: 780px) 201px, (min-width: 680px) 271px, calc(47.22vw - 41px)"
                     />
                     <div className="absolute inset-0 z-2 bg-[oklch(0.728_0.087_173.2)] opacity-100 mix-blend-overlay duration-300 ease-out group-hover:opacity-100 lg:opacity-0" />
                   </div>

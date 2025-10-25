@@ -108,11 +108,11 @@ export const HighImpactHero: React.FC<Page['hero']> = async ({ links, media, ric
       <div className="relative z-0 col-span-8 block select-none lg:col-start-10">
         {media && typeof media === 'object' && (
           <Media
-            className="relative aspect-1728/1117 h-[350px] w-auto sm:h-auto md:h-auto md:w-full lg:h-[70vh] lg:w-auto"
+            className="relative aspect-1728/1117 h-[350px] w-auto sm:h-auto sm:w-full lg:h-auto lg:w-[70vw]"
             imgClassName="h-full w-auto rounded-2xl object-cover object-right outline-4 outline-ring/50"
             priority
             media={media}
-            size="(max-width: 640px) 100vw, 50vw"
+            size="(min-width: 1024px) 70vw, (min-width: 640px) calc(100vw - 2rem), 542px"
           />
         )}
         <div className="absolute end-[15%] top-1/2 -z-1 aspect-square h-auto w-screen -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(ellipse_50.00%_50.00%_at_50.00%_50.00%,_rgba(236,_255,_249,_0)_75%,_#D2F9EC_100%)] mask-b-from-50% mask-b-to-95% ltr:translate-x-1/2" />

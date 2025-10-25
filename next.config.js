@@ -14,7 +14,6 @@ const NEXT_PUBLIC_SERVER_URL = process.env.NEXT_PUBLIC_SERVER_URL
 const nextConfig = {
   output: 'standalone',
   images: {
-    deviceSizes: [320, 480, 640, 750, 828, 1080, 1200, 1560, 1920],
     remotePatterns: [
       ...[NEXT_PUBLIC_SERVER_URL /* 'https://example.com' */].map((item) => {
         const url = new URL(item)
