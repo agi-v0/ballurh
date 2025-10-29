@@ -18,6 +18,7 @@ export const revalidatePost: CollectionAfterChangeHook<BlogPost> = ({
       revalidatePath(path)
       revalidatePath(`/${locale}/blog`)
       revalidateTag('posts-sitemap')
+      revalidateTag('announcement-data')
     }
 
     // If the post was previously published, we need to revalidate the old path
@@ -29,6 +30,7 @@ export const revalidatePost: CollectionAfterChangeHook<BlogPost> = ({
       revalidatePath(oldPath)
       revalidatePath(`/${locale}/blog`)
       revalidateTag('posts-sitemap')
+      revalidateTag('announcement-data')
     }
   }
   return doc
@@ -43,6 +45,7 @@ export const revalidateDelete: CollectionAfterDeleteHook<BlogPost> = ({
 
     revalidatePath(path)
     revalidateTag('posts-sitemap')
+    revalidateTag('announcement-data')
   }
 
   return doc

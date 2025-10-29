@@ -24,6 +24,7 @@ function formatDate(dateString?: string | null) {
 export const RecentBlogPosts: React.FC<RecentBlogPostsProps> = ({ posts, relationTo }) => {
   if (!posts || posts.length === 0) return null
   const [featured, ...rest] = posts
+  console.log(featured)
   return (
     <section className="container py-section-small">
       {/* Categories row (optional, can be passed as prop if needed) */}

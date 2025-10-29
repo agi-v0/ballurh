@@ -50,6 +50,7 @@ export default async function Page({ params: paramsPromise }: Args) {
     select: {
       title: true,
       slug: true,
+      heroImage: true,
       categories: true,
       meta: true,
       content: true,
@@ -82,8 +83,8 @@ export default async function Page({ params: paramsPromise }: Args) {
       {/* <RenderBlocks blocks={layout as any} locale={locale} /> */}
       {/* <h2 className="mb-space-sm text-h2 font-medium">{t('allArticles')}</h2> */}
 
-      <div className="container flex flex-row items-center justify-between py-space-7">
-        {categories.length > 0 && (
+      {categories.length > 0 && (
+        <div className="container flex flex-row items-center justify-between py-space-7">
           <div className="flex flex-wrap gap-2">
             <Link
               href="/blog"
@@ -103,8 +104,8 @@ export default async function Page({ params: paramsPromise }: Args) {
               )
             })}
           </div>
-        )}
-      </div>
+        </div>
+      )}
       <RecentBlogPosts posts={posts.docs.slice(0, 5) as any} relationTo="blog" />
 
       <CollectionArchive posts={posts.docs as BlogPost[]} relationTo="blog" />

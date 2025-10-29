@@ -81,10 +81,10 @@ export const HighImpactHero: React.FC<Page['hero']> = async ({ links, media, ric
           <CMSLink
             {...announcement.link}
             label={null}
-            className="flex flex-row items-center gap-1.5 font-medium text-base-primary"
+            className="flex w-full flex-row items-center gap-1.5 pe-space-6 font-medium text-base-primary"
           >
             <Badge color="gray" size="md" label="تحديث" />
-            <div className="text-sm">{announcement.text}</div>
+            <div className="w-full text-sm text-wrap">{announcement.text}</div>
           </CMSLink>
         )}
         {richText && (
