@@ -21,7 +21,7 @@ export interface Announcement {
  * Gets announcement data from settings or falls back to recent blog posts
  * Returns null if no announcement bar is set and no recent blog posts exist
  */
-async function getAnnouncement(locale: string = 'ar'): Promise<Announcement | null> {
+async function getAnnouncement(locale: string): Promise<Announcement | null> {
   const payload = await getPayload({ config: configPromise })
 
   // First, try to get the settings global
@@ -29,6 +29,7 @@ async function getAnnouncement(locale: string = 'ar'): Promise<Announcement | nu
     slug: 'settings',
     depth: 1,
     locale: locale as 'ar' | 'en',
+    fallbackLocale: false,
   })) as Setting
 
   // Check if there's an enabled announcement
@@ -52,6 +53,7 @@ async function getAnnouncement(locale: string = 'ar'): Promise<Announcement | nu
     depth: 0,
     limit: 1,
     pagination: false,
+    fallbackLocale: false,
     where: {
       and: [
         {
@@ -96,11 +98,7 @@ async function getAnnouncement(locale: string = 'ar'): Promise<Announcement | nu
 /**
  * Returns a cached version of the announcement data
  */
-export const getCachedAnnouncement = (locale?: string) =>
-  unstable_cache(
-    async () => getAnnouncement(locale ?? 'ar'),
-    ['announcement-data', locale ?? 'ar'],
-    {
-      tags: ['announcement-data'],
-    },
-  )
+export const getCachedAnnouncement = (locale: string) =>
+  unstable_cache(async () => getAnnouncement(locale), ['announcement-data', locale], {
+    tags: ['announcement-data'],
+  })
