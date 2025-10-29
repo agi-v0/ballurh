@@ -7,6 +7,7 @@ import {
   PreviewField,
 } from '@payloadcms/plugin-seo/fields'
 import { link } from '@/fields/link'
+import { revalidateTag } from 'next/cache'
 
 const SiteConfig: GlobalConfig = {
   slug: 'settings',
@@ -147,6 +148,9 @@ const SiteConfig: GlobalConfig = {
       ],
     },
   ],
+  hooks: {
+    afterChange: [() => revalidateTag('announcement-data')],
+  },
 }
 
 export default SiteConfig
