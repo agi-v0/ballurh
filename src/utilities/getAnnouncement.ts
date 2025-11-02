@@ -21,14 +21,14 @@ export interface Announcement {
  * Gets announcement data from settings or falls back to recent blog posts
  * Returns null if no announcement bar is set and no recent blog posts exist
  */
-async function getAnnouncement(locale: string): Promise<Announcement | null> {
+async function getAnnouncement(locale: 'ar' | 'en'): Promise<Announcement | null> {
   const payload = await getPayload({ config: configPromise })
 
   // First, try to get the settings global
   const settings = (await payload.findGlobal({
     slug: 'settings',
     depth: 1,
-    locale: locale as 'ar' | 'en',
+    locale,
     fallbackLocale: false,
   })) as Setting
 
@@ -53,6 +53,7 @@ async function getAnnouncement(locale: string): Promise<Announcement | null> {
     depth: 0,
     limit: 1,
     pagination: false,
+    locale,
     fallbackLocale: false,
     where: {
       and: [
@@ -98,7 +99,7 @@ async function getAnnouncement(locale: string): Promise<Announcement | null> {
 /**
  * Returns a cached version of the announcement data
  */
-export const getCachedAnnouncement = (locale: string) =>
+export const getCachedAnnouncement = (locale: 'ar' | 'en') =>
   unstable_cache(async () => getAnnouncement(locale), ['announcement-data', locale], {
     tags: ['announcement-data'],
   })

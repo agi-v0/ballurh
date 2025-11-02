@@ -66,7 +66,7 @@ const StyledList: React.FC<{
 
 export const HighImpactHero: React.FC<Page['hero']> = async ({ links, media, richText, list }) => {
   const locale = await getLocale()
-  const announcement = await getCachedAnnouncement(locale)()
+  const announcement = await getCachedAnnouncement(locale as 'ar' | 'en')()
 
   // const { setHeaderTheme } = useHeaderTheme()
 
