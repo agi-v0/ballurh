@@ -24,7 +24,7 @@ type Args = {
 }
 
 export default async function Page({ params: paramsPromise }: Args) {
-  const { locale = 'ar' } = await paramsPromise
+  const { locale } = await paramsPromise
   const slug = 'news'
   const payload = await getPayload({ config: configPromise })
 
