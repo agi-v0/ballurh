@@ -9,6 +9,6 @@ import { getLocale } from 'next-intl/server'
 
 export async function Header({ adminBarProps }: { adminBarProps: PayloadAdminBarProps }) {
   const locale = await getLocale()
-  const headerData = (await getCachedGlobal('header', 2, locale)()) as Header
+  const headerData = await getCachedGlobal('header', 2, locale)()
   return <HeaderClient {...headerData} adminBarProps={adminBarProps} locale={locale} />
 }

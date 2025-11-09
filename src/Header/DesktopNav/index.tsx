@@ -68,7 +68,7 @@ export function DesktopNav({ tabs, cta, className, locale }: DesktopNavProps) {
       {/* <NavigationImagePreloader tabs={tabs} /> */}
 
       <div className="w-full">
-        <NavigationMenu className="" dir="rtl">
+        <NavigationMenu>
           <NavigationMenuList className="space-x-0">
             {validTabs.map((tab, i) => {
               if (tab.enableDropdown) {
@@ -149,7 +149,6 @@ export function DesktopNav({ tabs, cta, className, locale }: DesktopNavProps) {
       </div>
       <div className="flex w-full max-w-54 flex-row items-center justify-end gap-1">
         <LanguageToggleButton locale={locale} className="px-3" />
-
         {cta &&
           cta.map((ctaItem, id) => (
             <CMSLink
