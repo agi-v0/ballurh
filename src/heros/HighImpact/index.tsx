@@ -90,7 +90,11 @@ export const HighImpactHero: React.FC<Page['hero']> = async ({ links, media, ric
           </CMSLink>
         )}
         {richText && (
-          <RichText className="pe-space-6 [&>p]:text-large" data={richText} enableGutter={false} />
+          <RichText
+            className="pe-space-6 [&>h1]:mb-0 [&>p]:text-large"
+            data={richText}
+            enableGutter={false}
+          />
         )}
         {Array.isArray(links) && links.length > 0 && (
           <ul className="flex max-w-full flex-wrap gap-1">
