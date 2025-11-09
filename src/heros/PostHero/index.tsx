@@ -70,7 +70,7 @@ export const PostHero: React.FC<{
           )}
           {publishedAt && (
             <div className="flex flex-col gap-2 text-inverted-tertiary">
-              <span className="text-sm">تاريخ النشر</span>
+              <span className="text-sm">{t('publishedAt')}</span>
               <time className="text-main text-inverted-secondary" dateTime={publishedAt}>
                 {formatDateTime(publishedAt)}
               </time>
@@ -78,7 +78,7 @@ export const PostHero: React.FC<{
           )}
           {content && (
             <div className="flex flex-col gap-2 text-inverted-tertiary">
-              <span className="text-sm">مدة القراءة</span>
+              <span className="text-sm">{t('readTime')}</span>
               <p className="text-main text-inverted-secondary">{readTime.text}</p>
             </div>
           )}

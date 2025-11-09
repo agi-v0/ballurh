@@ -48,7 +48,7 @@ export const getReadTimeFromLexical = (
   const minutes = Math.max(1, Math.ceil(wordCount / wpm))
 
   // Use the existing translation keys from your files
-  const readTimeText = minutes === 1 ? t('readTimeMinute') : t('readTime', { minutes })
+  const readTimeText = minutes === 1 ? t('readTimeMinute') : t('readTimeMinutes', { minutes })
 
   return {
     minutes,
