@@ -48,6 +48,7 @@ export default async function Page({ params: paramsPromise }: Args) {
     limit: 12,
     overrideAccess: false,
     locale,
+    sort: '-publishedAt',
     select: {
       title: true,
       slug: true,
