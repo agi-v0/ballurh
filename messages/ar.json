@@ -4,9 +4,10 @@
   },
   "Blog": {
     "author": "المؤلف",
-    "publishedAt": "نشر في",
+    "publishedAt": "تاريخ النشر",
     "inThisArticle": "في هذه المقالة",
-    "readTime": "{minutes} دقائق للقراءة",
+    "readTime": "مدة القراءة",
+    "readTimeMinutes": "{minutes} دقائق للقراءة",
     "readTimeMinute": "دقيقة واحدة للقراءة",
     "allArticles": "جميع المقالات"
   },

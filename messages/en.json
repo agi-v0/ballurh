@@ -6,7 +6,8 @@
     "author": "Author",
     "publishedAt": "Published at",
     "inThisArticle": "In this article",
-    "readTime": "{minutes} min read",
+    "readTime": "Read time",
+    "readTimeMinutes": "{minutes} min read",
     "readTimeMinute": "1 min read",
     "allArticles": "All articles"
   },
