@@ -78,7 +78,7 @@ export default async function Post({ params: paramsPromise }: Args) {
 
       <div className="container mx-auto flex w-full gap-4 pt-8">
         <div className="relative flex w-full items-center justify-center will-change-transform">
-          <div className="z-2 flex w-full flex-col-reverse gap-space-7 *:py-(--text-h1) lg:flex-row lg:items-start">
+          <div className="z-2 flex w-full flex-col-reverse gap-space-7 *:py-(--text-h1) lg:flex-row lg:items-start lg:justify-center">
             <RichText
               className="mx-0 w-full max-w-4xl basis-2/3"
               data={post.content}
@@ -86,7 +86,7 @@ export default async function Post({ params: paramsPromise }: Args) {
               enableGutter={false}
               converters={blogConverters}
             />
-            <BlogSidebar post={post} />
+            {/*<BlogSidebar post={post} />*/}
           </div>
         </div>
         {post.relatedPosts && post.relatedPosts.length > 0 && (
