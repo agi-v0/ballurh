@@ -57,7 +57,6 @@ type Args = {
 }
 
 export default async function Post({ params: paramsPromise }: Args) {
-  const payload = await getPayload({ config: configPromise })
   const { isEnabled: draft } = await draftMode()
   const { slug = '', locale = 'ar' } = await paramsPromise
   const url = `/${locale}/blog/` + decodeURIComponent(slug)
@@ -76,11 +75,11 @@ export default async function Post({ params: paramsPromise }: Args) {
 
       <PostHero post={post} />
 
-      <div className="container mx-auto flex w-full gap-4 pt-8">
+      <div className="container mx-auto flex w-full gap-4">
         <div className="relative flex w-full items-center justify-center will-change-transform">
-          <div className="z-2 flex w-full flex-col-reverse gap-space-7 *:py-(--text-h1) lg:flex-row lg:items-start lg:justify-center">
+          <div className="z-2 mt-space-7 flex w-full flex-col-reverse gap-space-7 lg:flex-row lg:items-start lg:justify-center">
             <RichText
-              className="mx-0 w-full max-w-4xl basis-2/3"
+              className="mx-0 w-full max-w-4xl basis-2/3 marker:text-base-secondary prose-a:hover:text-blr-orange"
               data={post.content}
               enableProse
               enableGutter={false}

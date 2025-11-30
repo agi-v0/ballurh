@@ -23,10 +23,10 @@ export const PostHero: React.FC<{
   const readTime = getReadTimeFromLexical(content, locale, t)
 
   return (
-    <div className="relative -mt-header flex items-end">
-      <div className="relative z-1 container pb-8 text-white">
+    <div className="relative z-1 container pt-header pb-8">
+      {categories && categories.length > 1 && (
         <div className="mb-6 text-sm uppercase">
-          {categories?.map((category, index) => {
+          {categories.map((category, index) => {
             if (typeof category === 'object' && category !== null) {
               const { title: categoryTitle } = category
 
@@ -44,52 +44,54 @@ export const PostHero: React.FC<{
             return null
           })}
         </div>
+      )}
 
-        <h1 className="mb-8 text-h1 font-semibold">{title}</h1>
+      <h1 className="mb-8 text-center text-h1 font-semibold text-base-primary">{title}</h1>
 
-        <div className="flex flex-col gap-4 md:flex-row md:gap-space-8">
-          {hasAuthors && (
-            <div className="flex flex-row items-center gap-2">
-              <div className="flex flex-row items-center -space-x-[0.6rem]">
-                {populatedAuthors.map((author: any) => {
-                  if (!author.avatar) return null
-                  return (
-                    <Media
-                      key={author.id}
-                      resource={author.avatar as MediaType}
-                      imgClassName="object-cover"
-                      className="size-6 shrink-0 overflow-hidden rounded-full ring-3 ring-background-neutral md:size-8 lg:size-10"
-                    />
-                  )
-                })}
-              </div>
-              <p className="text-main font-medium text-inverted-secondary">
-                {formatAuthors(populatedAuthors)}
-              </p>
+      <div className="flex flex-row justify-center gap-space-8">
+        {hasAuthors && (
+          <div className="flex flex-row items-center gap-2">
+            <div className="flex flex-row items-center -space-x-[0.6rem]">
+              {populatedAuthors.map((author: any) => {
+                if (!author.avatar) return null
+                return (
+                  <Media
+                    key={author.id}
+                    resource={author.avatar as MediaType}
+                    imgClassName="object-cover"
+                    className="size-6 shrink-0 overflow-hidden rounded-full ring-3 ring-background-neutral md:size-8 lg:size-10"
+                  />
+                )
+              })}
             </div>
-          )}
-          {publishedAt && (
-            <div className="flex flex-col gap-2 text-inverted-tertiary">
-              <span className="text-sm">{t('publishedAt')}</span>
-              <time className="text-main text-inverted-secondary" dateTime={publishedAt}>
-                {formatDateTime(publishedAt)}
-              </time>
-            </div>
-          )}
-          {content && (
-            <div className="flex flex-col gap-2 text-inverted-tertiary">
-              <span className="text-sm">{t('readTime')}</span>
-              <p className="text-main text-inverted-secondary">{readTime.text}</p>
-            </div>
-          )}
-        </div>
-      </div>
-      <div className="min-h-[80vh] select-none">
-        {heroImage && typeof heroImage !== 'string' && (
-          <Media fill priority imgClassName="-z-10 object-cover" resource={heroImage} />
+            <p className="text-main font-medium text-base-secondary">
+              {formatAuthors(populatedAuthors)}
+            </p>
+          </div>
         )}
-        <div className="pointer-events-none absolute bottom-0 left-0 h-1/2 w-full bg-linear-to-t from-slate-950 to-transparent" />
+        {publishedAt && (
+          <div className="flex flex-col items-center gap-2 text-base-tertiary">
+            <span className="text-sm">{t('publishedAt')}</span>
+            <time className="text-main text-base-secondary" dateTime={publishedAt}>
+              {formatDateTime(publishedAt)}
+            </time>
+          </div>
+        )}
+        {content && (
+          <div className="flex flex-col items-center gap-2 text-base-tertiary">
+            <span className="text-sm">{t('readTime')}</span>
+            <p className="text-main text-base-secondary">{readTime.text}</p>
+          </div>
+        )}
       </div>
+      {heroImage && typeof heroImage !== 'string' && (
+        <Media
+          className="relative container mt-8 h-auto w-full max-w-4xl select-none"
+          priority
+          imgClassName="rounded-3xl object-cover"
+          resource={heroImage}
+        />
+      )}
     </div>
   )
 }
