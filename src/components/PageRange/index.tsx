@@ -61,7 +61,9 @@ export const PageRange: React.FC<{
       : defaultLabels[locale])
 
   return (
-    <div className={[className, 'text-sm font-medium'].filter(Boolean).join(' ')}>
+    <div
+      className={[className, 'text-sm font-medium text-base-secondary'].filter(Boolean).join(' ')}
+    >
       {(typeof totalDocs === 'undefined' || totalDocs === 0) && 'Search produced no results.'}
       {typeof totalDocs !== 'undefined' &&
         totalDocs > 0 &&

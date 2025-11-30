@@ -24,7 +24,7 @@ function formatDate(dateString?: string | null) {
 export const RecentBlogPosts: React.FC<RecentBlogPostsProps> = ({ posts, relationTo }) => {
   if (!posts || posts.length === 0) return null
   const [featured, ...rest] = posts
-  console.log(featured)
+
   return (
     <section className="container py-section-small">
       {/* Categories row (optional, can be passed as prop if needed) */}
@@ -35,9 +35,9 @@ export const RecentBlogPosts: React.FC<RecentBlogPostsProps> = ({ posts, relatio
           </span>
         ))}
       </div> */}
-      <div className="grid grid-cols-4 gap-space-7 lg:grid-cols-16">
+      <div className="grid grid-cols-4 gap-space-7 lg:grid-cols-16 lg:gap-0">
         {/* Featured post */}
-        <div className="col-span-4 flex flex-1 flex-col gap-4 overflow-hidden rounded-3xl lg:col-span-12">
+        <div className="col-span-4 flex flex-1 flex-col gap-4 overflow-hidden rounded-3xl lg:col-span-10">
           {featured.heroImage &&
             typeof featured.heroImage !== 'string' &&
             featured.heroImage.url && (
@@ -47,16 +47,16 @@ export const RecentBlogPosts: React.FC<RecentBlogPostsProps> = ({ posts, relatio
               />
             )}
           <div className="flex flex-col gap-2">
-            {/* <div className="flex flex-row items-center gap-1.5 text-right text-sm text-base-tertiary">
-              <span>{formatDate(featured.publishedAt)}</span>•
+            <div className="flex flex-row items-center gap-1.5 text-right text-sm text-base-tertiary">
+              <span>{formatDate(featured.publishedAt)}</span>
               {featured.categories &&
                 featured.categories.length > 0 &&
                 typeof featured.categories[0] === 'object' && (
-                  <span className="font-medium text-teal-500">
-                    {(featured.categories[0] as Category).title}
+                  <span className="font-medium text-blr-orange">
+                    • {(featured.categories[0] as Category).title}
                   </span>
                 )}
-            </div> */}
+            </div>
             <Link
               href={`/blog/${featured.slug || ''}`}
               className="block text-start text-h3 font-semibold text-base-primary transition-colors hover:text-base-secondary"
@@ -66,7 +66,7 @@ export const RecentBlogPosts: React.FC<RecentBlogPostsProps> = ({ posts, relatio
           </div>
         </div>
         {/* Other posts */}
-        <div className="col-span-4 flex min-w-0 flex-col gap-6">
+        <div className="col-span-4 flex min-w-0 flex-col gap-6 lg:col-span-5 lg:col-start-12">
           {rest.map((post) => (
             <div key={post.id} className="flex flex-col gap-3">
               <div className="flex flex-row items-center gap-1.5 text-start text-sm text-base-tertiary">
@@ -74,7 +74,9 @@ export const RecentBlogPosts: React.FC<RecentBlogPostsProps> = ({ posts, relatio
                 {post.categories &&
                   post.categories.length > 0 &&
                   typeof post.categories[0] === 'object' && (
-                    <span className="text-[#d08700]">{(post.categories[0] as Category).title}</span>
+                    <span className="text-blr-orange uppercase">
+                      {(post.categories[0] as Category).title}
+                    </span>
                   )}
               </div>
               <Link

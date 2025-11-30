@@ -36,7 +36,7 @@ export const Card: React.FC<{
   return (
     <article
       className={cn(
-        'grid grid-cols-1 overflow-hidden hover:cursor-pointer md:grid-cols-12',
+        'grid grid-cols-1 gap-4 overflow-hidden hover:cursor-pointer md:grid-cols-16',
         className,
       )}
       ref={card.ref}
@@ -45,51 +45,54 @@ export const Card: React.FC<{
         {!metaImage && <div className="">No image</div>}
         {metaImage && typeof metaImage !== 'string' && <Media resource={metaImage} size="33vw" />}
       </div> */}
-      <div className="flex flex-col gap-2 md:col-span-4">
+      <div className="flex flex-col gap-2 pe-6 md:col-span-4">
         {publishedAt && (
           <time className="text-sm text-base-tertiary" dateTime={publishedAt}>
             {formatDateTime(publishedAt)}
           </time>
         )}
         {showCategories && hasCategories && (
-          <div className="text-base font-medium uppercase">
-            {showCategories && hasCategories && (
-              <div>
-                {categories?.map((category, index) => {
-                  if (typeof category === 'object') {
-                    const { title: titleFromCategory } = category
+          <div className="text-sm font-medium text-blr-orange uppercase">
+            {showCategories &&
+              hasCategories &&
+              categories?.map((category, index) => {
+                if (typeof category === 'object') {
+                  const { title: titleFromCategory } = category
 
-                    const categoryTitle = titleFromCategory || 'Untitled category'
+                  const categoryTitle = titleFromCategory || 'Untitled category'
 
-                    const isLast = index === categories.length - 1
+                  const isLast = index === categories.length - 1
 
-                    return (
-                      <Fragment key={index}>
-                        {categoryTitle}
-                        {!isLast && <Fragment>, &nbsp;</Fragment>}
-                      </Fragment>
-                    )
-                  }
+                  return (
+                    <Fragment key={index}>
+                      {categoryTitle}
+                      {!isLast && <Fragment>, &nbsp;</Fragment>}
+                    </Fragment>
+                  )
+                }
 
-                  return null
-                })}
-              </div>
-            )}
+                return null
+              })}
           </div>
         )}
       </div>
-      <div className="md:col-span-8">
+      <div className="prose pe-6 md:col-span-8">
         {titleToUse && (
-          <div className="prose">
-            <h3>
-              <Link className="not-prose" href={href} ref={link.ref}>
-                {titleToUse}
-              </Link>
-            </h3>
-          </div>
+          <h3 className="">
+            <Link className="not-prose hover:text-base-secondary" href={href} ref={link.ref}>
+              {titleToUse}
+            </Link>
+          </h3>
         )}
         {description && <div className="mt-2">{description && <p>{sanitizedDescription}</p>}</div>}
       </div>
+      {heroImage && (
+        <Media
+          resource={heroImage}
+          className="h-full w-full md:col-span-4"
+          imgClassName="h-auto w-full rounded-3xl object-cover"
+        />
+      )}
     </article>
   )
 }

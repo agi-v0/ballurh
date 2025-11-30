@@ -86,31 +86,29 @@ export default async function Page({ params: paramsPromise }: Args) {
       {/* <h2 className="mb-space-sm text-h2 font-medium">{t('allArticles')}</h2> */}
 
       {categories.length > 0 && (
-        <div className="container flex flex-row items-center justify-between py-space-7">
-          <div className="flex flex-wrap gap-2">
-            <Link
-              href="/blog"
-              className="bg-transparent-neutral h-8 rounded-full px-2.5 py-1.5 text-sm font-medium text-base-primary outline transition-colors hover:bg-background-neutral-subtle hover:text-base-secondary"
-            >
-              {locale === 'ar' ? 'الكل' : 'All'}
-            </Link>
-            {categories?.map((category, index) => {
-              return (
-                <Link
-                  href={`/blog/category/${category.slug}`}
-                  key={index}
-                  className="rounded-full bg-transparent px-4 py-2 text-sm font-medium text-base-primary transition-colors hover:bg-background-neutral hover:text-base-secondary hover:outline"
-                >
-                  {category.title}
-                </Link>
-              )
-            })}
-          </div>
+        <div className="container flex flex-row flex-wrap items-center gap-2">
+          <Link
+            href="/blog"
+            className="bg-transparent-neutral h-8 rounded-full px-2.5 py-1.5 text-sm font-medium text-base-primary outline transition-colors hover:bg-blr-light-green-2 hover:text-base-secondary"
+          >
+            {locale === 'ar' ? 'الكل' : 'All'}
+          </Link>
+          {categories?.map((category, index) => {
+            return (
+              <Link
+                href={`/blog/category/${category.slug}`}
+                key={index}
+                className="rounded-full bg-transparent px-4 py-2 text-sm font-medium text-base-primary transition-colors hover:bg-blr-light-green-2 hover:text-base-secondary"
+              >
+                {category.title}
+              </Link>
+            )
+          })}
         </div>
       )}
       <RecentBlogPosts posts={posts.docs.slice(0, 5) as any} relationTo="blog" />
 
-      <CollectionArchive posts={posts.docs as BlogPost[]} relationTo="blog" />
+      <CollectionArchive posts={posts.docs.slice(1) as BlogPost[]} relationTo="blog" />
 
       <div className="container my-space-8 flex flex-col items-center justify-between gap-4 md:flex-row">
         {posts.totalPages > 1 && posts.page && (
