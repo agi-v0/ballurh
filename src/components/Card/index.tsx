@@ -1,7 +1,7 @@
 'use client'
 import { cn } from '@/utilities/ui'
 import useClickableCard from '@/utilities/useClickableCard'
-import Link from 'next/link'
+import { Link } from '@/i18n/navigation'
 import React, { Fragment } from 'react'
 
 import type { BlogPost } from '@/payload-types'
@@ -36,7 +36,7 @@ export const Card: React.FC<{
   return (
     <article
       className={cn(
-        'grid grid-cols-1 gap-4 overflow-hidden hover:cursor-pointer md:grid-cols-16',
+        'grid grid-cols-1 gap-4 overflow-hidden hover:cursor-pointer max-md:gap-space-7 md:grid-cols-16',
         className,
       )}
       ref={card.ref}
@@ -76,15 +76,15 @@ export const Card: React.FC<{
           </div>
         )}
       </div>
-      <div className="prose pe-6 md:col-span-8">
+      <div className="pe-6 md:col-span-8">
         {titleToUse && (
-          <h3 className="">
-            <Link className="not-prose hover:text-base-secondary" href={href} ref={link.ref}>
+          <h3 className="_rtl:leading-snug text-h3 font-semibold ltr:leading-tight">
+            <Link className="hover:text-base-secondary" href={href} ref={link.ref}>
               {titleToUse}
             </Link>
           </h3>
         )}
-        {description && <div className="mt-2">{description && <p>{sanitizedDescription}</p>}</div>}
+        {description && <p className="mt-2 text-sm text-base-secondary">{sanitizedDescription}</p>}
       </div>
       {heroImage && (
         <Media

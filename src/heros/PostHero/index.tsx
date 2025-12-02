@@ -5,7 +5,6 @@ import type { BlogPost, Media as MediaType, User } from '@/payload-types'
 
 import { Media } from '@/components/MediaResponsive'
 import { formatAuthors } from '@/utilities/formatAuthors'
-import { Icon } from '@iconify-icon/react/dist/iconify.mjs'
 import { getReadTimeFromLexical } from '@/utilities/extractTextFromLexical'
 import { useLocale, useTranslations } from 'next-intl'
 
@@ -46,7 +45,9 @@ export const PostHero: React.FC<{
         </div>
       )}
 
-      <h1 className="mb-8 text-center text-h1 font-semibold text-base-primary">{title}</h1>
+      <h1 className="mb-8 text-center text-h1 font-semibold text-base-primary ltr:leading-[1.125] rtl:leading-snug">
+        {title}
+      </h1>
 
       <div className="flex flex-row justify-center gap-space-8">
         {hasAuthors && (

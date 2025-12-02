@@ -48,80 +48,64 @@ const config = {
       },
       typography: () => ({
         DEFAULT: {
-          css: [
-            {
-              '--tw-prose-body': 'var(--color-base-secondary)',
-              '--tw-prose-headings': 'var(--color-base-primary)',
-              h1: {
-                fontWeight: 600,
-                // marginBottom: '0.5em',
-                fontSize: 'var(--text-h1)',
-              },
-              h2: {
-                fontWeight: 600,
-                // marginBottom: '0.5em',
-                fontSize: 'var(--text-h2)',
-              },
-              h3: {
-                fontWeight: 600,
-                // marginBottom: '0.5em',
-                fontSize: 'var(--text-h3)',
-              },
-              h4: {
-                fontWeight: 600,
-                // marginBottom: '0.5em',
-                fontSize: 'var(--text-h4)',
-              },
-              h5: {
-                fontWeight: 600,
-                // marginBottom: '0.5em',
-                fontSize: 'var(--text-h5)',
-              },
-              h6: {
-                fontWeight: 600,
-                // marginBottom: '0.5em',
-                fontSize: 'var(--text-h6)',
-              },
-              p: {
-                fontSize: 'var(--text-main)',
+          css: {
+            '--tw-prose-body': 'var(--color-base-secondary)',
+            '--tw-prose-headings': 'var(--color-base-primary)',
+            h1: {
+              fontWeight: 600,
+              // marginBottom: '0.5em',
+              fontSize: 'var(--text-h1)',
+              lineHeight: '1.125',
+              '&:where(:dir(rtl), [dir="rtl"], [dir="rtl"] *)': {
+                lineHeight: '1.5',
               },
             },
-          ],
+            h2: {
+              fontWeight: 600,
+              // marginBottom: '0.5em',
+              fontSize: 'var(--text-h2)',
+            },
+            h3: {
+              fontWeight: 600,
+              // marginBottom: '0.5em',
+              fontSize: 'var(--text-h3)',
+            },
+            h4: {
+              fontWeight: 600,
+              // marginBottom: '0.5em',
+              fontSize: 'var(--text-h4)',
+            },
+            h5: {
+              fontWeight: 600,
+              // marginBottom: '0.5em',
+              fontSize: 'var(--text-h5)',
+            },
+            h6: {
+              fontWeight: 600,
+              // marginBottom: '0.5em',
+              fontSize: 'var(--text-h6)',
+            },
+            p: {
+              fontSize: 'var(--text-main)',
+            },
+            a: {
+              '&:hover': {
+                color: 'var(--color-blr-orange)',
+              },
+            },
+          },
         },
         slate: {
-          css: [
-            {
-              '--tw-prose-body': 'var(--color-base-secondary)',
-              '--tw-prose-headings': 'var(--color-base-primary)',
-              '--tw-prose-links': 'var(--color-base-primary)',
+          css: {
+            '&:where(:dir(rtl), [dir="rtl"], [dir="rtl"] *)': {
+              '--tw-prose-body': 'var(--color-teal-500)',
             },
-          ],
+            '--tw-prose-body': 'var(--color-base-secondary)',
+            '--tw-prose-headings': 'var(--color-base-primary)',
+            '--tw-prose-links': 'var(--color-base-primary)',
+          },
         },
-        // base: {
-        //   css: [
-        //     {
-        //       h1: {
-        //         fontSize: '2.5rem',
-        //       },
-        //       h2: {
-        //         fontSize: '1.25rem',
-        //         fontWeight: 600,
-        //       },
-        //     },
-        //   ],
-        // },
-        // md: {
-        //   css: [
-        //     {
-        //       h1: {
-        //         fontSize: '3.5rem',
-        //       },
-        //       h2: {
-        //         fontSize: '1.5rem',
-        //       },
-        //     },
-        //   ],
-        // },
+        base: {},
       }),
     },
   },
