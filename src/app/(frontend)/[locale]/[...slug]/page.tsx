@@ -13,6 +13,7 @@ import { RenderHero } from '@/heros/RenderHero'
 import { generateMeta } from '@/utilities/generateMeta'
 import PageClient from './page.client'
 import { LivePreviewListener } from '@/components/LivePreviewListener'
+import { setRequestLocale } from 'next-intl/server'
 
 export const dynamic = 'force-static'
 export const revalidate = 3600
@@ -60,6 +61,7 @@ type Args = {
 export default async function Page({ params: paramsPromise }: Args) {
   const { isEnabled: draft } = await draftMode()
   const { slug: slugSegments = ['home'], locale = 'ar' } = await paramsPromise
+  setRequestLocale(locale)
   const slugPath = slugSegments.join('/') || 'home'
   const url = `/${locale}/${slugPath}`
 

@@ -353,15 +353,6 @@ const ProfitabilityCalculator: React.FC = () => {
           </div>
         </form>
       </FormProvider>
-      <PhoneInput
-        variant="lg"
-        className=""
-        id="phone"
-        type="tel"
-        inputMode="numeric"
-        placeholder="أدخل رقم جوالك"
-        autoComplete="tel"
-      />
       <StepperBar
         steps={formSteps.map((s) => ({ title: s.category }))}
         currentStep={formStep + 1}

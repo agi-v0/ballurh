@@ -5,17 +5,16 @@ import { CollectionArchive } from '@/components/CollectionArchive'
 import { PageRange } from '@/components/PageRange'
 import { Pagination } from '@/components/Pagination'
 import configPromise from '@payload-config'
-import { getPayload } from 'payload'
+import { CollectionSlug, getPayload } from 'payload'
 import React, { cache } from 'react'
 import PageClient from './page.client'
 import { RenderHero } from '@/heros/RenderHero'
 import { RenderBlocks } from '@/blocks/RenderBlocks'
+import RecentBlogPosts from '@/components/RecentBlogPosts'
 import { draftMode } from 'next/headers'
 import { generateMeta } from '@/utilities/generateMeta'
 import { Link } from '@/i18n/navigation'
-import RecentBlogPosts from '@/components/RecentBlogPosts'
-
-export const dynamic = 'force-static'
+import { setRequestLocale } from 'next-intl/server'
 
 type Args = {
   params: Promise<{
@@ -23,10 +22,13 @@ type Args = {
   }>
 }
 
+export const dynamic = 'force-dynamic'
+export const revalidate = 3600
+
 export default async function Page({ params: paramsPromise }: Args) {
-  const { locale } = await paramsPromise
+  const { locale = 'ar' } = await paramsPromise
   const slug = 'blog'
-  const payload = await getPayload({ config: configPromise })
+  setRequestLocale(locale)
 
   let page: PageType | null
 
@@ -42,29 +44,14 @@ export default async function Page({ params: paramsPromise }: Args) {
     page = null
   }
 
-  const posts = await payload.find({
+  const posts = await queryPosts({
     collection: 'blog-posts',
-    depth: 1,
-    limit: 12,
-    overrideAccess: false,
     locale,
-    sort: '-publishedAt',
-    select: {
-      title: true,
-      slug: true,
-      heroImage: true,
-      categories: true,
-      meta: true,
-      content: true,
-      publishedAt: true,
-    },
   })
-
-  console.log(`Fetched ${posts.docs.length} posts`)
 
   const categories: Category[] = []
 
-  posts.docs.forEach((post) => {
+  ;(posts.docs as BlogPost[]).forEach((post) => {
     post.categories?.forEach((category) => {
       if (typeof category === 'object' && category !== null) {
         if (!categories.some((c) => c.id === category.id)) {
@@ -161,3 +148,31 @@ const queryPageBySlug = cache(async ({ slug, locale }: { slug: string; locale?: 
 
   return result.docs?.[0] || null
 })
+const queryPosts = cache(
+  async ({ collection, locale }: { collection: CollectionSlug; locale?: 'ar' | 'en' }) => {
+    const { isEnabled: draft } = await draftMode()
+
+    const payload = await getPayload({ config: configPromise })
+
+    const result = await payload.find({
+      collection,
+      depth: 1,
+      limit: 12,
+      overrideAccess: false,
+      locale,
+      draft,
+      sort: '-publishedAt',
+      select: {
+        title: true,
+        slug: true,
+        heroImage: true,
+        categories: true,
+        meta: true,
+        content: true,
+        publishedAt: true,
+      },
+    })
+
+    return result
+  },
+)
