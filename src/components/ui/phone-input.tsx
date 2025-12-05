@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useId } from 'react'
+import React, { useId, useMemo } from 'react'
 import { ChevronDownIcon, PhoneIcon } from 'lucide-react'
 import * as RPNInput from 'react-phone-number-input'
 import { CircleFlag } from 'react-circle-flags'
@@ -9,7 +9,9 @@ import { cva, type VariantProps } from 'class-variance-authority'
 import { cn } from '@/utilities/ui'
 import { Input } from '@/components/ui/input'
 
-const phoneInputVariants = cva('flex flex-row-reverse rounded-xl', {
+const noop = () => {}
+
+const phoneInputVariants = cva('', {
   variants: {
     variant: {
       lg: 'h-12 px-5 text-base file:me-5 file:pe-5',
@@ -47,27 +49,31 @@ const PhoneInput = React.forwardRef<HTMLInputElement, PhoneInputProps>(
     ref,
   ) => {
     const id = useId()
-
-    const PhoneInputField = React.forwardRef<HTMLInputElement, React.ComponentProps<'input'>>(
-      ({ className, ...props }, ref) => {
-        return (
-          <Input
-            ref={ref}
-            variant={variant}
-            data-slot="phone-input"
-            className={cn(
-              'z-1 -ms-px rounded-s-xl rounded-e-none border-e-0 shadow-none focus-visible:z-1',
-              className,
-            )}
-            {...props}
-          />
-        )
-      },
-    )
-    PhoneInputField.displayName = 'PhoneInputField'
+    const PhoneInputField = useMemo(() => {
+      const Field = React.forwardRef<HTMLInputElement, React.ComponentProps<'input'>>(
+        ({ className: inputClassName, ...props }, forwaredRef) => {
+          return (
+            <Input
+              ref={forwaredRef}
+              variant={variant}
+              data-slot="phone-input"
+              className={cn(
+                'z-1 -ms-px rounded-s-none rounded-e-xl shadow-none focus-visible:z-1',
+                inputClassName,
+              )}
+              {...props}
+            />
+          )
+        },
+      )
+      Field.displayName = 'PhoneInputField'
+      return Field
+    }, [variant])
     return (
       <RPNInput.default
-        className={cn('flex flex-row-reverse rounded-xl', className)}
+        // @ts-expect-error react-phone-number-input missing `inputRef` in d.ts
+        ref={ref}
+        className={cn('flex flex-row rounded-xl rtl:flex-row-reverse', className)}
         international={international}
         defaultCountry={defaultCountry}
         flagComponent={FlagComponent}
@@ -101,7 +107,8 @@ const CountrySelect = React.forwardRef<HTMLSelectElement, CountrySelectProps>(
     return (
       <div
         className={cn(
-          'relative z-0 inline-flex h-12 items-center self-stretch rounded-s-none rounded-e-xl border px-3 py-2.5 ring-ring outline-hidden transition-[color,box-shadow]',
+          'relative z-0 inline-flex h-12 items-center self-stretch border px-3 py-2.5 ring-ring outline-hidden transition-[color,box-shadow]',
+          'rounded-s-xl rounded-e-none rtl:rounded-s-none rtl:rounded-e-xl',
           'border-input bg-background text-base-secondary',
           'focus-visible:z-1 focus-visible:border-ring focus-visible:ring-1 focus-visible:ring-ring',
           'hover:bg-background-neutral',
@@ -115,7 +122,7 @@ const CountrySelect = React.forwardRef<HTMLSelectElement, CountrySelectProps>(
         >
           <FlagComponent country={value} countryName={value} aria-hidden="true" />
           <span className="flex items-center gap-1 text-base-secondary">
-            <span className="font-medium">{value}</span>
+            {/*<span className="font-medium">{value}</span>*/}
             <ChevronDownIcon size={16} aria-hidden="true" />
           </span>
         </div>
@@ -126,6 +133,8 @@ const CountrySelect = React.forwardRef<HTMLSelectElement, CountrySelectProps>(
           onChange={handleSelect}
           className="absolute inset-0 text-sm opacity-0"
           aria-label="Select country"
+          name="Select country"
+          id="Select_country"
         >
           {options
             .filter((x) => {
@@ -133,7 +142,8 @@ const CountrySelect = React.forwardRef<HTMLSelectElement, CountrySelectProps>(
             })
             .map((option, i) => (
               <option key={option.value ?? `empty-${i}`} value={option.value}>
-                {option.label} {option.value && `+${RPNInput.getCountryCallingCode(option.value)}`}
+                {option.label}
+                {option.value && `+${RPNInput.getCountryCallingCode(option.value)}`}
               </option>
             ))}
         </select>

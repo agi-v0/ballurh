@@ -60,6 +60,8 @@ export default async function Page({ params: paramsPromise }: Args) {
     },
   })
 
+  console.log(`Fetched ${posts.docs.length} posts`)
+
   const categories: Category[] = []
 
   posts.docs.forEach((post) => {

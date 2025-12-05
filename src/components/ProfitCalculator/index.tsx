@@ -22,6 +22,7 @@ import posthog from 'posthog-js'
 import { ProfitCalculatorEvents } from './events'
 import { calculateProfit } from './actions'
 import { useLocale } from 'next-intl'
+import PhoneInput from '../ui/phone-input'
 
 const stepSchemas = [
   formSchema.pick({
@@ -352,6 +353,15 @@ const ProfitabilityCalculator: React.FC = () => {
           </div>
         </form>
       </FormProvider>
+      <PhoneInput
+        variant="lg"
+        className=""
+        id="phone"
+        type="tel"
+        inputMode="numeric"
+        placeholder="أدخل رقم جوالك"
+        autoComplete="tel"
+      />
       <StepperBar
         steps={formSteps.map((s) => ({ title: s.category }))}
         currentStep={formStep + 1}
