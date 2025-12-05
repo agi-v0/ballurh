@@ -12,17 +12,13 @@ import { Input } from '@/components/ui/input'
 const phoneInputVariants = cva('flex flex-row-reverse rounded-xl', {
   variants: {
     variant: {
-      default: '',
-    },
-    size: {
-      default: '',
-      sm: '',
-      lg: '',
+      lg: 'h-12 px-5 text-base file:me-5 file:pe-5',
+      md: 'h-10 px-4 text-[0.8125rem] leading-(--text-sm--line-height) file:me-4 file:pe-4',
+      sm: 'h-9 px-3 text-xs file:me-3 file:pe-3',
     },
   },
   defaultVariants: {
-    variant: 'default',
-    size: 'default',
+    variant: 'md',
   },
 })
 
@@ -41,7 +37,6 @@ const PhoneInput = React.forwardRef<HTMLInputElement, PhoneInputProps>(
     {
       className,
       variant,
-      size,
       value,
       onChange,
       defaultCountry = 'SA',
@@ -53,9 +48,26 @@ const PhoneInput = React.forwardRef<HTMLInputElement, PhoneInputProps>(
   ) => {
     const id = useId()
 
+    const PhoneInputField = React.forwardRef<HTMLInputElement, React.ComponentProps<'input'>>(
+      ({ className, ...props }, ref) => {
+        return (
+          <Input
+            ref={ref}
+            variant={variant}
+            data-slot="phone-input"
+            className={cn(
+              'z-1 -ms-px rounded-s-xl rounded-e-none border-e-0 shadow-none focus-visible:z-1',
+              className,
+            )}
+            {...props}
+          />
+        )
+      },
+    )
+
     return (
       <RPNInput.default
-        className={cn(phoneInputVariants({ variant, size }), className)}
+        className={cn('flex flex-row-reverse rounded-xl', className)}
         international={international}
         defaultCountry={defaultCountry}
         flagComponent={FlagComponent}
@@ -73,21 +85,6 @@ const PhoneInput = React.forwardRef<HTMLInputElement, PhoneInputProps>(
 
 PhoneInput.displayName = 'PhoneInput'
 
-const PhoneInputField = React.forwardRef<HTMLInputElement, React.ComponentProps<'input'>>(
-  ({ className, ...props }, ref) => {
-    return (
-      <Input
-        ref={ref}
-        data-slot="phone-input"
-        className={cn('z-1 -ms-px rounded-e-none shadow-none focus-visible:z-1', className)}
-        {...props}
-      />
-    )
-  },
-)
-
-PhoneInputField.displayName = 'PhoneInputField'
-
 interface CountrySelectProps {
   disabled?: boolean
   value: RPNInput.Country
@@ -104,9 +101,9 @@ const CountrySelect = React.forwardRef<HTMLSelectElement, CountrySelectProps>(
     return (
       <div
         className={cn(
-          'ring-ring relative z-0 inline-flex h-12 items-center self-stretch rounded-s-none rounded-e-xl border px-3 py-2.5 transition-[color,box-shadow] outline-hidden',
+          'relative z-0 inline-flex h-12 items-center self-stretch rounded-s-none rounded-e-xl border px-3 py-2.5 ring-ring outline-hidden transition-[color,box-shadow]',
           'border-input bg-background text-base-secondary',
-          'focus-visible:border-ring focus-visible:ring-ring focus-visible:z-1 focus-visible:ring-1',
+          'focus-visible:z-1 focus-visible:border-ring focus-visible:ring-1 focus-visible:ring-ring',
           'hover:bg-background-neutral',
           'has-aria-invalid:border-destructive/60 has-aria-invalid:ring-destructive/20 dark:has-aria-invalid:ring-destructive/40',
           'has-disabled:pointer-events-none has-disabled:opacity-50',
@@ -117,7 +114,7 @@ const CountrySelect = React.forwardRef<HTMLSelectElement, CountrySelectProps>(
           aria-hidden="true"
         >
           <FlagComponent country={value} countryName={value} aria-hidden="true" />
-          <span className="text-base-secondary flex items-center gap-1">
+          <span className="flex items-center gap-1 text-base-secondary">
             <span className="font-medium">{value}</span>
             <ChevronDownIcon size={16} aria-hidden="true" />
           </span>
@@ -130,11 +127,10 @@ const CountrySelect = React.forwardRef<HTMLSelectElement, CountrySelectProps>(
           className="absolute inset-0 text-sm opacity-0"
           aria-label="Select country"
         >
-          <option key="default" value="">
-            Select a country
-          </option>
           {options
-            .filter((x) => x.value)
+            .filter((x) => {
+              if (x.value && ['SA', 'AE', 'KW', 'BH', 'OM', 'QA'].includes(x.value)) return x.value
+            })
             .map((option, i) => (
               <option key={option.value ?? `empty-${i}`} value={option.value}>
                 {option.label} {option.value && `+${RPNInput.getCountryCallingCode(option.value)}`}

@@ -4,6 +4,7 @@ import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { useStateMachine } from 'little-state-machine'
 import { updateContactInfo } from '../store'
+import PhoneInput from '@/components/ui/phone-input'
 
 const Step4 = () => {
   const {
@@ -82,7 +83,7 @@ const Step4 = () => {
           name="phone"
           control={control}
           render={({ field }) => (
-            <Input
+            <PhoneInput
               variant="lg"
               className="rounded-xl"
               id="phone"
@@ -101,6 +102,25 @@ const Step4 = () => {
                 field.onBlur()
               }}
             />
+            // <Input
+            //   variant="lg"
+            //   className="rounded-xl"
+            //   id="phone"
+            //   type="tel"
+            //   inputMode="numeric"
+            //   placeholder="أدخل رقم جوالك"
+            //   {...field}
+            //   autoComplete="tel"
+            //   onBlur={(e) => {
+            //     actions.updateContactInfo({
+            //       name: state.contactInfo.name,
+            //       email: state.contactInfo.email,
+            //       phone: e.target.value,
+            //       businessName: state.contactInfo.businessName,
+            //     })
+            //     field.onBlur()
+            //   }}
+            // />
           )}
         />
         {errors.phone && (

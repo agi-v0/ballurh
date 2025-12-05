@@ -145,6 +145,7 @@ export function buildProfitCalculationArtifacts(data: FormData): ProfitCalculati
     { name: 'firstname', value: name },
     { name: 'email', value: email },
     { name: 'mobilephone', value: phone },
+    { name: 'hs_whatsapp_phone_number', value: phone },
     { name: 'brand_name', value: businessName },
     { name: 'business_type', value: businessTypeLabels.get(activityType) },
     { name: 'number_of_locations', value: physicalBranchesCount },
