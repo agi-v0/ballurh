@@ -18,7 +18,7 @@ import { setRequestLocale } from 'next-intl/server'
 export const dynamic = 'force-static'
 export const revalidate = 3600
 
-export async function generateStaticParams({ params: paramsPromise }: Args) {
+export async function generateStaticParams() {
   const payload = await getPayload({ config: configPromise })
   const locales = ['en', 'ar']
   const params: { slug: string[]; locale: 'ar' | 'en' }[] = []

@@ -94,26 +94,21 @@ export async function generateMetadata({ params: paramsPromise }: Args): Promise
   return generateMeta({ doc: page })
 }
 
-export async function generateStaticParams({
-  params: { locale },
-}: {
-  params: { locale?: 'ar' | 'en' | undefined }
-}) {
+export async function generateStaticParams() {
+  const locales = ['en', 'ar']
   const payload = await getPayload({ config: configPromise })
-  const { totalDocs } = await payload.count({
-    collection: 'blog-posts',
-    locale: locale,
-    overrideAccess: false,
-  })
-
-  const totalPages = Math.ceil(totalDocs / 10)
-
-  const pages: { pageNumber: string }[] = []
-
-  for (let i = 1; i <= totalPages; i++) {
-    pages.push({ pageNumber: String(i) })
+  const pages: { locale: string; pageNumber: string }[] = []
+  for (const locale of locales) {
+    const { totalDocs } = await payload.count({
+      collection: 'blog-posts',
+      locale: locale as 'en' | 'ar',
+      overrideAccess: false,
+    })
+    const totalPages = Math.ceil(totalDocs / 10)
+    for (let i = 1; i <= totalPages; i++) {
+      pages.push({ locale, pageNumber: String(i) })
+    }
   }
-
   return pages
 }
 

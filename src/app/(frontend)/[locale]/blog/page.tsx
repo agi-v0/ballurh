@@ -15,6 +15,7 @@ import { draftMode } from 'next/headers'
 import { generateMeta } from '@/utilities/generateMeta'
 import { Link } from '@/i18n/navigation'
 import { setRequestLocale } from 'next-intl/server'
+import { PayloadRedirects } from '@/components/PayloadRedirects'
 
 type Args = {
   params: Promise<{
@@ -22,12 +23,11 @@ type Args = {
   }>
 }
 
-export const dynamic = 'force-dynamic'
-export const revalidate = 3600
-
 export default async function Page({ params: paramsPromise }: Args) {
   const { locale = 'ar' } = await paramsPromise
   const slug = 'blog'
+  const url = `/${locale}/${slug}`
+
   setRequestLocale(locale)
 
   let page: PageType | null
@@ -39,10 +39,6 @@ export default async function Page({ params: paramsPromise }: Args) {
 
   const hero = page?.hero ?? { type: 'none' }
   const layout = page?.layout ?? []
-
-  if (!page) {
-    page = null
-  }
 
   const posts = await queryPosts({
     collection: 'blog-posts',
@@ -61,9 +57,9 @@ export default async function Page({ params: paramsPromise }: Args) {
     })
   })
 
-  // if (!page) {
-  //   return <PayloadRedirects url={url} />
-  // }
+  if (!page) {
+    return <PayloadRedirects url={url} />
+  }
 
   return (
     <article className="overflow-x-clip bg-background">
