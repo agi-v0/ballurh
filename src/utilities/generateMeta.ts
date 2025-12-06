@@ -27,8 +27,8 @@ export const generateMeta = async (args: {
   const ogImage = getImageURL(doc?.meta?.image)
 
   const title = doc?.meta?.title
-    ? doc?.meta?.title + ' | بلورة'
-    : 'بلّورة | منصة ذكاء أعمال لقطاع التجزئة والمطاعم والمقاهي'
+    ? doc?.meta?.title
+    : 'بلورة | برنامج نمو المطاعم على تطبيقات التوصيل'
 
   return {
     description:
