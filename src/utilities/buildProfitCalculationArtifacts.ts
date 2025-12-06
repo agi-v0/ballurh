@@ -83,13 +83,13 @@ export function buildProfitCalculationArtifacts(data: FormData): ProfitCalculati
   const onlinePaymentRate = 0.025
   const disputesRate = 0.05
 
-  const monthlyOnlinePaymentAmount = monthlySalesNumber * onlinePaymentRate
-  const monthlySalesCommissionsAmount = monthlySalesNumber * avgCommissionRate
-  const monthlyDisputesAmount = monthlySalesNumber * disputesRate
+  const monthlyOnlinePaymentAmount = round(monthlySalesNumber * onlinePaymentRate)
+  const monthlySalesCommissionsAmount = round(monthlySalesNumber * avgCommissionRate)
+  const monthlyDisputesAmount = round(monthlySalesNumber * disputesRate)
   const totalMonthlyTransactionExpenses =
     monthlyOnlinePaymentAmount + monthlySalesCommissionsAmount + monthlyDisputesAmount
 
-  const monthlyDeliverySurchargeAmount = monthlyOrdersNumber * deliveryFeeBorne // مبلغ التحمل بالتوصيل
+  const monthlyDeliverySurchargeAmount = round(monthlyOrdersNumber * deliveryFeeBorne) // مبلغ التحمل بالتوصيل
 
   const totalMonthlyMarketingAmount = monthlyDeliverySurchargeAmount + monthlyAdBudgetNumber // اجمالى م التسويق
   const marketingSalesPercentage = round(totalMonthlyMarketingAmount / monthlySalesNumber) // % م التسويق من المبيعات
@@ -111,9 +111,9 @@ export function buildProfitCalculationArtifacts(data: FormData): ProfitCalculati
 
   const profitCalculatorMessage = `
   صافي الربح
-  ${profitPlus30.toLocaleString('en', { style: 'currency', maximumFractionDigits: 0, currency: 'sar' })} - ${profitPlus15.toLocaleString('en', { style: 'currency', maximumFractionDigits: 0, currency: 'sar' })}
+  ${formatPercent(profitPlus30)} - ${formatPercent(profitPlus15)}
   نسبة الربح
-  ${profitRatePlus30}% - ${profitRatePlus15}%
+  ${formatPercent(profitRatePlus30)} - ${formatPercent(profitRatePlus15)}
   تعويضات مستردة
   SAR ${savedDisputes}
   `
@@ -151,7 +151,7 @@ export function buildProfitCalculationArtifacts(data: FormData): ProfitCalculati
     { name: 'number_of_locations', value: physicalBranchesCount },
     { name: 'has_cloud_brands', value: hasCloudBrands },
     { name: 'number_of_cloud_brands', value: cloudBrandsCount },
-    { name: 'annual_sales_revenue', value: monthlySales },
+    { name: 'monthly_sales', value: monthlySales },
     { name: 'monthly_orders', value: monthlyOrders },
     { name: 'delivery_app_commission_percentage', value: avgCommissionRate * 100 },
     { name: 'food_cost', value: foodCostPercentage * 100 },

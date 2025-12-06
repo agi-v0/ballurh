@@ -18,22 +18,25 @@ export async function calculateProfit(data: FormData) {
   const first_name = name.split(' ')[0]
   const last_name = name.split(' ').toSpliced(0, 1).join(' ')
 
-  posthog.identify({
-    distinctId: email,
-    properties: {
-      email,
-      first_name,
-      last_name,
-      phone,
-      business_name: businessName,
-    },
-  })
-  posthog.capture({
-    event: ProfitCalculatorEvents.SUBMITTED,
-    distinctId: email,
-  })
-
-  await posthog.shutdown()
+  try {
+    posthog.identify({
+      distinctId: email,
+      properties: {
+        email,
+        first_name,
+        last_name,
+        phone,
+        business_name: businessName,
+      },
+    })
+    posthog.capture({
+      event: ProfitCalculatorEvents.SUBMITTED,
+      distinctId: email,
+    })
+    await posthog.shutdown()
+  } catch (error) {
+    console.error('Error processing request:', error)
+  }
 
   const { hubspotFields, emailProps } = buildProfitCalculationArtifacts(data)
 
