@@ -13,6 +13,7 @@ export const PostHero: React.FC<{
 }> = ({ post }) => {
   const t = useTranslations('Blog')
   const locale = useLocale() as 'en' | 'ar'
+  const dataTimeFormat = locale === 'en' ? 'en-US' : 'ar-SA'
 
   const { categories, heroImage, populatedAuthors, publishedAt, title, content } = post
 
@@ -74,7 +75,7 @@ export const PostHero: React.FC<{
           <div className="flex flex-col items-center gap-2 text-base-tertiary">
             <span className="text-sm">{t('publishedAt')}</span>
             <time className="text-main text-base-secondary" dateTime={publishedAt}>
-              {formatDateTime(publishedAt)}
+              {formatDateTime(publishedAt, dataTimeFormat)}
             </time>
           </div>
         )}

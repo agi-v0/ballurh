@@ -1,6 +1,5 @@
-'use client'
 import { cn } from '@/utilities/ui'
-import useClickableCard from '@/utilities/useClickableCard'
+
 import { Link } from '@/i18n/navigation'
 import React, { Fragment } from 'react'
 
@@ -8,6 +7,7 @@ import type { BlogPost } from '@/payload-types'
 
 import { Media } from '@/components/MediaResponsive'
 import { formatDateTime } from '@/utilities/formatDateTime'
+import { useLocale } from 'next-intl'
 
 export type CardPostData = Pick<
   BlogPost,
@@ -22,7 +22,7 @@ export const Card: React.FC<{
   showCategories?: boolean
   title?: string
 }> = (props) => {
-  const { card, link } = useClickableCard({})
+  const locale = useLocale()
   const { className, doc, relationTo, showCategories, title: titleFromProps } = props
 
   const { slug, categories, meta, title, publishedAt, heroImage } = doc || {}
@@ -33,13 +33,13 @@ export const Card: React.FC<{
   const sanitizedDescription = description?.replace(/\s/g, ' ') // replace non-breaking space with white space
   const href = `/${relationTo}/${slug}`
 
+  const dataTimeFormat = locale === 'en' ? 'en-US' : 'ar-SA'
   return (
     <article
       className={cn(
         'grid grid-cols-1 gap-4 overflow-hidden hover:cursor-pointer max-md:gap-space-7 md:grid-cols-16',
         className,
       )}
-      ref={card.ref}
     >
       {/* <div className="relative w-full">
         {!metaImage && <div className="">No image</div>}
@@ -47,9 +47,12 @@ export const Card: React.FC<{
       </div> */}
       <div className="flex flex-col gap-2 pe-6 md:col-span-4">
         {publishedAt && (
-          <time className="text-sm text-base-tertiary" dateTime={publishedAt}>
-            {formatDateTime(publishedAt)}
-          </time>
+          <span
+            className="text-sm text-base-tertiary"
+            // dateTime={publishedAt}
+          >
+            {formatDateTime(publishedAt, dataTimeFormat)}
+          </span>
         )}
         {showCategories && hasCategories && (
           <div className="text-sm font-medium text-blr-orange uppercase">
@@ -79,7 +82,7 @@ export const Card: React.FC<{
       <div className="pe-6 md:col-span-8">
         {titleToUse && (
           <h3 className="_rtl:leading-snug text-h3 font-semibold ltr:leading-tight">
-            <Link className="hover:text-base-secondary" href={href} ref={link.ref}>
+            <Link className="hover:text-base-secondary" href={href}>
               {titleToUse}
             </Link>
           </h3>

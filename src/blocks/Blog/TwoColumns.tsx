@@ -21,6 +21,7 @@ const PostCard: React.FC<{
   className?: string
 }> = ({ index, post, locale, className = '' }) => {
   const t = useTranslations('Blog')
+  const dataTimeFormat = locale === 'en' ? 'en-US' : 'ar-SA'
 
   const href = `/${locale}/blog/${post.slug}`
   const { text } = getReadTimeFromLexical(post.content, locale as 'en' | 'ar', t)
@@ -41,7 +42,7 @@ const PostCard: React.FC<{
               imgClassName="h-full w-full object-cover transition-transform duration-300 group-hover/inner:scale-105"
             />
           ) : (
-            <div className="bg-background-neutral-subtle h-full w-full rounded-lg" />
+            <div className="h-full w-full rounded-lg bg-background-neutral-subtle" />
           )}
         </div>
 
@@ -55,27 +56,27 @@ const PostCard: React.FC<{
                 label={category.title}
                 color="gray"
                 size="md"
-                className="group-hover/inner:bg-background-neutral mb-2"
+                className="mb-2 group-hover/inner:bg-background-neutral"
               />
             )}
 
             {/* Title */}
-            <h3 className="mb-space-2xs text-h4 text-base-primary group-hover/inner:text-brand-primary line-clamp-2 font-medium transition-colors">
+            <h3 className="mb-space-2xs line-clamp-2 text-h4 font-medium text-base-primary transition-colors group-hover/inner:text-brand-primary">
               <Link href={href}>{post.title}</Link>
             </h3>
 
             {/* Excerpt */}
             {excerpt && (
-              <p className="mb-space-xs text-base-secondary group-hover/inner:text-base-tertiary line-clamp-3 text-sm transition-colors">
+              <p className="mb-space-xs line-clamp-3 text-sm text-base-secondary transition-colors group-hover/inner:text-base-tertiary">
                 {excerpt.slice(0, 60)}...
               </p>
             )}
           </div>
 
           {/* Meta */}
-          <div className="text-base-tertiary border-border pt-space-xs flex items-center justify-between border-t text-sm">
+          <div className="pt-space-xs flex items-center justify-between border-t border-border text-sm text-base-tertiary">
             <span>{text}</span>
-            <span>{post.publishedAt && formatDateTime(post.publishedAt)}</span>
+            <span>{post.publishedAt && formatDateTime(post.publishedAt, dataTimeFormat)}</span>
           </div>
         </div>
       </div>
@@ -102,10 +103,10 @@ export const TwoColumns: React.FC<BlogBlockType> = ({
           <div className="gap-space-sm flex flex-col lg:flex-row">
             {/* Popular Posts */}
             {recentPosts.length > 0 && (
-              <div className="bg-background-neutral w-full rounded-3xl">
+              <div className="w-full rounded-3xl bg-background-neutral">
                 {recentPostsList?.title && (
                   <div className="p-space-md pb-0">
-                    <h3 className="mb-space-2xs text-h3 text-base-primary font-medium">
+                    <h3 className="mb-space-2xs text-h3 font-medium text-base-primary">
                       {recentPostsList?.title}
                     </h3>
 
@@ -117,7 +118,7 @@ export const TwoColumns: React.FC<BlogBlockType> = ({
                   </div>
                 )}
                 <div className="group/outer grid grid-cols-1 grid-rows-3 p-2 lg:p-4">
-                  <div className="bg bg-background-neutral-subtle ease-in-out-cubic col-start-1 row-start-1 h-full w-full translate-y-(--x) rounded-2xl opacity-0 group-[:has(article:hover)]/outer:opacity-100 group-[:has(article:hover)]/outer:transition-all"></div>
+                  <div className="bg ease-in-out-cubic col-start-1 row-start-1 h-full w-full translate-y-(--x) rounded-2xl bg-background-neutral-subtle opacity-0 group-[:has(article:hover)]/outer:opacity-100 group-[:has(article:hover)]/outer:transition-all"></div>
                   {recentPosts.slice(0, 3).map((post, index) => {
                     return (
                       <PostCard
@@ -135,10 +136,10 @@ export const TwoColumns: React.FC<BlogBlockType> = ({
 
             {/* Latest Posts */}
             {editorsPicks.length > 0 && (
-              <div className="bg-background-neutral w-full rounded-3xl">
+              <div className="w-full rounded-3xl bg-background-neutral">
                 {editorsPicksList?.title && (
                   <div className="p-space-md pb-0">
-                    <h3 className="mb-space-2xs text-h3 text-base-primary font-medium">
+                    <h3 className="mb-space-2xs text-h3 font-medium text-base-primary">
                       {editorsPicksList.title}
                     </h3>
                     {editorsPicksList.description && (
@@ -149,7 +150,7 @@ export const TwoColumns: React.FC<BlogBlockType> = ({
                   </div>
                 )}
                 <div className="group/outer grid grid-cols-1 grid-rows-3 p-2 lg:p-4">
-                  <div className="bg bg-background-neutral-subtle ease-in-out-cubic col-start-1 row-start-1 h-full w-full translate-y-(--x) rounded-2xl opacity-0 group-[:has(article:hover)]/outer:opacity-100 group-[:has(article:hover)]/outer:transition-all"></div>
+                  <div className="bg ease-in-out-cubic col-start-1 row-start-1 h-full w-full translate-y-(--x) rounded-2xl bg-background-neutral-subtle opacity-0 group-[:has(article:hover)]/outer:opacity-100 group-[:has(article:hover)]/outer:transition-all"></div>
                   {editorsPicks.slice(0, 3).map((post, index) => {
                     return (
                       <>
