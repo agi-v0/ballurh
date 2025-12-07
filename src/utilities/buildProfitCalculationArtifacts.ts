@@ -144,8 +144,8 @@ export function buildProfitCalculationArtifacts(data: FormData): ProfitCalculati
   const hubspotFields: HubspotField[] = [
     { name: 'firstname', value: name },
     { name: 'email', value: email },
-    { name: 'mobilephone', value: phone },
-    { name: 'hs_whatsapp_phone_number', value: phone },
+    { name: 'mobilephone', value: phone.replaceAll(' ', '') },
+    { name: 'hs_whatsapp_phone_number', value: phone.replace(' ', '') },
     { name: 'brand_name', value: businessName },
     { name: 'business_type', value: businessTypeLabels.get(activityType) },
     { name: 'number_of_locations', value: physicalBranchesCount },

@@ -15,7 +15,7 @@ const initialState: ContactStore = {
   contactInfo: {
     name: '',
     email: '',
-    phone: '',
+    phone: '+966',
     businessName: '',
   },
 }

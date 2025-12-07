@@ -3,26 +3,24 @@ import React, { useEffect, useRef, useState } from 'react'
 import { useForm, FormProvider } from 'react-hook-form'
 import { formSchema, type FormData } from './schema'
 import { zodResolver } from '@hookform/resolvers/zod'
+import posthog from 'posthog-js'
+import { useLocale } from 'next-intl'
+
 import { Icon } from '@iconify-icon/react'
 import { motion, AnimatePresence } from 'motion/react'
 import { useStateMachine } from 'little-state-machine'
 
-import { Button } from '@/components/ui/button'
-
-import StepperBar from '../stepper/title-bar'
 import { cn } from '@/utilities/ui'
+import { Button } from '@/components/ui/button'
+import StepperBar from '../stepper/title-bar'
 
 import Step1 from './steps/Step1'
 import Step2 from './steps/Step2'
 import Step3 from './steps/Step3'
 import Step4 from './steps/Step4'
-import './store'
-import { updateContactInfo, type ContactStore } from './store'
-import posthog from 'posthog-js'
+import { updateContactInfo } from './store'
 import { ProfitCalculatorEvents } from './events'
 import { calculateProfit } from './actions'
-import { useLocale } from 'next-intl'
-import PhoneInput from '../ui/phone-input'
 
 const stepSchemas = [
   formSchema.pick({

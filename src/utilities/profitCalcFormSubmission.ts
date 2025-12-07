@@ -44,7 +44,7 @@ export async function submitHubspot(fields: HubspotField[]): Promise<HubspotResp
       console.error('HubSpot submission failed:', body)
       return { ok: false, error: body }
     }
-
+    console.log('Sent form data to HubSpot successfully')
     return { ok: true }
   } catch (error) {
     console.error('Error submitting to HubSpot:', error)
@@ -82,7 +82,7 @@ export async function saveSubmission(
         submissionData: mapFieldsToSubmission(fields),
       },
     })
-
+    console.log('Saved form data to CMS successfully')
     return true
   } catch (error) {
     console.error('Error saving submission to Payload CMS:', error)
